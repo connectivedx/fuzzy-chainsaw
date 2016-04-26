@@ -1,0 +1,17 @@
+{
+  "name": "fuzzy-chainsaw",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connectivedx/fuzzy-chainsaw.git"
+  },
+  "author": "Connective DX",
+  "bugs": {
+    "url": "https://github.com/connectivedx/fuzzy-chainsaw/issues"
+  },
+  "homepage": "https://github.com/connectivedx/fuzzy-chainsaw#readme"
+}
