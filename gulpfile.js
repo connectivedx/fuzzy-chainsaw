@@ -6,7 +6,7 @@ const sequence = require('run-sequence').use(gulp);
 requireDir('./tasks', { recurse: true });
 
 // watchers
-gulp.task('watch', function(done) {
+gulp.task('watch', function() {
 	gulp.watch('source/components/**/*.scss', ['styles']);
 });
 
@@ -16,7 +16,7 @@ gulp.task('watch', function(done) {
 // required to get the project started
 // like stylesheets, scripts and templates
 gulp.task('build-core', function(done) {
-	sequence(['styles'], done);
+	sequence(['styles', 'scripts', 'images', 'fonts', 'svgs'], done);
 });
 
 // build-extras is the optional tasks
