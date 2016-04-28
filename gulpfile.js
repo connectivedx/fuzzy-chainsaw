@@ -16,7 +16,7 @@ gulp.task('watch', function() {
 // required to get the project started
 // like stylesheets, scripts and templates
 gulp.task('build-core', function(done) {
-	sequence(['styles', 'scripts', 'images', 'fonts', 'svgs'], done);
+	sequence(['styles', 'scripts', 'images', 'fonts', 'svgs', 'pages'], done);
 });
 
 // build-extras is the optional tasks

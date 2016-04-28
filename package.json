@@ -15,6 +15,7 @@
 		"images": "source/images",
 		"svgs": "source/svgs",
 		"fonts": "source/fonts",
+		"pages": "source/pages",
 		"dest": "dist",
 		"assets": "dist/assets",
 		"destImages": "dist/assets/images",

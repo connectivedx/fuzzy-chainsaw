@@ -1,5 +1,5 @@
 {
-  "name": "task-copy",
+  "name": "task-pages",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -7,7 +7,10 @@
   },
   "author": "Connective DX",
   "devDependencies": {
+    "tape": "~4"
+  },
+  "dependencies": {
     "gulp": "^3.9.1",
-    "tape": "^4.5.1"
+    "gulp-hb": "^5.1.0"
   }
 }
