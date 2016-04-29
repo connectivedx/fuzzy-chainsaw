@@ -7,10 +7,14 @@
   },
   "author": "Connective DX",
   "devDependencies": {
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-prettify": "^0.4.0",
+    "lodash": "^4.11.1",
     "tape": "~4"
   },
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-hb": "^5.1.0"
+    "gulp-hb": "^5.1.0",
+    "lodash": "^4.11.1"
   }
 }

@@ -1,40 +1,42 @@
 {
-	"name": "fuzzy-chainsaw",
-	"version": "1.0.0",
-	"description": "",
-	"scripts": {
-		"build": "gulp",
-		"watch": "gulp && gulp watch",
-		"start": "http-server ./dist",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"directories": {
-		"src": "source",
-		"styles": "source/components",
-		"scripts": "source/components",
-		"images": "source/images",
-		"svgs": "source/svgs",
-		"fonts": "source/fonts",
-		"pages": "source/pages",
-		"dest": "dist",
-		"assets": "dist/assets",
-		"destImages": "dist/assets/images",
-		"destSvgs": "dist/assets/svgs",
-		"destFonts": "dist/assets/fonts",
-		"styleguide": "dist/styleguide"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/connectivedx/fuzzy-chainsaw.git"
-	},
-	"author": "Connective DX",
-	"bugs": {
-		"url": "https://github.com/connectivedx/fuzzy-chainsaw/issues"
-	},
-	"homepage": "https://github.com/connectivedx/fuzzy-chainsaw#readme",
-	"devDependencies": {
-		"gulp": "^3.9.1",
-		"require-dir": "^0.3.0",
-		"run-sequence": "^1.1.5"
-	}
+  "name": "fuzzy-chainsaw",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp && gulp watch",
+    "start": "http-server ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "src": "source",
+    "components": "source/components",
+    "data": "source/data",
+    "pages": "source/pages",
+    "images": "source/images",
+    "svgs": "source/svgs",
+    "fonts": "source/fonts",
+    "dest": "dist",
+    "assets": "dist/assets",
+    "destImages": "dist/assets/images",
+    "destSvgs": "dist/assets/svgs",
+    "destFonts": "dist/assets/fonts",
+    "styleguide": "dist/styleguide"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connectivedx/fuzzy-chainsaw.git"
+  },
+  "author": "Connective DX",
+  "bugs": {
+    "url": "https://github.com/connectivedx/fuzzy-chainsaw/issues"
+  },
+  "homepage": "https://github.com/connectivedx/fuzzy-chainsaw#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "handlebars": "^4.0.5",
+    "http-server": "^0.9.0",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5"
+  }
 }

@@ -1,21 +1,35 @@
+const pick = require('lodash/pick');
+const extend = require('lodash/extend');
 const path = require('path');
 
 const gulp = require('gulp');
-const hb = require('gulp-hb');
 const ext = require('gulp-ext-replace');
+const prettify = require('gulp-prettify');
+const hb = require('gulp-hb');
+const hbOpts = [
+	'handlebars', 'partials',' helpers',
+	'decorators', 'data', 'parseHelperName',
+	'parsePartialName', 'parseDecoratorName'
+];
 
+function getFilename(options, file) {
+	return file.path.substr(file.path.lastIndexOf('/') + 1).split('.')[0];
+}
 
 module.exports = function(opts) {
-	const renderer = hb();
-
-	if (opts.partials) renderer.partials(opts.partialsDir)
-	if (opts.helpers) renderer.helpers(opts.helpersDir)
-	if (opts.decorators) renderer.decorators(opts.decoratorsDir)
-	if (opts.data) renderer.data(opts.dataDir)
+	const hbOptions = extend({
+		parseHelperName: getFilename,
+		parsePartialName: getFilename,
+		parseDecoratorName: getFilename,
+		parseDataName: getFilename
+	}, pick(opts, hbOpts));
 
 	return function() {
 		return gulp.src(opts.src)
-			.pipe(renderer)
+			.pipe(hb(hbOptions))
+		    .pipe(prettify({
+		    	indent_size: 2
+		    }))
 			.pipe(ext('.html'))
 			.pipe(gulp.dest(opts.dest));
 	}

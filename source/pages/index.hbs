@@ -3,14 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>{{menu.title}}</title>
 	<link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
 
-{{#>list}}
-	{{#>list-item}}Yo Dogg{{/list-item}}
-	{{#>list-item}}No Dogg{{/list-item}}
+{{#>list class="list--unordered"}}
+	{{#each @root.menu.items as |item|}}
+		{{#>list-item}}
+			{{@index}}. {{ item.title }}
+		{{/list-item}}
+	{{else}}
+		<div>No Results</div>
+	{{/each}}
 {{/list}}
 
 </body>
