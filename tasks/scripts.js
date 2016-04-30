@@ -5,7 +5,7 @@ const watch = require('../submodules/task-scripts').watch;
 const dirs = require('../package.json').directories;
 
 const scriptOpts = {
-  entry: dirs.scripts + '/main.js',
+  entry: dirs.components + '/main.js',
   dest: dirs.assets,
   name: 'bundle.js'
 };

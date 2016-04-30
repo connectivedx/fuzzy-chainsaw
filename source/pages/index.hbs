@@ -11,7 +11,7 @@
 {{#>list class="list--unordered"}}
 	{{#each @root.menu.items as |item|}}
 		{{#>list-item}}
-			{{@index}}. {{ item.title }}
+			{{@index}}. {{item.title}}
 		{{/list-item}}
 	{{else}}
 		<div>No Results</div>
