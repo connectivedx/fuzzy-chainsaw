@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const copy = require('../submodules/task-copy');
+const svgs = require('../submodules/task-svgs');
 const dirs = require('../package.json').directories;
 
-gulp.task('svgs', copy({
+gulp.task('svgs', svgs({
   src: dirs.svgs,
   dest: dirs.destSvgs
 }));

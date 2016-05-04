@@ -1,1 +1,1 @@
-alert('Hello World')
+alert('we\'ve got srcipt')

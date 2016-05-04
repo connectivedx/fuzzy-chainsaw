@@ -5,4 +5,8 @@ const dirs = require('../package.json').directories
 gulp.task('styles', styles({
 	src: dirs.components + '/*.scss',
 	dest: dirs.assets
-}))
+}));
+
+gulp.task('styles-watch', () => {
+	gulp.watch('source/components/**/*.scss', ['styles'])
+});

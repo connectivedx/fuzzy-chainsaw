@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const copy = require('../submodules/task-copy');
+const fonts = require('../submodules/task-fonts');
 const dirs = require('../package.json').directories;
 
-gulp.task('fonts', copy({
+gulp.task('fonts', fonts({
   src: dirs.fonts,
   dest: dirs.destFonts
 }))

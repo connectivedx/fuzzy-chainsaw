@@ -5,12 +5,12 @@ const sequence = require('run-sequence').use(gulp);
 // import all tasks from task folders
 requireDir('./tasks', { recurse: true });
 
+// main tasks
+
 // watchers
 gulp.task('watch', function() {
-	gulp.watch('source/components/**/*.scss', ['styles']);
+	sequence(['styles-watch', 'scripts-watch']);
 });
-
-// main tasks
 
 // build-core is the minimal build tasks
 // required to get the project started
