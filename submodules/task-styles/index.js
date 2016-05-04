@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer-core');
+const autoprefixer = require('autoprefixer');
 
 module.exports = function(opts) {
 	return function() {

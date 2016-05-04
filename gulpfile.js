@@ -18,7 +18,11 @@ gulp.task('watch', function() {
 // build-pre contains task that should
 // be done before build-core
 gulp.task('build-pre', function(done) {
-	sequence('check-versions', 'clean', done);
+	sequence(
+		'check-versions',
+		'clean',
+		done
+	);
 });
 
 // build-core is the minimal build tasks
@@ -38,7 +42,10 @@ gulp.task('build-core', function(done) {
 // build-extras is the optional tasks
 // like styleguide and documentation
 gulp.task('build-extras', function(done) {
-	sequence(['styleguide'], done);
+	done();
+	// sequence([
+		// 'styleguide'
+	// ], done);
 });
 // production runs the full shabang build
 gulp.task('production', function(done) {
