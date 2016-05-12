@@ -4,9 +4,9 @@ const task = require('../submodules/task-scripts');
 const dirs = require('../package.json').directories;
 
 const scriptOpts = {
-  entries: dirs.components + '/main.js',
+  entries: [dirs.components + '/main.js'],
   dest: dirs.assets,
-  name: 'bundle.js'
+  name: ['bundle.js']
 };
 
 gulp.task('scripts', task.bundle(scriptOpts));
