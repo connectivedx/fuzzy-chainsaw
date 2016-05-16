@@ -53,4 +53,4 @@ In making decisions toward achieving these stated goals, we should keep in mind 
 
 ### Why fuzzy chainsaw?
 
-GitHub gifted it to us as the randomly generated suggestion and we took it. Also because it's a preet awesome phrase.
+GitHub gifted it to us as the randomly generated suggestion and we took it. Also because it's a pretty awesome phrase.
