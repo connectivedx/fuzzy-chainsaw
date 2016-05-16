@@ -1,5 +1,3 @@
-const path = require('path');
-
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
 const reporter = require('postcss-reporter');
@@ -14,14 +12,20 @@ const config = {
 };
 
 function lint(opts) {
+  let lintConfig = config;
+
+  if (opts.rules) {
+    Object.assign(lintConfig.rules, opts.rules);
+  }
+
   return function() {
-    return gulp.src(opts.src)
+    gulp.src(opts.src)
       .pipe(postcss([
         stylelint({
-          config: config
+          config: lintConfig
         }),
         reporter()
-      ]))
+      ]));
   }
 }
 
