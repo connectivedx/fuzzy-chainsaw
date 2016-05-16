@@ -1,10 +1,10 @@
 # Fuzzy Chainsaw
 
-### What this is
+### What is this?
 
 This repo is intended to house a rewrite of the Phoenix front end boilerplate used at Connective DX leading to a 3.0 release. In addition to providing a starter kit of front end assets and intended best practices in CSS, HTML, JavaScript, and font and image management, the repo will also serve as the primary hub of conversation around codifying our goals with the project and those best practices and house styles we seek to enforce.
 
-### Our goals
+### What are our goals?
 
 Our larger goal is a solid, well-tested, well-documented, easily extendable, easy understood codebase for The Sorts of Projects We Do<sup><small>TM</small></sup>. To that end, we should focus ourselves on:
 
@@ -47,7 +47,7 @@ Our larger goal is a solid, well-tested, well-documented, easily extendable, eas
   * contains enough documentation that any smart, capable peer will be able to reason their way through a project without outside assistance or special knowledge
   * assumes an audience that includes not just front end developers but also internal & external backend implementors, QA engineers, PMs and other people gathering requirements, and even internal marketing team members looking for information.
 
-### Decision making
+### How should we make decisions?
 
 In making decisions toward achieving these stated goals, we should keep in mind the needs of our larger front end and tech practices within Connective DX, the needs of Connective DX itself as they pertain to this project (marketing, sales, etc), the needs of implementors of our work both in and outside of Connective DX, and any known pain points in the existing code base. Decisions should therefore not be based solely on developer ergonomics or the shiny new hotness, but instead balance and reflect the goals and needs of our various stakeholders as best as possible. We should push our practice forward as much as possible, but only if in doing so we do not aversely affect or disrupt the work of our peers.
 
