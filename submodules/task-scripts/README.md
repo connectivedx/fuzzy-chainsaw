@@ -21,16 +21,17 @@ gulp.task('scripts-watch', scripts.watch(scriptOpts));
 
 ## Options
 
-___entries___ String or String Array.
+___entries *___ String or String Array.  The browserify entries used to start compilation.
 
-___dest___ String or String Array.
+___dest *___ String or String Array.  Location(s) of outputted file.
 
-___name___ String.
+___name *___ String.  The outputted filename.
 
-___debug___ Boolean.
+___debug___ Boolean. Enables or disables Browserify debug mode
 
-___watch___ Boolean.
+___watch___ Boolean. Set to try to run task using watchify transform.
 
+___*___ required
 
 ## Installation
 
