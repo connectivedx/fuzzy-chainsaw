@@ -21,9 +21,7 @@ function lint(opts) {
   return function() {
     gulp.src(opts.src)
       .pipe(postcss([
-        stylelint({
-          config: lintConfig
-        }),
+        stylelint({ config: lintConfig }),
         reporter()
       ]));
   }
