@@ -2,11 +2,11 @@
 
 ### What is this?
 
-This repo is intended to house a rewrite of the Phoenix front end boilerplate used at Connective DX leading to a 3.0 release. In addition to providing a starter kit of front end assets and intended best practices in CSS, HTML, JavaScript, and font and image management, the repo will also serve as the primary hub of conversation around codifying our goals with the project and those best practices and house styles we seek to enforce.
+This repo is intended to house a rewrite of the Phoenix front end boilerplate used at Connective DX leading to a 3.0 release. In addition to providing a starter kit of front end assets and intended best practices in CSS, HTML, JavaScript, and image and font management, the repo will also serve as the primary hub of conversation around codifying our goals with the project and those best practices and house styles we seek to enforce.
 
 ### What are our goals?
 
-Our larger goal is a solid, well-tested, well-documented, easily extendable, easy understood codebase for The Sorts of Projects We Do<sup><small>TM</small></sup>. To that end, we should focus ourselves on:
+Our larger goal is a solid, well-tested, well-documented, easily extendable, easily understood codebase for The Sorts of Projects We Do<sup><small>TM</small></sup>. To that end, we should focus ourselves on:
 
 1. a build system that is
   * modular
@@ -30,9 +30,10 @@ Our larger goal is a solid, well-tested, well-documented, easily extendable, eas
   * easily accepts data
   * is validated as part of the build
 4. a CommonJS-based JavaScript environment that
-  * encourages the use (though npm) and authoring of small modules
+  * encourages the authoring and use (though npm) of small modules
   * encourages ES6 & DOM API scripting over jQuery and its ecosystem
   * still allows for the easy use of jQuery/plugins when applicable for an author
+  * is linted and tested as part of the build
 5. a CSS environment that
   * encourages small components
   * enforces best practice through linting & style conventions
@@ -42,10 +43,10 @@ Our larger goal is a solid, well-tested, well-documented, easily extendable, eas
   * has error messages that are friendly in tone and helpful in intent for both authors and implementors, including links where applicable to supporting documentation or missing pieces
   * has inline documentation wherever needed
   * errs on the side of over-explaining
-  * speaks through comments and documentation as you would to peers, always assuming them smart and capable
-  * assumes nothing is obvious
+  * speaks through comments and documentation as one would to a peer, always assuming a smart and capable audience
   * contains enough documentation that any smart, capable peer will be able to reason their way through a project without outside assistance or special knowledge
-  * assumes an audience that includes not just front end developers but also internal & external backend implementors, QA engineers, PMs and other people gathering requirements, and even internal marketing team members looking for information.
+  * assumes an audience that includes not just front end developers but also internal & external backend implementors, QA engineers, PMs and other people gathering requirements, and even internal marketing team members looking for information
+  * assumes nothing is obvious
 
 ### How should we make decisions?
 
