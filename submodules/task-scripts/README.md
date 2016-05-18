@@ -1,6 +1,6 @@
 # task-scripts
 
-Task for compiling and watching javascript into a single bundled file.
+Task for compiling and watching javascript into a single bundled file using browserify and watchify.
 
 ## Usage
 
