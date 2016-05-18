@@ -31,6 +31,8 @@ ___debug___ Boolean. Enables or disables Browserify debug mode
 
 ___watch___ Boolean. Set to try to run task using watchify transform.
 
+___gulpPlugins___ Stream Array.  A List of configured gulp plugins that are given to browserify on each rebundle.
+
 ___*___ required
 
 ## Installation

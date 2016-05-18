@@ -1,5 +1,7 @@
 'use strict';
 
+const PluginName = require('../package.json').name
+
 const defaultOpts = {
   debug: true,
   configure: function() { }
@@ -7,11 +9,12 @@ const defaultOpts = {
 
 const watchOpts = {
   cache: { },
-  packageCache: { },
-  plugin: [ ]
+  packageCache: { }
 }
 
 module.exports = function(options) {
+  options = options || {};
+
   let opts = Object.assign(
     {},
     defaultOpts,
@@ -19,21 +22,36 @@ module.exports = function(options) {
     options
   );
 
+  // Required Options
+  if (options.name === undefined) {
+    throw new Error(PluginName + ': options.name is not defined');
+  }
+
+  if (options.entries !== undefined) {
+    opts.entries =
+      Array.isArray(options.entries)
+        ? options.entries
+        : [options.entries];
+  } else {
+    throw new Error(PluginName + ': options.entries are not defined.');
+  }
+
+  // helper to force dest as an array
+  if (options.dest !== undefined) {
+    if (!Array.isArray(options.dest)) {
+      opts.dest = [options.dest];
+    }
+  } else {
+    throw new Error(PluginName + ': options.name is not defined');
+  }
+
+  // Optional Options
   if (options.watch !== undefined) {
     opts.watch = options.watch;
   }
 
-  if (options.entries !== undefined) {
-    opts.entries = options.entries;
-  }
-
   if (options.debug !== undefined) {
     opts.debug = options.debug;
-  }
-
-  // helper to force dest as an array
-  if (!Array.isArray(options.dest)) {
-    opts.dest = [options.dest];
   }
 
   if (options.gulpPlugins === undefined) {
