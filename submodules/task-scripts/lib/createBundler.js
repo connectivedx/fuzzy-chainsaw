@@ -22,9 +22,9 @@ module.exports = function createBundler(options) {
 
   if (opts.watch) {
     b.plugin(watchify);
+    b.on('update', bundle);
   }
 
-  b.on('update', bundle);
   b.on('log', gutil.log);
 
   // allows an place to add transforms, plugins,

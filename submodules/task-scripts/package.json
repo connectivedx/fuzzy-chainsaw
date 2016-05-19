@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "tape tests/**/*.test.js"
+    "test": "cd tests && gulp && tape *.test.js && tape dist/*.test.js"
   },
   "author": "Connective DX",
   "devDependencies": {
