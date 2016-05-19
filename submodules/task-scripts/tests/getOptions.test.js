@@ -1,23 +1,6 @@
 var getOptions = require('../lib/getOptions');
 var test = require('tape');
 
-test.skip('getOptions() :: no args throws error', function(t) {
-  const conf = getOptions();
-
-  t.plan(10);
-
-  t.equal(typeof conf, 'object');
-  t.equal(typeof conf.configure, 'function');
-  t.equal(conf.debug, true);
-  t.equal(conf.cache === undefined, true);
-  t.equal(conf.packageCache === undefined, true);
-  t.equal(conf.watch === undefined, true);
-  t.equal(conf.entries === undefined, true);
-  t.equal(conf.dest === undefined, true);
-  t.equal(conf.gulpPlugins.length, 0);
-  t.equal(conf.name, 'bundle.js');
-});
-
 test('getOptions() :: no args throws error', function(t) {
   t.plan(1);
 

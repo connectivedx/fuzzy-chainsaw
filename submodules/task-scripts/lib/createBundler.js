@@ -53,7 +53,7 @@ module.exports = function createBundler(options) {
       stream.pipe(gulp.dest(dest))
     });
 
-    return stream
+    return stream;
   }
 
   return bundle();
