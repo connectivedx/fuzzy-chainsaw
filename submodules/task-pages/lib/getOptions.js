@@ -11,16 +11,13 @@ const hbOptKeys = [
 ];
 
 module.exports = function getOptions(conf) {
-  var opts = Object.assign(
-    {},
-    conf,
-    { hb: Object.assign({ }, {
-        parseHelperName: getFilename,
-        parsePartialName: getFilename,
-        parseDecoratorName: getFilename,
-        parseDataName: getFilename
-      }, pick(conf, hbOptKeys)) }
-  );
+  var opts = Object.assign({}, conf);
+  opts.hb = Object.assign({ }, {
+    parseHelperName: getFilename,
+    parsePartialName: getFilename,
+    parseDecoratorName: getFilename,
+    parseDataName: getFilename
+  }, pick(conf, hbOptKeys));
 
   if (opts.src === undefined) {
     throw new Error(PluginName + ': options.src is not defined');
