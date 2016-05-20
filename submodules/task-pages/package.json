@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape tests/**/*.test.js"
   },
   "author": "Connective DX",
-  "devDependencies": {
-    "gulp-ext-replace": "^0.3.0",
-    "gulp-prettify": "^0.4.0",
-    "lodash": "^4.11.1",
+  "dependencies": {
     "tape": "~4"
   },
-  "dependencies": {
+  "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-ext-replace": "^0.3.0",
     "gulp-hb": "^5.1.0",
+    "gulp-prettify": "^0.4.0",
     "lodash": "^4.11.1"
   }
 }
