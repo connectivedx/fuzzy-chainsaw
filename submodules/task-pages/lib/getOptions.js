@@ -5,8 +5,8 @@ const PluginName = require('../package.json').name
 
 const hbOptKeys = [
   'handlebars',
-  'partials',' helpers', 'decorators', 'data',
-  'parseHelperName', 'parsePartialName',
+  'partials', 'helpers', 'decorators', 'data',
+  'parsePartialName', 'parseHelperName',
   'parseDecoratorName', 'parseDataName'
 ];
 
