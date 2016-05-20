@@ -13,7 +13,6 @@
     "gulp": "^3.9.1",
     "gulp-ext-replace": "^0.3.0",
     "gulp-hb": "^5.1.0",
-    "gulp-prettify": "^0.4.0",
     "lodash": "^4.11.1"
   }
 }
