@@ -1,13 +1,15 @@
 {
   "name": "task-copy",
   "version": "1.0.0",
-  "description": "",
+  "description": "Task for copying a directory",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape tests/**/*.test.js"
   },
   "author": "Connective DX",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "tape": "^4.5.1"
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "tape": "~4"
   }
 }
