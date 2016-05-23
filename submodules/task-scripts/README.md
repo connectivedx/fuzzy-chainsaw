@@ -33,6 +33,9 @@ ___watch___ Boolean. Set to try to run task using watchify transform.
 
 ___gulpPlugins___ Stream Array.  A List of configured gulp plugins that are given to browserify on each rebundle.
 
+___browserSync___ BrowserSync Server.  A browsersync server made with the `browserSync.create()` function.
+
+
 ___*___ required
 
 ## Installation

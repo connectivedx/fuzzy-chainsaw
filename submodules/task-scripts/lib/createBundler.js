@@ -53,6 +53,10 @@ module.exports = function createBundler(options) {
       stream.pipe(gulp.dest(dest))
     });
 
+    if (opts.browserSync) {
+      stream.pipe(browserSync.stream());
+    }
+
     return stream;
   }
 

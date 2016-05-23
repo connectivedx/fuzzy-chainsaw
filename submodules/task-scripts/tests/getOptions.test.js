@@ -136,3 +136,29 @@ test('getOptions({ gulpPlugins })', function(t) {
   t.equal(conf.gulpPlugins[2], 3);
 });
 
+
+test('getOptions({ gulpPlugins })', function(t) {
+  const conf = getOptions({
+    entries: 'main.js',
+    dest: 'dist',
+    name: 'bundle.js'
+  });
+
+  t.plan(2);
+  t.equal(Array.isArray(conf.gulpPlugins), true);
+  t.equal(conf.gulpPlugins.length, 0);
+});
+
+test('getOptions({ browserSync })', function(t) {
+  const conf = getOptions({
+    entries: 'main.js',
+    dest: 'dist',
+    name: 'bundle.js',
+    browserSync: 'hello'
+  });
+
+  t.plan(1);
+  t.equal(conf.browserSync, 'hello');
+});
+
+
