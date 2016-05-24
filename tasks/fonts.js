@@ -5,4 +5,4 @@ const dirs = require('../package.json').directories;
 gulp.task('fonts', copy({
   src: dirs.fonts,
   dest: dirs.destFonts
-}))
+}));
