@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-	"node" : ">4.4"
+    "node": ">4.4"
   },
   "scripts": {
-	"postinstall": "cd submodules && node install.js",
+    "postinstall": "cd submodules && node install.js",
     "build": "gulp production",
     "watch": "gulp && gulp watch",
     "start": "http-server ./dist",

@@ -1,2 +1,7 @@
 @import "list/style";
 @import "link/style";
+
+html,
+body {
+	background-color: #f00;
+}

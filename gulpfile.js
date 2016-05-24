@@ -11,7 +11,8 @@ requireDir('./tasks', { recurse: true });
 gulp.task('watch', function() {
 	sequence([
 		'styles-watch',
-		'scripts-watch'
+    'scripts-watch',
+    'lint-styles-watch'
 	]);
 });
 
@@ -19,8 +20,8 @@ gulp.task('watch', function() {
 // be done before build-core
 gulp.task('build-pre', function(done) {
 	sequence(
-		'check-versions',
-		'clean',
+    'clean',
+		['check-versions', 'lint-styles'],
 		done
 	);
 });
