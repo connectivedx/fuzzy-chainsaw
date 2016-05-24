@@ -1,6 +1,6 @@
 # task-scripts
 
-Task for compiling and watching javascript into a single bundled file using browserify and watchify.
+Gulp task for compiling and watching JavaScript into a single bundled file using [Browserify](http://browserify.org/) and [Watchify](https://github.com/substack/watchify).
 
 ## Usage
 
@@ -21,19 +21,19 @@ gulp.task('scripts-watch', scripts.watch(scriptOpts));
 
 ## Options
 
-___entries *___ String or String Array.  The browserify entries used to start compilation.
+___entries *___ String or String Array.  The Browserify entries used to start compilation.
 
-___dest *___ String or String Array.  Location(s) of outputted file.
+___dest *___ String or String Array.  Location(s) of output file.
 
-___name *___ String.  The outputted filename.
+___name *___ String.  The output filename.
 
-___debug___ Boolean. Enables or disables Browserify debug mode
+___debug___ Boolean. Enables or disables Browserify debug mode.
 
-___watch___ Boolean. Set to try to run task using watchify transform.
+___watch___ Boolean. Set to try to run task using Watchify transform.
 
-___gulpPlugins___ Stream Array.  A List of configured gulp plugins that are given to browserify on each rebundle.
+___gulpPlugins___ Stream Array.  A List of configured Gulp plugins that are given to Browserify on each rebundle.
 
-___browserSync___ BrowserSync Server.  A browsersync server made with the `browserSync.create()` function.
+___browserSync___ BrowserSync Server.  A Browsersync server made with the `browserSync.create()` function.
 
 
 ___*___ required
