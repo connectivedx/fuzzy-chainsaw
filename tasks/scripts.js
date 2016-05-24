@@ -4,8 +4,8 @@ const task = require('../submodules/task-scripts');
 const dirs = require('../package.json').directories;
 
 const scriptOpts = {
-  entries: dirs.components + '/main.js',
-  dest: dirs.assets,
+  entries: [dirs.components + '/main.js'],
+  dest: [dirs.assets],
   name: 'bundle.js'
 };
 

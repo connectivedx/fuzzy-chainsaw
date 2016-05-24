@@ -1,24 +1,32 @@
 {
   "name": "task-scripts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gulp task for compiling and watching javascript into a single bundled file using browserify and watchify.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd tests && gulp && tape *.test.js && tape dist/*.test.js"
   },
   "author": "Connective DX",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": ""
+  },
+  "bugs": {
+      "url": ""
+  },
   "devDependencies": {
+      "tape": "^4.5.1"
+  },
+  "dependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babelify": "^7.3.0",
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
-    "tape": "^4.5.1",
+    "hbsfy": "^2.7.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1"
-  },
-  "dependencies": {
-    "babel-register": "^6.8.0"
   }
 }
