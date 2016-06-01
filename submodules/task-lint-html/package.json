@@ -1,0 +1,21 @@
+{
+  "name": "task-lint-html",
+  "version": "1.0.0",
+  "description": "Task for linting html files",
+  "license" : "MIT",
+  "scripts": {
+    "test": "tape tests/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Connective DX",
+  "devDependencies": {
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-htmlhint": "^0.3.1"
+  }
+}

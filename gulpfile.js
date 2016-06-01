@@ -12,7 +12,9 @@ gulp.task('watch', function() {
 	sequence([
 		'styles-watch',
     'scripts-watch',
-    'lint-styles-watch'
+    'lint-styles-watch',
+		'scripts-watch',
+    'lint-html-watch'
 	]);
 });
 
@@ -36,8 +38,10 @@ gulp.task('build-core', function(done) {
 		'images',
 		'fonts',
 		'svgs',
-		'pages'
-	], done);
+		'pages',
+	], [
+    'lint-html'
+  ], done);
 });
 
 // build-extras is the optional tasks
@@ -48,6 +52,7 @@ gulp.task('build-extras', function(done) {
 		// 'styleguide'
 	// ], done);
 });
+
 // production runs the full shabang build
 gulp.task('production', function(done) {
 	sequence('build-pre', 'build-core', 'build-extras', done);
