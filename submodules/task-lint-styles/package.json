@@ -9,6 +9,7 @@
   "devDependencies": {
     "tape": "^4.5.1"
   },
+  "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.1.0",
