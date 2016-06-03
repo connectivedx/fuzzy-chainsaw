@@ -1,31 +1,20 @@
-const path = require('path');
+'use strict';
 
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
 const reporter = require('postcss-reporter');
 const stylelint = require('stylelint');
 
-const config = {
-  "extends": "stylelint-config-standard",
-  "rules": {
-      "color-named": "never",
-      "indentation": "tab"
-  }
-};
+const getOptions = require('./lib/getOptions');
 
-function lint(opts) {
+module.exports = function lint(options) {
+  let opts = getOptions(options);
+
   return function() {
-    return gulp.src(opts.src)
+    gulp.src(opts.src)
       .pipe(postcss([
-        stylelint({
-          config: config
-        }),
+        stylelint({ config: opts.lintConfig }),
         reporter()
-      ]))
+      ]));
   }
 }
-
-module.exports = {
-  config: config,
-  lint: lint
-};

@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const lint = require('../submodules/task-lint-styles').lint;
+const lint = require('../submodules/task-lint-styles');
 const dirs = require('../package.json').directories
 
 gulp.task('lint-styles', lint({

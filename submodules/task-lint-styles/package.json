@@ -1,13 +1,18 @@
 {
   "name": "task-lint-styles",
   "version": "1.0.0",
-  "description": "",
+  "description": "Task bundle for linting css stylesheets.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape tests/**/*.test.js"
   },
   "author": "Connective DX",
   "devDependencies": {
     "tape": "^4.5.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
   },
   "dependencies": {
     "gulp": "^3.9.1",
