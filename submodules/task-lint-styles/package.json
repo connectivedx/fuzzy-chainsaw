@@ -1,7 +1,7 @@
 {
   "name": "task-lint-styles",
   "version": "1.0.0",
-  "description": "",
+  "description": "Task bundle for linting css stylesheets.",
   "scripts": {
     "test": "tape tests/**/*.test.js"
   },
@@ -10,6 +10,10 @@
     "tape": "^4.5.1"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.1.0",
