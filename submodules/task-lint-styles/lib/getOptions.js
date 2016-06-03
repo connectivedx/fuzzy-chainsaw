@@ -6,25 +6,25 @@ const ourRules = {
   'indentation': 'tab'
 };
 
-module.exports = function(conf) {
+module.exports = function(options) {
   let opts = {
     lintConfig: {
       rules: {}
     }
   };
 
-  if (conf === undefined) {
+  if (options === undefined) {
     throw new Error(PluginName + ': options are not defined');
   }
 
-  if (conf.src === undefined) {
+  if (options.src === undefined) {
     throw new Error(PluginName + ': options.src is not defined');
   } else {
-    opts.src = conf.src
+    opts.src = options.src
   }
 
   // assign rules
-  Object.assign(opts.lintConfig.rules, defaultConfig.rules, ourRules, conf.rules);
+  Object.assign(opts.lintConfig.rules, defaultConfig.rules, ourRules, options.rules);
 
   return opts;
 }

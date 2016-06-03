@@ -7,8 +7,8 @@ const stylelint = require('stylelint');
 
 const getOptions = require('./lib/getOptions');
 
-module.exports = function lint(conf) {
-  let opts = getOptions(conf);
+module.exports = function lint(options) {
+  let opts = getOptions(options);
 
   return function() {
     gulp.src(opts.src)
