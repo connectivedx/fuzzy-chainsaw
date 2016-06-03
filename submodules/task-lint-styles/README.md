@@ -1,6 +1,6 @@
 # task-lint-styles
 
-Task bunde for linting css stylesheets.
+Task bundle for linting css stylesheets.
 
 ## Usage
 
@@ -18,9 +18,9 @@ gulp.task("lint-styles", lint({
 
 ## Options
 
-___src___ _String_. `gulp.src` source global of files to feed stylelint.
+___src___ _String_. `gulp.src` global source of files to feed stylelint.
 
-___rules___ _Object_. A plain object with stylelint rules to override globally. All rules can be found on the [stylelint](http://stylelint.io/user-guide/rules) website.
+___rules___ _Object_. A plain object with stylelint rules to override default rules. All rules can be found on the [stylelint](http://stylelint.io/user-guide/rules) website.
 
 ## Installation
 
