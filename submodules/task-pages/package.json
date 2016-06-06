@@ -1,11 +1,16 @@
 {
   "name": "task-pages",
   "version": "1.0.0",
-  "description": "",
+  "license": "MIT",
+  "description": "Gulp task for compiling handlebars templates into static html pages.",
   "scripts": {
     "test": "tape tests/**/*.test.js"
   },
   "author": "Connective DX",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "dependencies": {
     "tape": "~4"
   },

@@ -10,14 +10,14 @@ const hbOptKeys = [
   'parseDecoratorName', 'parseDataName'
 ];
 
-module.exports = function getOptions(conf) {
-  var opts = Object.assign({}, conf);
+module.exports = function getOptions(options) {
+  var opts = Object.assign({}, options);
   opts.hb = Object.assign({ }, {
     parseHelperName: getFilename,
     parsePartialName: getFilename,
     parseDecoratorName: getFilename,
     parseDataName: getFilename
-  }, pick(conf, hbOptKeys));
+  }, pick(options, hbOptKeys));
 
   if (opts.src === undefined) {
     throw new Error(PluginName + ': options.src is not defined');

@@ -20,11 +20,11 @@ gulp.task("pages", pages({
 
 ___src___ _String_.  Source glob of templates to pass to the compiler.
 
-___dest___ _String_.  Directory used for outputing compiled pages.
+___dest___ _String_.  Directory used for outputting compiled pages.
 
-___handlebars___ _Handlebars Instance_.  An instance of handlebars can be passed as an option if you want to use built-in configuration methods instead of wax.
+___handlebars___ _Handlebars Instance_.  An instance of Handlebars can be passed as an option. The task defaults to using [`handlebars-wax`](https://www.npmjs.com/package/handlebars-wax).
 
-A number of options are availble for handlebars via [handlebars-wax](https://github.com/shannonmoeller/handlebars-wax) for including partials, helpers, data and such. Better documentation can be found on the handlebars-wax repo, but these options are available to use:
+A number of [options are available](https://github.com/shannonmoeller/handlebars-wax#api) for Handlebars via `handlebars-wax` for including partials, helpers, data and such. Better documentation can be found on the handlebars-wax repo, but these options are available to use:
 
 - ___partials___
 - ___helpers___
