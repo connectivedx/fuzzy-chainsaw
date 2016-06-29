@@ -9,4 +9,15 @@ gulp.task('pages', pages({
 	data: [dirs.data + '/**/*.json'],
 	src: dirs.pages + '/**/*',
 	dest: dirs.dest
-}))
+}));
+
+gulp.task('pages-watch', function() {
+	gulp.watch(
+		[
+			dirs.pages + '/**/*',
+			dirs.data + '/**/*.json',
+			dirs.components + '/**/*.hbs'
+		],
+		['pages']
+	);
+});

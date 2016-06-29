@@ -12,8 +12,8 @@ gulp.task('watch', function() {
 	sequence([
 		'styles-watch',
     'scripts-watch',
+		'pages-watch',
     'lint-styles-watch',
-		'scripts-watch',
     'lint-html-watch'
 	]);
 });
