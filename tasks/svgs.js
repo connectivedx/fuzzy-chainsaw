@@ -7,3 +7,7 @@ gulp.task('svgs', task({
   dest: dirs.destSvgs,
 	meta: dirs.svgs + '/meta.yaml',
 }));
+
+gulp.task('svgs-watch', function() {
+	gulp.watch([dirs.svgs + '/**/*.svg', dirs.svgs + '/**/*.yaml'], ['svgs']);
+});
