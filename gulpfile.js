@@ -13,7 +13,7 @@ gulp.task('watch', function() {
 		'styles-watch',
     'scripts-watch',
     'lint-styles-watch',
-		'scripts-watch',
+		'images-watch',
     'lint-html-watch'
 	]);
 });
