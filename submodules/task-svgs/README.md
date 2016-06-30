@@ -1,4 +1,4 @@
-# task-scripts
+# task-svgs
 
 Gulp task using [`svg-sprite`](https://github.com/jkphl/svg-sprite) to generate SVG sprites and related styles for use inline with your HTML or from a stylesheet.
 
