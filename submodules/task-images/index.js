@@ -7,10 +7,8 @@ module.exports = function(options) {
 	var opts = getOptions(options);
 
 	return function() {
-		return (
-			gulp.src(opts.src)
-				.pipe(gutil.env.type === 'production' ? imagemin() : gutil.noop())
-				.pipe(gulp.dest(opts.dest))
-		);
+		return gulp.src(opts.src)
+			.pipe(gutil.env.type === 'production' ? imagemin() : gutil.noop())
+			.pipe(gulp.dest(opts.dest));
 	};
 };
