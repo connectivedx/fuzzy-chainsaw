@@ -1,5 +1,5 @@
 {
-  "name": "task-copy",
+  "name": "task-svgs",
   "version": "1.0.0",
   "description": "Gulp task using to generate SVG sprites and related styles",
   "scripts": {

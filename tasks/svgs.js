@@ -5,7 +5,7 @@ const dirs = require('../package.json').directories;
 gulp.task('svgs', task({
   src: dirs.svgs,
   dest: dirs.destSvgs,
-	meta: dirs.svgs + '/meta.yaml',
+	meta: dirs.svgs + '/meta.yaml'
 }));
 
 gulp.task('svgs-watch', function() {
