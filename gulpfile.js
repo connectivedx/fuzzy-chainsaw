@@ -12,6 +12,7 @@ gulp.task('watch', function() {
   sequence([
     'styles-watch',
     'scripts-watch',
+    'pages-watch',
     'svgs-watch',
     'lint-styles-watch',
     'lint-html-watch'
