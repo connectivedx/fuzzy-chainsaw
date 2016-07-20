@@ -15,6 +15,7 @@ gulp.task('watch', function() {
     'pages-watch',
     'svgs-watch',
     'lint-styles-watch',
+		'images-watch',
     'lint-html-watch'
   ]);
 });

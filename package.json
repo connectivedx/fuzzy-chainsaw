@@ -7,7 +7,7 @@
   },
   "scripts": {
     "postinstall": "cd submodules && node install.js",
-    "build": "gulp production",
+    "build": "gulp --type production",
     "watch": "gulp && gulp watch",
     "start": "http-server ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,6 +38,7 @@
   "homepage": "https://github.com/connectivedx/fuzzy-chainsaw#readme",
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
+    "del": "^2.2.1",
     "gulp": "^3.9.1",
     "handlebars": "^4.0.5",
     "http-server": "^0.9.0",
