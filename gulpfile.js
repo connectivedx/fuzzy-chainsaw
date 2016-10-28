@@ -52,7 +52,6 @@ const reportWebpackErrors = (err, stats) => {
 
     if (build.compilation.warnings && build.compilation.warnings.length) {
       build.compilation.warnings.forEach(warn => console.error(chalk.yellow(warn.toString())));
-      error = true;
     }
   });
 
