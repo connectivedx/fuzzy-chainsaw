@@ -12,7 +12,7 @@ module.exports = ({
   outputScript = '/tmp/bundle.js',
   outputStyle = '/tmp/bundle.css',
 }) => ({
-  devServer: { 
+  devServer: {
     stats: 'errors-only'
   },
   devtool: devtool,
@@ -23,7 +23,7 @@ module.exports = ({
     path: outputPath,
     filename: outputScript
   },
-  publicPath: './dist/',
+  publicPath: publicPath,
   postcss: require('./postcss-pack.js'),
   module: {
     loaders: [
