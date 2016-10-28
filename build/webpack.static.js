@@ -15,10 +15,10 @@ module.exports = ({
   paths = [],
   locals = {}
 }) => ({
-  devServer: { 
+  devServer: {
     stats: 'errors-only'
   },
-  devtool: 'eval',
+  devtool: devtool,
   entry: {
     main: entry
   },
@@ -27,7 +27,7 @@ module.exports = ({
     filename: outputScript,
     libraryTarget: 'umd'
   },
-  publicPath: './dist/',
+  publicPath: publicPath,
   postcss: require('./postcss-pack.js'),
   module: {
     loaders: [
