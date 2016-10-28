@@ -46,7 +46,7 @@ const reportWebpackErrors = (err, stats) => {
   var error = false;
   stats.stats.map(build => {
     if (build.compilation.errors && build.compilation.errors.length) {
-      build.compilation.errors.forEach(error => console.error(chalk.red(error.toString())));
+      build.compilation.errors.forEach(error => console.error(chalk.bgRed(error.toString())));
       error = true;
     }
 
@@ -57,6 +57,8 @@ const reportWebpackErrors = (err, stats) => {
   });
 
   if(error) {
-    throw new Error('Webpack completed with errors or warnings.');
+    console.error('');
+    console.error(chalk.bgRed('Webpack completed with errors or warnings.'));
+    process.exit(1);
   }
 }
