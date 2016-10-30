@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+  	"source": "./source/",
+  	"output": "dist"
+  },
   "scripts": {
     "webpack-build": "webpack --progress",
     "build": "gulp build",

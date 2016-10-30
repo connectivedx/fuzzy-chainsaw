@@ -2,11 +2,12 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
 const fileExists = require('file-exists');
-
+const pkg = require('./package.json')
 const staticConfig = require('./build/webpack.static.js');
 const styleguideConfig = require('./build/webpack.styleguide.js');
 const browserConfig = require('./build/webpack.browser.js');
 
+const dirs = pkg.directories;
 
 // get path of file relative to source directory
 const getDeepName = source => blob => {
@@ -31,12 +32,12 @@ const componentExists = (baseSrc, name) =>
 
 // create lists of components with a coresponding jsx file
 const components =
-  getDirectories('./source/components')
-    .filter(name => componentExists('./source/components', name));
+  getDirectories(dirs.source + 'components')
+    .filter(name => componentExists(dirs.source + 'components', name));
 
 const tags =
-  getDirectories('./source/tags')
-    .filter(name => componentExists('./source/tags', name));
+  getDirectories(dirs.source + 'tags')
+    .filter(name => componentExists(dirs.source + 'tags', name));
 
 
 // concatinate both lists together for the styleguide
@@ -48,38 +49,38 @@ const styleguides =
 
 // a base objects used in every configuration
 const baseOutput = config => Object.assign({
-  outputPath: path.resolve(__dirname, 'dist'),
+  outputPath: path.resolve(__dirname, dirs.output),
 }, config);
 
 
 // webpack configurations
 const renderPages = staticConfig(baseOutput({
-  entry: './source/render-page.jsx',
+  entry: dirs.source + 'render-page.jsx',
   locals: { components, tags },
-  paths: glob.sync('./source/pages/**/*.jsx')
+  paths: glob.sync(dirs.source + 'pages/**/*.jsx')
     .map(getDeepName('source/pages'))
     .map(page => `${page}.html`),
 }));
 
 const renderStyleguide = styleguideConfig(baseOutput({
-  entry: './source/render-styleguide.jsx',
+  entry: dirs.source + 'render-styleguide.jsx',
   locals: { components, tags },
   paths: styleguides.map(page => `styleguide/${page}.html`)
 }));
 
 const styleguideBundle = browserConfig(baseOutput({
-  entry: './source/styleguide.jsx',
+  entry: dirs.source + 'styleguide.jsx',
   outputScript: '/assets/styleguide.js',
   outputStyle: '/assets/styleguide.css'
 }));
 
 const browserScript = browserConfig(baseOutput({
-  entry: './source/main.jsx',
+  entry: dirs.source + 'main.jsx',
   outputScript: '/assets/bundle.js'
 }));
 
 const browserStyle = browserConfig(baseOutput({
-  entry: './source/style.jsx',
+  entry: dirs.source + 'style.jsx',
   outputStyle: '/assets/bundle.css'
 }));
 

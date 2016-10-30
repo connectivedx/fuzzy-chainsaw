@@ -4,15 +4,17 @@ const webpack = require('webpack');
 
 const del = require('del')
 
+const pkg = require('./package.json');
+const dirs = pkg.directories;
 const webpackConfig = require('./webpack.config');
 const webpackProductionConfig = require('./webpack.production.config');
 
 gulp.task('clean', () => {
-  return del('dist')
+  return del(dirs.output)
 });
 
 gulp.task('postClean', () => {
-  return del('dist/tmp');
+  return del(dirs.output + '/tmp');
 });
 
 gulp.task('buildWebpack', done => {
