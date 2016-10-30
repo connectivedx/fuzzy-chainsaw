@@ -1,7 +1,13 @@
 {
   "name": "hairy-machete",
   "version": "1.0.0",
-  "description": "",
+  "description": "Boilerplate for component-based UI development",
+  "repository": "connectivedx/fuzzy-chainsaw",
+  "bugs": {
+	  "url" : "https://github.com/connectivedx/fuzzy-chainsaw/issues"
+  },
+  "author": "Connective DX",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "webpack-build": "webpack --progress",
@@ -10,6 +16,9 @@
     "watch": "node ./webpack-kicker.js",
     "watch-script": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start": "http-server ./dist"
+  },
+  "engines": {
+    "node": ">=6.9.1"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
