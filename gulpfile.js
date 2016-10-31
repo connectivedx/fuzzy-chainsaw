@@ -6,8 +6,10 @@ const del = require('del')
 
 const webpackConfig = require('./webpack.config');
 const webpackProductionConfig = require('./webpack.production.config');
+const scaffoldComponent = require('./build/scaffold-component');
 
-gulp.task('clean', () => {
+// build tasks
+gulp.task('preClean', () => {
   return del('dist')
 });
 
@@ -30,9 +32,27 @@ gulp.task('buildProductionWebpack', done => {
 });
 
 gulp.task('build', done => {
-  sequence('clean', 'buildWebpack', 'postClean', done);
+  sequence('preClean', 'buildWebpack', 'postClean', done);
 });
 
 gulp.task('production', done => {
-  sequence('clean', 'buildProductionWebpack', 'postClean', done);
+  sequence('preClean', 'buildProductionWebpack', 'postClean', done);
+});
+
+// scaffolding tasks
+
+// gulp create-tag --name my-new-tag
+gulp.task('create-tag', () => {
+  return scaffoldComponent({
+    name: process.argv[4],
+    dest: 'source/tags'
+  });
+});
+
+// gulp create-component --name my-new-tag
+gulp.task('create-component', () => {
+  return scaffoldComponent({
+    name: process.argv[4],
+    dest: 'source/tags'
+  });
 });
