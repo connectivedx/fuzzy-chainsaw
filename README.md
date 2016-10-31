@@ -1,5 +1,26 @@
 # Fuzzy Chainsaw
 
+## CLI Scripts
+
+### Build Tasks
+
+Command | Description
+--- | ---
+`npm run build` | Compiles source files into output directory
+`npm run production` | Compiles and minifies source files into output directory.
+`npm run watch` | Compiles src directory and watches for file changes. Starts a development server at `http://localhost:8080`
+`npm run start` | Starts a static server at `http://localhost:8080` to use with `npm run build`
+
+### Scaffolding Tasks
+
+Command | Description
+--- | ---
+`npm run new-tag [name]` | Creates a new tag component in the `/source/tags` directory.
+`npm run new-component [name]` | Creates a new integration component in the `/source/components` directory.
+
+
+## FAQ
+
 ### What is this?
 
 This repo is intended to house a rewrite of the Phoenix front end boilerplate used at Connective DX leading to a 3.0 release. In addition to providing a starter kit of front end assets and intended best practices in CSS, HTML, JavaScript, and image and font management, the repo will also serve as the primary hub of conversation around codifying our goals with the project and those best practices and house styles we seek to enforce.

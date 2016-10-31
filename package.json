@@ -15,7 +15,9 @@
     "production": "gulp production",
     "watch": "node ./webpack-kicker.js",
     "watch-script": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "start": "http-server ./dist"
+    "start": "http-server ./dist",
+    "new-tag": "gulp new-tag --name",
+    "new-component": "gulp new-component --name"
   },
   "engines": {
     "node": ">=6.9.1"
@@ -29,6 +31,7 @@
     "css-loader": "^0.25.0",
     "cssnano": "^3.7.7",
     "del": "^2.2.2",
+    "dopl": "^0.1.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-exists": "^2.0.0",
     "glob": "^7.1.1",
@@ -56,6 +59,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "dopl": "^0.1.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   }
