@@ -53,6 +53,6 @@ gulp.task('create-tag', () => {
 gulp.task('create-component', () => {
   return scaffoldComponent({
     name: process.argv[4],
-    dest: 'source/tags'
+    dest: 'source/components'
   });
 });
