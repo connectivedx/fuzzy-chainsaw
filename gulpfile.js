@@ -18,17 +18,13 @@ gulp.task('postClean', () => {
 
 gulp.task('buildWebpack', done => {
   webpack(webpackConfig, (err, stats) => {
-    reportWebpackErrors(err, stats);
-
-    done();
+    reportWebpackErrors(err, stats, done);
   });
 })
 
 gulp.task('buildProductionWebpack', done => {
 	webpack(webpackProductionConfig, (err, stats) => {
-    reportWebpackErrors(err, stats);
-
-    done();
+    reportWebpackErrors(err, stats, done);
   });
 });
 
@@ -40,11 +36,11 @@ gulp.task('production', done => {
   sequence('clean', 'buildProductionWebpack', 'postClean', done);
 });
 
-const reportWebpackErrors = (err, stats) => {
-  if (err) throw new Error(err);
+const reportWebpackErrors = (err, stats, done) => {
+  if (err) return done(err);
 
-  var error = false;
-  stats.stats.map(build => {
+  let error = false;
+  stats.stats.forEach(build => {
     if (build.compilation.errors && build.compilation.errors.length) {
       build.compilation.errors.forEach(error => console.error(chalk.bgRed(error.toString())));
       error = true;
@@ -59,5 +55,7 @@ const reportWebpackErrors = (err, stats) => {
     console.error('');
     console.error(chalk.bgRed('Webpack completed with errors or warnings.'));
     process.exit(1);
+  } else {
+    done();
   }
 }
