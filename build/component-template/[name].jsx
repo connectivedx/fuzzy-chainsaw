@@ -5,7 +5,7 @@ export default ({
 	className = '',
 	children
 }) => (
-	<div className={"{{name}} " + className}>
+	<div className={"{{className}} " + className}>
 		{children}
 	</div>
 )
