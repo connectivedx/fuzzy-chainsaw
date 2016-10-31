@@ -10,8 +10,8 @@
     "watch": "node ./webpack-kicker.js",
     "watch-script": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start": "http-server ./dist",
-    "create-tag": "gulp create-tag --name",
-    "create-component": "gulp create-component --name"
+    "new-tag": "gulp new-tag --name",
+    "new-component": "gulp new-component --name"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

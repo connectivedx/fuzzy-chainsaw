@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sequence = require('run-sequence');
 const webpack = require('webpack');
 
+const minimist = require('minimist');
 const del = require('del')
 
 const webpackConfig = require('./webpack.config');
@@ -40,19 +41,22 @@ gulp.task('production', done => {
 });
 
 // scaffolding tasks
+// tasks here require cli arguments
 
-// gulp create-tag --name my-new-tag
-gulp.task('create-tag', () => {
+// gulp new-tag --name my-new-tag
+gulp.task('new-tag', () => {
+  const argv = minimist(process.argv.slice(2));
   return scaffoldComponent({
-    name: process.argv[4],
+    name: argv.name,
     dest: 'source/tags'
   });
 });
 
-// gulp create-component --name my-new-tag
-gulp.task('create-component', () => {
+// gulp new-component --name my-new-tag
+gulp.task('new-component', () => {
+  const argv = minimist(process.argv.slice(2))
   return scaffoldComponent({
-    name: process.argv[4],
+    name: argv.name,
     dest: 'source/components'
   });
 });
