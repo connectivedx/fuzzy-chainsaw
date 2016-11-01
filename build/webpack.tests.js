@@ -8,7 +8,8 @@ module.exports = ({
   outputScript = '/tmp/bundle.js',
   outputStyle = '/tmp/bundle.css',
   paths = [],
-  locals = {}
+  locals = {},
+  reporter = 'tap-dot'
 }) => ({
   devServer: {
     stats: 'errors-only'
@@ -43,6 +44,6 @@ module.exports = ({
     ]
   },
   plugins: [
-    new TapWebpackPlugin({ reporter: 'tap-dot' })
+    new TapWebpackPlugin({ reporter: reporter })
   ]
 });

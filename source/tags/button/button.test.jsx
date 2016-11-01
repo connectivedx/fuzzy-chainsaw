@@ -9,7 +9,7 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.equal(component.is('button'), true, 'tag');
+		t.equal(component.is('button'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
 		t.equal(component.is('.button--default'), true, 'type class');
 		t.equal(component.text(), 'Hello World', 'text');
@@ -23,7 +23,7 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.equal(component.is('a'), true, 'tag');
+		t.equal(component.is('a'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
 		t.equal(component.is('.button--link'), true, 'type class');
 		t.equal(component.prop('href'), '#/', 'prop');
@@ -38,7 +38,7 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.equal(component.is('div'), true, 'tag');
+		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
 		t.equal(component.is('.button--default'), true, 'type class');
 		t.equal(component.text(), 'Hello World', 'text');
@@ -52,7 +52,7 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.equal(component.is('div'), true, 'tag');
+		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
 		t.equal(component.is('.button--default'), true, 'type class');
 		t.equal(component.is('.button--superduper'), true, 'prop class');
@@ -67,7 +67,7 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.equal(component.is('button'), true, 'tag');
+		t.equal(component.is('button'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
 		t.equal(component.is('.button--cta'), true, 'type class');
 		t.equal(component.text(), 'Hello World', 'text');
@@ -81,7 +81,7 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.equal(component.is('a'), true, 'tag');
+		t.equal(component.is('a'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
 		t.equal(component.is('.button--link'), true, 'type class');
 		t.equal(component.is('.button--cta'), true, 'type class');

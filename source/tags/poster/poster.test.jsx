@@ -11,7 +11,7 @@ export default [{
 			src={randyImg} />
 	),
 	test(t, component) {
-		t.equal(component.is('div'), true, 'tag');
+		t.equal(component.is('div'), true, 'tag name');
 		t.end();
 	}
 }, {
@@ -24,7 +24,7 @@ export default [{
 			src={randyImg} />
 	),
 	test(t, component) {
-		t.equal(component.is('a'), true, 'tag');
+		t.equal(component.is('a'), true, 'tag name');
 		t.end();
 	}
 }, {
@@ -35,7 +35,7 @@ export default [{
 			src={randyImg} />
 	),
 	test(t, component) {
-		t.equal(component.is('div'), true, 'tag');
+		t.equal(component.is('div'), true, 'tag name');
 		t.end();
 	}
 }];

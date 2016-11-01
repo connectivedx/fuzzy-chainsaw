@@ -9,7 +9,7 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		t.equal(component.is('h1'), true, 'tag');
+		t.equal(component.is('h1'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
 		t.equal(component.is('.heading--h1'), true, 'type class');
 		t.equal(component.text(), 'Hello', 'text');
@@ -23,7 +23,7 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		t.equal(component.is('h3'), true, 'tag');
+		t.equal(component.is('h3'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
 		t.equal(component.is('.heading--h3'), true, 'type class');
 		t.equal(component.text(), 'Wowie Zowie', 'text');
@@ -37,7 +37,7 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		t.equal(component.is('h1'), true, 'tag');
+		t.equal(component.is('h1'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
 		t.equal(component.is('.heading--h1'), true, 'type class');
 		t.equal(component.is('.super'), true, 'prop class');
@@ -52,7 +52,7 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		t.equal(component.is('div'), true, 'tag');
+		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
 		t.equal(component.is('.heading--default'), true, 'type class');
 		t.equal(component.is('.duper'), true, 'prop class');

@@ -21,7 +21,7 @@ const runTests = (type, col) =>
 		if (tests && tests.length) {
 			tests.forEach((config, i) => {
 				if (config.test) {
-					test(`${type}/${getName(key)}#${i+1} (${config.name})`, t => {
+					test(`/${type}/${key.substr(2)} [test #${i+1}: ${config.name}] =>`, t => {
 						config.test(t, shallow(config.component));
 					})
 				}
