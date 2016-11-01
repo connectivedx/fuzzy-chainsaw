@@ -6,6 +6,7 @@ const fileExists = require('file-exists');
 const staticConfig = require('./build/webpack.static.js');
 const styleguideConfig = require('./build/webpack.styleguide.js');
 const browserConfig = require('./build/webpack.browser.js');
+const testsConfig = require('./build/webpack.tests.js');
 
 
 // get path of file relative to source directory
@@ -83,6 +84,12 @@ const browserStyle = browserConfig(baseOutput({
   outputStyle: '/assets/bundle.css'
 }));
 
+const componentTests = testsConfig(baseOutput({
+  entry: './source/tests.jsx',
+  outputScript: '/tmp/tests.js',
+  reporter: 'tap-min'
+}))
+
 
 // output all webpack configurations to cli
 module.exports = [
@@ -90,5 +97,6 @@ module.exports = [
   browserStyle,
   renderStyleguide,
   styleguideBundle,
-  renderPages
+  renderPages,
+  componentTests
 ];

@@ -9,11 +9,11 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.plan(4);
-		t.equal(component.is('button'), true);
-		t.equal(component.is('.button'), true);
-		t.equal(component.is('.button--default'), true);
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('button'), true, 'tag name');
+		t.equal(component.is('.button'), true, 'tag class');
+		t.equal(component.is('.button--default'), true, 'type class');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }, {
 	name: "href",
@@ -23,12 +23,12 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.plan(5);
-		t.equal(component.is('a'), true);
-		t.equal(component.is('.button'), true);
-		t.equal(component.is('.button--link'), true);
-		t.equal(component.prop('href'), '#/');
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('a'), true, 'tag name');
+		t.equal(component.is('.button'), true, 'tag class');
+		t.equal(component.is('.button--link'), true, 'type class');
+		t.equal(component.prop('href'), '#/', 'prop');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }, {
 	name: "tagName",
@@ -38,11 +38,11 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.plan(4);
-		t.equal(component.is('div'), true);
-		t.equal(component.is('.button'), true);
-		t.equal(component.is('.button--default'), true);
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('div'), true, 'tag name');
+		t.equal(component.is('.button'), true, 'tag class');
+		t.equal(component.is('.button--default'), true, 'type class');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }, {
 	name: "tagName/className",
@@ -52,12 +52,12 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.plan(5);
-		t.equal(component.is('div'), true);
-		t.equal(component.is('.button'), true);
-		t.equal(component.is('.button--default'), true);
-		t.equal(component.is('.button--superduper'), true);
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('div'), true, 'tag name');
+		t.equal(component.is('.button'), true, 'tag class');
+		t.equal(component.is('.button--default'), true, 'type class');
+		t.equal(component.is('.button--superduper'), true, 'prop class');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }, {
 	name: "type",
@@ -67,12 +67,11 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.plan(3);
-		t.equal(component.is('div'), true);
-		t.equal(component.is('.button'), true);
-		t.equal(component.is('.button--cta'), true);
-		t.equal(component.prop('href'), '#/');
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('button'), true, 'tag name');
+		t.equal(component.is('.button'), true, 'tag class');
+		t.equal(component.is('.button--cta'), true, 'type class');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }, {
 	name: "type/link",
@@ -82,13 +81,13 @@ export default [{
 		</Button>
 	),
 	test(t, component) {
-		t.plan(3);
-		t.equal(component.is('a'), true);
-		t.equal(component.is('.button'), true);
-		t.equal(component.is('.button--link'), true);
-		t.equal(component.is('.button--cta'), true);
-		t.equal(component.prop('href'), '#/');
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('a'), true, 'tag name');
+		t.equal(component.is('.button'), true, 'tag class');
+		t.equal(component.is('.button--link'), true, 'type class');
+		t.equal(component.is('.button--cta'), true, 'type class');
+		t.equal(component.prop('href'), '#/', 'prop');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }];
 

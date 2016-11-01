@@ -5,15 +5,15 @@ import Heading from '../../tags/heading/heading.jsx';
 import Poster from '../../tags/poster/poster.jsx';
 import Button from '../../tags/button/button.jsx';
 
-export default ({ 
+export default ({
 	title,
 	href,
 	className,
 	children
 }) => (
-	<div className={['product-description', className].join(' ')}>				
+	<div className={['product-description', className].join(' ')}>
 		<Heading tagName="h1">{title}</Heading>
-		<p>{children}</p>
+		{children}
 		<Button href={href}>Learn More</Button>
 	</div>
 )
