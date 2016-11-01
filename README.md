@@ -25,7 +25,7 @@ Command | Description
 
 Connective DX’s front-end boilerplate, build using Webpack, React, and POSTCSS, among other fine open source goodness.
 
-### Where’s the documentation
+### Where’s the documentation?
 
 It’s coming. Pinkie swear.
 
