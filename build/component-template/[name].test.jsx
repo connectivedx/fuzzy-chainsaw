@@ -9,9 +9,10 @@ export default [{
 		</{{name}}>
 	),
 	test(t, component) {
-		t.plan(4);
+		t.plan(3);
 		t.equal(component.is('div'), true);
 		t.equal(component.is('.{{className}}'), true);
 		t.equal(component.text(), 'Hello World');
+		t.end();
 	}
 }];
