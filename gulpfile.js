@@ -1,13 +1,18 @@
+const chalk = require('chalk');
 const gulp = require('gulp');
 const sequence = require('run-sequence');
 const webpack = require('webpack');
 
+const minimist = require('minimist');
 const del = require('del')
 
 const webpackConfig = require('./webpack.config');
 const webpackProductionConfig = require('./webpack.production.config');
+const scaffoldComponent = require('./build/scaffold-component');
+const webpackErrorHandler = require('./build/webpack-errorhandler');
 
-gulp.task('clean', () => {
+// build tasks
+gulp.task('preClean', () => {
   return del('dist')
 });
 
@@ -17,22 +22,43 @@ gulp.task('postClean', () => {
 
 gulp.task('buildWebpack', done => {
   webpack(webpackConfig, (err, stats) => {
-    if (err) throw new Error(err);
-    done();
+    webpackErrorHandler(err, stats, done);
   });
 })
 
 gulp.task('buildProductionWebpack', done => {
 	webpack(webpackProductionConfig, (err, stats) => {
-    if (err) throw new Error(err);
-    done();
+    webpackErrorHandler(err, stats, done);
   });
 });
 
 gulp.task('build', done => {
-  sequence('clean', 'buildWebpack', 'postClean', done);
+  sequence('preClean', 'buildWebpack', 'postClean', done);
 });
 
 gulp.task('production', done => {
-  sequence('clean', 'buildProductionWebpack', 'postClean', done);
+  sequence('preClean', 'buildProductionWebpack', 'postClean', done);
+});
+
+
+
+// scaffolding tasks
+// tasks here require cli arguments
+
+// gulp new-tag --name my-new-tag
+gulp.task('new-tag', () => {
+  const argv = minimist(process.argv.slice(2));
+  return scaffoldComponent({
+    name: argv.name,
+    dest: 'source/tags'
+  });
+});
+
+// gulp new-component --name my-new-tag
+gulp.task('new-component', () => {
+  const argv = minimist(process.argv.slice(2))
+  return scaffoldComponent({
+    name: argv.name,
+    dest: 'source/components'
+  });
 });

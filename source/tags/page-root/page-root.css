@@ -25,10 +25,6 @@ code {
 	line-height: 1.4em;
 }
 
-pre {
-	/* overflow: scroll; */
-}
-
 button {
 	background-color: transparent;
 	font-size: 1em;
