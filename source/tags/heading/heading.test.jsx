@@ -9,11 +9,11 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		test.plan(4);
-		test.equal(component.is('h1'), true);
-		test.equal(component.is('.heading'), true);
-		test.equal(component.is('.heading--h1'), true);
-		test.equal(component.text(), 'Hello');
+		t.equal(component.is('h1'), true, 'tag');
+		t.equal(component.is('.heading'), true, 'tag class');
+		t.equal(component.is('.heading--h1'), true, 'type class');
+		t.equal(component.text(), 'Hello', 'text');
+		t.end();
 	}
 }, {
 	name: "tagName",
@@ -23,11 +23,11 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		test.plan(4);
-		test.equal(component.is('h3'), true);
-		test.equal(component.is('.heading'), true);
-		test.equal(component.is('.heading--h3'), true);
-		test.equal(component.text(), 'Wowie Zowie');
+		t.equal(component.is('h3'), true, 'tag');
+		t.equal(component.is('.heading'), true, 'tag class');
+		t.equal(component.is('.heading--h3'), true, 'type class');
+		t.equal(component.text(), 'Wowie Zowie', 'text');
+		t.end();
 	}
 }, {
 	name: "className",
@@ -37,12 +37,12 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		test.plan(4);
-		test.equal(component.is('h1'), true);
-		test.equal(component.is('.heading'), true);
-		test.equal(component.is('.heading--h1'), true);
-		test.equal(component.is('.super'), true);
-		test.equal(component.text(), 'Leg Shaking');
+		t.equal(component.is('h1'), true, 'tag');
+		t.equal(component.is('.heading'), true, 'tag class');
+		t.equal(component.is('.heading--h1'), true, 'type class');
+		t.equal(component.is('.super'), true, 'prop class');
+		t.equal(component.text(), 'Leg Shaking', 'text');
+		t.end();
 	}
 }, {
 	name: "tagName/className",
@@ -52,11 +52,11 @@ export default [{
 		</Heading>
 	),
 	test(t, component) {
-		test.plan(4);
-		test.equal(component.is('div'), true);
-		test.equal(component.is('.heading'), true);
-		test.equal(component.is('.heading--default'), true);
-		test.equal(component.is('.super'), true);
-		test.equal(component.text(), 'Back Breaking');
+		t.equal(component.is('div'), true, 'tag');
+		t.equal(component.is('.heading'), true, 'tag class');
+		t.equal(component.is('.heading--default'), true, 'type class');
+		t.equal(component.is('.duper'), true, 'prop class');
+		t.equal(component.text(), 'Back Breaking', 'text');
+		t.end();
 	}
 }];
