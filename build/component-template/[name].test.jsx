@@ -9,9 +9,9 @@ export default [{
 		</{{name}}>
 	),
 	test(t, component) {
-		t.plan(4);
-		t.equal(component.is('div'), true);
-		t.equal(component.is('.{{className}}'), true);
-		t.equal(component.text(), 'Hello World');
+		t.equal(component.is('div'), true, 'tag name');
+		t.equal(component.is('.{{className}}'), true, 'tag class');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
 	}
 }];

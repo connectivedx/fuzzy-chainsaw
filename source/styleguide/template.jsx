@@ -9,20 +9,19 @@ import Rhythm from '../tags/rhythm/rhythm.jsx';
 
 slug.charmap['/'] = '-';
 
-export default ({ 
+export default ({
 	name = "Generic Component",
-	tag, 
-	style, 
-	readme,   
-	examples,
+	tag,
+	style,
+	readme,
 	locals = {},
 	tests
 }) => {
-	const niceTitle = 
+	const niceTitle =
 		name
 			.split('-')
 			.map(n => n.substr(0, 1).toUpperCase() + n.substr(1))
-			.join('');	
+			.join('');
 
 	const tagName = niceTitle.split(' ').join('');
 
@@ -31,26 +30,26 @@ export default ({
 	return (
 		<StyleguideWrapper title={`${niceTitle} – Styleguide`} locals={locals}>
 			<Heading level="1">{niceTitle}</Heading>
-	
-			{ tests	
+
+			{ tests
 				? <div className="sg-styleguide-section">
 						<div className="sg-styleguide-section__header">
 							<Heading level="2">Tests</Heading>
-							
+
 							<Rhythm size="small">
-								{ tests.map(e => 
+								{ tests.map(e =>
 										<div><a
-											href={'#' + slug(e.name)} 
-											key={slug(e.name)} 
+											href={'#' + slug(e.name)}
+											key={slug(e.name)}
 											value={slug(e.name)}>{e.name}</a></div>) }
 							</Rhythm>
 						</div>
-							
+
 						{ tests.map(e =>
-								<StyleguideExample 
+								<StyleguideExample
 									key={slug(e.name)}
 									slug={slug(e.name)}
-									tagName={tagName} 
+									tagName={tagName}
 									exampleName={e.name}
 									component={e.component} />) }
 					</div>
