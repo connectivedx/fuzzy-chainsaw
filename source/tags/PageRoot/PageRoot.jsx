@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './page-root.css';
+import styles from './PageRoot.css';
 
 
 export const PageRoot__Wrapper = ({ children }) => (
@@ -26,7 +26,7 @@ export const PageRoot__Body = ({ className, children }) => (
 
 export const PageRoot = ({ title, bodyClass = "", children }) => (
 	<PageRoot__Wrapper>
-		<PageRoot__Head title={title} />	
+		<PageRoot__Head title={title} />
 		<PageRoot__Body className={bodyClass}>{children}</PageRoot__Body>
 	</PageRoot__Wrapper>
 );

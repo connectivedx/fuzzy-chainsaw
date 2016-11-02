@@ -1,7 +1,7 @@
 import React from 'react';
 import Dom from 'react-dom/server';
 
-import Styleguide from './styleguide/template.jsx';
+import Styleguide from './styleguide/Template.jsx';
 
 // this requires a file's contents, or returns
 // nothing if the file doesn't exist
