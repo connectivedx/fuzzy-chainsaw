@@ -6,36 +6,36 @@ export default [{
 	name: "basic",
 	component: (
 		<Poster
-			title="Super" 
+			title="Super"
 			alt="super"
 			src={randyImg} />
 	),
 	test(t, component) {
-		t.plan(1);
-		t.equal(1, 1);
+		t.equal(component.is('div'), true, 'tag name');
+		t.end();
 	}
 }, {
 	name: "linked",
 	component: (
-		<Poster 
+		<Poster
 			title="Randy Savage"
 			alt="Randy Savage"
 			href="#/"
 			src={randyImg} />
 	),
 	test(t, component) {
-		t.plan(1);
-		t.equal(1, 1);
+		t.equal(component.is('a'), true, 'tag name');
+		t.end();
 	}
 }, {
 	name: "long title",
 	component: (
-		<Poster 
-			title="Lorem ipsum dolor sit amet, consectetur adipisicing." 
+		<Poster
+			title="Lorem ipsum dolor sit amet, consectetur adipisicing."
 			src={randyImg} />
 	),
 	test(t, component) {
-		t.plan(1);
-		t.equal(1, 1);
+		t.equal(component.is('div'), true, 'tag name');
+		t.end();
 	}
 }];

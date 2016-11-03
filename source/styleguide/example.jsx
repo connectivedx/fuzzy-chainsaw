@@ -1,5 +1,5 @@
 import React from 'react';
-import Dom from 'react-dom/server';	
+import Dom from 'react-dom/server';
 import { pd } from 'pretty-data';
 
 import Heading from '../tags/heading/heading.jsx';
@@ -73,16 +73,16 @@ export default ({
 					<li className="sg-example__tabs-item"><a href={'#' + slug + '/json'}>JSON</a></li>
 				</ul>
 			</div>
-				
-			<ExampleSection title="Example" type="example" slug={slug} isActive="true">				
+
+			<ExampleSection title="Example" type="example" slug={slug} isActive="true">
 				<div>
 					{component}
 				</div>
 
-				<script 
-					id={slug + '-data'} 
-					type="text/json" 
-					dangerouslySetInnerHTML={{ __html:  JSON.stringify(component.props) }} />
+				<script
+					id={slug + '-data'}
+					type="text/json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(filterProps(component.props), null, 2) }} />
 			</ExampleSection>
 
 			<ExampleSection title="React" type="react" slug={slug}>

@@ -55,6 +55,11 @@ module.exports = ({
         test: /\.json$/,
         loader: 'json-loader'
       },
+      // below: filetypes that shouldn't be loaded
+      {
+        test: /\.(cs|cshtml|csproj)$/,
+        loader: 'null-loader'
+      }
     ]
   },
   plugins: [
