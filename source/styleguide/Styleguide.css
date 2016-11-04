@@ -1,0 +1,52 @@
+@import "./components/nav.css";
+@import "./components/example.css";
+
+.is-sg-nav-expanded {
+	overflow: hidden;
+
+	& .sg-styleguide {
+		transform: scale(0.9);
+	}
+}
+
+.sg-styleguide {
+	position: relative;
+	z-index: 0;
+
+	margin-top: 4.5em;
+	overflow: hidden;
+	transition: transform 0.3s;
+
+	& > .heading {
+		margin: 0.5em 0.33em;
+		font-size: 3em;
+	}
+
+	& a {
+		color: #000;
+	}
+
+	@media (width >= 960px) {
+		margin-top: 5.5em;
+
+		& > .heading {
+			margin: 0.5em 0.66em;
+		}
+	}
+}
+
+.sg-styleguide-section {
+	border-top: 1px solid #eee;
+}
+
+.sg-styleguide-section__header {
+	padding: 1em;
+
+	@media (width >= 960px) {
+		padding: 2em;
+	}
+
+	& > * + * {
+		margin-top: 1em;
+	}
+}

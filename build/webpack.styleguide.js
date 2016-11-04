@@ -1,4 +1,4 @@
-const staticConfig = require('./webpack.static.js');
+const staticConfig = require('./webpack.static');
 
 module.exports = ({
   devtool = 'eval',

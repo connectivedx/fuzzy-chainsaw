@@ -16,6 +16,9 @@ module.exports = ({
     stats: 'errors-only'
   },
   devtool: devtool,
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   entry: {
     main: entry
   },

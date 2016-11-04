@@ -1,4 +1,4 @@
-import style from './styleguide/styleguide.css';
+import style from './styleguide/Styleguide.css';
 
 const body = document.body;
 

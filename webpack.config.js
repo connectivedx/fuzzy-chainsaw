@@ -3,10 +3,10 @@ const glob = require('glob');
 const fs = require('fs');
 const fileExists = require('file-exists');
 
-const staticConfig = require('./build/webpack.static.js');
-const styleguideConfig = require('./build/webpack.styleguide.js');
-const browserConfig = require('./build/webpack.browser.js');
-const testsConfig = require('./build/webpack.tests.js');
+const staticConfig = require('./build/webpack.static');
+const styleguideConfig = require('./build/webpack.styleguide');
+const browserConfig = require('./build/webpack.browser');
+const testsConfig = require('./build/webpack.tests');
 
 
 // get path of file relative to source directory
@@ -55,7 +55,7 @@ const baseOutput = config => Object.assign({
 
 // webpack configurations
 const renderPages = staticConfig(baseOutput({
-  entry: './source/render-page.jsx',
+  entry: './source/RenderPage.jsx',
   locals: { components, tags },
   paths: glob.sync('./source/pages/**/*.jsx')
     .map(getDeepName('source/pages'))
@@ -63,7 +63,7 @@ const renderPages = staticConfig(baseOutput({
 }));
 
 const renderStyleguide = styleguideConfig(baseOutput({
-  entry: './source/render-styleguide.jsx',
+  entry: './source/RenderStyleguide.jsx',
   locals: { components, tags },
   paths: styleguides.map(page => `styleguide/${page}.html`)
 }));
