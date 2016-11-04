@@ -10,7 +10,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "webpack-build": "webpack",
+    "webpack-build": "webpack --progress",
     "build": "gulp build",
     "production": "gulp production",
     "watch": "node ./webpack-kicker.js",
