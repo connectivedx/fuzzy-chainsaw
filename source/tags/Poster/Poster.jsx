@@ -1,12 +1,12 @@
 import React from 'react';
 import Heading from '../heading/heading.jsx';
-import styles from './poster.css';
+import styles from './Poster.css';
 
-const Poster = ({ 
+const Poster = ({
 	title,
 	href,
 	src,
-	alt, 
+	alt,
 	type = 'default',
 	className,
 	children

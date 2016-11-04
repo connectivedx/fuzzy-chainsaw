@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Heading from '../tags/heading/heading.jsx';
-import { 
+import Heading from '../tags/Heading/Heading.jsx';
+import {
 	PageRoot__Wrapper,
 	PageRoot__Head,
 	PageRoot__Body
-} from '../tags/page-root/page-root.jsx';
+} from '../tags/PageRoot/PageRoot.jsx';
 
-import ComponentList from './component-list.jsx';
-import Nav from './nav.jsx';
+import ComponentList from './components/ComponentList.jsx';
+import Nav from './components/nav.jsx';
 
 export default ({
 	title,

@@ -2,7 +2,7 @@ import React from 'react';
 import Dom from 'react-dom/server';
 import { pd } from 'pretty-data';
 
-import Heading from '../tags/heading/heading.jsx';
+import Heading from '../tags/Heading/Heading.jsx';
 
 const json2htmlAttrs = obj =>
 	Object.keys(obj)

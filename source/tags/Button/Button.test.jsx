@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './button.jsx';
+import Button from './Button.jsx';
 
 export default [{
 	name: "default",

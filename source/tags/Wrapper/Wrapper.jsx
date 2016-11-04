@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './wrapper.css';
+import styles from './Wrapper.css';
 
 export default ({
 	className = '',

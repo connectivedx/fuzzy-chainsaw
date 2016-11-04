@@ -1,11 +1,11 @@
 import React from 'react';
 import slug from 'slug';
 
-import StyleguideWrapper from './wrapper.jsx';
-import StyleguideExample from './example.jsx';
+import Wrapper from './components/Wrapper.jsx';
+import Example from './components/Example.jsx';
 
-import Heading from '../tags/heading/heading.jsx';
-import Rhythm from '../tags/rhythm/rhythm.jsx';
+import Heading from '../tags/Heading/Heading.jsx';
+import Rhythm from '../tags/Rhythm/Rhythm.jsx';
 
 slug.charmap['/'] = '-';
 
@@ -28,7 +28,7 @@ export default ({
 	const slugy = name => slug(name);
 
 	return (
-		<StyleguideWrapper title={`${niceTitle} – Styleguide`} locals={locals}>
+		<Wrapper title={`${niceTitle} – Styleguide`} locals={locals}>
 			<Heading level="1">{niceTitle}</Heading>
 
 			{ tests
@@ -46,7 +46,7 @@ export default ({
 						</div>
 
 						{ tests.map(e =>
-								<StyleguideExample
+								<Example
 									key={slug(e.name)}
 									slug={slug(e.name)}
 									tagName={tagName}

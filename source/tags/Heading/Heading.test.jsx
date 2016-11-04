@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from './heading.jsx';
+import Heading from './Heading.jsx';
 
 export default [{
 	name: "default",
