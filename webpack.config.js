@@ -3,10 +3,10 @@ const glob = require('glob');
 const fs = require('fs');
 const fileExists = require('file-exists');
 
-const staticConfig = require('./build/webpack.static.js');
-const styleguideConfig = require('./build/webpack.styleguide.js');
-const browserConfig = require('./build/webpack.browser.js');
-const testsConfig = require('./build/webpack.tests.js');
+const staticConfig = require('./build/webpack.static');
+const styleguideConfig = require('./build/webpack.styleguide');
+const browserConfig = require('./build/webpack.browser');
+const testsConfig = require('./build/webpack.tests');
 
 
 // get path of file relative to source directory
