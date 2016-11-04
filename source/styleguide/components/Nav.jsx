@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Heading from '../tags/Heading/Heading.jsx';
-import ComponentList from './components/ComponentList.jsx';
+import Heading from '../../tags/Heading/Heading.jsx';
+import ComponentList from './ComponentList.jsx';
 
 export default ({
 	locals

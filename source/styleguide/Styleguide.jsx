@@ -54,6 +54,6 @@ export default ({
 									component={e.component} />) }
 					</div>
 				: undefined }
-		</StyleguideWrapper>
+		</Wrapper>
 	)
 };

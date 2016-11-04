@@ -55,7 +55,7 @@ const baseOutput = config => Object.assign({
 
 // webpack configurations
 const renderPages = staticConfig(baseOutput({
-  entry: './source/render-page.jsx',
+  entry: './source/RenderPage.jsx',
   locals: { components, tags },
   paths: glob.sync('./source/pages/**/*.jsx')
     .map(getDeepName('source/pages'))
@@ -63,7 +63,7 @@ const renderPages = staticConfig(baseOutput({
 }));
 
 const renderStyleguide = styleguideConfig(baseOutput({
-  entry: './source/render-styleguide.jsx',
+  entry: './source/RenderStyleguide.jsx',
   locals: { components, tags },
   paths: styleguides.map(page => `styleguide/${page}.html`)
 }));
