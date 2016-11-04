@@ -1,5 +1,5 @@
 import React from 'react';
-import Wrapper from './Wrapper.jsx';
+import Wrapper from './Wrapper';
 
 export default [{
 	name: 'normal wrapper',

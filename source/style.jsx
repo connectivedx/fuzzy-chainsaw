@@ -1,5 +1,5 @@
 // require ordered things here
-require('./tags/PageRoot/PageRoot.jsx');
+require('./tags/PageRoot/PageRoot');
 
 // // these will require what is left
 require.context("./tags/", true, /\.jsx$/);

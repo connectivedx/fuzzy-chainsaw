@@ -1,7 +1,7 @@
 import React from 'react';
 import Dom from 'react-dom/server';
 
-import Styleguide from './styleguide/Styleguide.jsx';
+import Styleguide from './styleguide/Styleguide';
 
 // this requires a file's contents, or returns
 // nothing if the file doesn't exist
@@ -33,10 +33,10 @@ const StyleguideFactory = ({
 	<Styleguide
 		name={name}
 		path={path}
-		tag={requirer(`${name}/${name}.jsx`)}
+		tag={requirer(`${name}/${name}`)}
 		style={requirer(`${name}/${name}.css`)}
 		readme={requirer(`${name}/README.md`)}
-		tests={requirer(`${name}/${name}.test.jsx`)}
+		tests={requirer(`${name}/${name}.test`)}
 		locals={locals} />
 )
 

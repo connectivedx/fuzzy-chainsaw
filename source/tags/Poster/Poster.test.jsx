@@ -1,5 +1,5 @@
 import React from 'react';
-import Poster from './Poster.jsx';
+import Poster from './Poster';
 import randyImg from './images/randy-savage.jpg';
 
 export default [{

@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './ProductDescription.css';
 
-import Heading from '../../tags/Heading/Heading.jsx';
-import Poster from '../../tags/Poster/Poster.jsx';
-import Button from '../../tags/Button/Button.jsx';
+import Heading from '../../tags/Heading/Heading';
+import Poster from '../../tags/Poster/Poster';
+import Button from '../../tags/Button/Button';
 
 export default ({
 	title,

@@ -1,11 +1,10 @@
 import React from 'react';
 import slug from 'slug';
 
-import Wrapper from './components/Wrapper.jsx';
-import Example from './components/Example.jsx';
-
-import Heading from '../tags/Heading/Heading.jsx';
-import Rhythm from '../tags/Rhythm/Rhythm.jsx';
+import Wrapper from './components/Wrapper';
+import Example from './components/Example';
+import Heading from '../tags/Heading/Heading';
+import Rhythm from '../tags/Rhythm/Rhythm';
 
 slug.charmap['/'] = '-';
 

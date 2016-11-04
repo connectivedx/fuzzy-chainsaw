@@ -1,10 +1,10 @@
 import React from 'react';
 
-import PageRoot from '../../tags/PageRoot/PageRoot.jsx';
-import Rhythm from '../../tags/Rhythm/Rhythm.jsx';
-import Heading from '../../tags/Heading/Heading.jsx';
-import Wrapper from '../../tags/Wrapper/Wrapper.jsx';
-import ComponentList from '../../styleguide/components/ComponentList.jsx';
+import PageRoot from '../../tags/PageRoot/PageRoot';
+import Rhythm from '../../tags/Rhythm/Rhythm';
+import Heading from '../../tags/Heading/Heading';
+import Wrapper from '../../tags/Wrapper/Wrapper';
+import ComponentList from '../../styleguide/components/ComponentList';
 
 export default ({ locals }) => (
 	<PageRoot title="Styleguide">

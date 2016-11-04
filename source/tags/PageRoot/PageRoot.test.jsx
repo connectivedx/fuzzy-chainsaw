@@ -1,5 +1,5 @@
 import React from 'react';
-import PageRoot from './PageRoot.jsx';
+import PageRoot from './PageRoot';
 
 export default [{
 	name: 'default',
