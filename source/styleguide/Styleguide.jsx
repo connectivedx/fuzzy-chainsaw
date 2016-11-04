@@ -16,19 +16,9 @@ export default ({
 	locals = {},
 	tests
 }) => {
-	const niceTitle =
-		name
-			.split('-')
-			.map(n => n.substr(0, 1).toUpperCase() + n.substr(1))
-			.join('');
-
-	const tagName = niceTitle.split(' ').join('');
-
-	const slugy = name => slug(name);
-
 	return (
-		<Wrapper title={`${niceTitle} – Styleguide`} locals={locals}>
-			<Heading level="1">{niceTitle}</Heading>
+		<Wrapper title={`${name} – Styleguide`} locals={locals}>
+			<Heading level="1">{name}</Heading>
 
 			{ tests
 				? <div className="sg-styleguide-section">
@@ -48,7 +38,7 @@ export default ({
 								<Example
 									key={slug(e.name)}
 									slug={slug(e.name)}
-									tagName={tagName}
+									tagName={name}
 									exampleName={e.name}
 									component={e.component} />) }
 					</div>

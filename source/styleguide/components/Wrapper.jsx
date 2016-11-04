@@ -7,7 +7,6 @@ import {
 	PageRoot__Body
 } from '../../tags/PageRoot/PageRoot';
 
-import ComponentList from './ComponentList';
 import Nav from './Nav';
 
 export default ({
@@ -21,7 +20,6 @@ export default ({
 		</PageRoot__Head>
 		<PageRoot__Body className="page-styleguide">
 			<Nav locals={locals} />
-
 			<div className="sg-styleguide" id="content">
 				{children}
 			</div>

@@ -4,7 +4,7 @@ import PageRoot from '../tags/PageRoot/PageRoot';
 import Heading from '../tags/Heading/Heading';
 import Rhythm from '../tags/Rhythm/Rhythm';
 import Wrapper from '../tags/Wrapper/Wrapper';
-import ComponentList from '../styleguide/components/ComponentList';
+import LinkList from '../styleguide/components/LinkList';
 
 export default ({ locals }) => (
 	<PageRoot title="Hello World">
@@ -14,12 +14,12 @@ export default ({ locals }) => (
 
 				<Rhythm size="small" deep="true">
 					<Heading level="3">Tags</Heading>
-					<ComponentList baseUrl="/styleguide/tags" components={locals.tags} />
+					<LinkList baseUrl="/styleguide/tags" components={locals.tags} />
 				</Rhythm>
 
 				<Rhythm size="small" deep="true">
 					<Heading level="3">Components</Heading>
-					<ComponentList baseUrl="/styleguide/components" components={locals.components} />
+					<LinkList baseUrl="/styleguide/components" components={locals.components} />
 				</Rhythm>
 
 				<Rhythm size="small">

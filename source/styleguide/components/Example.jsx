@@ -11,10 +11,11 @@ const json2htmlAttrs = obj =>
 		.join(' ');
 
 const getChildren = child => {
-	if (Array.isArray(child))
+	if (Array.isArray(child)) {
 		return child
 			.map(c => buildReactExample(c.type, c.props, c.props.children))
 			.join('');
+	}
 
 	return child;
 }
@@ -61,7 +62,7 @@ export default ({
 	const reactExample = buildReactExample(tagName, component.props, component.props.children);
 
 	return (
-		<div className="sg-test__example sg-example">
+		<div className="sg-example">
 			<a className="sg-expample__anchor" id={slug}></a>
 			<div className="sg-example__header">
 				<Heading level="3">{exampleName}</Heading>
