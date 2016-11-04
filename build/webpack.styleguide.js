@@ -10,7 +10,7 @@ module.exports = ({
   paths = [],
   locals = {}
 }) => {
-  const build = staticConfig({ 
+  const build = staticConfig({
     devtool, entry, outputPath, publicPath,
     outputScript, outputStyle, paths, locals
   });
