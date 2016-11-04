@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../heading/heading.jsx';
+import Heading from '../Heading/Heading.jsx';
 import styles from './Poster.css';
 
 const Poster = ({
