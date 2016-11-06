@@ -15,11 +15,11 @@ const webpackErrorHandler = require('./build/webpack-errorhandler');
 
 // build tasks
 gulp.task('preClean', () => {
-  return del(dirs.output)
+  return del(dirs.output, { force: true })
 });
 
 gulp.task('postClean', () => {
-  return del(dirs.output + '/tmp');
+  return del(dirs.output + '/tmp', { force: true });
 });
 
 gulp.task('buildWebpack', done => {
