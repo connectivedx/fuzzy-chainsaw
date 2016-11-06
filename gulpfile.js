@@ -23,13 +23,13 @@ gulp.task('postClean', () => {
 
 gulp.task('buildWebpack', done => {
   webpack(webpackConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, done);
+    webpackErrorHandler(err, stats, {}, done);
   });
 })
 
 gulp.task('buildProductionWebpack', done => {
 	webpack(webpackProductionConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, done);
+    webpackErrorHandler(err, stats, {}, done);
   });
 });
 
