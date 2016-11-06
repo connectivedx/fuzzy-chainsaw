@@ -59,7 +59,7 @@ const renderPages = staticConfig(baseOutput({
   entry: dirs.source + 'render-page.jsx',
   locals: { components, tags },
   paths: glob.sync(dirs.source + 'pages/**/*.jsx')
-    .map(getDeepName('source/pages'))
+    .map(getDeepName(`${dirs.source}/pages`))
     .map(page => `${page}.html`),
 }));
 
