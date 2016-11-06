@@ -52,7 +52,7 @@ gulp.task('new-tag', () => {
   const argv = minimist(process.argv.slice(2));
   return scaffoldComponent({
     name: argv.name,
-    dest: 'source/tags'
+    dest: `${dirs.source}/tags`
   });
 });
 
@@ -61,6 +61,6 @@ gulp.task('new-component', () => {
   const argv = minimist(process.argv.slice(2))
   return scaffoldComponent({
     name: argv.name,
-    dest: 'source/components'
+    dest: `${dirs.source}/components`
   });
 });
