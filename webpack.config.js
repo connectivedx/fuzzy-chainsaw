@@ -34,7 +34,7 @@ const testsConfig = require('./build/webpack.tests');
  *
  */
 
-const baseOutput = require('./build/lib/webpack-base-output');
+const baseOutput = require('./build/lib/base-output');
 const {
   pages,
   components,
