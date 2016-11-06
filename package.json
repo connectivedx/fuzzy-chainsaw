@@ -14,12 +14,12 @@
   	"output": "dist"
   },
   "scripts": {
-    "webpack-build": "webpack --progress",
     "build": "gulp build",
     "production": "gulp production",
     "watch": "gulp watch",
-    "watch-server": "node ./webpack-kicker.js",
-    "watch-script": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "webpack-build": "webpack --progress",
+    "webpack-watch": "node ./build/webpack-cli-kicker.js",
+    "webpack-watch-script": "webpack-dev-server",
     "start": "http-server ./dist",
     "new-tag": "gulp new-tag --name",
     "new-component": "gulp new-component --name"
