@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Heading from '../tags/heading/heading.jsx';
-import { 
+import Heading from '../../tags/Heading/Heading';
+import {
 	PageRoot__Wrapper,
 	PageRoot__Head,
 	PageRoot__Body
-} from '../tags/page-root/page-root.jsx';
+} from '../../tags/PageRoot/PageRoot';
 
-import ComponentList from './component-list.jsx';
-import Nav from './nav.jsx';
+import Nav from './Nav';
 
 export default ({
 	title,
@@ -21,7 +20,6 @@ export default ({
 		</PageRoot__Head>
 		<PageRoot__Body className="page-styleguide">
 			<Nav locals={locals} />
-
 			<div className="sg-styleguide" id="content">
 				{children}
 			</div>

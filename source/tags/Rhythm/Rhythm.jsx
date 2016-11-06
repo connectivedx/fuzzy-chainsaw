@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './rhythm.css';
+import styles from './Rhythm.css';
 
 export default ({
 	className = '',

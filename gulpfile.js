@@ -1,10 +1,8 @@
-const chalk = require('chalk');
 const gulp = require('gulp');
-const sequence = require('run-sequence');
 const webpack = require('webpack');
-
-const minimist = require('minimist');
+const sequence = require('run-sequence');
 const del = require('del')
+const minimist = require('minimist');
 
 const pkg = require('./package.json');
 const dirs = pkg.directories;
@@ -12,6 +10,7 @@ const webpackConfig = require('./webpack.config');
 const webpackProductionConfig = require('./webpack.production.config');
 const scaffoldComponent = require('./build/scaffold-component');
 const webpackErrorHandler = require('./build/webpack-errorhandler');
+
 
 // build tasks
 gulp.task('preClean', () => {
@@ -41,7 +40,6 @@ gulp.task('build', done => {
 gulp.task('production', done => {
   sequence('preClean', 'buildProductionWebpack', 'postClean', done);
 });
-
 
 
 // scaffolding tasks

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './button.css';
+import styles from './Button.css';
 
 export default ({
 	tagName = 'button',

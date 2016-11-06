@@ -76,7 +76,7 @@
 	top: 0;
 	left: 0;
 	z-index: 99;
-	
+
 	height: 100vh;
 	width: 100%;
 	max-width: 320px;
@@ -117,7 +117,7 @@
 	z-index: 98;
 
 	background-color: #000.8;
-	
+
 	transition-timing-function: ease;
 	transition-property: opacity, transform;
 	transition-duration: 0.45s, 0s, 0s;

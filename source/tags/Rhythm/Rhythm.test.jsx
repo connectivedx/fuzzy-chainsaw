@@ -1,5 +1,5 @@
 import React from 'react';
-import Rhythm from './rhythm.jsx';
+import Rhythm from './Rhythm';
 
 const Children = [
 	<div>abc</div>,

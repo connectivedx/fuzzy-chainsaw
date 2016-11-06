@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './heading.css';
+import styles from './Heading.css';
 
 const Heading = ({
 	tagName,

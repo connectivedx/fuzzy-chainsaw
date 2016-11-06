@@ -1,5 +1,5 @@
-@import "./nav.css";
-@import "./example.css";
+@import "./components/nav.css";
+@import "./components/example.css";
 
 .is-sg-nav-expanded {
 	overflow: hidden;
@@ -17,8 +17,8 @@
 	overflow: hidden;
 	transition: transform 0.3s;
 
-	& > .heading { 
-		margin: 0.5em 0.33em; 
+	& > .heading {
+		margin: 0.5em 0.33em;
 		font-size: 3em;
 	}
 
@@ -29,10 +29,10 @@
 	@media (width >= 960px) {
 		margin-top: 5.5em;
 
-		& > .heading { 
+		& > .heading {
 			margin: 0.5em 0.66em;
 		}
-	}	
+	}
 }
 
 .sg-styleguide-section {
@@ -41,7 +41,7 @@
 
 .sg-styleguide-section__header {
 	padding: 1em;
-	
+
 	@media (width >= 960px) {
 		padding: 2em;
 	}

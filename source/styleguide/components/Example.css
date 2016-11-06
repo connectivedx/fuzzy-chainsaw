@@ -1,4 +1,3 @@
-
 .sg-example {
 	padding: 1em;
 	border-top: 1px solid #eee;
@@ -50,7 +49,7 @@
 		font-weight: bold;
 
 		text-decoration: none;
-		
+
 		&:hover {
 			background-color: color(#eee blend(#ddd 50%));
 		}
@@ -65,7 +64,7 @@
 .sg-example__section {
 	display: none;
 	border: 1px solid #ccc;
-	
+
 	padding: 1em;
 	overflow: auto;
 
