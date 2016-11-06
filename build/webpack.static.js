@@ -1,3 +1,10 @@
+/* 
+  Configures how static site elements (e.g. JSX -> HTML templates) are processed by webpack.
+  This is a shared base webpack configuration, and the options may be overridden by consumers of this factory.
+  Note that the styleguide (webpack.styleguide.js) shares this base configuration, so keep in mind alterations here also apply there.
+
+  Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
+*/
 const path = require('path');
 const glob = require('glob');
 

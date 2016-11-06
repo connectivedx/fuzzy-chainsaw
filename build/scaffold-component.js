@@ -1,3 +1,8 @@
+/*
+  Enables scaffolding of new FC items (e.g. components, tags) using the dopl templating library.
+  See the component-template folder for the template source files.
+*/
+
 const chalk = require('chalk');
 const dopl = require('dopl');
 
