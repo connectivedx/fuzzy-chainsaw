@@ -1,3 +1,10 @@
+/* 
+  Configures how the styleguide's static pages are processed by webpack.
+  This is a shared base webpack configuration, and the options may be overridden by consumers of this factory.
+  Note that this configuration is an extension of the shared static site configuration in webpack.static.js.
+
+  Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
+*/
 const staticConfig = require('./webpack.static');
 
 module.exports = ({
