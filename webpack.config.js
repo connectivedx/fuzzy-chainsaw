@@ -1,6 +1,6 @@
-/* 
+/*
   Configures webpack to build all elements of the site.
-  
+
   This file imports the basic configuration of actions (e.g. webpack.tests.js),
   and decorates them with path configurations and other project-specific setups.
 
@@ -10,11 +10,11 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
 const fileExists = require('file-exists');
+const pkg = require('./package.json')
 
 /*
  *
@@ -26,6 +26,7 @@ const styleguideConfig = require('./build/webpack.styleguide');
 const browserConfig = require('./build/webpack.browser');
 const testsConfig = require('./build/webpack.tests');
 
+const dirs = pkg.directories;
 
 /*
  *
@@ -57,12 +58,12 @@ const componentExists = (baseSrc, name) =>
 
 // create lists of components with a coresponding jsx file
 const components =
-  getDirectories('./source/components')
-    .filter(name => componentExists('./source/components', name));
+  getDirectories(dirs.source + 'components')
+    .filter(name => componentExists(dirs.source + 'components', name));
 
 const tags =
-  getDirectories('./source/tags')
-    .filter(name => componentExists('./source/tags', name));
+  getDirectories(dirs.source + 'tags')
+    .filter(name => componentExists(dirs.source + 'tags', name));
 
 
 // concatinate both lists together for the styleguide
@@ -74,7 +75,7 @@ const styleguides =
 
 // a base objects used in every configuration
 const baseOutput = config => Object.assign({
-  outputPath: path.resolve(__dirname, 'dist'),
+  outputPath: path.resolve(__dirname, dirs.output),
 }, config);
 
 
@@ -85,37 +86,37 @@ const baseOutput = config => Object.assign({
  *
  */
 const renderPages = staticConfig(baseOutput({
-  entry: './source/RenderPage.jsx',
+  entry: dirs.source + 'RenderPage.jsx',
   locals: { components, tags },
-  paths: glob.sync('./source/pages/**/*.jsx')
-    .map(getDeepName('source/pages'))
+  paths: glob.sync(dirs.source + 'pages/**/*.jsx')
+    .map(getDeepName(`${dirs.source}/pages`))
     .map(page => `${page}.html`),
 }));
 
 const renderStyleguide = styleguideConfig(baseOutput({
-  entry: './source/RenderStyleguide.jsx',
+  entry: dirs.source + 'RenderStyleguide.jsx',
   locals: { components, tags },
   paths: styleguides.map(page => `styleguide/${page}.html`)
 }));
 
 const styleguideBundle = browserConfig(baseOutput({
-  entry: './source/styleguide.jsx',
+  entry: dirs.source + 'styleguide.jsx',
   outputScript: '/assets/styleguide.js',
   outputStyle: '/assets/styleguide.css'
 }));
 
 const browserScript = browserConfig(baseOutput({
-  entry: './source/main.jsx',
+  entry: dirs.source + 'main.jsx',
   outputScript: '/assets/bundle.js'
 }));
 
 const browserStyle = browserConfig(baseOutput({
-  entry: './source/style.jsx',
+  entry: dirs.source + 'style.jsx',
   outputStyle: '/assets/bundle.css'
 }));
 
 const componentTests = testsConfig(baseOutput({
-  entry: './source/tests.jsx',
+  entry: dirs.source + 'tests.jsx',
   outputScript: '/tmp/tests.js',
   reporter: 'tap-min'
 }))

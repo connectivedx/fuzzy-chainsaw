@@ -31,7 +31,7 @@ const respawn = debounce(() => {
 
 const watcher =
 	chokidar
-		.watch('./source', { ignoreInitial: true })
+		.watch(pkg.directories.source, { ignoreInitial: true })
 		.on('ready', () => respawn())
 		.on('addDir', () => respawn())
 		.on('unlinkDir', () => respawn());

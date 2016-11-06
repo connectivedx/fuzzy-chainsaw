@@ -9,6 +9,10 @@
   "author": "Connective DX",
   "license": "MIT",
   "main": "index.js",
+  "directories": {
+  	"source": "./source/",
+  	"output": "dist"
+  },
   "scripts": {
     "webpack-build": "webpack --progress",
     "build": "gulp build",
