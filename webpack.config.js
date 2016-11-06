@@ -87,7 +87,7 @@ const browserStyle = browserConfig(baseOutput({
 }));
 
 const componentTests = testsConfig(baseOutput({
-  entry: './source/tests.jsx',
+  entry: `${dirs.source}/tests.jsx`,
   outputScript: '/tmp/tests.js',
   reporter: 'tap-min'
 }))

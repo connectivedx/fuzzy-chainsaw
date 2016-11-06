@@ -3,23 +3,25 @@ const chalk = require('chalk');
 module.exports = (err, stats, done) => {
   if (err) return done(err);
 
-  let error = false;
-  stats.stats.forEach(build => {
-    if (build.compilation.errors && build.compilation.errors.length) {
-      build.compilation.errors.forEach(error => console.error(chalk.bgRed(error.toString())));
-      error = true;
-    }
+  // see https://webpack.github.io/docs/node.js-api.html#stats-tostring
+  console.log(stats.toString({
+    colors: true,
+    chunks: false,
+    hash: false,
+    timings: false,
+    version: false
+  }));
 
-    if (build.compilation.warnings && build.compilation.warnings.length) {
-      build.compilation.warnings.forEach(warn => console.error(chalk.yellow(warn.toString())));
-    }
-  });
-
-  if(error) {
+  if(stats.hasErrors()) {
     console.error('');
     console.error(chalk.bgRed('Webpack completed with errors or warnings.'));
     process.exit(1);
-  } else {
-    done();
   }
+
+  if(stats.hasWarnings()) {
+    console.log(chalk.yellow('Webpack had warnings. Beware.'));
+  }
+
+  done();
 }
+
