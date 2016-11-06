@@ -27,6 +27,15 @@ build.forEach((b, i) => {
 	);
 });
 
+// uglify JS
+build.forEach((b, i) => {
+	build[i].plugins.push(new webpack.optimize.UglifyJsPlugin({
+	    compress: {
+        	warnings: false
+    	}
+	}));
+});
+
 // add css minification
 build.forEach((b, i) => {
 	if (build[i].postcss !== undefined) {
