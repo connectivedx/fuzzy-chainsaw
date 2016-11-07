@@ -10,8 +10,8 @@
   "license": "MIT",
   "main": "index.js",
   "directories": {
-  	"source": "./source/",
-  	"output": "dist"
+    "source": "./source/",
+    "output": "dist"
   },
   "scripts": {
     "webpack-build": "webpack --progress",

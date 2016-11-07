@@ -9,7 +9,7 @@ const path = require('path');
 const glob = require('glob');
 
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = ({
   devtool = 'source-map',
@@ -44,12 +44,12 @@ module.exports = ({
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') //autoimport-variables
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file?context=./source/&name=/assets/images/[name]-[md5:hash:hex:8].[ext]',
+          'file?context=./source/&name=/assets/images/css/[name]-[md5:hash:hex:8].[ext]',
           'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
         ]
       },
@@ -59,7 +59,7 @@ module.exports = ({
       },
       {
         test: /\.md$/,
-        loader: 'html!md'
+        loader: 'null-loader'
       }
     ]
   },

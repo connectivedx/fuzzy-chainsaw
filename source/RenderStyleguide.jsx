@@ -14,7 +14,7 @@ const requireTagOrFail = (path) => {
 	}
 }
 
-const requireComponentOrFail = (path) => {
+const requireComponentOrFail = (path, prefix = '') => {
 	try {
 		const module = require('./components/' + path);
 		return module.default || module;
@@ -22,23 +22,6 @@ const requireComponentOrFail = (path) => {
 		return;
 	}
 }
-
-const StyleguideFactory = ({
-	name,
-	path,
-	basePath,
-	locals,
-	requirer
-}) => (
-	<Styleguide
-		name={name}
-		path={path}
-		tag={requirer(`${name}/${name}`)}
-		style={requirer(`${name}/${name}.css`)}
-		readme={requirer(`${name}/README.md`)}
-		tests={requirer(`${name}/${name}.test`)}
-		locals={locals} />
-)
 
 module.exports = function renderStyleguide(locals, callback) {
 	const fileName = locals.path.substr('styleguide/'.length)
@@ -48,13 +31,15 @@ module.exports = function renderStyleguide(locals, callback) {
 	const basePath = `${name}/`;
 	const path = basePath + name;
 
+	const requirer = type === 'tags' ? requireTagOrFail : requireComponentOrFail;
 	const res =
-		<StyleguideFactory
+		<Styleguide
 			name={name}
 			path={path}
-			basePath={basePath}
-			locals={locals}
-			requirer={type === 'tags' ? requireTagOrFail : requireComponentOrFail} />
+			tag={requirer(`${name}/${name}`)}
+			readme={requirer(`${name}/README.md`)}
+			tests={requirer(`${name}/${name}.test`)}
+			locals={locals} />
 
   callback(null, Dom.renderToStaticMarkup(res, locals));
 };
