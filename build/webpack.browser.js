@@ -35,6 +35,11 @@ module.exports = ({
   },
   publicPath: publicPath,
   postcss: require('./postcss-pack.js'),
+  resolveLoader: {
+    alias: {
+      'autoimport-variables': path.join(__dirname, './webpack-autoimport-variables-loader')
+    }
+  },
   module: {
     loaders: [
       {
