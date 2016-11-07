@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './PageRoot.css';
 
+import SvgSymbols from '../SvgSymbols/SvgSymbols';
 
 export const PageRoot__Wrapper = ({ children }) => (
 	<html>
@@ -19,6 +20,7 @@ export const PageRoot__Head = ({ title, children }) => (
 
 export const PageRoot__Body = ({ className, children }) => (
 	<body className={className}>
+		<SvgSymbols />
 		{children}
 		<script src="/assets/bundle.js" />
 	</body>
