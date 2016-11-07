@@ -7,6 +7,7 @@
 */
 const path = require('path');
 const glob = require('glob');
+const match = require('minimatch');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -44,12 +45,19 @@ module.exports = ({
     loaders: [
       {
         test: /\.jsx|js?$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') //autoimport-variables
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+      },
+      {
+        test: filepath => (
+          match(filepath, '**/tags/**/*.css') ||
+          match(filepath, '**/components/**/*.css')
+        ),
+        loader: 'autoimport-variables'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -64,7 +72,7 @@ module.exports = ({
       },
       {
         test: /\.md$/,
-        loader: 'null-loader'
+        loader: 'null'
       }
     ]
   },
