@@ -1,5 +1,0 @@
-# SvgSymbols
-
-## Props
-
-None.
