@@ -23,7 +23,7 @@ const SymbolComponent = ({
 export default () => {
 	const symbols = svgs.map((svg, i) => {
 		const name = getName(svgsKeys[i]);
-		return svg.replace('<symbol', `<symbol id="${name}"`); // replace id
+		return svg.replace('<symbol', `<symbol id="${name}" preserveAspectRatio="xMidYMid slice"`); // replace id
 	});
 
 	return (
