@@ -23,7 +23,6 @@ const dirs = pkg.directories;
  */
 
 const staticConfig = require('./build/webpack.static');
-const styleguideConfig = require('./build/webpack.styleguide');
 const browserConfig = require('./build/webpack.browser');
 const testsConfig = require('./build/webpack.tests');
 
@@ -56,7 +55,7 @@ const renderPages = staticConfig(baseOutput({
   paths: pages.map(page => `${page}.html`),
 }));
 
-const renderStyleguide = styleguideConfig(baseOutput({
+const renderStyleguide = staticConfig(baseOutput({
   entry: dirs.source + 'RenderStyleguide.jsx',
   locals: { components, tags },
   paths: styleguides.map(page => `styleguide/${page}.html`)
@@ -92,10 +91,10 @@ const componentTests = testsConfig(baseOutput({
  *
  */
 module.exports = [
-  browserScript,
-  browserStyle,
+  renderPages,
   renderStyleguide,
   styleguideBundle,
-  renderPages,
+  browserScript,
+  browserStyle,
   componentTests
 ];

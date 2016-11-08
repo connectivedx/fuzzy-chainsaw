@@ -11,7 +11,6 @@ slug.charmap['/'] = '-';
 export default ({
 	name = "Generic Component",
 	tag,
-	style,
 	readme,
 	locals = {},
 	tests

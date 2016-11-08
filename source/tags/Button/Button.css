@@ -1,9 +1,7 @@
-@import "../../variables/index.css";
-
 .button {
 	display: inline-block;
 	vertical-align: middle;
-	
+
 	padding: 1em 2em;
 	cursor: pointer;
 }
