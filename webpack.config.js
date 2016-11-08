@@ -124,11 +124,11 @@ const renderStyleguide = staticConfig(baseOutput({
   componentTests.doNotApplyProductionConfig = true;
 
   return [
-  renderPages,
+    renderPages,
     renderStyleguide,
     styleguideBundle,
-  browserScript,
-  browserStyle,
+    browserScript,
+    browserStyle,
     componentTests
   ];
 };
