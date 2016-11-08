@@ -49,16 +49,16 @@ const {
  *
  */
 const configurationFactory = () => {
-  const renderPages = staticConfig(baseOutput({
-    entry: dirs.source + 'RenderPage.jsx',
-    locals: { components, tags },
-    paths: pages.map(page => `${page}.html`),
-  }));
-
-  const renderStyleguide = staticConfig(baseOutput({
-    entry: dirs.source + 'RenderStyleguide.jsx',
-    locals: { components, tags },
-    paths: styleguides.map(page => `styleguide/${page}.html`)
+  const renderStaticPages = staticConfig(baseOutput({
+    entry: {
+      pages: dirs.source + 'RenderPage.jsx',
+      styleguide: dirs.source + 'RenderStyleguide.jsx'
+    },
+    paths: {
+      pages: pages.map(page => `${page}.html`),
+      styleguide: styleguides.map(page => `styleguide/${page}.html`)
+    },
+    locals: { components, tags }
   }));
 
   const styleguideBundle = browserConfig(baseOutput({
@@ -84,8 +84,7 @@ const configurationFactory = () => {
   }));
 
   return [
-    renderPages,
-    renderStyleguide,
+    renderStaticPages,
     styleguideBundle,
     browserScript,
     browserStyle,
