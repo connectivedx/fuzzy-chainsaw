@@ -18,9 +18,6 @@ module.exports = ({
   locals = {},
   reporter = 'tap-dot'
 }) => ({
-  devServer: {
-    stats: 'errors-only'
-  },
   devtool: devtool,
   resolve: {
     extensions: ['', '.js', '.jsx']

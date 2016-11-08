@@ -20,16 +20,11 @@ module.exports = ({
   outputScript = '/tmp/bundle.js',
   outputStyle = '/tmp/bundle.css',
 }) => ({
-  devServer: {
-    stats: 'errors-only'
-  },
   devtool: devtool,
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  entry: {
-    main: entry
-  },
+  entry: [entry],
   output: {
     path: outputPath,
     filename: outputScript

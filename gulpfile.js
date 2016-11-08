@@ -8,8 +8,9 @@ const pkg = require('./package.json');
 const dirs = pkg.directories;
 const webpackConfig = require('./webpack.config');
 const webpackProductionConfig = require('./webpack.production.config');
-const scaffoldComponent = require('./build/scaffold-component');
 const webpackErrorHandler = require('./build/webpack-errorhandler');
+const webpackWatch = require('./build/webpack-watch');
+const scaffoldComponent = require('./build/scaffold-component');
 
 
 // build tasks
@@ -23,13 +24,13 @@ gulp.task('postClean', () => {
 
 gulp.task('buildWebpack', done => {
   webpack(webpackConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, done);
+    webpackErrorHandler(err, stats, {}, done);
   });
 })
 
 gulp.task('buildProductionWebpack', done => {
-  webpack(webpackProductionConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, done);
+	webpack(webpackProductionConfig, (err, stats) => {
+    webpackErrorHandler(err, stats, {}, done);
   });
 });
 
@@ -39,6 +40,10 @@ gulp.task('build', done => {
 
 gulp.task('production', done => {
   sequence('preClean', 'buildProductionWebpack', 'postClean', done);
+});
+
+gulp.task('watch', done => {
+  webpackWatch(webpackConfig);
 });
 
 
