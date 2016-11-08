@@ -122,6 +122,8 @@ const configurationFactory = function() {
     reporter: 'tap-min'
   }));
 
+  componentTests.doNotApplyProductionConfig = true;
+
   return [
     browserScript,
     browserStyle,

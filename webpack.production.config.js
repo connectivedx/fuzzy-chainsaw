@@ -10,37 +10,36 @@ const webpack = require('webpack');
 let build = require('./webpack.config')();
 
 // production specific configuration
-build.forEach((b, i) => {
-	build[i].devtool = 'cheap-module-source-map'
-});
+build.forEach((config) => {
+	if(config.doNotApplyProductionConfig) {
+		return;
+	}
 
-// add production flag to build environment
-// libraries can key off this to import versions without debug info
-// (e.g. react turns off warnings in the console and gets much smaller because of this)
-build.forEach((b, i) => {
-	build[i].plugins.unshift(
+	// apropos devtool (see http://cheng.logdown.com/posts/2016/03/25/679045)
+	config.devtool = 'cheap-module-source-map'
+
+	// add production flag to build environment
+	// libraries can key off this to import versions without debug info
+	// (e.g. react turns off warnings in the console and gets much smaller because of this)
+	config.plugins.unshift(
 	  new webpack.DefinePlugin({
 	    'process.env': {
 	      'NODE_ENV': JSON.stringify('production')
 	    }
 	  })
 	);
-});
 
-// uglify JS
-build.forEach((b, i) => {
-	build[i].plugins.push(new webpack.optimize.UglifyJsPlugin({
+	// uglify JS
+	config.plugins.push(new webpack.optimize.UglifyJsPlugin({
 		sourceMap: false,
 	    compress: {
         	warnings: false
     	}
 	}));
-});
 
-// add css minification
-build.forEach((b, i) => {
-	if (build[i].postcss !== undefined) {
-		build[i].postcss = build[i].postcss.concat([
+	// add css minification
+	if (config.postcss !== undefined) {
+		config.postcss = config.postcss.concat([
 			cssnano()
 		]);
 	}
