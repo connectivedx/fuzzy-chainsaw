@@ -18,8 +18,6 @@
     "production": "gulp production",
     "watch": "gulp watch",
     "webpack-build": "webpack --progress",
-    "webpack-watch": "node ./build/webpack-cli-kicker.js",
-    "webpack-watch-script": "webpack-dev-server",
     "start": "http-server ./dist",
     "new-tag": "gulp new-tag --name",
     "new-component": "gulp new-component --name"
