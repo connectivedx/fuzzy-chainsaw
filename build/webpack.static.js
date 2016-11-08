@@ -13,7 +13,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 module.exports = ({
-  devtool = 'eval',
+  devtool = 'cheap-module-eval-source-map',
   entry = '.js',
   outputPath ='dist',
   publicPath = './dist/',

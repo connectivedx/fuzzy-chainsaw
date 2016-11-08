@@ -11,7 +11,7 @@ let build = require('./webpack.config')();
 
 // production specific configuration
 build.forEach((b, i) => {
-	build[i].devtool = 'source-map'
+	build[i].devtool = 'cheap-module-source-map'
 });
 
 // add production flag to build environment
@@ -30,6 +30,7 @@ build.forEach((b, i) => {
 // uglify JS
 build.forEach((b, i) => {
 	build[i].plugins.push(new webpack.optimize.UglifyJsPlugin({
+		sourceMap: false,
 	    compress: {
         	warnings: false
     	}
