@@ -85,54 +85,60 @@ const baseOutput = config => Object.assign({
  * The shared base configurations imported earlier are augmented with paths and specific details here.
  *
  */
-const renderPages = staticConfig(baseOutput({
-  entry: dirs.source + 'RenderPage.jsx',
-  locals: { components, tags },
-  paths: glob.sync(dirs.source + 'pages/**/*.jsx')
-    .map(getDeepName(`${dirs.source}/pages`))
-    .map(page => `${page}.html`),
-}));
+const configurationFactory = function() {
+  const renderPages = staticConfig(baseOutput({
+    entry: dirs.source + 'RenderPage.jsx',
+    locals: { components, tags },
+    paths: glob.sync(dirs.source + 'pages/**/*.jsx')
+      .map(getDeepName(`${dirs.source}/pages`))
+      .map(page => `${page}.html`),
+  }));
 
-const renderStyleguide = styleguideConfig(baseOutput({
-  entry: dirs.source + 'RenderStyleguide.jsx',
-  locals: { components, tags },
-  paths: styleguides.map(page => `styleguide/${page}.html`)
-}));
+  const renderStyleguide = styleguideConfig(baseOutput({
+    entry: dirs.source + 'RenderStyleguide.jsx',
+    locals: { components, tags },
+    paths: styleguides.map(page => `styleguide/${page}.html`)
+  }));
 
-const styleguideBundle = browserConfig(baseOutput({
-  entry: dirs.source + 'styleguide.jsx',
-  outputScript: '/assets/styleguide.js',
-  outputStyle: '/assets/styleguide.css'
-}));
+  const styleguideBundle = browserConfig(baseOutput({
+    entry: dirs.source + 'styleguide.jsx',
+    outputScript: '/assets/styleguide.js',
+    outputStyle: '/assets/styleguide.css'
+  }));
 
-const browserScript = browserConfig(baseOutput({
-  entry: dirs.source + 'main.jsx',
-  outputScript: '/assets/bundle.js'
-}));
+  const browserScript = browserConfig(baseOutput({
+    entry: dirs.source + 'main.jsx',
+    outputScript: '/assets/bundle.js'
+  }));
 
-const browserStyle = browserConfig(baseOutput({
-  entry: dirs.source + 'style.jsx',
-  outputStyle: '/assets/bundle.css'
-}));
+  const browserStyle = browserConfig(baseOutput({
+    entry: dirs.source + 'style.jsx',
+    outputStyle: '/assets/bundle.css'
+  }));
 
-const componentTests = testsConfig(baseOutput({
-  entry: dirs.source + 'tests.jsx',
-  outputScript: '/tmp/tests.js',
-  reporter: 'tap-min'
-}))
+  const componentTests = testsConfig(baseOutput({
+    entry: dirs.source + 'tests.jsx',
+    outputScript: '/tmp/tests.js',
+    reporter: 'tap-min'
+  }));
+
+  return [
+    browserScript,
+    browserStyle,
+    renderStyleguide,
+    styleguideBundle,
+    renderPages,
+    componentTests
+  ];
+};
 
 
 /*
  *
  * EXPORT ALL CONFIGURATIONS
  * Consumers of this config (e.g. gulp) will pass these to webpack for execution.
+ * Note that the export is a factory function (to avoid sharing the same config object across requires), 
+ * so call it after you require it.
  *
  */
-module.exports = [
-  browserScript,
-  browserStyle,
-  renderStyleguide,
-  styleguideBundle,
-  renderPages,
-  componentTests
-];
+module.exports = configurationFactory;

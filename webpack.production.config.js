@@ -7,7 +7,7 @@
 */
 const cssnano = require('cssnano');
 const webpack = require('webpack');
-let build = require('./webpack.config');
+let build = require('./webpack.config')();
 
 // production specific configuration
 build.forEach((b, i) => {

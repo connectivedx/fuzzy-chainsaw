@@ -6,7 +6,7 @@ const minimist = require('minimist');
 
 const pkg = require('./package.json');
 const dirs = pkg.directories;
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.config')();
 const webpackProductionConfig = require('./webpack.production.config');
 const scaffoldComponent = require('./build/scaffold-component');
 const webpackErrorHandler = require('./build/webpack-errorhandler');
