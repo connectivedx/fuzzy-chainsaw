@@ -13,7 +13,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = ({
-  devtool = 'source-map',
+  devtool = 'cheap-module-eval-source-map',
   entry = '.js',
   outputPath = path.resolve(__dirname, 'dist'),
   publicPath = './dist/',
@@ -45,7 +45,7 @@ module.exports = ({
     loaders: [
       {
         test: /\.jsx|js?$/,
-        loader: 'babel',
+        loader: 'babel?cacheDirectory=true',
         exclude: /node_modules/
       },
       {

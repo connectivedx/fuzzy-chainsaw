@@ -12,7 +12,7 @@ const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 module.exports = ({
-  devtool = 'eval',
+  devtool = 'cheap-module-eval-source-map',
   entry = '.js',
   outputPath ='dist',
   publicPath = './dist/',
@@ -40,7 +40,7 @@ module.exports = ({
     loaders: [
       {
         test: /\.(jsx|js)$/,
-        loader: 'babel-loader',
+        loader: 'babel-loader?cacheDirectory=true',
         exclude: /node_modules/
       },
       {

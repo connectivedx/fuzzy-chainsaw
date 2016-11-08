@@ -1,8 +1,8 @@
-/* 
+/*
   Configures how unit test files are processed by webpack.
   This is a shared base webpack configuration, and the options may be overridden by consumers of this factory.
   Note: Tests are compiled with babel and written to a temporary folder, executed, and then deleted after the build (by post-clean)
-  
+
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
 const TapWebpackPlugin = require('tap-webpack-plugin');
@@ -44,7 +44,7 @@ module.exports = ({
     loaders: [
       {
         test: /\.(jsx|js)$/,
-        loader: 'babel-loader',
+        loader: 'babel-loader?cacheDirectory=true',
         exclude: /node_modules/
       },
       {
@@ -55,5 +55,6 @@ module.exports = ({
   },
   plugins: [
     new TapWebpackPlugin({ reporter: reporter })
-  ]
+  ],
+  doNotApplyProductionConfig: true
 });

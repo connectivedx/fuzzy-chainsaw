@@ -28,7 +28,7 @@ gulp.task('buildWebpack', done => {
 })
 
 gulp.task('buildProductionWebpack', done => {
-	webpack(webpackProductionConfig, (err, stats) => {
+  webpack(webpackProductionConfig, (err, stats) => {
     webpackErrorHandler(err, stats, done);
   });
 });
