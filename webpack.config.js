@@ -22,7 +22,6 @@ const pkg = require('./package.json')
  *
  */
 const staticConfig = require('./build/webpack.static');
-const styleguideConfig = require('./build/webpack.styleguide');
 const browserConfig = require('./build/webpack.browser');
 const testsConfig = require('./build/webpack.tests');
 
@@ -94,7 +93,7 @@ const configurationFactory = function() {
       .map(page => `${page}.html`),
   }));
 
-  const renderStyleguide = styleguideConfig(baseOutput({
+const renderStyleguide = staticConfig(baseOutput({
     entry: dirs.source + 'RenderStyleguide.jsx',
     locals: { components, tags },
     paths: styleguides.map(page => `styleguide/${page}.html`)
@@ -125,11 +124,11 @@ const configurationFactory = function() {
   componentTests.doNotApplyProductionConfig = true;
 
   return [
-    browserScript,
-    browserStyle,
+  renderPages,
     renderStyleguide,
     styleguideBundle,
-    renderPages,
+  browserScript,
+  browserStyle,
     componentTests
   ];
 };

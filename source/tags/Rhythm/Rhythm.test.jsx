@@ -2,9 +2,9 @@ import React from 'react';
 import Rhythm from './Rhythm';
 
 const Children = [
-	<div>abc</div>,
-	<div>123</div>,
-	<div>
+	<div key="1">abc</div>,
+	<div key="2">123</div>,
+	<div key="3">
 		<section>9990</section>
 		<div>3758</div>
 		<div>2389</div>
