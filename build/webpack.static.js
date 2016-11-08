@@ -20,9 +20,6 @@ module.exports = ({
   paths = [],
   locals = {}
 }) => ({
-  devServer: {
-    stats: 'errors-only'
-  },
   devtool: devtool,
   resolve: {
     extensions: ['', '.js', '.jsx']
