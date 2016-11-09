@@ -14,8 +14,9 @@ module.exports = config => {
   // normalize config output paths
   // (code sniped from bin/webpack-dev-server.js:95)
   // without this, assets are not loaded correctly
-  [].concat(config).forEach(function(wpOpt) {
-    wpOpt.output.path = "/";
+  config = config.map(wpOpt => {
+    wpOpt.output.path = '/';
+    return wpOpt;
   });
 
   // watch function is called both
@@ -58,7 +59,7 @@ module.exports = config => {
     // see https://webpack.github.io/docs/webpack-dev-server.html#api for dev-server API options
     server = new WebpackDevServer(compiler, serverConfig);
 
-    server.listen(port, host, (err) => { 
+    server.listen(port, host, (err) => {
       var uri = "http://" + serverConfig.host + ":" + serverConfig.port + "/";
       if(!serverConfig.inline)
         uri += "webpack-dev-server/";
