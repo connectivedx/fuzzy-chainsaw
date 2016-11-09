@@ -1,4 +1,5 @@
 const chokidar = require('chokidar');
+const path = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
@@ -10,6 +11,17 @@ let server;
 
 module.exports = config => {
 
+  // normalize config output paths
+  // (code sniped from bin/webpack-dev-server.js:95)
+  // without this, assets are not loaded correctly
+  config = config.map(wpOpt => {
+    wpOpt.output.path = '/';
+    return wpOpt;
+  });
+
+  // watch function is called both
+  // (a) on startup and
+  // (b) when dirs are added or removed to recycle the watch and update static site file paths
   const watch = (changedPath) => {
     if(server && changedPath) {
       // stop the old dev server
@@ -28,22 +40,42 @@ module.exports = config => {
 
     var compiler = webpack(config);
 
-    // see https://webpack.github.io/docs/webpack-dev-server.html#api for dev-server API options
-    server = new WebpackDevServer(compiler, {
-      contentBase: pkg.directories.output,
-      filename: "bundle.js",
-      publicPath: "/",
+    const serverConfig = {
+      host: host,
+      port: port,
+      publicPath: '/',
+      outputPath: '/',
+      filename: '/tmp/[name].js',
+      contentBase: path.resolve(pkg.directories.output),
       hot: false,
       stats: {
         colors: true,
         chunks: false,
         hash: false,
-        timings: false,
         version: false
       }
-    });
+    };
 
-    server.listen(port, host, () => { console.log(`webpack-dev-server is now listening on http://${host}:${port}`); });
+    // see https://webpack.github.io/docs/webpack-dev-server.html#api for dev-server API options
+    server = new WebpackDevServer(compiler, serverConfig);
+
+    server.listen(port, host, (err) => {
+      var uri = "http://" + serverConfig.host + ":" + serverConfig.port + "/";
+      if(!serverConfig.inline)
+        uri += "webpack-dev-server/";
+
+      if(err) throw err;
+
+      console.log(" " + uri);
+      console.log("webpack result is served from " + serverConfig.publicPath);
+
+      if(typeof serverConfig.contentBase === "object") {
+        console.log("requests are proxied to " + serverConfig.contentBase.target);
+      }
+      else {
+        console.log("content is served from " + serverConfig.contentBase);
+      }
+    });
   }
 
   chokidar.watch(pkg.directories.source, { ignoreInitial: true })
