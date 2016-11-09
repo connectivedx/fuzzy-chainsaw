@@ -13,18 +13,18 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 
 module.exports = ({
   devtool = 'cheap-module-eval-source-map',
-  entry = '.js',
   outputPath ='dist',
   publicPath = './dist/',
-  outputScript = '/tmp/bundle.js',
-  paths = [],
+  outputScript = '/tmp/[name].js',
+  entry = {},
+  paths = {},
   locals = {}
 }) => ({
   devtool: devtool,
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  entry: [entry],
+  entry: entry,
   output: {
     path: outputPath,
     filename: outputScript,
@@ -54,16 +54,12 @@ module.exports = ({
         loader: 'json-loader'
       },
       {
-        test: /\.css$/,
-        loader: 'null-loader'
-      },
-      {
-        test: /\.(cs|cshtml)$/,
+        test: /\.(css|cs|cshtml)$/,
         loader: 'null-loader'
       }
     ]
   },
-  plugins: [
-    new StaticSiteGeneratorPlugin('main', paths, locals)
-  ]
+  plugins: Object.keys(entry).map(key => (
+    new StaticSiteGeneratorPlugin(key, paths[key], Object.assign({}, locals))
+  ))
 });

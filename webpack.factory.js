@@ -49,16 +49,16 @@ const {
  *
  */
 const configurationFactory = () => {
-  const renderPages = staticConfig(baseOutput({
-    entry: dirs.source + 'RenderPage.jsx',
-    locals: { components, tags },
-    paths: pages.map(page => `${page}.html`),
-  }));
-
-  const renderStyleguide = staticConfig(baseOutput({
-    entry: dirs.source + 'RenderStyleguide.jsx',
-    locals: { components, tags },
-    paths: styleguides.map(page => `styleguide/${page}.html`)
+  const renderStaticPages = staticConfig(baseOutput({
+    entry: {
+      pages: dirs.source + 'RenderPage.jsx',
+      styleguide: dirs.source + 'RenderStyleguide.jsx'
+    },
+    paths: {
+      pages: pages.map(page => `${page}.html`),
+      styleguide: styleguides.map(page => `styleguide/${page}.html`)
+    },
+    locals: { components, tags }
   }));
 
   const styleguideBundle = browserConfig(baseOutput({
@@ -67,13 +67,9 @@ const configurationFactory = () => {
     outputStyle: '/assets/styleguide.css'
   }));
 
-  const browserScript = browserConfig(baseOutput({
-    entry: dirs.source + 'main.jsx',
-    outputScript: '/assets/bundle.js'
-  }));
-
-  const browserStyle = browserConfig(baseOutput({
-    entry: dirs.source + 'style.jsx',
+  const browserBundle = browserConfig(baseOutput({
+    entry: dirs.source + 'bundle.jsx',
+    outputScript: '/assets/bundle.js',
     outputStyle: '/assets/bundle.css'
   }));
 
@@ -84,11 +80,9 @@ const configurationFactory = () => {
   }));
 
   return [
-    renderPages,
-    renderStyleguide,
+    renderStaticPages,
     styleguideBundle,
-    browserScript,
-    browserStyle,
+    browserBundle,
     componentTests
   ];
 };
