@@ -68,7 +68,7 @@ const configurationFactory = () => {
   }));
 
   const browserBundle = browserConfig(baseOutput({
-    entry: dirs.source + 'main.jsx',
+    entry: dirs.source + 'bundle.jsx',
     outputScript: '/assets/bundle.js',
     outputStyle: '/assets/bundle.css'
   }));
