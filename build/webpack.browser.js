@@ -24,7 +24,7 @@ module.exports = ({
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  entry: [entry],
+  entry: entry,
   output: {
     path: outputPath,
     filename: outputScript

@@ -67,13 +67,9 @@ const configurationFactory = () => {
     outputStyle: '/assets/styleguide.css'
   }));
 
-  const browserScript = browserConfig(baseOutput({
+  const browserBundle = browserConfig(baseOutput({
     entry: dirs.source + 'main.jsx',
-    outputScript: '/assets/bundle.js'
-  }));
-
-  const browserStyle = browserConfig(baseOutput({
-    entry: dirs.source + 'style.jsx',
+    outputScript: '/assets/bundle.js',
     outputStyle: '/assets/bundle.css'
   }));
 
@@ -86,8 +82,7 @@ const configurationFactory = () => {
   return [
     renderStaticPages,
     styleguideBundle,
-    browserScript,
-    browserStyle,
+    browserBundle,
     componentTests
   ];
 };
