@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './FormInput.css';
+import uniqueid from 'lodash.uniqueid';
+
 
 // "Text" types: text, search | url, telephone |
 const textType = (type, placeholder, {
@@ -47,7 +49,7 @@ export const FormInputHidden = (props) => {
 export const FormInput = (props) => {
 	let attrs = Object.assign({}, props, {
 			className: "form-input form-input--" + (props.type || 'text') + ' ' + (props.className || ''),
-			id: props.id || Date.now(),
+			id: props.id || uniqueid('form-input_'),
 			value: props.value || ''
 		});
 
