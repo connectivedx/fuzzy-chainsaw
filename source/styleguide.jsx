@@ -33,7 +33,6 @@ const examplesItems = examples.map(e => e.querySelectorAll('.sg-example__tabs-it
 examplesTabs.forEach((tabset, i) => {
 	tabset.addEventListener('click', ev => {
 		Array.prototype.slice.call(examplesItems[i]).forEach((item, j) => {
-			console.log(examplesSections[i][j], item);
 			examplesItems[i][j].classList.toggle('is-active', item.contains(ev.target));
 			examplesSections[i][j].classList.toggle('is-active', item.contains(ev.target));
 		});
