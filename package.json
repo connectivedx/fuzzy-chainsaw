@@ -55,6 +55,7 @@
     "postcss-color-alpha": "^1.0.3",
     "postcss-cssnext": "^2.8.0",
     "postcss-discard-empty": "^2.1.0",
+    "postcss-extend": "^1.0.5",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.13.0",
     "pretty-data": "^0.40.0",

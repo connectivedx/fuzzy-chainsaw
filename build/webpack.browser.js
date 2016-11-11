@@ -11,6 +11,7 @@ const match = require('minimatch');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PostPostCSS = require('./webpack-post-post-css-plugin');
 
 module.exports = ({
   devtool = 'cheap-module-eval-source-map',
@@ -30,7 +31,7 @@ module.exports = ({
     filename: outputScript
   },
   publicPath: publicPath,
-  postcss: require('./postcss-pack.js'),
+  postcss: require('./postcss-pack.js').filePlugins,
   resolveLoader: {
     alias: {
       'autoimport-variables': path.join(__dirname, './webpack-autoimport-variables-loader')
@@ -72,6 +73,7 @@ module.exports = ({
     ]
   },
   plugins: [
-    new ExtractTextPlugin(outputStyle)
+    new ExtractTextPlugin(outputStyle),
+    new PostPostCSS(require('./postcss-pack.js').bundlePlugins)
   ]
 });
