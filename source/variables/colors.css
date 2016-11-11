@@ -1,0 +1,9 @@
+/* The color palette for the project. */
+/* http://cssnext.io/features/#color-function */
+:root {
+	--primary: #e55030;
+	--secondary: #d1d2d4;
+	--greyLight: #eeeeee;
+	--greyMedium: #cccccc;
+	--greyDark: #6d6d6d;
+}
