@@ -1,4 +1,5 @@
-# {{className}}
+# {{name}}
+
 
 ## Props
 

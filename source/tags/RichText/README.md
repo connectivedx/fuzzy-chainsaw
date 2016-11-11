@@ -1,4 +1,4 @@
-# 
+# RichText
 
 ## Props
 
