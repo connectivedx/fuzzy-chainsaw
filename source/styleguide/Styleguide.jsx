@@ -33,7 +33,7 @@ export default ({
 			{ tag.propTypes
 				? <div className="sg-styleguide-section">
 					<div className="sg-styleguide-section__header">
-						<Heading level="2">Properties</Heading>
+						<Heading level="2">Props</Heading>
 						<PropList name={name} propTypes={tag.propTypes} />
 					</div>
 				</div>
