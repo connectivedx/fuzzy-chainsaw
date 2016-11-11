@@ -37,11 +37,21 @@ export default [{
 }, {
 	name: 'wide custom size',
 	component: (
-		<Icon size="wide" name="minus" />
+		<Icon size="wide" name="minus" data-id="yoyoyo" />
 	),
 	test(t, component) {
 		t.equal(component.is('.icon--wide'), true, 'size class');
 		t.equal(component.is('.icon--minus'), true, 'icon name class');
+		t.end();
+	}
+}, {
+	name: 'extra attribute',
+	component: (
+		<Icon name="plus" data-id="yoyoyo" />
+	),
+	test(t, component) {
+		t.equal(component.is('.icon--plus'), true, 'icon name class');
+		t.equal(component.attr('data-id'), 'yoyoyo', 'icon data attr');
 		t.end();
 	}
 }];
