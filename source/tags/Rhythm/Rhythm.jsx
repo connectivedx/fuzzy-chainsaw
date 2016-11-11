@@ -10,7 +10,7 @@ const Rhythm = ({
 	const type = deep ? 'rhythm-deep' : 'rhythm';
 
 	return (
-		<div className={`${type} rhythm--${size} ${className}`}>
+		<div className={`${type}--${size} ${className}`}>
 			{children}
 		</div>
 	)
