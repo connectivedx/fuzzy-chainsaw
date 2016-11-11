@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Rhythm.css';
 
-export default ({
+const Rhythm = ({
 	className = '',
 	size = 'default',
 	deep = false,
@@ -15,3 +15,11 @@ export default ({
 		</div>
 	)
 };
+
+Rhythm.propTypes = {
+	size: React.PropTypes.string,
+	deep: React.PropTypes.string,
+	className: React.PropTypes.string
+};
+
+export default Rhythm;

@@ -35,7 +35,15 @@ const Poster = ({
 };
 
 Poster.propTypes = {
-	title: React.PropTypes.string
+	title: React.PropTypes.string.isRequired,
+	href: React.PropTypes.string,
+	src: React.PropTypes.oneOfType([
+		React.PropTypes.object,
+		React.PropTypes.string
+	]).isRequired,
+	alt: React.PropTypes.string.isRequired,
+	type: React.PropTypes.string,
+	className: React.PropTypes.string
 }
 
 export default Poster;
