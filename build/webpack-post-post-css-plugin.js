@@ -3,7 +3,6 @@ const match = require('minimatch');
 
 function PostPostCSSPlugin(plugins) {
   this.postPostCssPlugins = plugins;
-  console.log(plugins);
 }
 
 PostPostCSSPlugin.prototype.apply = function(compiler) {
