@@ -7,7 +7,7 @@ const {{name}} ({
 	children,
 	...attrs
 }) => (
-	<div className={`{{className}} {{className}}-${variant} ${className}`} {...attrs}>
+	<div className={`{{className}} {{className}}--${variant} ${className}`} {...attrs}>
 		{children}
 	</div>
 );
