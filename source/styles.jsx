@@ -3,5 +3,5 @@
 require('./tags/PageRoot/PageRoot.jsx');
 require('./tags/RichText/RichText.jsx');
 
-const cxt1 = require.context("./tags/", true, /\.css$/);
-const cxt2 = require.context("./components/", true, /\.css$/);
+require.context("./tags/", true, /\.css$/);
+require.context("./components/", true, /\.css$/);
