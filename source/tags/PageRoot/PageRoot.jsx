@@ -13,7 +13,7 @@ export const PageRoot__Head = ({ title, children }) => (
 	<head>
 		<meta charset="utf-8" />
 		<title>{title}</title>
-		<link rel="stylesheet" href="/assets/bundle.css" />
+		<link rel="stylesheet" href="/assets/styles.css" />
 		{children}
 	</head>
 );
@@ -26,7 +26,7 @@ export const PageRoot__Body = ({ className, children }) => (
 	<body className={className}>
 		<IconSet />
 		{children}
-		<script src="/assets/bundle.js" />
+		<script src="/assets/scripts.js" />
 	</body>
 );
 

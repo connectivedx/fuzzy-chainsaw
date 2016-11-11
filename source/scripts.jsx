@@ -1,10 +1,3 @@
-// First we import css required for the bundle.css
-require('./tags/PageRoot/PageRoot.css');
-
-require.context("./tags/", true, /\.css$/);
-require.context("./components/", true, /\.css$/);
-
-
 // Then we can build out bundle.js from below
 import React from 'react';
 import Dom from 'react-dom';
