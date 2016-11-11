@@ -47,7 +47,7 @@ export default ({
         </div>
         : undefined }
 
-      { tag.propTypes
+      { false && tag.propTypes
         ? <div id="prop-types" className="sg-styleguide-section">
           <div className="sg-styleguide-section__header">
             <Heading level="2">Props</Heading>
