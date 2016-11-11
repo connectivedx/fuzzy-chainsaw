@@ -1,4 +1,4 @@
-# {{componentName}}
+# {{className}}
 
 ## Props
 

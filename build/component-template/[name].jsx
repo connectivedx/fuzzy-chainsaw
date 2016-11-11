@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './{{name}}.css';
 
+
 const {{name}} = ({
 	className = '',
 	variant = 'default',
@@ -13,8 +14,8 @@ const {{name}} = ({
 );
 
 {{name}}.propTypes = {
-	className: React.PropTypes.string,
-	variant: React.PropTypes.string
+	className: React.PropTypes.string
 };
+
 
 export default {{name}};
