@@ -6,8 +6,6 @@ function PostPostCSSPlugin(plugins) {
 }
 
 PostPostCSSPlugin.prototype.apply = function(compiler) {
-  const plugs = this.postPostCssPlugins;
-
   compiler.plugin("compilation", (compilation) => {
     compilation.plugin('optimize-chunk-assets', (_, done) => {
       Promise.all(
