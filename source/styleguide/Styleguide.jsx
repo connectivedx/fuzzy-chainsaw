@@ -5,8 +5,19 @@ import Wrapper from './components/Wrapper';
 import Example from './components/Example';
 import Heading from '../tags/Heading/Heading';
 import Rhythm from '../tags/Rhythm/Rhythm';
-
 slug.charmap['/'] = '-';
+
+const PropList = ({ name, propTypes }) => {
+	return (
+		<ul>
+			{ Object.keys(propTypes).map(type => {
+				return(
+					<li key={type}>{type}</li>
+				)
+			}) }
+		</ul>
+	)
+}
 
 export default ({
 	name = "Generic Component",
@@ -18,6 +29,16 @@ export default ({
 	return (
 		<Wrapper title={`${name} – Styleguide`} locals={locals}>
 			<Heading level="1">{name}</Heading>
+
+			{ tag.propTypes
+				? <div className="sg-styleguide-section">
+					<div className="sg-styleguide-section__header">
+						<Heading level="2">Properties</Heading>
+						<PropList name={name} propTypes={tag.propTypes} />
+					</div>
+				</div>
+				: undefined }
+
 
 			{ tests
 				? <div className="sg-styleguide-section">
