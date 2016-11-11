@@ -12,11 +12,11 @@ export default ({
 	list,
 	max,
 	min,
-	readonly,
+	readOnly,
 	required,
 	step
 }) => {
-	let attrs = (type === 'number') ? {value, id, placeholder, autoComplete, list, max, min, readonly, required, step} :  {value, id, autoComplete, list, max, min, step};
+	let attrs = (type === 'number') ? {value, id, placeholder, autoComplete, list, max, min, readOnly, required, step} :  {value, id, autoComplete, list, max, min, step};
 
 	return ( <input type={type} className={"form-number form-number--" + type + " " + className} {...attrs} /> );
 }

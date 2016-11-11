@@ -1,60 +1,51 @@
 import React from 'react';
 import styles from './FormInput.css';
+import defaultPlaceholders from './FormInput.config.js';
 import uniqueid from 'lodash.uniqueid';
 
+const typeRE = /\b(text|search|url|tel|email|password)\b/;
 
-// "Text" types: text, search | url, telephone |
-const textType = (type, placeholder, {
-	className,
-	value,
+function enforceType(type) {
+	return (typeRE.test(type)) ? type : 'text';
+}
+
+function scrubAttrs(type, attrs) {
+	if (type !== 'email') {
+		attrs.multiple = undefined;
+	}
+	if (/\b(url|tel|email)\b/.test(type)) {
+		attrs.inputMode = undefined;
+	}
+	if (type === 'password') {
+		attrs.list = undefined;
+	}
+
+	return attrs;
+}
+
+export default ({
+	type = 'text',
+	value = '',
+	id = uniqueid('form-input_'),
+	className = '',
 	autoComplete,
+	inputMode,
 	list,
 	maxLength,
+	multiple,
 	minLength,
-	name,
 	pattern,
-	size,
+	placeholder,
 	readOnly,
-	required
+	required,
+	size
 }) => {
-	let props = {type, value, className, placeholder, autoComplete, list, maxLength, minLength, name, pattern, size, readOnly, required};
+	let attrs;
 
-	return ( <FormInput {...props} /> );
-};
+	type = enforceType(type);
+	placeholder = placeholder || defaultPlaceholders[type];
 
-export const FormInputText = (props) => {
-	return textType('text', (props.placeholder || 'Enter text'), props);
-};
-export const FormInputSearch = (props) => {
-	return textType('search', (props.placeholder || 'Search'), props);
-};
-export const FormInputUrl = (props) => {
-	return textType('url', (props.placeholder || 'Enter a valid URL'), props);
-};
-export const FormInputTel = (props) => {
-	return textType('tel', (props.placeholder || 'Enter a telephone number'), props);
-};
-export const FormInputEmail = (props) => {
-	return textType('email', (props.placeholder || 'Enter email'), props);
-};
-export const FormInputPassword = (props) => {
-	let scrubbed = Object.assign({}, props, {list: undefined});
-	
-	return textType('password', undefined, props);
-};
-export const FormInputHidden = (props) => {
-	return ( <FormInput type="hidden" value={props.value} /> );
-};
+	attrs = scrubAttrs(type, {value, id, autoComplete, inputMode, list, maxLength, multiple, minLength, pattern, placeholder, readOnly, required, size});
 
-export const FormInput = (props) => {
-	let attrs = Object.assign({}, props, {
-			className: "form-input form-input--" + (props.type || 'text') + ' ' + (props.className || ''),
-			id: props.id || uniqueid('form-input_'),
-			value: props.value || ''
-		});
-
-	return ( <input {...attrs} /> );
+	return ( <input type={type} className={"form-input form-input--" + type + " " + className} {...attrs} /> );
 };
-
-export default FormInput;
-
