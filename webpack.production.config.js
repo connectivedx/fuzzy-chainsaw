@@ -1,32 +1,48 @@
-const webpack = require('webpack');
+/*
+  Configures webpack to build the site for production deployment.
 
-let build = require('./webpack.config');
-
+  This file imports the webpack config factory and extends it to set production
+  tasks such as minification to enabled. Thus, changes to the debug build also apply here unless
+  this configuration actively undoes them.
+*/
 const cssnano = require('cssnano');
+const webpack = require('webpack');
+let build = require('./webpack.factory')();
 
 // production specific configuration
-build.forEach((b, i) => {
-	build[i].devtool = 'source-map'
-});
+module.exports = build.map(config => {
+  if(config.doNotApplyProductionConfig) {
+    return config;
+  }
 
-// add production flag to build environment
-build.forEach((b, i) => {
-	build[i].plugins.unshift(
-	  new webpack.DefinePlugin({
-	    'process.env': {
-	      'NODE_ENV': JSON.stringify('production')
-	    }
-	  })
-	);
-});
+  // apropos devtool (see http://cheng.logdown.com/posts/2016/03/25/679045)
+  config.devtool = 'cheap-module-source-map'
 
-// add css minification
-build.forEach((b, i) => {
-	if (build[i].postcss !== undefined) {
-		build[i].postcss = build[i].postcss.concat([
-			cssnano()
-		]);
-	}
-});
+  // add production flag to build environment
+  // libraries can key off this to import versions without debug info
+  // (e.g. react turns off warnings in the console and gets much smaller because of this)
+  config.plugins.unshift(
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  );
 
-module.exports = build;
+  // uglify JS
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+      compress: {
+        warnings: false
+      }
+  }));
+
+  // add css minification
+  if (config.postcss !== undefined) {
+    config.postcss = config.postcss.concat([
+      cssnano()
+    ]);
+  }
+
+  return config;
+});

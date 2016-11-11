@@ -1,34 +1,36 @@
-const chalk = require('chalk');
 const gulp = require('gulp');
-const sequence = require('run-sequence');
 const webpack = require('webpack');
-
-const minimist = require('minimist');
+const sequence = require('run-sequence');
 const del = require('del')
+const minimist = require('minimist');
 
+const pkg = require('./package.json');
+const dirs = pkg.directories;
 const webpackConfig = require('./webpack.config');
 const webpackProductionConfig = require('./webpack.production.config');
-const scaffoldComponent = require('./build/scaffold-component');
 const webpackErrorHandler = require('./build/webpack-errorhandler');
+const webpackWatch = require('./build/webpack-watch');
+const scaffoldComponent = require('./build/scaffold-component');
+
 
 // build tasks
 gulp.task('preClean', () => {
-  return del('dist')
+  return del(dirs.output, { force: true })
 });
 
 gulp.task('postClean', () => {
-  return del('dist/tmp');
+  return del(dirs.output + '/tmp', { force: true });
 });
 
 gulp.task('buildWebpack', done => {
   webpack(webpackConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, done);
+    webpackErrorHandler(err, stats, {}, done);
   });
 })
 
 gulp.task('buildProductionWebpack', done => {
 	webpack(webpackProductionConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, done);
+    webpackErrorHandler(err, stats, {}, done);
   });
 });
 
@@ -40,6 +42,9 @@ gulp.task('production', done => {
   sequence('preClean', 'buildProductionWebpack', 'postClean', done);
 });
 
+gulp.task('watch', done => {
+  webpackWatch(webpackConfig);
+});
 
 
 // scaffolding tasks
@@ -50,7 +55,7 @@ gulp.task('new-tag', () => {
   const argv = minimist(process.argv.slice(2));
   return scaffoldComponent({
     name: argv.name,
-    dest: 'source/tags'
+    dest: `${dirs.source}/tags`
   });
 });
 
@@ -59,6 +64,6 @@ gulp.task('new-component', () => {
   const argv = minimist(process.argv.slice(2))
   return scaffoldComponent({
     name: argv.name,
-    dest: 'source/components'
+    dest: `${dirs.source}/components`
   });
 });
