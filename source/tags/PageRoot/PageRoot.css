@@ -4,18 +4,8 @@
 	box-sizing: border-box;
 }
 
-html,
-body {
-	font-family: "Helvetica Neue", sans-serif;
-	line-height: 1.3em;
-	font-size: 0.9em;
-	
-	@media (width >= 720px) {
-		font-size: 0.95em;
-	}
-	@media (width >= 960px) {
-		font-size: 1em;
-	}
+html {
+    font: var(--baseFont) var(--baseFontFamily);
 }
 
 pre,
@@ -29,4 +19,3 @@ button {
 	background-color: transparent;
 	font-size: 1em;
 }
-

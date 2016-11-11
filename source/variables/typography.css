@@ -1,0 +1,8 @@
+:root {
+    --baseFontSize: 16;
+    --baseFontPercentage: calc(calc(var(--baseFontSize) / 16) / 100%);
+    --lineHeight: 1.5;
+    --baseFontFamily: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    --listBulletSize: 24;
+    --baseFont: var(--baseFontPercentage) / var(--lineHeight);
+}
