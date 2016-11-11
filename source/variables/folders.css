@@ -1,0 +1,10 @@
+:root {
+	/* Path to the parent assets folder. */
+	--assetsFolder: '../';
+
+	/* Path to the images folder, relative to the `--assetsFolder`. */
+	--imagesFolder: var(--assetsFolder) + 'img/css/';
+
+	/* Path to the folder containing font files (e.g. .ttf, eot), relative to the `--assetsFolder`. */
+	--fontsFolder: var(--assetsFolder) + 'fonts/';
+}

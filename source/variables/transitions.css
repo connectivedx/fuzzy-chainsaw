@@ -1,0 +1,10 @@
+:root {
+	/* The amount of time for transitions to take. */
+	--transitionDuration: 0.3s;
+
+	/* The easing function to use with transitions. */
+	--transitionEasing: linear;
+
+	/* The amount of time to delay transitions. */
+	--transitionDelay: 0s;
+}
