@@ -17,7 +17,8 @@ export default ({
 	required,
 	step
 }) => {
-	let attrs = (type === 'number') ? {value, id, name, placeholder, autoComplete, list, max, min, readOnly, required, step} :  {value, id, autoComplete, list, max, min, step};
+	let defaultValue = value;
+	let attrs = (type === 'number') ? {defaultValue, id, name, placeholder, autoComplete, list, max, min, readOnly, required, step} :  {value, id, autoComplete, list, max, min, step};
 
 	return ( <input type={type} className={"form-number form-number--" + type + " " + className} {...attrs} /> );
 }

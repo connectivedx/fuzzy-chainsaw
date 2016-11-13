@@ -41,12 +41,13 @@ export default ({
 	required,
 	size
 }) => {
+	let defaultValue = value;
 	let attrs;
 
 	type = enforceType(type);
 	placeholder = placeholder || defaultPlaceholders[type];
 
-	attrs = scrubAttrs(type, {value, name, id, placeholder, autoComplete, inputMode, list, maxLength, multiple, minLength, pattern, readOnly, required, size});
+	attrs = scrubAttrs(type, {defaultValue, name, id, placeholder, autoComplete, inputMode, list, maxLength, multiple, minLength, pattern, readOnly, required, size});
 
 	return ( <input type={type} className={"form-input form-input--" + type + " " + className} {...attrs} /> );
 };
