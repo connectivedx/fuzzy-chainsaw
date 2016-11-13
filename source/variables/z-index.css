@@ -1,0 +1,12 @@
+/* 
+The z-indexes for the project. 
+z-index: var(--navIndex);
+*/
+:root {
+	--hiddenIndex: -100;
+	--baseIndex: 1;
+	--contentIndex: 10;
+	--navIndex: 50;
+	--tooltipIndex: 1000;
+	--modalIndex: 8000;	
+}

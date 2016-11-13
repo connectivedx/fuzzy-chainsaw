@@ -1,5 +1,8 @@
-/* The breakpoints for all resolutions represented as pairs with the breakpoint name and its associated pixel width. */
-/* http://cssnext.io/features/#custom-media-queries */
+/* 
+The breakpoints for all resolutions represented as pairs with the breakpoint name and its associated pixel width.
+http://cssnext.io/features/#custom-media-queries 
+@media (--medium) { ..styles.. }
+*/
 :root {
 	@custom-media --extraSmall (width <= 320px) and (width >= 0); /* Used for style that should not cascade out */
 	@custom-media --small (min-width: 480px);
