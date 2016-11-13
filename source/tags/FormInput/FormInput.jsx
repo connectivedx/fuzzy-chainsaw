@@ -28,6 +28,7 @@ export default ({
 	value = '',
 	id = uniqueid('form-input_'),
 	className = '',
+	name,
 	autoComplete,
 	inputMode,
 	list,
@@ -45,7 +46,7 @@ export default ({
 	type = enforceType(type);
 	placeholder = placeholder || defaultPlaceholders[type];
 
-	attrs = scrubAttrs(type, {value, id, autoComplete, inputMode, list, maxLength, multiple, minLength, pattern, placeholder, readOnly, required, size});
+	attrs = scrubAttrs(type, {value, name, id, placeholder, autoComplete, inputMode, list, maxLength, multiple, minLength, pattern, readOnly, required, size});
 
 	return ( <input type={type} className={"form-input form-input--" + type + " " + className} {...attrs} /> );
 };
