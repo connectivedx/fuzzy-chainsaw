@@ -30,3 +30,10 @@ button {
 	font-size: 1em;
 }
 
+/* forms */
+input,
+select,
+textarea,
+label {
+	font: 1em/1.3 "Helvetica Neue", sans-serif;
+}

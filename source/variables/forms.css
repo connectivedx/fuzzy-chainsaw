@@ -1,0 +1,12 @@
+:root {
+	--input-height: 2.75em;
+
+	--form-border: {
+		border: 1px solid gray(85%);
+	};
+	--input-default: {
+		@apply --form-border;
+		height: var(--input-height);
+		padding: .6em .25em;
+	};
+}
