@@ -15,14 +15,14 @@ export default ({
 
 	if (variant === 'svgIcons') {
 		controlIcon = (
-			<span className={"form-check__icon form-check__icon--svg form-check__icon--" + type}>
+			<span className="form-check__icon form-check__icon--svg">
 				<Icon name={type + "-unchecked"} />
 				<Icon name={type + "-checked"} />
 			</span>
 		);
 	}
 	else if (variant === 'cssIcons') {
-		controlIcon  =( <IconCss iconName={type} className={"form-check__icon form-check__icon--css form-check__icon--" + type} /> );
+		controlIcon = ( <IconCss iconName={type} className="form-check__icon form-check__icon--css" /> );
 	}
 
 	return (

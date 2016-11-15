@@ -3,6 +3,17 @@
 	position: relative;
 	vertical-align: middle;
 
+	& .form-check__icon {
+		height: 100%;
+		width: 100%;
+	}
+
+	& .form-check__icon--css {
+
+		&::after {
+			display: none;
+		}
+	}
 }
 .form-check--checkbox {
 	height: 1.125em;
@@ -35,11 +46,6 @@
 	}
 }
 
-.form-check__icon {
-	height: 100%;
-	width: 100%;
-}
-
 .form-check__icon--svg {
 	& .icon {
 		fill: gray(60%);
@@ -49,13 +55,6 @@
 	}
 
 	& [class*="-checked"] {
-		display: none;
-	}
-}
-
-.form-check__icon--css {
-
-	&::after {
 		display: none;
 	}
 }

@@ -9,6 +9,7 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('span'), true, 'tag name');
 		t.equal(component.is('.form-check'), true, 'tag class');
+		t.equal(component.is('.form-check--checkbox'), true, 'tag class');
 		t.end();
 	}
 },{
@@ -19,32 +20,29 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('span'), true, 'tag name');
 		t.equal(component.is('.form-check'), true, 'tag class');
+		t.equal(component.is('.form-check--checkbox'), true, 'tag class');
 		t.end();
 	}
 },{
 	name: "radio",
 	component: (
-		<div>
-			<FormCheck type="radio" name="zits" value="yes" />
-			<FormCheck type="radio" name="zits" value="no" />
-		</div>
-	)//,
-	// test(t, component) {
-	// 	t.equal(component.is('div'), true, 'tag name');
-	// 	t.equal(component.is('.form-check'), true, 'tag class');
-	// 	t.end();
-	// }
+		<FormCheck type="radio" />
+	),
+	test(t, component) {
+		t.equal(component.is('span'), true, 'tag name');
+		t.equal(component.is('.form-check'), true, 'tag class');
+		t.equal(component.is('.form-check--radio'), true, 'tag class');
+		t.end();
+	}
 },{
 	name: "radio with svg",
 	component: (
-		<div>
-			<FormCheck type="radio" name="zits" value="yes" variant="svgIcons" />
-			<FormCheck type="radio" name="zits" value="no" variant="svgIcons" />
-		</div>
-	)//,
-	// test(t, component) {
-	// 	t.equal(component.is('div'), true, 'tag name');
-	// 	t.equal(component.is('.form-check'), true, 'tag class');
-	// 	t.end();
-	// }
+		<FormCheck type="radio" variant="svgIcons" />
+	),
+	test(t, component) {
+		t.equal(component.is('span'), true, 'tag name');
+		t.equal(component.is('.form-check'), true, 'tag class');
+		t.equal(component.is('.form-check--radio'), true, 'tag class');
+		t.end();
+	}
 }];
