@@ -1,1 +1,2 @@
 @custom-selector :--enter :hover, :active;
+@custom-selector :--generated :before, :after;
