@@ -4,7 +4,7 @@ import IconCss from './IconCss.jsx';
 export default [{
 	name: "default",
 	component: (
-		<CssIcon iconName="checkbox" />
+		<IconCss iconName="checkbox" />
 	),
 	test(t, component) {
 		t.equal(component.is('span'), true, 'tag name');
@@ -15,7 +15,7 @@ export default [{
 },{
 	name: "default",
 	component: (
-		<CssIcon iconName="radio" />
+		<IconCss iconName="radio" />
 	),
 	test(t, component) {
 		t.equal(component.is('span'), true, 'tag name');

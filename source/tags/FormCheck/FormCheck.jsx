@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FormCheck.css';
 import Icon from '../Icon/Icon'
-import CssIcon from '../CssIcon/CssIcon'
+import IconCss from '../IconCss/IconCss'
 
 export default ({
 	className = '',
@@ -22,7 +22,7 @@ export default ({
 		);
 	}
 	else if (variant === 'cssIcons') {
-		controlIcon  =( <CssIcon iconName={type} className={"form-check__icon form-check__icon--css form-check__icon--" + type} /> );
+		controlIcon  =( <IconCss iconName={type} className={"form-check__icon form-check__icon--css form-check__icon--" + type} /> );
 	}
 
 	return (
