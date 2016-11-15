@@ -4,10 +4,10 @@ http://cssnext.io/features/#custom-media-queries
 @media (--medium) { ..styles.. }
 */
 :root {
-	@custom-media --extra-small (width <= 320px) and (width >= 0); /* Used for style that should not cascade out */
-	@custom-media --small (min-width: 480px);
-	@custom-media --medium (min-width: 768px);
-	@custom-media --large (min-width: 960px);
-	@custom-media --extra-large (min-width: 1220px);
-	@custom-media --rotate-device (max-width: var(--small), (context: 16))) and (orientation: portrait);
+	@custom-media --breakpoint--extra-small (width <= 320px) and (width >= 0); /* Used for style that should not cascade out */
+	@custom-media --breakpoint--small (min-width: 480px);
+	@custom-media --breakpoint--medium (min-width: 768px);
+	@custom-media --breakpoint--large (min-width: 960px);
+	@custom-media --breakpoint--extra-large (min-width: 1220px);
+	@custom-media --breakpoint--rotate (max-width: var(--breakpoint--small), (context: 16))) and (orientation: portrait);
 }
