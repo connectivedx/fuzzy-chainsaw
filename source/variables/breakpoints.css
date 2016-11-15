@@ -5,9 +5,9 @@ http://cssnext.io/features/#custom-media-queries
 */
 :root {
 	@custom-media --breakpoint--extra-small (width <= 320px) and (width >= 0); /* Used for style that should not cascade out */
-	@custom-media --breakpoint--small (min-width: 480px);
-	@custom-media --breakpoint--medium (min-width: 768px);
-	@custom-media --breakpoint--large (min-width: 960px);
-	@custom-media --breakpoint--extra-large (min-width: 1220px);
-	@custom-media --breakpoint--rotate (max-width: var(--breakpoint--small), (context: 16))) and (orientation: portrait);
+	@custom-media --breakpoint--small  only screen and (min-width: 480px);
+	@custom-media --breakpoint--medium  only screen and (min-width: 768px);
+	@custom-media --breakpoint--large  only screen and (min-width: 1024px);
+	@custom-media --breakpoint--extra-large  only screen and (min-width: 1220px);
+	@custom-media --breakpoint--rotate (max-width: 480px, (context: 16))) and (orientation: portrait);
 }
