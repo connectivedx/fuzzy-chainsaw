@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './FormCheck.css';
+import uniqueid from 'lodash.uniqueid';
 import Icon from '../Icon/Icon'
 import IconCss from '../IconCss/IconCss'
 
@@ -7,7 +8,7 @@ export default ({
 	className = '',
 	type = 'checkbox',
 	variant = 'cssIcons',
-	id,
+	id = uniqueid('form-check_'),
 	name
 }) => {
 	let attrs = {id, name};
