@@ -6,3 +6,4 @@
 	}	
 */
 @custom-selector :--enter :hover, :active;
+@custom-selector :--haf :hover, :active, :focus;
