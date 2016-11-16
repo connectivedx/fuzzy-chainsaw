@@ -10,7 +10,4 @@
 
     /*The base font-family for the root html element.*/
     --base--font-family: sans-serif;
-
-    /*The font-size for unordered list bullets.*/
-    --base--list--bullets-size: 24;
 }
