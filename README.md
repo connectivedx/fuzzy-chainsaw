@@ -32,3 +32,6 @@ It’s coming. Pinkie swear.
 ### Why fuzzy chainsaw?
 
 GitHub gifted it to us as the randomly generated suggestion and we took it, because it’s a pretty awesome phrase.
+
+### What version of NodeJS?
+version: 6.9.1
