@@ -8,7 +8,4 @@ color: var(--greyDark);
 :root {
 	--primary: #e55030;
 	--secondary: #d1d2d4;
-	--grey-light: #eeeeee;
-	--grey-medium: #cccccc;
-	--grey-dark: #6d6d6d;
 }
