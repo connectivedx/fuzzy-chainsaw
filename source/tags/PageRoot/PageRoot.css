@@ -5,7 +5,7 @@
 }
 
 html {
-    font: var(--type-font-percentage) / var(--type-line-height) var(--type-font-family);
+    font: var(--typography-font-percentage) / var(--typography-line-height) var(--typography-font-family);
 }
 
 pre,
