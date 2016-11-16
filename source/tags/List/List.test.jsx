@@ -64,8 +64,8 @@ export default [{
 		<List tagName="ol" listData={ListData}></List>
 	),
 	test(t, component) {
-		//t.equal(component.is('ol'), true, 'tag name');
-		//t.equal(component.is('.list'), true, 'tag class');
+		t.equal(component.is('ol'), true, 'tag name');
+		t.equal(component.is('.list'), true, 'tag class');
 		t.end();
 	}
 },{
@@ -74,8 +74,8 @@ export default [{
 		<List tagName="ul" listData={ListData}></List>
 	),
 	test(t, component) {
-		//t.equal(component.is('ul'), true, 'tag name');
-		//t.equal(component.is('.list'), true, 'tag class');
+		t.equal(component.is('ul'), true, 'tag name');
+		t.equal(component.is('.list'), true, 'tag class');
 		t.end();
 	}
 },
@@ -85,8 +85,8 @@ export default [{
 		<List tagName="ol" listData={ListData} indents="true"></List>
 	),
 	test(t, component) {
-		//t.equal(component.is('ol'), true, 'tag name');
-		//t.equal(component.is('.list'), true, 'tag class');
+		t.equal(component.is('ol'), true, 'tag name');
+		t.equal(component.is('.list'), true, 'tag class');
 		t.end();
 	}
 },{
@@ -95,8 +95,8 @@ export default [{
 		<List tagName="ul" listData={ListData} indents="true"></List>
 	),
 	test(t, component) {
-		//t.equal(component.is('ul'), true, 'tag name');
-		//t.equal(component.is('.list'), true, 'tag class');
+		t.equal(component.is('ul'), true, 'tag name');
+		t.equal(component.is('.list'), true, 'tag class');
 		t.end();
 	}
 },
@@ -106,8 +106,8 @@ export default [{
 		<List tagName="ol" listData={ListData} indents="true" bullets="true"></List>
 	),
 	test(t, component) {
-		//t.equal(component.is('ol'), true, 'tag name');
-		//t.equal(component.is('.list'), true, 'tag class');
+		t.equal(component.is('ol'), true, 'tag name');
+		t.equal(component.is('.list'), true, 'tag class');
 		t.end();
 	}
 },{
@@ -116,8 +116,8 @@ export default [{
 		<List tagName="ul" listData={ListData} indents="true" bullets="true"></List>
 	),
 	test(t, component) {
-		//t.equal(component.is('ul'), true, 'tag name');
-		//t.equal(component.is('.list'), true, 'tag class');
+		t.equal(component.is('ul'), true, 'tag name');
+		t.equal(component.is('.list'), true, 'tag class');
 		t.end();
 	}
 }];
