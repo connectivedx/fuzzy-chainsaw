@@ -3,10 +3,10 @@ The z-indexes for the project.
 z-index: var(--navIndex);
 */
 :root {
-	--index--hidden: -100;
-	--index--base: 1;
-	--index--content: 10;
-	--index--nav: 50;
-	--index--tooltip: 1000;
-	--index--modal: 8000;	
+	--index--hidden: -10;
+	--index--base: 10;
+	--index--content: 20;
+	--index--nav: 30;
+	--index--tooltip: 40;
+	--index--modal: 50;	
 }

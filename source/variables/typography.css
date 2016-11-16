@@ -9,7 +9,7 @@
     --base--line-height: 1.5;
 
     /*The base font-family for the root html element.*/
-    --base--font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    --base--font-family: sans-serif;
 
     /*The font-size for unordered list bullets.*/
     --base--list--bullets-size: 24;
