@@ -32,3 +32,7 @@ It’s coming. Pinkie swear.
 ### Why fuzzy chainsaw?
 
 GitHub gifted it to us as the randomly generated suggestion and we took it, because it’s a pretty awesome phrase.
+
+### What verisons of Node are supported?
+Fuzzy Chainsaw was developed to work best with Node's [most recent LTS release](https://nodejs.org/en/download/) and up. At the time of this writing, LTS is 6.9.1. 
+We intend to keep support pegged to Node's [LTS schedule](https://github.com/nodejs/LTS#lts-schedule).
