@@ -34,4 +34,5 @@ It’s coming. Pinkie swear.
 GitHub gifted it to us as the randomly generated suggestion and we took it, because it’s a pretty awesome phrase.
 
 ### What version of NodeJS?
-version: 6.9.1
+Fuzzy Chainsaw was developed to work best with Node's most recent LTS release and up. Tt the time of this writing, LTS is 6.9.1. 
+We intend to keep support pegged to Node's LTS schedule.
