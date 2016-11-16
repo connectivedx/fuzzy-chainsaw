@@ -5,7 +5,7 @@
 }
 
 html {
-    font: var(--base--font-percentage) / var(--base--line-height) var(--base--font-family);
+    font: var(--base-font-percentage) / var(--base-line-height) var(--base-font-family);
 }
 
 pre,

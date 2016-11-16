@@ -5,4 +5,4 @@
 	  ... styles ...
 	}	
 */
-@custom-selector :--enter :hover, :focus, :active;
+@custom-selector :--enter :hover, :active;
