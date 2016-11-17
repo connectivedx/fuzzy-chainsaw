@@ -1,3 +1,12 @@
-.form-checkgroup {
+.form-checkgroup__item {
+	&+ .form-checkgroup__item {
+		margin: .5em 0 0;
+	}
+}
 
+.form-checkgroup__label {
+	display: inline-block;
+	line-height: 1.5;
+	margin-left: .25em;
+	vertical-align: middle;
 }
