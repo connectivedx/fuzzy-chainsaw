@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Wrapper.css';
 
-export default ({
-	className = '',
+const Wrapper = ({
 	size = 'default',
+	className = '',
 	children
 }) => {
 	return (
@@ -12,3 +12,10 @@ export default ({
 		</div>
 	)
 };
+
+Wrapper.propTypes = {
+	size: React.PropTypes.string,
+	className: React.PropTypes.string
+};
+
+export default Wrapper;

@@ -32,6 +32,7 @@ export default [{
 	component: (
 		<Poster
 			title="Lorem ipsum dolor sit amet, consectetur adipisicing."
+			alt="Randy Savage"
 			src={randyImg} />
 	),
 	test(t, component) {

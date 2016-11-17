@@ -17,8 +17,7 @@ export default () => {
 	});
 
 	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
+		<svg xmlns="http://www.w3.org/2000/svg"
 			className="icon-set"
 			dangerouslySetInnerHTML={{ __html: symbols.join('') }} />
 	)
