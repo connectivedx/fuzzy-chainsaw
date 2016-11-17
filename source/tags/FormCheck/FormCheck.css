@@ -1,7 +1,9 @@
 .form-check {
 	display: inline-block;
+	height: 1.25em;
 	position: relative;
-	vertical-align: middle;
+	vertical-align: top;
+	width: 1.25em;
 
 	& .form-check__icon {
 		height: 100%;
@@ -14,14 +16,6 @@
 			display: none;
 		}
 	}
-}
-.form-check--checkbox {
-	height: 1.125em;
-	width: 1.125em;
-}
-.form-check--radio {
-	height: 1.25em;
-	width: 1.25em;
 }
 
 .form-check__control {
