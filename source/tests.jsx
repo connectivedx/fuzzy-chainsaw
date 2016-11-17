@@ -1,6 +1,6 @@
 import test from 'tape';
 import zipObject from 'lodash.zipobject';
-import { shallow } from 'enzyme';
+import { render, shallow } from 'enzyme';
 
 
 const requireAll = context => {
@@ -22,7 +22,7 @@ const runTests = (type, col) =>
 			tests.forEach((config, i) => {
 				if (config.test) {
 					test(`/${type}/${key.substr(2)} [test #${i+1}: ${config.name}] =>`, t => {
-						config.test(t, shallow(config.component));
+						config.test(t, shallow(config.component), render(config.component));
 					})
 				}
 			});

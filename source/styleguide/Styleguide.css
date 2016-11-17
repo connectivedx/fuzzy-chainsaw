@@ -17,21 +17,14 @@
 	overflow: hidden;
 	transition: transform 0.3s;
 
-	& > .heading {
-		margin: 0.5em 0.33em;
-		font-size: 3em;
-	}
-
 	& a {
 		color: #000;
 	}
+}
 
-	@media (width >= 960px) {
-		margin-top: 5.5em;
-
-		& > .heading {
-			margin: 0.5em 0.66em;
-		}
+.sg-styleguide__header {
+	& .heading {
+		font-size: 3em;
 	}
 }
 
@@ -48,5 +41,14 @@
 
 	& > * + * {
 		margin-top: 1em;
+	}
+}
+
+.sg-styleguide-readme {
+	padding: 1em;
+	background-color: #eee;
+
+	@media (width >= 960px) {
+		padding: 2em;
 	}
 }

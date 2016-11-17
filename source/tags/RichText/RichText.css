@@ -1,0 +1,29 @@
+.rich-text {
+	@extend .rhythm-deep;
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
+		@extend .heading;
+	}
+
+	& h1 { @extend .heading--h1; }
+	& h2 { @extend .heading--h2; }
+	& h3 { @extend .heading--h3; }
+	& h4 { @extend .heading--h4; }
+	& h5 { @extend .heading--h5; }
+	& h6 { @extend .heading--h6; }
+
+	& button {
+		@extend .button;
+		@extend .button--default;
+	}
+
+	& ul,
+	& ol {
+		@extend .rhythm--small;
+	}
+}

@@ -1,13 +1,13 @@
 import React from 'react';
 import Rhythm from './Rhythm';
 
-const Children = [
+const children = [
 	<div key="1">abc</div>,
 	<div key="2">123</div>,
 	<div key="3">
-		<section>9990</section>
-		<div>3758</div>
-		<div>2389</div>
+		<section key="1b">9990</section>
+		<div key="2b">3758</div>
+		<div key="3b">2389</div>
 	</div>
 ];
 
@@ -17,35 +17,35 @@ module.exports = [{
 	name: 'default',
 	component: (
 		<Rhythm>
-			{ Children }
+			{children}
 		</Rhythm>
 	)
 }, {
 	name: 'small size',
 	component: (
 		<Rhythm size="small">
-			{ Children }
+			{children}
 		</Rhythm>
 	)
 }, {
 	name: 'large size',
 	component: (
 		<Rhythm size="large">
-			{ Children }
+			{children}
 		</Rhythm>
 	)
 }, {
 	name: 'deep',
 	component: (
 		<Rhythm deep="true">
-			{ Children }
+			{children}
 		</Rhythm>
 	)
 }, {
 	name: 'size/deep',
 	component: (
 		<Rhythm deep="true" size="large">
-			{ Children }
+			{children}
 		</Rhythm>
 	)
 }]

@@ -2,10 +2,9 @@ import React from 'react';
 import style from './ProductDescription.css';
 
 import Heading from '../../tags/Heading/Heading';
-import Poster from '../../tags/Poster/Poster';
 import Button from '../../tags/Button/Button';
 
-export default ({
+const ProductDescription = ({
 	title,
 	href,
 	className,
@@ -17,3 +16,11 @@ export default ({
 		<Button href={href}>Learn More</Button>
 	</div>
 )
+
+ProductDescription.propTypes = {
+	title: React.PropTypes.string.isRequired,
+	href: React.PropTypes.string.isRequired,
+	className: React.PropTypes.string
+};
+
+export default ProductDescription;

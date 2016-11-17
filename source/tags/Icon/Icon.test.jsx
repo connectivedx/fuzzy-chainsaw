@@ -44,4 +44,14 @@ export default [{
 		t.equal(component.is('.icon--minus'), true, 'icon name class');
 		t.end();
 	}
+}, {
+	name: 'extra attribute',
+	component: (
+		<Icon name="plus" data-id="yoyoyo" />
+	),
+	test(t, component) {
+		t.equal(component.is('.icon--plus'), true, 'icon name class');
+		t.equal(component.props()['data-id'], 'yoyoyo', 'icon data attr');
+		t.end();
+	}
 }];

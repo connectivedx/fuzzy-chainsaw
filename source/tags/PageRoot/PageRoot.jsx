@@ -13,18 +13,26 @@ export const PageRoot__Head = ({ title, children }) => (
 	<head>
 		<meta charset="utf-8" />
 		<title>{title}</title>
-		<link rel="stylesheet" href="/assets/bundle.css" />
+		<link rel="stylesheet" href="/assets/styles.css" />
 		{children}
 	</head>
 );
+
+PageRoot__Head.propTypes = {
+	title: React.PropTypes.string.isRequired
+}
 
 export const PageRoot__Body = ({ className, children }) => (
 	<body className={className}>
 		<IconSet />
 		{children}
-		<script src="/assets/bundle.js" />
+		<script src="/assets/scripts.js" />
 	</body>
 );
+
+PageRoot__Body.propTypes = {
+	className: React.PropTypes.string
+}
 
 export const PageRoot = ({ title, bodyClass = "", children }) => (
 	<PageRoot__Wrapper>
@@ -32,6 +40,12 @@ export const PageRoot = ({ title, bodyClass = "", children }) => (
 		<PageRoot__Body className={bodyClass}>{children}</PageRoot__Body>
 	</PageRoot__Wrapper>
 );
+
+PageRoot.propTypes = {
+	title: React.PropTypes.string.isRequired,
+	bodyClass: React.PropTypes.string
+};
+
 
 
 export default PageRoot;
