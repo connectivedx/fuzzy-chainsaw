@@ -1,0 +1,97 @@
+import React from 'react';
+import Dom from 'react-dom/server';
+
+import Styleguide from './styleguide/Styleguide';
+import match from 'minimatch';
+
+
+const pagesContext = require.context('./pages/', true, /\.jsx$/);
+const tagsContext = require.context('./tags/', true, /\.jsx$/);
+const componentsContext = require.context('./components/', true, /\.jsx$/);
+
+const requireOrFail = context => path => {
+  try {
+    const module = context(path);
+    return module.default || module;
+  } catch(e) {}
+}
+
+const isRenderableModule = key => (
+  key.indexOf('.jsx') !== -1 && // grab jsx files
+  key.indexOf('.test.jsx') === -1 && // skip test files
+  key.substr(0, 1) !== '_' // skip partial files
+);
+
+// builds a path:module object
+// { './source/page.jsx': require('./source/page.jsx') }
+const requireAllpages = context => {
+  return context.keys()
+    .filter(isRenderableModule)
+    .reduce((modules, key) => {
+      modules[key] = context(key);
+      return modules;
+    }, {});
+}
+
+const requireAllComponents = (context, prefix) => {
+  return context.keys()
+    .filter(isRenderableModule)
+    .reduce((modules, key) => {
+      modules[prefix + key.substr(2)] = context(key);
+      return modules;
+    }, {});
+}
+
+const isStyleguideablePath = path => (
+  match(path, './styleguide/tags/**') ||
+  match(path, './styleguide/components/**')
+);
+
+
+module.exports = {
+  render: (Page, locals, done) => {
+    let output;
+
+    if (isStyleguideablePath(locals.path)) {
+      const fileName = locals.outputPath.substr('styleguide/'.length)
+      const type = fileName.split('/')[0];
+      const first = fileName.substr(type.length + 1);
+      const name = first.substr(0, first.length - 5);
+
+      const requireContext = type === 'tags' ? tagsContext : componentsContext;
+      const requirer = requireOrFail(requireContext);
+
+      const res =
+        <Styleguide
+          name={name}
+          tag={requirer(`./${name}/${name}.jsx`)}
+          readme={requirer(`./${name}/README.md`)}
+          tests={requirer(`./${name}/${name}.test.jsx`)}
+          locals={locals} />
+
+      output = Dom.renderToStaticMarkup(res);
+    } else {
+      output = Dom.renderToString(<Page locals={locals} />, locals);
+    }
+
+    done(null, '<!DOCTYPE html>' + output);
+  },
+  pages: Object.assign(
+    requireAllpages(pagesContext),
+    requireAllComponents(tagsContext, './styleguide/tags/'),
+    requireAllComponents(componentsContext, './styleguide/components/')
+  ),
+  transform: inputPath => {
+    if (isStyleguideablePath(inputPath)) {
+      return inputPath
+        .substr(0, inputPath.lastIndexOf('/'))
+        .replace('./', '') + '.html';
+    }
+
+    return inputPath
+      .replace('./', '')
+      .replace(/\.jsx/, '.html');
+
+  }
+};
+
