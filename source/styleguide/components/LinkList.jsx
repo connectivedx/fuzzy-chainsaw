@@ -1,11 +1,16 @@
 import React from 'react';
 
-export default ({ baseUrl, components }) => (
-	<ul>
-		{ components.map(item => {
-			return <li key={item}>
-				<a href={`${baseUrl}/${item}.html`}>{item}</a>
-			</li>
-		}) }
-	</ul>
+export default ({
+  items = [],
+  className = '',
+  children,
+  ...attrs
+}) => (
+  <ul className={`link-list ${className}`} {...attrs}>
+    { items.map(item => (
+      <li key={item.url}>
+        <a href={item.url}>{item.content}</a>
+      </li>
+    )) }
+  </ul>
 );
