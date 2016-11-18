@@ -10,8 +10,7 @@ html {
 
 pre,
 code {
-	font-family: "PT Mono", mono;
-	font-size: 0.9em;
+	font-family: monospace;
 	line-height: 1.4em;
 }
 
