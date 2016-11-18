@@ -54,9 +54,11 @@
 
 	& table {
 		border-collapse: collapse;
+
 		& * {
 			margin: 0;
 		}
+
 		& + * {
 			margin-top: 2em;
 		}
@@ -66,7 +68,8 @@
 		background-color: gray(230);
 	}
 
-	& th, & td {
+	& th,
+	& td {
 		border: 1px solid gray(200);
 		padding: .75em .5em;
 	}
