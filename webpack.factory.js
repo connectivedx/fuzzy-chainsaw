@@ -34,13 +34,6 @@ const dirs = pkg.directories;
  */
 
 const baseOutput = require('./build/lib/base-output');
-const {
-  pages,
-  components,
-  tags,
-  styleguides
-} = require('./build/lib/file-collections');
-
 
 /*
  *

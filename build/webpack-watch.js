@@ -80,7 +80,6 @@ module.exports = config => {
 
   chokidar.watch(pkg.directories.source, { ignoreInitial: true })
     .on('ready', watch)
-    .on('addDir', watch)
     .on('unlinkDir', watch)
     .on('error', error => console.error('webpack-dev-server had an error: ', error));
 };
