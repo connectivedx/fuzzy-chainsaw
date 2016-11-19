@@ -1,4 +1,3 @@
-const chokidar = require('chokidar');
 const path = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
