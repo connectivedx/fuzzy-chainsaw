@@ -3,6 +3,7 @@ import Dom from 'react-dom/server';
 
 import Styleguide from './styleguide/Styleguide';
 import match from 'minimatch';
+import { pd } from 'pretty-data';
 
 
 const pagesContext = require.context('./pages/', true, /\.jsx$/);
@@ -47,6 +48,12 @@ const isStyleguideablePath = path => (
   match(path, './styleguide/components/**')
 );
 
+const processHtmlOutput = (html, locals) => {
+  html = html.replace(/\/assets/gi, `${locals.baseHref}/assets`);
+  html = pd.xml(html);
+  return html;
+}
+
 
 module.exports = {
   render: (Page, locals, done) => {
@@ -61,20 +68,21 @@ module.exports = {
       const requireContext = type === 'tags' ? tagsContext : componentsContext;
       const requirer = requireOrFail(requireContext);
 
-      const res =
-        <Styleguide
-          name={name}
-          tag={requirer(`./${name}/${name}.jsx`)}
-          readme={requirer(`./${name}/README.md`)}
-          tests={requirer(`./${name}/${name}.test.jsx`)}
-          locals={locals} />
-
-      output = Dom.renderToStaticMarkup(res);
+      output =
+        Dom.renderToStaticMarkup(
+          <Styleguide
+            name={name}
+            tag={requirer(`./${name}/${name}.jsx`)}
+            readme={requirer(`./${name}/README.md`)}
+            tests={requirer(`./${name}/${name}.test.jsx`)}
+            locals={locals} />
+        );
     } else {
-      output = Dom.renderToString(<Page locals={locals} />, locals);
+      output =
+        Dom.renderToString(<Page locals={locals} />);
     }
 
-    done(null, '<!DOCTYPE html>' + output);
+    done(null, '<!DOCTYPE html>' + processHtmlOutput(output, locals));
   },
   pages: Object.assign(
     requireAllpages(pagesContext),

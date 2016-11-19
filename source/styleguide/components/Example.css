@@ -75,4 +75,14 @@
 	&.is-active {
 		display: block;
 	}
+
+	/* fix code formatting thats been processed by prettycode */
+	& > pre {
+		white-space: normal;
+
+		& > code {
+			white-space: pre;
+		}
+	}
+
 }
