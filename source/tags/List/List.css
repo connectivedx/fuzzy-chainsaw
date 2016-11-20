@@ -1,3 +1,15 @@
 .list {
+	list-style: none;
+}
 
+.list__item { }
+
+.list--unordered {
+	list-style-type: disc;
+	padding-left: 1em;
+}
+
+.list--ordered {
+	list-style-type: decimal;
+	padding-left: 1em;
 }

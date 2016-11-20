@@ -3,21 +3,23 @@ import styles from './List.css';
 
 export const List_Item = ({
 	className = '',
-	children
+	children,
+  ...attrs
 }) => (
-	<li className={`list__item ${className}`}>{children}</li>
+	<li className={`list__item ${className}`} {...attrs}>{children}</li>
 );
 
 export const List = ({
-	className = '',
-	type = 'unordered',
 	tagName,
-	children
+  variant = 'unordered',
+  className = '',
+	children,
+  ...attrs
 }) => {
-	const Tag = tagName || type === 'ordered' ? 'ol' : 'ul';
+	const Tag = tagName || variant === 'ordered' ? 'ol' : 'ul';
 
 	return (
-		<Tag className={`list list--${type} ${className}`}>
+		<Tag className={`list list--${variant} ${className}`} {...attrs}>
 			{children}
 		</Tag>
 	);
