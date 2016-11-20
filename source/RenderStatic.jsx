@@ -65,7 +65,10 @@ const processHtmlOutput = (output, locals) => {
 
 module.exports = {
   render: (Page, locals, done) => {
-    let output;
+    const output = component => {
+      const htmlOutput = Dom.renderToStaticMarkup(component);
+      done(null, '<!DOCTYPE html>' + processHtmlOutput(htmlOutput, locals));
+    }
 
     if (isStyleguideablePath(locals.path)) {
       const fileName = locals.outputPath.substr('styleguide/'.length)
@@ -76,21 +79,17 @@ module.exports = {
       const requireContext = type === 'tags' ? tagsContext : componentsContext;
       const requirer = requireOrFail(requireContext);
 
-      output =
-        Dom.renderToStaticMarkup(
-          <Styleguide
-            name={name}
-            tag={requirer(`./${name}/${name}.jsx`)}
-            readme={requirer(`./${name}/README.md`)}
-            tests={requirer(`./${name}/${name}.test.jsx`)}
-            locals={locals} />
-        );
+      output(
+        <Styleguide
+          name={name}
+          tag={requirer(`./${name}/${name}.jsx`)}
+          readme={requirer(`./${name}/README.md`)}
+          tests={requirer(`./${name}/${name}.test.jsx`)}
+          locals={locals} />
+      );
     } else {
-      output =
-        Dom.renderToString(<Page locals={locals} />);
+      output(<Page locals={locals} />);
     }
-
-    done(null, '<!DOCTYPE html>' + processHtmlOutput(output, locals));
   },
   pages: Object.assign(
     requireAllpages(pagesContext),
