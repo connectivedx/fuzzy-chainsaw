@@ -45,8 +45,7 @@ export default [{
   test(t, component) {
     t.equal(component.is('ul'), true, 'tag name');
     t.equal(component.is('.list'), true, 'tag class');
-    t.equal(component.is('.list--unordered'), true, 'tag class');
-    t.equal(component.is('.boogy-monster'), true, 'additional class');
+    t.equal(component.is('.list--blank'), true, 'tag class');
     t.equal(component.children().length, 3, 'number of children');
     t.end();
   }
