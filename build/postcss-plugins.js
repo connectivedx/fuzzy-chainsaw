@@ -10,6 +10,7 @@ const colorAlpha = require('postcss-color-alpha');
 const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
+const mqpacker = require("css-mqpacker")
 
 
 module.exports = [
@@ -17,5 +18,6 @@ module.exports = [
   colorAlpha(),
   extend(),
   discardEmpty(),
-  removeRoot()
+  removeRoot(),
+  mqpacker({ sort: true })
 ];

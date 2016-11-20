@@ -32,6 +32,7 @@
     "babel-preset-react": "^6.16.0",
     "chokidar": "^1.6.1",
     "css-loader": "^0.25.0",
+    "css-mqpacker": "^5.0.1",
     "cssnano": "^3.7.7",
     "del": "^2.2.2",
     "dopl": "^0.1.0",
