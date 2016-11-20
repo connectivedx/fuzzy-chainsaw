@@ -48,9 +48,18 @@ const isStyleguideablePath = path => (
   match(path, './styleguide/components/**')
 );
 
-const processHtmlOutput = (html, locals) => {
-  html = html.replace(/\/assets/gi, `${locals.baseHref}/assets`);
-  return html;
+const processHtmlOutput = (output, locals) => {
+  output = output
+      .replace(/src\=\"\//gi, `src="${locals.baseHref}/`)
+      .replace(/href\=\"\//gi, `href="${locals.baseHref}/`)
+      .replace(/url\=\"\//gi, `url="${locals.baseHref}/`)
+      .replace(/url\(\//gi, `url(${locals.baseHref}/`)
+      .replace(/url\(\"\//gi, `url("${locals.baseHref}/`);
+
+  return html(output, {
+    indent_size: 2,
+    preserve_newlines: false
+  });
 }
 
 
@@ -81,12 +90,7 @@ module.exports = {
         Dom.renderToString(<Page locals={locals} />);
     }
 
-    output = html(output, {
-      indent_size: 2,
-      preserve_newlines: false
-    });
-
-    done(null, '<!DOCTYPE html>' + output);
+    done(null, '<!DOCTYPE html>' + processHtmlOutput(output, locals));
   },
   pages: Object.assign(
     requireAllpages(pagesContext),
