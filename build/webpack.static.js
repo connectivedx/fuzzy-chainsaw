@@ -54,7 +54,7 @@ module.exports = ({
         loader: 'json-loader'
       },
       {
-        test: /\.(css|cs|cshtml)$/,
+        test: /\.(css|woff|woff2|eot|ttf|cs|cshtml)$/,
         loader: 'null-loader'
       }
     ]
