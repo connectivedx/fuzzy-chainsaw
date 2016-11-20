@@ -12,7 +12,10 @@ PostPostCSSPlugin.prototype.apply = function(compiler) {
         Object.keys(compilation.assets)
           .map(key => {
             if (match(key, '**/*.css')) {
-              const src = compilation.assets[key].source();
+              const src =
+                compilation.assets[key]
+                  .source()
+                  .replace(/:\\--/gi, ':--'); // fix escaping via css-loader
 
               return postcss(this.postPostCssPlugins)
                 .process(src)
