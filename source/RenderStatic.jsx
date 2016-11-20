@@ -3,7 +3,7 @@ import Dom from 'react-dom/server';
 
 import Styleguide from './styleguide/Styleguide';
 import match from 'minimatch';
-import { pd } from 'pretty-data';
+import { html } from 'js-beautify';
 
 
 const pagesContext = require.context('./pages/', true, /\.jsx$/);
@@ -50,7 +50,6 @@ const isStyleguideablePath = path => (
 
 const processHtmlOutput = (html, locals) => {
   html = html.replace(/\/assets/gi, `${locals.baseHref}/assets`);
-  html = pd.xml(html);
   return html;
 }
 
@@ -82,7 +81,12 @@ module.exports = {
         Dom.renderToString(<Page locals={locals} />);
     }
 
-    done(null, '<!DOCTYPE html>' + processHtmlOutput(output, locals));
+    output = html(output, {
+      indent_size: 2,
+      preserve_newlines: false
+    });
+
+    done(null, '<!DOCTYPE html>' + output);
   },
   pages: Object.assign(
     requireAllpages(pagesContext),
