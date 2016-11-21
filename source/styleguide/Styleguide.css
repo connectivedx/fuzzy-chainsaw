@@ -46,9 +46,43 @@
 
 .sg-styleguide-readme {
 	padding: 1em;
-	background-color: #eee;
+	background-color: gray(245);
 
 	@media (width >= 960px) {
 		padding: 2em;
+	}
+
+	& table {
+		border-collapse: collapse;
+
+		& * {
+			margin: 0;
+		}
+
+		& + * {
+			margin-top: 2em;
+		}
+	}
+
+	& tr:nth-child(even) {
+		background-color: gray(230);
+	}
+
+	& th,
+	& td {
+		border: 1px solid gray(200);
+		padding: .75em .5em;
+	}
+
+	& th {
+		font-weight: bold;
+	}
+
+	& code {
+		background-color: white;
+		border-radius: .125em .25em;
+		color: firebrick;
+		display: inline-block;
+		padding: .25em;
 	}
 }
