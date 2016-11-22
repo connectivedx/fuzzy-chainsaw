@@ -43,7 +43,9 @@ gulp.task('production', done => {
 });
 
 gulp.task('watch', done => {
-  webpackWatch(webpackConfig);
+  webpackWatch(webpackConfig, {
+    // port: 8080
+  });
 });
 
 

@@ -4,7 +4,11 @@ import PageRoot from '../../tags/PageRoot/PageRoot';
 import Rhythm from '../../tags/Rhythm/Rhythm';
 import Heading from '../../tags/Heading/Heading';
 import Wrapper from '../../tags/Wrapper/Wrapper';
-import LinkList from '../../styleguide/components/LinkList';
+import {
+  getTagsIndexData,
+  getComponentsIndexData,
+  Index
+} from '../../styleguide/components/Index';
 
 export default ({ locals }) => (
 	<PageRoot title="Styleguide">
@@ -12,16 +16,16 @@ export default ({ locals }) => (
 			<Rhythm size="large">
 				<Heading level="1">Styleguide</Heading>
 
-				<Rhythm size="small" deep="true">
-					<Heading level="2">Tags</Heading>
-					<LinkList baseUrl="/styleguide/tags" components={locals.tags} />
-				</Rhythm>
+        <Rhythm>
+          <Heading level="2">Tags</Heading>
+          <Index items={getTagsIndexData(locals)} className="rhythm--small" />
+        </Rhythm>
 
-				<Rhythm size="small" deep="true">
-					<Heading level="2">Components</Heading>
-					<LinkList baseUrl="/styleguide/components" components={locals.components} />
-				</Rhythm>
+        <Rhythm>
+          <Heading level="2">Components</Heading>
+          <Index items={getComponentsIndexData(locals)} className="rhythm--small" />
+        </Rhythm>
 			</Rhythm>
-	</Wrapper>
+  	</Wrapper>
 	</PageRoot>
 );
