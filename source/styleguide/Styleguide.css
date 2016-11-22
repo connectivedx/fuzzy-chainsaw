@@ -90,4 +90,6 @@
 .sg-page-root--bgimage-test {
 	background-image: url('./assets/randy-savage.jpg');
     background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
 }
