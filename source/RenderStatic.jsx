@@ -48,18 +48,26 @@ const isStyleguideablePath = path => (
   match(path, './styleguide/components/**')
 );
 
-const processHtmlOutput = (output, locals) => {
-  output = output
-      .replace(/src\=\"\//gi, `src="${locals.baseHref}/`)
-      .replace(/href\=\"\//gi, `href="${locals.baseHref}/`)
-      .replace(/url\=\"\//gi, `url="${locals.baseHref}/`)
-      .replace(/url\(\//gi, `url(${locals.baseHref}/`)
-      .replace(/url\(\"\//gi, `url("${locals.baseHref}/`);
+const makeAbsolutePathRelative = (output, locals) => {
+  return output
+    .replace(/src\=\"\//gi, `src="${locals.baseHref}/`)
+    .replace(/href\=\"\//gi, `href="${locals.baseHref}/`)
+    .replace(/url\=\"\//gi, `url="${locals.baseHref}/`)
+    .replace(/url\(\//gi, `url(${locals.baseHref}/`)
+    .replace(/url\(\"\//gi, `url("${locals.baseHref}/`);
+}
 
+const formatHtml = output => {
   return html(output, {
     indent_size: 2,
     preserve_newlines: false
   });
+}
+
+const processHtmlOutput = (output, locals) => {
+  return formatHtml(
+    makeAbsolutePathRelative(output, locals);
+  );
 }
 
 
