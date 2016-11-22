@@ -9,7 +9,7 @@ const path = require('path');
 const glob = require('glob');
 
 const webpack = require('webpack');
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+const StaticGeneratorPlugin = require('static-generator-webpack-plugin');
 
 module.exports = ({
   devtool = 'cheap-module-eval-source-map',
@@ -17,7 +17,6 @@ module.exports = ({
   publicPath = './dist/',
   outputScript = '/tmp/[name].js',
   entry = {},
-  paths = {},
   locals = {}
 }) => ({
   devtool: devtool,
@@ -60,6 +59,6 @@ module.exports = ({
     ]
   },
   plugins: Object.keys(entry).map(key => (
-    new StaticSiteGeneratorPlugin(key, paths[key], Object.assign({}, locals))
+    new StaticGeneratorPlugin(key, locals)
   ))
 });

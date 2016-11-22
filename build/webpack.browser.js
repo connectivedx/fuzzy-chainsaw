@@ -11,7 +11,7 @@ const match = require('minimatch');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const PostPostCSS = require('./webpack-post-post-css-plugin');
+const PostPostCSS = require('./webpack-post-postcss-plugin');
 
 module.exports = ({
   devtool = 'cheap-module-eval-source-map',
@@ -31,12 +31,6 @@ module.exports = ({
     filename: outputScript
   },
   publicPath: publicPath,
-  postcss: require('./postcss-pack.js').filePlugins,
-  resolveLoader: {
-    alias: {
-      'autoimport-variables': path.join(__dirname, './webpack-autoimport-variables-loader')
-    }
-  },
   module: {
     loaders: [
       {
@@ -46,14 +40,7 @@ module.exports = ({
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
-      },
-      {
-        test: filepath => (
-          match(filepath, '**/tags/**/*.css') ||
-          match(filepath, '**/components/**/*.css')
-        ),
-        loader: 'autoimport-variables'
+        loader: ExtractTextPlugin.extract('css-loader')
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -78,6 +65,6 @@ module.exports = ({
   },
   plugins: [
     new ExtractTextPlugin(outputStyle),
-    new PostPostCSS(require('./postcss-pack.js').bundlePlugins)
+    new PostPostCSS(require('./postcss-plugins.js'))
   ]
 });
