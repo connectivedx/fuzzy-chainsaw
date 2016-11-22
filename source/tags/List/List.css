@@ -1,0 +1,12 @@
+.list {
+
+}
+
+.list--indents--true {
+   margin-left: 15px; 	
+}
+
+.list--bullets--true {
+	list-style-type: disc; 
+	list-style-position: inside; 
+}
