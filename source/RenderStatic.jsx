@@ -66,7 +66,7 @@ const formatHtml = output => {
 
 const processHtmlOutput = (output, locals) => {
   return formatHtml(
-    makeAbsolutePathRelative(output, locals);
+    makeAbsolutePathRelative(output, locals)
   );
 }
 
