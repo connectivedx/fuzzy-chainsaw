@@ -9,7 +9,10 @@ export default ({
 	children,
 	...attrs
 }) => {
-	if (tagName === 'label') {
+	if (!children) {
+		return '';
+	}
+	else if (tagName === 'label') {
 		return (
 			<label className={"form-label form-label--default" + className} {...attrs}>{children}</label>
 		);
