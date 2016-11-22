@@ -14,7 +14,7 @@
 .brand--full {
 	& .brand__label { display: none; }
 
-	@media (--medium) {
+	@media (--small) {
 		& .brand__label {
 			display: inline-block;
 			margin-top: 0.1em;
