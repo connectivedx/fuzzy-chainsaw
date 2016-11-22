@@ -86,3 +86,8 @@
 		padding: .25em;
 	}
 }
+
+.sg-page-root--bgimage-test {
+	background-image: url('./assets/randy-savage.jpg');
+    background-repeat: no-repeat;
+}
