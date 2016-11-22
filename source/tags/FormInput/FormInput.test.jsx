@@ -1,5 +1,5 @@
 import React from 'react';
-import FormInput from './FormInput.jsx';
+import {FormInput, FormInputField} from './FormInput.jsx';
 
 export default [{
 	name: "default",
@@ -14,15 +14,14 @@ export default [{
 		t.end();
 	}
 },{
-	name: "text",
+	name: "full field default",
 	component: (
-		<FormInput type="text" />
+		<FormInputField />
 	),
 	test(t, component) {
-		t.equal(component.is('input'), true, 'tag name');
-		t.equal(component.is('.form-input'), true, 'tag class');
-		t.equal(component.is('.form-input--text'), true, 'tag class');
-		t.equal(component.is('[type="text"]'), true, 'input type');
+		t.equal(component.is('div'), true, 'tag name');
+		t.equal(component.is('.form-input-field'), true, 'tag class');
+		t.equal(component.is('.form-input-field--default'), true, 'tag class');
 		t.end();
 	}
 },{
