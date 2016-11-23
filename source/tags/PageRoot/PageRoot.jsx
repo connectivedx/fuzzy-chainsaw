@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Variables from '../../variables/index.js';
+import Variables from '../../variables/index';
 import styles from './PageRoot.css';
 import IconSet from '../IconSet/IconSet';
 
