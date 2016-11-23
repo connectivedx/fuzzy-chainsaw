@@ -6,4 +6,5 @@
 	}	
 */
 @custom-selector :--enter :hover, :active;
-@custom-selector :--haf :hover, :active, :focus;@custom-selector :--generated :before, :after;
+@custom-selector :--haf :hover, :active, :focus;
+@custom-selector :--generated :before, :after;
