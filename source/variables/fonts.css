@@ -1,0 +1,34 @@
+/* define property mixins for each font family and weight used */
+:root {
+	--font-primary-family: 'Museo Sans';
+	--font-primary--thin: {
+		font-family: var(--font-primary-family);
+		font-weight: 300;
+	};
+
+	--font-primary--normal: {
+		font-family: var(--font-primary-family);
+		font-weight: 500;
+	};
+
+	--font-primary--bold: {
+		font-family: var(--font-primary-family);
+		font-weight: 700;
+	};
+}
+
+/* define @font-face setup */
+@font-face {
+	@apply --font-primary--thin;
+	src: url('./fonts/museosans/museosans-300.woff') format('woff');
+}
+
+@font-face {
+	@apply --font-primary--normal;
+	src: url('./fonts/museosans/museosans-500.woff') format('woff');
+}
+
+@font-face {
+	@apply --font-primary--bold;
+	src: url('./fonts/museosans/museosans-700.woff') format('woff');
+}
