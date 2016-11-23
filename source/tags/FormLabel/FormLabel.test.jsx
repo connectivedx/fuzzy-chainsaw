@@ -16,6 +16,20 @@ export default [{
 		t.end();
 	}
 },{
+	name: "error label",
+	component: (
+		<FormLabel variant="error">
+			Hello World
+		</FormLabel>
+	),
+	test(t, component) {
+		t.equal(component.is('label'), true, 'tag name');
+		t.equal(component.is('.form-label'), true, 'tag class');
+		t.equal(component.is('.form-label--error'), true, 'tag class');
+		t.equal(component.text(), 'Hello World', 'text');
+		t.end();
+	}
+},{
 	name: "legend",
 	component: (
 		<FormLabel tagName="legend">
