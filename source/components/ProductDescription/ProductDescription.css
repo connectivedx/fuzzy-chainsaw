@@ -1,8 +1,0 @@
-.product-description {
-	padding: 2em;
-	border: 1px solid black;
-
-	& > * + * {
-		margin-top: 1em;
-	}
-}

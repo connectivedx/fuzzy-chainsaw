@@ -7,7 +7,7 @@ const Wrapper = ({
 	children
 }) => {
 	return (
-		<div className={'wrapper wrapper--' + size}>
+		<div className={`wrapper wrapper--${size} ${className}`}>
 			{children}
 		</div>
 	)

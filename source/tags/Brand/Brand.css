@@ -1,0 +1,24 @@
+.brand {
+	& > * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.brand__icon {
+	width: 1.65em;
+}
+
+.brand__label { }
+
+.brand--full {
+	& .brand__label { display: none; }
+
+	@media (--small) {
+		& .brand__label {
+			display: inline-block;
+			margin-top: 0.1em;
+			margin-left: 0.5em;
+		}
+	}
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './PageRoot.css';
 
+import Variables from '../../variables/index';
+import styles from './PageRoot.css';
 import IconSet from '../IconSet/IconSet';
 
 export const PageRoot__Wrapper = ({ children }) => (

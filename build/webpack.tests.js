@@ -45,7 +45,7 @@ module.exports = ({
         exclude: /node_modules/
       },
       {
-        test: /\.(css|md|json|jpe?g|png|gif|svg)$/i,
+        test: /\.(css|md|json|jpe?g|png|gif|svg|woff|woff2|eot|ttf)$/i,
         loader: 'null-loader'
       }
     ]
