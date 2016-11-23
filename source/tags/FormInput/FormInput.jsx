@@ -1,21 +1,25 @@
 import React from 'react';
 import styles from './FormInput.css';
-import defaultPlaceholders from './FormInput.config.js';
 import uniqueid from 'lodash.uniqueid';
+import defaultPlaceholders from './FormInput.config.js';
+import {FormField, FormField_Label, FormField_Control, FormField_Error} from '../FormField/FormField';
 import FormLabel from '../FormLabel/FormLabel';
 
 export const FormInputField = ({
 	type = 'text',
-	variant = 'default',
 	id = uniqueid('form-input_'),
 	className = '',
 	labelText = defaultPlaceholders[type],
-	...restAttrs
+	...attrs
 }) => (
-	<div className={`form-input-field form-input-field--${variant} ${className}`}>
-		<FormLabel htmlFor={id}>{labelText}</FormLabel>
-		<FormInput type={type} id={id} {...restAttrs} />
-	</div>
+	<FormField variant="input">
+		<FormField_Label>
+			<FormLabel htmlFor={id}>{labelText}</FormLabel>
+		</FormField_Label>
+		<FormField_Control>
+			<FormInput type={type} id={id} {...attrs} />
+		</FormField_Control>
+	</FormField>
 );
 
 export const FormInput = ({
