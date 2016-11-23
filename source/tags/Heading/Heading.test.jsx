@@ -11,7 +11,7 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('h1'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
-		t.equal(component.is('.heading--h1'), true, 'type class');
+		t.equal(component.is('.heading--h1'), true, 'variant class');
 		t.equal(component.text(), 'Hello', 'text');
 		t.end();
 	}
@@ -25,36 +25,36 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('h3'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
-		t.equal(component.is('.heading--h3'), true, 'type class');
+		t.equal(component.is('.heading--h3'), true, 'variant class');
 		t.equal(component.text(), 'Wowie Zowie', 'text');
 		t.end();
 	}
 }, {
-	name: "className",
+	name: "className/variant",
 	component: (
-		<Heading className="super">
+		<Heading className="super" variant="medium">
 			Leg Shaking
 		</Heading>
 	),
 	test(t, component) {
 		t.equal(component.is('h1'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
-		t.equal(component.is('.heading--h1'), true, 'type class');
+		t.equal(component.is('.heading--h1'), true, 'variant class');
 		t.equal(component.is('.super'), true, 'prop class');
 		t.equal(component.text(), 'Leg Shaking', 'text');
 		t.end();
 	}
 }, {
-	name: "tagName/className",
+	name: "tagName/className/variant",
 	component: (
-		<Heading tagName="div" className="duper">
+		<Heading tagName="div" className="duper" variant="thin">
 			Back Breaking
 		</Heading>
 	),
 	test(t, component) {
 		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.heading'), true, 'tag class');
-		t.equal(component.is('.heading--default'), true, 'type class');
+		t.equal(component.is('.heading--default'), true, 'variant class');
 		t.equal(component.is('.duper'), true, 'prop class');
 		t.equal(component.text(), 'Back Breaking', 'text');
 		t.end();

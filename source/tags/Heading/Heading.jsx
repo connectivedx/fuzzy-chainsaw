@@ -3,7 +3,7 @@ import styles from './Heading.css';
 
 const Heading = ({
 	tagName,
-	type = 'default',
+	variant = 'default',
 	level, //
 	className = '',
 	children
@@ -19,7 +19,7 @@ const Heading = ({
 	}
 
 	return (
-		<Tag className={`heading heading--${type} heading--h${delevel} ${className}`}>
+		<Tag className={`heading heading--${variant} heading--h${delevel} ${className}`}>
 			{children}
 		</Tag>
 	)
@@ -27,7 +27,7 @@ const Heading = ({
 
 Heading.propTypes = {
 	tagName: React.PropTypes.string,
-	type: React.PropTypes.string,
+	variant: React.PropTypes.string,
 	level: React.PropTypes.string,
 	className: React.PropTypes.string
 };
