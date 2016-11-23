@@ -1,16 +1,21 @@
 /* define property mixins for each font family and weight used */
 :root {
+	/* The name of the font family */
 	--font-family: 'Source Sans Pro';
+
+	/* property-set defining the light font-face */
 	--font--thin: {
 		font-family: var(--font-family);
 		font-weight: 300;
 	};
 
+	/* property-set defining the normal weight font-face */
 	--font--normal: {
 		font-family: var(--font-family);
 		font-weight: 500;
 	};
 
+	/* property-set defining the bold font-face */
 	--font--bold: {
 		font-family: var(--font-family);
 		font-weight: 700;
