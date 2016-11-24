@@ -1,8 +1,11 @@
 .heading {
 	font-size: 2em;
 	line-height: 1em;
+	@apply --font--bold;
+}
+
+.heading--default {
 	font-weight: 700;
-	font-family: sans-serif;
 }
 
 .heading--thin {

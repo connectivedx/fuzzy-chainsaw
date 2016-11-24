@@ -1,0 +1,45 @@
+/* define property mixins for each font family and weight used */
+:root {
+	/* The name of the font family */
+	--font-family: 'Source Sans Pro';
+
+	/* property-set defining the light font-face */
+	--font--thin: {
+		font-family: var(--font-family);
+		font-weight: 300;
+	};
+
+	/* property-set defining the normal weight font-face */
+	--font--normal: {
+		font-family: var(--font-family);
+		font-weight: 500;
+	};
+
+	/* property-set defining the bold font-face */
+	--font--bold: {
+		font-family: var(--font-family);
+		font-weight: 700;
+	};
+}
+
+/* define @font-face setup */
+@font-face {
+	@apply --font--thin;
+	src: url('./fonts/SourceSansPro/SourceSansPro-Light.ttf') format('ttf'),
+		url('./fonts/SourceSansPro/SourceSansPro-Light.woff') format('woff'),
+		url('./fonts/SourceSansPro/SourceSansPro-Light.woff2') format('woff2');
+}
+
+@font-face {
+	@apply --font--normal;
+	src: url('./fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('ttf'),
+		url('./fonts/SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
+		url('./fonts/SourceSansPro/SourceSansPro-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	@apply --font--bold;
+	src: url('./fonts/SourceSansPro/SourceSansPro-Bold.ttf') format('ttf'),
+		url('./fonts/SourceSansPro/SourceSansPro-Bold.woff') format('woff'),
+		url('./fonts/SourceSansPro/SourceSansPro-Bold.woff2') format('woff2')
+}

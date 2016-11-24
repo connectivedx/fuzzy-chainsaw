@@ -23,7 +23,10 @@ PostPostCSSPlugin.prototype.apply = function(compiler) {
               const src =
                 compilation.assets[key]
                   .source()
-                  .replace(/:\\--/gi, ':--'); // fix escaping via css-loader
+                  // fix escaping bug(?) via css-loader
+                  // replaces &:\--custom-selector with &:--custom-selector
+                  // replace \--mixin: {} with --mixin: {}
+                  .replace(/\\--/gi, '--');
 
               return postcss(this.postPostCssPlugins)
                 .process(src)
@@ -37,15 +40,18 @@ PostPostCSSPlugin.prototype.apply = function(compiler) {
 
                   return Promise.resolve();
                 })
-                .catch(e => {
-                  done(e);
-                })
+                .catch(err => {
+                  compilation.errors.push(err.stack);
+                });
             } else {
               return Promise.resolve(compilation.assets[key]);
             }
-
           })
-      ).then(() => {
+      )
+      .catch(err => {
+        compilation.errors.push(err.stack);
+      })
+      .then(() => {
         done();
       })
 
