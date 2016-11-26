@@ -1,3 +1,15 @@
-.form-number--number {
+.form-number__control--number {
 	@extend .input-default;
+}
+
+.form-number--range {
+	& > * {
+		color: gray(20%);
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	& > * + * {
+		margin-left: .5em;
+	}
 }

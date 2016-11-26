@@ -21,12 +21,12 @@ export const FormNumberField = ({
 	</FormField>
 );
 
-// FormInputField.propTypes = {
-// 	type: React.PropTypes.string,
-// 	id: React.PropTypes.string,
-// 	className: React.PropTypes.string,
-// 	labelText: React.ProtoTypes.string
-// };
+FormNumberField.propTypes = {
+	type: React.PropTypes.string,
+	id: React.PropTypes.string,
+	className: React.PropTypes.string,
+	labelText: React.PropTypes.string
+};
 
 export const FormNumber = ({
 	type = "number",
@@ -34,15 +34,33 @@ export const FormNumber = ({
 	id = uniqueid('form-number_'),
 	value = 0,
 	...attrs
-}) => (
-	<input type={type} className={`form-number form-number--${type} ${className}`} defaultValue={value} {...attrs} />
-);
+}) => {
+	if (type === 'range') {
+		const outputId = `${id}-result`;
+		attrs.max = attrs.max || 10;
+		attrs.step = attrs.step || 1;
 
-// FormField.propTypes = {
-// 	type: React.PropTypes.string,
-// 	id: React.PropTypes.string,
-// 	className: React.PropTypes.string,
-// 	value: React.ProtoTypes.number
-// };
+		return (
+			<div className={`form-number form-number--${type} ${className}`} onInput={`${outputId}.value=${id}.value`}>
+				<input type={type} className={`form-number__control form-number__control--${type}`} defaultValue={value} {...attrs} />
+				<output htmlFor={id} id={outputId}>{value}</output>
+			</div>
+		);
+	}
+	else {
+		return (
+			<div className={`form-number form-number--${type} ${className}`}>
+				<input type={type} className={`form-number__control form-number__control--${type}`} defaultValue={value} {...attrs} />
+			</div>
+		);
+	}
+}
+
+FormNumber.propTypes = {
+	type: React.PropTypes.string,
+	id: React.PropTypes.string,
+	className: React.PropTypes.string,
+	value: React.PropTypes.number
+};
 
 export default FormNumber;
