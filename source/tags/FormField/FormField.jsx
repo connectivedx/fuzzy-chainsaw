@@ -4,6 +4,7 @@ import styles from './FormField.css';
 
 export const FormField_Label = ({
 	tagName = 'div',
+	variant = 'default',
 	className = '',
 	align,
 	children,
@@ -16,7 +17,7 @@ export const FormField_Label = ({
 	}
 
 	return (
-		<Tag className={`form-field__label ${className}`} {...attr}>
+		<Tag className={`form-field__label form-field__label--${variant} ${className}`} {...attr}>
 			{children}
 		</Tag>
 	);
@@ -24,6 +25,7 @@ export const FormField_Label = ({
 
 export const FormField_Error = ({
 	tagName = 'div',
+	variant = 'default',
 	className = '',
 	align,
 	children,
@@ -36,7 +38,7 @@ export const FormField_Error = ({
 	}
 
 	return (
-		<Tag className={`form-field__error ${className}`} {...attr}>
+		<Tag className={`form-field__error form-field__error--${variant} ${className}`} {...attr}>
 			{children}
 		</Tag>
 	);
@@ -44,6 +46,7 @@ export const FormField_Error = ({
 
 export const FormField_Control = ({
 	tagName = 'div',
+	variant = 'default',
 	className = '',
 	children,
 	...attr
@@ -51,7 +54,7 @@ export const FormField_Control = ({
 	const Tag = tagName;
 
 	return (
-		<Tag className={`form-field__control ${className}`} {...attr}>
+		<Tag className={`form-field__control form-field__control--${variant} ${className}`} {...attr}>
 			{children}
 		</Tag>
 	);
