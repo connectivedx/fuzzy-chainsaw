@@ -1,5 +1,5 @@
 import React from 'react';
-import FormSelect from './FormSelect.jsx';
+import {FormSelect, FormSelectField} from './FormSelect.jsx';
 
 let options = [{
 				label: 'normal optgroup',
@@ -28,22 +28,40 @@ export default [{
 	name: "default",
 	component: (
 		<FormSelect value="banana" options={options} />
-	)/*,
+	),
 	test(t, component) {
-		t.equal(component.is('select'), true, 'tag name');
+		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.form-select'), true, 'tag class');
-		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
-	}*/
+	}
+},{
+	name: "default field",
+	component: (
+		<FormSelectField value="banana" options={options} labelText="Choose one" />
+	),
+	test(t, component) {
+		// t.equal(component.is('div'), true, 'tag name');
+		// t.equal(component.is('.form-field--select-default'), true, 'tag class');
+		t.end();
+	}
 },{
 	name: "multiple",
 	component: (
 		<FormSelect value="banana" variant="multiple" options={options} />
-	)/*,
+	),
 	test(t, component) {
-		t.equal(component.is('select'), true, 'tag name');
+		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.form-select'), true, 'tag class');
-		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
-	}*/
+	}
+},{
+	name: "multiple field",
+	component: (
+		<FormSelectField value="banana" variant="multiple" options={options} labelText="Choose one or more" />
+	),
+	test(t, component) {
+		// t.equal(component.is('div'), true, 'tag name');
+		// t.equal(component.is('.form-field--select-multiple'), true, 'tag class');
+		t.end();
+	}
 }];
