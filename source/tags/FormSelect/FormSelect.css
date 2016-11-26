@@ -1,5 +1,5 @@
 .form-select {
-	@extend .form-border;
+	@apply --form-border;
 	max-width: 320px;
 	padding: 1px;
 }

@@ -1,5 +1,5 @@
 .form-number__control--number {
-	@extend .input-default;
+	@apply --input-default;
 }
 
 .form-number--range {
