@@ -50,7 +50,7 @@ module.exports = ({
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf)$/i,
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         loader: 'file?context=./source/&name=/assets/fonts/[name]-[md5:hash:hex:8].[ext]'
       },
       {
