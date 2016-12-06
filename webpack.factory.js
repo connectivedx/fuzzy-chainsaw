@@ -67,7 +67,7 @@ const configurationFactory = () => {
   const componentTests = testsConfig(baseOutput({
     entry: dirs.source + 'tests.jsx',
     outputScript: '/tmp/tests.js',
-    reporter: 'tap-min'
+    reporter: path.resolve(__dirname, 'node_modules', '.bin', 'tap-min')
   }));
 
   return [
