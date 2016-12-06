@@ -76,9 +76,7 @@ export default ({
 			</div>
 
 			<ExampleSection title="Example" type="example" slug={slug} isActive="true">
-				<div>
-					{component}
-				</div>
+				<div dangerouslySetInnerHTML={{ __html: Dom.renderToStaticMarkup(component) }} />
 
 				<script
 					id={slug + '-data'}
