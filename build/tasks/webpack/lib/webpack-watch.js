@@ -33,7 +33,7 @@ module.exports = (configs, watchOpts) => {
     publicPath: '/',
     outputPath: '/',
     filename: '/tmp/[name].js',
-    contentBase: path.resolve(pkg.directories.output),
+    contentBase: path.resolve(pkg.directories.dest),
     hot: false,
     stats: {
       colors: true,
