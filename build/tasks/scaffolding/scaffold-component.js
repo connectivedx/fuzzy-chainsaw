@@ -7,17 +7,18 @@ const chalk = require('chalk');
 const dopl = require('dopl');
 
 module.exports = ({
+  src,
   name,
   dest
 }) => {
   validateComponentName(name);
 
   const className = createClassName(name);
-  
+
   return dopl({
     name,
     output: dest,
-    src: __dirname + '/component-template',
+    src: src,
     data: {
       className
     }
@@ -33,8 +34,7 @@ const validateComponentName = proposedName => {
 
 const createClassName = name => {
   // transforms PascalCase into slug-case for the CSS class name
-  return name.replace(/[A-Z]/g, (word) => {
-      return '-' + word.toLowerCase(); 
-  })
-  .substring(1); // trim off leading - from the first capital
+  return name
+    .replace(/[A-Z]/g, word => '-' + word.toLowerCase())
+    .substring(1); // trim off leading - from the first capital
 }
