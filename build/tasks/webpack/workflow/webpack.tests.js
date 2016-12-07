@@ -16,8 +16,7 @@ module.exports = ({
   reporter = 'tap-dot',
   outputPath ='dist',
   publicPath = './dist/',
-  outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css'
+  outputScript = '/tmp/bundle.js'
 }) => {
   return webpackMerge(
     SharedConfig({

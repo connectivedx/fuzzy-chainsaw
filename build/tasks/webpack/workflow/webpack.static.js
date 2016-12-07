@@ -20,7 +20,6 @@ module.exports = ({
   outputPath ='dist',
   publicPath = './dist/',
   outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css'
 }) => {
   return webpackMerge(
     SharedConfig({
