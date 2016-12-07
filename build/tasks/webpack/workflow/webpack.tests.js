@@ -5,53 +5,49 @@
 
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
+
 const TapWebpackPlugin = require('tap-webpack-plugin');
 
+const webpackMerge = require('webpack-merge');
+const SharedConfig = require('./webpack.shared')
+
 module.exports = ({
-  devtool = 'eval',
-  entry = '.js',
+  entry,
+  reporter = 'tap-dot',
   outputPath ='dist',
   publicPath = './dist/',
   outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css',
-  paths = [],
-  locals = {},
-  reporter = 'tap-dot'
-}) => ({
-  devtool: devtool,
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  entry: entry,
-  target: 'node',
-  output: {
-    path: outputPath,
-    filename: outputScript
-  },
-  node: {
-    fs: 'empty'
-  },
-  externals: {
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
-  },
-  publicPath: publicPath,
-  module: {
-    loaders: [
-      {
-        test: /\.(jsx|js)$/,
-        loader: 'babel-loader?cacheDirectory=true',
-        exclude: /node_modules/
+  outputStyle = '/tmp/bundle.css'
+}) => {
+  return webpackMerge(
+    SharedConfig({
+      entry,
+      outputPath,
+      publicPath,
+      outputScript
+    }),
+    {
+      target: 'node',
+      node: {
+        fs: 'empty'
       },
-      {
-        test: /\.(css|md|json|jpe?g|png|gif|svg|woff|woff2|eot|ttf)$/i,
-        loader: 'null-loader'
-      }
-    ]
-  },
-  plugins: [
-    new TapWebpackPlugin({ reporter: reporter })
-  ],
-  doNotApplyProductionConfig: true
-});
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      },
+      module: {
+        loaders: [
+          {
+            test: /\.(css|md|json|jpe?g|png|gif|svg|woff|woff2|eot|ttf)$/i,
+            loader: 'null-loader'
+          }
+        ]
+      },
+      plugins: [
+        new TapWebpackPlugin({ reporter: reporter })
+      ],
+      doNotApplyProductionConfig: true
+    }
+  );
+}

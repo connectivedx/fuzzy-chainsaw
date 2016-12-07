@@ -11,54 +11,54 @@ const glob = require('glob');
 const webpack = require('webpack');
 const StaticGeneratorPlugin = require('static-generator-webpack-plugin');
 
+const webpackMerge = require('webpack-merge');
+const SharedConfig = require('./webpack.shared')
+
 module.exports = ({
-  devtool = 'cheap-module-eval-source-map',
+  entry = {},
+  locals = {},
   outputPath ='dist',
   publicPath = './dist/',
-  outputScript = '/tmp/[name].js',
-  entry = {},
-  locals = {}
-}) => ({
-  devtool: devtool,
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  entry: entry,
-  output: {
-    path: outputPath,
-    filename: outputScript,
-    libraryTarget: 'umd'
-  },
-  publicPath: publicPath,
-  module: {
-    loaders: [
-      {
-        test: /\.(jsx|js)$/,
-        loader: 'babel-loader?cacheDirectory=true',
-        exclude: /node_modules/
+  outputScript = '/tmp/bundle.js',
+  outputStyle = '/tmp/bundle.css'
+}) => {
+  return webpackMerge(
+    SharedConfig({
+      entry,
+      outputPath,
+      publicPath,
+      outputScript
+    }),
+    {
+      output: {
+        libraryTarget: 'umd'
       },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+      module: {
         loaders: [
-          'file?context=./source/&name=/assets/images/content/[name]-[md5:hash:hex:8].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: [
+              'file?context=./source/&name=/assets/images/content/[name]-[md5:hash:hex:8].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
+          },
+          {
+            test: /\.md$/,
+            loader: 'html!markdown-loader'
+          },
+          {
+            test: /\.json$/,
+            loader: 'json-loader'
+          },
+          {
+            test: /\.(css|woff|woff2|eot|ttf|cs|cshtml)$/,
+            loader: 'null-loader'
+          }
         ]
       },
-      {
-        test: /\.md$/,
-        loader: 'html!markdown-loader'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.(css|woff|woff2|eot|ttf|cs|cshtml)$/,
-        loader: 'null-loader'
-      }
-    ]
-  },
-  plugins: Object.keys(entry).map(key => (
-    new StaticGeneratorPlugin(key, locals)
-  ))
-});
+      plugins: Object.keys(entry).map(key => (
+        new StaticGeneratorPlugin(key, locals)
+      ))
+    }
+  );
+}
