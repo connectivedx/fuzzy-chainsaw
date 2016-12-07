@@ -22,7 +22,7 @@ module.exports = ({
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  entry: [entry],
+  entry: entry,
   target: 'node',
   output: {
     path: outputPath,

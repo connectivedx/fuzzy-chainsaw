@@ -9,15 +9,16 @@
   "author": "Connective DX",
   "license": "MIT",
   "directories": {
-    "source": "./source/",
-    "output": "dist"
+    "source": "./source",
+    "dest": "./dist"
   },
   "scripts": {
+    "start": "http-server ./dist",
     "build": "gulp build",
     "production": "gulp production",
     "watch": "gulp watch",
-    "webpack-build": "webpack --progress",
-    "start": "http-server ./dist",
+    "webpack-build": "webpack --config ./build/tasks/webpack/webpack.config.js --progress",
+    "webpack-watch": "webpack-dev-server --config ./build/tasks/webpack/webpack.config.js",
     "new-tag": "gulp new-tag --name",
     "new-component": "gulp new-component --name"
   },
@@ -53,6 +54,7 @@
     "minimatch": "^3.0.3",
     "npm": "^3.10.9",
     "null-loader": "^0.1.1",
+    "packpath": "^0.1.0",
     "postcss-color-alpha": "^1.0.3",
     "postcss-cssnext": "^2.8.0",
     "postcss-discard-empty": "^2.1.0",

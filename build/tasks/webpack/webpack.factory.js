@@ -15,26 +15,28 @@ const glob = require('glob');
 const fs = require('fs');
 const fileExists = require('file-exists');
 
-const pkg = require('./package.json')
+const pkgpath = require('packpath');
+const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
 const dirs = pkg.directories;
+
 
 /*
  *
- * IMPORT SHARED WEBPACK CONFIGURATIONS
+ * IMPORT SHARED WEBPACK WORKFLOWS
  *
  */
-const staticConfig = require('./build/webpack.static');
-const browserConfig = require('./build/webpack.browser');
-const testsConfig = require('./build/webpack.tests');
+const staticConfig = require('./workflow/webpack.static');
+const browserConfig = require('./workflow/webpack.browser');
+const testsConfig = require('./workflow/webpack.tests');
+
 
 /*
  *
  * HELPER FUNCTIONS
  *
  */
-
 const baseOutput = config => Object.assign({
-  outputPath: path.resolve(__dirname, '../..', dirs.output),
+  outputPath: path.resolve(pkgpath.self(), dirs.dest),
 }, config);
 
 
@@ -47,28 +49,28 @@ const baseOutput = config => Object.assign({
 const configurationFactory = () => {
   const renderStatic = staticConfig(baseOutput({
     entry: {
-      styleguide: dirs.source + 'RenderStatic.jsx'
+      styleguide: path.resolve(dirs.source, 'RenderStatic.jsx')
     }
   }));
 
   const styleguideBundle = browserConfig(baseOutput({
-    entry: dirs.source + 'styleguide.jsx',
+    entry: path.resolve(dirs.source, 'styleguide.jsx'),
     outputScript: '/assets/styleguide.js',
     outputStyle: '/assets/styleguide.css'
   }));
 
   const browserStyles = browserConfig(baseOutput({
-    entry: dirs.source + 'styles.jsx',
+    entry: path.resolve(dirs.source, 'styles.jsx'),
     outputStyle: '/assets/styles.css'
   }));
 
   const browserScripts = browserConfig(baseOutput({
-    entry: dirs.source + 'scripts.jsx',
+    entry: path.resolve(dirs.source, 'scripts.jsx'),
     outputScript: '/assets/scripts.js',
   }));
 
   const componentTests = testsConfig(baseOutput({
-    entry: dirs.source + 'tests.jsx',
+    entry: path.resolve(dirs.source, 'tests.jsx'),
     outputScript: '/tmp/tests.js',
     reporter: 'tap-min'
   }));

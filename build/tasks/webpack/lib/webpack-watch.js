@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
-const pkg = require('../package.json');
+const pkgpath = require('packpath');
+const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
 
 module.exports = (configs, watchOpts) => {
   watchOpts.host = watchOpts.host || 'localhost';

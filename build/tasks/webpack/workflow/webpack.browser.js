@@ -11,7 +11,7 @@ const match = require('minimatch');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const PostPostCSS = require('./webpack-post-postcss-plugin');
+const PostPostCSS = require('../lib/webpack-post-postcss-plugin');
 
 module.exports = ({
   devtool = 'cheap-module-eval-source-map',
@@ -65,6 +65,6 @@ module.exports = ({
   },
   plugins: [
     new ExtractTextPlugin(outputStyle),
-    new PostPostCSS(require('./postcss-plugins.js'))
+    new PostPostCSS(require('../lib/postcss-plugins.js'))
   ]
 });

@@ -6,20 +6,22 @@ const minimist = require('minimist');
 
 const pkg = require('./package.json');
 const dirs = pkg.directories;
-const webpackConfig = require('./webpack.config');
-const webpackProductionConfig = require('./webpack.production.config');
-const webpackErrorHandler = require('./build/webpack-errorhandler');
-const webpackWatch = require('./build/webpack-watch');
-const scaffoldComponent = require('./build/scaffold-component');
+const webpackErrorHandler = require('./build/tasks/webpack/lib/webpack-errorhandler');
+const webpackWatch = require('./build/tasks/webpack/lib/webpack-watch');
+const scaffoldComponent = require('./build/tasks/lib/scaffold-component');
 
+const webpackConfig = require('./build/tasks/webpack/webpack.config');
+const webpackProductionConfig = require('./build/tasks/webpack/webpack.production.config');
 
 // build tasks
+// require('./build/tasks/clean/preClean')
+
 gulp.task('preClean', () => {
-  return del(dirs.output, { force: true })
+  return del(dirs.dest, { force: true })
 });
 
 gulp.task('postClean', () => {
-  return del(dirs.output + '/tmp', { force: true });
+  return del(dirs.dest + '/tmp', { force: true });
 });
 
 gulp.task('buildWebpack', done => {
