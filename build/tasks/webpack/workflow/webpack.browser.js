@@ -60,7 +60,7 @@ module.exports = ({
       },
       plugins: [
         new ExtractTextPlugin(outputStyle),
-        new PostPostCSS(require('../lib/postcss-plugins.js'))
+        new PostPostCSS(require('../postcss-plugins.js'))
       ]
     }
   );
