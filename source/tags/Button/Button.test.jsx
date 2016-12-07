@@ -11,7 +11,7 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('button'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
-		t.equal(component.is('.button--default'), true, 'type class');
+		t.equal(component.is('.button--default'), true, 'variant class');
 		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
 	}
@@ -25,7 +25,7 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('a'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
-		t.equal(component.is('.button--link'), true, 'type class');
+		t.equal(component.is('.button--link'), true, 'variant class');
 		t.equal(component.prop('href'), '#/', 'prop');
 		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
@@ -40,7 +40,7 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
-		t.equal(component.is('.button--default'), true, 'type class');
+		t.equal(component.is('.button--default'), true, 'variant class');
 		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
 	}
@@ -54,7 +54,7 @@ export default [{
 	test(t, component) {
 		t.equal(component.is('div'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
-		t.equal(component.is('.button--default'), true, 'type class');
+		t.equal(component.is('.button--default'), true, 'variant class');
 		t.equal(component.is('.button--superduper'), true, 'prop class');
 		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
@@ -62,29 +62,29 @@ export default [{
 }, {
 	name: "type",
 	component: (
-		<Button type="cta">
+		<Button variant="cta">
 			Hello World
 		</Button>
 	),
 	test(t, component) {
 		t.equal(component.is('button'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
-		t.equal(component.is('.button--cta'), true, 'type class');
+		t.equal(component.is('.button--cta'), true, 'variant class');
 		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
 	}
 }, {
 	name: "type/link",
 	component: (
-		<Button href="#/" type="cta">
+		<Button href="#/" variant="cta">
 			Hello World
 		</Button>
 	),
 	test(t, component) {
 		t.equal(component.is('a'), true, 'tag name');
 		t.equal(component.is('.button'), true, 'tag class');
-		t.equal(component.is('.button--link'), true, 'type class');
-		t.equal(component.is('.button--cta'), true, 'type class');
+		t.equal(component.is('.button--link'), true, 'variant class');
+		t.equal(component.is('.button--cta'), true, 'variant class');
 		t.equal(component.prop('href'), '#/', 'prop');
 		t.equal(component.text(), 'Hello World', 'text');
 		t.end();
