@@ -3,11 +3,11 @@ const sequence = require('run-sequence');
 
 
 // define build tasks
-gulp.task('clean:pre', require('./build/tasks/clean-pre'));
-gulp.task('clean:post', require('./build/tasks/clean-post'));
-gulp.task('webpack:build', require('./build/tasks/webpack-build'));
-gulp.task('webpack:production', require('./build/tasks/webpack-production'));
-gulp.task('webpack:watch', require('./build/tasks/webpack-watch'));
+gulp.task('clean:pre', require('./build/clean-pre'));
+gulp.task('clean:post', require('./build/clean-post'));
+gulp.task('webpack:build', require('./build/webpack-build'));
+gulp.task('webpack:production', require('./build/webpack-production'));
+gulp.task('webpack:watch', require('./build/webpack-watch'));
 
 
 // define workflows
@@ -28,8 +28,8 @@ gulp.task('watch', done => {
 // tasks here require cli arguments
 
 // gulp scaffold:tag --name [name]
-gulp.task('scaffold:tag', require('./build/tasks/scaffold-tag'));
+gulp.task('scaffold:tag', require('./build/scaffold-tag'));
 
 // gulp scaffold:component --name [name]
-gulp.task('scaffold:component', require('./build/tasks/scaffold-component'));
+gulp.task('scaffold:component', require('./build/scaffold-component'));
 
