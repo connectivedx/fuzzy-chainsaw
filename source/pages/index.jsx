@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageRoot from '../tags/PageRoot/PageRoot';
+import Skeleton from '../tags/Skeleton/Skeleton';
 import Heading from '../tags/Heading/Heading';
 import Rhythm from '../tags/Rhythm/Rhythm';
 import Wrapper from '../tags/Wrapper/Wrapper';
@@ -12,7 +12,7 @@ import {
 } from '../styleguide/components/Index';
 
 export default ({ locals }) => (
-	<PageRoot title="Hello World">
+	<Skeleton title="Hello World">
 		<Wrapper>
 			<Rhythm size="large">
 				<Heading level="1">Hello World</Heading>
@@ -33,5 +33,5 @@ export default ({ locals }) => (
         </Rhythm>
 			</Rhythm>
 		</Wrapper>
-	</PageRoot>
+	</Skeleton>
 )

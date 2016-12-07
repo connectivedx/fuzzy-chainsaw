@@ -1,18 +1,18 @@
 import React from 'react';
-import PageRoot from './PageRoot';
+import Skeleton from './Skeleton';
 
 export default [{
   name: 'default',
   component: (
-    <PageRoot title="Super Test Page">
+    <Skeleton title="Super Test Page">
       Oh, Hello
-    </PageRoot>
+    </Skeleton>
   )
 }, {
   name: 'bgimage test',
   component: (
-    <PageRoot title="Super Test Page">
+    <Skeleton title="Super Test Page">
       <div className="sg-page-root--bgimage-test"></div>
-    </PageRoot>
+    </Skeleton>
   )
 }];
