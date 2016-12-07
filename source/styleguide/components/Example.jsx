@@ -60,6 +60,8 @@ export default ({
 	component
 }) => {
 	const reactExample = buildReactExample(tagName, component.props, component.props.children);
+  const htmlExample = Dom.renderToStaticMarkup(component);
+  const jsonExample = JSON.stringify(filterProps(component.props), null, 2);
 
 	return (
 		<div className="sg-example">
@@ -76,14 +78,12 @@ export default ({
 			</div>
 
 			<ExampleSection title="Example" type="example" slug={slug} isActive="true">
-				<div>
-					{component}
-				</div>
+				<div dangerouslySetInnerHTML={{ __html: htmlExample }} />
 
 				<script
 					id={slug + '-data'}
 					type="text/json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(filterProps(component.props), null, 2) }} />
+					dangerouslySetInnerHTML={{ __html: jsonExample }} />
 			</ExampleSection>
 
 			<ExampleSection title="React" type="react" slug={slug}>
@@ -94,13 +94,13 @@ export default ({
 
 			<ExampleSection title="HTML" type="html" slug={slug}>
 				<pre><code>
-					{ pd.xml(Dom.renderToStaticMarkup(component)) }
+					{ pd.xml(htmlExample) }
 				</code></pre>
 			</ExampleSection>
 
 			<ExampleSection title="JSON" type="json" slug={slug}>
 				<pre><code>
-					{ JSON.stringify(filterProps(component.props), null, 2) }
+					{ jsonExample }
 				</code></pre>
 			</ExampleSection>
 		</div>

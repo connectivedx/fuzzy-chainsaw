@@ -62,8 +62,8 @@ export default ({
               <Heading level="2">Tests</Heading>
 
               <Rhythm size="small">
-                { tests.map(e =>
-                    <div><a
+                { tests.map((e, i) =>
+                    <div key={i}><a
                       href={'#' + slug(e.name)}
                       key={slug(e.name)}
                       value={slug(e.name)}>{e.name}</a></div>) }
