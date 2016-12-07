@@ -14,7 +14,9 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
 const fileExists = require('file-exists');
+
 const pkg = require('./package.json')
+const dirs = pkg.directories;
 
 /*
  *
@@ -25,15 +27,16 @@ const staticConfig = require('./build/webpack.static');
 const browserConfig = require('./build/webpack.browser');
 const testsConfig = require('./build/webpack.tests');
 
-const dirs = pkg.directories;
-
 /*
  *
  * HELPER FUNCTIONS
  *
  */
 
-const baseOutput = require('./build/lib/base-output');
+const baseOutput = config => Object.assign({
+  outputPath: path.resolve(__dirname, '../..', dirs.output),
+}, config);
+
 
 /*
  *
