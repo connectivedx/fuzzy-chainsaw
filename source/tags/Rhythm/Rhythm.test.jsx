@@ -44,7 +44,14 @@ module.exports = [{
 }, {
   name: 'size/deep',
   component: (
-    <Rhythm deep="true" size="large">
+    <Rhythm deep="true" size="small">
+      {children}
+    </Rhythm>
+  )
+}, {
+  name: 'size/deep/tagName/class',
+  component: (
+    <Rhythm tagName="section" deep="true" size="large" className="red">
       {children}
     </Rhythm>
   )

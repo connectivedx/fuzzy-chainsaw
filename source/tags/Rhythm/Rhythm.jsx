@@ -2,17 +2,20 @@ import React from 'react';
 import styles from './Rhythm.css';
 
 const Rhythm = ({
+  tagName = 'div',
   className = '',
   size = 'default',
   deep = false,
-  children
+  children,
+  ...attrs
 }) => {
-  const type = deep ? 'rhythm-deep' : 'rhythm';
+  const Tag = tagName;
+  const baseClass = deep ? 'rhythm--deep-' : 'rhythm--';
 
   return (
-    <div className={`${type}--${size} ${className}`}>
+    <Tag className={`${baseClass}${size} ${className}`} {...attrs}>
       {children}
-    </div>
+    </Tag>
   )
 };
 
