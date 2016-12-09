@@ -7,7 +7,7 @@ To get started, just [download](https://github.com/connectivedx/fuzzy-chainsaw/a
 
 ## System Dependencies
 
-Before you get up and running, make sure your computer has the following dependencies installed:
+Before you get up and running, make sure your environment has the following dependencies installed:
 
 - [Node LTS+](https://nodejs.org/en/download)
 - [Yarn](https://yarnpkg.com/en/docs/install) (optional)
@@ -55,6 +55,41 @@ Command | Description
 `npm run new-component [name]` | Creates a new stateless integration component in the `/source/components` directory.
 
 
+## Goals
+
+We have tried to be thoughtful in our architectural decisions, and drive based on a few goals:
+
+- Component Based Architecture
+- Reuseability between projects
+- Reduce development friction
+
+
+### Component Based Architecture
+
+We were inspired by the patterns in Brad Frost's [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/) and Lonely Planet's [Rizzo](https://github.com/lonelyplanet/rizzo) component API.  Our goal is to think about user interfaces as compositions of many small components. We've tried to build tools that help us think in this fashion.
+
+Components are written using React JSX, which provides a great model for composing component and managing dependencies.  Components are split into two categories, __Tags__ or __Components__. Tags are generally more reuseable, whereas Components are generally connected more directly to a CMS data model.
+
+#### Tags
+
+Found in `/source/tags`
+
+#### Components
+
+Found in `/source/components`
+
+
+### Reuseability between projects
+
+Using work between projects has historically been a difficult nut to crack. We've selected technologies that have proven to be easily portable, and used an opionated folder and file naming scheme that self contains components.
+
+
+### Reduce development friction
+
+The web development world is evolving rapidly. A tool that can automate the myriad tasks we perform is helpful so that we can think about more important development issues.
+
+
+
 ## FAQ
 
 ### What is this?
@@ -79,7 +114,7 @@ GitHub gifted it to us as the randomly generated suggestion and we took it, beca
 
 ### What verisons of Node are supported?
 
-Fuzzy Chainsaw was developed to work best with Node's [most recent LTS release](https://nodejs.org/en/download/) and up. We intend to keep support pegged to Node's [LTS schedule](https://github.com/nodejs/LTS#lts-schedule).
+Fuzzy Chainsaw was developed to work best with Node's [most recent LTS release](https://nodejs.org/en/download/) and above. We intend to keep support pegged to Node's [LTS schedule](https://github.com/nodejs/LTS#lts-schedule).
 
 
 ## License
