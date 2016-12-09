@@ -1,35 +1,29 @@
 /*
   Enables scaffolding of new FC items (e.g. components, tags) using the dopl templating library.
-  See the component-template folder for the template source files.
+  See the stateless-component folder for the template source files.
 */
 
 const chalk = require('chalk');
 const dopl = require('dopl');
 
 module.exports = ({
-  src,
   name,
+  src,
   dest
 }) => {
-  validateComponentName(name);
-
-  const className = createClassName(name);
-
-  return dopl({
-    name,
-    output: dest,
-    src: src,
-    data: {
-      className
-    }
-  });
-}
-
-const validateComponentName = proposedName => {
-  if(!/^[A-Z][A-Za-z]+$/.test(proposedName)) {
+  if(!/^[A-Z][A-Za-z]+$/.test(name)) {
     console.error(chalk.bgRed('The name should be in PascalCase.'));
     process.exit(1);
   }
+
+  return dopl({
+    output: dest,
+    src: src,
+    data: {
+      name,
+      className: createClassName(name)
+    }
+  });
 }
 
 const createClassName = name => {
