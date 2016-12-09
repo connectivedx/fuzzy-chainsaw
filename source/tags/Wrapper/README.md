@@ -9,5 +9,5 @@ These are the properties that can be passed to the `<Wrapper />` React component
 Property | Default | Valid Values | Description
 --- | --- | --- |:---
 `className` | Defines CSS `className` to add to the component's class list. | &nbsp; | any string
-`children` | Defines the children elements passed to the component. | &nbsp; |  &nbsp;
+`children` | Defines the child elements passed to the component. | &nbsp; |  &nbsp;
 `size` | Defines the size of the wrapper | `'default'` | `'default'`, `'small'`
