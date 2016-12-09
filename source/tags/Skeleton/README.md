@@ -1,10 +1,10 @@
-# PageRoot
+# Skeleton
 
 Defines the HTML skeleton. This is where you would link and include stylesheets, scripts, and meta tags.
 
 ## Props
 
-These are the properties that can be passed to the `<PageRoot />` React component
+These are the properties that can be passed to the `<Skeleton />` React component
 
 Property | Default | Valid Values | Description
 --- | --- | --- |:---
