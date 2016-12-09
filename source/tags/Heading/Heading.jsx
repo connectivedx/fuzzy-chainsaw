@@ -28,7 +28,7 @@ const Heading = ({
 
 Heading.propTypes = {
   tagName: React.PropTypes.string,
-  className: React.PropTypes.string
+  className: React.PropTypes.string,
   variant: React.PropTypes.string,
   level: React.PropTypes.string,
 };
