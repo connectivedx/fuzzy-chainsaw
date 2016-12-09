@@ -3,18 +3,18 @@ import styles from './Icon.css';
 
 const Icon = ({
   className = '',
-  variant = 'default',
+  size = 'default',
   name,
   ...attrs
 }) => (
-  <svg className={`icon icon--${variant} icon--${name} ${className}`} {...attrs}>
+  <svg className={`icon icon--${size} icon--${name} ${className}`} {...attrs}>
     <use xlinkHref={'#' + name} />
   </svg>
 );
 
 Icon.propTypes = {
   className: React.PropTypes.string,
-  variant: React.PropTypes.string,
+  size: React.PropTypes.string,
   name: React.PropTypes.string.isRequired
 }
 
