@@ -3,13 +3,18 @@ import React from 'react';
 import styles from './Skeleton.css';
 import IconSet from '../IconSet/IconSet';
 
-export const Skeleton_Wrapper = ({ children }) => (
+export const Skeleton_Wrapper = ({
+  children
+}) => (
 	<html>
 		{children}
 	</html>
 );
 
-export const Skeleton_Head = ({ title, children }) => (
+export const Skeleton_Head = ({
+  title,
+  children
+}) => (
 	<head>
 		<meta charset="utf-8" />
 		<title>{title}</title>
@@ -22,7 +27,10 @@ Skeleton_Head.propTypes = {
 	title: React.PropTypes.string.isRequired
 }
 
-export const Skeleton_Body = ({ className, children }) => (
+export const Skeleton_Body = ({
+  className,
+  children
+}) => (
 	<body className={className}>
 		<IconSet />
 		{children}
@@ -34,7 +42,11 @@ Skeleton_Body.propTypes = {
 	className: React.PropTypes.string
 }
 
-export const Skeleton = ({ title, bodyClass = "", children }) => (
+export const Skeleton = ({
+  title,
+  bodyClass = '',
+  children
+}) => (
 	<Skeleton_Wrapper>
 		<Skeleton_Head title={title} />
 		<Skeleton_Body className={bodyClass}>{children}</Skeleton_Body>
