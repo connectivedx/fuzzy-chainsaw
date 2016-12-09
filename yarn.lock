@@ -1671,15 +1671,14 @@ domutils@^1.5.1, domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-dopl:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/dopl/-/dopl-0.1.0.tgz#3fe47f36c12a157d69b67955310f77f3613244b2"
+dopl@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/dopl/-/dopl-0.2.0.tgz#76806e7e99bf272fd0c31cb2cbd41a5e3c1e4c55"
   dependencies:
     commander "^2.9.0"
     fs-readfile-promise "^3.0.0"
     fs-writefile-promise "^1.0.3"
     glob "^7.1.1"
-    gulp "^3.9.1"
     mkdirp "^0.5.1"
     mustache "^2.2.1"
 
