@@ -10,4 +10,4 @@ Property | Default | Valid Values | Description
 --- | --- | --- |:---
 `title`  | (Required) | any string | Defines the title of the page
 `bodyClass` | &nbsp; | any string | Defines the class name on the `<body />` element
-`children` | &nbsp; |  &nbsp; | Defines the children elements passed to the component.
+`children` | &nbsp; |  &nbsp; | Defines the child elements passed to the component.

@@ -9,5 +9,5 @@ These are the properties that can be passed to the `<RichText />` React componen
 Property | Default | Valid Values | Description
 --- | --- | --- |:---
 `className` | &nbsp; |  &nbsp; | Defines CSS `className` to add to the component's class list.
-`children` | &nbsp; |  &nbsp; | Defines the children elements passed to the component.
+`children` | &nbsp; |  &nbsp; | Defines the child elements passed to the component.
  
