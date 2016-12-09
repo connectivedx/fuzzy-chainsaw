@@ -9,8 +9,8 @@ const dirs = pkg.directories;
 module.exports = () => {
   const argv = minimist(process.argv.slice(2));
   return scaffoldComponent({
-    src: __dirname + '/scaffolding/stateless-component',
     name: argv.name,
-    dest: path.resolve(pkgpath.self(), dirs.source, 'tags')
+    src: path.resolve(__dirname, 'scaffolding/stateless-component'),
+    dest: path.resolve(pkgpath.self(), dirs.source, 'tags', argv.name)
   });
 }
