@@ -8,7 +8,7 @@ import Button from '../Button/Button';
 import styles from './RichText.css';
 
 const RichText = ({
-  tagName = 'div'
+  tagName = 'div',
   className = '',
   variant = 'default',
   children,
@@ -23,6 +23,7 @@ const RichText = ({
 }
 
 RichText.propTypes = {
+  tagName: React.PropTypes.string,
   className: React.PropTypes.string,
   variant: React.PropTypes.string
 };
