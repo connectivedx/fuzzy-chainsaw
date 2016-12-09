@@ -3,8 +3,8 @@ import styles from './Wrapper.css';
 
 const Wrapper = ({
   tagName = 'div',
-  size = 'default',
   className = '',
+  size = 'default',
   children,
   ...attrs
 }) => {
@@ -18,8 +18,8 @@ const Wrapper = ({
 
 Wrapper.propTypes = {
   tagName: React.PropTypes.string,
-  size: React.PropTypes.string,
-  className: React.PropTypes.string
+  className: React.PropTypes.string,
+  size: React.PropTypes.string
 };
 
 export default Wrapper;
