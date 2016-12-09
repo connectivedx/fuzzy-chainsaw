@@ -8,15 +8,19 @@ import Button from '../Button/Button';
 import styles from './RichText.css';
 
 const RichText = ({
+  tagName = 'div'
   className = '',
   variant = 'default',
   children,
   ...attrs
-}) => (
-  <div className={`rich-text rich-text--${variant} ${className}`} {...attrs}>
-    {children}
-  </div>
-);
+}) => {
+  const Tag = tagName;
+  return (
+    <Tag className={`rich-text rich-text--${variant} ${className}`} {...attrs}>
+      {children}
+    </Tag>
+  );
+}
 
 RichText.propTypes = {
   className: React.PropTypes.string,
