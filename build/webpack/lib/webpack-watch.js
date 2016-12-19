@@ -6,7 +6,7 @@ const pkgpath = require('packpath');
 const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
 
 module.exports = (configs, watchOpts) => {
-  watchOpts.host = watchOpts.host || 'localhost';
+  watchOpts.host = watchOpts.host || '0.0.0.0';
   watchOpts.port = watchOpts.port || 8080;
 
   // normalize config output paths
