@@ -3,26 +3,30 @@ import styles from './Brand.css';
 import Icon from '../Icon/Icon';
 
 const Brand = ({
-  variant = 'full',
+  tagName = 'div',
   className = '',
+  variant = 'full',
   children,
   ...attrs
 }) => {
+  const Tag = tagName;
+
   return (
-    <div className={`brand brand--${variant} ${className}`} {...attrs}>
+    <Tag className={`brand brand--${variant} ${className}`} {...attrs}>
       <Icon name="close" className="brand__icon" />
       { variant === 'full'
         ? <span className="brand__label">
             GenericBrand
           </span>
         : undefined }
-    </div>
+    </Tag>
   );
 };
 
 Brand.propTypes = {
+  tagName: React.PropTypes.string,
+  variant: React.PropTypes.string,
   className: React.PropTypes.string,
-  variant: React.PropTypes.string
 };
 
 

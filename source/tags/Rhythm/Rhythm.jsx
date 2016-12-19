@@ -2,24 +2,31 @@ import React from 'react';
 import styles from './Rhythm.css';
 
 const Rhythm = ({
-	className = '',
-	size = 'default',
-	deep = false,
-	children
+  tagName = 'div',
+  className = '',
+  size = 'default',
+  deep = false,
+  children,
+  ...attrs
 }) => {
-	const type = deep ? 'rhythm-deep' : 'rhythm';
+  const Tag = tagName;
+  const baseClass = deep ? 'rhythm--deep-' : 'rhythm--';
 
-	return (
-		<div className={`${type}--${size} ${className}`}>
-			{children}
-		</div>
-	)
+  return (
+    <Tag className={`${baseClass}${size} ${className}`} {...attrs}>
+      {children}
+    </Tag>
+  )
 };
 
 Rhythm.propTypes = {
-	size: React.PropTypes.string,
-	deep: React.PropTypes.string,
-	className: React.PropTypes.string
+  tagName: React.PropTypes.string,
+  className: React.PropTypes.string,
+  size: React.PropTypes.string,
+  deep: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.boolean
+  ])
 };
 
 export default Rhythm;
