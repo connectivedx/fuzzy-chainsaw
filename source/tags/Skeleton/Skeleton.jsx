@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from './Skeleton.css';
 import IconSet from '../IconSet/IconSet';
 
