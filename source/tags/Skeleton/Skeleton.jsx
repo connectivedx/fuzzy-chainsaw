@@ -1,52 +1,65 @@
 import React from 'react';
-
-import Variables from '../../variables/index';
-import styles from './PageRoot.css';
+import styles from './Skeleton.css';
 import IconSet from '../IconSet/IconSet';
 
-export const PageRoot__Wrapper = ({ children }) => (
-	<html>
-		{children}
-	</html>
+
+export const Skeleton_Wrapper = ({
+  children
+}) => (
+  <html>
+    {children}
+  </html>
 );
 
-export const PageRoot__Head = ({ title, children }) => (
-	<head>
-		<meta charset="utf-8" />
-		<title>{title}</title>
-		<link rel="stylesheet" href="/assets/styles.css" />
-		{children}
-	</head>
+
+export const Skeleton_Head = ({
+  title,
+  children
+}) => (
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    {children}
+  </head>
 );
 
-PageRoot__Head.propTypes = {
-	title: React.PropTypes.string.isRequired
+Skeleton_Head.propTypes = {
+  title: React.PropTypes.string.isRequired
 }
 
-export const PageRoot__Body = ({ className, children }) => (
-	<body className={className}>
-		<IconSet />
-		{children}
-		<script src="/assets/scripts.js" />
-	</body>
+
+export const Skeleton_Body = ({
+  className,
+  children
+}) => (
+  <body className={className}>
+    <IconSet />
+    {children}
+    <script src="/assets/scripts.js" />
+  </body>
 );
 
-PageRoot__Body.propTypes = {
-	className: React.PropTypes.string
+Skeleton_Body.propTypes = {
+  className: React.PropTypes.string
 }
 
-export const PageRoot = ({ title, bodyClass = "", children }) => (
-	<PageRoot__Wrapper>
-		<PageRoot__Head title={title} />
-		<PageRoot__Body className={bodyClass}>{children}</PageRoot__Body>
-	</PageRoot__Wrapper>
+
+export const Skeleton = ({
+  title,
+  bodyClass = '',
+  children
+}) => (
+  <Skeleton_Wrapper>
+    <Skeleton_Head title={title} />
+    <Skeleton_Body className={bodyClass}>{children}</Skeleton_Body>
+  </Skeleton_Wrapper>
 );
 
-PageRoot.propTypes = {
-	title: React.PropTypes.string.isRequired,
-	bodyClass: React.PropTypes.string
+Skeleton.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  bodyClass: React.PropTypes.string
 };
 
 
-
-export default PageRoot;
+export default Skeleton;
