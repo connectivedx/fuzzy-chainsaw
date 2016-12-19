@@ -11,6 +11,6 @@ module.exports = () => {
   return scaffoldComponent({
     name: argv.name,
     src: path.resolve(__dirname, 'scaffolding/stateless-component'),
-    dest: path.resolve(pkgpath.self(), dirs.source, 'components', argv.name)
+    dest: path.resolve(pkgpath.self(), dirs.source, 'tags', argv.name)
   });
 }

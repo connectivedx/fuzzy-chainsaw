@@ -15,8 +15,7 @@ module.exports = build.map(config => {
     return config;
   }
 
-  // apropos devtool (see http://cheng.logdown.com/posts/2016/03/25/679045)
-  config.devtool = 'cheap-module-source-map'
+  config.devtool = ''
 
   // add production flag to build environment
   // libraries can key off this to import versions without debug info
