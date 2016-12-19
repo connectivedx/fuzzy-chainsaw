@@ -2,19 +2,25 @@ import React from 'react';
 import styles from './{{name}}.css';
 
 
-const {{name}} = ({
-	className = '',
-	variant = 'default',
-	children,
-	...attrs
-}) => (
-	<div className={`{{className}} {{className}}--${variant} ${className}`} {...attrs}>
-		{children}
-	</div>
-);
+export const {{name}} = ({
+  tagName = 'div',
+  className = '',
+  variant = 'default',
+  children,
+  ...attrs
+}) => {
+  const Tag = tagName;
+  return (
+    <Tag className={`{{className}} {{className}}--${variant} ${className}`} {...attrs}>
+      {children}
+    </Tag>
+  );
+}
 
 {{name}}.propTypes = {
-	className: React.PropTypes.string
+  tagName: React.PropTypes.string,
+  className: React.PropTypes.string,
+  variant: React.PropTypes.oneOf(['default'])
 };
 
 
