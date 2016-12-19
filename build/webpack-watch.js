@@ -5,7 +5,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const pkg = require('../package.json');
 
 module.exports = (configs, watchOpts) => {
-  watchOpts.host = watchOpts.host || 'localhost';
+  watchOpts.host = watchOpts.host || '0.0.0.0';
   watchOpts.port = watchOpts.port || 8080;
 
   // normalize config output paths
