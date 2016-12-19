@@ -12,10 +12,10 @@ import {
 } from '../styleguide/components/Index';
 
 export default ({ locals }) => (
-	<Skeleton title="Hello World">
-		<Wrapper>
-			<Rhythm size="large">
-				<Heading level="1">Hello World</Heading>
+  <Skeleton title="Hello World">
+    <Wrapper>
+      <Rhythm size="large">
+        <Heading level="1">Hello World</Heading>
 
         <Rhythm>
           <Heading level="2">Tags</Heading>
@@ -31,7 +31,7 @@ export default ({ locals }) => (
           <Heading level="2">Pages</Heading>
           <Index items={getPagesIndexData(locals)} className="rhythm--small" />
         </Rhythm>
-			</Rhythm>
-		</Wrapper>
-	</Skeleton>
+      </Rhythm>
+    </Wrapper>
+  </Skeleton>
 )
