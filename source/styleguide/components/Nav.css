@@ -1,6 +1,6 @@
 .sg-nav {
 	& a {
-		color: #000;
+		color: var(--black);
 	}
 
 	&.is-expanded {
@@ -12,7 +12,7 @@
 		}
 
 		& .sg-nav__toggle {
-			background-color: #000;
+			background-color: var(--black);
 
 			& > span {
 				display: inline;
@@ -34,24 +34,27 @@
 	position: fixed;
 	top: 1em;
 	left: 1em;
-	width: 12em;
+	width: 180px;
 
 	z-index: 100;
 
-	padding: 1em;
-	background-color: #000.9;
-	color: white;
+	background-color: var(--grayDarker);
+	color: var(--white);
 
 	text-decoration: none;
 	cursor: pointer;
 	box-shadow: #000.1 0 0 0.5em;
+	font-size: 14px;
+	line-height: 60px;
+	text-align: center;
+	text-transform: uppercase;
 
 	transition: 0.3s ease-in-out;
 	transition-property: background-color, box-shadow;
 
 
 	&:hover {
-		background-color: #000.95;
+		background-color: var(--black);
 		box-shadow: #000.25 0 0.3em 1em;
 	}
 
@@ -65,9 +68,8 @@
 	}
 
 	@media (width >= 960px) {
-		top: 2em;
-		left: 2em;
-		padding: 1em 2em;
+		top: 0;
+		left: 0;
 	}
 }
 
@@ -87,7 +89,7 @@
 	font-size: 1em;
 	line-height: 1.7em;
 
-	background-color: #eee;
+	background-color: var(--background);
 
 	transform: translate3d(-100%, 0, 0);
 	transition: transform 0.3s;

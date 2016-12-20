@@ -1,3 +1,22 @@
+/* 
+The color palette for the project.
+http://cssnext.io/features/#color-function 
+
+background-color: var(--primary);
+color: var(--greyDark);
+*/
+:root {
+	--background: #eaeaea;
+	--black: #000;
+	--grayDarker: #333;
+	--grayDark: #666;
+	--gray: #999;
+	--grayLight: #bbb;
+	--grayLighter: #ddd;
+	--white: #fff;
+	--link: #369;
+}
+
 @import "./components/nav.css";
 @import "./components/example.css";
 
@@ -10,37 +29,40 @@
 }
 
 .sg-styleguide {
+	background-color: var(--background);
+	overflow: hidden;
 	position: relative;
+	transition: transform 0.3s;
 	z-index: 0;
 
-	margin-top: 4.5em;
-	overflow: hidden;
-	transition: transform 0.3s;
-
 	& a {
-		color: #000;
+		color: var(--black);
 	}
 }
 
 .sg-styleguide__header {
+	background-color: var(--white);
+	padding-left: 200px;
+
 	& .heading {
-		font-size: 3em;
+		font-size: 28px;
+		font-weight: 500;
+		line-height: 60px;
 	}
 }
 
 .sg-styleguide-section {
-	border-top: 1px solid #eee;
-}
 
-.sg-styleguide-section__header {
-	padding: 1em;
+	& .sg-styleguide-section__header {
+		padding: 1em;
 
-	@media (width >= 960px) {
-		padding: 2em;
-	}
+		@media (width >= 960px) {
+			padding: 1.75em 2em 2.25em;
+		}
 
-	& > * + * {
-		margin-top: 1em;
+		& > * + * {
+			margin-top: 1em;
+		}
 	}
 }
 
@@ -79,7 +101,7 @@
 	}
 
 	& code {
-		background-color: white;
+		background-color: var(--white);
 		border-radius: .125em .25em;
 		color: firebrick;
 		display: inline-block;

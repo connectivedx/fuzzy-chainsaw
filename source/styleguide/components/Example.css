@@ -1,32 +1,32 @@
 .sg-example {
-	padding: 1em;
-	border-top: 1px solid #eee;
-
-	@media (width >= 960px) {
-		padding: 2em;
-	}
 }
 
 .sg-expample__anchor {
-  display: block;
-  position: relative;
-  top: -5.5em;
-  visibility: hidden;
+	display: block;
+	position: relative;
+	top: -5.5em;
+	visibility: hidden;
 
 	@media (width >= 960px) {
-	  top: -7em;
+		top: -7em;
 	}
 }
 
 .sg-example__header {
+
 	& .heading {
-		margin-bottom: 1em;
+		background-color: var(--grayDarker);
+		color: var(--white);
+		font-size: 1em;
+		font-weight: 500;
+		line-height: 40px;
+		padding: 0 1em;
 	}
 }
 
 .sg-example__tabs {
-	overflow: hidden;
 	border-bottom: none;
+	display: flex;
 	font-size: 0.8em;
 
 	@media (width >= 640px) {
@@ -35,38 +35,39 @@
 }
 
 .sg-example__tabs-item {
-	float: left;
-	width: 25%;
 	border-bottom: none;
 	text-align: center;
 
 	& a {
+		background-color: var(--grayLight);
+		color: var(--greyDark);
 		display: block;
-		padding: 1em 0;
-
-		background-color: #eee;
-		color: #222;
 		font-weight: bold;
-
+		padding: 1em;
 		text-decoration: none;
 
 		&:hover {
-			background-color: color(#eee blend(#ddd 50%));
+			background-color: var(--grayLighter);
+			border-color: var(--grayLighter);
 		}
 	}
 
-	&.is-active a {
-		background-color: #ddd;
-		font-weight: bold;
+	&.is-active {
+
+		& a {
+			background-color: var(--white);
+			font-weight: bold;
+		}
 	}
 }
 
 .sg-example__section {
 	display: none;
-	border: 1px solid #ccc;
-
-	padding: 1em;
+	background-color: var(--white);
 	overflow: auto;
+	padding: 1em;
+	position: relative;
+	z-index: 1;
 
 	@media (width >= 960px) {
 		padding: 2em;
@@ -74,5 +75,9 @@
 
 	&.is-active {
 		display: block;
+	}
+
+	&.no-padding {
+		padding: 0;
 	}
 }

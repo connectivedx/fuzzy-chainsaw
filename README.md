@@ -1,4 +1,19 @@
-# Fuzzy Chainsaw
+# [Fuzzy Chainsaw](https://github.com/connectivedx/fuzzy-chainsaw)
+
+> Boilerplate for component-based UI development
+
+## Features
+
+* ES2015
+* webpack
+* react
+* postcss
+* automatically generated style guide
+
+## Getting Started
+
+- Requires: [node 6.9.1](https://nodejs.org/en/), [gulp 3.9.1](http://gulpjs.com/)
+- Install: `npm install`
 
 ## CLI Scripts
 
