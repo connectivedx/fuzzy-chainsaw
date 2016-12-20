@@ -34,10 +34,6 @@ color: var(--greyDark);
 	position: relative;
 	transition: transform 0.3s;
 	z-index: 0;
-
-	& a {
-		color: var(--black);
-	}
 }
 
 .sg-styleguide__header {
@@ -60,8 +56,12 @@ color: var(--greyDark);
 			padding: 1.75em 2em 2.25em;
 		}
 
-		& > * + * {
-			margin-top: 1em;
+		& a {
+			color: var(--link);
+		}
+
+		& .heading {
+			margin-bottom: .5em;
 		}
 	}
 }
@@ -111,7 +111,7 @@ color: var(--greyDark);
 
 .sg-page-root--bgimage-test {
 	background-image: url('./assets/randy-savage.jpg');
-    background-repeat: no-repeat;
-    width: 100px;
-    height: 100px;
+	background-repeat: no-repeat;
+	width: 100px;
+	height: 100px;
 }

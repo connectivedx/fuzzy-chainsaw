@@ -40,9 +40,8 @@
 
 	& a {
 		background-color: var(--grayLight);
-		color: var(--greyDark);
+		color: var(--grayDarker);
 		display: block;
-		font-weight: bold;
 		padding: 1em;
 		text-decoration: none;
 
@@ -52,12 +51,9 @@
 		}
 	}
 
-	&.is-active {
-
-		& a {
-			background-color: var(--white);
-			font-weight: bold;
-		}
+	&.is-active a {
+		background-color: var(--white);
+		color: var(--grayDark);
 	}
 }
 
