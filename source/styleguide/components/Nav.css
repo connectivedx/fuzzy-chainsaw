@@ -32,8 +32,8 @@
 .sg-nav__toggle {
 	display: block;
 	position: fixed;
-	top: 1em;
-	left: 1em;
+	top: 0;
+	left: 0;
 	width: 180px;
 
 	z-index: 100;
@@ -65,11 +65,6 @@
 		&:first-child {
 			display: inline;
 		}
-	}
-
-	@media (width >= 960px) {
-		top: 0;
-		left: 0;
 	}
 }
 
