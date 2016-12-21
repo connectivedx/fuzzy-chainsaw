@@ -1,71 +1,35 @@
 const gulp = require('gulp');
-const webpack = require('webpack');
 const sequence = require('run-sequence');
-const del = require('del')
-const minimist = require('minimist');
-
-const pkg = require('./package.json');
-const dirs = pkg.directories;
-const webpackConfig = require('./webpack.config');
-const webpackProductionConfig = require('./webpack.production.config');
-const webpackErrorHandler = require('./build/webpack-errorhandler');
-const webpackWatch = require('./build/webpack-watch');
-const scaffoldComponent = require('./build/scaffold-component');
 
 
-// build tasks
-gulp.task('preClean', () => {
-  return del(dirs.output, { force: true })
-});
+// define build tasks
+gulp.task('clean:pre', require('./build/clean-pre'));
+gulp.task('clean:post', require('./build/clean-post'));
+gulp.task('webpack:build', require('./build/webpack-build'));
+gulp.task('webpack:production', require('./build/webpack-production'));
+gulp.task('webpack:watch', require('./build/webpack-watch'));
 
-gulp.task('postClean', () => {
-  return del(dirs.output + '/tmp', { force: true });
-});
 
-gulp.task('buildWebpack', done => {
-  webpack(webpackConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, {}, done);
-  });
-})
-
-gulp.task('buildProductionWebpack', done => {
-	webpack(webpackProductionConfig, (err, stats) => {
-    webpackErrorHandler(err, stats, {}, done);
-  });
-});
-
+// define workflows
 gulp.task('build', done => {
-  sequence('preClean', 'buildWebpack', 'postClean', done);
+  sequence('clean:pre', 'webpack:build', 'clean:post', done);
 });
 
 gulp.task('production', done => {
-  sequence('preClean', 'buildProductionWebpack', 'postClean', done);
+  sequence('clean:pre', 'webpack:production', 'clean:post', done);
 });
 
 gulp.task('watch', done => {
-  webpackWatch(webpackConfig, {
-    // port: 8080
-  });
+  sequence('clean:pre', 'webpack:watch', done);
 });
 
 
 // scaffolding tasks
 // tasks here require cli arguments
 
-// gulp new-tag --name my-new-tag
-gulp.task('new-tag', () => {
-  const argv = minimist(process.argv.slice(2));
-  return scaffoldComponent({
-    name: argv.name,
-    dest: `${dirs.source}/tags`
-  });
-});
+// gulp scaffold:tag --name [name]
+gulp.task('scaffold:tag', require('./build/scaffold-tag'));
 
-// gulp new-component --name my-new-tag
-gulp.task('new-component', () => {
-  const argv = minimist(process.argv.slice(2))
-  return scaffoldComponent({
-    name: argv.name,
-    dest: `${dirs.source}/components`
-  });
-});
+// gulp scaffold:component --name [name]
+gulp.task('scaffold:component', require('./build/scaffold-component'));
+

@@ -2,20 +2,24 @@ import React from 'react';
 import styles from './Wrapper.css';
 
 const Wrapper = ({
-	size = 'default',
-	className = '',
-	children
+  tagName = 'div',
+  className = '',
+  size = 'default',
+  children,
+  ...attrs
 }) => {
-	return (
-		<div className={`wrapper wrapper--${size} ${className}`}>
-			{children}
-		</div>
-	)
+  const Tag = tagName;
+  return (
+    <Tag className={`wrapper wrapper--${size} ${className}`} {...attrs}>
+      {children}
+    </Tag>
+  )
 };
 
 Wrapper.propTypes = {
-	size: React.PropTypes.string,
-	className: React.PropTypes.string
+  tagName: React.PropTypes.string,
+  className: React.PropTypes.string,
+  size: React.PropTypes.string
 };
 
 export default Wrapper;
