@@ -1,10 +1,10 @@
 import React from 'react';
-import PlaceholderSvg from './PlaceholderSvg.jsx';
+import PlaceholderSvg from './PlaceholderSvg';
 
 export default [{
   name: "default",
   component: (
-    <PlaceholderSvg />
+    <PlaceholderSvg width={600} height='300' />
   ),
   test(t, component) {
     t.equal(component.is('svg'), true, 'tag name');

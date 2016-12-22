@@ -41,8 +41,14 @@ export const PlaceholderSvg = (props) => {
 }
 
 PlaceholderSvg.propTypes = {
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
+  width: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
+  height: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
   text: React.PropTypes.string,
   imgColor: React.PropTypes.string,
   textColor: React.PropTypes.string,
