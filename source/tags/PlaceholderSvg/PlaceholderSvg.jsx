@@ -32,9 +32,10 @@ export const PlaceholderSvg = (props) => {
         fontWeight={fontWeight}
         x='50%'
         y='50%'
-        textAnchor='middle'>
-          {text}
-        </text>
+        textAnchor='middle'
+      >
+        {text}
+      </text>
     </svg>
   );
 }
