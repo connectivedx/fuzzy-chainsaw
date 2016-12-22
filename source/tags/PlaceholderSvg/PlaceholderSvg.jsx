@@ -1,17 +1,18 @@
 import React from 'react';
 import styles from './PlaceholderSvg.css';
 
+export const PlaceholderSvg = (props) => {
+  const {
+    width,
+    height,
+    text,
+    imgColor,
+    textColor,
+    fontFamily,
+    fontSize,
+    fontWeight
+  } = props;
 
-export const PlaceholderSvg = ({
-  width,
-  height,
-  text,
-  imgColor,
-  textColor,
-  fontFamily,
-  fontSize,
-  fontWeight
-}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
