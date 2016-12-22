@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageRoot from '../tags/PageRoot/PageRoot';
+import Skeleton from '../tags/Skeleton/Skeleton';
 import Heading from '../tags/Heading/Heading';
 import Rhythm from '../tags/Rhythm/Rhythm';
 import Wrapper from '../tags/Wrapper/Wrapper';
@@ -18,7 +18,7 @@ import {
 } from '../styleguide/components/Index';
 
 export default ({ locals }) => (
-	<PageRoot title="Form Example">
+	<Skeleton title="Form Example">
 		<Wrapper>
 			<Rhythm size="large">
 				<Heading level="1">An Example Form</Heading>
@@ -53,5 +53,5 @@ export default ({ locals }) => (
         </Form>
 			</Rhythm>
 		</Wrapper>
-	</PageRoot>
+	</Skeleton>
 )
