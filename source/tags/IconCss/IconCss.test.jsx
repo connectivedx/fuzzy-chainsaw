@@ -13,7 +13,7 @@ export default [{
 		t.end();
 	}
 },{
-	name: "default",
+	name: "radio",
 	component: (
 		<IconCss iconName="radio" />
 	),
