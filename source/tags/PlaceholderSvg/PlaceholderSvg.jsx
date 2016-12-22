@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './PlaceholderSvg.css';
 
 export const PlaceholderSvg = (props) => {
   const {
