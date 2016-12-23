@@ -27,17 +27,17 @@ export const PlaceholderSvg = (props) => {
     >
       <rect
         fill={imgColor}
-        width='100%'
-        height='100%'
+        width="100%"
+        height="100%"
       />
       <text
         fill={textColor}
         fontFamily={fontFamily}
         fontSize={fontSize}
         fontWeight={fontWeight}
-        x='50%'
-        y='50%'
-        textAnchor='middle'
+        x="50%"
+        y="50%"
+        textAnchor="middle"
       >
         {text}
       </text>
