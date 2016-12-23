@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const path2LinkList = (baseUrl = '') => path => {
   return ({
     url: `${baseUrl}/${path.substr(0, path.lastIndexOf('.'))}.html`,
@@ -36,7 +35,7 @@ export const getPagesIndexData = locals =>
     .map(path2LinkList());
 
 
-export const Index = ({
+export const FileIndex = ({
   items = [],
   ...attrs
 }) => (
@@ -50,4 +49,4 @@ export const Index = ({
 );
 
 
-export default Index;
+export default FileIndex;

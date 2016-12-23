@@ -1,0 +1,18 @@
+/*
+The color palette for the project.
+http://cssnext.io/features/#color-function
+
+background-color: var(--primary);
+color: var(--greyDark);
+*/
+:root {
+  --background: #eaeaea;
+  --black: #000;
+  --grayDarker: #333;
+  --grayDark: #666;
+  --gray: #999;
+  --grayLight: #bbb;
+  --grayLighter: #ddd;
+  --white: #fff;
+  --link: #369;
+}

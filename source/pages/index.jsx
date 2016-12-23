@@ -8,8 +8,8 @@ import {
   getTagsIndexData,
   getComponentsIndexData,
   getPagesIndexData,
-  Index
-} from '../styleguide/components/Index';
+  FileIndex
+} from '../styleguide/components/FileIndex';
 
 export default ({ locals }) => (
   <Skeleton title="Hello World">
@@ -18,18 +18,18 @@ export default ({ locals }) => (
         <Heading level="1">Hello World</Heading>
 
         <Rhythm>
-          <Heading level="2">Tags</Heading>
-          <Index items={getTagsIndexData(locals)} className="rhythm--small" />
+          <Heading level="2">Pages</Heading>
+          <FileIndex items={getPagesIndexData(locals)} className="rhythm--small" />
         </Rhythm>
 
         <Rhythm>
           <Heading level="2">Components</Heading>
-          <Index items={getComponentsIndexData(locals)} className="rhythm--small" />
+          <FileIndex items={getComponentsIndexData(locals)} className="rhythm--small" />
         </Rhythm>
 
         <Rhythm>
-          <Heading level="2">Pages</Heading>
-          <Index items={getPagesIndexData(locals)} className="rhythm--small" />
+          <Heading level="2">Tags</Heading>
+          <FileIndex items={getTagsIndexData(locals)} className="rhythm--small" />
         </Rhythm>
       </Rhythm>
     </Wrapper>
