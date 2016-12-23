@@ -1,6 +1,6 @@
 # Fuzzy Chainsaw
 
-Fuzzy Chainsaw is [Connective DX](https://www.connectivedx.com)'s in-house toolset for making static websites and component styleguides.  It's great for producing static web assets with an emphasis on component driven architecture.
+[Fuzzy Chainsaw](https://github.com/connectivedx/fuzzy-chainsaw) is [Connective DX](https://www.connectivedx.com)'s in-house toolset for making static websites and component styleguides.  It's great for producing static web assets with an emphasis on component driven architecture.
 
 To get started, just [download](https://github.com/connectivedx/fuzzy-chainsaw/archive/develop.zip) a copy of this repository from github.
 
@@ -42,7 +42,7 @@ Command | Description
 --- | ---
 `npm run build` | Compiles source files into output directory
 `npm run production` | Compiles and minifies source files into output directory.
-`npm run watch` | Compiles src directory and watches for file changes. Starts a development server at `http://localhost:8080`
+`npm run watch` | Compiles src directory and watches for file changes. Starts a development server at `http://0.0.0.0:8080` (also accessible at `http://localhost:8080`)
 `npm run start` | Starts a static server at `http://localhost:8080` to use with `npm run build`
 
 ### Scaffolding tasks

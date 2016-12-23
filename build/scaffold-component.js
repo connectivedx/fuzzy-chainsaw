@@ -1,40 +1,16 @@
-/*
-  Enables scaffolding of new FC items (e.g. components, tags) using the dopl templating library.
-  See the component-template folder for the template source files.
-*/
+const path = require('path');
+const pkgpath = require('packpath');
+const minimist = require('minimist');
+const scaffoldComponent = require('./scaffolding/scaffold-component');
 
-const chalk = require('chalk');
-const dopl = require('dopl');
+const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
+const dirs = pkg.directories;
 
-module.exports = ({
-  name,
-  dest
-}) => {
-  validateComponentName(name);
-
-  const className = createClassName(name);
-  
-  return dopl({
-    name,
-    output: dest,
-    src: __dirname + '/component-template',
-    data: {
-      className
-    }
+module.exports = () => {
+  const argv = minimist(process.argv.slice(2));
+  return scaffoldComponent({
+    name: argv.name,
+    src: path.resolve(__dirname, 'scaffolding/stateless-component'),
+    dest: path.resolve(pkgpath.self(), dirs.source, 'components', argv.name)
   });
-}
-
-const validateComponentName = proposedName => {
-  if(!/^[A-Z][A-Za-z]+$/.test(proposedName)) {
-    console.error(chalk.bgRed('The name should be in PascalCase.'));
-    process.exit(1);
-  }
-}
-
-const createClassName = name => {
-  // transforms PascalCase into slug-case for the CSS class name
-  return name.replace(/[A-Z]/g, (word) => {
-      return '-' + word.toLowerCase(); 
-  })
-  .substring(1); // trim off leading - from the first capital
 }

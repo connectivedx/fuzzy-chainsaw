@@ -1,5 +1,5 @@
 .rich-text {
-	@extend .rhythm-deep;
+	@extend .rhythm--deep;
 
 	& h1,
 	& h2,
