@@ -1,9 +1,10 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
-import IconSet from '../../../tags/IconSet/IconSet';
+import { IconSet } from '../../Shared';
 
 export default ({
   title,
+  className,
   locals,
   children
 }) => (

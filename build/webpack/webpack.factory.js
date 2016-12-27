@@ -54,7 +54,7 @@ const configurationFactory = () => {
   }));
 
   const styleguideBundle = browserConfig(baseOutput({
-    entry: path.resolve(dirs.source, 'styleguide.jsx'),
+    entry: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
     outputScript: '/assets/styleguide.js',
     outputStyle: '/assets/styleguide.css'
   }));

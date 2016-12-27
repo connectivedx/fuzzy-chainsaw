@@ -1,7 +1,7 @@
 import React from 'react';
 import Dom from 'react-dom/server';
 
-import Styleguide from './styleguide/Styleguide';
+import Styleguide from './styleguide/Entry';
 import match from 'minimatch';
 import { html } from 'js-beautify';
 
@@ -87,6 +87,7 @@ module.exports = {
       const requireContext = type === 'tags' ? tagsContext : componentsContext;
       const requirer = requireOrFail(requireContext);
 
+      // done(null, '')
       output(
         <Styleguide
           name={name}

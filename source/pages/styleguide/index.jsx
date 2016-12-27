@@ -8,7 +8,7 @@ import {
   getTagsIndexData,
   getComponentsIndexData,
   FileIndex
-} from '../../styleguide/components/FileIndex';
+} from '../../styleguide/tags/FileIndex/FileIndex';
 
 export default ({ locals }) => (
   <Skeleton title="Styleguide">

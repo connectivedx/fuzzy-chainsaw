@@ -1,9 +1,9 @@
 import React from 'react';
 import slug from 'slug';
 
-import Wrapper from '../../tags/Wrapper/Wrapper';
-import Example from '../../tags/Example/Example ';
 import Heading from '../../tags/Heading/Heading';
+import Skeleton from '../../tags/Skeleton/Skeleton';
+import Example from '../../tags/Example/Example';
 
 slug.charmap['/'] = '-';
 
@@ -54,7 +54,7 @@ export const Styleguide_Tests = ({ tests }) => (
         <Example
           key={slug(e.name)}
           slug={slug(e.name)}
-          tagName={name}
+          tagName={e.name}
           exampleName={e.name}
           component={e.component} />) }
   </div>
@@ -67,7 +67,7 @@ export const Styleguide = ({
   locals = {},
   tests
 }) => (
-  <div className="sg-styleguide" title={`${name} – Styleguide`} locals={locals}>
+  <Skeleton className="sg-styleguide" title={`${name} – Styleguide`} locals={locals}>
     <div className="sg-styleguide__header sg-styleguide-section__header">
       <Heading level="1">{name}</Heading>
     </div>
@@ -75,7 +75,7 @@ export const Styleguide = ({
     { readme ? <Styleguide_Readme readme={readme} /> : undefined }
     { tag && tag.propTypes ? <Styleguide_PropTypes tag={tag} name={name} /> : undefined }
     { tests ? <Styleguide_Tests tests={tests} /> : undefined }
-  </div>
+  </Skeleton>
 );
 
 export default Styleguide;

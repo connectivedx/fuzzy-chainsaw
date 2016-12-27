@@ -1,0 +1,24 @@
+.sg-heading {
+	font-size: 2em;
+	line-height: 1em;
+	@apply --font--bold;
+}
+
+.sg-heading--default {
+	font-weight: 700;
+}
+
+.sg-heading--thin {
+	font-weight: 300;
+}
+
+.sg-heading--medium {
+	font-weight: 500;
+}
+
+.sg-heading--h1 { font-size: 2em; }
+.sg-heading--h2 { font-size: 1.6em; }
+.sg-heading--h3 { font-size: 1.4em; }
+.sg-heading--h4 { font-size: 1.3em; }
+.sg-heading--h5 { font-size: 1.2em; }
+.sg-heading--h6 { font-size: 1.1em; }

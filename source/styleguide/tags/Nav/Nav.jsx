@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Heading from '../../Heading/Heading';
+import Heading from '../Heading/Heading';
 import {
   getTagsIndexData,
   getComponentsIndexData,
   FileIndex
-} from './FileIndex';
+} from '../FileIndex/FileIndex';
 
 export default ({
   locals
