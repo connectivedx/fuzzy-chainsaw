@@ -11,7 +11,7 @@ const match = require('minimatch');
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const PostPostCSS = require('../lib/webpack-post-postcss-plugin');
+const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const webpackMerge = require('webpack-merge');
 const SharedConfig = require('./webpack.shared')
@@ -35,7 +35,7 @@ module.exports = ({
         loaders: [
           {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract('css-loader')
+            loader: ExtractTextPlugin.extract('css?sourceMap')
           },
           {
             test: /\.(jpe?g|png|gif|svg)$/i,
@@ -60,7 +60,10 @@ module.exports = ({
       },
       plugins: [
         new ExtractTextPlugin(outputStyle),
-        new PostPostCSS(require('./postcss-plugins.js'))
+        new PostCssPipelineWebpackPlugin({
+          suffix: undefined,
+          pipeline: require('./postcss-plugins.js')
+        })
       ]
     }
   );

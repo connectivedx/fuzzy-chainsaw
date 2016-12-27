@@ -5,11 +5,11 @@
 
 module.exports = ({
   entry,
-  outputPath ='dist',
+  outputPath = 'dist',
   publicPath = './dist/',
   outputScript = '/tmp/bundle.js'
 }) => ({
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
