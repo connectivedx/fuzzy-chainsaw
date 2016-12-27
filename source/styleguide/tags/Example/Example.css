@@ -86,5 +86,5 @@
 }
 
 .sg-example__section--dark-background {
-	background-color: var(--color-gray-dark);
+	background-color: var(--color-background-dark);
 }

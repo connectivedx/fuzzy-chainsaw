@@ -4,7 +4,7 @@ import Wrapper from './Wrapper';
 export default [{
   name: 'normal wrapper',
   options: {
-    fullWidth: true
+    noPadding: true
   },
   component: (
     <Wrapper>
@@ -14,7 +14,7 @@ export default [{
 }, {
   name: 'small wrapper',
   options: {
-    fullWidth: true
+    noPadding: true
   },
   component: (
     <Wrapper size="small">

@@ -45,16 +45,6 @@ export default [{
     t.end();
   }
 }, {
-  name: 'extra attribute',
-  component: (
-    <Icon name="plus" data-id="yoyoyo" />
-  ),
-  test(t, component) {
-    t.equal(component.is('.icon--plus'), true, 'icon name class');
-    t.equal(component.props()['data-id'], 'yoyoyo', 'icon data attr');
-    t.end();
-  }
-},, {
   name: 'light icon on dark background',
   options: {
     darkBackground: true
@@ -67,6 +57,16 @@ export default [{
     t.equal(component.is('.icon--plus'), true, 'icon name class');
     t.equal(component.is('.icon--normal'), true, 'size class');
     t.equal(component.is('.icon--light'), true, 'variant class');
+    t.end();
+  }
+}, {
+  name: 'extra attribute',
+  component: (
+    <Icon name="plus" data-id="yoyoyo" />
+  ),
+  test(t, component) {
+    t.equal(component.is('.icon--plus'), true, 'icon name class');
+    t.equal(component.props()['data-id'], 'yoyoyo', 'icon data attr');
     t.end();
   }
 }];

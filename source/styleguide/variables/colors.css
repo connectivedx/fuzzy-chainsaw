@@ -6,7 +6,6 @@ background-color: var(--primary);
 color: var(--greyDark);
 */
 :root {
-  --color-background: #eaeaea;
   --color-black: #000;
   --color-gray-darker: #333;
   --color-gray-dark: #666;
@@ -15,4 +14,6 @@ color: var(--greyDark);
   --color-gray-lighter: #ddd;
   --color-white: #fff;
   --color-link: #369;
+  --color-background: #eaeaea;
+  --color-background-dark: #333;
 }
