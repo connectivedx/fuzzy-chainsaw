@@ -65,14 +65,11 @@ export default ({
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component.props), null, 2);
 
-
   const exampleClasses = options ? [
     options.fullWidth ? 'sg-example__section--full-width' : undefined,
     options.noPadding ? 'sg-example__section--no-padding' : undefined,
     options.darkBackground ? 'sg-example__section--dark-background' : undefined
   ].filter(a => a !== undefined).join(' ') : '';
-
-  console.log('s', exampleClasses);
 
   return (
     <div className="sg-example">
