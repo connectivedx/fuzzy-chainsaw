@@ -1,9 +1,11 @@
 import React from 'react';
 
 import Heading from '../Heading/Heading';
+import Rhythm from '../Rhythm/Rhythm';
 import {
   getTagsIndexData,
   getComponentsIndexData,
+  getPagesIndexData,
   FileIndex
 } from '../FileIndex/FileIndex';
 
@@ -17,17 +19,17 @@ export default ({
     </a>
 
     <div className="sg-nav__container">
-      <div className="sg-nav__rhythm">
-        <div className="sg-nav__rhythm-small">
-          <Heading level="2">Tags</Heading>
-          <FileIndex items={getTagsIndexData(locals)} />
-        </div>
-
-        <div className="sg-nav__rhythm-small">
+      <Rhythm size="large">
+        <Rhythm size="small">
           <Heading level="2">Components</Heading>
           <FileIndex items={getComponentsIndexData(locals)} />
-        </div>
-      </div>
+        </Rhythm>
+
+        <Rhythm size="small">
+          <Heading level="2">Tags</Heading>
+          <FileIndex items={getTagsIndexData(locals)} />
+        </Rhythm>
+      </Rhythm>
     </div>
 
     <div className="sg-nav__cover"></div>

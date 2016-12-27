@@ -6,13 +6,13 @@ background-color: var(--primary);
 color: var(--greyDark);
 */
 :root {
-  --background: #eaeaea;
-  --black: #000;
-  --grayDarker: #333;
-  --grayDark: #666;
-  --gray: #999;
-  --grayLight: #bbb;
-  --grayLighter: #ddd;
-  --white: #fff;
-  --link: #369;
+  --color-background: #eaeaea;
+  --color-black: #000;
+  --color-gray-darker: #333;
+  --color-gray-dark: #666;
+  --color-gray: #999;
+  --color-gray-light: #bbb;
+  --color-gray-lighter: #ddd;
+  --color-white: #fff;
+  --color-link: #369;
 }

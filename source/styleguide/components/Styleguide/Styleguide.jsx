@@ -4,6 +4,7 @@ import slug from 'slug';
 import Heading from '../../tags/Heading/Heading';
 import Skeleton from '../../tags/Skeleton/Skeleton';
 import Example from '../../tags/Example/Example';
+import Rhythm from '../../tags/Rhythm/Rhythm';
 
 slug.charmap['/'] = '-';
 
@@ -36,19 +37,19 @@ export const Styleguide_PropTypes = ({ tag, name }) => (
   </div>
 )
 
-export const Styleguide_Tests = ({ tests }) => (
+export const Styleguide_Tests = ({ tests, options }) => (
   <div id="tests" className="sg-styleguide__section">
-    <div className="sg-styleguide__section-header">
+    <Rhythm className="sg-styleguide__section-header">
       <Heading level="2">Tests</Heading>
 
-      <div className="sg-styleguide__rhythm">
+      <Rhythm size="small">
         { tests.map((e, i) =>
             <div key={i}><a
               href={'#' + slug(e.name)}
               key={slug(e.name)}
               value={slug(e.name)}>{e.name}</a></div>) }
-      </div>
-    </div>
+      </Rhythm>
+    </Rhythm>
 
     { tests.map(e =>
         <Example
@@ -56,7 +57,8 @@ export const Styleguide_Tests = ({ tests }) => (
           slug={slug(e.name)}
           tagName={e.name}
           exampleName={e.name}
-          component={e.component} />) }
+          component={e.component}
+          options={e.options} />) }
   </div>
 );
 
@@ -73,7 +75,7 @@ export const Styleguide = ({
     </div>
 
     { readme ? <Styleguide_Readme readme={readme} /> : undefined }
-    { tag && tag.propTypes ? <Styleguide_PropTypes tag={tag} name={name} /> : undefined }
+    { false && tag && tag.propTypes ? <Styleguide_PropTypes tag={tag} name={name} /> : undefined }
     { tests ? <Styleguide_Tests tests={tests} /> : undefined }
   </Skeleton>
 );

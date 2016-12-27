@@ -45,10 +45,11 @@ const ExampleSection = ({
   slug,
   title,
   type,
+  className = '',
   children,
   isActive = false
 }) => (
-  <div className={`sg-example__section sg-example__section--${type} ${isActive ? 'is-active' : ''}`}>
+  <div className={`sg-example__section sg-example__section--${type} ${isActive ? 'is-active' : ''} ${className}`}>
     {children}
   </div>
 );
@@ -57,11 +58,21 @@ export default ({
   slug,
   tagName,
   exampleName,
+  options,
   component
 }) => {
   const reactExample = buildReactExample(tagName, component.props, component.props.children);
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component.props), null, 2);
+
+
+  const exampleClasses = options ? [
+    options.fullWidth ? 'sg-example__section--full-width' : undefined,
+    options.noPadding ? 'sg-example__section--no-padding' : undefined,
+    options.darkBackground ? 'sg-example__section--dark-background' : undefined
+  ].filter(a => a !== undefined).join(' ') : '';
+
+  console.log('s', exampleClasses);
 
   return (
     <div className="sg-example">
@@ -77,7 +88,7 @@ export default ({
         </ul>
       </div>
 
-      <ExampleSection title="Example" type="example" slug={slug} isActive="true">
+      <ExampleSection title="Example" type="example" slug={slug} isActive="true" className={exampleClasses}>
         <div dangerouslySetInnerHTML={{ __html: htmlExample }} />
 
         <script

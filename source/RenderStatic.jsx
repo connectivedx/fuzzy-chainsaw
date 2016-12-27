@@ -1,7 +1,7 @@
 import React from 'react';
 import Dom from 'react-dom/server';
 
-import Styleguide from './styleguide/Entry';
+import Styleguide from './styleguide/Template';
 import match from 'minimatch';
 import { html } from 'js-beautify';
 

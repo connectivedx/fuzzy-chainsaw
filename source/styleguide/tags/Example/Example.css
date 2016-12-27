@@ -1,4 +1,5 @@
 .sg-example {
+	margin-bottom: 1em;
 }
 
 .sg-expample__anchor {
@@ -13,10 +14,9 @@
 }
 
 .sg-example__header {
-
-	& .heading {
-		background-color: var(--grayDarker);
-		color: var(--white);
+	& .sg-heading {
+		background-color: var(--color-gray-darker);
+		color: var(--color-white);
 		font-size: 1em;
 		font-weight: 500;
 		line-height: 40px;
@@ -25,6 +25,7 @@
 }
 
 .sg-example__tabs {
+	background-color: var(--color-background);
 	border-bottom: none;
 	display: flex;
 	font-size: 0.8em;
@@ -39,27 +40,27 @@
 	text-align: center;
 
 	& a {
-		background-color: var(--grayLight);
-		color: var(--grayDarker);
+		background-color: var(--color-gray-light);
+		color: var(--color-gray-darker);
 		display: block;
 		padding: 1em;
 		text-decoration: none;
 
 		&:hover {
-			background-color: var(--grayLighter);
-			border-color: var(--grayLighter);
+			background-color: var(--color-gray-lighter);
+			border-color: var(--color-gray-lighter);
 		}
 	}
 
 	&.is-active a {
-		background-color: var(--white);
-		color: var(--grayDark);
+		background-color: var(--color-white);
+		color: var(--color-gray-dark);
 	}
 }
 
 .sg-example__section {
 	display: none;
-	background-color: var(--white);
+	background-color: var(--color-white);
 	overflow: auto;
 	padding: 1em;
 	position: relative;
@@ -72,8 +73,18 @@
 	&.is-active {
 		display: block;
 	}
+}
 
-	&.no-padding {
-		padding: 0;
-	}
+
+.sg-example__section--full-width {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.sg-example__section--no-padding {
+	padding: 0;
+}
+
+.sg-example__section--dark-background {
+	background-color: var(--color-gray-dark);
 }

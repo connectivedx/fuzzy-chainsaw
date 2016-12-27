@@ -3,7 +3,7 @@ require.context('./variables/', true, /\.css$/);
 require.context('./tags/', true, /\.css$/);
 require.context('./components/', true, /\.css$/);
 
-// JS
+// browser Javascript
 const body = document.body;
 const nav = document.querySelector('.sg-nav');
 const toggle = nav.querySelector('.sg-nav__toggle');

@@ -7,40 +7,37 @@
 }
 
 .sg-styleguide {
-	background-color: var(--background);
-	overflow: hidden;
+	overflow-x: hidden;
 	position: relative;
 	transition: transform 0.3s;
 	z-index: 0;
 }
 
 .sg-styleguide__header {
-	background-color: var(--white);
+	background-color: var(--color-white);
 	padding-left: 200px;
 
-	& .heading {
+	& .sg-heading {
 		font-size: 28px;
 		font-weight: 500;
 		line-height: 60px;
 	}
 }
 
-.sg-styleguide__section {
+.sg-styleguide__section-header {
+	background-color: var(--color-background);
+	padding: 1em;
 
-	& .sg-styleguide__section-header {
-		padding: 1em;
+	@media (width >= 960px) {
+		padding: 1.75em 2em 2.25em;
+	}
 
-		@media (width >= 960px) {
-			padding: 1.75em 2em 2.25em;
-		}
+	& a {
+		color: var(--color-link);
+	}
 
-		& a {
-			color: var(--link);
-		}
-
-		& .heading {
-			margin-bottom: .5em;
-		}
+	& .sg-heading {
+		margin-bottom: .5em;
 	}
 }
 
@@ -79,7 +76,7 @@
 	}
 
 	& code {
-		background-color: var(--white);
+		background-color: var(--color-white);
 		border-radius: .125em .25em;
 		color: firebrick;
 		display: inline-block;

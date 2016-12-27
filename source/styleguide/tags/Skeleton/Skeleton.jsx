@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
-import { IconSet } from '../../Shared';
+import { IconSet } from '../../shared';
 
 export default ({
   title,
