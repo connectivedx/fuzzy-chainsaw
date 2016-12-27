@@ -43,7 +43,9 @@ export const Styleguide_Tests = ({ tests, options }) => (
       <Heading level="2">Tests</Heading>
 
       <Rhythm size="small">
-        { tests.map((e, i) =>
+        { tests
+          .filter(e => !(e.options && e.options.hidden))
+          .map((e, i) =>
             <div key={i}><a
               href={'#' + slug(e.name)}
               key={slug(e.name)}
@@ -51,7 +53,9 @@ export const Styleguide_Tests = ({ tests, options }) => (
       </Rhythm>
     </Rhythm>
 
-    { tests.map(e =>
+    { tests
+      .filter(e => !(e.options && e.options.hidden))
+      .map(e =>
         <Example
           key={slug(e.name)}
           slug={slug(e.name)}
