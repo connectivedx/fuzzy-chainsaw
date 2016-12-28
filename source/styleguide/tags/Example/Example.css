@@ -77,12 +77,12 @@
 
 
 .sg-example__section--full-width {
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .sg-example__section--no-padding {
-	padding: 0;
+	padding: 0 !important;
 }
 
 .sg-example__section--dark-background {
