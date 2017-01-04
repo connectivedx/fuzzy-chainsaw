@@ -15,7 +15,7 @@ module.exports = build.map(config => {
     return config;
   }
 
-  config.devtool = ''
+  config.devtool = 'source-map';
 
   // add production flag to build environment
   // libraries can key off this to import versions without debug info
