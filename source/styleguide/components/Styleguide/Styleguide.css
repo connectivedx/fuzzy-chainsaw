@@ -1,25 +1,3 @@
-/* 
-The color palette for the project.
-http://cssnext.io/features/#color-function 
-
-background-color: var(--primary);
-color: var(--greyDark);
-*/
-:root {
-	--background: #eaeaea;
-	--black: #000;
-	--grayDarker: #333;
-	--grayDark: #666;
-	--gray: #999;
-	--grayLight: #bbb;
-	--grayLighter: #ddd;
-	--white: #fff;
-	--link: #369;
-}
-
-@import "./components/nav.css";
-@import "./components/example.css";
-
 .is-sg-nav-expanded {
 	overflow: hidden;
 
@@ -29,44 +7,41 @@ color: var(--greyDark);
 }
 
 .sg-styleguide {
-	background-color: var(--background);
-	overflow: hidden;
+	overflow-x: hidden;
 	position: relative;
 	transition: transform 0.3s;
 	z-index: 0;
 }
 
 .sg-styleguide__header {
-	background-color: var(--white);
+	background-color: var(--color-white);
 	padding-left: 200px;
 
-	& .heading {
+	& .sg-heading {
 		font-size: 28px;
 		font-weight: 500;
 		line-height: 60px;
 	}
 }
 
-.sg-styleguide-section {
+.sg-styleguide__section-header {
+	background-color: var(--color-background);
+	padding: 1em;
 
-	& .sg-styleguide-section__header {
-		padding: 1em;
+	@media (width >= 960px) {
+		padding: 1.75em 2em 2.25em;
+	}
 
-		@media (width >= 960px) {
-			padding: 1.75em 2em 2.25em;
-		}
+	& a {
+		color: var(--color-link);
+	}
 
-		& a {
-			color: var(--link);
-		}
-
-		& .heading {
-			margin-bottom: .5em;
-		}
+	& .sg-heading {
+		margin-bottom: .5em;
 	}
 }
 
-.sg-styleguide-readme {
+.sg-styleguide__readme {
 	padding: 1em;
 	background-color: gray(245);
 
@@ -101,13 +76,14 @@ color: var(--greyDark);
 	}
 
 	& code {
-		background-color: var(--white);
+		background-color: var(--color-white);
 		border-radius: .125em .25em;
 		color: firebrick;
 		display: inline-block;
 		padding: .25em;
 	}
 }
+
 
 .sg-page-root--bgimage-test {
 	background-image: url('./assets/randy-savage.jpg');

@@ -10,7 +10,7 @@ const Rhythm = ({
   ...attrs
 }) => {
   const Tag = tagName;
-  const baseClass = deep ? 'rhythm--deep-' : 'rhythm--';
+  const baseClass = deep ? 'sg-rhythm--deep-' : 'sg-rhythm--';
 
   return (
     <Tag className={`${baseClass}${size} ${className}`} {...attrs}>
@@ -25,7 +25,7 @@ Rhythm.propTypes = {
   size: React.PropTypes.string,
   deep: React.PropTypes.oneOfType([
     React.PropTypes.string,
-    React.PropTypes.bool
+    React.PropTypes.boolean
   ])
 };
 

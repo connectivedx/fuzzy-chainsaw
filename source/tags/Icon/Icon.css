@@ -2,7 +2,7 @@
 	display: inline-block;
 }
 
-.icon--default {
+.icon--normal {
 	width: 1em;
 	height: 1em;
 }
@@ -20,4 +20,8 @@
 .icon--wide {
 	width: 3em;
 	height: 1.5em;
+}
+
+.icon--light {
+	fill: var(--color-secondary);
 }
