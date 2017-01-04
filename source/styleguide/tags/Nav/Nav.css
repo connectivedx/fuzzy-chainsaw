@@ -1,6 +1,6 @@
 .sg-nav {
 	& a {
-		color: var(--black);
+		color: var(--color-black);
 	}
 
 	&.is-expanded {
@@ -12,7 +12,7 @@
 		}
 
 		& .sg-nav__toggle {
-			background-color: var(--black);
+			background-color: var(--color-black);
 
 			& > span {
 				display: inline;
@@ -38,8 +38,8 @@
 
 	z-index: 100;
 
-	background-color: var(--grayDarker);
-	color: var(--white);
+	background-color: var(--color-gray-darker);
+	color: var(--color-white);
 
 	text-decoration: none;
 	cursor: pointer;
@@ -54,7 +54,7 @@
 
 
 	&:hover {
-		background-color: var(--black);
+		background-color: var(--color-black);
 		box-shadow: #000.25 0 0.3em 1em;
 	}
 
@@ -84,7 +84,7 @@
 	font-size: 1em;
 	line-height: 1.7em;
 
-	background-color: var(--background);
+	background-color: var(--color-background);
 
 	transform: translate3d(-100%, 0, 0);
 	transition: transform 0.3s;

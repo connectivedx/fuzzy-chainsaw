@@ -1,7 +1,10 @@
-import style from './styleguide/Styleguide.css';
+// CSS
+require.context('./variables/', true, /\.css$/);
+require.context('./tags/', true, /\.css$/);
+require.context('./components/', true, /\.css$/);
 
+// browser Javascript
 const body = document.body;
-
 const nav = document.querySelector('.sg-nav');
 const toggle = nav.querySelector('.sg-nav__toggle');
 const cover = nav.querySelector('.sg-nav__cover');
@@ -24,6 +27,7 @@ body.addEventListener('keyup', ev => {
     nav.classList.remove('is-expanded');
   }
 });
+
 
 const examples = Array.prototype.slice.call(document.querySelectorAll('.sg-example'));
 const examplesTabs = examples.map(e => e.querySelector('.sg-example__tabs'));
