@@ -25,7 +25,7 @@ Rhythm.propTypes = {
   size: React.PropTypes.string,
   deep: React.PropTypes.oneOfType([
     React.PropTypes.string,
-    React.PropTypes.boolean
+    React.PropTypes.bool
   ])
 };
 
