@@ -1,0 +1,31 @@
+.form-select {
+	@apply --form-border;
+	max-width: 320px;
+	padding: 1px;
+	white-space: nowrap;
+}
+
+/* control element and modifiers */
+.form-select__control {
+	appearance: none;
+	border: none;
+	display: inline-block;
+	line-height: 1.5;
+	width: 100%;
+}
+.form-select__control--default {
+	height: var(--input-height);
+	padding: .3em 1.5em .25em .25em;
+	vertical-align: middle;
+}
+.form-select__control--multiple {
+	padding: .25em 0 .25em .25em;
+}
+
+/* icon element */
+.form-select__icon {
+	line-height: 1.5;
+	margin-left: -1.5em;
+	pointer-events: none;
+	vertical-align: middle;
+}

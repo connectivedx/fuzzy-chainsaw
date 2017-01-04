@@ -1,0 +1,3 @@
+.form-input {
+	@apply --input-default;
+}

@@ -1,0 +1,54 @@
+.form-check {
+	display: inline-block;
+	height: 1.25em;
+	position: relative;
+	vertical-align: top;
+	width: 1.25em;
+
+	& .form-check__icon {
+		height: 100%;
+		width: 100%;
+	}
+
+	& .form-check__icon--css {
+
+		&::after {
+			display: none;
+		}
+	}
+}
+
+.form-check__control {
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+}
+
+:checked {
+	& + .form-check__icon--svg {
+		& [class*="-checked"] {
+			display: block;
+		}
+	}
+	& + .form-check__icon--css {
+		&::after {
+			display: block;
+		}
+	}
+}
+
+.form-check__icon--svg {
+	& .icon {
+		fill: gray(60%);
+		height: 100%;
+		position: absolute;
+		width: 100%;
+	}
+
+	& [class*="-checked"] {
+		display: none;
+	}
+}

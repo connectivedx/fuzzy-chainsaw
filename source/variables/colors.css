@@ -8,4 +8,6 @@ color: var(--greyDark);
 :root {
 	--color-primary: #e55030;
 	--color-secondary: #d1d2d4;
+
+	--color-error: red;
 }

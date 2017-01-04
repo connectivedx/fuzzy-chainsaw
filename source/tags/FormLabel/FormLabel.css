@@ -1,0 +1,9 @@
+.form-label--error {
+	color: var(--color-error);
+}
+
+.form-label--legend {
+	&+ * {
+		margin: 2em 0 0;
+	}
+}

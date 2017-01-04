@@ -1,0 +1,46 @@
+.icon-css {
+	display: inline-block;
+	height: 1em;
+	line-height: normal;
+	vertical-align: middle;
+	width: 1em;
+
+	&:--generated {
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.icon-css--checkbox {
+	border: 2px solid gray(75%);
+
+	&::after {
+		border: 1px solid black;
+		border-width: 0 0 .1875em .1875em;
+		content: ' ';
+		display: block;
+		height: 30%;
+		margin: 15% 0 0 6%;
+		transform: rotate(-45deg);
+		width: 70%;
+	}
+}
+
+.icon-css--radio {
+	border: 2px solid gray(75%);
+	border-radius: 50%;
+	position: relative;
+
+	&::after {
+		background: black;
+		border-radius: 50%;
+		content: ' ';
+		height: 65%;
+		left: 50%;
+		margin: -32.5% 0 0 -32.5%;
+		position: absolute;
+		top: 50%;
+		width: 65%;
+	}
+}
