@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from ('lodash.isempty');
 
 import Heading from '../Heading/Heading';
 import Rhythm from '../Rhythm/Rhythm';
@@ -32,7 +33,7 @@ export default ({
         }
 
         {
-          Object.keys(getComponentsIndexData(locals)).length
+          isEmpty(getComponentsIndexData(locals))
           ?
           <Rhythm size="small">
             <Heading level="2">Components</Heading>
@@ -43,7 +44,7 @@ export default ({
         }
 
         {
-          Object.keys(getPagesIndexData(locals)).length
+          isEmpty(getPagesIndexData(locals))
           ?
           <Rhythm size="small">
             <Heading level="2">Tags</Heading>

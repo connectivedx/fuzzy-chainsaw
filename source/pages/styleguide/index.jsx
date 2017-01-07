@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from ('lodash.isempty');
 
 import Skeleton from '../../tags/Skeleton/Skeleton';
 import Heading from '../../tags/Heading/Heading';
@@ -17,7 +18,7 @@ export default ({ locals }) => (
         <Heading level="1">Styleguide</Heading>
 
         {
-          Object.keys(getComponentsIndexData(locals)).length
+          isEmpty(getComponentsIndexData(locals))
           ?
           <Rhythm>
             <Heading level="2">Components</Heading>
@@ -28,7 +29,7 @@ export default ({ locals }) => (
         }
 
         {
-          Object.keys(getTagsIndexData(locals)).length
+          isEmpty(getTagsIndexData(locals))
           ?
           <Rhythm>
             <Heading level="2">Tags</Heading>
