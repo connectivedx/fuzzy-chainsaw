@@ -20,10 +20,16 @@ export default ({
 
     <div className="sg-nav__container">
       <Rhythm size="large">
-        <Rhythm size="small">
-          <Heading level="2">Components</Heading>
-          <FileIndex items={getComponentsIndexData(locals)} />
-        </Rhythm>
+        {
+          Object.keys(getPagesIndexData(locals)).length
+          ?
+          <Rhythm size="small">
+            <Heading level="2">Pages</Heading>
+            <FileIndex items={getPagesIndexData(locals)} />
+          </Rhythm>
+          :
+          null
+        }
 
         <Rhythm size="small">
           <Heading level="2">Tags</Heading>
