@@ -1,5 +1,5 @@
 import React from 'react';
-import isEmpty from ('lodash.isempty');
+import isEmpty from 'lodash.isempty';
 
 import Heading from '../Heading/Heading';
 import Rhythm from '../Rhythm/Rhythm';
@@ -22,7 +22,7 @@ export default ({
     <div className="sg-nav__container">
       <Rhythm size="large">
         {
-          Object.keys(getPagesIndexData(locals)).length
+          ! isEmpty(getPagesIndexData(locals))
           ?
           <Rhythm size="small">
             <Heading level="2">Pages</Heading>
@@ -33,7 +33,7 @@ export default ({
         }
 
         {
-          isEmpty(getComponentsIndexData(locals))
+          ! isEmpty(getComponentsIndexData(locals))
           ?
           <Rhythm size="small">
             <Heading level="2">Components</Heading>
@@ -44,7 +44,7 @@ export default ({
         }
 
         {
-          isEmpty(getPagesIndexData(locals))
+          ! isEmpty(getPagesIndexData(locals))
           ?
           <Rhythm size="small">
             <Heading level="2">Tags</Heading>
