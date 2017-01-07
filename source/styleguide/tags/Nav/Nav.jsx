@@ -31,10 +31,27 @@ export default ({
           null
         }
 
-        <Rhythm size="small">
-          <Heading level="2">Tags</Heading>
-          <FileIndex items={getTagsIndexData(locals)} />
-        </Rhythm>
+        {
+          Object.keys(getComponentsIndexData(locals)).length
+          ?
+          <Rhythm size="small">
+            <Heading level="2">Components</Heading>
+            <FileIndex items={getComponentsIndexData(locals)} />
+          </Rhythm>
+          :
+          null
+        }
+
+        {
+          Object.keys(getPagesIndexData(locals)).length
+          ?
+          <Rhythm size="small">
+            <Heading level="2">Tags</Heading>
+            <FileIndex items={getTagsIndexData(locals)} />
+          </Rhythm>
+          :
+          null
+        }
       </Rhythm>
     </div>
 
