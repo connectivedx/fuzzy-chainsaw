@@ -17,10 +17,11 @@
     "build": "gulp build",
     "production": "gulp production",
     "watch": "gulp watch",
+    "integration-watch": "gulp watch:integration",
     "new-tag": "gulp scaffold:tag --name",
     "new-component": "gulp scaffold:component --name",
     "webpack-build": "webpack --config ./build/webpack/webpack.config.js --progress",
-    "webpack-watch": "webpack-dev-server --config ./build/webpack/webpack.config.js"
+    "webpack-watch": "webpack-dev-server --config ./build/webpack/webpack.config.js --progress"
   },
   "engines": {
     "node": "^=6.9.2"
