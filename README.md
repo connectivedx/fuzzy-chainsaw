@@ -43,6 +43,7 @@ Command | Description
 `npm run build` | Compiles source files into output directory
 `npm run production` | Compiles and minifies source files into output directory.
 `npm run watch` | Compiles src directory and watches for file changes. Starts a development server at `http://0.0.0.0:8080` (also accessible at `http://localhost:8080`)
+`npm run integration-watch` | Compiles src directory into output directory and watches for file changes.
 `npm run start` | Starts a static server at `http://localhost:8080` to use with `npm run build`
 
 ### Scaffolding tasks
