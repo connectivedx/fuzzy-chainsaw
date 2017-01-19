@@ -1,6 +1,4 @@
 import React from 'react';
-import isEmpty from 'lodash.isempty';
-
 import Heading from '../Heading/Heading';
 import Rhythm from '../Rhythm/Rhythm';
 import {

@@ -1,6 +1,4 @@
 import React from 'react';
-import isEmpty from 'lodash.isempty';
-
 import Skeleton from '../tags/Skeleton/Skeleton';
 import Heading from '../tags/Heading/Heading';
 import Rhythm from '../tags/Rhythm/Rhythm';
