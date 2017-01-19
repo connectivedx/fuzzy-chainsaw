@@ -19,38 +19,21 @@ export default ({
 
     <div className="sg-nav__container">
       <Rhythm size="large">
-        {
-          ! isEmpty(getPagesIndexData(locals))
-          ?
-          <Rhythm size="small">
-            <Heading level="2">Pages</Heading>
-            <FileIndex items={getPagesIndexData(locals)} />
-          </Rhythm>
-          :
-          null
-        }
-
-        {
-          ! isEmpty(getComponentsIndexData(locals))
-          ?
-          <Rhythm size="small">
-            <Heading level="2">Components</Heading>
-            <FileIndex items={getComponentsIndexData(locals)} />
-          </Rhythm>
-          :
-          null
-        }
-
-        {
-          ! isEmpty(getPagesIndexData(locals))
-          ?
-          <Rhythm size="small">
-            <Heading level="2">Tags</Heading>
-            <FileIndex items={getTagsIndexData(locals)} />
-          </Rhythm>
-          :
-          null
-        }
+        <FileIndex
+          items={getPagesIndexData(locals)}
+          title="Pages"
+          size="small"
+        />
+        <FileIndex
+          items={getComponentsIndexData(locals)}
+          title="Components"
+          size="small"
+        />
+        <FileIndex
+          items={getTagsIndexData(locals)}
+          title="Tags"
+          size="small"
+        />
       </Rhythm>
     </div>
 
