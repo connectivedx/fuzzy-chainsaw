@@ -12,7 +12,8 @@ let build = require('./webpack.factory')();
 
 // production specific configuration
 module.exports = build.map(config => {
-  if (config.workflow === 'test') {
+  if (config.workflow === 'test'
+    || config.workflow === 'static') {
     return config;
   }
 
