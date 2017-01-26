@@ -19,6 +19,10 @@ module.exports = build.map(config => {
 
   config.devtool = 'source-map';
 
+  config.responsiveLoader = {
+    sizes: [720, 1280, 1920]
+  },
+
   // add production flag to build environment
   // libraries can key off this to import versions without debug info
   // (e.g. react turns off warnings in the console and gets much smaller because of this)

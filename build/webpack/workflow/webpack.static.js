@@ -37,9 +37,15 @@ module.exports = ({
       module: {
         loaders: [
           {
-            test: /\.(jpe?g|png|gif|svg)$/i,
+            test: /\.(gif|svg)$/i,
             loaders: [
               'file?context=./source/&name=/assets/images/content/[name]-[md5:hash:hex:8].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
+          },
+          { test: /\.(jpe?g|png)$/i,
+            loaders: [
+              'responsive?name=/assets/images/content/[name]-[md5:hash:hex:8].',
               'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
             ]
           },
