@@ -5,13 +5,14 @@
   tasks such as minification to enabled. Thus, changes to the debug build also apply here unless
   this configuration actively undoes them.
 */
-const cssnano = require('cssnano');
 const webpack = require('webpack');
+const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
+
 let build = require('./webpack.factory')();
 
 // production specific configuration
 module.exports = build.map(config => {
-  if(config.doNotApplyProductionConfig) {
+  if (config.workflow === 'test') {
     return config;
   }
 
@@ -28,20 +29,27 @@ module.exports = build.map(config => {
     })
   );
 
+  // add css minification
+  if (config.workflow === 'browser') {
+    config.plugins.push(
+      new PostCssPipelineWebpackPlugin({
+        suffix: undefined,
+        pipeline: [
+          require('cssnano')
+        ]
+      })
+    );
+  }
+
   // uglify JS
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    sourceMap: false,
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
       compress: {
         warnings: false
       }
-  }));
-
-  // add css minification
-  if (config.postcss !== undefined) {
-    config.postcss = config.postcss.concat([
-      cssnano()
-    ]);
-  }
+    })
+  );
 
   return config;
 });

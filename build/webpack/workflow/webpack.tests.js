@@ -26,6 +26,7 @@ module.exports = ({
       outputScript
     }),
     {
+      workflow: 'test',
       target: 'node',
       node: {
         fs: 'empty'
@@ -45,8 +46,7 @@ module.exports = ({
       },
       plugins: [
         new TapWebpackPlugin({ reporter: reporter })
-      ],
-      doNotApplyProductionConfig: true
+      ]
     }
   );
 }

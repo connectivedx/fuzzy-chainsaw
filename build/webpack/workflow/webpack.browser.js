@@ -31,11 +31,12 @@ module.exports = ({
       outputScript
     }),
     {
+      workflow: 'browser',
       module: {
         loaders: [
           {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract('css?sourceMap')
+            loader: ExtractTextPlugin.extract('css?-minimize&sourceMap')
           },
           {
             test: /\.(jpe?g|png|gif|svg)$/i,

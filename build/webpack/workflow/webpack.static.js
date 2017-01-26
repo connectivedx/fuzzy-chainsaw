@@ -29,6 +29,7 @@ module.exports = ({
       outputScript
     }),
     {
+      workflow: 'static',
       output: {
         libraryTarget: 'umd'
       },
