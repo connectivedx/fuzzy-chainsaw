@@ -10,7 +10,7 @@ export default [{
   component: (
     <Media>
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -41,7 +41,7 @@ export default [{
       </Media_Body>
 
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
     </Media>
   ),
@@ -56,7 +56,7 @@ export default [{
   component: (
     <Media align="middle">
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -73,7 +73,7 @@ export default [{
   component: (
     <Media align="bottom">
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -90,7 +90,7 @@ export default [{
   component: (
     <Media>
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -102,7 +102,7 @@ export default [{
       </Media_Body>
 
       <Media_Figure align="bottom">
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
     </Media>
   )
@@ -111,11 +111,11 @@ export default [{
   component: (
     <Media>
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
 
       <Media_Figure>
-        <img src={randySavage} />
+        <img {...randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -127,7 +127,7 @@ export default [{
 
           <Media>
             <Media_Figure>
-              <img src={randySavage} />
+              <img {...randySavage} />
             </Media_Figure>
 
             <Media_Body>
@@ -148,11 +148,11 @@ export default [{
             </Media_Body>
 
             <Media_Figure>
-              <img src={randySavage} />
+              <img {...randySavage} />
             </Media_Figure>
 
             <Media_Figure align="bottom">
-              <img src={randySavage} />
+              <img {...randySavage} />
             </Media_Figure>
           </Media>
         </Rhythm>
