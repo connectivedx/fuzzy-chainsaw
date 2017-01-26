@@ -10,6 +10,7 @@ const glob = require('glob');
 const match = require('minimatch');
 
 const webpack = require('webpack');
+const SvgStorePlugin = require('webpack-svgstore-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
@@ -59,6 +60,7 @@ module.exports = ({
         ]
       },
       plugins: [
+        new SvgStorePlugin(),
         new ExtractTextPlugin(outputStyle),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
