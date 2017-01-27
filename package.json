@@ -67,6 +67,7 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-syntax-highlighter": "^4.0.1",
     "reset-css": "^2.2.0",
     "run-sequence": "^1.2.2",
     "slug": "^0.9.1",
