@@ -1,6 +1,5 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
-import { IconSet } from '../../shared';
 
 export default ({
   title,
@@ -18,8 +17,6 @@ export default ({
     </head>
 
     <body className={className}>
-      <IconSet />
-
       <Nav locals={locals} />
       <div className="sg-styleguide" id="content">
         {children}

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Skeleton.css';
-import IconSet from '../IconSet/IconSet';
 
 
 export const Skeleton_Wrapper = ({
@@ -35,7 +34,6 @@ export const Skeleton_Body = ({
   children
 }) => (
   <body className={className}>
-    <IconSet />
     {children}
     <script src="/assets/scripts.js" />
   </body>

@@ -9,7 +9,7 @@ const Icon = ({
   ...attrs
 }) => (
   <svg className={`icon icon--${size} icon--${name} icon--${variant} ${className}`} {...attrs}>
-    <use xlinkHref={'#' + name} />
+    <use xlinkHref={'#icon-' + name} />
   </svg>
 );
 
