@@ -1,38 +1,12 @@
 import React from 'react';
 import Dom from 'react-dom/server';
+import reactElementToString from 'react-element-to-jsx-string';
 import { pd } from 'pretty-data';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { github } from 'react-syntax-highlighter/dist/styles';
 
 import Heading from '../Heading/Heading';
-
-const json2htmlAttrs = obj =>
-  Object.keys(obj)
-    .filter(key => key !== 'children')
-    .map(key => `${key}="${obj[key]}"`)
-    .join(' ');
-
-const getChildren = child => {
-  if (Array.isArray(child)) {
-    return child
-      .map(c => buildReactExample(c.type, c.props, c.props.children))
-      .join('');
-  }
-
-  return child;
-}
-
-const buildReactExample = (tagName, props, children) => {
-  const attrs = json2htmlAttrs(props);
-
-  if (children && attrs)
-    return `<${tagName} ${attrs}>${getChildren(children)}</${tagName}>`;
-  else if (children && !attrs)
-    return `<${tagName}>${getChildren(children)}</${tagName}>`;
-  else
-    return `<${tagName} ${attrs} />`;
-}
 
 const filterProps = props => {
   const copy = Object.assign({}, props);
@@ -64,7 +38,8 @@ export default ({
   options,
   component
 }) => {
-  const reactExample = buildReactExample(tagName, component.props, component.props.children);
+
+  const reactExample = reactElementToString(component);
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component.props), null, 2);
 
@@ -100,7 +75,7 @@ export default ({
       <ExampleSection title="React" type="react" slug={slug}>
         <pre><code>
           <SyntaxHighlighter lanaguage="javascript" style={github} customStyle={{backgroundColor:'transparent'}}>
-            { pd.xml(reactExample) }
+            { reactExample }
           </SyntaxHighlighter>
         </code></pre>
       </ExampleSection>
