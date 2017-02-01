@@ -3,6 +3,9 @@ import Dom from 'react-dom/server';
 import reactElementToString from 'react-element-to-jsx-string';
 import { pd } from 'pretty-data';
 
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { github } from 'react-syntax-highlighter/dist/styles';
+
 import Heading from '../Heading/Heading';
 
 const filterProps = props => {
@@ -71,19 +74,25 @@ export default ({
 
       <ExampleSection title="React" type="react" slug={slug}>
         <pre><code>
-          { reactExample }
+          <SyntaxHighlighter lanaguage="javascript" style={github} customStyle={{backgroundColor:'transparent'}}>
+            { reactExample }
+          </SyntaxHighlighter>
         </code></pre>
       </ExampleSection>
 
       <ExampleSection title="HTML" type="html" slug={slug}>
         <pre><code>
-          { pd.xml(htmlExample) }
+          <SyntaxHighlighter lanaguage="html" style={github} customStyle={{backgroundColor:'transparent'}}>
+            { pd.xml(htmlExample) }
+          </SyntaxHighlighter>
         </code></pre>
       </ExampleSection>
 
       <ExampleSection title="JSON" type="json" slug={slug}>
         <pre><code>
+          <SyntaxHighlighter lanaguage="json" style={github} customStyle={{backgroundColor:'transparent'}}>
           { jsonExample }
+          </SyntaxHighlighter>
         </code></pre>
       </ExampleSection>
     </div>
