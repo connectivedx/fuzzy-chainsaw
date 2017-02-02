@@ -49,24 +49,18 @@ const baseOutput = config => Object.assign({
 const configurationFactory = () => {
   const renderStatic = staticConfig(baseOutput({
     entry: {
-      styleguide: path.resolve(dirs.source, 'RenderStatic.jsx')
+      static: path.resolve(dirs.source, 'RenderStatic.jsx')
     }
   }));
 
-  const styleguideBundle = browserConfig(baseOutput({
-    entry: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    outputScript: '/assets/styleguide.js',
-    outputStyle: '/assets/styleguide.css'
-  }));
-
-  const browserStyles = browserConfig(baseOutput({
-    entry: path.resolve(dirs.source, 'styles.jsx'),
-    outputStyle: '/assets/styles.css'
-  }));
-
-  const browserScripts = browserConfig(baseOutput({
-    entry: path.resolve(dirs.source, 'scripts.jsx'),
-    outputScript: '/assets/scripts.js',
+  const browserBundles = browserConfig(baseOutput({
+    entry: {
+      styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
+      styles: path.resolve(dirs.source, 'styles.jsx'),
+      scripts: path.resolve(dirs.source, 'scripts.jsx')
+    },
+    outputScript: '/assets/[name].js',
+    outputStyle: '/assets/[name].css'
   }));
 
   const componentTests = testsConfig(baseOutput({
@@ -77,9 +71,7 @@ const configurationFactory = () => {
 
   return [
     renderStatic,
-    styleguideBundle,
-    browserStyles,
-    browserScripts,
+    browserBundles,
     componentTests
   ];
 };
