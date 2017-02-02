@@ -37,19 +37,6 @@ module.exports = ({
       module: {
         loaders: [
           {
-            test: /\.(gif|svg)$/i,
-            loaders: [
-              'file?context=./source/&name=/assets/images/content/[name]-[md5:hash:hex:8].[ext]',
-              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]
-          },
-          { test: /\.(jpe?g|png)$/i,
-            loaders: [
-              'responsive?name=/assets/images/content/[name]-[md5:hash:hex:8].',
-              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]
-          },
-          {
             test: /\.md$/,
             loader: 'html!markdown-loader'
           },
@@ -60,6 +47,19 @@ module.exports = ({
           {
             test: /\.(css|woff|woff2|eot|ttf|cs|cshtml)$/,
             loader: 'null-loader'
+          },
+          {
+            test: /\.(gif|svg)$/i,
+            loaders: [
+              'file?context=./source/&name=/assets/images/content/[name]-[md5:hash:hex:8].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
+          },
+          { test: /\.(jpe?g|png)$/i,
+            loaders: [
+              'file?name=/assets/images/content/[name]-[md5:hash:hex:8].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
           }
         ]
       },

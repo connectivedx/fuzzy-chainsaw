@@ -12,30 +12,43 @@ let build = require('./webpack.factory')();
 
 // production specific configuration
 module.exports = build.map(config => {
-  if (config.workflow === 'test'
-    || config.workflow === 'static') {
-    return config;
-  }
-
   config.devtool = 'source-map';
 
   config.responsiveLoader = {
     sizes: [720, 1280, 1920]
-  },
+  };
 
-  // add production flag to build environment
-  // libraries can key off this to import versions without debug info
-  // (e.g. react turns off warnings in the console and gets much smaller because of this)
-  config.plugins.unshift(
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    })
-  );
+  if (config.workflow === 'static') {
+    config.module.loaders[config.module.loaders.length - 1] = {
+      test: /\.(jpe?g|png)$/i,
+      loaders: [
+        'responsive?name=/assets/images/content/[name]-[md5:hash:hex:8].',
+        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+      ]
+    };
+  }
 
-  // add css minification
   if (config.workflow === 'browser') {
+    config.module.loaders[config.module.loaders.length - 1] = {
+      test: /\.(jpe?g|png)$/i,
+      loaders: [
+        'responsive?name=/assets/images/css/[name]-[md5:hash:hex:8].',
+        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+      ]
+    };
+
+    // add production flag to build environment
+    // libraries can key off this to import versions without debug info
+    // (e.g. react turns off warnings in the console and gets much smaller because of this)
+    config.plugins.unshift(
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      })
+    );
+
+    // add css minification
     config.plugins.push(
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
@@ -44,17 +57,17 @@ module.exports = build.map(config => {
         ]
       })
     );
-  }
 
-  // uglify JS
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      compress: {
-        warnings: false
-      }
-    })
-  );
+    // uglify JS
+    config.plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: false,
+        compress: {
+          warnings: false
+        }
+      })
+    );
+  }
 
   return config;
 });
