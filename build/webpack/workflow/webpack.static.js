@@ -10,6 +10,7 @@ const glob = require('glob');
 
 const webpack = require('webpack');
 const StaticGeneratorPlugin = require('static-generator-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const webpackMerge = require('webpack-merge');
 const SharedConfig = require('./webpack.shared')
@@ -58,7 +59,11 @@ module.exports = ({
       },
       plugins: Object.keys(entry).map(key => (
         new StaticGeneratorPlugin(key, locals)
-      ))
+      )).concat([
+        new CopyWebpackPlugin([
+          { from: 'source/vendor', to: 'assets/vendor' }
+        ])
+      ])
     }
   );
 }
