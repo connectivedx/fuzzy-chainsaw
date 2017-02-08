@@ -40,13 +40,6 @@ module.exports = ({
             loader: ExtractTextPlugin.extract('css?-minimize&sourceMap')
           },
           {
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            loaders: [
-              'file?context=./source/&name=/assets/images/css/[name]-[md5:hash:hex:8].[ext]',
-              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]
-          },
-          {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
             loader: 'file?context=./source/&name=/assets/fonts/[name]-[md5:hash:hex:8].[ext]'
           },
@@ -57,6 +50,20 @@ module.exports = ({
           {
             test: /\.md$/,
             loader: 'null'
+          },
+          {
+            test: /\.(gif|svg)$/i,
+            loaders: [
+              'file?context=./source/&name=/assets/images/css/[name]-[md5:hash:hex:8].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
+          },
+          {
+            test: /\.(jpe?g|png)$/i,
+            loaders: [
+              'file?name=/assets/images/css/[name]-[md5:hash:hex:8].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
           }
         ]
       },

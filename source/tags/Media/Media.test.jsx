@@ -2,6 +2,7 @@ import React from 'react';
 import randySavage from './assets/randy-savage.jpg';
 import { Media, Media_Figure, Media_Body } from './Media.jsx';
 
+import Image from '../Image/Image';
 import Heading from '../Heading/Heading'
 import Rhythm from '../Rhythm/Rhythm';
 
@@ -10,7 +11,7 @@ export default [{
   component: (
     <Media>
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -41,7 +42,7 @@ export default [{
       </Media_Body>
 
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
     </Media>
   ),
@@ -56,7 +57,7 @@ export default [{
   component: (
     <Media align="middle">
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -73,7 +74,7 @@ export default [{
   component: (
     <Media align="bottom">
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -90,7 +91,7 @@ export default [{
   component: (
     <Media>
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -102,7 +103,7 @@ export default [{
       </Media_Body>
 
       <Media_Figure align="bottom">
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
     </Media>
   )
@@ -111,11 +112,11 @@ export default [{
   component: (
     <Media>
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
 
       <Media_Figure>
-        <img src={randySavage} />
+        <Image src={randySavage} />
       </Media_Figure>
 
       <Media_Body>
@@ -127,7 +128,7 @@ export default [{
 
           <Media>
             <Media_Figure>
-              <img src={randySavage} />
+              <Image src={randySavage} />
             </Media_Figure>
 
             <Media_Body>
@@ -148,11 +149,11 @@ export default [{
             </Media_Body>
 
             <Media_Figure>
-              <img src={randySavage} />
+              <Image src={randySavage} />
             </Media_Figure>
 
             <Media_Figure align="bottom">
-              <img src={randySavage} />
+              <Image src={randySavage} />
             </Media_Figure>
           </Media>
         </Rhythm>

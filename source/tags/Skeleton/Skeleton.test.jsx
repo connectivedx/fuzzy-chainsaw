@@ -8,11 +8,4 @@ export default [{
       Oh, Hello
     </Skeleton>
   )
-}, {
-  name: 'bgimage test',
-  component: (
-    <Skeleton title="Super Test Page">
-      <div className="sg-page-root--bgimage-test"></div>
-    </Skeleton>
-  )
 }];
