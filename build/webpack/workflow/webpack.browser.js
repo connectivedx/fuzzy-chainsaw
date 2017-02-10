@@ -34,6 +34,12 @@ module.exports = ({
     {
       workflow: 'browser',
       module: {
+        preLoaders: [
+          {
+            test: /\.css$/,
+            loader: 'postcss-loader',
+          }
+        ],
         loaders: [
           {
             test: /\.css$/,
@@ -74,6 +80,10 @@ module.exports = ({
           suffix: undefined,
           pipeline: require('./postcss-plugins.js')
         })
+      ],
+      postcss: [
+        require('stylelint')(),
+        require('postcss-reporter')()
       ]
     }
   );

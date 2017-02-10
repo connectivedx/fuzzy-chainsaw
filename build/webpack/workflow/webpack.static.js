@@ -35,6 +35,13 @@ module.exports = ({
         libraryTarget: 'umd'
       },
       module: {
+        preLoaders: [
+          {
+            test: /\.(jsx|js)$/,
+            loader: 'eslint-loader',
+            exclude: /node_modules/
+          }
+        ],
         loaders: [
           {
             test: /\.md$/,
