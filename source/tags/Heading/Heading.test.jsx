@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from './Heading';
 
 export default [{
-  name: "default",
+  name: 'default',
   component: (
     <Heading>
       Hello
@@ -17,7 +17,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "tagName",
+  name: 'tagName',
   component: (
     <Heading level="3">
       Wowie Zowie
@@ -32,7 +32,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "className/variant",
+  name: 'className/variant',
   component: (
     <Heading className="super" variant="medium">
       Leg Shaking
@@ -48,7 +48,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "tagName/className/variant",
+  name: 'tagName/className/variant',
   component: (
     <Heading tagName="div" className="duper" variant="thin">
       Back Breaking

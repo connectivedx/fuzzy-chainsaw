@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 export default [{
-  name: "default",
+  name: 'default',
   component: (
     <Button>
       Hello World
@@ -16,7 +16,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "href",
+  name: 'href',
   component: (
     <Button href="#/">
       Hello World
@@ -31,7 +31,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "tagName",
+  name: 'tagName',
   component: (
     <Button tagName="div">
       Hello World
@@ -45,7 +45,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "tagName/className",
+  name: 'tagName/className',
   component: (
     <Button tagName="div" className="button--superduper">
       Hello World
@@ -60,7 +60,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "type",
+  name: 'type',
   component: (
     <Button variant="cta">
       Hello World
@@ -74,7 +74,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "type/link",
+  name: 'type/link',
   component: (
     <Button href="#/" variant="cta">
       Hello World

@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './Media.css';
-
 
 export const Media_Figure = ({
   tagName = 'div',
@@ -10,13 +8,14 @@ export const Media_Figure = ({
   ...attrs
 }) => {
   const Tag = tagName;
+  let tagClass = className;
 
   if (align !== undefined) {
-    className = `media__figure--${align} ` + className;
+    tagClass = `media__figure--${align} ${className}`;
   }
 
   return (
-    <Tag className={`media__figure ${className}`} {...attrs}>
+    <Tag className={`media__figure ${tagClass}`} {...attrs}>
       {children}
     </Tag>
   );
@@ -25,8 +24,9 @@ export const Media_Figure = ({
 Media_Figure.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  align: React.PropTypes.string
-}
+  align: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
+};
 
 
 export const Media_Body = ({
@@ -46,8 +46,9 @@ export const Media_Body = ({
 Media_Body.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  align: React.PropTypes.string
-}
+  align: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
+};
 
 
 export const Media = ({
@@ -63,13 +64,14 @@ export const Media = ({
       {children}
     </Tag>
   );
-}
+};
 
 Media.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  align: React.PropTypes.string
-}
+  align: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
+};
 
 
 export default Media;

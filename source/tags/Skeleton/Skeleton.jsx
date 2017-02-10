@@ -1,14 +1,17 @@
 import React from 'react';
-import styles from './Skeleton.css';
 
 
 export const Skeleton_Wrapper = ({
   children
 }) => (
-  <html>
+  <html lang="en">
     {children}
   </html>
 );
+
+Skeleton_Wrapper.propTypes = {
+  children: React.PropTypes.node.isRequired
+};
 
 
 export const Skeleton_Head = ({
@@ -25,8 +28,9 @@ export const Skeleton_Head = ({
 );
 
 Skeleton_Head.propTypes = {
-  title: React.PropTypes.string.isRequired
-}
+  title: React.PropTypes.string.isRequired,
+  children: React.PropTypes.node
+};
 
 
 export const Skeleton_Body = ({
@@ -40,8 +44,9 @@ export const Skeleton_Body = ({
 );
 
 Skeleton_Body.propTypes = {
-  className: React.PropTypes.string
-}
+  className: React.PropTypes.string,
+  children: React.PropTypes.node
+};
 
 
 export const Skeleton = ({
@@ -57,8 +62,8 @@ export const Skeleton = ({
 
 Skeleton.propTypes = {
   title: React.PropTypes.string.isRequired,
-  bodyClass: React.PropTypes.string
+  bodyClass: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
 };
-
 
 export default Skeleton;

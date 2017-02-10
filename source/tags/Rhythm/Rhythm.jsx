@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Rhythm.css';
 
 const Rhythm = ({
   tagName = 'div',
@@ -16,7 +15,7 @@ const Rhythm = ({
     <Tag className={`${baseClass}${size} ${className}`} {...attrs}>
       {children}
     </Tag>
-  )
+  );
 };
 
 Rhythm.propTypes = {
@@ -26,7 +25,8 @@ Rhythm.propTypes = {
   deep: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.bool
-  ])
+  ]),
+  children: React.PropTypes.node.isRequired
 };
 
 export default Rhythm;

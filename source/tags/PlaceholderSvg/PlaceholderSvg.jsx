@@ -43,7 +43,7 @@ export const PlaceholderSvg = (props) => {
       </text>
     </svg>
   );
-}
+};
 
 PlaceholderSvg.propTypes = {
   width: React.PropTypes.oneOfType([

@@ -2,7 +2,7 @@ import React from 'react';
 import PlaceholderSvg from './PlaceholderSvg';
 
 export default [{
-  name: "Default",
+  name: 'Default',
   component: (
     <PlaceholderSvg />
   ),
@@ -13,7 +13,7 @@ export default [{
   }
 },
 {
-  name: "With all available props passed in",
+  name: 'With all available props passed in',
   component: (
     <PlaceholderSvg
       width={2000}

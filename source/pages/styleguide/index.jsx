@@ -9,7 +9,7 @@ import {
   FileIndex
 } from '../../styleguide/tags/FileIndex/FileIndex';
 
-export default ({ locals }) => (
+const page = ({ locals }) => (
   <Skeleton title="Styleguide">
     <Wrapper>
       <Rhythm size="large">
@@ -32,3 +32,9 @@ export default ({ locals }) => (
     </Wrapper>
   </Skeleton>
 );
+
+page.propTypes = {
+  locals: React.PropTypes.object
+};
+
+export default page;

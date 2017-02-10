@@ -1,8 +1,8 @@
 import React from 'react';
-import { List, List_Item } from './List.jsx';
+import { List, List_Item } from './List';
 
 export default [{
-  name: "default",
+  name: 'default',
   component: (
     <List>
       <List_Item>Horse</List_Item>
@@ -18,7 +18,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "ordered list",
+  name: 'ordered list',
   component: (
     <List variant="ordered">
       <List_Item className="is-leader">Pig</List_Item>
@@ -34,7 +34,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "blank list",
+  name: 'blank list',
   component: (
     <List variant="blank">
       <List_Item className="is-leader">Pig</List_Item>
@@ -50,7 +50,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "list w/ class",
+  name: 'list w/ class',
   component: (
     <List className="boogy-monster">
       <List_Item className="is-leader">Pig</List_Item>
@@ -67,7 +67,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "list item w/ class",
+  name: 'list item w/ class',
   component: (
     <List_Item className="yahoo">Horse</List_Item>
   ),

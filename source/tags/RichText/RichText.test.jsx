@@ -1,8 +1,8 @@
 import React from 'react';
-import RichText from './RichText.jsx';
+import RichText from './RichText';
 
 export default [{
-  name: "default",
+  name: 'default',
   component: (
     <RichText>
       <h1>Heading 1</h1>
