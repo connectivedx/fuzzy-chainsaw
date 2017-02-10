@@ -1,11 +1,11 @@
 const getAssetPath = () => {
   // get an element that references assets
-  const el = document.querySelector('[src*="assets/"]')
+  const el = document.querySelector('[src*="assets/scripts.js"]')
 
   // get the prefix of the asset path
   if (el) {
     const src = el.getAttribute('src')
-    const prefix = src.substr(0, src.indexOf('assets/'))
+    const prefix = src.substr(0, src.indexOf('assets/scripts.js'))
     return prefix;
   }
 
