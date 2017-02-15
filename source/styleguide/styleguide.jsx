@@ -1,7 +1,7 @@
 // CSS
-require.context('./variables/', true, /\.css$/);
-require.context('./tags/', true, /\.css$/);
-require.context('./components/', true, /\.css$/);
+require.context('SgVars/', true, /\.css$/);
+require.context('SgTags/', true, /\.css$/);
+require.context('SgComponents/', true, /\.css$/);
 
 // browser Javascript
 const body = document.body;

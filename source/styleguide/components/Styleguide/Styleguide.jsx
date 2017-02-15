@@ -1,10 +1,10 @@
 import React from 'react';
 import slug from 'slug';
 
-import Heading from '../../tags/Heading/Heading';
-import Skeleton from '../../tags/Skeleton/Skeleton';
-import Example from '../../tags/Example/Example';
-import Rhythm from '../../tags/Rhythm/Rhythm';
+import Heading from 'SgTags/Heading/Heading';
+import Skeleton from 'SgTags/Skeleton/Skeleton';
+import Example from 'SgTags/Example/Example';
+import Rhythm from 'SgTags/Rhythm/Rhythm';
 
 slug.charmap['/'] = '-';
 

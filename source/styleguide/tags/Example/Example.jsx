@@ -6,7 +6,7 @@ import { pd } from 'pretty-data';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { github } from 'react-syntax-highlighter/dist/styles';
 
-import Heading from '../Heading/Heading';
+import Heading from 'SgTags/Heading/Heading';
 
 const filterProps = props => {
   const copy = Object.assign({}, props);

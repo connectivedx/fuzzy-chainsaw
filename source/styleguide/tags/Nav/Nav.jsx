@@ -1,12 +1,12 @@
 import React from 'react';
-import Heading from '../Heading/Heading';
-import Rhythm from '../Rhythm/Rhythm';
+import Heading from 'SgTags/Heading/Heading';
+import Rhythm from 'SgTags/Rhythm/Rhythm';
 import {
   getTagsIndexData,
   getComponentsIndexData,
   getPagesIndexData,
   FileIndex
-} from '../FileIndex/FileIndex';
+} from 'SgTags/FileIndex/FileIndex';
 
 export default ({
   locals

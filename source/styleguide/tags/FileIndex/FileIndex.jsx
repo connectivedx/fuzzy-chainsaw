@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Heading from '../Heading/Heading';
-import Rhythm from '../Rhythm/Rhythm';
+import Heading from 'SgTags/Heading/Heading';
+import Rhythm from 'SgTags/Rhythm/Rhythm';
 
 const path2LinkList = (baseUrl = '') => path => {
   const url = `${baseUrl}/${path.substr(0, path.lastIndexOf('.'))}.html`;

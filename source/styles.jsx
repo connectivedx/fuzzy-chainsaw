@@ -1,11 +1,11 @@
 // require all variables files
-require.context('./variables/', true, /\.css$/);
+require.context('Vars/', true, /\.css$/);
 
 // require any components that
 // need to preserve ordering
-require('./tags/Skeleton/Skeleton');
-require('./tags/RichText/RichText');
+require('Tags/Skeleton/Skeleton');
+require('Tags/RichText/RichText');
 
 // require the rest of the components
-require.context("./tags/", true, /\.css$/);
-require.context("./components/", true, /\.css$/);
+require.context("Tags/", true, /\.css$/);
+require.context("Components/", true, /\.css$/);

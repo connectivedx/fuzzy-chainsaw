@@ -1,3 +1,3 @@
-import IconSet from './tags/Icon/IconSet';
+import IconSet from 'Tags/Icon/IconSet';
 
 console.log('Main Bundle!');

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Brand.css';
-import Icon from '../Icon/Icon';
+import Icon from 'Tags/Icon/Icon';
 
 const Brand = ({
   tagName = 'div',

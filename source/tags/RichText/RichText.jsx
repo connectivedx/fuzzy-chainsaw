@@ -1,9 +1,9 @@
 import React from 'react';
 
 // things we'll want for richtext css
-import Rhythm from '../Rhythm/Rhythm';
-import Heading from '../Heading/Heading';
-import Button from '../Button/Button';
+import Rhythm from 'Tags/Rhythm/Rhythm';
+import Heading from 'Tags/Heading/Heading';
+import Button from 'Tags/Button/Button';
 
 import styles from './RichText.css';
 

@@ -2,9 +2,9 @@ import React from 'react';
 import randySavage from './assets/randy-savage.jpg';
 import { Media, Media_Figure, Media_Body } from './Media.jsx';
 
-import Image from '../Image/Image';
-import Heading from '../Heading/Heading'
-import Rhythm from '../Rhythm/Rhythm';
+import Image from 'Tags/Image/Image';
+import Heading from 'Tags/Heading/Heading'
+import Rhythm from 'Tags/Rhythm/Rhythm';
 
 export default [{
   name: "media to the left",

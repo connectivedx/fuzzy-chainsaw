@@ -6,9 +6,9 @@ import match from 'minimatch';
 import { html } from 'js-beautify';
 
 
-const pagesContext = require.context('./pages/', true, /\.jsx$/);
-const tagsContext = require.context('./tags/', true, /\.jsx$/);
-const componentsContext = require.context('./components/', true, /\.jsx$/);
+const pagesContext = require.context('Pages/', true, /\.jsx$/);
+const tagsContext = require.context('Tags/', true, /\.jsx$/);
+const componentsContext = require.context('Components/', true, /\.jsx$/);
 
 const requireOrFail = context => path => {
   try {

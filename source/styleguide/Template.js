@@ -1,2 +1,2 @@
-import Styleguide from './components/Styleguide/Styleguide';
+import Styleguide from 'SgComponents/Styleguide/Styleguide';
 export default Styleguide;
