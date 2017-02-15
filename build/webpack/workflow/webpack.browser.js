@@ -34,6 +34,7 @@ module.exports = ({
     {
       workflow: 'browser',
       module: {
+        // delete preLoaders key to remove CSS linting.
         preLoaders: [
           {
             test: /\.css$/,

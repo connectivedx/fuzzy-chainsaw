@@ -5,6 +5,7 @@
 		"comma-dangle": ["error", "never"],
 		"camelcase": 0,
 		"no-param-reassign": 0,
+		"linebreak-style": 0,
 		"import/no-named-as-default": 0,
 		"react/no-danger": 0,
 		"react/jsx-pascal-case": 0,
