@@ -1,19 +1,20 @@
 .heading {
-	font-size: 2em;
-	line-height: 1em;
-	@apply --font--bold;
+  @apply --font--bold;
+
+  font-size: 2em;
+  line-height: 1em;
 }
 
 .heading--default {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .heading--thin {
-	font-weight: 300;
+  font-weight: 300;
 }
 
 .heading--medium {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .heading--h1 { font-size: 2em; }

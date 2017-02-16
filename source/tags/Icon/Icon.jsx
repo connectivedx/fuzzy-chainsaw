@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Icon.css';
 
 const Icon = ({
   className = '',
@@ -9,7 +8,7 @@ const Icon = ({
   ...attrs
 }) => (
   <svg className={`icon icon--${size} icon--${name} icon--${variant} ${className}`} {...attrs}>
-    <use xlinkHref={'#icon-' + name} />
+    <use xlinkHref={`#icon-${name}`} />
   </svg>
 );
 
@@ -18,6 +17,6 @@ Icon.propTypes = {
   size: React.PropTypes.string,
   variant: React.PropTypes.string,
   name: React.PropTypes.string.isRequired
-}
+};
 
 export default Icon;

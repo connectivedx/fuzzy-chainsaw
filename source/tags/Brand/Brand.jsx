@@ -1,12 +1,10 @@
 import React from 'react';
-import styles from './Brand.css';
 import Icon from '../Icon/Icon';
 
 const Brand = ({
   tagName = 'div',
   className = '',
   variant = 'full',
-  children,
   ...attrs
 }) => {
   const Tag = tagName;
@@ -26,7 +24,7 @@ const Brand = ({
 Brand.propTypes = {
   tagName: React.PropTypes.string,
   variant: React.PropTypes.string,
-  className: React.PropTypes.string,
+  className: React.PropTypes.string
 };
 
 

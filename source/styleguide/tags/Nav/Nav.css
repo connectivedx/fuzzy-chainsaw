@@ -1,126 +1,111 @@
 .sg-nav {
-	& a {
-		color: var(--color-black);
-	}
+  & a {
+    color: var(--color-black);
+  }
 
-	&.is-expanded {
-		& .sg-nav__cover {
-			transform: translate3d(0, 0, 0);
-			opacity: 1;
-			transition-delay: 0s;
-			pointer-events: auto;
-		}
+  &.is-expanded {
+    & .sg-nav__cover {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      transition-delay: 0s;
+      pointer-events: auto;
+    }
 
-		& .sg-nav__toggle {
-			background-color: var(--color-black);
+    & .sg-nav__toggle {
+      background-color: var(--color-black);
 
-			& > span {
-				display: inline;
+      & > span {
+        display: inline;
 
-				&:first-child {
-					display: none;
-				}
-			}
-		}
+        &:first-child {
+          display: none;
+        }
+      }
+    }
 
-		& .sg-nav__container {
-			transform: translate3d(0, 0, 0);
-		}
-	}
+    & .sg-nav__container {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 }
 
 .sg-nav__toggle {
-	display: block;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 180px;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  z-index: 100;
+  background-color: var(--color-gray-darker);
+  color: var(--color-white);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: #000.1 0 0 0.5em;
+  font-size: 14px;
+  line-height: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+  transition-property: background-color, box-shadow;
 
-	z-index: 100;
+  &:hover {
+    background-color: var(--color-black);
+    box-shadow: #000.25 0 0.3em 1em;
+  }
 
-	background-color: var(--color-gray-darker);
-	color: var(--color-white);
+  & > span {
+    display: none;
+    color: white;
 
-	text-decoration: none;
-	cursor: pointer;
-	box-shadow: #000.1 0 0 0.5em;
-	font-size: 14px;
-	line-height: 60px;
-	text-align: center;
-	text-transform: uppercase;
-
-	transition: 0.3s ease-in-out;
-	transition-property: background-color, box-shadow;
-
-
-	&:hover {
-		background-color: var(--color-black);
-		box-shadow: #000.25 0 0.3em 1em;
-	}
-
-	& > span {
-		display: none;
-		color: white;
-
-		&:first-child {
-			display: inline;
-		}
-	}
+    &:first-child {
+      display: inline;
+    }
+  }
 }
 
 .sg-nav__container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 100vh;
+  width: 100%;
+  max-width: 320px;
+  overflow: auto;
+  padding: 1em;
+  padding-top: 6em;
+  font-size: 1em;
+  line-height: 1.7em;
+  background-color: var(--color-background);
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.3s ease-in-out;
 
-	height: 100vh;
-	width: 100%;
-	max-width: 320px;
-	overflow: auto;
+  & * + .heading {
+    margin-top: 1em;
+  }
 
-	padding: 1em;
-	padding-top: 6em;
-	font-size: 1em;
-	line-height: 1.7em;
+  & .heading {
+    margin-bottom: 0.25em;
+  }
 
-	background-color: var(--color-background);
-
-	transform: translate3d(-100%, 0, 0);
-	transition: transform 0.3s;
-	transition-timing-function: ease-in-out;
-
-	& * + .heading {
-		margin-top: 1em;
-	}
-
-	& .heading {
-		margin-bottom: 0.25em;
-	}
-
-	@media (width >= 960px) {
-		padding: 2em;
-		padding-top: 7em;
-	}
+  @media (width >= 960px) {
+    padding: 2em;
+    padding-top: 7em;
+  }
 }
 
 .sg-nav__cover {
-	content: '\0020';
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 98;
-
-	background-color: #000.8;
-
-	transition-timing-function: ease;
-	transition-property: opacity, transform;
-	transition-duration: 0.45s, 0s, 0s;
-	transition-delay: 0s, 0.45s, 0.45s;
-
-	opacity: 0;
-	pointer-events: none;
-	transform: translate3d(0, -100%, 0);
+  content: '\0020';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 98;
+  background-color: #000.8;
+  transition: opacity ease 0.45s, transform ease 0s;
+  transition-delay: 0s, 0.45s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, -100%, 0);
 }

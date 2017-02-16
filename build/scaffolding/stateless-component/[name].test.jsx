@@ -2,7 +2,7 @@ import React from 'react';
 import {{name}} from './{{name}}.jsx';
 
 export default [{
-  name: "default",
+  name: 'default',
   component: (
     <{{name}}>
       Hello World

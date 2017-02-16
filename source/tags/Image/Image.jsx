@@ -1,12 +1,10 @@
 import React from 'react';
-import styles from './Image.css';
 
 export const Image = ({
   tagName = 'img',
   className = '',
   variant = 'default',
   src = {},
-  children,
   ...attrs
 }) => {
   const Tag = tagName;
@@ -14,9 +12,10 @@ export const Image = ({
     <Tag
       className={`image image--${variant} ${className}`}
       {...(typeof src === 'string' ? { src } : src)} // normalized responize-loader/image-loader
-      {...attrs} />
+      {...attrs}
+    />
   );
-}
+};
 
 Image.propTypes = {
   tagName: React.PropTypes.string,

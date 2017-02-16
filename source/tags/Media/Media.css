@@ -1,18 +1,18 @@
 .media {
-	display: flex;
+  display: flex;
 }
 
 .media__body {
-	flex: 1;
+  flex: 1;
 
-	& ~ .media__figure {
-		margin-right: inherit;
-		margin-left: 1em;
-	}
+  & ~ .media__figure {
+    margin-right: inherit;
+    margin-left: 1em;
+  }
 }
 
 .media__figure {
-	margin-right: 1em;
+  margin-right: 1em;
 }
 
 .media--middle { align-items: center; }

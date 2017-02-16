@@ -20,23 +20,12 @@ export const Styleguide_Readme = ({ readme }) => (
   </div>
 );
 
-export const Styleguide_PropTypes = ({ tag, name }) => (
-  <div id="prop-types" className="sg-styleguide__section">
-    <div className="sg-styleguide__section-header">
-      <Heading level="2">Props</Heading>
+Styleguide_Readme.propTypes = {
+  readme: React.PropTypes.string
+};
 
-      <ul>
-        { Object.keys(tag.propTypes).map(type => {
-          return(
-            <li key={type}>{type}</li>
-          )
-        }) }
-      </ul>
-    </div>
-  </div>
-)
 
-export const Styleguide_Tests = ({ tests, options }) => (
+export const Styleguide_Tests = ({ tests }) => (
   <div id="tests" className="sg-styleguide__section">
     <Rhythm className="sg-styleguide__section-header">
       <Heading level="2">Tests</Heading>
@@ -61,13 +50,22 @@ export const Styleguide_Tests = ({ tests, options }) => (
           tagName={e.name}
           exampleName={e.name}
           component={e.component}
-          options={e.options} />) }
+          options={e.options}
+        />) }
   </div>
 );
 
+Styleguide_Tests.propTypes = {
+  tests: React.PropTypes.arrayOf(React.PropTypes.shape({
+    name: React.PropTypes.string,
+    options: React.PropTypes.object,
+    component: React.PropTypes.element
+  }))
+};
+
+
 export const Styleguide = ({
-  name = "Generic Component",
-  tag,
+  name = 'Generic Component',
   readme,
   locals = {},
   tests
@@ -78,9 +76,16 @@ export const Styleguide = ({
     </div>
 
     { readme ? <Styleguide_Readme readme={readme} /> : undefined }
-    { false && tag && tag.propTypes ? <Styleguide_PropTypes tag={tag} name={name} /> : undefined }
     { tests ? <Styleguide_Tests tests={tests} /> : undefined }
   </Skeleton>
 );
+
+Styleguide.propTypes = {
+  name: React.PropTypes.string,
+  readme: React.PropTypes.string,
+  locals: React.PropTypes.object,
+  tests: React.PropTypes.array
+};
+
 
 export default Styleguide;
