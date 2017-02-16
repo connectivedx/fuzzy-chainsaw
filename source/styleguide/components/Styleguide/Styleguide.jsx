@@ -1,12 +1,11 @@
 import React from 'react';
-import slug from 'slug';
+import slugify from 'slugify';
 
 import Heading from '../../tags/Heading/Heading';
 import Skeleton from '../../tags/Skeleton/Skeleton';
 import Example from '../../tags/Example/Example';
 import Rhythm from '../../tags/Rhythm/Rhythm';
 
-slug.charmap['/'] = '-';
 
 export const Styleguide_Readme = ({ readme }) => (
   <div id="readme" className="sg-styleguide__section">
@@ -34,12 +33,11 @@ export const Styleguide_Tests = ({ tests }) => (
       <Rhythm size="small">
         { tests
           .filter(e => !(e.options && e.options.hidden))
-          .map(e =>
-            <div key={slug(e.name)}>
-              <a href={`#${slug(e.name)}`} key={slug(e.name)} value={slug(e.name)}>
-                {e.name}
-              </a>
-            </div>) }
+          .map((e, i) =>
+            <div key={i}><a
+              href={'#' + slugify(e.name)}
+              key={slugify(e.name)}
+              value={slugify(e.name)}>{e.name}</a></div>) }
       </Rhythm>
     </Rhythm>
 
@@ -47,8 +45,8 @@ export const Styleguide_Tests = ({ tests }) => (
       .filter(e => !(e.options && e.options.hidden))
       .map(e =>
         <Example
-          key={slug(e.name)}
-          slug={slug(e.name)}
+          key={slugify(e.name)}
+          slug={slugify(e.name)}
           tagName={e.name}
           exampleName={e.name}
           component={e.component}
