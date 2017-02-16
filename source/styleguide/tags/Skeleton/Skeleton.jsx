@@ -1,13 +1,13 @@
 import React from 'react';
 import Nav from 'SgTags/Nav/Nav';
 
-export default ({
+const Skeleton = ({
   title,
   className,
   locals,
   children
 }) => (
-  <html>
+  <html lang="en">
     <head>
       <meta charSet="utf-8" />
       <title>{title}</title>
@@ -27,3 +27,12 @@ export default ({
     </body>
   </html>
 );
+
+Skeleton.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  className: React.PropTypes.string,
+  locals: React.PropTypes.object,
+  children: React.PropTypes.node.isRequired
+};
+
+export default Skeleton;

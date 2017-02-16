@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading from 'SgTags/Heading/Heading';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
+
 import {
   getTagsIndexData,
   getComponentsIndexData,
@@ -8,7 +8,7 @@ import {
   FileIndex
 } from 'SgTags/FileIndex/FileIndex';
 
-export default ({
+const Nav = ({
   locals
 }) => (
   <div className="sg-nav">
@@ -36,7 +36,12 @@ export default ({
         />
       </Rhythm>
     </div>
-
-    <div className="sg-nav__cover"></div>
+    <div className="sg-nav__cover" />
   </div>
 );
+
+Nav.propTypes = {
+  locals: React.PropTypes.object.isRequired
+};
+
+export default Nav;

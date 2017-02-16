@@ -4,7 +4,7 @@ export const Heading = ({
   tagName,
   className = '',
   variant = 'default',
-  level, //
+  level,
   children,
   ...attrs
 }) => {
@@ -12,8 +12,8 @@ export const Heading = ({
   let delevel = level || 1;
 
   if (level !== undefined && tagName === undefined) {
-    Tag = 'h' + level;
-    delevel = level
+    Tag = `h${level}`;
+    delevel = level;
   } else if (level === undefined && tagName !== undefined) {
     Tag = tagName;
   }
@@ -22,7 +22,7 @@ export const Heading = ({
     <Tag className={`sg-heading sg-heading--${variant} sg-heading--h${delevel} ${className}`} {...attrs}>
       {children}
     </Tag>
-  )
+  );
 };
 
 Heading.propTypes = {
@@ -30,6 +30,7 @@ Heading.propTypes = {
   className: React.PropTypes.string,
   variant: React.PropTypes.string,
   level: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
 };
 
 

@@ -35,6 +35,14 @@ module.exports = ({
         libraryTarget: 'umd'
       },
       module: {
+        // delete preLoaders key to remove JS linting.
+        preLoaders: [
+          {
+            test: /\.(jsx|js)$/,
+            loader: 'eslint-loader',
+            exclude: /node_modules/
+          }
+        ],
         loaders: [
           {
             test: /\.md$/,

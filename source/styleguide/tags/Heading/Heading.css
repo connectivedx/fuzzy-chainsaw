@@ -1,19 +1,19 @@
 .sg-heading {
-	font-family: sans-serif;
-	font-size: 2em;
-	line-height: 1em;
+  font-family: sans-serif;
+  font-size: 2em;
+  line-height: 1em;
 }
 
 .sg-heading--default {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .sg-heading--thin {
-	font-weight: 300;
+  font-weight: 300;
 }
 
 .sg-heading--medium {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .sg-heading--h1 { font-size: 2em; }

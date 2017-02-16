@@ -1,13 +1,13 @@
 import React from 'react';
-import randySavage from './assets/randy-savage.jpg';
-import { Media, Media_Figure, Media_Body } from './Media.jsx';
-
 import Image from 'Tags/Image/Image';
-import Heading from 'Tags/Heading/Heading'
+import Heading from 'Tags/Heading/Heading';
 import Rhythm from 'Tags/Rhythm/Rhythm';
 
+import randySavage from './assets/randy-savage.jpg';
+import { Media, Media_Figure, Media_Body } from './Media';
+
 export default [{
-  name: "media to the left",
+  name: 'media to the left',
   component: (
     <Media>
       <Media_Figure>
@@ -30,7 +30,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "media to the right",
+  name: 'media to the right',
   component: (
     <Media>
       <Media_Body>
@@ -53,7 +53,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "media align middle",
+  name: 'media align middle',
   component: (
     <Media align="middle">
       <Media_Figure>
@@ -70,7 +70,7 @@ export default [{
     </Media>
   )
 }, {
-  name: "media align bottom",
+  name: 'media align bottom',
   component: (
     <Media align="bottom">
       <Media_Figure>
@@ -86,8 +86,8 @@ export default [{
       </Media_Body>
     </Media>
   )
-},{
-  name: "media to each side, different alignment",
+}, {
+  name: 'media to each side, different alignment',
   component: (
     <Media>
       <Media_Figure>
@@ -108,7 +108,7 @@ export default [{
     </Media>
   )
 }, {
-  name: "media nested",
+  name: 'media nested',
   component: (
     <Media>
       <Media_Figure>

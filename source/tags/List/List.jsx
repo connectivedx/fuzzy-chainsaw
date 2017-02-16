@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './List.css';
 
 
 export const List_Item = ({
@@ -10,10 +9,10 @@ export const List_Item = ({
   <li className={`list__item ${className}`} {...attrs}>{children}</li>
 );
 
-
 List_Item.propTypes = {
-  className: React.PropTypes.string
-}
+  className: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
+};
 
 
 export const List = ({
@@ -30,13 +29,14 @@ export const List = ({
       {children}
     </Tag>
   );
-}
+};
 
 List.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  variant: React.PropTypes.string
-}
+  variant: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
+};
 
 
 export default List;

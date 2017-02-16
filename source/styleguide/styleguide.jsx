@@ -32,13 +32,16 @@ body.addEventListener('keyup', ev => {
 const examples = Array.prototype.slice.call(document.querySelectorAll('.sg-example'));
 const examplesTabs = examples.map(e => e.querySelector('.sg-example__tabs'));
 const examplesSections = examples.map(e => e.querySelectorAll('.sg-example__section'))
-const examplesItems = examples.map(e => e.querySelectorAll('.sg-example__tabs-item'));
+const examplesItems = examples.map(e => Array.prototype.slice.call(e.querySelectorAll('.sg-example__tabs-item')));
 
 examplesTabs.forEach((tabset, i) => {
   tabset.addEventListener('click', ev => {
-    Array.prototype.slice.call(examplesItems[i]).forEach((item, j) => {
-      examplesItems[i][j].classList.toggle('is-active', item.contains(ev.target));
-      examplesSections[i][j].classList.toggle('is-active', item.contains(ev.target));
-    });
+    const active = examplesItems[i].map((item, j) => item.contains(ev.target));
+    if (active.indexOf(true) !== -1) {
+      examplesItems[i].map((item, j) => {
+        examplesItems[i][j].classList.toggle('is-active', active[j]);
+        examplesSections[i][j].classList.toggle('is-active', active[j]);
+      });
+    }
   });
 });

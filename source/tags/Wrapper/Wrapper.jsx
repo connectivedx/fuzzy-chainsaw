@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Wrapper.css';
 
 const Wrapper = ({
   tagName = 'div',
@@ -13,13 +12,14 @@ const Wrapper = ({
     <Tag className={`wrapper wrapper--${size} ${className}`} {...attrs}>
       {children}
     </Tag>
-  )
+  );
 };
 
 Wrapper.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  size: React.PropTypes.string
+  size: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired
 };
 
 export default Wrapper;

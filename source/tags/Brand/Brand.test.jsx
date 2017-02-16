@@ -1,8 +1,8 @@
 import React from 'react';
-import Brand from './Brand.jsx';
+import Brand from './Brand';
 
 export default [{
-  name: "default",
+  name: 'default',
   component: (
     <Brand />
   ),
@@ -13,7 +13,7 @@ export default [{
     t.end();
   }
 }, {
-  name: "compact",
+  name: 'compact',
   component: (
     <Brand variant="compact" />
   ),

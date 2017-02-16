@@ -14,6 +14,7 @@ const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 const mqpacker = require('css-mqpacker');
 
+
 module.exports = [
   postcss.plugin('fix-escaping-error', (opts) => (css, result) => {
     css.walkRules(rule => {
@@ -30,5 +31,6 @@ module.exports = [
   }),
   url({
     url: urlStr => urlStr.replace('/assets/', './')
-  })
+  }),
+
 ];

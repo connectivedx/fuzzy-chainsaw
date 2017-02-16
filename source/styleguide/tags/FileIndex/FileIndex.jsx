@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Heading from 'SgTags/Heading/Heading';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
 
-const path2LinkList = (baseUrl = '') => path => {
+const path2LinkList = (baseUrl = '') => (path) => {
   const url = `${baseUrl}/${path.substr(0, path.lastIndexOf('.'))}.html`;
 
   return ({
@@ -15,7 +15,7 @@ const path2LinkList = (baseUrl = '') => path => {
         .join('/')
         .replace('/Index', '')
   });
-}
+};
 
 export const getTagsIndexData = locals =>
   locals.outputPaths
@@ -53,7 +53,8 @@ export const FileIndex = (props) => {
 
   return (
     items.length
-    ? <RhythmComponent size={size}>
+    ? (
+      <RhythmComponent size={size}>
         <HeadingComponent level="2">{title}</HeadingComponent>
         <ul className={className} {...attrs}>
           { items.map(item => (
@@ -63,18 +64,19 @@ export const FileIndex = (props) => {
           )) }
         </ul>
       </RhythmComponent>
+    )
     : null
-  )
+  );
 };
 
-FileIndex.PropTypes = {
+FileIndex.propTypes = {
   items: PropTypes.array,
   className: PropTypes.string,
   size: PropTypes.string,
   title: PropTypes.string,
-  RhythmComponent: PropTypes.element,
-  HeadingComponent: PropTypes.element
-}
+  RhythmComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+  HeadingComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+};
 
 FileIndex.defaultProps = {
   items: [],
@@ -82,8 +84,8 @@ FileIndex.defaultProps = {
   size: 'default',
   title: '',
   RhythmComponent: Rhythm,
-  HeadingComponent: Heading,
-}
+  HeadingComponent: Heading
+};
 
 
 export default FileIndex;

@@ -34,6 +34,13 @@ module.exports = ({
     {
       workflow: 'browser',
       module: {
+        // delete preLoaders key to remove CSS linting.
+        preLoaders: [
+          {
+            test: /\.css$/,
+            loader: 'postcss-loader',
+          }
+        ],
         loaders: [
           {
             test: /\.css$/,
@@ -74,6 +81,10 @@ module.exports = ({
           suffix: undefined,
           pipeline: require('./postcss-plugins.js')
         })
+      ],
+      postcss: [
+        require('stylelint')(),
+        require('postcss-reporter')()
       ]
     }
   );
