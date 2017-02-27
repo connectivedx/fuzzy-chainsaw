@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../Icon/Icon';
+import Icon from 'Tags/Icon/Icon';
 
 const Brand = ({
   tagName = 'div',

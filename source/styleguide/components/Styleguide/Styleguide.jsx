@@ -1,10 +1,10 @@
 import React from 'react';
 import slugify from 'slugify';
 
-import Heading from '../../tags/Heading/Heading';
-import Skeleton from '../../tags/Skeleton/Skeleton';
-import Example from '../../tags/Example/Example';
-import Rhythm from '../../tags/Rhythm/Rhythm';
+import Heading from 'SgTags/Heading/Heading';
+import Skeleton from 'SgTags/Skeleton/Skeleton';
+import Example from 'SgTags/Example/Example';
+import Rhythm from 'SgTags/Rhythm/Rhythm';
 
 
 export const Styleguide_Readme = ({ readme }) => (
@@ -33,11 +33,18 @@ export const Styleguide_Tests = ({ tests }) => (
       <Rhythm size="small">
         { tests
           .filter(e => !(e.options && e.options.hidden))
-          .map((e, i) =>
-            <div key={i}><a
-              href={'#' + slugify(e.name)}
-              key={slugify(e.name)}
-              value={slugify(e.name)}>{e.name}</a></div>) }
+          .map(e =>
+            <div key={e.name}>
+              <a
+                href={`#${slugify(e.name)}`}
+                key={slugify(e.name)}
+                value={slugify(e.name)}
+              >
+                {e.name}
+              </a>
+            </div>
+
+          )}
       </Rhythm>
     </Rhythm>
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import Rhythm from '../Rhythm/Rhythm';
+import Rhythm from 'SgTags/Rhythm/Rhythm';
+
 import {
   getTagsIndexData,
   getComponentsIndexData,
   getPagesIndexData,
   FileIndex
-} from '../FileIndex/FileIndex';
+} from 'SgTags/FileIndex/FileIndex';
 
 const Nav = ({
   locals

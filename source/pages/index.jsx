@@ -1,14 +1,14 @@
 import React from 'react';
-import Skeleton from '../tags/Skeleton/Skeleton';
-import Heading from '../tags/Heading/Heading';
-import Rhythm from '../tags/Rhythm/Rhythm';
-import Wrapper from '../tags/Wrapper/Wrapper';
+import Skeleton from 'Tags/Skeleton/Skeleton';
+import Heading from 'Tags/Heading/Heading';
+import Rhythm from 'Tags/Rhythm/Rhythm';
+import Wrapper from 'Tags/Wrapper/Wrapper';
 import {
   getTagsIndexData,
   getComponentsIndexData,
   getPagesIndexData,
   FileIndex
-} from '../styleguide/tags/FileIndex/FileIndex';
+} from 'SgTags/FileIndex/FileIndex';
 
 const page = ({ locals }) => (
   <Skeleton title="Hello World">

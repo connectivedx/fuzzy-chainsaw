@@ -32,10 +32,10 @@ const runTests = (type, col) =>
 
 runTests(
   'tags',
-  requireAll(require.context("./tags/", true, /\.test.jsx$/))
+  requireAll(require.context("Tags/", true, /\.test.jsx$/))
 );
 
 runTests(
   'components',
-  requireAll(require.context("./components/", true, /\.test.jsx$/))
+  requireAll(require.context("Components/", true, /\.test.jsx$/))
 );
