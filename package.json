@@ -96,7 +96,6 @@
     "react-dom": "^15.3.2",
     "react-element-to-jsx-string": "^6.0.0",
     "react-syntax-highlighter": "^4.0.1",
-    "slug": "^0.9.1",
     "slugify": "^1.1.0"
   }
 }
