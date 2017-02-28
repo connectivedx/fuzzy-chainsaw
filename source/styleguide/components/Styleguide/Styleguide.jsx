@@ -2,9 +2,9 @@ import React from 'react';
 import slugify from 'slugify';
 
 import Heading from 'SgTags/Heading/Heading';
-import Skeleton from 'SgTags/Skeleton/Skeleton';
 import Example from 'SgTags/Example/Example';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
+import Nav from 'SgTags/Nav/Nav';
 
 
 export const Styleguide_Readme = ({ readme }) => (
@@ -77,14 +77,18 @@ export const Styleguide = ({
   locals = {},
   tests
 }) => (
-  <Skeleton className="sg-styleguide" title={`${name} – Styleguide`} locals={locals}>
-    <div className="sg-styleguide__header sg-styleguide-section__header">
-      <Heading level="1">{name}</Heading>
-    </div>
+  <div data-title={`${name} – Styleguide`}>
+    <Nav locals={locals} />
 
-    { readme ? <Styleguide_Readme readme={readme} /> : undefined }
-    { tests ? <Styleguide_Tests tests={tests} /> : undefined }
-  </Skeleton>
+    <div className="sg-styleguide" id="content">
+      <div className="sg-styleguide__header sg-styleguide-section__header">
+        <Heading level="1">{name}</Heading>
+      </div>
+
+      { readme ? <Styleguide_Readme readme={readme} /> : undefined }
+      { tests ? <Styleguide_Tests tests={tests} /> : undefined }
+    </div>
+  </div>
 );
 
 Styleguide.propTypes = {
