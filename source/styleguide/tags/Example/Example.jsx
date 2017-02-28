@@ -78,27 +78,21 @@ export const Example = ({
       </Example_Section>
 
       <Example_Section title="React" type="react">
-        <pre><code>
-          <SyntaxHighlighter lanaguage="javascript" style={github} customStyle={{ backgroundColor: 'transparent' }}>
-            { reactExample }
-          </SyntaxHighlighter>
-        </code></pre>
+        <SyntaxHighlighter language="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
+          { reactExample }
+        </SyntaxHighlighter>
       </Example_Section>
 
       <Example_Section title="HTML" type="html">
-        <pre><code>
-          <SyntaxHighlighter lanaguage="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
-            { pd.xml(htmlExample) }
-          </SyntaxHighlighter>
-        </code></pre>
+        <SyntaxHighlighter language="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
+          { pd.xml(htmlExample) }
+        </SyntaxHighlighter>
       </Example_Section>
 
       <Example_Section title="JSON" type="json">
-        <pre><code>
-          <SyntaxHighlighter lanaguage="json" style={github} customStyle={{ backgroundColor: 'transparent' }}>
-            { jsonExample }
-          </SyntaxHighlighter>
-        </code></pre>
+        <SyntaxHighlighter language="json" style={github} customStyle={{ backgroundColor: 'transparent' }}>
+          { jsonExample }
+        </SyntaxHighlighter>
       </Example_Section>
     </div>
   );
