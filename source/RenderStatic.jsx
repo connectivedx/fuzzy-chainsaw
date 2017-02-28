@@ -3,7 +3,7 @@ import Dom from 'react-dom/server';
 import match from 'minimatch';
 import { html } from 'js-beautify';
 
-import Styleguide from './styleguide/Template';
+import Styleguide from 'SgComponents/Styleguide/Styleguide';
 
 const pagesContext = require.context('Pages/', true, /\.jsx$/);
 const tagsContext = require.context('Tags/', true, /\.jsx$/);
