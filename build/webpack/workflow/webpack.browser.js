@@ -5,26 +5,21 @@
 
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
-const path = require('path');
-const glob = require('glob');
-const match = require('minimatch');
-
-const webpack = require('webpack');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const webpackMerge = require('webpack-merge');
-const SharedConfig = require('./webpack.shared')
+const SharedConfig = require('./webpack.shared');
 
 module.exports = ({
   entry,
-  outputPath ='dist',
+  outputPath = 'dist',
   publicPath = './dist/',
   outputScript = '/tmp/bundle.js',
   outputStyle = '/tmp/bundle.css'
-}) => {
-  return webpackMerge(
+}) => (
+  webpackMerge(
     SharedConfig({
       entry,
       outputPath,
@@ -38,7 +33,7 @@ module.exports = ({
         preLoaders: [
           {
             test: /\.css$/,
-            loader: 'postcss-loader',
+            loader: 'postcss-loader'
           }
         ],
         loaders: [
@@ -87,6 +82,5 @@ module.exports = ({
         require('postcss-reporter')()
       ]
     }
-  );
-}
-
+  )
+);

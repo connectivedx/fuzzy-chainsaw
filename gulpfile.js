@@ -7,8 +7,8 @@ gulp.task('clean:pre', require('./build/clean-pre'));
 gulp.task('clean:post', require('./build/clean-post'));
 gulp.task('webpack:build', require('./build/webpack-build'));
 gulp.task('webpack:production', require('./build/webpack-production'));
+gulp.task('webpack:dev', require('./build/webpack-dev'));
 gulp.task('webpack:watch', require('./build/webpack-watch'));
-gulp.task('webpack:watch:integration', require('./build/webpack-watch-integration'));
 
 
 // define workflows
@@ -20,12 +20,12 @@ gulp.task('production', done => {
   sequence('clean:pre', 'webpack:production', 'clean:post', done);
 });
 
-gulp.task('watch', done => {
-  sequence('clean:pre', 'webpack:watch', done);
+gulp.task('dev', done => {
+  sequence('clean:pre', 'webpack:dev', done);
 });
 
-gulp.task('watch:integration', done => {
-  sequence('clean:pre', 'webpack:watch:integration', done);
+gulp.task('watch', done => {
+  sequence('clean:pre', 'webpack:watch', done);
 });
 
 

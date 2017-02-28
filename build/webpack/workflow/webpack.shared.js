@@ -4,6 +4,7 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 
 module.exports = ({
@@ -27,12 +28,12 @@ module.exports = ({
       SgComponents: path.resolve(pkgpath.self(), dirs.source, 'styleguide/components')
     }
   },
-  entry: entry,
+  entry,
   output: {
     path: outputPath,
     filename: outputScript
   },
-  publicPath: publicPath,
+  publicPath,
   module: {
     loaders: [
       {

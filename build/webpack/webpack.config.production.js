@@ -8,18 +8,19 @@
 const webpack = require('webpack');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
-let build = require('./webpack.factory')();
+const build = require('./webpack.config.build');
 
 // production specific configuration
-module.exports = build.map(config => {
-  config.devtool = 'source-map';
+module.exports = Array.from(build).map(config => {
+  let res = Object.assign({}, config, {
+    devtool: 'source-map',
+    responsiveLoader: {
+      sizes: [720, 1280, 1920]
+    }
+  })
 
-  config.responsiveLoader = {
-    sizes: [720, 1280, 1920]
-  };
-
-  if (config.workflow === 'static') {
-    config.module.loaders[config.module.loaders.length - 1] = {
+  if (res.workflow === 'static') {
+    res.module.loaders[res.module.loaders.length - 1] = {
       test: /\.(jpe?g|png)$/i,
       loaders: [
         'responsive?name=/assets/images/content/[name]-[md5:hash:hex:8].',
@@ -28,8 +29,8 @@ module.exports = build.map(config => {
     };
   }
 
-  if (config.workflow === 'browser') {
-    config.module.loaders[config.module.loaders.length - 1] = {
+  if (res.workflow === 'browser') {
+    res.module.loaders[res.module.loaders.length - 1] = {
       test: /\.(jpe?g|png)$/i,
       loaders: [
         'responsive?name=/assets/images/css/[name]-[md5:hash:hex:8].',
@@ -40,7 +41,7 @@ module.exports = build.map(config => {
     // add production flag to build environment
     // libraries can key off this to import versions without debug info
     // (e.g. react turns off warnings in the console and gets much smaller because of this)
-    config.plugins.unshift(
+    res.plugins.unshift(
       new webpack.DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify('production')
@@ -49,7 +50,7 @@ module.exports = build.map(config => {
     );
 
     // add css minification
-    config.plugins.push(
+    res.plugins.push(
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
         pipeline: [
@@ -59,7 +60,7 @@ module.exports = build.map(config => {
     );
 
     // uglify JS
-    config.plugins.push(
+    res.plugins.push(
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: false,
         compress: {
@@ -69,5 +70,5 @@ module.exports = build.map(config => {
     );
   }
 
-  return config;
+  return res;
 });

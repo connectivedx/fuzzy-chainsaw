@@ -1,9 +1,9 @@
 const webpack = require('webpack');
-const config = require('./webpack/webpack.config');
-const webpackWatch = require('./webpack/lib/webpack-watch');
+const webpackErrorHandler = require('./webpack/lib/webpack-errorhandler');
+const config = require('./webpack/webpack.config.build');
 
 module.exports = done => {
-  webpackWatch(config, {
-    // port: 8080
+  webpack(config).watch({ }, (err, stats) => {
+    webpackErrorHandler(err, stats, { noexit: true }, () => { });
   });
 }

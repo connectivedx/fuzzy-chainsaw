@@ -11,13 +11,9 @@
   to the shared configurations to keep it easy to apply upgrades.
 */
 const path = require('path');
-const glob = require('glob');
-const fs = require('fs');
-const fileExists = require('file-exists');
 
 const pkgpath = require('packpath');
-const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
-const dirs = pkg.directories;
+const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 
 
 /*
@@ -32,49 +28,34 @@ const testsConfig = require('./workflow/webpack.tests');
 
 /*
  *
- * HELPER FUNCTIONS
- *
- */
-const baseOutput = config => Object.assign({
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-}, config);
-
-
-/*
- *
  * CREATE WEBPACK CONFIGURATIONS
  * The shared base configurations imported earlier are augmented with paths and specific details here.
  *
  */
-const configurationFactory = () => {
-  const renderStatic = staticConfig(baseOutput({
-    entry: {
-      static: path.resolve(dirs.source, 'RenderStatic.jsx')
-    }
-  }));
+const renderStatic = staticConfig({
+  entry: {
+    static: path.resolve(dirs.source, 'RenderStatic.jsx')
+  },
+  outputPath: path.resolve(pkgpath.self(), dirs.dest)
+});
 
-  const browserBundles = browserConfig(baseOutput({
-    entry: {
-      styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-      styles: path.resolve(dirs.source, 'styles.jsx'),
-      scripts: path.resolve(dirs.source, 'scripts.jsx')
-    },
-    outputScript: '/assets/[name].js',
-    outputStyle: '/assets/[name].css'
-  }));
+const browserBundles = browserConfig({
+  entry: {
+    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
+    styles: path.resolve(dirs.source, 'styles.jsx'),
+    scripts: path.resolve(dirs.source, 'scripts.jsx')
+  },
+  outputPath: path.resolve(pkgpath.self(), dirs.dest),
+  outputScript: '/assets/[name].js',
+  outputStyle: '/assets/[name].css'
+});
 
-  const componentTests = testsConfig(baseOutput({
-    entry: path.resolve(dirs.source, 'tests.jsx'),
-    outputScript: '/tmp/tests.js',
-    reporter: path.resolve(pkgpath.self(), 'node_modules', '.bin', 'tap-min')
-  }));
-
-  return [
-    renderStatic,
-    browserBundles,
-    componentTests
-  ];
-};
+const componentTests = testsConfig({
+  entry: path.resolve(dirs.source, 'tests.jsx'),
+  outputPath: path.resolve(pkgpath.self(), dirs.dest),
+  outputScript: '/tmp/tests.js',
+  reporter: path.resolve(pkgpath.self(), 'node_modules', '.bin', 'tap-min')
+});
 
 
 /*
@@ -85,4 +66,8 @@ const configurationFactory = () => {
  * so call it after you require it.
  *
  */
-module.exports = configurationFactory;
+module.exports = [
+  renderStatic,
+  browserBundles,
+  componentTests
+];

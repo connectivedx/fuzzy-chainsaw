@@ -34,7 +34,9 @@ module.exports = (configs, watchOpts) => {
     outputPath: '/',
     filename: '/tmp/[name].js',
     contentBase: path.resolve(pkg.directories.dest),
-    hot: false,
+    hot: true,
+    inline: true,
+    historyApiFallback: true,
     stats: {
       colors: true,
       chunks: false,
