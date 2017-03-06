@@ -35,16 +35,6 @@ const normalizePath = (path) => {
   }
 };
 
-const output = (component) => {
-  if (component) {
-    Dom.render(component, document.querySelector('#dev-entry'));
-  } else {
-    Dom.render(
-      <div>Not Found</div>,
-      document.querySelector('#dev-entry')
-    );
-  }
-};
 
 const getModule = (path) => {
   if (match(path, './styleguide/tags/**')) {
@@ -90,32 +80,19 @@ const getModule = (path) => {
   return <h1>Not Found</h1>;
 };
 
+const output = (component) => {
+  if (component) {
+    Dom.render(component, document.querySelector('#dev-entry'));
+  } else {
+    Dom.render(
+      <div>Not Found</div>,
+      document.querySelector('#dev-entry')
+    );
+  }
+};
+
 
 const path = normalizePath(location.pathname);
 const Module = getModule(path);
 
 output(Module);
-
-
-// // get component based on initial path
-// if (isStyleguideablePath(location.pathname)) {
-//   // const fileName = location.pathname.substr('styleguide/'.length);
-//   // const type = fileName.split('/')[0];
-//   // const first = fileName.substr(type.length + 1);
-//   // const name = first.substr(0, first.length - 5);
-
-//   // const requireContext = type === 'tags' ? tagsContext : componentsContext;
-//   // const requirer = requireOrFail(requireContext);
-
-//   // output(
-//   //   <Styleguide
-//   //     name={name}
-//   //     tag={requirer(`./${name}/${name}.jsx`)}
-//   //     readme={requirer(`./${name}/README.md`)}
-//   //     tests={requirer(`./${name}/${name}.test.jsx`)}
-//   //     locals={{ }}
-//   //   />
-//   // );
-// } else {
-//   output(<div className="yo-app" />);
-// }
