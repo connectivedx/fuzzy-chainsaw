@@ -4,6 +4,7 @@ import match from 'minimatch';
 import { html } from 'js-beautify';
 
 import Styleguide from 'SgComponents/Styleguide/Styleguide';
+import template from '!!text-loader!../build/webpack/templates/static.html'; // eslint-disable-line
 
 const pagesContext = require.context('Pages/', true, /\.jsx$/);
 const tagsContext = require.context('Tags/', true, /\.jsx$/);
@@ -69,9 +70,16 @@ const processHtmlOutput = (output, locals) =>
 
 module.exports = {
   render: (Page, locals, done) => {
-    const output = (component) => {
+    const output = (title, component) => {
       const htmlOutput = Dom.renderToStaticMarkup(component);
-      done(null, `<!DOCTYPE html>${processHtmlOutput(htmlOutput, locals)}`);
+      done(null, `
+        <!DOCTYPE html>
+        ${
+          template
+            .replace('{{title}}', title)
+            .replace('{{contents}}', processHtmlOutput(htmlOutput, locals))
+        }
+      `);
     };
 
     if (isStyleguideablePath(locals.path)) {
@@ -83,8 +91,8 @@ module.exports = {
       const requireContext = type === 'tags' ? tagsContext : componentsContext;
       const requirer = requireOrFail(requireContext);
 
-      // done(null, '')
       output(
+        name,
         <Styleguide
           name={name}
           tag={requirer(`./${name}/${name}.jsx`)}
@@ -94,7 +102,7 @@ module.exports = {
         />
       );
     } else {
-      output(<Page locals={locals} />);
+      output(Page.pageTitle, <Page locals={locals} />);
     }
   },
   pages: Object.assign(
