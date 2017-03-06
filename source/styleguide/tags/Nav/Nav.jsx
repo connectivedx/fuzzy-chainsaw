@@ -2,15 +2,13 @@ import React from 'react';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
 
 import {
-  getTagsIndexData,
-  getComponentsIndexData,
-  getPagesIndexData,
+  pagesIndexData,
+  componentsIndexData,
+  tagsIndexData,
   FileIndex
 } from 'SgTags/FileIndex/FileIndex';
 
-const Nav = ({
-  locals
-}) => (
+const Nav = () => (
   <div className="sg-nav">
     <a href="#/" className="sg-nav__toggle">
       <span>Table of Contents</span>
@@ -20,17 +18,17 @@ const Nav = ({
     <div className="sg-nav__container">
       <Rhythm size="large">
         <FileIndex
-          items={getPagesIndexData(locals)}
+          items={pagesIndexData}
           title="Pages"
           size="small"
         />
         <FileIndex
-          items={getComponentsIndexData(locals)}
+          items={componentsIndexData}
           title="Components"
           size="small"
         />
         <FileIndex
-          items={getTagsIndexData(locals)}
+          items={tagsIndexData}
           title="Tags"
           size="small"
         />
@@ -39,9 +37,5 @@ const Nav = ({
     <div className="sg-nav__cover" />
   </div>
 );
-
-Nav.propTypes = {
-  locals: React.PropTypes.object.isRequired
-};
 
 export default Nav;

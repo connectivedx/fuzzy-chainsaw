@@ -1,44 +1,69 @@
+import startCase from 'lodash.startcase';
 import React, { PropTypes } from 'react';
 import Heading from 'SgTags/Heading/Heading';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
 
-const path2LinkList = (baseUrl = '') => (path) => {
-  const url = `${baseUrl}/${path.substr(0, path.lastIndexOf('.'))}.html`;
+const pagesContext = require.context('Pages/', true, /\.jsx$/);
+const tagsContext = require.context('Tags/', true, /\.jsx$/);
+const componentsContext = require.context('Components/', true, /\.jsx$/);
 
-  return ({
-    url: url.indexOf('index.html') !== -1 ? url.substr(0, url.length - 'index.html'.length) : url,
-    content:
-      path
-        .substr(0, path.lastIndexOf('.'))
-        .split('/')
-        .map(seg => seg.substr(0, 1).toUpperCase() + seg.substr(1))
-        .join('/')
-        .replace('/Index', '')
-  });
+
+const isRenderableModule = key => (
+  key.indexOf('.jsx') !== -1 && // grab jsx files
+  key.indexOf('.test.jsx') === -1 && // skip test files
+  key.substr(0, 1) !== '_' // skip partial files
+);
+
+// builds a path:module object
+// { './source/page.jsx': require('./source/page.jsx') }
+const requireAllpages = () =>
+  pagesContext.keys()
+    .filter(isRenderableModule)
+    .reduce((modules, key) => {
+      const newKey = key.replace(/\.jsx$/, '.html');
+      modules[newKey] = pagesContext(key).default;
+      return modules;
+    }, { });
+
+const requireAllComponents = (context, prefix) =>
+  context.keys()
+    .filter(isRenderableModule)
+    .reduce((modules, key) => {
+      const name = key.substr(2).split('/')[0];
+      modules[prefix + name] = context(key).default;
+      return modules;
+    }, {});
+
+const path2LinkList = (baseUrl = '') => (path) => {
+  const normalPath = path.substr(0, path.lastIndexOf('.') !== -1 ? path.lastIndexOf('.') : undefined);
+  const url = (`${baseUrl}/${normalPath}.html`).replace(/\/index\.html/, '.html');
+
+  return {
+    url: process.env.NODE_ENV !== 'development' ? url.replace(/\.html/, '') : url, // remove html on dev
+    content: path.replace('.html', '').split('/').map(startCase).join(' / ')
+  };
 };
 
-export const getTagsIndexData = locals =>
-  locals.outputPaths
-    .filter(p => p.indexOf('/tags/') !== -1)
-    .map(p => p.substr(p.indexOf('/tags/') + '/tags/'.length))
-    .map(path2LinkList('/styleguide/tags'));
 
-export const getComponentsIndexData = locals =>
-  locals.outputPaths
+export const pagesIndexData =
+  Object.keys(requireAllpages(pagesContext))
+    .map(p => p.substr(2))
+    .sort((a, b) => a.split('/').length - b.split('/').length)
+    .map(path2LinkList());
+
+
+export const componentsIndexData =
+  Object.keys(requireAllComponents(componentsContext, '/styleguide/components/'))
     .filter(p => p.indexOf('/components/') !== -1)
     .map(p => p.substr(p.indexOf('/components/') + '/components/'.length))
     .map(path2LinkList('/styleguide/components'));
 
-export const getPagesIndexData = locals =>
-  locals.paths
-    .filter(p => (
-      p.indexOf('styleguide/tags') === -1 &&
-      p.indexOf('styleguide/components') === -1 &&
-      p.indexOf('./index.jsx') === -1
-    ))
-    .map(p => p.substr(2))
-    .sort((a, b) => a.split('/').length - b.split('/').length)
-    .map(path2LinkList());
+
+export const tagsIndexData =
+  Object.keys(requireAllComponents(tagsContext, '/styleguide/tags/'))
+    .map(p => p.substr(p.indexOf('/tags/') + '/tags/'.length))
+    .map(path2LinkList('/styleguide/tags'));
+
 
 export const FileIndex = (props) => {
   const {

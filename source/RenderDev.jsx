@@ -20,6 +20,13 @@ const requireOrFail = context => (path) => {
 
 const normalizePath = (path) => {
   const asset = `.${path}${(path.substr(-1) !== '/' ? '/' : '')}`;
+  const indexList = pagesContext.keys().filter(key => key.indexOf('index.jsx') !== -1);
+
+  for (let i = 0; i < indexList.length; i++) {
+    const item = indexList[i];
+    const sub = item.substr(0, item.indexOf('index.jsx'));
+    if (asset === sub) return `${sub}index`;
+  }
 
   switch (asset) {
     case './': return './index';
@@ -74,9 +81,11 @@ const getModule = (path) => {
 
   if (pagePathList.indexOf(pagePath) !== -1) {
     const Page = pagesContext(pagePath).default;
+
     document.title = Page.pageTitle;
     return <Page />;
   }
+
   document.title = 'Not Found';
   return <h1>Not Found</h1>;
 };
