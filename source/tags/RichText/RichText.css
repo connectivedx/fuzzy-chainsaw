@@ -26,4 +26,12 @@
   & ol {
     @extend .rhythm--small;
   }
+
+  & ul {
+    @extend .list--unordered;
+  }
+
+  & ol {
+    @extend .list--ordered;
+  }
 }
