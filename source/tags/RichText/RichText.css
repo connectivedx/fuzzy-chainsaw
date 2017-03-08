@@ -1,3 +1,8 @@
+@import '../Rhythm/Rhythm.css';
+@import '../Heading/Heading.css';
+@import '../Button/Button.css';
+@import '../List/List.css';
+
 .rich-text {
   @extend .rhythm--deep;
 

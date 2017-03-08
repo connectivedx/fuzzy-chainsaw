@@ -21,7 +21,7 @@
     "new-tag": "gulp scaffold:tag --name",
     "new-component": "gulp scaffold:component --name",
     "webpack-build": "webpack --config ./build/webpack/webpack.config.js --progress",
-    "webpack-watch": "webpack-dev-server --config ./build/webpack/webpack.config.js --progress"
+    "webpack-dev": "webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress"
   },
   "engines": {
     "node": "^=6.9.2"

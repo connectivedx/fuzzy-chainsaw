@@ -16,8 +16,8 @@ const mqpacker = require('css-mqpacker');
 
 
 module.exports = [
-  postcss.plugin('fix-escaping-error', (opts) => (css, result) => {
-    css.walkRules(rule => {
+  postcss.plugin('fix-escaping-error', () => (css) => {
+    css.walkRules((rule) => {
       rule.selector = rule.selector.replace(/\\--/gi, '--');
     });
   }),
@@ -31,6 +31,5 @@ module.exports = [
   }),
   url({
     url: urlStr => urlStr.replace('/assets/', './')
-  }),
-
+  })
 ];

@@ -12,6 +12,7 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+const webpackMerge = require('webpack-merge');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 
@@ -31,17 +32,39 @@ const testsConfig = require('./workflow/webpack.tests');
  * The shared base configurations imported earlier are augmented with paths and specific details here.
  *
  */
-const devBundles = devConfig({
-  entry: {
-    devScript: path.resolve(dirs.source, 'RenderDev.jsx'),
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
-});
+const stats = {
+  chunks: false,
+  children: false,
+  colors: true,
+  reasons: false
+};
+
+const devBundles = webpackMerge(
+  devConfig({
+    entry: {
+      devScript: [
+        'webpack-dev-server/client?http://localhost:8080/',
+        path.resolve(dirs.source, 'RenderDev.jsx')
+      ],
+      styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
+      styles: path.resolve(dirs.source, 'styles.jsx'),
+      scripts: path.resolve(dirs.source, 'scripts.jsx')
+    },
+    outputPath: path.resolve(pkgpath.self(), dirs.dest),
+    outputScript: '/assets/[name].js',
+    outputStyle: '/assets/[name].css'
+  }),
+  {
+    stats,
+    devServer: {
+      historyApiFallback: true,
+      publicPath: '/',
+      // hot: true,
+      inline: true,
+      stats
+    }
+  }
+);
 
 const componentTests = testsConfig({
   entry: path.resolve(dirs.source, 'tests.jsx'),
@@ -59,7 +82,4 @@ const componentTests = testsConfig({
  * so call it after you require it.
  *
  */
-module.exports = [
-  devBundles,
-  componentTests
-];
+module.exports = devBundles;

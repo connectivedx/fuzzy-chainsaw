@@ -56,6 +56,7 @@ const makeAbsolutePathRelative = (output, locals) =>
     .replace(/url\(\//gi, `url(${locals.baseHref}/`)
     .replace(/url\("\//gi, `url("${locals.baseHref}/`);
 
+
 const formatHtml = output =>
   html(output, {
     indent_size: 2,
@@ -75,9 +76,12 @@ module.exports = {
       done(null, `
         <!DOCTYPE html>
         ${
-          template
-            .replace('{{title}}', title)
-            .replace('{{contents}}', processHtmlOutput(htmlOutput, locals))
+          processHtmlOutput(
+            template
+              .replace('{{title}}', title)
+              .replace('{{contents}}', htmlOutput),
+            locals
+          )
         }
       `);
     };

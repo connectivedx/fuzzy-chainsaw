@@ -8,16 +8,19 @@
 const webpack = require('webpack');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
+// postcss plugins
+const cssnano = require('cssnano');
 const build = require('./webpack.config.build');
 
+
 // production specific configuration
-module.exports = Array.from(build).map(config => {
-  let res = Object.assign({}, config, {
+module.exports = Array.from(build).map((config) => {
+  const res = Object.assign({}, config, {
     devtool: 'source-map',
     responsiveLoader: {
       sizes: [720, 1280, 1920]
     }
-  })
+  });
 
   if (res.workflow === 'static') {
     res.module.loaders[res.module.loaders.length - 1] = {
@@ -44,7 +47,7 @@ module.exports = Array.from(build).map(config => {
     res.plugins.unshift(
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': JSON.stringify('production')
+          NODE_ENV: JSON.stringify('production')
         }
       })
     );
@@ -54,7 +57,7 @@ module.exports = Array.from(build).map(config => {
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
         pipeline: [
-          require('cssnano')
+          cssnano()
         ]
       })
     );
