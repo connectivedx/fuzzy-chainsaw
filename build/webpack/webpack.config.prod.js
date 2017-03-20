@@ -14,7 +14,8 @@ const path = require('path');
 const pkgpath = require('packpath');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const devConfig = require('./workflow/webpack.dev');
+const prodConfig = require('./workflow/webpack.prod');
+const buildConfig = require('./workflow/webpack.build');
 
 
 /*
@@ -24,17 +25,23 @@ const devConfig = require('./workflow/webpack.dev');
  *
  */
 
-module.exports = devConfig({
-  entry: {
-    devScript: [
-      'webpack-dev-server/client?http://localhost:8080/',
-      path.resolve(dirs.source, 'dev.jsx')
-    ],
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
-});
+module.exports = [
+  prodConfig({
+    entry: {
+      styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide/styleguide.jsx'),
+      styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
+      scripts: path.resolve(pkgpath.self(), dirs.source, 'scripts.jsx')
+    },
+    outputPath: path.resolve(pkgpath.self(), dirs.dest),
+    outputScript: '/assets/[name]-[hash].js',
+    outputStyle: '/assets/[name]-[hash].css'
+  }),
+  buildConfig({
+    entry: {
+      static: path.resolve(pkgpath.self(), dirs.source, 'static.jsx')
+    },
+    outputPath: path.resolve(pkgpath.self(), dirs.dest),
+    outputScript: '/assets/[name]-[hash].js',
+    outputStyle: '/assets/[name]-[hash].css'
+  })
+];

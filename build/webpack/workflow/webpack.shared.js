@@ -31,7 +31,8 @@ module.exports = ({
   entry,
   output: {
     path: outputPath,
-    filename: outputScript
+    filename: outputScript,
+    libraryTarget: 'umd'
   },
   publicPath,
   module: {

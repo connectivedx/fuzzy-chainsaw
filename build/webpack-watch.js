@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const webpackErrorHandler = require('./webpack/lib/webpack-errorhandler');
-const config = require('./webpack/webpack.config.build');
+const config = require('./webpack/webpack.config.dev');
 
 module.exports = done => {
   webpack(config).watch({ }, (err, stats) => {

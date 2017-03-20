@@ -14,27 +14,19 @@ const path = require('path');
 const pkgpath = require('packpath');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const devConfig = require('./workflow/webpack.dev');
+const testsConfig = require('./workflow/webpack.test');
 
 
 /*
  *
- * CREATE WEBPACK CONFIGURATION
+ * CREATE WEBPACK CONFIGURATIONS
  * The shared base configurations imported earlier are augmented with paths and specific details here.
  *
  */
 
-module.exports = devConfig({
-  entry: {
-    devScript: [
-      'webpack-dev-server/client?http://localhost:8080/',
-      path.resolve(dirs.source, 'dev.jsx')
-    ],
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
-  },
+module.exports = testsConfig({
+  entry: path.resolve(dirs.source, 'tests.jsx'),
   outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
+  outputScript: '/tmp/tests.js',
+  reporter: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
 });

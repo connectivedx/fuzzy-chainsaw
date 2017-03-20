@@ -12,29 +12,42 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+const webpackMerge = require('webpack-merge');
+const StatsPlugin = require('stats-webpack-plugin');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const devConfig = require('./workflow/webpack.dev');
+const BrowserConfig = require('./webpack.browser');
 
 
 /*
  *
- * CREATE WEBPACK CONFIGURATION
+ * CREATE WEBPACK CONFIGURATIONS
  * The shared base configurations imported earlier are augmented with paths and specific details here.
  *
  */
 
-module.exports = devConfig({
-  entry: {
-    devScript: [
-      'webpack-dev-server/client?http://localhost:8080/',
-      path.resolve(dirs.source, 'dev.jsx')
-    ],
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
-});
+module.exports = ({
+  entry,
+  publicPath = './dist/',
+  outputPath = 'dist',
+  outputScript = '/tmp/bundle.js',
+  outputStyle = '/tmp/bundle.css'
+}) => (
+  webpackMerge(
+    BrowserConfig({
+      entry,
+      publicPath,
+      outputPath,
+      outputScript,
+      outputStyle
+    }),
+    {
+      plugins: [
+        new StatsPlugin('stats.json', {
+          chunkModules: true,
+          exclude: [/node_modules/]
+        })
+      ]
+    }
+  )
+);

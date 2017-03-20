@@ -11,19 +11,10 @@
   to the shared configurations to keep it easy to apply upgrades.
 */
 const path = require('path');
-
 const pkgpath = require('packpath');
+
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-
-
-/*
- *
- * IMPORT SHARED WEBPACK WORKFLOWS
- *
- */
-const staticConfig = require('./workflow/webpack.static');
-const browserConfig = require('./workflow/webpack.browser');
-const testsConfig = require('./workflow/webpack.tests');
+const buildConfig = require('./workflow/webpack.build');
 
 
 /*
@@ -32,42 +23,15 @@ const testsConfig = require('./workflow/webpack.tests');
  * The shared base configurations imported earlier are augmented with paths and specific details here.
  *
  */
-const renderStatic = staticConfig({
-  entry: {
-    static: path.resolve(dirs.source, 'RenderStatic.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest)
-});
 
-const browserBundles = browserConfig({
+module.exports = buildConfig({
   entry: {
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
+    static: path.resolve(pkgpath.self(), dirs.source, 'static.jsx'),
+    styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide/styleguide.jsx'),
+    styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
+    scripts: path.resolve(pkgpath.self(), dirs.source, 'scripts.jsx')
   },
   outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
+  outputScript: '/assets/[name]-[hash].js',
+  outputStyle: '/assets/[name]-[hash].css'
 });
-
-const componentTests = testsConfig({
-  entry: path.resolve(dirs.source, 'tests.jsx'),
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/tmp/tests.js',
-  reporter: path.resolve(pkgpath.self(), 'node_modules', '.bin', 'tap-min')
-});
-
-
-/*
- *
- * EXPORT ALL CONFIGURATIONS
- * Consumers of this config (e.g. gulp) will pass these to webpack for execution.
- * Note that the export is a factory function (to avoid sharing the same config object across requires),
- * so call it after you require it.
- *
- */
-module.exports = [
-  renderStatic,
-  browserBundles,
-  componentTests
-];
