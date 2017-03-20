@@ -14,7 +14,7 @@ const path = require('path');
 const pkgpath = require('packpath');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const prodConfig = require('./workflow/webpack.prod');
+const productionConfig = require('./workflow/webpack.production');
 const buildConfig = require('./workflow/webpack.build');
 
 
@@ -26,7 +26,7 @@ const buildConfig = require('./workflow/webpack.build');
  */
 
 module.exports = [
-  prodConfig({
+  productionConfig({
     entry: {
       styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide/styleguide.jsx'),
       styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
