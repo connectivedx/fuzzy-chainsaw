@@ -36,10 +36,8 @@ const requireAllComponents = (context, prefix) =>
 
 const path2LinkList = (baseUrl = '') => (path) => {
   const normalPath = path.substr(0, path.lastIndexOf('.') !== -1 ? path.lastIndexOf('.') : undefined);
-  const url = (`${baseUrl}/${normalPath}.html`).replace(/\/index\.html/, '.html');
-
   return {
-    url: process.env.NODE_ENV !== 'development' ? url.replace(/\.html/, '') : url, // remove html on dev
+    url: `${baseUrl}/${normalPath}.html`, // remove html on dev
     content: path.replace('.html', '').split('/').map(startCase).join(' / ')
   };
 };
