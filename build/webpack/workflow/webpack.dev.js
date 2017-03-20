@@ -33,7 +33,6 @@ module.exports = ({
       outputStyle
     }),
     {
-      workflow: 'dev',
       plugins: [
         new HtmlWebpackPlugin({
           filename: 'index.html',

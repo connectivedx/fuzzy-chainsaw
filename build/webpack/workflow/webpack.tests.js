@@ -6,13 +6,11 @@
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
 
-const TapWebpackPlugin = require('tap-webpack-plugin');
 const webpackMerge = require('webpack-merge');
-const SharedConfig = require('./webpack.shared')
+const SharedConfig = require('./webpack.shared');
 
 module.exports = ({
   entry,
-  reporter = 'tap-dot',
   outputPath = 'dist',
   publicPath = './dist/',
   outputScript = '/tmp/bundle.js'
@@ -25,7 +23,6 @@ module.exports = ({
       outputScript
     }),
     {
-      workflow: 'test',
       target: 'node',
       node: {
         fs: 'empty'

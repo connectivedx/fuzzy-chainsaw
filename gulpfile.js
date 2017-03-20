@@ -10,7 +10,6 @@ gulp.task('webpack:production', require('./build/webpack-production'));
 gulp.task('webpack:dev', require('./build/webpack-dev'));
 gulp.task('webpack:watch', require('./build/webpack-watch'));
 gulp.task('static:build', require('./build/static-build'));
-gulp.task('test', require('./build/test'));
 
 
 // define workflows
