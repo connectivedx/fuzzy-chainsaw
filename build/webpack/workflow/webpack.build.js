@@ -12,6 +12,7 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const StatsPlugin = require('stats-webpack-plugin');
 
@@ -46,6 +47,10 @@ module.exports = ({
         new StatsPlugin('stats.json', {
           chunkModules: true,
           exclude: [/node_modules/]
+        }),
+        new webpack.DllReferencePlugin({
+          context: path.resolve(pkgpath.self()),
+          manifest: require(path.resolve(pkgpath.self(), dirs.dlls, 'vendor-manifest.json'))
         })
       ]
     }

@@ -3,3 +3,4 @@ tmp
 dist
 .DS_Store
 *.log
+.dlls

@@ -6,9 +6,13 @@
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
 const path = require('path');
+const pkgpath = require('packpath');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserConfig = require('./webpack.browser');
+
+const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 
 const stats = {
   chunks: false,
@@ -34,6 +38,10 @@ module.exports = ({
     }),
     {
       plugins: [
+        new webpack.DllReferencePlugin({
+          context: path.resolve(pkgpath.self()),
+          manifest: require(path.resolve(pkgpath.self(), dirs.dlls, 'vendor-manifest.json'))
+        }),
         new HtmlWebpackPlugin({
           filename: 'index.html',
           template: path.resolve(__dirname, '../../templates/dev.html'),

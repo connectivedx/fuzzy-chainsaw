@@ -1,9 +1,9 @@
 const webpack = require('webpack');
-const webpackErrorHandler = require('./webpack/lib/webpack-errorhandler');
+const handleWebpackErrors = require('./webpack/lib/handleWebpackErrors');
 const config = require('./webpack/webpack.config.production');
 
-module.exports = (done) => {
-  webpack(config, (err, stats) => {
-    webpackErrorHandler(err, stats, {}, done);
-  });
-};
+module.exports = done => (
+  webpack(config, (err, stats) => (
+    handleWebpackErrors(err, stats, done)
+  ))
+);

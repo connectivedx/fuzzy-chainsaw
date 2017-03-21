@@ -10,18 +10,19 @@
   "license": "MIT",
   "directories": {
     "source": "./source",
-    "dest": "./dist"
+    "dest": "./dist",
+    "dlls": ".dlls"
   },
   "scripts": {
+  	"post-install": "npm run dll",
     "start": "http-server ./dist",
+    "dll": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
+    "dev": "webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress",
+    "watch": "gulp watch",
     "build": "gulp build",
     "production": "gulp production",
-    "dev": "gulp dev",
-    "watch": "gulp watch",
     "new-tag": "gulp scaffold:tag --name",
-    "new-component": "gulp scaffold:component --name",
-    "webpack-build": "webpack --config ./build/webpack/webpack.config.build.js --progress",
-    "webpack-dev": "webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress"
+    "new-component": "gulp scaffold:component --name"
   },
   "engines": {
     "node": "^=6.9.2"
