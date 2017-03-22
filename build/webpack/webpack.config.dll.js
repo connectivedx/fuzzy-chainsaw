@@ -23,7 +23,8 @@ module.exports = {
   output: {
     path: path.join(pkgpath.self(), dirs.dest, 'assets/dlls'),
     filename: '[name].dll.js',
-    library: '[name]_dll'
+    library: '[name]_dll',
+    libraryTarget: 'commonjs2'
   },
   plugins: [
     new webpack.DllPlugin({

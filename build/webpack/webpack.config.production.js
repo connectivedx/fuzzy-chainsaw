@@ -15,7 +15,7 @@ const pkgpath = require('packpath');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 const productionConfig = require('./workflow/webpack.production');
-const buildConfig = require('./workflow/webpack.build');
+const staticConfig = require('./workflow/webpack.static');
 
 
 /*
@@ -36,7 +36,7 @@ module.exports = [
     outputScript: '/assets/[name]-[hash].js',
     outputStyle: '/assets/[name]-[hash].css'
   }),
-  buildConfig({
+  staticConfig({
     entry: {
       static: path.resolve(pkgpath.self(), dirs.source, 'static.jsx')
     },

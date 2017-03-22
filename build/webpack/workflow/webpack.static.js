@@ -12,10 +12,13 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const nodeExternals = require('webpack-node-externals');
+const StatsPlugin = require('stats-webpack-plugin');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const buildConfig = require('./workflow/webpack.build');
-const staticConfig = require('./workflow/webpack.static');
+const BrowserConfig = require('./webpack.browser');
 
 
 /*
@@ -25,23 +28,33 @@ const staticConfig = require('./workflow/webpack.static');
  *
  */
 
-module.exports = [
-  buildConfig({
-    entry: {
-      styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide/styleguide.jsx'),
-      styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
-      scripts: path.resolve(pkgpath.self(), dirs.source, 'scripts.jsx')
-    },
-    outputPath: path.resolve(pkgpath.self(), dirs.dest),
-    outputScript: '/assets/[name]-[hash].js',
-    outputStyle: '/assets/[name]-[hash].css'
-  }),
-  staticConfig({
-    entry: {
-      static: path.resolve(pkgpath.self(), dirs.source, 'static.jsx')
-    },
-    outputPath: path.resolve(pkgpath.self(), dirs.dest),
-    outputScript: '/assets/[name]-[hash].js',
-    outputStyle: '/assets/[name]-[hash].css'
-  })
-];
+module.exports = ({
+  entry,
+  publicPath = './dist/',
+  outputPath = 'dist',
+  outputScript = '/tmp/bundle.js',
+  outputStyle = '/tmp/bundle.css'
+}) => (
+  webpackMerge(
+    BrowserConfig({
+      entry,
+      publicPath,
+      outputPath,
+      outputScript,
+      outputStyle
+    }),
+    {
+      externals: [
+        nodeExternals({
+          whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
+        })
+      ],
+      plugins: [
+        new StatsPlugin('static-stats.json', {
+          chunkModules: true,
+          exclude: [/node_modules/]
+        })
+      ]
+    }
+  )
+);

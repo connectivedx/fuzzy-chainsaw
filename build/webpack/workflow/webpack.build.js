@@ -44,7 +44,7 @@ module.exports = ({
     }),
     {
       plugins: [
-        new StatsPlugin('stats.json', {
+        new StatsPlugin('build-stats.json', {
           chunkModules: true,
           exclude: [/node_modules/]
         }),
