@@ -51,7 +51,6 @@ const createComponentFile = (pathInfo, getModule, stats) => {
   return file(pathInfo.outputPath, output, { src: true });
 };
 
-
 module.exports = () => {
   const stats = require(path.resolve(pkgpath.self(), dirs.dest, 'stats.json'));
   const staticFile = require(path.resolve(pkgpath.self(), dirs.dest, `assets/static-${stats.hash}.js`));

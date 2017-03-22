@@ -40,7 +40,7 @@ module.exports = ({
       plugins: [
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
-          manifest: require(path.resolve(pkgpath.self(), dirs.dlls, 'vendor-manifest.json'))
+          manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
         }),
         new HtmlWebpackPlugin({
           filename: 'index.html',
@@ -54,6 +54,7 @@ module.exports = ({
           rewrites: [{ from: /.*\.html/, to: '/index.html' }]
         },
         publicPath: '/',
+        contentBase: dirs.dest,
         // hot: true,
         inline: true,
         stats

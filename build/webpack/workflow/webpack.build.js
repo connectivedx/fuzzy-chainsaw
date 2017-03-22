@@ -50,7 +50,7 @@ module.exports = ({
         }),
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
-          manifest: require(path.resolve(pkgpath.self(), dirs.dlls, 'vendor-manifest.json'))
+          manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
         })
       ]
     }

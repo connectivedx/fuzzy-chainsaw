@@ -21,14 +21,14 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(pkgpath.self(), dirs.dlls),
+    path: path.join(pkgpath.self(), dirs.dest, 'assets/dlls'),
     filename: '[name].dll.js',
-    library: '[name]_lib'
+    library: '[name]_dll'
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(pkgpath.self(), dirs.dlls, '[name]-manifest.json'),
-      name: '[name]_lib'
+      path: path.join(pkgpath.self(), dirs.dest, 'assets/dlls/[name]-manifest.json'),
+      name: '[name]_dll'
     })
   ]
 };
