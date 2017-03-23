@@ -1,7 +1,12 @@
+function requireAll(context) {
+  return context.keys().map(context);
+}
+
 // CSS
-require.context('SgVars/', true, /\.css$/);
-require.context('SgTags/', true, /\.css$/);
-require.context('SgComponents/', true, /\.css$/);
+require('SgVars/index.css');
+
+requireAll(require.context('SgTags/', true, /\.css$/));
+requireAll(require.context('SgComponents/', true, /\.css$/));
 
 // browser Javascript
 const body = document.body;

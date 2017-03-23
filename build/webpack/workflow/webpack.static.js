@@ -12,7 +12,6 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const StatsPlugin = require('stats-webpack-plugin');
@@ -44,9 +43,17 @@ module.exports = ({
       outputStyle
     }),
     {
+      module: {
+        loaders: [
+          {
+            test: /\.css$/,
+            loader: 'null-loader'
+          }
+        ]
+      },
       externals: [
         nodeExternals({
-          whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
+          whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
         })
       ],
       plugins: [

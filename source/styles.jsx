@@ -1,4 +1,8 @@
-require.context('Vars/', true, /\.css$/);
+function requireAll(context) {
+  return context.keys().map(context);
+}
+
+require('Vars/index.css');
 
 // require any components that
 // need to preserve ordering
@@ -7,5 +11,5 @@ require('Tags/Root/Root.css');
 require('Tags/RichText/RichText.css');
 
 // require the rest of the components
-require.context('Tags/', true, /\.css$/);
-require.context('Components/', true, /\.css$/);
+requireAll(require.context('Tags/', true, /\.css$/));
+requireAll(require.context('Components/', true, /\.css$/));

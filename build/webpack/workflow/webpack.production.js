@@ -9,8 +9,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
-const cssnano = require('cssnano');
-
+const { production: postcssPipeline } = require('./postcss-plugins.js');
 const BuildConfig = require('./webpack.build');
 
 
@@ -37,9 +36,7 @@ module.exports = ({
       plugins: [
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
-          pipeline: [
-            cssnano()
-          ]
+          pipeline: postcssPipeline
         }),
         new webpack.optimize.UglifyJsPlugin({
           sourceMap: false,
@@ -52,7 +49,15 @@ module.exports = ({
   );
 
   // overwrite normal build image loaders
-  production.module.loaders[production.module.loaders.length - 1] = {
+  const imageLoaderIndex =
+    production.module.loaders.map((rule, i) => (
+      String(rule.test).indexOf('jpe') !== -1
+        && rule.loaders
+        && rule.loaders[0].indexOf('file?') !== -1
+      ? i : false
+    )).filter(a => a !== false)[0];
+
+  production.module.loaders[imageLoaderIndex] = {
     test: /\.(jpe?g|png)$/i,
     loaders: [
       'responsive?name=/assets/images/css/[name]-[md5:hash:hex:8].',

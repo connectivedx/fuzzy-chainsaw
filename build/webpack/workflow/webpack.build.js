@@ -14,11 +14,14 @@ const path = require('path');
 const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+
 const StatsPlugin = require('stats-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 const BrowserConfig = require('./webpack.browser');
-
+const { build: postcssPipeline } = require('./postcss-plugins.js');
 
 /*
  *
@@ -43,14 +46,32 @@ module.exports = ({
       outputStyle
     }),
     {
+      module: {
+        loaders: [
+          {
+            test: /\.css$/,
+            loader: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
+          },
+          {
+            test: /\.css$/,
+            loader: 'prepend-loader?data=@import url("../../variables/index.css");\n',
+            exclude: /variables/
+          }
+        ]
+      },
       plugins: [
-        new StatsPlugin('build-stats.json', {
-          chunkModules: true,
-          exclude: [/node_modules/]
-        }),
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
           manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
+        }),
+        new ExtractTextPlugin(outputStyle),
+        new PostCssPipelineWebpackPlugin({
+          suffix: undefined,
+          pipeline: postcssPipeline
+        }),
+        new StatsPlugin('build-stats.json', {
+          chunkModules: true,
+          exclude: [/node_modules/]
         })
       ]
     }

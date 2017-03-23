@@ -13,12 +13,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserConfig = require('./webpack.browser');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { dev: devPipeline } = require('./postcss-plugins.js');
 
 const stats = {
   chunks: false,
   children: false,
   colors: true,
-  reasons: false
+  reasons: true
 };
 
 module.exports = ({
@@ -37,15 +38,28 @@ module.exports = ({
       outputStyle
     }),
     {
+      module: {
+        loaders: [
+          {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader!postcss-loader'
+          },
+          {
+            test: /\.css$/,
+            loader: 'prepend-loader?data=@import url("../../variables/index.css");\n',
+            exclude: /variables/
+          }
+        ]
+      },
       plugins: [
-        new webpack.DllReferencePlugin({
-          context: path.resolve(pkgpath.self()),
-          manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
-        }),
         new HtmlWebpackPlugin({
           filename: 'index.html',
           template: path.resolve(__dirname, '../../templates/dev.html'),
           inject: false
+        }),
+        new webpack.DllReferencePlugin({
+          context: path.resolve(pkgpath.self()),
+          manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
         })
       ],
       stats,
@@ -55,10 +69,9 @@ module.exports = ({
         },
         publicPath: '/',
         contentBase: dirs.dest,
-        // hot: true,
-        inline: true,
         stats
-      }
+      },
+      postcss: devPipeline
     }
   )
 );

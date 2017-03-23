@@ -6,8 +6,6 @@
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
 const SvgStorePlugin = require('webpack-svgstore-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const webpackMerge = require('webpack-merge');
 const SharedConfig = require('./webpack.shared');
@@ -16,8 +14,7 @@ module.exports = ({
   entry,
   outputPath = 'dist',
   publicPath = './dist/',
-  outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css'
+  outputScript = '/tmp/bundle.js'
 }) => (
   webpackMerge(
     SharedConfig({
@@ -28,18 +25,7 @@ module.exports = ({
     }),
     {
       module: {
-        // delete preLoaders key to remove CSS linting.
-        preLoaders: [
-          {
-            test: /\.css$/,
-            loader: 'postcss-loader'
-          }
-        ],
         loaders: [
-          {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('css?-minimize&sourceMap')
-          },
           {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
             loader: 'file?context=./source/&name=/assets/fonts/[name]-[md5:hash:hex:8].[ext]'
@@ -69,16 +55,7 @@ module.exports = ({
         ]
       },
       plugins: [
-        new SvgStorePlugin(),
-        new ExtractTextPlugin(outputStyle),
-        new PostCssPipelineWebpackPlugin({
-          suffix: undefined,
-          pipeline: require('./postcss-plugins.js')
-        })
-      ],
-      postcss: [
-        require('stylelint')(),
-        require('postcss-reporter')()
+        new SvgStorePlugin()
       ]
     }
   )

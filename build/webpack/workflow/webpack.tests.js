@@ -7,6 +7,8 @@
 */
 
 const webpackMerge = require('webpack-merge');
+const nodeExternals = require('webpack-node-externals');
+
 const SharedConfig = require('./webpack.shared');
 
 module.exports = ({
@@ -27,11 +29,11 @@ module.exports = ({
       node: {
         fs: 'empty'
       },
-      externals: {
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-      },
+      externals: [
+        nodeExternals({
+          whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
+        })
+      ],
       module: {
         loaders: [
           {

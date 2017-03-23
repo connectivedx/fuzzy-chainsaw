@@ -54,14 +54,13 @@ const createComponentFile = (pathInfo, getModule, stats) => {
 module.exports = () => {
   const staticStats = require(path.resolve(pkgpath.self(), dirs.dest, 'static-stats.json'));
   const buildStats = require(path.resolve(pkgpath.self(), dirs.dest, 'build-stats.json'));
-  const staticFile = require(path.resolve(pkgpath.self(), dirs.dest, `assets/static-${staticStats.hash}.js`));
   const {
     pagesContext,
     componentsContext,
     tagsContext,
     getModule,
     normalizePath
-  } = staticFile;
+  } = require(path.resolve(pkgpath.self(), dirs.dest, `assets/static-${staticStats.hash}.js`));
 
   const pagesToRender = (
     []

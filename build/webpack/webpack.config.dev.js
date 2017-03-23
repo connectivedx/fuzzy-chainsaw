@@ -26,10 +26,7 @@ const devConfig = require('./workflow/webpack.dev');
 
 module.exports = devConfig({
   entry: {
-    devScript: [
-      'webpack-dev-server/client?http://localhost:8080/',
-      path.resolve(dirs.source, 'dev.jsx')
-    ],
+    devScript: path.resolve(dirs.source, 'dev.jsx'),
     styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
     styles: path.resolve(dirs.source, 'styles.jsx'),
     scripts: path.resolve(dirs.source, 'scripts.jsx')
