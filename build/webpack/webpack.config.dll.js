@@ -11,7 +11,6 @@ module.exports = {
   },
   entry: {
     vendor: [
-      'js-beautify',
       'pretty-data',
       'react',
       'react-dom',
@@ -24,7 +23,7 @@ module.exports = {
     path: path.join(pkgpath.self(), dirs.dest, 'assets/dlls'),
     filename: '[name].dll.js',
     library: '[name]_dll',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd'
   },
   plugins: [
     new webpack.DllPlugin({
