@@ -38,6 +38,11 @@ module.exports = ({
       outputStyle
     }),
     {
+      resolveLoader: {
+        alias: {
+          'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader')
+        }
+      },
       module: {
         loaders: [
           {
@@ -48,6 +53,10 @@ module.exports = ({
             test: /\.css$/,
             loader: 'prepend-loader?data=@import url("../../variables/index.css");\n',
             exclude: /variables/
+          },
+          {
+            test: /\.css$/,
+            loader: 'remove-tilde-loader'
           }
         ]
       },
