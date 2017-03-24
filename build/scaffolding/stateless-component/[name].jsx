@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './{{name}}.css';
 
 
 export const {{name}} = ({
@@ -15,12 +14,13 @@ export const {{name}} = ({
       {children}
     </Tag>
   );
-}
+};
 
 {{name}}.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(['default'])
+  variant: React.PropTypes.oneOf(['default']),
+  children: React.PropTypes.node
 };
 
 
