@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export const {{name}} = ({
   tagName = 'div',
   className = '',
@@ -13,12 +14,13 @@ export const {{name}} = ({
       {children}
     </Tag>
   );
-}
+};
 
 {{name}}.propTypes = {
   tagName: React.PropTypes.string,
   className: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(['default'])
+  variant: React.PropTypes.oneOf(['default']),
+  children: React.PropTypes.node
 };
 
 
