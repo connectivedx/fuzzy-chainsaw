@@ -1,0 +1,33 @@
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+.button--default {
+  border: 2px solid black;
+  background-color: #000.1;
+  color: black;
+
+  &:--enter {
+    background-color: black;
+    color: white;
+  }
+}
+
+.button--cta {
+  border: 2px solid red;
+  background-color: #f00.1;
+  color: red;
+
+  &:--enter {
+    background-color: red;
+    color: white;
+  }
+}
+
+.button--link {
+  display: inline-block;
+  text-decoration: none;
+}

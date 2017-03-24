@@ -1,33 +1,48 @@
 import React from 'react';
+import Skeleton from 'Tags/Skeleton/Skeleton';
+import Heading from 'Tags/Heading/Heading';
+import Rhythm from 'Tags/Rhythm/Rhythm';
+import Wrapper from 'Tags/Wrapper/Wrapper';
+import {
+  getTagsIndexData,
+  getComponentsIndexData,
+  getPagesIndexData,
+  FileIndex
+} from 'SgTags/FileIndex/FileIndex';
 
-import PageRoot from '../tags/page-root/page-root.jsx';
-import Heading from '../tags/heading/heading.jsx';
-import Rhythm from '../tags/rhythm/rhythm.jsx';
-import Wrapper from '../tags/wrapper/wrapper.jsx';
+const page = ({ locals }) => (
+  <Skeleton title="Hello World">
+    <Wrapper>
+      <Rhythm size="large">
+        <Heading level="1">Hello World</Heading>
+        <FileIndex
+          items={getPagesIndexData(locals)}
+          title="Pages"
+          className="rhythm--small"
+          RhythmComponent={Rhythm}
+          HeadingComponent={Heading}
+        />
+        <FileIndex
+          items={getComponentsIndexData(locals)}
+          title="Components"
+          className="rhythm--small"
+          RhythmComponent={Rhythm}
+          HeadingComponent={Heading}
+        />
+        <FileIndex
+          items={getTagsIndexData(locals)}
+          title="Tags"
+          className="rhythm--small"
+          RhythmComponent={Rhythm}
+          HeadingComponent={Heading}
+        />
+      </Rhythm>
+    </Wrapper>
+  </Skeleton>
+);
 
-import ComponentList from '../styleguide/component-list.jsx';
+page.propTypes = {
+  locals: React.PropTypes.object
+};
 
-export default ({ locals }) => (
-	<PageRoot title="Hello World">
-		<Wrapper>	
-			<Rhythm size="large">
-				<Heading level="1">Hello World</Heading>
-			
-				<Rhythm size="small" deep="true">
-					<Heading level="3">Tags</Heading>
-					<ComponentList baseUrl="/styleguide/tags" components={locals.tags} />
-				</Rhythm>
-
-				<Rhythm size="small" deep="true">
-					<Heading level="3">Components</Heading>
-					<ComponentList baseUrl="/styleguide/components" components={locals.components} />
-				</Rhythm>
-
-				<Rhythm size="small">			
-					<Heading level="2">Pages</Heading>
-					<p>n/a</p>
-				</Rhythm>
-			</Rhythm>
-		</Wrapper>
-	</PageRoot>
-)
+export default page;

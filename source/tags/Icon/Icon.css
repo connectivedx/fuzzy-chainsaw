@@ -1,0 +1,27 @@
+.icon {
+  display: inline-block;
+}
+
+.icon--normal {
+  width: 1em;
+  height: 1em;
+}
+
+.icon--small {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.icon--large {
+  width: 2em;
+  height: 2em;
+}
+
+.icon--wide {
+  width: 3em;
+  height: 1.5em;
+}
+
+.icon--light {
+  fill: var(--color-secondary);
+}
