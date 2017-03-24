@@ -13,7 +13,7 @@
 		"dest": "./dist"
 	},
 	"scripts": {
-		"post-install": "npm run vendor",
+		"postinstall": "npm run vendor",
 		"start": "http-server ./dist -p 8081",
 		"vendor": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
 		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline --hot",
