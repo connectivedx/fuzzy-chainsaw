@@ -27,7 +27,7 @@ const reporter = require('postcss-reporter');
 const cssnano = require('cssnano');
 
 
-const linting = [
+module.exports.linting = [
   stylelint(),
   reporter()
 ];
@@ -41,13 +41,12 @@ const standard = [
 ];
 
 module.exports.dev = [
-  // ...linting,
+  ...module.exports.linting,
   cssImport(),
   ...standard
 ];
 
 module.exports.build = [
-  // ...linting,
   postcss.plugin('fix-escaping-error', () => (css) => {
     css.walkRules((rule) => {
       rule.selector = rule.selector.replace(/\\--/gi, '--');

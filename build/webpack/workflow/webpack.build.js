@@ -21,7 +21,10 @@ const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
 const BrowserConfig = require('./webpack.browser');
-const { build: postcssPipeline } = require('./postcss-plugins.js');
+const {
+  build: buildPipeline,
+  linting: lintingPipeline
+} = require('./postcss-plugins.js');
 
 /*
  *
@@ -46,7 +49,18 @@ module.exports = ({
       outputStyle
     }),
     {
+      resolveLoader: {
+        alias: {
+          'prefix-variables-loader': path.resolve(__dirname, '../lib/prefix-variables-loader')
+        }
+      },
       module: {
+        // preLoaders: [
+        //   {
+        //     test: /\.css$/,
+        //     loader: 'postcss-loader' // linting
+        //   }
+        // ],
         loaders: [
           {
             test: /\.css$/,
@@ -54,7 +68,7 @@ module.exports = ({
           },
           {
             test: /\.css$/,
-            loader: 'prepend-loader?data=@import url("../../variables/index.css");\n',
+            loader: 'prefix-variables-loader',
             exclude: /variables/
           }
         ]
@@ -67,13 +81,14 @@ module.exports = ({
         new ExtractTextPlugin(outputStyle),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
-          pipeline: postcssPipeline
+          pipeline: buildPipeline
         }),
         new StatsPlugin('build-stats.json', {
           chunkModules: true,
           exclude: [/node_modules/]
         })
-      ]
+      ],
+      postcss: lintingPipeline
     }
   )
 );

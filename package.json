@@ -16,7 +16,7 @@
 		"post-install": "npm run vendor",
 		"start": "http-server ./dist -p 8081",
 		"vendor": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
-		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress",
+		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline --hot",
 		"watch": "gulp watch",
 		"build": "gulp build",
 		"production": "gulp production",

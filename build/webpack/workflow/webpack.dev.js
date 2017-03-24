@@ -40,7 +40,8 @@ module.exports = ({
     {
       resolveLoader: {
         alias: {
-          'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader')
+          'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader'),
+          'prefix-variables-loader': path.resolve(__dirname, '../lib/prefix-variables-loader')
         }
       },
       module: {
@@ -51,7 +52,7 @@ module.exports = ({
           },
           {
             test: /\.css$/,
-            loader: 'prepend-loader?data=@import url("../../variables/index.css");\n',
+            loader: 'prefix-variables-loader',
             exclude: /variables/
           },
           {
