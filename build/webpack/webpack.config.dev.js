@@ -14,7 +14,9 @@ const path = require('path');
 const pkgpath = require('packpath');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+
 const devConfig = require('./workflow/webpack.dev');
+const testsConfig = require('./workflow/webpack.tests');
 
 
 /*
@@ -24,14 +26,22 @@ const devConfig = require('./workflow/webpack.dev');
  *
  */
 
-module.exports = devConfig({
-  entry: {
-    devScript: path.resolve(dirs.source, 'dev.jsx'),
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
-});
+module.exports = [
+  testsConfig({
+    entry: path.resolve(pkgpath.self(), dirs.source, 'tests.jsx'),
+    outputPath: path.resolve(pkgpath.self(), dirs.dest),
+    outputScript: '/tmp/tests.js',
+    reporter: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
+  }),
+  devConfig({
+    entry: {
+      devScript: path.resolve(dirs.source, 'dev.jsx'),
+      styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
+      styles: path.resolve(dirs.source, 'styles.jsx'),
+      scripts: path.resolve(dirs.source, 'scripts.jsx')
+    },
+    outputPath: path.resolve(pkgpath.self(), dirs.dest),
+    outputScript: '/assets/[name].js',
+    outputStyle: '/assets/[name].css'
+  })
+];

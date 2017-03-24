@@ -16,7 +16,7 @@
 		"postinstall": "npm run vendor",
 		"start": "http-server ./dist -p 8081",
 		"vendor": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
-		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline --hot",
+		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress",
 		"watch": "gulp watch",
 		"build": "gulp build",
 		"production": "gulp production",
@@ -94,6 +94,7 @@
 		"react-dom": "^15.3.2",
 		"react-element-to-jsx-string": "^6.0.0",
 		"react-syntax-highlighter": "^4.0.1",
-		"slugify": "^1.1.0"
+		"slugify": "^1.1.0",
+		"tap-webpack-plugin": "^1.1.0"
 	}
 }

@@ -8,14 +8,16 @@
 
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
+const TapWebpackPlugin = require('tap-webpack-plugin');
 
 const SharedConfig = require('./webpack.shared');
 
 module.exports = ({
   entry,
+  reporter = 'tap-dot',
   outputPath = 'dist',
   publicPath = './dist/',
-  outputScript = '/tmp/bundle.js'
+  outputScript = '/tmp/tests.js'
 }) => (
   webpackMerge(
     SharedConfig({
@@ -41,7 +43,10 @@ module.exports = ({
             loader: 'null-loader'
           }
         ]
-      }
+      },
+      plugins: [
+        new TapWebpackPlugin({ reporter })
+      ]
     }
   )
 );
