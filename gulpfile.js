@@ -15,7 +15,7 @@ gulp.task('webpack:production', webpackBuild(require('./build/webpack/webpack.co
 gulp.task('webpack:watch', webpackWatch(require('./build/webpack/webpack.config.ci')));
 gulp.task('webpack:ci', webpackBuild(require('./build/webpack/webpack.config.ci')));
 
-gulp.task('static:build', require('./build/static-build'));
+gulp.task('static:render', require('./build/static-render'));
 
 
 // define workflows
@@ -24,12 +24,12 @@ gulp.task('pre-build', (done) => {
 });
 
 gulp.task('build', (done) => {
-  sequence('clean:pre', 'webpack:build', 'static:build', 'clean:post', done);
+  sequence('clean:pre', 'webpack:build', 'static:render', 'clean:post', done);
 });
 
 // for ui server
 gulp.task('production', (done) => {
-  sequence('clean:pre', 'webpack:production', 'static:build', 'clean:post', done);
+  sequence('clean:pre', 'webpack:production', 'static:render', 'clean:post', done);
 });
 
 // for back end integration
