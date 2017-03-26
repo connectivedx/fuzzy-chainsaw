@@ -1,18 +1,14 @@
 const del = require('del');
-const path = require('path');
-const pkgpath = require('packpath');
-
-const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
-const dirs = pkg.directories;
+const { dest } = require('./libs/path-helpers');
 
 module.exports = () => (
   del([
-    `${path.resolve(pkgpath.self(), dirs.dest)}/**/*.html`,
-    `${path.resolve(pkgpath.self(), dirs.dest)}/*.json`,
-    `${path.resolve(pkgpath.self(), dirs.dest)}/assets/*.{js,js.map,css,css.map}`,
-    `${path.resolve(pkgpath.self(), dirs.dest)}/assets/images/**`,
-    `${path.resolve(pkgpath.self(), dirs.dest)}/assets/fonts/**`,
-    `${path.resolve(pkgpath.self(), dirs.dest)}/assets/svgs/**`
+    dest('**/*.html'),
+    dest('*.json'),
+    dest('assets/*.{js,js.map,css,css.map}'),
+    dest('assets/images/**'),
+    dest('assets/fonts/**'),
+    dest('assets/svgs/*')
   ], {
     force: true
   })

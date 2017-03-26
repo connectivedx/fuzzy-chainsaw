@@ -10,10 +10,12 @@ const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserConfig = require('./webpack.browser');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { dest } = require('../../libs/path-helpers');
 const { dev: devPipeline } = require('../lib/postcss-plugins.js');
+const browserConfig = require('./webpack.browser');
+
 
 const stats = {
   chunks: false,
@@ -22,22 +24,14 @@ const stats = {
   reasons: true
 };
 
-module.exports = ({
-  entry,
-  outputPath = 'dist',
-  publicPath = './dist/',
-  outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css'
-}) => (
+module.exports = (
   webpackMerge(
-    BrowserConfig({
-      entry,
-      outputPath,
-      publicPath,
-      outputScript,
-      outputStyle
-    }),
+    browserConfig,
     {
+      devtool: 'inline-source-map',
+      output: {
+        filename: '/assets/[name].js'
+      },
       resolveLoader: {
         alias: {
           'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader'),
@@ -69,7 +63,7 @@ module.exports = ({
         }),
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
-          manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
+          manifest: require(dest('assets/dlls/vendor-manifest.json'))
         })
       ],
       stats,
@@ -78,7 +72,7 @@ module.exports = ({
           rewrites: [{ from: /.*\.html/, to: '/index.html' }]
         },
         publicPath: '/',
-        contentBase: dirs.dest,
+        contentBase: directories.dest,
         stats
       },
       postcss: devPipeline

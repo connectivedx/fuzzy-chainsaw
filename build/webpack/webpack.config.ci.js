@@ -10,10 +10,9 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-const path = require('path');
-const pkgpath = require('packpath');
+const merge = require('webpack-merge');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { source } = require('../libs/path-helpers');
 const productionConfig = require('./workflow/webpack.production');
 
 
@@ -24,12 +23,9 @@ const productionConfig = require('./workflow/webpack.production');
  *
  */
 
-module.exports = productionConfig({
+module.exports = merge(productionConfig, {
   entry: {
-    styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
-    scripts: path.resolve(pkgpath.self(), dirs.source, 'scripts.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name]-[hash].js',
-  outputStyle: '/assets/[name]-[hash].css'
+    styles: source('styles.jsx'),
+    scripts: source('scripts.jsx')
+  }
 });

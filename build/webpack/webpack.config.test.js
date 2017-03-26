@@ -10,10 +10,9 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-const path = require('path');
-const pkgpath = require('packpath');
+const merge = require('webpack-merge');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { source } = require('../libs/path-helpers');
 const testsConfig = require('./workflow/webpack.test');
 
 
@@ -24,9 +23,6 @@ const testsConfig = require('./workflow/webpack.test');
  *
  */
 
-module.exports = testsConfig({
-  entry: path.resolve(dirs.source, 'tests.jsx'),
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/tmp/tests.js',
-  reporter: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
+module.exports = merge(testsConfig, {
+  entry: source('tests.jsx')
 });

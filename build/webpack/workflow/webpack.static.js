@@ -10,15 +10,11 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-const path = require('path');
-const pkgpath = require('packpath');
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const StatsPlugin = require('stats-webpack-plugin');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const BrowserConfig = require('./webpack.browser');
-
+const browserConfig = require('./webpack.browser');
 
 /*
  *
@@ -27,21 +23,9 @@ const BrowserConfig = require('./webpack.browser');
  *
  */
 
-module.exports = ({
-  entry,
-  publicPath = './dist/',
-  outputPath = 'dist',
-  outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css'
-}) => (
+module.exports = (
   webpackMerge(
-    BrowserConfig({
-      entry,
-      publicPath,
-      outputPath,
-      outputScript,
-      outputStyle
-    }),
+    browserConfig,
     {
       module: {
         loaders: [

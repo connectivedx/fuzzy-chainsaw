@@ -5,28 +5,21 @@
 
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
-
+const path = require('path');
+const pkgpath = require('packpath');
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const TapWebpackPlugin = require('tap-webpack-plugin');
 
-const SharedConfig = require('./webpack.shared');
+const sharedConfig = require('./webpack.shared');
 
-module.exports = ({
-  entry,
-  reporter = 'tap-dot',
-  outputPath = 'dist',
-  publicPath = './dist/',
-  outputScript = '/tmp/tests.js'
-}) => (
+module.exports = (
   webpackMerge(
-    SharedConfig({
-      entry,
-      outputPath,
-      publicPath,
-      outputScript
-    }),
+    sharedConfig,
     {
+      output: {
+        filename: '/tmp/tests.js'
+      },
       target: 'node',
       node: {
         fs: 'empty'
@@ -45,7 +38,9 @@ module.exports = ({
         ]
       },
       plugins: [
-        new TapWebpackPlugin({ reporter })
+        new TapWebpackPlugin({
+          resolver: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
+        })
       ]
     }
   )

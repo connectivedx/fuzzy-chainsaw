@@ -10,14 +10,10 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-const path = require('path');
-const pkgpath = require('packpath');
+const merge = require('webpack-merge');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-
+const { source } = require('../libs/path-helpers');
 const devConfig = require('./workflow/webpack.dev');
-const testsConfig = require('./workflow/webpack.tests');
-
 
 /*
  *
@@ -26,14 +22,11 @@ const testsConfig = require('./workflow/webpack.tests');
  *
  */
 
-module.exports = devConfig({
+module.exports = merge(devConfig, {
   entry: {
-    devScript: path.resolve(dirs.source, 'dev.jsx'),
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
-  },
-  outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
+    devScript: source('dev.jsx'),
+    styleguide: source('styleguide/styleguide.jsx'),
+    styles: source('styles.jsx'),
+    scripts: source('scripts.jsx')
+  }
 });

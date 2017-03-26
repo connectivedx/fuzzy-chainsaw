@@ -10,11 +10,9 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-const path = require('path');
-const pkgpath = require('packpath');
+const merge = require('webpack-merge');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-
+const { source } = require('../libs/path-helpers');
 const buildConfig = require('./workflow/webpack.build');
 const staticConfig = require('./workflow/webpack.static');
 const testsConfig = require('./workflow/webpack.tests');
@@ -28,28 +26,19 @@ const testsConfig = require('./workflow/webpack.tests');
  */
 
 module.exports = [
-  buildConfig({
+  merge(buildConfig, {
     entry: {
-      styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide/styleguide.jsx'),
-      styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
-      scripts: path.resolve(pkgpath.self(), dirs.source, 'scripts.jsx')
-    },
-    outputPath: path.resolve(pkgpath.self(), dirs.dest),
-    outputScript: '/assets/[name]-[hash].js',
-    outputStyle: '/assets/[name]-[hash].css'
+      styleguide: source('styleguide/styleguide.jsx'),
+      styles: source('styles.jsx'),
+      scripts: source('scripts.jsx')
+    }
   }),
-  staticConfig({
+  merge(staticConfig, {
     entry: {
-      static: path.resolve(pkgpath.self(), dirs.source, 'static.jsx')
-    },
-    outputPath: path.resolve(pkgpath.self(), dirs.dest),
-    outputScript: '/assets/[name]-[hash].js',
-    outputStyle: '/assets/[name]-[hash].css'
+      static: source('static.jsx')
+    }
   }),
-  testsConfig({
-    entry: path.resolve(pkgpath.self(), dirs.source, 'tests.jsx'),
-    outputPath: path.resolve(pkgpath.self(), dirs.dest),
-    outputScript: '/tmp/tests.js',
-    reporter: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
+  merge(testsConfig, {
+    entry: source('tests.jsx')
   })
 ];

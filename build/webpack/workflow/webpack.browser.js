@@ -5,24 +5,12 @@
 
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
-const SvgStorePlugin = require('webpack-svgstore-plugin');
-
 const webpackMerge = require('webpack-merge');
-const SharedConfig = require('./webpack.shared');
+const sharedConfig = require('./webpack.shared');
 
-module.exports = ({
-  entry,
-  outputPath = 'dist',
-  publicPath = './dist/',
-  outputScript = '/tmp/bundle.js'
-}) => (
+module.exports = (
   webpackMerge(
-    SharedConfig({
-      entry,
-      outputPath,
-      publicPath,
-      outputScript
-    }),
+    sharedConfig,
     {
       module: {
         loaders: [
@@ -53,10 +41,7 @@ module.exports = ({
             ]
           }
         ]
-      },
-      plugins: [
-        new SvgStorePlugin()
-      ]
+      }
     }
   )
 );

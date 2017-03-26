@@ -4,37 +4,33 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+const SvgStorePlugin = require('webpack-svgstore-plugin');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { source, dest } = require('../../libs/path-helpers');
 
-module.exports = ({
-  entry,
-  outputPath = 'dist',
-  publicPath = './dist/',
-  outputScript = '/tmp/bundle.js'
-}) => ({
+module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      Vendor: path.resolve(pkgpath.self(), dirs.source, 'vendor'),
-      Vars: path.resolve(pkgpath.self(), dirs.source, 'variables'),
-      Tags: path.resolve(pkgpath.self(), dirs.source, 'tags'),
-      Components: path.resolve(pkgpath.self(), dirs.source, 'components'),
-      Pages: path.resolve(pkgpath.self(), dirs.source, 'pages'),
-      Styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide'),
-      SgVars: path.resolve(pkgpath.self(), dirs.source, 'styleguide/variables'),
-      SgTags: path.resolve(pkgpath.self(), dirs.source, 'styleguide/tags'),
-      SgComponents: path.resolve(pkgpath.self(), dirs.source, 'styleguide/components')
+      Vendor: source('vendor'),
+      Vars: source('variables'),
+      Tags: source('tags'),
+      Components: source('components'),
+      Pages: source('pages'),
+      Styleguide: source('styleguide'),
+      SgVars: source('styleguide/variables'),
+      SgTags: source('styleguide/tags'),
+      SgComponents: source('styleguide/components')
     }
   },
-  entry,
   output: {
-    path: outputPath,
-    filename: outputScript,
+    path: dest(),
+    filename: '/assets/[name]-[hash].js',
     libraryTarget: 'umd'
   },
-  publicPath,
+  publicPath: directories.dest,
   module: {
     loaders: [
       {
@@ -43,5 +39,8 @@ module.exports = ({
         exclude: /node_modules/
       }
     ]
-  }
-});
+  },
+  plugins: [
+    new SvgStorePlugin()
+  ]
+};

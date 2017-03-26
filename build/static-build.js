@@ -2,13 +2,10 @@ const gulp = require('gulp');
 const file = require('gulp-file');
 const merge = require('gulp-merge');
 const print = require('gulp-print');
-
 const fs = require('fs');
-const path = require('path');
-const pkgpath = require('packpath');
 const Dom = require('react-dom/server');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { dest } = require('./libs/path-helpers');
 
 
 const getContextList = (context, normalizePath, prefix = false) =>
@@ -52,15 +49,15 @@ const createComponentFile = (pathInfo, getModule, stats) => {
 };
 
 module.exports = () => {
-  const staticStats = require(path.resolve(pkgpath.self(), dirs.dest, 'static-stats.json'));
-  const buildStats = require(path.resolve(pkgpath.self(), dirs.dest, 'build-stats.json'));
+  const staticStats = require(dest('static-stats.json'));
+  const buildStats = require(dest('build-stats.json'));
   const {
     pagesContext,
     componentsContext,
     tagsContext,
     getModule,
     normalizePath
-  } = require(path.resolve(pkgpath.self(), dirs.dest, `assets/static-${staticStats.hash}.js`));
+  } = require(dest(`assets/static-${staticStats.hash}.js`));
 
   const pagesToRender = (
     []
@@ -74,5 +71,5 @@ module.exports = () => {
 
   return merge(...pagesToRender)
     .pipe(print())
-    .pipe(gulp.dest(path.resolve(pkgpath.self(), dirs.dest)));
+    .pipe(gulp.dest(dest()));
 };

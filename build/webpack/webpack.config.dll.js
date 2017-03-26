@@ -1,9 +1,5 @@
 const webpack = require('webpack');
-
-const path = require('path');
-const pkgpath = require('packpath');
-
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { dest } = require('../libs/path-helpers');
 
 module.exports = {
   resolve: {
@@ -20,14 +16,14 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(pkgpath.self(), dirs.dest, 'assets/dlls'),
+    path: dest('assets/dlls'),
     filename: '[name].dll.js',
     library: '[name]_dll',
     libraryTarget: 'umd'
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(pkgpath.self(), dirs.dest, 'assets/dlls/[name]-manifest.json'),
+      path: dest('assets/dlls/[name]-manifest.json'),
       name: '[name]_dll'
     })
   ]

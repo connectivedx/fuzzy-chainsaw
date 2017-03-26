@@ -7660,9 +7660,9 @@ webpack-sources@^0.1.0, webpack-sources@^0.1.3:
     source-list-map "~0.1.7"
     source-map "~0.5.3"
 
-webpack-svgstore-plugin@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/webpack-svgstore-plugin/-/webpack-svgstore-plugin-4.0.0.tgz#b1413befca8ea06f6d23e093d8f76cf9a9efd7c7"
+webpack-svgstore-plugin@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/webpack-svgstore-plugin/-/webpack-svgstore-plugin-3.0.6.tgz#af800a345513a0cf2f93fb0671c10e6fdbe5bfc4"
   dependencies:
     async "2.1.4"
     globby "6.1.0"

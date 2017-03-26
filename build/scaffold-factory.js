@@ -1,12 +1,10 @@
 const gutil = require('gulp-util');
 const path = require('path');
-const pkgpath = require('packpath');
 const minimist = require('minimist');
 const chalk = require('chalk');
 const dopl = require('dopl');
 
-const pkg = require(path.resolve(pkgpath.self(), 'package.json'));
-const dirs = pkg.directories;
+const { source } = require('./libs/path-helpers');
 
 
 // transforms PascalCase into slug-case for the CSS class name
@@ -40,10 +38,11 @@ const scaffoldComponent = ({
 
 module.exports = ({ src, dest }) => () => {
   const argv = minimist(process.argv.slice(2));
+
   return scaffoldComponent({
     name: argv.name,
     src: path.resolve(__dirname, 'scaffolding', src),
-    dest: path.resolve(pkgpath.self(), dirs.source, dest, argv.name)
+    output: source(dest, argv.name)
   });
 };
 

@@ -14,13 +14,12 @@ const path = require('path');
 const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-
 const StatsPlugin = require('stats-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
-const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const BrowserConfig = require('./webpack.browser');
+const browserConfig = require('./webpack.browser');
+const { dest } = require('../../libs/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
@@ -33,21 +32,9 @@ const {
  *
  */
 
-module.exports = ({
-  entry,
-  publicPath = './dist/',
-  outputPath = 'dist',
-  outputScript = '/tmp/bundle.js',
-  outputStyle = '/tmp/bundle.css'
-}) => (
+module.exports = (
   webpackMerge(
-    BrowserConfig({
-      entry,
-      publicPath,
-      outputPath,
-      outputScript,
-      outputStyle
-    }),
+    browserConfig,
     {
       resolveLoader: {
         alias: {
@@ -76,9 +63,9 @@ module.exports = ({
       plugins: [
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
-          manifest: require(path.resolve(pkgpath.self(), dirs.dest, 'assets/dlls/vendor-manifest.json'))
+          manifest: require(dest('assets/dlls/vendor-manifest.json'))
         }),
-        new ExtractTextPlugin(outputStyle),
+        new ExtractTextPlugin('/assets/[name]-[hash].css'),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
           pipeline: buildPipeline
