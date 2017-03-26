@@ -24,7 +24,7 @@ const BrowserConfig = require('./webpack.browser');
 const {
   build: buildPipeline,
   linting: lintingPipeline
-} = require('./postcss-plugins.js');
+} = require('../lib/postcss-plugins.js');
 
 /*
  *

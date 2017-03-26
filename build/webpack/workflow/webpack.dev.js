@@ -13,7 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserConfig = require('./webpack.browser');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-const { dev: devPipeline } = require('./postcss-plugins.js');
+const { dev: devPipeline } = require('../lib/postcss-plugins.js');
 
 const stats = {
   chunks: false,

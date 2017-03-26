@@ -9,7 +9,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
-const { production: postcssPipeline } = require('./postcss-plugins.js');
+const { production: postcssPipeline } = require('../lib/postcss-plugins.js');
 const BuildConfig = require('./webpack.build');
 
 

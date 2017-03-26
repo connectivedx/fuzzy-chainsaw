@@ -14,9 +14,7 @@ const path = require('path');
 const pkgpath = require('packpath');
 
 const { directories: dirs } = require(path.resolve(pkgpath.self(), 'package.json'));
-
-const devConfig = require('./workflow/webpack.dev');
-const testsConfig = require('./workflow/webpack.tests');
+const productionConfig = require('./workflow/webpack.production');
 
 
 /*
@@ -26,14 +24,12 @@ const testsConfig = require('./workflow/webpack.tests');
  *
  */
 
-module.exports = devConfig({
+module.exports = productionConfig({
   entry: {
-    devScript: path.resolve(dirs.source, 'dev.jsx'),
-    styleguide: path.resolve(dirs.source, 'styleguide/styleguide.jsx'),
-    styles: path.resolve(dirs.source, 'styles.jsx'),
-    scripts: path.resolve(dirs.source, 'scripts.jsx')
+    styles: path.resolve(pkgpath.self(), dirs.source, 'styles.jsx'),
+    scripts: path.resolve(pkgpath.self(), dirs.source, 'scripts.jsx')
   },
   outputPath: path.resolve(pkgpath.self(), dirs.dest),
-  outputScript: '/assets/[name].js',
-  outputStyle: '/assets/[name].css'
+  outputScript: '/assets/[name]-[hash].js',
+  outputStyle: '/assets/[name]-[hash].css'
 });

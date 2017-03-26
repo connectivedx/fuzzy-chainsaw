@@ -13,15 +13,16 @@
 		"dest": "./dist"
 	},
 	"scripts": {
-		"postinstall": "npm run vendor",
+		"postinstall": "npm run dll",
 		"start": "http-server ./dist -p 8081",
-		"vendor": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
-		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress",
+		"dll": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
+		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline",
 		"watch": "gulp watch",
 		"build": "gulp build",
 		"production": "gulp production",
-		"new-tag": "gulp scaffold:tag --name",
-		"new-component": "gulp scaffold:component --name"
+		"production:ci": "gulp production:ci",
+		"new:tag": "gulp scaffold:tag --name",
+		"new:component": "gulp scaffold:component --name"
 	},
 	"engines": {
 		"node": "^=6.9.2"

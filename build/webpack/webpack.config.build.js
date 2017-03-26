@@ -28,12 +28,6 @@ const testsConfig = require('./workflow/webpack.tests');
  */
 
 module.exports = [
-  testsConfig({
-    entry: path.resolve(pkgpath.self(), dirs.source, 'tests.jsx'),
-    outputPath: path.resolve(pkgpath.self(), dirs.dest),
-    outputScript: '/tmp/tests.js',
-    reporter: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
-  }),
   buildConfig({
     entry: {
       styleguide: path.resolve(pkgpath.self(), dirs.source, 'styleguide/styleguide.jsx'),
@@ -51,5 +45,11 @@ module.exports = [
     outputPath: path.resolve(pkgpath.self(), dirs.dest),
     outputScript: '/assets/[name]-[hash].js',
     outputStyle: '/assets/[name]-[hash].css'
+  }),
+  testsConfig({
+    entry: path.resolve(pkgpath.self(), dirs.source, 'tests.jsx'),
+    outputPath: path.resolve(pkgpath.self(), dirs.dest),
+    outputScript: '/tmp/tests.js',
+    reporter: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
   })
 ];
