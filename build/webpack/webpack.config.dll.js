@@ -7,9 +7,11 @@ module.exports = {
   },
   entry: {
     vendor: [
-      'pretty-data',
       'react',
-      'react-dom',
+      'react-dom'
+    ],
+    styleguide: [
+      'pretty-data',
       'react-element-to-jsx-string',
       'react-syntax-highlighter',
       'slugify'
