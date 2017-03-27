@@ -1,9 +1,5 @@
-.is-sg-nav-expanded {
+.ReactModal__Body--open {
   overflow: hidden;
-
-  & .sg-styleguide {
-    transform: scale(0.9);
-  }
 }
 
 .sg-styleguide {
@@ -15,12 +11,12 @@
 
 .sg-styleguide__header {
   background-color: var(--color-white);
+  padding: 1em;
   padding-left: 200px;
 
   & .sg-heading {
-    font-size: 28px;
-    font-weight: 500;
-    line-height: 60px;
+    /* font-size: 28px; */
+    /* font-weight: 500; */
   }
 }
 

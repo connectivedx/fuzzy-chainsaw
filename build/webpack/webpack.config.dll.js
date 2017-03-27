@@ -11,6 +11,7 @@ module.exports = {
       'react-dom'
     ],
     styleguide: [
+      'react-modal',
       'pretty-data',
       'react-element-to-jsx-string',
       'react-syntax-highlighter',

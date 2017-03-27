@@ -1,40 +1,14 @@
-function requireAll(context) {
-  return context.keys().map(context);
-}
-
-// CSS
-require('SgVars/index.css');
-
-requireAll(require.context('SgTags/', true, /\.css$/));
-requireAll(require.context('SgComponents/', true, /\.css$/));
+import styles from 'Styleguide/styleguide.styles'; // eslint-disable-line
 
 // browser Javascript
-const body = document.body;
+import React from 'react';
+import Dom from 'react-dom';
+import Nav from 'SgTags/Nav/Nav';
+
 const nav = document.querySelector('.sg-nav');
 
 if (nav) {
-  const toggle = nav.querySelector('.sg-nav__toggle');
-  const cover = nav.querySelector('.sg-nav__cover');
-
-  body.addEventListener('click', (ev) => {
-    if (toggle.contains(ev.target)) {
-      body.classList.toggle('is-sg-nav-expanded');
-      nav.classList.toggle('is-expanded');
-    }
-
-    if (cover.contains(ev.target)) {
-      body.classList.remove('is-sg-nav-expanded');
-      nav.classList.remove('is-expanded');
-    }
-  });
-
-  body.addEventListener('keyup', (ev) => {
-    if (ev.keyCode === 27) {
-      body.classList.remove('is-sg-nav-expanded');
-      nav.classList.remove('is-expanded');
-    }
-  });
-
+  Dom.render(<Nav />, nav);
 
   const examples = Array.prototype.slice.call(document.querySelectorAll('.sg-example'));
   const examplesTabs = examples.map(e => e.querySelector('.sg-example__tabs'));

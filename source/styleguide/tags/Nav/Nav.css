@@ -2,55 +2,34 @@
   & a {
     color: var(--color-black);
   }
-
-  &.is-expanded {
-    & .sg-nav__cover {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-      transition-delay: 0s;
-      pointer-events: auto;
-    }
-
-    & .sg-nav__toggle {
-      background-color: var(--color-black);
-
-      & > span {
-        display: inline;
-
-        &:first-child {
-          display: none;
-        }
-      }
-    }
-
-    & .sg-nav__container {
-      transform: translate3d(0, 0, 0);
-    }
-  }
 }
 
-.sg-nav__toggle {
+.sg-nav__button {
   display: block;
   position: fixed;
   top: 0;
   left: 0;
   width: 180px;
-  z-index: 100;
+  z-index: 50;
+
   background-color: var(--color-gray-darker);
+  box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
   color: var(--color-white);
-  text-decoration: none;
+  border: none;
   cursor: pointer;
-  box-shadow: #000.1 0 0 0.5em;
-  font-size: 14px;
-  line-height: 60px;
+
+  font-size: 0.75em;
+  line-height: 5em;
+  text-decoration: none;
   text-align: center;
   text-transform: uppercase;
+
   transition: 0.3s ease-in-out;
   transition-property: background-color, box-shadow;
 
   &:hover {
     background-color: var(--color-black);
-    box-shadow: #000.25 0 0.3em 1em;
+    box-shadow: color(var(--color-black) alpha(25%)) 0 0.3em 1em;
   }
 
   & > span {
@@ -63,7 +42,33 @@
   }
 }
 
-.sg-nav__container {
+.sg-nav__modal-overlay {
+  content: '\0020';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 98;
+
+  background-color: color(var(--color-black) alpha(80%));
+  opacity: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &.ReactModal__Overlay--after-open {
+    transition: opacity ease 0.3s;
+    opacity: 1;
+  }
+
+  &.ReactModal__Overlay--before-close {
+    transition: opacity ease 0.3s;
+    opacity: 0;
+  }
+}
+
+.sg-nav__content {
   position: fixed;
   top: 0;
   left: 0;
@@ -78,7 +83,16 @@
   line-height: 1.7em;
   background-color: var(--color-background);
   transform: translate3d(-100%, 0, 0);
-  transition: transform 0.3s ease-in-out;
+
+  &.ReactModal__Content--after-open {
+    transition: transform 0.3s ease-in;
+    transform: translate3d(0%, 0, 0);
+  }
+
+  &.ReactModal__Content--before-close {
+    transition: transform 0.3s ease-out;
+    transform: translate3d(-100%, 0, 0);
+  }
 
   & * + .heading {
     margin-top: 1em;
@@ -92,20 +106,4 @@
     padding: 2em;
     padding-top: 7em;
   }
-}
-
-.sg-nav__cover {
-  content: '\0020';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 98;
-  background-color: #000.8;
-  transition: opacity ease 0.45s, transform ease 0s;
-  transition-delay: 0s, 0.45s;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(0, -100%, 0);
 }

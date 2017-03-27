@@ -74,11 +74,10 @@ Styleguide_Tests.propTypes = {
 export const Styleguide = ({
   name = 'Generic Component',
   readme,
-  locals = {},
   tests
 }) => (
   <div data-title={`${name} – Styleguide`}>
-    <Nav locals={locals} />
+    <Nav />
 
     <div className="sg-styleguide" id="content">
       <div className="sg-styleguide__header sg-styleguide-section__header">
@@ -94,7 +93,6 @@ export const Styleguide = ({
 Styleguide.propTypes = {
   name: React.PropTypes.string,
   readme: React.PropTypes.string,
-  locals: React.PropTypes.object,
   tests: React.PropTypes.array
 };
 

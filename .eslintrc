@@ -1,5 +1,6 @@
 {
 	"extends": "airbnb",
+	"parser": "babel-eslint",
 	"rules": {
 		"max-len": 0,
 		"comma-dangle": ["error", "never"],
@@ -7,6 +8,8 @@
 		"no-param-reassign": 0,
 		"no-plusplus": 0,
 		"linebreak-style": 0,
+		"prefer-stateless-function": 0,
+		"jsx-a11y/no-static-element-interactions": 0,
 		"import/no-named-as-default": 0,
 		"import/no-extraneous-dependencies": 0,
 		"import/no-unresolved": 0,
