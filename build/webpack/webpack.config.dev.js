@@ -26,7 +26,6 @@ module.exports = merge(devConfig, {
   entry: {
     devScript: source('dev.jsx'),
     styleguide: source('styleguide/styleguide.jsx'),
-    styles: source('styles.jsx'),
-    scripts: source('scripts.jsx')
+    bundle: source('bundle.jsx')
   }
 });

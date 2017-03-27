@@ -14,6 +14,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
+      Source: source(),
       Vendor: source('vendor'),
       Vars: source('variables'),
       Tags: source('tags'),

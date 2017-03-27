@@ -25,7 +25,6 @@ const productionConfig = require('./workflow/webpack.production');
 
 module.exports = merge(productionConfig, {
   entry: {
-    styles: source('styles.jsx'),
-    scripts: source('scripts.jsx')
+    bundle: source('bundle.jsx')
   }
 });

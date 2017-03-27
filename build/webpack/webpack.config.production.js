@@ -29,8 +29,7 @@ module.exports = [
   merge(productionConfig, {
     entry: {
       styleguide: source('styleguide/styleguide.jsx'),
-      styles: source('styles.jsx'),
-      scripts: source('scripts.jsx')
+      bundle: source('bundle.jsx')
     }
   }),
   merge(staticConfig, {

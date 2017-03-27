@@ -1,11 +1,11 @@
 import Dom from 'react-dom';
 import { getModule } from './static';
 
-const module = getModule(location.pathname.replace(/\.html/, ''));
+const { pageTitle, Component } = getModule(location.pathname.replace(/\.html/, ''));
 
-document.title = module.pageTitle;
+document.title = pageTitle;
 
 Dom.render(
-  module.Component,
+  Component,
   document.querySelector('#dev-entry')
 );
