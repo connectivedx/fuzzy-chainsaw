@@ -7,7 +7,7 @@ const pkgpath = require('packpath');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
 
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
-const { source, dest } = require('../../libs/path-helpers');
+const { source, dest } = require('../../lib/path-helpers');
 
 module.exports = {
   devtool: 'source-map',

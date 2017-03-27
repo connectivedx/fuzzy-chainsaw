@@ -19,7 +19,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const browserConfig = require('./webpack.browser');
-const { dest } = require('../../libs/path-helpers');
+const { dest } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline

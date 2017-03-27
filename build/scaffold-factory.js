@@ -4,7 +4,7 @@ const minimist = require('minimist');
 const chalk = require('chalk');
 const dopl = require('dopl');
 
-const { source } = require('./libs/path-helpers');
+const { source } = require('./lib/path-helpers');
 
 
 // transforms PascalCase into slug-case for the CSS class name

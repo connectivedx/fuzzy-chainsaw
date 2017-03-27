@@ -12,7 +12,7 @@
 */
 const merge = require('webpack-merge');
 
-const { source } = require('../libs/path-helpers');
+const { source } = require('../lib/path-helpers');
 const productionConfig = require('./workflow/webpack.production');
 
 

@@ -5,7 +5,7 @@ const print = require('gulp-print');
 const fs = require('fs');
 const Dom = require('react-dom/server');
 
-const { dest } = require('./libs/path-helpers');
+const { dest } = require('./lib/path-helpers');
 
 
 const getContextList = (context, normalizePath, prefix = false) =>

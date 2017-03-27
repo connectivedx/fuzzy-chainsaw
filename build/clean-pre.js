@@ -1,5 +1,5 @@
 const del = require('del');
-const { dest } = require('./libs/path-helpers');
+const { dest } = require('./lib/path-helpers');
 
 module.exports = () => (
   del([
