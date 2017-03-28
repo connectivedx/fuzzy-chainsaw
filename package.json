@@ -28,6 +28,7 @@
 		"node": "^=6.9.2"
 	},
 	"devDependencies": {
+		"add-asset-html-webpack-plugin": "^1.0.2",
 		"babel-core": "^6.17.0",
 		"babel-eslint": "^7.2.1",
 		"babel-loader": "^6.2.5",
@@ -35,6 +36,7 @@
 		"babel-plugin-transform-object-rest-spread": "^6.16.0",
 		"babel-preset-es2015": "^6.16.0",
 		"babel-preset-react": "^6.16.0",
+		"clean-webpack-plugin": "^0.1.16",
 		"copy-webpack-plugin": "^4.0.1",
 		"css-loader": "0.27.3",
 		"css-mqpacker": "^5.0.1",

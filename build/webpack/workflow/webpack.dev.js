@@ -29,9 +29,6 @@ module.exports = (
     browserConfig,
     {
       devtool: 'inline-source-map',
-      output: {
-        filename: '/assets/[name].js'
-      },
       resolveLoader: {
         alias: {
           'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader'),
@@ -56,14 +53,13 @@ module.exports = (
         ]
       },
       plugins: [
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('dev')
+        }),
         new HtmlWebpackPlugin({
           filename: 'index.html',
           template: path.resolve(__dirname, '../../templates/dev.html'),
-          inject: false
-        }),
-        new webpack.DllReferencePlugin({
-          context: path.resolve(pkgpath.self()),
-          manifest: require(dest('assets/dlls/vendor-manifest.json'))
+          inject: true
         })
       ],
       stats,

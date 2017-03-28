@@ -35,7 +35,7 @@ const getContextList = (context, normalizePath, prefix = false) =>
 const pageTemplate = fs.readFileSync(`${__dirname}/templates/static.html`);
 const styleguideTemplate = fs.readFileSync(`${__dirname}/templates/styleguide.html`);
 
-const createComponentFile = (pathInfo, getModule, stats) => {
+const createComponentFile = (pathInfo, getModule, dllStats, buildStats) => {
   const template = pathInfo.isStyleguide ? styleguideTemplate : pageTemplate;
   const module = getModule(pathInfo.moduleName);
 
@@ -43,7 +43,8 @@ const createComponentFile = (pathInfo, getModule, stats) => {
     template.toString()
       .replace('{{title}}', module.pageTitle)
       .replace('{{output}}', Dom.renderToStaticMarkup(module.Component))
-      .replace(/\{\{hash\}\}/g, stats.hash);
+      .replace(/\{\{dll-hash\}\}/g, dllStats.hash)
+      .replace(/\{\{build-hash\}\}/g, buildStats.hash);
 
   return file(pathInfo.outputPath, output, { src: true });
 };
@@ -51,6 +52,8 @@ const createComponentFile = (pathInfo, getModule, stats) => {
 module.exports = () => {
   const staticStats = require(dest('static-stats.json'));
   const buildStats = require(dest('build-stats.json'));
+  const dllStats = require(dest('assets/dlls/dll-stats.json'));
+
   const {
     pagesContext,
     componentsContext,
@@ -66,7 +69,7 @@ module.exports = () => {
       getContextList(componentsContext, normalizePath, 'styleguide/components'),
       getContextList(tagsContext, normalizePath, 'styleguide/tags')
     )
-    .map(pathInfo => createComponentFile(pathInfo, getModule, buildStats))
+    .map(pathInfo => createComponentFile(pathInfo, getModule, dllStats, buildStats))
   );
 
   return merge(...pagesToRender)

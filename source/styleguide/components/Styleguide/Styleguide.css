@@ -15,8 +15,8 @@
   padding-left: 200px;
 
   & .sg-heading {
-    /* font-size: 28px; */
-    /* font-weight: 500; */
+    font-size: 28px;
+    font-weight: 500;
   }
 }
 

@@ -21,6 +21,9 @@ const production = webpackMerge(
       sizes: [720, 1280, 1920]
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
         pipeline: postcssPipeline
@@ -51,17 +54,6 @@ production.module.loaders[imageLoaderIndex] = {
     'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
   ]
 };
-
-// add production flag to build environment
-// libraries can key off this to import versions without debug info
-// (e.g. react turns off warnings in the console and gets much smaller because of this)
-production.plugins.unshift(
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('production')
-    }
-  })
-);
 
 
 module.exports = production;

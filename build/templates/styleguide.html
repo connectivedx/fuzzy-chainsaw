@@ -4,16 +4,16 @@
 	<title>{{title}}</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/assets/bundle-{{hash}}.css" />
-	<link rel="stylesheet" href="/assets/styleguide-{{hash}}.css" />
+	<link rel="stylesheet" href="/assets/bundle-{{build-hash}}.css" />
+	<link rel="stylesheet" href="/assets/styleguide-{{build-hash}}.css" />
 </head>
 <body>
 
 {{output}}
 
-<script src="/assets/dlls/styleguide.dll.js"></script>
-<script src="/assets/dlls/vendor.dll.js"></script>
-<script src="/assets/bundle-{{hash}}.js"></script>
-<script src="/assets/styleguide-{{hash}}.js"></script>
+<script src="/assets/dlls/styleguide.dll-{{dll-hash}}.js"></script>
+<script src="/assets/dlls/vendor.dll-{{dll-hash}}.js"></script>
+<script src="/assets/bundle-{{build-hash}}.js"></script>
+<script src="/assets/styleguide-{{build-hash}}.js"></script>
 </body>
 </html>

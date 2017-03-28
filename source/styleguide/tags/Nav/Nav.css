@@ -11,19 +11,16 @@
   left: 0;
   width: 180px;
   z-index: 50;
-
   background-color: var(--color-gray-darker);
   box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
   color: var(--color-white);
   border: none;
   cursor: pointer;
-
   font-size: 0.75em;
   line-height: 5em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-
   transition: 0.3s ease-in-out;
   transition-property: background-color, box-shadow;
 
@@ -50,10 +47,8 @@
   right: 0;
   bottom: 0;
   z-index: 98;
-
   background-color: color(var(--color-black) alpha(80%));
   opacity: 0;
-
   overflow-x: hidden;
   overflow-y: auto;
 

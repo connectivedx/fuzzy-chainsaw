@@ -11,15 +11,12 @@
   to the shared configurations to keep it easy to apply upgrades.
 */
 const path = require('path');
-const pkgpath = require('packpath');
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const StatsPlugin = require('stats-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const browserConfig = require('./webpack.browser');
-const { dest } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
@@ -42,12 +39,12 @@ module.exports = (
         }
       },
       module: {
-        // preLoaders: [
-        //   {
-        //     test: /\.css$/,
-        //     loader: 'postcss-loader' // linting
-        //   }
-        // ],
+        preLoaders: [
+          {
+            test: /\.css$/,
+            loader: 'postcss-loader' // linting
+          }
+        ],
         loaders: [
           {
             test: /\.css$/,
@@ -61,10 +58,6 @@ module.exports = (
         ]
       },
       plugins: [
-        new webpack.DllReferencePlugin({
-          context: path.resolve(pkgpath.self()),
-          manifest: require(dest('assets/dlls/vendor-manifest.json'))
-        }),
         new ExtractTextPlugin('/assets/[name]-[hash].css'),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
