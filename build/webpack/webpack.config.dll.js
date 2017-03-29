@@ -29,9 +29,7 @@ module.exports = {
     libraryTarget: 'umd'
   },
   plugins: [
-    new CleanWebpackPlugin(['assets/dlls'], {
-      // root: dest()
-    }),
+    new CleanWebpackPlugin(['assets/dlls'], { root: dest() }),
     new webpack.DllPlugin({
       path: dest('assets/dlls/[name]-manifest.json'),
       name: '[name]_dll'

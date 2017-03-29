@@ -11,11 +11,12 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
-const { dest } = require('../../lib/path-helpers');
+const { source } = require('../../lib/path-helpers');
 const { dev: devPipeline } = require('../lib/postcss-plugins.js');
+const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserConfig = require('./webpack.browser');
 
+const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
 
 const stats = {
   chunks: false,
@@ -56,11 +57,10 @@ module.exports = (
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('dev')
         }),
-        new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: 'index.html',
-          template: path.resolve(__dirname, '../../templates/dev.html'),
-          inject: true
-        })
+          mode: 'dev'
+        }))
       ],
       stats,
       devServer: {

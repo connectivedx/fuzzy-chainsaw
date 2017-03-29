@@ -15,12 +15,15 @@ const webpackMerge = require('webpack-merge');
 const StatsPlugin = require('stats-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const browserConfig = require('./webpack.browser');
+const { source } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
 } = require('../lib/postcss-plugins.js');
+const skeletonConfig = require('../lib/skeleton-html-config.js');
+const browserConfig = require('./webpack.browser');
 
 /*
  *
@@ -66,7 +69,16 @@ module.exports = (
         new StatsPlugin('build-stats.json', {
           chunkModules: true,
           exclude: [/node_modules/]
-        })
+        }),
+        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
+          filename: '_skeleton.styleguide.html',
+          mode: 'styleguide'
+        })),
+        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
+          filename: '_skeleton.html',
+          mode: 'page',
+          excludeChunks: ['styleguide']
+        }))
       ],
       postcss: lintingPipeline
     }

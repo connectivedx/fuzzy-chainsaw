@@ -11,12 +11,9 @@ const pkgpath = require('packpath');
 
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const sharedConfig = require('./webpack.shared');
 const { dest } = require('../../lib/path-helpers');
-
-const dllStats = require(dest('assets/dlls/dll-stats.json'));
 
 module.exports = (
   webpackMerge(
@@ -60,12 +57,6 @@ module.exports = (
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
           manifest: require(dest('assets/dlls/styleguide-manifest.json'))
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: require.resolve(dest(`assets/dlls/vendor-${dllStats.hash}.dll.js`))
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: require.resolve(dest(`assets/dlls/styleguide-${dllStats.hash}.dll.js`))
         })
       ]
     }
