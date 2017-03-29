@@ -50,7 +50,6 @@ const getStyleguideModule = (path, context, type) => {
       Component: (
         <Styleguide
           name={name}
-          tag={tag}
           readme={requirer(`./${name}/README.md`)}
           tests={requirer(`./${name}/${name}.test.jsx`)}
           locals={{ }}

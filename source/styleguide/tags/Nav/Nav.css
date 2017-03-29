@@ -6,37 +6,87 @@
 
 .sg-nav__button {
   display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 180px;
-  z-index: 50;
-  background-color: var(--color-gray-darker);
-  box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
+  padding: 1em 2em;
   color: var(--color-white);
+  background-color: var(--color-black);
+  box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
   border: none;
   cursor: pointer;
+  line-height: 1.2em;
   font-size: 0.75em;
-  line-height: 5em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
   transition: 0.3s ease-in-out;
   transition-property: background-color, box-shadow;
+  width: 100%;
+  z-index: 50;
 
   &:hover {
+    color: var(--color-white);
     background-color: var(--color-black);
     box-shadow: color(var(--color-black) alpha(25%)) 0 0.3em 1em;
   }
 
-  & > span {
-    display: none;
-    color: white;
-
-    &:first-child {
-      display: inline;
-    }
+  @media (width >= 540px) {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: auto;
   }
+
+  @media (width >= 960px) {
+    top: 2.25em;
+    right: 2.25em;
+  }
+}
+
+.sg-nav__button-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-right: 1em;
+  width: 1em;
+  height: 0.75em;
+  border: solid white;
+  border-width: 1px 0;
+
+  &::before {
+    content: "\0020";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -1px;
+    border-bottom: 1px solid white;
+  }
+}
+
+.sg-nav__close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 2em;
+  height: 2em;
+  border: none;
+  text-indent: -9999em;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '\0020';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    margin-left: -1em;
+    background-color: var(--color-black);
+  }
+
+  &::before { transform: rotate(-45deg); }
+  &::after { transform: rotate(45deg); }
 }
 
 .sg-nav__modal-overlay {
@@ -66,18 +116,17 @@
 .sg-nav__content {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 99;
   height: 100vh;
   width: 100%;
   max-width: 320px;
   overflow: auto;
   padding: 2em;
-  padding-top: 6em;
   font-size: 1em;
   line-height: 1.7em;
   background-color: var(--color-background);
-  transform: translate3d(-100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
 
   &.ReactModal__Content--after-open {
     transition: transform 0.3s ease-in;
@@ -86,7 +135,7 @@
 
   &.ReactModal__Content--before-close {
     transition: transform 0.3s ease-out;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
   }
 
   & * + .heading {

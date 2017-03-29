@@ -12,20 +12,19 @@
 .sg-styleguide__header {
   background-color: var(--color-white);
   padding: 1em;
-  padding-left: 200px;
+  padding-right: 14em;
 
-  & .sg-heading {
-    font-size: 28px;
-    font-weight: 500;
+  @media (width >= 960px) {
+    padding: 2em;
   }
 }
 
 .sg-styleguide__section-header {
   background-color: var(--color-background);
-  padding: 1em;
+  padding: 1em 1em 2em;
 
   @media (width >= 960px) {
-    padding: 1.75em 2em 2.25em;
+    padding: 2em;
   }
 
   & a {

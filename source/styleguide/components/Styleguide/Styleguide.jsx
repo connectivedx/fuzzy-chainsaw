@@ -76,7 +76,7 @@ export const Styleguide = ({
   readme,
   tests
 }) => (
-  <div data-title={`${name} – Styleguide`}>
+  <div>
     <Nav />
 
     <div className="sg-styleguide" id="content">
@@ -92,6 +92,7 @@ export const Styleguide = ({
 
 Styleguide.propTypes = {
   name: React.PropTypes.string,
+  type: React.PropTypes.string,
   readme: React.PropTypes.string,
   tests: React.PropTypes.array
 };

@@ -16,12 +16,25 @@ class Nav extends React.Component {
   }
 
   onOpen = () => this.setState({ isExpanded: true })
-  onClose = () => this.setState({ isExpanded: false })
+
+  onModalOpen = () => {
+    setTimeout(() => this.btnClose.focus());
+  }
+
+  onClose = () => {
+    this.setState({ isExpanded: false });
+    this.btnOpen.focus();
+  }
 
   render() {
     return (
       <div className={`sg-nav ${this.state.isExpanded ? 'is-expanded' : ''}`}>
-        <button onClick={this.onOpen} className="sg-nav__button">
+        <button
+          ref={(ref) => { this.btnOpen = ref; }}
+          onClick={this.onOpen}
+          className="sg-nav__button"
+        >
+          <span className="sg-nav__button-icon" />
           <span>Table of Contents</span>
         </button>
 
@@ -33,8 +46,13 @@ class Nav extends React.Component {
           overlayClassName="sg-nav__modal-overlay"
           closeTimeoutMS={300}
           onRequestClose={this.onClose}
+          onAfterOpen={this.onModalOpen}
         >
-          <button onClick={this.onClose} className="sg-nav__button">
+          <button
+            ref={(ref) => { this.btnClose = ref; }}
+            onClick={this.onClose}
+            className="sg-nav__close"
+          >
             <span>Close</span>
           </button>
 

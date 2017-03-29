@@ -1,11 +1,10 @@
 .sg-example {
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
 .sg-expample__anchor {
   display: block;
-  position: relative;
-  top: -5.5em;
+  height: 0;
   visibility: hidden;
 
   @media (width >= 960px) {
@@ -21,6 +20,10 @@
     font-weight: 500;
     line-height: 40px;
     padding: 0 1em;
+
+    @media (width >= 960px) {
+      padding: 0.2em 2em;
+    }
   }
 }
 
@@ -45,6 +48,10 @@
     display: block;
     padding: 1em;
     text-decoration: none;
+
+    @media (width >= 960px) {
+      padding: 1em 2em;
+    }
 
     &:hover {
       background-color: var(--color-gray-lighter);

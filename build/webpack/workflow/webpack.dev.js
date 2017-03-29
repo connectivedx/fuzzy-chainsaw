@@ -11,7 +11,6 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { source } = require('../../lib/path-helpers');
 const { dev: devPipeline } = require('../lib/postcss-plugins.js');
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserConfig = require('./webpack.browser');
