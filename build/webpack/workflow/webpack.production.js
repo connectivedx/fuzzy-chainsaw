@@ -28,6 +28,8 @@ const production = webpackMerge(
         suffix: undefined,
         pipeline: postcssPipeline
       }),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: false,
         compress: {
@@ -45,7 +47,7 @@ const imageLoaderIndex =
       && rule.loaders
       && rule.loaders[0].indexOf('file?') !== -1
     ? i : false
-  )).filter(a => a !== false)[0];
+  )).filter((a) => a !== false)[0];
 
 production.module.loaders[imageLoaderIndex] = {
   test: /\.(jpe?g|png)$/i,
