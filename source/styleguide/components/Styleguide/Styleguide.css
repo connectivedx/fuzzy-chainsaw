@@ -3,19 +3,18 @@
 }
 
 .sg-styleguide {
-  overflow-x: hidden;
   position: relative;
-  transition: transform 0.3s;
-  z-index: 0;
 }
 
 .sg-styleguide__header {
-  background-color: var(--color-white);
   padding: 1em;
-  padding-right: 14em;
+
+  @media (width >= 540px) {
+    padding-right: 14em;
+  }
 
   @media (width >= 960px) {
-    padding: 2em;
+    padding-left: 2em;
   }
 }
 

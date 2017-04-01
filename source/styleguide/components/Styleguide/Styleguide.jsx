@@ -2,9 +2,9 @@ import React from 'react';
 import slugify from 'slugify';
 
 import Heading from 'SgTags/Heading/Heading';
-import Example from 'SgTags/Example/Example';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
-import Nav from 'SgTags/Nav/Nav';
+import Nav from 'SgComponents/Nav/Nav';
+import Example from 'SgComponents/Example/Example';
 
 
 export const Styleguide_Readme = ({ readme }) => (
@@ -58,7 +58,8 @@ export const Styleguide_Tests = ({ tests }) => (
           exampleName={e.name}
           component={e.component}
           options={e.options}
-        />) }
+        />
+        ) }
   </div>
 );
 

@@ -3,27 +3,25 @@ import styles from 'Styleguide/styleguide.styles'; // eslint-disable-line
 // browser Javascript
 import React from 'react';
 import Dom from 'react-dom';
-import Nav from 'SgTags/Nav/Nav';
+import Nav from 'SgComponents/Nav/Nav';
+import Example from 'SgComponents/Example/Example.Component';
 
-const nav = document.querySelector('.sg-nav');
 
-if (nav) {
-  Dom.render(<Nav />, nav);
+Dom.render(<Nav />, document.querySelector('.sg-nav'));
 
-  const examples = Array.prototype.slice.call(document.querySelectorAll('.sg-example'));
-  const examplesTabs = examples.map(e => e.querySelector('.sg-example__tabs'));
-  const examplesSections = examples.map(e => e.querySelectorAll('.sg-example__section'));
-  const examplesItems = examples.map(e => Array.prototype.slice.call(e.querySelectorAll('.sg-example__tabs-item')));
-
-  examplesTabs.forEach((tabset, i) => {
-    tabset.addEventListener('click', (ev) => {
-      const active = examplesItems[i].map(item => item.contains(ev.target));
-      if (active.indexOf(true) !== -1) {
-        examplesItems[i].forEach((item, j) => {
-          examplesItems[i][j].classList.toggle('is-active', active[j]);
-          examplesSections[i][j].classList.toggle('is-active', active[j]);
-        });
-      }
-    });
+Array.prototype.slice.call(document.querySelectorAll('.sg-example'))
+  .forEach((el) => {
+    const exampleSection = el.querySelector('.sg-example__section--example');
+    Dom.render(
+      <Example
+        slug={el.querySelector('.sg-expample__anchor').getAttribute('id')}
+        exampleName={el.querySelector('.sg-example__name').innerText}
+        exampleClasses={exampleSection.getAttribute('data-classname')}
+        exampleOuput={exampleSection.innerHTML}
+        reactOuput={el.querySelector('.sg-example__section--react').innerHTML}
+        htmlOuput={el.querySelector('.sg-example__section--html').innerHTML}
+        jsonOuput={el.querySelector('.sg-example__section--json').innerHTML}
+      />,
+      el
+    );
   });
-}

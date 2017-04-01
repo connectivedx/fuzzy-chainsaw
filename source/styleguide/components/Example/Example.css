@@ -1,15 +1,11 @@
 .sg-example {
-  margin: 1em 0;
+  margin: 0 0 2em;
 }
 
 .sg-expample__anchor {
   display: block;
   height: 0;
   visibility: hidden;
-
-  @media (width >= 960px) {
-    top: -7em;
-  }
 }
 
 .sg-example__header {
@@ -19,10 +15,16 @@
     font-size: 1em;
     font-weight: 500;
     line-height: 40px;
-    padding: 0 1em;
+    padding: 0 0.8em;
+
+    @media (width >= 640px) {
+      padding: 0.2em 0.9em;
+      font-size: 1.1em;
+    }
 
     @media (width >= 960px) {
-      padding: 0.2em 2em;
+      padding: 0.3em 1.6em;
+      font-size: 1.2em;
     }
   }
 }
@@ -70,8 +72,6 @@
   background-color: var(--color-white);
   overflow: auto;
   padding: 1em;
-  position: relative;
-  z-index: 1;
 
   @media (width >= 960px) {
     padding: 2em;

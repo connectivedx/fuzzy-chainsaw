@@ -5,9 +5,9 @@ const children = [
   <div key="1">abc</div>,
   <div key="2">123</div>,
   <div key="3">
-    <section key="1b">9990</section>
-    <div key="2b">3758</div>
-    <div key="3b">2389</div>
+    <section>9990</section>
+    <div>3758</div>
+    <div>2389</div>
   </div>
 ];
 
