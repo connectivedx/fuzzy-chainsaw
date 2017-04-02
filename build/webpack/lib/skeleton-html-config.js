@@ -1,6 +1,6 @@
 const { source, dest } = require('../../lib/path-helpers');
 
-const dllStats = require(dest('assets/dlls/dll-stats.json'));
+const dllStats = require(dest('assets/dlls/dll-stats.json')); // eslint-disable-line
 
 module.exports = {
   dllStats,

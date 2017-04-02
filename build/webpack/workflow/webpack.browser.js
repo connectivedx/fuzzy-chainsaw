@@ -8,12 +8,14 @@
 
 const path = require('path');
 const pkgpath = require('packpath');
-
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const sharedConfig = require('./webpack.shared');
 const { dest } = require('../../lib/path-helpers');
+
+const vendorManifest = require(dest('assets/dlls/vendor-manifest.json')); // eslint-disable-line
+const styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json')); // eslint-disable-line
 
 module.exports = (
   webpackMerge(
@@ -52,11 +54,11 @@ module.exports = (
       plugins: [
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
-          manifest: require(dest('assets/dlls/vendor-manifest.json'))
+          manifest: vendorManifest
         }),
         new webpack.DllReferencePlugin({
           context: path.resolve(pkgpath.self()),
-          manifest: require(dest('assets/dlls/styleguide-manifest.json'))
+          manifest: styleguideManifest
         })
       ]
     }

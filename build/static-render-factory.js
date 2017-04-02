@@ -21,7 +21,7 @@ module.exports = ({ production }) => () => {
     componentsContext,
     tagsContext,
     getModule
-  } = require(dest('tmp/static.js'));
+  } = require(dest('tmp/static.js')); // eslint-disable-line
 
   const renderFiles = (list, template) =>
     list.map(({ moduleName, outputPath }) => {

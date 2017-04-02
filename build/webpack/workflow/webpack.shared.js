@@ -7,7 +7,7 @@ const pkgpath = require('packpath');
 const webpack = require('webpack');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
 
-const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 const { source, dest } = require('../../lib/path-helpers');
 
 module.exports = {

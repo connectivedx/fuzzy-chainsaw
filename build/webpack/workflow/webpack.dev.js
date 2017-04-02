@@ -15,7 +15,7 @@ const { dev: devPipeline } = require('../lib/postcss-plugins.js');
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserConfig = require('./webpack.browser');
 
-const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
+const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 
 const stats = {
   chunks: false,

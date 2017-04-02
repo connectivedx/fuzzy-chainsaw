@@ -5,7 +5,7 @@ import { render, shallow } from 'enzyme';
 
 const requireAll = (context) => {
   const keys = context.keys();
-  const values = keys.map(context).map(res => res.default);
+  const values = keys.map(context).map((res) => res.default);
   return zipObject(keys, values);
 };
 
