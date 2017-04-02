@@ -24,14 +24,13 @@ Styleguide_Readme.propTypes = {
 };
 
 
-export const Styleguide_Tests = ({ tests }) => (
-  <div id="tests" className="sg-styleguide__section">
+export const Styleguide_Examples = ({ examples }) => (
+  <div id="examples" className="sg-styleguide__section">
     <Rhythm className="sg-styleguide__section-header">
-      <Heading level="2">Tests</Heading>
+      <Heading level="2">Examples</Heading>
 
       <Rhythm size="small">
-        { tests
-          .filter((e) => !(e.options && e.options.hidden))
+        { examples
           .map((e) =>
             <div key={e.name}>
               <a
@@ -47,8 +46,7 @@ export const Styleguide_Tests = ({ tests }) => (
       </Rhythm>
     </Rhythm>
 
-    { tests
-      .filter((e) => !(e.options && e.options.hidden))
+    { examples
       .map((e) =>
         <Example
           key={slugify(e.name)}
@@ -62,8 +60,8 @@ export const Styleguide_Tests = ({ tests }) => (
   </div>
 );
 
-Styleguide_Tests.propTypes = {
-  tests: React.PropTypes.arrayOf(React.PropTypes.shape({
+Styleguide_Examples.propTypes = {
+  examples: React.PropTypes.arrayOf(React.PropTypes.shape({
     name: React.PropTypes.string,
     options: React.PropTypes.object,
     component: React.PropTypes.element
@@ -74,7 +72,7 @@ Styleguide_Tests.propTypes = {
 export const Styleguide = ({
   name = 'Generic Component',
   readme,
-  tests
+  examples
 }) => (
   <div>
     <Nav />
@@ -85,7 +83,7 @@ export const Styleguide = ({
       </div>
 
       { readme ? <Styleguide_Readme readme={readme} /> : undefined }
-      { tests ? <Styleguide_Tests tests={tests} /> : undefined }
+      { examples ? <Styleguide_Examples examples={examples} /> : undefined }
     </div>
   </div>
 );
@@ -93,7 +91,7 @@ export const Styleguide = ({
 Styleguide.propTypes = {
   name: React.PropTypes.string,
   readme: React.PropTypes.string,
-  tests: React.PropTypes.array
+  examples: React.PropTypes.array
 };
 
 
