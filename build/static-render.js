@@ -19,7 +19,7 @@ module.exports = () => {
     componentsContext,
     tagsContext,
     getModule
-  } = require(dest('assets/static.js'));
+  } = require(dest('tmp/static.js'));
 
   const renderFiles = (list, template) =>
     list.map(({ moduleName, outputPath }) => {

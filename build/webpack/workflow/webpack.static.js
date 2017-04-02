@@ -27,7 +27,7 @@ module.exports = (
     browserConfig,
     {
       output: {
-        filename: '/assets/[name].js'
+        filename: '/tmp/[name].js'
       },
       module: {
         loaders: [
