@@ -7,7 +7,7 @@ export const componentsContext = require.context('Components/', true, /.jsx$/);
 export const tagsContext = require.context('Tags/', true, /.jsx$/);
 
 
-const requireOrFail = context => (path) => {
+const requireOrFail = (context) => (path) => {
   try {
     const module = context(path);
     return module.default || module;
@@ -18,7 +18,7 @@ const requireOrFail = context => (path) => {
 
 export const normalizePath = (path) => {
   const asset = `.${path}${(path.substr(-1) !== '/' ? '/' : '')}`;
-  const indexList = pagesContext.keys().filter(key => key.indexOf('index.jsx') !== -1);
+  const indexList = pagesContext.keys().filter((key) => key.indexOf('index.jsx') !== -1);
 
   for (let i = 0; i < indexList.length; i++) {
     const item = indexList[i];

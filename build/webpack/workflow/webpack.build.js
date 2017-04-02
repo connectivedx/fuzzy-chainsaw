@@ -12,12 +12,10 @@
 */
 const path = require('path');
 const webpackMerge = require('webpack-merge');
-const StatsPlugin = require('stats-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { source } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
@@ -65,10 +63,6 @@ module.exports = (
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
           pipeline: buildPipeline
-        }),
-        new StatsPlugin('build-stats.json', {
-          chunkModules: true,
-          exclude: [/node_modules/]
         }),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.styleguide.html',

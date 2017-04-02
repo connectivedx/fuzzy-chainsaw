@@ -1,12 +1,10 @@
 const Dom = require('react-dom/server');
 
 
-const renderComponent = ({ template, module, dllHash, buildHash }) =>
+const renderComponent = ({ template, module }) =>
   template.toString()
     .replace('{{title}}', module.pageTitle)
-    .replace('{{output}}', Dom.renderToStaticMarkup(module.Component))
-    .replace(/\{\{dll-hash\}\}/g, dllHash)
-    .replace(/\{\{build-hash\}\}/g, buildHash);
+    .replace('{{output}}', Dom.renderToStaticMarkup(module.Component));
 
 const processUnprefixedContext = (key) => {
   const full = key.substr(0, key.indexOf('.jsx')).substr(1);

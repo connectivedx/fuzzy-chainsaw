@@ -14,23 +14,18 @@ const {
 module.exports = () => {
   const pageTemplate = fs.readFileSync(dest('_skeleton.html'));
   const styleguideTemplate = fs.readFileSync(dest('_skeleton.styleguide.html'));
-  const { hash: dllHash } = require(dest('assets/dlls/dll-stats.json'));
-  const { hash: staticHash } = require(dest('static-stats.json'));
-  const { hash: buildHash } = require(dest('build-stats.json'));
   const {
     pagesContext,
     componentsContext,
     tagsContext,
     getModule
-  } = require(dest(`assets/static-${staticHash}.js`));
+  } = require(dest('assets/static.js'));
 
   const renderFiles = (list, template) =>
     list.map(({ moduleName, outputPath }) => {
       const output = renderComponent({
         module: getModule(moduleName),
-        template,
-        dllHash,
-        buildHash
+        template
       });
 
       return file(outputPath, output, { src: true });

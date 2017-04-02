@@ -12,7 +12,6 @@
 */
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
-const StatsPlugin = require('stats-webpack-plugin');
 
 const browserConfig = require('./webpack.browser');
 
@@ -27,6 +26,9 @@ module.exports = (
   webpackMerge(
     browserConfig,
     {
+      output: {
+        filename: '/assets/[name].js'
+      },
       module: {
         loaders: [
           {
@@ -38,12 +40,6 @@ module.exports = (
       externals: [
         nodeExternals({
           whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
-        })
-      ],
-      plugins: [
-        new StatsPlugin('static-stats.json', {
-          chunkModules: true,
-          exclude: [/node_modules/]
         })
       ]
     }
