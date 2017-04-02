@@ -1,9 +1,9 @@
 import match from 'minimatch';
 import Styleguide from 'SgComponents/Styleguide/Styleguide';
 
-export const pagesContext = require.context('Pages/', true, /\.jsx$/);
-export const componentsContext = require.context('Components/', true, /.jsx$/);
-export const tagsContext = require.context('Tags/', true, /.jsx$/);
+export const pagesContext = require.context('Pages/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
+export const componentsContext = require.context('Components/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
+export const tagsContext = require.context('Tags/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
 
 
 const requireOrFail = (context) => (path) => {
@@ -50,7 +50,7 @@ const getStyleguideModule = (path, context, type) => {
         <Styleguide
           name={name}
           readme={requirer(`./${name}/README.md`)}
-          tests={requirer(`./${name}/${name}.test.jsx`)}
+          examples={requirer(`./${name}/${name}.example.jsx`)}
           locals={{ }}
         />
       )

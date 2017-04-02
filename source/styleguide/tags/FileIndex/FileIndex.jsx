@@ -2,9 +2,9 @@ import startCase from 'lodash.startcase';
 import Heading from 'SgTags/Heading/Heading';
 import Rhythm from 'SgTags/Rhythm/Rhythm';
 
-const pagesContext = require.context('Pages/', true, /\.jsx$/);
-const tagsContext = require.context('Tags/', true, /\.jsx$/);
-const componentsContext = require.context('Components/', true, /\.jsx$/);
+const pagesContext = require.context('Pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+const tagsContext = require.context('Tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+const componentsContext = require.context('Components/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
 const isRenderableModule = (key) => (
