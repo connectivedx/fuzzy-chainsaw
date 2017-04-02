@@ -38,13 +38,17 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
     new CleanWebpackPlugin(['assets/dlls'], { root: dest() }),
     new webpack.DllPlugin({
       path: dest('assets/dlls/[name]-manifest.json'),
       name: '[name]_dll'
+    }),
+    new StatsPlugin('dll-stats.json', {
+      chunkModules: true,
+      exclude: [/node_modules/]
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(true),
@@ -55,10 +59,6 @@ module.exports = {
       output: {
         comments: false
       }
-    }),
-    new StatsPlugin('dll-stats.json', {
-      chunkModules: true,
-      exclude: [/node_modules/]
     })
   ],
   stats: {

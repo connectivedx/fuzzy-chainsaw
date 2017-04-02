@@ -15,11 +15,12 @@
 	"scripts": {
 		"postinstall": "npm run dll",
 		"start": "http-server ./dist -p 8081",
-		"dll": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
+		"dll": "gulp dll",
+		"dll:production": "gulp dll:production",
 		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline",
 		"build": "gulp build",
 		"watch": "gulp watch",
-		"production": "gulp production",
+		"production": "gulp production:static",
 		"production:ci": "gulp production:ci",
 		"new:tag": "gulp scaffold:tag --name",
 		"new:component": "gulp scaffold:component --name"
@@ -52,6 +53,8 @@
 		"extract-text-webpack-plugin": "^1.0.1",
 		"gulp": "^3.9.1",
 		"gulp-file": "^0.3.0",
+		"gulp-htmlmin": "^3.0.0",
+		"gulp-if": "^2.0.2",
 		"gulp-merge": "^0.1.1",
 		"gulp-print": "^2.0.1",
 		"html-webpack-plugin": "^2.28.0",
