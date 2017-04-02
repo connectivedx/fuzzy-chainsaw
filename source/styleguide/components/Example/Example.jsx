@@ -1,8 +1,8 @@
 import Dom from 'react-dom/server';
 import reactElementToString from 'react-element-to-jsx-string';
-import { pd } from 'pretty-data';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { github } from 'react-syntax-highlighter/dist/styles';
+import { pd } from 'pretty-data';
 
 import Heading from 'SgTags/Heading/Heading';
 

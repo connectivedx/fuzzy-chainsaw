@@ -15,11 +15,13 @@ module.exports = {
       'react-dom'
     ],
     styleguide: [
+      'react-dom/server',
       'react-modal',
       'pretty-data',
       'react-element-to-jsx-string',
       'react-syntax-highlighter',
-      'slugify'
+      'slugify',
+      'lodash.startcase'
     ]
   },
   output: {
