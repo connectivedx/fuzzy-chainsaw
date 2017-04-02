@@ -17,7 +17,7 @@ module.exports = {
     styleguide: [
       'react-modal',
       'pretty-data',
-      // 'react-element-to-jsx-string',
+      'react-element-to-jsx-string',
       'react-syntax-highlighter',
       'slugify'
     ]
@@ -28,11 +28,33 @@ module.exports = {
     library: '[name]_dll',
     libraryTarget: 'umd'
   },
+  module: {
+    loaders: [
+      {
+        test: /\.(jsx|js)$/,
+        loader: 'babel-loader?cacheDirectory=true',
+        exclude: /node_modules\/(?!(get-own-enumerable-property-symbols|stringify-object)\/)/
+      }
+    ]
+  },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new CleanWebpackPlugin(['assets/dlls'], { root: dest() }),
     new webpack.DllPlugin({
       path: dest('assets/dlls/[name]-manifest.json'),
       name: '[name]_dll'
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      }
     }),
     new StatsPlugin('dll-stats.json', {
       chunkModules: true,

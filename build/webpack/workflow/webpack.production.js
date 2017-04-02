@@ -31,9 +31,11 @@ const production = webpackMerge(
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false,
         compress: {
           warnings: false
+        },
+        output: {
+          comments: false
         }
       })
     ]
