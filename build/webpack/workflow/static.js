@@ -13,7 +13,7 @@
 const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 
-const browserConfig = require('./webpack.browser');
+const browserWorkflow = require('./browser');
 
 /*
  *
@@ -24,7 +24,7 @@ const browserConfig = require('./webpack.browser');
 
 module.exports = (
   webpackMerge(
-    browserConfig,
+    browserWorkflow,
     {
       output: {
         filename: '/tmp/[name].js'

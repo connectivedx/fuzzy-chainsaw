@@ -21,7 +21,7 @@ const {
   linting: lintingPipeline
 } = require('../lib/postcss-plugins.js');
 const skeletonConfig = require('../lib/skeleton-html-config.js');
-const browserConfig = require('./webpack.browser');
+const browserWorkflow = require('./browser');
 
 /*
  *
@@ -32,7 +32,7 @@ const browserConfig = require('./webpack.browser');
 
 module.exports = (
   webpackMerge(
-    browserConfig,
+    browserWorkflow,
     {
       resolveLoader: {
         alias: {

@@ -11,11 +11,11 @@ const webpackMerge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const TapWebpackPlugin = require('tap-webpack-plugin');
 
-const sharedConfig = require('./webpack.shared');
+const sharedWorkflow = require('./shared');
 
 module.exports = (
   webpackMerge(
-    sharedConfig,
+    sharedWorkflow,
     {
       output: {
         filename: '/tmp/tests.js'

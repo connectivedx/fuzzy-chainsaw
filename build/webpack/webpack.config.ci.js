@@ -13,7 +13,7 @@
 const merge = require('webpack-merge');
 
 const { source } = require('../lib/path-helpers');
-const productionConfig = require('./workflow/webpack.production');
+const productionWorkflow = require('./workflow/production');
 
 
 /*
@@ -23,7 +23,7 @@ const productionConfig = require('./workflow/webpack.production');
  *
  */
 
-module.exports = merge(productionConfig, {
+module.exports = merge(productionWorkflow, {
   entry: {
     bundle: source('bundle.jsx')
   }

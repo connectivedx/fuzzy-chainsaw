@@ -13,7 +13,7 @@
 const merge = require('webpack-merge');
 
 const { source } = require('../lib/path-helpers');
-const devConfig = require('./workflow/webpack.dev');
+const devWorkflow = require('./workflow/dev');
 
 /*
  *
@@ -22,7 +22,7 @@ const devConfig = require('./workflow/webpack.dev');
  *
  */
 
-module.exports = merge(devConfig, {
+module.exports = merge(devWorkflow, {
   entry: {
     devScript: source('dev.jsx'),
     styleguide: source('styleguide/styleguide.jsx'),

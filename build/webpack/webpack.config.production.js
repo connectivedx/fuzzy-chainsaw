@@ -13,9 +13,9 @@
 const merge = require('webpack-merge');
 
 const { source } = require('../lib/path-helpers');
-const productionConfig = require('./workflow/webpack.production');
-const staticConfig = require('./workflow/webpack.static');
-const testsConfig = require('./workflow/webpack.tests');
+const productionWorkflow = require('./workflow/production');
+const staticWorkflow = require('./workflow/static');
+const testsWorkflow = require('./workflow/tests');
 
 
 /*
@@ -26,18 +26,18 @@ const testsConfig = require('./workflow/webpack.tests');
  */
 
 module.exports = [
-  merge(productionConfig, {
+  merge(productionWorkflow, {
     entry: {
       styleguide: source('styleguide/styleguide.jsx'),
       bundle: source('bundle.jsx')
     }
   }),
-  merge(staticConfig, {
+  merge(staticWorkflow, {
     entry: {
       static: source('static.jsx')
     }
   }),
-  merge(testsConfig, {
+  merge(testsWorkflow, {
     entry: source('tests.jsx')
   })
 ];

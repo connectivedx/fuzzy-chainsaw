@@ -13,7 +13,7 @@
 const merge = require('webpack-merge');
 
 const { source } = require('../lib/path-helpers');
-const testsConfig = require('./workflow/webpack.test');
+const testsWorkflow = require('./workflow/test');
 
 
 /*
@@ -23,6 +23,6 @@ const testsConfig = require('./workflow/webpack.test');
  *
  */
 
-module.exports = merge(testsConfig, {
+module.exports = merge(testsWorkflow, {
   entry: source('tests.jsx')
 });

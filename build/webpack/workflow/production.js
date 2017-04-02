@@ -10,11 +10,11 @@ const webpackMerge = require('webpack-merge');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 
 const { production: postcssPipeline } = require('../lib/postcss-plugins.js');
-const buildConfig = require('./webpack.build');
+const buildWorkflow = require('./build');
 
 
 const production = webpackMerge(
-  buildConfig,
+  buildWorkflow,
   {
     devtool: 'source-map',
     responsiveLoader: {

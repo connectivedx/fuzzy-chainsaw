@@ -11,7 +11,7 @@ const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
-const sharedConfig = require('./webpack.shared');
+const sharedWorkflow = require('./shared');
 const { dest } = require('../../lib/path-helpers');
 
 const vendorManifest = require(dest('assets/dlls/vendor-manifest.json')); // eslint-disable-line
@@ -19,7 +19,7 @@ const styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json'))
 
 module.exports = (
   webpackMerge(
-    sharedConfig,
+    sharedWorkflow,
     {
       module: {
         loaders: [
