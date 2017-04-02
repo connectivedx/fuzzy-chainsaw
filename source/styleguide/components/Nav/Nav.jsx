@@ -1,6 +1,4 @@
-import React from 'react';
 import ReactModal from 'react-modal';
-import Rhythm from 'SgTags/Rhythm/Rhythm';
 
 import {
   pagesIndexData,
@@ -10,7 +8,7 @@ import {
 } from 'SgTags/FileIndex/FileIndex';
 
 
-class Nav extends React.Component {
+export class Nav extends React.Component {
   state = {
     isExpanded: false
   }

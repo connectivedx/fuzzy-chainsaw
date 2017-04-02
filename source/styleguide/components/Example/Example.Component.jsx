@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Example_Wrapper,
   Example_Header,
@@ -21,7 +20,7 @@ export default class ExampleComponent extends React.Component {
     activeTab: 'example'
   }
 
-  onTabClick = name => () => {
+  onTabClick = (name) => () => {
     this.setState({
       activeTab: name
     });

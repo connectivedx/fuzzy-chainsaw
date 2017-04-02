@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'Tags/Image/Image';
 import Heading from 'Tags/Heading/Heading';
 import Rhythm from 'Tags/Rhythm/Rhythm';

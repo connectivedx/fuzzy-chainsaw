@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rhythm = ({
+export const Rhythm = ({
   tagName = 'div',
   className = '',
   size = 'default',

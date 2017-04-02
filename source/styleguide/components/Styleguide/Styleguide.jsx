@@ -1,4 +1,3 @@
-import React from 'react';
 import slugify from 'slugify';
 
 import Heading from 'SgTags/Heading/Heading';
@@ -32,8 +31,8 @@ export const Styleguide_Tests = ({ tests }) => (
 
       <Rhythm size="small">
         { tests
-          .filter(e => !(e.options && e.options.hidden))
-          .map(e =>
+          .filter((e) => !(e.options && e.options.hidden))
+          .map((e) =>
             <div key={e.name}>
               <a
                 href={`#${slugify(e.name)}`}
@@ -49,8 +48,8 @@ export const Styleguide_Tests = ({ tests }) => (
     </Rhythm>
 
     { tests
-      .filter(e => !(e.options && e.options.hidden))
-      .map(e =>
+      .filter((e) => !(e.options && e.options.hidden))
+      .map((e) =>
         <Example
           key={slugify(e.name)}
           slug={slugify(e.name)}
@@ -93,7 +92,6 @@ export const Styleguide = ({
 
 Styleguide.propTypes = {
   name: React.PropTypes.string,
-  type: React.PropTypes.string,
   readme: React.PropTypes.string,
   tests: React.PropTypes.array
 };

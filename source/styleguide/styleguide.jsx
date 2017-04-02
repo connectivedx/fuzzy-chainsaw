@@ -1,7 +1,6 @@
 import styles from 'Styleguide/styleguide.styles'; // eslint-disable-line
 
 // browser Javascript
-import React from 'react';
 import Dom from 'react-dom';
 import Nav from 'SgComponents/Nav/Nav';
 import Example from 'SgComponents/Example/Example.Component';

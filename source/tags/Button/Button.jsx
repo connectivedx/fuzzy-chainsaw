@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Button = ({
+export const Button = ({
   tagName = 'button',
   className = '',
   variant = 'default',

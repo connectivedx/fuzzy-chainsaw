@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Media_Figure = ({
   tagName = 'div',
   className = '',

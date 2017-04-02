@@ -1,4 +1,3 @@
-import React from 'react';
 import PlaceholderSvg from './PlaceholderSvg';
 
 export default [{

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Icon = ({
+export const Icon = ({
   className = '',
   size = 'normal',
   variant = 'default',

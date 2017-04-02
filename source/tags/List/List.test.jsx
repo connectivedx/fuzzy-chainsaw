@@ -1,4 +1,3 @@
-import React from 'react';
 import { List, List_Item } from './List';
 
 export default [{

@@ -1,4 +1,3 @@
-import React from 'react';
 import Dom from 'react-dom/server';
 import reactElementToString from 'react-element-to-jsx-string';
 import { pd } from 'pretty-data';
@@ -13,9 +12,9 @@ const filterProps = (component) => {
     props: Object.assign({}, component.props)
   };
 
-  const processChild = child => (
+  const processChild = (child) => (
     Object.keys(child)
-      .filter(key => !(child[key] === null || Object.keys(child[key]).length === 0))
+      .filter((key) => !(child[key] === null || Object.keys(child[key]).length === 0))
       .reduce((sum, key) => {
         if (key === 'props' && child.props.children !== undefined) {
           let children = child.props.children;
@@ -138,7 +137,7 @@ export const Example = ({
     options.fullWidth ? 'sg-example__section--full-width' : undefined,
     options.noPadding ? 'sg-example__section--no-padding' : undefined,
     options.darkBackground ? 'sg-example__section--dark-background' : undefined
-  ].filter(a => a !== undefined).join(' ') : '';
+  ].filter((a) => a !== undefined).join(' ') : '';
 
   return (
     <Example_Wrapper slug={slug}>

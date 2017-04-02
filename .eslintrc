@@ -24,6 +24,7 @@
 	"globals": {
 		"document": true,
 		"window": true,
-		"location": true
+		"location": true,
+		"React": true
 	}
 }

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Heading = ({
+export const Heading = ({
   tagName,
   className = '',
   variant = 'default',

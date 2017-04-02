@@ -1,4 +1,4 @@
-const requireAll = context => context.keys().map(context);
+const requireAll = (context) => context.keys().map(context);
 
 // CSS
 require('SgVars/index.css');

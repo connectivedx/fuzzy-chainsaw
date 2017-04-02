@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Rhythm = ({
   tagName = 'div',
   className = '',
