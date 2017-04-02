@@ -4,6 +4,7 @@
 */
 const path = require('path');
 const pkgpath = require('packpath');
+const webpack = require('webpack');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
 
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json'));
@@ -42,6 +43,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      React: 'react'
+    }),
     new SvgStorePlugin()
   ]
 };

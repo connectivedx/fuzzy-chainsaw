@@ -1,4 +1,3 @@
-import React from 'react';
 import Icon from 'Tags/Icon/Icon';
 
 const Brand = ({

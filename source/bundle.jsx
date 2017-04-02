@@ -1,4 +1,4 @@
-import styles from 'Source/bundle.styles'; // eslint-disable-line no-unused-vars
-import IconSet from 'Tags/Icon/IconSet'; // eslint-disable-line no-unused-vars
+import 'Source/bundle.styles';
+import 'Tags/Icon/IconSet';
 
 console.log('Main Bundle!');

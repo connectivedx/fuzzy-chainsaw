@@ -1,4 +1,3 @@
-import React from 'react';
 import match from 'minimatch';
 import Styleguide from 'SgComponents/Styleguide/Styleguide';
 
