@@ -8,6 +8,8 @@ const fs = require('fs');
 
 const { dest } = require('./lib/path-helpers');
 const {
+  getOutputRelativity,
+  makeAbsolutePathRelative,
   getContextList,
   renderComponent
 } = require('./lib/render-helpers');
@@ -25,10 +27,13 @@ module.exports = ({ production }) => () => {
 
   const renderFiles = (list, template) =>
     list.map(({ moduleName, outputPath }) => {
-      const output = renderComponent({
-        module: getModule(moduleName),
-        template
-      });
+      const output = makeAbsolutePathRelative(
+        renderComponent({
+          module: getModule(moduleName),
+          template
+        }),
+        getOutputRelativity(outputPath)
+      );
 
       return file(outputPath, output, { src: true });
     });
