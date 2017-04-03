@@ -17,11 +17,14 @@
 		"start": "http-server ./dist -p 8081",
 		"dll": "gulp dll",
 		"dll:production": "gulp dll:production",
-		"dev": "gulp clean:pre && webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline",
+		"dev": "gulp clean:pre && npm run dev:webpack & npm run dev:test",
+		"dev:webpack": "webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline",
+		"dev:test": "karma start --auto-watch",
 		"build": "gulp build",
 		"watch": "gulp watch",
 		"production": "gulp production:static",
 		"production:ci": "gulp production:ci",
+		"test": "karma start",
 		"new:tag": "gulp scaffold:tag --name",
 		"new:component": "gulp scaffold:component --name"
 	},
@@ -62,6 +65,10 @@
 		"jimp": "^0.2.27",
 		"jsdom": "^9.8.3",
 		"json-loader": "^0.5.4",
+		"karma": "^1.5.0",
+		"karma-phantomjs-launcher": "^1.0.4",
+		"karma-tap": "^3.1.1",
+		"karma-webpack": "^2.0.3",
 		"lodash.startcase": "^4.4.0",
 		"lodash.zipobject": "^4.1.3",
 		"markdown-loader": "^0.1.7",
@@ -102,7 +109,6 @@
 		"react-dom": "^15.3.2",
 		"react-element-to-jsx-string": "^6.0.0",
 		"react-syntax-highlighter": "^4.0.1",
-		"slugify": "^1.1.0",
-		"tap-webpack-plugin": "^1.1.0"
+		"slugify": "^1.1.0"
 	}
 }

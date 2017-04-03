@@ -6,16 +6,9 @@
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
 
-const path = require('path');
-const pkgpath = require('packpath');
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const sharedWorkflow = require('./shared');
-const { dest } = require('../../lib/path-helpers');
-
-const vendorManifest = require(dest('assets/dlls/vendor-manifest.json')); // eslint-disable-line
-const styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json')); // eslint-disable-line
 
 module.exports = (
   webpackMerge(
@@ -50,17 +43,7 @@ module.exports = (
             ]
           }
         ]
-      },
-      plugins: [
-        new webpack.DllReferencePlugin({
-          context: path.resolve(pkgpath.self()),
-          manifest: vendorManifest
-        }),
-        new webpack.DllReferencePlugin({
-          context: path.resolve(pkgpath.self()),
-          manifest: styleguideManifest
-        })
-      ]
+      }
     }
   )
 );

@@ -10,6 +10,9 @@ const SvgStorePlugin = require('webpack-svgstore-plugin');
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 const { source, dest } = require('../../lib/path-helpers');
 
+const vendorManifest = require(dest('assets/dlls/vendor-manifest.json')); // eslint-disable-line
+const styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json')); // eslint-disable-line
+
 module.exports = {
   devtool: 'source-map',
   resolve: {
@@ -43,6 +46,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DllReferencePlugin({
+      context: path.resolve(pkgpath.self()),
+      manifest: vendorManifest
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(pkgpath.self()),
+      manifest: styleguideManifest
+    }),
     new webpack.ProvidePlugin({
       React: 'react'
     }),

@@ -28,7 +28,7 @@ module.exports = (
   webpackMerge(
     browserWorkflow,
     {
-      devtool: 'inline-source-map',
+      devtool: 'cheap-module-eval-source-map',
       resolveLoader: {
         alias: {
           'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader'),

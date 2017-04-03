@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { dest } = require('../lib/path-helpers');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   resolve: {
     extensions: ['', '.js', '.jsx']
   },

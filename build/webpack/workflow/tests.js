@@ -5,11 +5,8 @@
 
   Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
-const path = require('path');
-const pkgpath = require('packpath');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const nodeExternals = require('webpack-node-externals');
-const TapWebpackPlugin = require('tap-webpack-plugin');
 
 const sharedWorkflow = require('./shared');
 
@@ -17,18 +14,15 @@ module.exports = (
   webpackMerge(
     sharedWorkflow,
     {
-      output: {
-        filename: '/tmp/tests.js'
-      },
-      target: 'node',
+      devtool: 'cheap-eval-source-map',
       node: {
         fs: 'empty'
       },
-      externals: [
-        nodeExternals({
-          whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
-        })
-      ],
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      },
       module: {
         loaders: [
           {
@@ -38,8 +32,8 @@ module.exports = (
         ]
       },
       plugins: [
-        new TapWebpackPlugin({
-          resolver: path.resolve(pkgpath.self(), 'node_modules/.bin/tap-min')
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('test')
         })
       ]
     }
