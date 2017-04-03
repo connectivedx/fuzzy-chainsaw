@@ -1,93 +1,58 @@
-import React from 'react';
+import test from 'tape';
+import { shallow } from 'enzyme';
+
 import Button from './Button';
 
-export default [{
-  name: 'default',
-  component: (
-    <Button>
-      Hello World
-    </Button>
-  ),
-  test(t, component) {
-    t.equal(component.is('button'), true, 'tag name');
-    t.equal(component.is('.button'), true, 'tag class');
-    t.equal(component.is('.button--default'), true, 'variant class');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}, {
-  name: 'href',
-  component: (
-    <Button href="#/">
-      Hello World
-    </Button>
-  ),
-  test(t, component) {
-    t.equal(component.is('a'), true, 'tag name');
-    t.equal(component.is('.button'), true, 'tag class');
-    t.equal(component.is('.button--link'), true, 'variant class');
-    t.equal(component.prop('href'), '#/', 'prop');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}, {
-  name: 'tagName',
-  component: (
-    <Button tagName="div">
-      Hello World
-    </Button>
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.button'), true, 'tag class');
-    t.equal(component.is('.button--default'), true, 'variant class');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}, {
-  name: 'tagName/className',
-  component: (
-    <Button tagName="div" className="button--superduper">
-      Hello World
-    </Button>
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.button'), true, 'tag class');
-    t.equal(component.is('.button--default'), true, 'variant class');
-    t.equal(component.is('.button--superduper'), true, 'prop class');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}, {
-  name: 'type',
-  component: (
-    <Button variant="cta">
-      Hello World
-    </Button>
-  ),
-  test(t, component) {
-    t.equal(component.is('button'), true, 'tag name');
-    t.equal(component.is('.button'), true, 'tag class');
-    t.equal(component.is('.button--cta'), true, 'variant class');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}, {
-  name: 'type/link',
-  component: (
-    <Button href="#/" variant="cta">
-      Hello World
-    </Button>
-  ),
-  test(t, component) {
-    t.equal(component.is('a'), true, 'tag name');
-    t.equal(component.is('.button'), true, 'tag class');
-    t.equal(component.is('.button--link'), true, 'variant class');
-    t.equal(component.is('.button--cta'), true, 'variant class');
-    t.equal(component.prop('href'), '#/', 'prop');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}];
 
+test('<Button>', (t) => {
+  const component = shallow(<Button>Hello World</Button>);
+  t.ok(component.is('button'), 'tag name');
+  t.ok(component.is('.button'), 'tag class');
+  t.ok(component.is('.button--default'), 'variant class');
+  t.equal(component.text(), 'Hello World', 'text');
+  t.end();
+});
+
+test('<Button href="#/">', (t) => {
+  const component = shallow(<Button href="#/">Hello World</Button>);
+  t.ok(component.is('a'), 'tag name');
+  t.ok(component.is('.button'), 'tag class');
+  t.ok(component.is('.button--link'), 'variant class');
+  t.equal(component.prop('href'), '#/', 'prop');
+  t.end();
+});
+
+test('<Button tagName="div">', (t) => {
+  const component = shallow(<Button tagName="div">Hello World</Button>);
+  t.ok(component.is('div'), 'tag name');
+  t.ok(component.is('.button'), 'tag class');
+  t.ok(component.is('.button--default'), 'variant class');
+  t.end();
+});
+
+test('<Button tagName="div" className="button--superduper">', (t) => {
+  const component = shallow(<Button tagName="div" className="button--superduper">Hello World</Button>);
+  t.ok(component.is('div'), 'tag name');
+  t.ok(component.is('.button'), 'tag class');
+  t.ok(component.is('.button--default'), 'variant class');
+  t.ok(component.is('.button--superduper'), 'prop class');
+  t.end();
+});
+
+test('<Button variant="cta">', (t) => {
+  const component = shallow(<Button variant="cta">Hello World</Button>);
+  t.ok(component.is('button'), 'tag name');
+  t.ok(component.is('.button'), 'tag class');
+  t.ok(component.is('.button--cta'), 'variant class');
+  t.end();
+});
+
+test('<Button href="#/" variant="cta">', (t) => {
+  const component = shallow(<Button href="#/" variant="cta">Hello World</Button>);
+  t.ok(component.is('a'), 'tag name');
+  t.ok(component.is('.button'), 'tag class');
+  t.ok(component.is('.button--link'), 'variant class');
+  t.ok(component.is('.button--cta'), 'variant class');
+  t.equal(component.prop('href'), '#/', 'prop');
+  t.end();
+});
