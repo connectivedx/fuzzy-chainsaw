@@ -15,7 +15,6 @@ const merge = require('webpack-merge');
 const { source } = require('../lib/path-helpers');
 const buildWorkflow = require('./workflow/build');
 const staticWorkflow = require('./workflow/static');
-const testsWorkflow = require('./workflow/tests');
 
 
 /*
@@ -36,8 +35,5 @@ module.exports = [
     entry: {
       static: source('static.jsx')
     }
-  }),
-  merge(testsWorkflow, {
-    entry: source('tests.jsx')
   })
 ];

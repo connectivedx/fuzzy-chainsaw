@@ -11,17 +11,17 @@ export default [{
     <Button href="#/">Hello World</Button>
   )
 }, {
-  name: 'Div with button styling',
+  name: 'Generic element with button styling',
   component: (
     <Button tagName="div">Hello World</Button>
   )
 }, {
-  name: 'CTA styling',
+  name: 'Cta styling',
   component: (
     <Button variant="cta">Hello World</Button>
   )
 }, {
-  name: 'Linked CTA button',
+  name: 'Linked Cta button',
   component: (
     <Button href="#/" variant="cta">Hello World</Button>
   )

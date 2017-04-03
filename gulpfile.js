@@ -24,14 +24,34 @@ gulp.task('webpack:ci', webpackBuild(require('./build/webpack/webpack.config.ci'
 gulp.task('static:render', staticRender({ production: false }));
 gulp.task('static:render:production', staticRender({ production: true }));
 
+gulp.task('test', require('./build/karma-test'));
 
 // define workflows
 gulp.task('dll', series('webpack:dll'));
 gulp.task('dll:production', series('webpack:dll:production'));
-gulp.task('build', series('clean:pre', 'webpack:build', 'static:render', 'clean:post'));
-gulp.task('production:static', series('clean:pre', 'webpack:dll:production', 'webpack:production', 'static:render:production', 'clean:post'));
-gulp.task('production:ci', series('clean:pre', 'webpack:dll:production', 'webpack:ci', 'clean:post'));
 gulp.task('watch', series('clean:pre', 'webpack:watch'));
+
+gulp.task('build', series(
+  'clean:pre',
+  'webpack:build',
+  ['static:render', 'test'],
+  'clean:post'
+));
+
+gulp.task('production:static', series(
+  'clean:pre',
+  'webpack:dll:production',
+  'webpack:production',
+  'static:render:production',
+  'clean:post'
+));
+
+gulp.task('production:ci', series(
+  'clean:pre',
+  'webpack:dll:production',
+  'webpack:ci',
+  'clean:post'
+));
 
 
 // scaffolding tasks

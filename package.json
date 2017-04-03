@@ -24,7 +24,7 @@
 		"watch": "gulp watch",
 		"production": "gulp production:static",
 		"production:ci": "gulp production:ci",
-		"test": "karma start --single-run",
+		"test": "gulp test:ci",
 		"new:tag": "gulp scaffold:tag --name",
 		"new:component": "gulp scaffold:component --name"
 	},
