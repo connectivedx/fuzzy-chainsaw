@@ -10,6 +10,7 @@ module.exports = (config) => {
     files: [
       { pattern: dest(`assets/dlls/vendor-${hash}.dll.js`), watched: false },
       { pattern: dest(`assets/dlls/styleguide-${hash}.dll.js`), watched: false },
+      { pattern: dest(`assets/dlls/tests-${hash}.dll.js`), watched: false },
       { pattern: source('tests.jsx'), watched: true }
     ],
     frameworks: ['tap'],

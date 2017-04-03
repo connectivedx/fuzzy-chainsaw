@@ -9,6 +9,16 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  node: {
+    fs: 'empty'
+  },
+  externals: {
+    jsdom: 'window',
+    cheerio: 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/addons': true,
+    'react/lib/ReactContext': true
+  },
   entry: {
     vendor: [
       'react',
@@ -22,6 +32,10 @@ module.exports = {
       'react-syntax-highlighter',
       'slugify',
       'lodash.startcase'
+    ],
+    tests: [
+      'tape',
+      'enzyme'
     ]
   },
   output: {
