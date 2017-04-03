@@ -34,8 +34,8 @@ gulp.task('watch', series('clean:pre', 'webpack:watch'));
 gulp.task('build', series(
   'clean:pre',
   'webpack:build',
-  'test',
   'static:render',
+  'test',
   'clean:post'
 ));
 
