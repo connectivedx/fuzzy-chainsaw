@@ -30,10 +30,10 @@ gulp.task('test', require('./build/karma-test'));
 gulp.task('watch', series('clean:pre', 'webpack:watch'));
 
 gulp.task('build', series(
+  'test',
   'clean:pre',
   'webpack:build',
   'static:render',
-  'test',
   'clean:post'
 ));
 
