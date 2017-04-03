@@ -1,16 +1,12 @@
-import {{name}} from './{{name}}.jsx';
+import test from 'tape';
+import { shallow } from 'enzyme';
 
-export default [{
-  name: 'default',
-  component: (
-    <{{name}}>
-      Hello World
-    </{{name}}>
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.{{className}}'), true, 'tag class');
-    t.equal(component.text(), 'Hello World', 'text');
-    t.end();
-  }
-}];
+import {{name}} from './{{name}}';
+
+test('<{{name}}>', (t) => {
+  const component = shallow(<{{name}}>Hello World</{{name}}>);
+  t.ok(component.is('div'), 'tag name');
+  t.ok(component.is('.{{className}}'), 'tag class');
+  t.equal(component.text(), 'Hello World', 'text');
+  t.end();
+});

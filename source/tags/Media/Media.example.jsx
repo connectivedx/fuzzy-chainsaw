@@ -21,13 +21,7 @@ export default [{
         </Rhythm>
       </Media_Body>
     </Media>
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.media'), true, 'tag class');
-    t.equal(component.text(), '<Media_Figure /><Media_Body />', 'text');
-    t.end();
-  }
+  )
 }, {
   name: 'media to the right',
   component: (
@@ -44,13 +38,7 @@ export default [{
         <Image src={randySavage} />
       </Media_Figure>
     </Media>
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.media'), true, 'tag class');
-    t.equal(component.text(), '<Media_Body /><Media_Figure />', 'text');
-    t.end();
-  }
+  )
 }, {
   name: 'media align middle',
   component: (

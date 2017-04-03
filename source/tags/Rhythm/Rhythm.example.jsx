@@ -15,43 +15,31 @@ const children = [
 module.exports = [{
   name: 'default',
   component: (
-    <Rhythm>
-      {children}
-    </Rhythm>
+    <Rhythm>{children}</Rhythm>
   )
 }, {
   name: 'small size',
   component: (
-    <Rhythm size="small">
-      {children}
-    </Rhythm>
+    <Rhythm size="small">{children}</Rhythm>
   )
 }, {
   name: 'large size',
   component: (
-    <Rhythm size="large">
-      {children}
-    </Rhythm>
+    <Rhythm size="large">{children}</Rhythm>
   )
 }, {
   name: 'deep',
   component: (
-    <Rhythm deep="true">
-      {children}
-    </Rhythm>
+    <Rhythm deep="true">{children}</Rhythm>
   )
 }, {
   name: 'size/deep',
   component: (
-    <Rhythm deep="true" size="small">
-      {children}
-    </Rhythm>
+    <Rhythm deep="true" size="small">{children}</Rhythm>
   )
 }, {
   name: 'size/deep/tagName/class',
   component: (
-    <Rhythm tagName="section" deep="true" size="large" className="red">
-      {children}
-    </Rhythm>
+    <Rhythm tagName="section" deep="true" size="large" className="red">{children}</Rhythm>
   )
 }];
