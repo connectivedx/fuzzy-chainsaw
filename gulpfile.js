@@ -27,8 +27,6 @@ gulp.task('static:render:production', staticRender({ production: true }));
 gulp.task('test', require('./build/karma-test'));
 
 // define workflows
-gulp.task('dll', series('webpack:dll'));
-gulp.task('dll:production', series('webpack:dll:production'));
 gulp.task('watch', series('clean:pre', 'webpack:watch'));
 
 gulp.task('build', series(
@@ -41,7 +39,6 @@ gulp.task('build', series(
 
 gulp.task('production:static', series(
   'clean:pre',
-  'webpack:dll:production',
   'webpack:production',
   'static:render:production',
   'clean:post'
@@ -49,7 +46,6 @@ gulp.task('production:static', series(
 
 gulp.task('production:ci', series(
   'clean:pre',
-  'webpack:dll:production',
   'webpack:ci',
   'clean:post'
 ));

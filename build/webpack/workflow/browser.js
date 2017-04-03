@@ -14,6 +14,9 @@ module.exports = (
   webpackMerge(
     sharedWorkflow,
     {
+      responsiveLoader: {
+        sizes: [720, 1280, 1920]
+      },
       module: {
         loaders: [
           {

@@ -17,9 +17,6 @@ const production = webpackMerge(
   buildWorkflow,
   {
     devtool: 'source-map',
-    responsiveLoader: {
-      sizes: [720, 1280, 1920]
-    },
     plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
@@ -41,23 +38,6 @@ const production = webpackMerge(
     ]
   }
 );
-
-// overwrite normal build image loaders
-const imageLoaderIndex =
-  production.module.loaders.map((rule, i) => (
-    String(rule.test).indexOf('jpe') !== -1
-      && rule.loaders
-      && rule.loaders[0].indexOf('file?') !== -1
-    ? i : false
-  )).filter((a) => a !== false)[0];
-
-production.module.loaders[imageLoaderIndex] = {
-  test: /\.(jpe?g|png)$/i,
-  loaders: [
-    'responsive?name=/assets/images/css/[name]-[md5:hash:hex:8].',
-    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-  ]
-};
 
 
 module.exports = production;

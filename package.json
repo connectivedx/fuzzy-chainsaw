@@ -15,8 +15,8 @@
 	"scripts": {
 		"postinstall": "npm run dll",
 		"start": "http-server ./dist -p 8081",
-		"dll": "gulp dll",
-		"dll:production": "gulp dll:production",
+		"dll": "webpack --config ./build/webpack/webpack.config.dll.js --progress",
+		"dll:production": "webpack --config ./build/webpack/webpack.config.dll.production.js --progress",
 		"dev": "gulp clean:pre && npm run dev:webpack & npm run dev:test",
 		"dev:webpack": "webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress --inline",
 		"dev:test": "karma start --auto-watch",

@@ -2,14 +2,21 @@ export const Image = ({
   tagName = 'img',
   className = '',
   variant = 'default',
-  src = {},
+  src = { },
   ...attrs
 }) => {
   const Tag = tagName;
+  let srcData = { src };
+
+  if (typeof src !== 'string') {
+    const { src: srcsrc, srcSet } = src;
+    srcData = { src: srcsrc, srcSet };
+  }
+
   return (
     <Tag
       className={`image image--${variant} ${className}`}
-      {...(typeof src === 'string' ? { src } : src)} // normalized responize-loader/image-loader
+      {...srcData} // normalized responize-loader/image-loader
       {...attrs}
     />
   );
