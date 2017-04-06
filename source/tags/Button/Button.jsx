@@ -1,19 +1,34 @@
-export const Button = ({
-  tagName = 'button',
-  className = '',
-  variant = 'default',
-  href,
-  children,
-  ...attrs
-}) => {
+export const Button = (props) => {
+  const {
+    tagName,
+    className,
+    variant,
+    href,
+    children,
+    ...attrs
+  } = props;
+
+  let Tag = tagName;
+  let classStack = Rucksack.createClassName([
+    'button',
+    Rucksack.createVariants('button--', variant),
+    className
+  ]);
+
   if (href) {
-    return <a href={href} className={`button button--${variant} button--link ${className}`} {...attrs}>{children}</a>;
+    Tag = 'a';
+    classStack = Rucksack.createClassName([classStack, 'button--link']);
+    attrs.href = href;
   }
 
-  const Tag = tagName;
   return (
-    <Tag className={`button button--${variant} ${className}`} {...attrs}>{children}</Tag>
+    <Tag className={classStack} {...attrs}>{children}</Tag>
   );
+};
+
+Button.defaultProps = {
+  tagName: 'button',
+  variant: 'default'
 };
 
 Button.propTypes = {
