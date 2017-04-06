@@ -21,6 +21,7 @@ module.exports = {
   },
   entry: {
     vendor: [
+      'fuzzy-rucksack',
       'react',
       'react-dom'
     ],
@@ -29,7 +30,7 @@ module.exports = {
       'react-modal',
       'pretty-data',
       'react-element-to-jsx-string',
-      'react-syntax-highlighter',
+      'react-syntax-highlighter', // this is erroring on windows
       'slugify',
       'lodash.startcase'
     ],

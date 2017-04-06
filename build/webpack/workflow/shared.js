@@ -55,7 +55,8 @@ module.exports = {
       manifest: styleguideManifest
     }),
     new webpack.ProvidePlugin({
-      React: 'react'
+      React: 'react',
+      Rucksack: 'fuzzy-rucksack'
     }),
     new SvgStorePlugin()
   ]
