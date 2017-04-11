@@ -1,4 +1,4 @@
-import styles from 'Styleguide/styleguide.styles'; // eslint-disable-line
+import styles from 'Styleguide/styleguide.css'; // eslint-disable-line
 
 // browser Javascript
 import Dom from 'react-dom';

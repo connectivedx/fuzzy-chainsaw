@@ -28,7 +28,11 @@ module.exports = (
   webpackMerge(
     browserWorkflow,
     {
-      devtool: 'cheap-module-eval-source-map',
+      devtool: 'inline-source-map',
+      output: {
+        hotUpdateMainFilename: '/[hash]/update.json',
+        hotUpdateChunkFilename: '/[hash]/js/[id].update.js'
+      },
       resolveLoader: {
         alias: {
           'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader'),
@@ -59,7 +63,8 @@ module.exports = (
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: 'index.html',
           mode: 'dev'
-        }))
+        })),
+        new webpack.HotModuleReplacementPlugin()
       ],
       stats,
       devServer: {
@@ -68,7 +73,8 @@ module.exports = (
         },
         publicPath: '/',
         contentBase: directories.dest,
-        stats
+        stats,
+        hot: true
       },
       postcss: devPipeline
     }
