@@ -15,6 +15,7 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const {
   build: buildPipeline,
@@ -59,6 +60,7 @@ module.exports = (
         ]
       },
       plugins: [
+        new ProgressBarPlugin(),
         new ExtractTextPlugin('/assets/[name]-[hash].css'),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,

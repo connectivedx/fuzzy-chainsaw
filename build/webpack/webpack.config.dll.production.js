@@ -1,26 +1,26 @@
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
-const dllConfig = require('./webpack.config.dll.js');
+const dllProductionWorkflow = require('./workflow/dll.production');
 
-module.exports = webpackMerge(
-  dllConfig,
-  {
-    devtool: 'source-map',
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(true),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        },
-        output: {
-          comments: false
-        }
-      })
+module.exports = webpackMerge(dllProductionWorkflow, {
+  entry: {
+    vendor: [
+      'fuzzy-rucksack',
+      'react',
+      'react-dom'
+    ],
+    styleguide: [
+      'react-dom/server',
+      'react-modal',
+      'pretty-data',
+      'react-element-to-jsx-string',
+      'react-syntax-highlighter', // this is erroring on windows
+      'slugify',
+      'lodash.startcase'
+    ],
+    tests: [
+      'tape',
+      'enzyme'
     ]
   }
-);
+});
