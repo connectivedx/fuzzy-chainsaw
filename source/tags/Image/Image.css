@@ -1,4 +1,9 @@
-.image--auto {
-  width: 100%;
-  height: auto;
+.image {
+  position: relative;
+
+  /* simple string image */
+  &--auto {
+    width: 100%;
+    height: auto;
+  }
 }

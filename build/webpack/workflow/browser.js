@@ -40,10 +40,10 @@ module.exports = (
           },
           {
             test: /\.(jpe?g|png)$/i,
-            loaders: [
-              'file?name=/assets/images/css/[name]-[md5:hash:hex:8].[ext]',
-              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]
+            loader:
+              'advanced-image-loader?' +
+              'name=/assets/images/css/[name]-[width]-[md5:hash:hex:8]&' +
+              'srcset[]=480&srcset[]=720&srcset[]=1280&srcset[]=1920'
           }
         ]
       }

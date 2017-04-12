@@ -36,6 +36,7 @@
 		"node": "^=6.9.2"
 	},
 	"devDependencies": {
+		"advanced-image-loader": "^1.0.0",
 		"babel-core": "^6.17.0",
 		"babel-eslint": "^7.2.1",
 		"babel-loader": "^6.2.5",
@@ -94,7 +95,6 @@
 		"react-addons-test-utils": "^15.3.2",
 		"react-modal": "^1.7.3",
 		"reset-css": "^2.2.0",
-		"responsive-loader": "^0.7.0",
 		"run-sequence": "^1.2.2",
 		"stats-webpack-plugin": "^0.5.0",
 		"style-loader": "^0.16.0",

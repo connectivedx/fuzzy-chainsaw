@@ -9,6 +9,7 @@ const getOutputRelativity = (outputPath) => {
 
 const makeAbsolutePathRelative = (output, baseHref) =>
   output
+    .replace(/\/assets/gi, `${baseHref}/assets`)
     .replace(/src="\//gi, `src="${baseHref}/`)
     .replace(/href="\//gi, `href="${baseHref}/`)
     .replace(/url="\//gi, `url="${baseHref}/`)
