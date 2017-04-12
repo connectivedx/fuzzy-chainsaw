@@ -30,7 +30,8 @@
 		"test:dev": "karma start --auto-watch",
 		"watch": "gulp watch",
 		"new:tag": "gulp scaffold:tag --name",
-		"new:component": "gulp scaffold:component --name"
+		"new:component": "gulp scaffold:component --name",
+		"new:stateful": "gulp scaffold:component:stateful --name"
 	},
 	"engines": {
 		"node": "^=6.9.2"

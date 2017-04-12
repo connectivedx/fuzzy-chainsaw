@@ -1,4 +1,16 @@
 export class {{name}} extends React.Component {
+  static propTypes = {
+    tagName: React.PropTypes.string,
+    className: React.PropTypes.string,
+    variant: Rucksack.PropTypes.variants(['default']),
+    children: React.PropTypes.node
+  };
+
+  static defaultProps = {
+    tagName: 'div',
+    variant: 'default'
+  };
+
   state = {
     isActive: false
   }
@@ -14,10 +26,10 @@ export class {{name}} extends React.Component {
       ...attrs
     } = this.props;
 
-    let classStack = Rucksack.createClassName([
+    const classStack = Rucksack.createClassName([
       '{{className}}',
       Rucksack.createVariants('{{className}}--', variant),
-      isActive && 'is-active',
+      this.state.isActive && 'is-active',
       className
     ]);
 
@@ -27,16 +39,6 @@ export class {{name}} extends React.Component {
       </Tag>
     );
   }
-
-  defaultProps = {
-    tagName: 'div',
-    variant: 'default'
-  }
-
-  propTypes = {
-    tagName: React.PropTypes.string,
-    className: React.PropTypes.string,
-    variant: Rucksack.PropTypes.variant(['default']),
-    children: React.PropTypes.node
-  }
 };
+
+export default {{name}};
