@@ -45,9 +45,6 @@ module.exports = {
     new StatsPlugin('dll-stats.json', {
       chunkModules: true,
       exclude: [/node_modules/]
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   stats: {
