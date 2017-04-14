@@ -21,10 +21,10 @@
 <% } %>
 
 <% if (htmlWebpackPlugin.options.mode === 'page') { %>
-<script type="text/javascript" src="/assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
 <% } else { %>
-<script type="text/javascript" src="/assets/dlls/styleguide-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
-<script type="text/javascript" src="/assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/styleguide-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
 <% } %>
 
 <!-- js entry files are automatically injected here -->

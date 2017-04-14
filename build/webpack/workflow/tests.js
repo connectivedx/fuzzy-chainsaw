@@ -24,10 +24,10 @@ module.exports = (
         'react/lib/ReactContext': true
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.(css|md|json|jpe?g|png|gif|svg|woff|woff2|eot|ttf)$/i,
-            loader: 'null-loader'
+            use: 'null-loader'
           }
         ]
       },

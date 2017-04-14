@@ -17,12 +17,14 @@ const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+const skeletonConfig = require('../lib/skeleton-html-config.js');
+const browserWorkflow = require('./browser');
+const { baseUrl } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
 } = require('../lib/postcss-plugins.js');
-const skeletonConfig = require('../lib/skeleton-html-config.js');
-const browserWorkflow = require('./browser');
+
 
 /*
  *
@@ -41,42 +43,45 @@ module.exports = (
         }
       },
       module: {
-        preLoaders: [
+        rules: [
           {
             test: /\.css$/,
-            loader: 'postcss-loader' // linting
-          }
-        ],
-        loaders: [
-          {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
+            enforce: 'pre',
+            loader: 'postcss-loader', // linting
+            options: {
+              plugins: lintingPipeline
+            }
           },
           {
             test: /\.css$/,
-            loader: 'prefix-variables-loader',
+            use: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
+          },
+          {
+            test: /\.css$/,
+            use: 'prefix-variables-loader',
             exclude: /variables/
           }
         ]
       },
       plugins: [
         new ProgressBarPlugin(),
-        new ExtractTextPlugin('/assets/[name]-[hash].css'),
+        new ExtractTextPlugin('assets/[name]-[hash].css'),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
           pipeline: buildPipeline
         }),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.styleguide.html',
-          mode: 'styleguide'
+          mode: 'styleguide',
+          baseUrl
         })),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.html',
+          excludeChunks: ['styleguide'],
           mode: 'page',
-          excludeChunks: ['styleguide']
+          baseUrl
         }))
-      ],
-      postcss: lintingPipeline
+      ]
     }
   )
 );

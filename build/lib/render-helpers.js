@@ -1,21 +1,6 @@
 const Dom = require('react-dom/server');
 
 
-const getOutputRelativity = (outputPath) => {
-  const depth = outputPath.split('/').slice(1).map(() => '..');
-  if (depth.length) return depth.join('/');
-  return '.';
-};
-
-const makeAbsolutePathRelative = (output, baseHref) =>
-  output
-    .replace(/\/assets/gi, `${baseHref}/assets`)
-    .replace(/src="\//gi, `src="${baseHref}/`)
-    .replace(/href="\//gi, `href="${baseHref}/`)
-    .replace(/url="\//gi, `url="${baseHref}/`)
-    .replace(/url\(\//gi, `url(${baseHref}/`)
-    .replace(/url\("\//gi, `url("${baseHref}/`);
-
 const renderComponent = ({ template, module }) =>
   template.toString()
     .replace('{{title}}', module.pageTitle)
@@ -54,8 +39,6 @@ const getContextList = (context, prefix = false) =>
 
 
 module.exports = {
-  getOutputRelativity,
-  makeAbsolutePathRelative,
   renderComponent,
   processUnprefixedContext,
   processPrefixedContext,

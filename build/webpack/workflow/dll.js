@@ -1,14 +1,14 @@
 const webpack = require('webpack');
 const StatsPlugin = require('stats-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const { dest } = require('../../lib/path-helpers');
+
 
 module.exports = {
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   node: {
     fs: 'empty'
@@ -27,16 +27,18 @@ module.exports = {
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|js)$/,
-        loader: 'babel-loader?cacheDirectory=true',
-        exclude: /node_modules\/(?!(get-own-enumerable-property-symbols|stringify-object)\/)/
+        exclude: /node_modules\/(?!(get-own-enumerable-property-symbols|stringify-object)\/)/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true
+        }
       }
     ]
   },
   plugins: [
-    new ProgressBarPlugin(),
     new CleanWebpackPlugin(['assets/dlls'], { root: dest() }),
     new webpack.DllPlugin({
       path: dest('assets/dlls/[name]-manifest.json'),

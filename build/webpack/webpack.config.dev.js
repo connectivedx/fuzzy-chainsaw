@@ -22,16 +22,10 @@ const devWorkflow = require('./workflow/dev');
  *
  */
 
-const hmrSource = (entry) => [
-  'webpack/hot/dev-server',
-  'webpack-dev-server/client?http://0.0.0.0:8080',
-  source(entry)
-];
-
 module.exports = merge(devWorkflow, {
   entry: {
-    devScript: hmrSource('dev.jsx'),
-    styleguide: hmrSource('styleguide/styleguide.jsx'),
-    bundle: hmrSource('bundle.jsx')
+    devScript: source('dev.jsx'),
+    styleguide: source('styleguide/styleguide.jsx'),
+    bundle: source('bundle.jsx')
   }
 });

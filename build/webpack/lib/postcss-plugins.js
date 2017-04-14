@@ -55,9 +55,6 @@ module.exports.build = [
   ...standard,
   mqpacker({
     sort: true
-  }),
-  url({
-    url: urlStr => urlStr.replace('/assets/', './')
   })
 ];
 
