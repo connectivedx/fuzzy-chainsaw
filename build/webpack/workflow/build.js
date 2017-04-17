@@ -16,6 +16,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
@@ -80,7 +81,10 @@ module.exports = (
           excludeChunks: ['styleguide'],
           mode: 'page',
           baseUrl
-        }))
+        })),
+        new WebpackNotifierPlugin({
+          title: 'FC Build'
+        })
       ]
     }
   )

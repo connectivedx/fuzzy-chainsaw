@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const StatsPlugin = require('stats-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const { dest } = require('../../lib/path-helpers');
 
@@ -47,6 +48,9 @@ module.exports = {
     new StatsPlugin('dll-stats.json', {
       chunkModules: true,
       exclude: [/node_modules/]
+    }),
+    new WebpackNotifierPlugin({
+      title: 'FC Dll'
     })
   ],
   stats: {

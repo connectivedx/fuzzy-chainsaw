@@ -10,6 +10,7 @@ const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
@@ -71,7 +72,10 @@ module.exports = (
           mode: 'dev',
           baseUrl
         })),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new WebpackNotifierPlugin({
+          title: 'FC Dev'
+        })
       ],
       stats,
       devServer: {
