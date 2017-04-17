@@ -8,7 +8,6 @@
 
 const webpackMerge = require('webpack-merge');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 const sharedWorkflow = require('./shared');
 
@@ -66,7 +65,6 @@ module.exports = (
         ]
       },
       plugins: [
-        new OfflinePlugin(),
         new SvgStorePlugin()
       ]
     }

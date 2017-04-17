@@ -17,6 +17,7 @@ const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const OfflinePlugin = require('offline-plugin');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
@@ -84,7 +85,8 @@ module.exports = (
         })),
         new WebpackNotifierPlugin({
           title: 'FC Build'
-        })
+        }),
+        new OfflinePlugin()
       ]
     }
   )
