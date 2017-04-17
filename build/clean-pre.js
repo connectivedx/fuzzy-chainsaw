@@ -6,8 +6,9 @@ module.exports = () => (
     dest('**/*.html'),
     dest('*.json'),
     dest('assets/*.{js,js.map,css,css.map}'),
-    dest('assets/images/**'),
     dest('assets/fonts/**'),
+    dest('assets/images/**'),
+    dest('assets/offline/**'),
     dest('assets/svgs/*')
   ], {
     force: true

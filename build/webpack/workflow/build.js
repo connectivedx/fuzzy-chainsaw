@@ -86,7 +86,19 @@ module.exports = (
         new WebpackNotifierPlugin({
           title: 'FC Build'
         }),
-        new OfflinePlugin()
+        new OfflinePlugin({
+          excludes: [
+            '**/_*',
+            '**/.*',
+            '**/*.map'
+          ],
+          ServiceWorker: {
+            output: 'assets/offline/sw.js'
+          },
+          AppCache: {
+            directory: 'assets/offline/'
+          }
+        })
       ]
     }
   )
