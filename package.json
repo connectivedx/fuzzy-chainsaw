@@ -91,7 +91,6 @@
     "postcss-pipeline-webpack-plugin": "^2.0.0",
     "postcss-remove-root": "^0.0.2",
     "postcss-reporter": "^3.0.0",
-    "postcss-url": "^6.0.4",
     "pre-commit": "^1.2.2",
     "progress-bar-webpack-plugin": "^1.9.3",
     "react-addons-test-utils": "^15.5.1",
