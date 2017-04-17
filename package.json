@@ -81,6 +81,7 @@
     "lodash.zipobject": "^4.1.3",
     "markdown-loader": "^2.0.0",
     "null-loader": "^0.1.1",
+    "offline-plugin": "^4.7.0",
     "packpath": "^0.1.0",
     "postcss-color-alpha": "^1.0.3",
     "postcss-cssnext": "^2.8.0",
