@@ -11,6 +11,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const OfflinePlugin = require('offline-plugin');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
@@ -20,9 +21,15 @@ const { baseUrl } = require('../../lib/path-helpers');
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 
 const stats = {
+  hash: false,
+  version: false,
   chunks: false,
   children: false,
   colors: true,
+  cached: true,
+  cachedAssets: true,
+  error: true,
+  errorDetails: true,
   reasons: true
 };
 
@@ -75,6 +82,19 @@ module.exports = (
         new webpack.HotModuleReplacementPlugin(),
         new WebpackNotifierPlugin({
           title: 'FC Dev'
+        }),
+        new OfflinePlugin({
+          excludes: [
+            '**/_*',
+            '**/.*',
+            '**/*.map'
+          ],
+          ServiceWorker: {
+            output: 'assets/offline/sw.js'
+          },
+          AppCache: {
+            directory: 'assets/offline/'
+          }
         })
       ],
       stats,
