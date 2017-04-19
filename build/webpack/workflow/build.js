@@ -18,10 +18,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const OfflinePlugin = require('offline-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
-const { baseUrl } = require('../../lib/path-helpers');
+const { source, baseUrl } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
@@ -97,6 +98,22 @@ module.exports = (
           },
           AppCache: {
             directory: 'assets/offline/'
+          }
+        }),
+        new FaviconsWebpackPlugin({
+          logo: source('favicon.png'),
+          prefix: 'assets/favicons/[hash:8]-',
+          icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: false,
+            coast: false,
+            favicons: true,
+            firefox: true,
+            opengraph: false,
+            twitter: false,
+            yandex: false,
+            windows: false
           }
         })
       ]
