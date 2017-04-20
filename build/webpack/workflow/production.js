@@ -25,12 +25,8 @@ const production = webpackMerge(
         suffix: undefined,
         pipeline: postcssPipeline
       }),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        },
+        sourceMap: true,
         output: {
           comments: false
         }

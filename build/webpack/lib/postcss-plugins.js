@@ -17,7 +17,6 @@ const cssImport = require('postcss-import');
 
 // build
 const mqpacker = require('css-mqpacker');
-const url = require('postcss-url');
 
 // linting
 const stylelint = require('stylelint');
@@ -55,9 +54,6 @@ module.exports.build = [
   ...standard,
   mqpacker({
     sort: true
-  }),
-  url({
-    url: urlStr => urlStr.replace('/assets/', './')
   })
 ];
 

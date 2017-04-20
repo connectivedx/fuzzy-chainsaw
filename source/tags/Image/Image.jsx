@@ -1,31 +1,35 @@
 export const Image = ({
-  tagName = 'img',
   className = '',
   variant = 'default',
+  alt = '',
   src = { },
   ...attrs
 }) => {
-  const Tag = tagName;
-  let srcData = { src };
-
-  if (typeof src !== 'string') {
-    const { src: srcsrc, srcSet } = src;
-    srcData = { src: srcsrc, srcSet };
+  if (typeof src === 'string') {
+    return <img alt={alt} src={src.toString()} className={`image image--${variant} ${className}`} />;
   }
 
+  const imageData = {
+    src: src.src,
+    srcSet: src.srcset,
+    width: src.width,
+    height: src.height
+  };
+
   return (
-    <Tag
+    <img
       className={`image image--${variant} ${className}`}
-      {...srcData} // normalized responize-loader/image-loader
+      alt={alt}
+      {...imageData}
       {...attrs}
     />
   );
 };
 
 Image.propTypes = {
-  tagName: React.PropTypes.string,
   className: React.PropTypes.string,
   variant: React.PropTypes.oneOf(['default', 'auto']),
+  alt: React.PropTypes.string.isRequired,
   src: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.object

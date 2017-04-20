@@ -5,18 +5,24 @@
 const path = require('path');
 const pkgpath = require('packpath');
 const webpack = require('webpack');
-const SvgStorePlugin = require('webpack-svgstore-plugin');
 
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
-const { source, dest } = require('../../lib/path-helpers');
+const { source, dest, baseUrl } = require('../../lib/path-helpers');
 
-const vendorManifest = require(dest('assets/dlls/vendor-manifest.json')); // eslint-disable-line
-const styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json')); // eslint-disable-line
+let vendorManifest;
+let styleguideManifest;
+
+try {
+  vendorManifest = require(dest('assets/dlls/vendor-manifest.json')); // eslint-disable-line
+  styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json')); // eslint-disable-line
+} catch (e) {
+  // let failures happen
+}
 
 module.exports = {
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
       Source: source(),
       Vendor: source('vendor'),
@@ -32,16 +38,19 @@ module.exports = {
   },
   output: {
     path: dest(),
-    filename: '/assets/[name]-[hash].js',
+    publicPath: baseUrl,
+    filename: 'assets/[name]-[hash].js',
     libraryTarget: 'umd'
   },
-  publicPath: directories.dest,
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|js)$/,
-        loader: 'babel-loader?cacheDirectory=true',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true
+        }
       }
     ]
   },
@@ -50,14 +59,17 @@ module.exports = {
       context: path.resolve(pkgpath.self()),
       manifest: vendorManifest
     }),
-    new webpack.DllReferencePlugin({
+    // sometime styleguide won't be required
+    styleguideManifest ? new webpack.DllReferencePlugin({
       context: path.resolve(pkgpath.self()),
       manifest: styleguideManifest
+    }) : undefined,
+    new webpack.DefinePlugin({
+      'process.env.BASE_URL': JSON.stringify(baseUrl)
     }),
     new webpack.ProvidePlugin({
       React: 'react',
       Rucksack: 'fuzzy-rucksack'
-    }),
-    new SvgStorePlugin()
-  ]
+    })
+  ].filter((a) => a)
 };

@@ -27,13 +27,13 @@ module.exports = (
     browserWorkflow,
     {
       output: {
-        filename: '/tmp/[name].js'
+        filename: 'tmp/[name].js'
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.css$/,
-            loader: 'null-loader'
+            use: 'null-loader'
           }
         ]
       },

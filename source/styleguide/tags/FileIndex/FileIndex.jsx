@@ -53,13 +53,13 @@ export const componentsIndexData =
   Object.keys(requireAllComponents(componentsContext, '/styleguide/components/'))
     .filter((p) => p.indexOf('/components/') !== -1)
     .map((p) => p.substr(p.indexOf('/components/') + '/components/'.length))
-    .map(path2LinkList('/styleguide/components'));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/components`));
 
 
 export const tagsIndexData =
   Object.keys(requireAllComponents(tagsContext, '/styleguide/tags/'))
     .map((p) => p.substr(p.indexOf('/tags/') + '/tags/'.length))
-    .map(path2LinkList('/styleguide/tags'));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/tags`));
 
 
 export const FileIndex = (props) => {

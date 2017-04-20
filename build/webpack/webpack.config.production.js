@@ -13,7 +13,6 @@
 const merge = require('webpack-merge');
 
 const { source } = require('../lib/path-helpers');
-const replaceImageLoader = require('./lib/production-image-helper.js');
 const productionWorkflow = require('./workflow/production');
 const staticWorkflow = require('./workflow/static');
 
@@ -26,15 +25,15 @@ const staticWorkflow = require('./workflow/static');
  */
 
 module.exports = [
-  replaceImageLoader(merge(productionWorkflow, {
+  merge(productionWorkflow, {
     entry: {
       styleguide: source('styleguide/styleguide.jsx'),
       bundle: source('bundle.jsx')
     }
-  })),
-  replaceImageLoader(merge(staticWorkflow, {
+  }),
+  merge(staticWorkflow, {
     entry: {
       static: source('static.jsx')
     }
-  }))
+  })
 ];

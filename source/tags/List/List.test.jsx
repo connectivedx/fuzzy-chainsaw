@@ -5,7 +5,7 @@ import { List, List_Item } from './List';
 
 
 test('<List>', (t) => {
-  const component = shallow(<List />);
+  const component = shallow(<List><List_Item>X</List_Item></List>);
   t.ok(component.is('ul'), 'tag name');
   t.ok(component.is('.list'), 'tag class');
   t.ok(component.is('.list--unordered'), 'tag class');
@@ -13,7 +13,7 @@ test('<List>', (t) => {
 });
 
 test('<List variant="ordered">', (t) => {
-  const component = shallow(<List variant="ordered"><List_Item /><List_Item /></List>);
+  const component = shallow(<List variant="ordered"><List_Item>X</List_Item><List_Item>X</List_Item></List>);
   t.ok(component.is('ol'), 'tag name');
   t.ok(component.is('.list'), 'tag class');
   t.ok(component.is('.list--ordered'), 'tag class');
@@ -22,7 +22,7 @@ test('<List variant="ordered">', (t) => {
 });
 
 test('<List variant="blank">', (t) => {
-  const component = shallow(<List variant="blank"><List_Item /><List_Item /></List>);
+  const component = shallow(<List variant="blank"><List_Item>X</List_Item><List_Item>X</List_Item></List>);
   t.ok(component.is('ul'), 'tag name');
   t.ok(component.is('.list'), 'tag class');
   t.ok(component.is('.list--blank'), 'tag class');

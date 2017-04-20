@@ -10,17 +10,26 @@ const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const OfflinePlugin = require('offline-plugin');
 
-const { dev: devPipeline } = require('../lib/postcss-plugins.js');
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
+const { dev: devPipeline } = require('../lib/postcss-plugins.js');
+const { baseUrl } = require('../../lib/path-helpers');
 
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 
 const stats = {
+  hash: false,
+  version: false,
   chunks: false,
   children: false,
   colors: true,
+  cached: true,
+  cachedAssets: true,
+  error: true,
+  errorDetails: true,
   reasons: true
 };
 
@@ -28,7 +37,7 @@ module.exports = (
   webpackMerge(
     browserWorkflow,
     {
-      devtool: 'cheap-module-eval-source-map',
+      devtool: 'inline-source-map',
       resolveLoader: {
         alias: {
           'remove-tilde-loader': path.resolve(__dirname, '../lib/remove-tilde-loader'),
@@ -36,19 +45,28 @@ module.exports = (
         }
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.css$/,
-            loader: 'style-loader!css-loader!postcss-loader'
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: devPipeline
+                }
+              }
+            ]
           },
           {
             test: /\.css$/,
-            loader: 'prefix-variables-loader',
+            use: 'prefix-variables-loader',
             exclude: /variables/
           },
           {
             test: /\.css$/,
-            loader: 'remove-tilde-loader'
+            use: 'remove-tilde-loader'
           }
         ]
       },
@@ -58,8 +76,26 @@ module.exports = (
         }),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: 'index.html',
-          mode: 'dev'
-        }))
+          mode: 'dev',
+          baseUrl
+        })),
+        new webpack.HotModuleReplacementPlugin(),
+        new WebpackNotifierPlugin({
+          title: 'FC Dev'
+        }),
+        new OfflinePlugin({
+          excludes: [
+            '**/_*',
+            '**/.*',
+            '**/*.map'
+          ],
+          ServiceWorker: {
+            output: 'assets/offline/sw.js'
+          },
+          AppCache: {
+            directory: 'assets/offline/'
+          }
+        })
       ],
       stats,
       devServer: {
@@ -68,9 +104,9 @@ module.exports = (
         },
         publicPath: '/',
         contentBase: directories.dest,
-        stats
-      },
-      postcss: devPipeline
+        stats,
+        hot: true
+      }
     }
   )
 );

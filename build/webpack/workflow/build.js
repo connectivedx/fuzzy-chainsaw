@@ -15,13 +15,19 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const OfflinePlugin = require('offline-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
+const skeletonConfig = require('../lib/skeleton-html-config.js');
+const browserWorkflow = require('./browser');
+const { source, baseUrl } = require('../../lib/path-helpers');
 const {
   build: buildPipeline,
   linting: lintingPipeline
 } = require('../lib/postcss-plugins.js');
-const skeletonConfig = require('../lib/skeleton-html-config.js');
-const browserWorkflow = require('./browser');
+
 
 /*
  *
@@ -40,41 +46,77 @@ module.exports = (
         }
       },
       module: {
-        preLoaders: [
+        rules: [
           {
             test: /\.css$/,
-            loader: 'postcss-loader' // linting
-          }
-        ],
-        loaders: [
-          {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
+            enforce: 'pre',
+            loader: 'postcss-loader', // linting
+            options: {
+              plugins: lintingPipeline
+            }
           },
           {
             test: /\.css$/,
-            loader: 'prefix-variables-loader',
+            use: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
+          },
+          {
+            test: /\.css$/,
+            use: 'prefix-variables-loader',
             exclude: /variables/
           }
         ]
       },
       plugins: [
-        new ExtractTextPlugin('/assets/[name]-[hash].css'),
+        new ProgressBarPlugin(),
+        new ExtractTextPlugin('assets/[name]-[hash].css'),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
           pipeline: buildPipeline
         }),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.styleguide.html',
-          mode: 'styleguide'
+          mode: 'styleguide',
+          baseUrl
         })),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.html',
+          excludeChunks: ['styleguide'],
           mode: 'page',
-          excludeChunks: ['styleguide']
-        }))
-      ],
-      postcss: lintingPipeline
+          baseUrl
+        })),
+        new WebpackNotifierPlugin({
+          title: 'FC Build'
+        }),
+        new OfflinePlugin({
+          excludes: [
+            '**/_*',
+            '**/.*',
+            '**/*.map'
+          ],
+          ServiceWorker: {
+            output: 'assets/offline/sw.js'
+          },
+          AppCache: {
+            directory: 'assets/offline/'
+          }
+        }),
+        new FaviconsWebpackPlugin({
+          logo: source('favicon.png'),
+          prefix: 'assets/favicons/[hash:8]-',
+          icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: false,
+            coast: false,
+            favicons: true,
+            firefox: true,
+            opengraph: false,
+            twitter: false,
+            yandex: false,
+            windows: false
+          }
+        })
+      ]
     }
   )
 );
