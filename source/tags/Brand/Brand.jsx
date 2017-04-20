@@ -1,23 +1,36 @@
 import Icon from 'Tags/Icon/Icon';
 
-const Brand = ({
-  tagName = 'div',
-  className = '',
-  variant = 'full',
-  ...attrs
-}) => {
-  const Tag = tagName;
+const Brand = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    variant,
+    ...attrs
+  } = props;
+
+  const classStack = Rucksack.createClassName([
+    'brand',
+    Rucksack.createVariants('brand--', variant),
+    className
+  ]);
 
   return (
-    <Tag className={`brand brand--${variant} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       <Icon name="close" className="brand__icon" />
-      { variant === 'full'
+      {
+        variant === 'full'
         ? <span className="brand__label">
             GenericBrand
           </span>
-        : undefined }
+        : undefined
+      }
     </Tag>
   );
+};
+
+Brand.defaultProps = {
+  tagName: 'div',
+  variant: 'full'
 };
 
 Brand.propTypes = {

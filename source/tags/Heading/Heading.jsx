@@ -1,11 +1,12 @@
-export const Heading = ({
-  tagName,
-  className = '',
-  variant = 'default',
-  level,
-  children,
-  ...attrs
-}) => {
+export const Heading = (props) => {
+  const {
+    tagName,
+    className,
+    variant,
+    level,
+    children,
+    ...attrs
+} = props;
   let Tag = tagName || 'h1';
   let delevel = level || 1;
 
@@ -16,11 +17,22 @@ export const Heading = ({
     Tag = tagName;
   }
 
+  const classStack = Rucksack.createClassName([
+    'heading',
+    Rucksack.createVariants('heading--', variant),
+    Rucksack.createVariants('heading--h', delevel),
+    className
+  ]);
+
   return (
-    <Tag className={`heading heading--${variant} heading--h${delevel} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
+};
+
+Heading.defaultProps = {
+  variant: 'default'
 };
 
 Heading.propTypes = {
