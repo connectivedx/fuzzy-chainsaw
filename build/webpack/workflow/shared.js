@@ -69,7 +69,8 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       React: 'react',
-      Rucksack: 'fuzzy-rucksack'
+      Rucksack: 'fuzzy-rucksack',
+      PropTypes: 'prop-types'
     })
   ].filter((a) => a)
 };

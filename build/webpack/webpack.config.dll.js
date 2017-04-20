@@ -7,7 +7,8 @@ module.exports = webpackMerge(dllWorkflow, {
     vendor: [
       'fuzzy-rucksack',
       'react',
-      'react-dom'
+      'react-dom',
+      'prop-types'
     ],
     styleguide: [
       'react-dom/server',

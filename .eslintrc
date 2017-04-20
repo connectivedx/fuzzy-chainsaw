@@ -26,6 +26,7 @@
 		"window": true,
 		"location": true,
 		"React": true,
-		"Rucksack": true
+		"Rucksack": true,
+		"PropTypes": true
 	}
 }
