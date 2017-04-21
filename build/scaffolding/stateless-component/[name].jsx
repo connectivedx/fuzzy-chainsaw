@@ -9,7 +9,7 @@ export const {{name}} = (props) => {
 
   const classStack = FcUtils.createClassStack([
     '{{name}}',
-    Rucksack.createVariants('{{name}}--', variant),
+    `{{name}}--${variant}`,
     className
   ]);
 
@@ -23,7 +23,7 @@ export const {{name}} = (props) => {
 {{name}}.defaultProps = {
   tagName: 'div',
   variant: 'default'
-}
+};
 
 {{name}}.propTypes = {
   tagName: PropTypes.string,

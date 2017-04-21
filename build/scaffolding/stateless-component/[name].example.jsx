@@ -5,4 +5,4 @@ export default [{
   component: (
     <{{name}}>Lorem ipsum</{{name}}>
   )
-}]
+}];
