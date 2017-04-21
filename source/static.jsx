@@ -1,5 +1,5 @@
 import match from 'minimatch';
-import Styleguide from 'SgComponents/Styleguide/Styleguide';
+import SgStyleguide from 'SgComponents/SgStyleguide/SgStyleguide';
 
 export const pagesContext = require.context('Pages/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
 export const componentsContext = require.context('Components/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
@@ -47,7 +47,7 @@ const getStyleguideModule = (path, context, type) => {
     return {
       pageTitle: `${name} / ${titleType}`,
       Component: (
-        <Styleguide
+        <SgStyleguide
           name={name}
           readme={requirer(`./${name}/README.md`)}
           examples={requirer(`./${name}/${name}.example.jsx`)}

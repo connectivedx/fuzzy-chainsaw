@@ -1,9 +1,9 @@
 import slugify from 'slugify';
 
-import Heading from 'SgTags/Heading/Heading';
-import Rhythm from 'SgTags/Rhythm/Rhythm';
-import Nav from 'SgComponents/Nav/Nav';
-import Example from 'SgComponents/Example/Example';
+import Heading from 'SgTags/SgHeading/SgHeading';
+import Rhythm from 'SgTags/SgRhythm/SgRhythm';
+import Nav from 'SgComponents/SgNav/SgNav';
+import Example from 'SgComponents/SgExample/SgExample';
 
 
 export const SgStyleguide_Readme = (props) => (
