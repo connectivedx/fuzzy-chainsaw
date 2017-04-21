@@ -1,0 +1,20 @@
+.Link {
+  text-decoration: underline;
+}
+
+/* variants */
+.Link--default {
+  color: var(--color-link);
+
+  &:--enter {
+    color: color(var(--color-link) tint(10));
+  }
+}
+
+.Link--cta {
+  color: var(--color-red);
+
+  &:--enter {
+    color: color(var(--color-red) tint(10));
+  }
+}
