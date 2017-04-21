@@ -1,23 +1,35 @@
-export const {{name}} = ({
-  tagName = 'div',
-  className = '',
-  variant = 'default',
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
+export const {{name}} = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    variant,
+    children,
+    ...attrs
+  } = props;
+
+  const classStack = Rucksack.createClassName([
+    '{{name}}',
+    Rucksack.createVariants('{{name}}--', variant),
+    className
+  ]);
+
   return (
-    <Tag className={`{{className}} {{className}}--${variant} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+{{name}}.defaultProps = {
+  tagName: 'div',
+  variant: 'default'
+}
+
 {{name}}.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(['default']),
-  children: React.PropTypes.node
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  variant: Rucksack.PropTypes.variants(['default']),
+  children: PropTypes.node
 };
 
 

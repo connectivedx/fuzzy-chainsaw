@@ -1,9 +1,9 @@
 export class {{name}} extends React.Component {
   static propTypes = {
-    tagName: React.PropTypes.string,
-    className: React.PropTypes.string,
+    tagName: PropTypes.string,
+    className: PropTypes.string,
     variant: Rucksack.PropTypes.variants(['default']),
-    children: React.PropTypes.node
+    children: PropTypes.node
   };
 
   static defaultProps = {
@@ -15,7 +15,9 @@ export class {{name}} extends React.Component {
     isActive: false
   }
 
-  toggle = () => this.setState({ isActive: !this.state.isActive })
+  toggle = () => {
+    this.setState({ isActive: !this.state.isActive });
+  }
 
   render = () => {
     const {
@@ -27,8 +29,8 @@ export class {{name}} extends React.Component {
     } = this.props;
 
     const classStack = Rucksack.createClassName([
-      '{{className}}',
-      Rucksack.createVariants('{{className}}--', variant),
+      '{{name}}',
+      Rucksack.createVariants('{{name}}--', variant),
       this.state.isActive && 'is-active',
       className
     ]);

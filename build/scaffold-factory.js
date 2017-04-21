@@ -6,15 +6,6 @@ const dopl = require('dopl');
 
 const { source } = require('./lib/path-helpers');
 
-
-// transforms PascalCase into slug-case for the CSS class name
-const createClassName = name => (
-  name
-    .replace(/[A-Z]/g, word => `-${word.toLowerCase()}`)
-    .substring(1) // trim off leading - from the first capital
-);
-
-
 const scaffoldComponent = ({
   name,
   src,
@@ -29,8 +20,7 @@ const scaffoldComponent = ({
     src,
     output,
     data: {
-      name,
-      className: createClassName(name)
+      name
     }
   });
 };
