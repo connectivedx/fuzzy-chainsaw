@@ -5,30 +5,30 @@ import {
   tagsIndexData,
   componentsIndexData,
   pagesIndexData,
-  FileIndex
-} from 'SgTags/FileIndex/FileIndex';
+  SgFileIndex
+} from 'SgTags/SgFileIndex/SgFileIndex';
 
 
 const page = () => (
   <Wrapper>
     <Rhythm size="large">
-      <Heading level="1">Hello World</Heading>
+      <Heading level="h1">Hello World</Heading>
 
-      <FileIndex
+      <SgFileIndex
         items={pagesIndexData}
         title="Pages"
         className="rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
-      <FileIndex
+      <SgFileIndex
         items={componentsIndexData}
         title="Components"
         className="rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
-      <FileIndex
+      <SgFileIndex
         items={tagsIndexData}
         title="Tags"
         className="rhythm--small"

@@ -4,7 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import { pd } from 'pretty-data';
 
-import Heading from 'SgTags/Heading/Heading';
+import SgHeading from 'SgTags/SgHeading/SgHeading';
 
 const filterProps = (component) => {
   const copy = {
@@ -46,7 +46,7 @@ const filterProps = (component) => {
 };
 
 
-export const Example_Section = (props) => {
+export const SgExample_Section = (props) => {
   const {
     type,
     className,
@@ -56,8 +56,8 @@ export const Example_Section = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'sg-example__section',
-    `sg-example__section--${type}`,
+    'SgExample__section',
+    `SgExample__section--${type}`,
     isActive && 'is-active',
     className
   ]);
@@ -69,11 +69,11 @@ export const Example_Section = (props) => {
   );
 };
 
-Example_Section.defaultProps = {
+SgExample_Section.defaultProps = {
   isActive: false
 };
 
-Example_Section.propTypes = {
+SgExample_Section.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
   isActive: PropTypes.bool,
@@ -81,7 +81,7 @@ Example_Section.propTypes = {
 };
 
 
-export const Example_Wrapper = (props) => {
+export const SgExample_Wrapper = (props) => {
   const {
     slug,
     children,
@@ -89,20 +89,20 @@ export const Example_Wrapper = (props) => {
   } = props;
 
   return (
-    <div className="sg-example" {...attrs}>
-      <a className="sg-expample__anchor" id={slug}>&nbsp;</a>
+    <div className="SgExample" {...attrs}>
+      <a className="SgExample__anchor" id={slug}>&nbsp;</a>
       {children}
     </div>
   );
 };
 
-Example_Wrapper.propTypes = {
+SgExample_Wrapper.propTypes = {
   slug: PropTypes.string,
   children: PropTypes.node
 };
 
 
-export const Example_Header = (props) => {
+export const SgExample_Header = (props) => {
   const {
     exampleName,
     children,
@@ -110,23 +110,23 @@ export const Example_Header = (props) => {
   } = props;
 
   return (
-    <div className="sg-example__header" {...attrs}>
-      <Heading level="3" className="sg-example__name">{exampleName}</Heading>
+    <div className="SgExample__header" {...attrs}>
+      <SgHeading level="h3" className="SgExample__name">{exampleName}</SgHeading>
 
-      <ul className="sg-example__tabs">
+      <ul className="SgExample__tabs">
         {children}
       </ul>
     </div>
   );
 };
 
-Example_Header.propTypes = {
+SgExample_Header.propTypes = {
   exampleName: PropTypes.string,
   children: PropTypes.node
 };
 
 
-export const Example_Tab = (props) => {
+export const SgExample_Tab = (props) => {
   const {
     slug,
     name,
@@ -136,7 +136,7 @@ export const Example_Tab = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'sg-example__tabs-item',
+    'SgExample__tabs-item',
     isActive && 'is-active'
   ]);
 
@@ -147,7 +147,7 @@ export const Example_Tab = (props) => {
   );
 };
 
-Example_Tab.propTypes = {
+SgExample_Tab.propTypes = {
   slug: PropTypes.string,
   name: PropTypes.string,
   isActive: PropTypes.bool,
@@ -155,7 +155,7 @@ Example_Tab.propTypes = {
 };
 
 
-export const Example = (props) => {
+export const SgExample = (props) => {
   const {
     slug,
     exampleName,
@@ -168,21 +168,21 @@ export const Example = (props) => {
   const jsonExample = JSON.stringify(filterProps(component), null, 2);
 
   const exampleClassStack = FcUtils.createClassStack([
-    options.fullWidth && 'sg-example__section--full-width',
-    options.noPadding && 'sg-example__section--no-padding',
-    options.darkBackground && 'sg-example__section--dark-background'
+    options.fullWidth && 'SgExample__section--full-width',
+    options.noPadding && 'SgExample__section--no-padding',
+    options.darkBackground && 'SgExample__section--dark-background'
   ]);
 
   return (
-    <Example_Wrapper slug={slug}>
-      <Example_Header exampleName={exampleName}>
-        <Example_Tab slug={slug} name="example" isActive>Example</Example_Tab>
-        <Example_Tab slug={slug} name="react">React</Example_Tab>
-        <Example_Tab slug={slug} name="html">HTML</Example_Tab>
-        <Example_Tab slug={slug} name="json">JSON</Example_Tab>
-      </Example_Header>
+    <SgExample_Wrapper slug={slug}>
+      <SgExample_Header exampleName={exampleName}>
+        <SgExample_Tab slug={slug} name="example" isActive>Example</SgExample_Tab>
+        <SgExample_Tab slug={slug} name="react">React</SgExample_Tab>
+        <SgExample_Tab slug={slug} name="html">HTML</SgExample_Tab>
+        <SgExample_Tab slug={slug} name="json">JSON</SgExample_Tab>
+      </SgExample_Header>
 
-      <Example_Section
+      <SgExample_Section
         title="Example"
         type="example"
         isActive
@@ -190,32 +190,32 @@ export const Example = (props) => {
         dangerouslySetInnerHTML={{ __html: htmlExample }}
       />
 
-      <Example_Section title="React" type="react">
+      <SgExample_Section title="React" type="react">
         <SyntaxHighlighter language="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
           { reactExample }
         </SyntaxHighlighter>
-      </Example_Section>
+      </SgExample_Section>
 
-      <Example_Section title="HTML" type="html">
+      <SgExample_Section title="HTML" type="html">
         <SyntaxHighlighter language="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
           { pd.xml(htmlExample) }
         </SyntaxHighlighter>
-      </Example_Section>
+      </SgExample_Section>
 
-      <Example_Section title="JSON" type="json">
+      <SgExample_Section title="JSON" type="json">
         <SyntaxHighlighter language="json" style={github} customStyle={{ backgroundColor: 'transparent' }}>
           { jsonExample }
         </SyntaxHighlighter>
-      </Example_Section>
-    </Example_Wrapper>
+      </SgExample_Section>
+    </SgExample_Wrapper>
   );
 };
 
-Example.defaultProps = {
+SgExample.defaultProps = {
   options: { }
 };
 
-Example.propTypes = {
+SgExample.propTypes = {
   slug: PropTypes.string,
   exampleName: PropTypes.string,
   options: PropTypes.shape({
@@ -230,4 +230,4 @@ Example.propTypes = {
 };
 
 
-export default Example;
+export default SgExample;

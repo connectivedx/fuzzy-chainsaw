@@ -1,4 +1,4 @@
-const Rhythm = (props) => {
+const SgRhythm = (props) => {
   const {
     tagName: Tag,
     className,
@@ -10,8 +10,8 @@ const Rhythm = (props) => {
 
   const classStack = FcUtils.createClassStack([
     deep
-      ? `sg-rhythm--deep-${size}`
-      : `sg-rhythm--${size}`,
+      ? `SgRhythm--deep-${size}`
+      : `SgRhythm--${size}`,
     className
   ]);
 
@@ -22,13 +22,13 @@ const Rhythm = (props) => {
   );
 };
 
-Rhythm.defaultProps = {
+SgRhythm.defaultProps = {
   tagName: 'div',
   size: 'default',
   deep: false
 };
 
-Rhythm.propTypes = {
+SgRhythm.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
   size: PropTypes.oneOf(['default', 'small', 'large']),
@@ -36,4 +36,4 @@ Rhythm.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-export default Rhythm;
+export default SgRhythm;

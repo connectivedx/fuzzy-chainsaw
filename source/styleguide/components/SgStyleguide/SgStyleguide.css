@@ -2,11 +2,11 @@
   overflow: hidden;
 }
 
-.sg-styleguide {
+.SgStyleguide {
   position: relative;
 }
 
-.sg-styleguide__header {
+.SgStyleguide__header {
   padding: 1em;
 
   @media (width >= 540px) {
@@ -18,7 +18,7 @@
   }
 }
 
-.sg-styleguide__section-header {
+.SgStyleguide__section-header {
   background-color: var(--color-background);
   padding: 1em 1em 2em;
 
@@ -35,7 +35,7 @@
   }
 }
 
-.sg-styleguide__readme {
+.SgStyleguide__readme {
   padding: 1em;
   background-color: gray(245);
 

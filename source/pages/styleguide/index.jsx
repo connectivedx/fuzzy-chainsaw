@@ -4,21 +4,21 @@ import Wrapper from 'Tags/Wrapper/Wrapper';
 import {
   tagsIndexData,
   componentsIndexData,
-  FileIndex
-} from 'SgTags/FileIndex/FileIndex';
+  SgFileIndex
+} from 'SgTags/SgFileIndex/SgFileIndex';
 
 const page = () => (
   <Wrapper>
     <Rhythm size="large">
-      <Heading level="1">Styleguide</Heading>
-      <FileIndex
+      <Heading level="h1">Styleguide</Heading>
+      <SgFileIndex
         items={componentsIndexData}
         title="Components"
         className="rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
-      <FileIndex
+      <SgFileIndex
         items={tagsIndexData}
         title="Tags"
         className="rhythm--small"
@@ -30,8 +30,5 @@ const page = () => (
 );
 
 page.pageTitle = 'Styleguide';
-page.propTypes = {
-  locals: React.PropTypes.object
-};
 
 export default page;

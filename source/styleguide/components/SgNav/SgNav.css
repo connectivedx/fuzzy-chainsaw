@@ -1,5 +1,5 @@
-.sg-nav,
-.sg-nav__portal {
+.SgNav,
+.SgNav__portal {
   & a {
     color: var(--color-black);
 
@@ -10,7 +10,7 @@
   }
 }
 
-.sg-nav__button {
+.SgNav__button {
   display: block;
   width: 100%;
   padding: 1em 2em;
@@ -46,7 +46,7 @@
   }
 }
 
-.sg-nav__button-icon {
+.SgNav__button-icon {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -68,7 +68,7 @@
   }
 }
 
-.sg-nav__close {
+.SgNav__close {
   position: absolute;
   top: 1em;
   right: 1em;
@@ -94,7 +94,7 @@
   &::after { transform: rotate(45deg); }
 }
 
-.sg-nav__modal-overlay {
+.SgNav__modal-overlay {
   content: '\0020';
   position: fixed;
   top: 0;
@@ -118,7 +118,7 @@
   }
 }
 
-.sg-nav__modal {
+.SgNav__modal {
   position: fixed;
   top: 5vw;
   left: 5vw;
@@ -171,12 +171,12 @@
   }
 }
 
-.sg-nav__modal-content {
-  & * + .heading {
+.SgNav__modal-content {
+  & * + .SgHeading {
     margin-top: 1em;
   }
 
-  & .heading {
+  & .SgHeading {
     margin-bottom: 0.25em;
   }
 

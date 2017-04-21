@@ -2,24 +2,24 @@ import styles from 'Styleguide/styleguide.css'; // eslint-disable-line
 
 // browser Javascript
 import Dom from 'react-dom';
-import Nav from 'SgComponents/Nav/Nav';
-import Example from 'SgComponents/Example/Example.Component';
+import SgNav from 'SgComponents/SgNav/SgNav';
+import SgExample from 'SgComponents/SgExample/SgExample.Component';
 
 const init = () => {
-  Dom.render(<Nav />, document.querySelector('.sg-nav'));
+  Dom.render(<SgNav />, document.querySelector('.SgNav'));
 
-  Array.prototype.slice.call(document.querySelectorAll('.sg-example'))
+  Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
     .forEach((el) => {
-      const exampleSection = el.querySelector('.sg-example__section--example');
+      const exampleSection = el.querySelector('.SgExample__section--example');
       Dom.render(
-        <Example
-          slug={el.querySelector('.sg-expample__anchor').getAttribute('id')}
-          exampleName={el.querySelector('.sg-example__name').innerText}
+        <SgExample
+          slug={el.querySelector('.SgExample__anchor').getAttribute('id')}
+          exampleName={el.querySelector('.SgExample__name').innerText}
           exampleClasses={exampleSection.getAttribute('data-classname')}
           exampleOuput={exampleSection.innerHTML}
-          reactOuput={el.querySelector('.sg-example__section--react').innerHTML}
-          htmlOuput={el.querySelector('.sg-example__section--html').innerHTML}
-          jsonOuput={el.querySelector('.sg-example__section--json').innerHTML}
+          reactOuput={el.querySelector('.SgExample__section--react').innerHTML}
+          htmlOuput={el.querySelector('.SgExample__section--html').innerHTML}
+          jsonOuput={el.querySelector('.SgExample__section--json').innerHTML}
         />,
         el
       );
@@ -28,7 +28,7 @@ const init = () => {
 
 
 if (process.env.NODE_ENV === 'dev') {
-  if (document.querySelector('.sg-styleguide')) {
+  if (document.querySelector('.SgStyleguide')) {
     init();
   }
 } else {

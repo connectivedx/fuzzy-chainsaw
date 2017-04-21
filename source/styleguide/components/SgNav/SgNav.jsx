@@ -4,11 +4,11 @@ import {
   pagesIndexData,
   componentsIndexData,
   tagsIndexData,
-  FileIndex
-} from 'SgTags/FileIndex/FileIndex';
+  SgFileIndex
+} from 'SgTags/SgFileIndex/SgFileIndex';
 
 
-export class Nav extends React.Component {
+export class SgNav extends React.Component {
   state = {
     isExpanded: false
   }
@@ -25,23 +25,28 @@ export class Nav extends React.Component {
   }
 
   render() {
+    const classStack = FcUtils.createClassStack([
+      'SgNav',
+      this.state.isExpanded && 'is-expanded'
+    ]);
+
     return (
-      <div className={`sg-nav ${this.state.isExpanded ? 'is-expanded' : ''}`}>
+      <div className={classStack}>
         <button
           ref={(ref) => { this.btnOpen = ref; }}
           onClick={this.onOpen}
-          className="sg-nav__button"
+          className="SgNav__button"
         >
-          <span className="sg-nav__button-icon" />
+          <span className="SgNav__button-icon" />
           <span>Table of Contents</span>
         </button>
 
         <ReactModal
           isOpen={this.state.isExpanded}
           contentLabel="Table of contents"
-          portalClassName="sg-nav__portal"
-          className="sg-nav__modal"
-          overlayClassName="sg-nav__modal-overlay"
+          portalClassName="SgNav__portal"
+          className="SgNav__modal"
+          overlayClassName="SgNav__modal-overlay"
           closeTimeoutMS={500}
           onRequestClose={this.onClose}
           onAfterOpen={this.onModalOpen}
@@ -49,15 +54,15 @@ export class Nav extends React.Component {
           <button
             ref={(ref) => { this.btnClose = ref; }}
             onClick={this.onClose}
-            className="sg-nav__close"
+            className="SgNav__close"
           >
             <span>Close</span>
           </button>
 
-          <div size="large" className="sg-nav__modal-content">
-            <FileIndex title="Pages" items={pagesIndexData} />
-            <FileIndex title="Components" items={componentsIndexData} />
-            <FileIndex title="Tags" items={tagsIndexData} />
+          <div size="large" className="SgNav__modal-content">
+            <SgFileIndex title="Pages" items={pagesIndexData} />
+            <SgFileIndex title="Components" items={componentsIndexData} />
+            <SgFileIndex title="Tags" items={tagsIndexData} />
           </div>
         </ReactModal>
       </div>
@@ -65,4 +70,4 @@ export class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default SgNav;

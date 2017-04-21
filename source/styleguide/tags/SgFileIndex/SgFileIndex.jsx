@@ -1,6 +1,6 @@
 import startCase from 'lodash.startcase';
-import Heading from 'SgTags/Heading/Heading';
-import Rhythm from 'SgTags/Rhythm/Rhythm';
+import Heading from 'SgTags/SgHeading/SgHeading';
+import Rhythm from 'SgTags/SgRhythm/SgRhythm';
 
 const pagesContext = require.context('Pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 const tagsContext = require.context('Tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
@@ -62,7 +62,7 @@ export const tagsIndexData =
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/tags`));
 
 
-export const FileIndex = (props) => {
+export const SgFileIndex = (props) => {
   const {
     items,
     className,
@@ -75,7 +75,7 @@ export const FileIndex = (props) => {
 
   return items && (
     <RhythmComponent size={size}>
-      <HeadingComponent level="2">{title}</HeadingComponent>
+      <HeadingComponent level="h2">{title}</HeadingComponent>
       <ul className={className} {...attrs}>
         { items.map((item) => (
           <li key={item.url}>
@@ -87,7 +87,7 @@ export const FileIndex = (props) => {
   );
 };
 
-FileIndex.defaultProps = {
+SgFileIndex.defaultProps = {
   items: [],
   className: '',
   size: 'default',
@@ -96,7 +96,7 @@ FileIndex.defaultProps = {
   HeadingComponent: Heading
 };
 
-FileIndex.propTypes = {
+SgFileIndex.propTypes = {
   items: PropTypes.array,
   className: PropTypes.string,
   size: PropTypes.string,
@@ -112,4 +112,4 @@ FileIndex.propTypes = {
 };
 
 
-export default FileIndex;
+export default SgFileIndex;

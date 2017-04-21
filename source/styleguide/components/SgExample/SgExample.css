@@ -1,15 +1,15 @@
-.sg-example {
+.SgExample {
   margin: 0 0 2em;
 }
 
-.sg-expample__anchor {
+.SgExample__anchor {
   display: block;
   height: 0;
   visibility: hidden;
 }
 
-.sg-example__header {
-  & .sg-heading {
+.SgExample__header {
+  & .SgHeading {
     background-color: var(--color-gray-darker);
     color: var(--color-white);
     font-size: 1em;
@@ -29,7 +29,7 @@
   }
 }
 
-.sg-example__tabs {
+.SgExample__tabs {
   background-color: var(--color-background);
   border-bottom: none;
   display: flex;
@@ -40,7 +40,7 @@
   }
 }
 
-.sg-example__tabs-item {
+.SgExample__tabs-item {
   border-bottom: none;
   text-align: center;
 
@@ -67,7 +67,7 @@
   }
 }
 
-.sg-example__section {
+.SgExample__section {
   display: none;
   background-color: var(--color-white);
   overflow: auto;
@@ -82,15 +82,15 @@
   }
 }
 
-.sg-example__section--full-width {
+.SgExample__section--full-width {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-.sg-example__section--no-padding {
+.SgExample__section--no-padding {
   padding: 0 !important;
 }
 
-.sg-example__section--dark-background {
+.SgExample__section--dark-background {
   background-color: var(--color-background-dark);
 }

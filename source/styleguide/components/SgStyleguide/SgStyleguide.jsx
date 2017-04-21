@@ -6,28 +6,28 @@ import Nav from 'SgComponents/Nav/Nav';
 import Example from 'SgComponents/Example/Example';
 
 
-export const Styleguide_Readme = (props) => (
-  <div id="readme" className="sg-styleguide__section">
-    <div className="sg-styleguide__section-header">
-      <Heading level="2">Readme</Heading>
+export const SgStyleguide_Readme = (props) => (
+  <div id="readme" className="SgStyleguide__section">
+    <div className="SgStyleguide__section-header">
+      <Heading level="h2">Readme</Heading>
 
       <div
-        className="sg-styleguide__readme"
+        className="SgStyleguide__readme"
         dangerouslySetInnerHTML={{ __html: props.readme }}
       />
     </div>
   </div>
 );
 
-Styleguide_Readme.propTypes = {
+SgStyleguide_Readme.propTypes = {
   readme: PropTypes.string
 };
 
 
-export const Styleguide_Examples = (props) => (
-  <div id="examples" className="sg-styleguide__section">
-    <Rhythm className="sg-styleguide__section-header">
-      <Heading level="2">Examples</Heading>
+export const SgStyleguide_Examples = (props) => (
+  <div id="examples" className="SgStyleguide__section">
+    <Rhythm className="SgStyleguide__section-header">
+      <Heading level="h2">Examples</Heading>
 
       <Rhythm size="small">
         {
@@ -61,7 +61,7 @@ export const Styleguide_Examples = (props) => (
   </div>
 );
 
-Styleguide_Examples.propTypes = {
+SgStyleguide_Examples.propTypes = {
   examples: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     options: PropTypes.object,
@@ -70,7 +70,7 @@ Styleguide_Examples.propTypes = {
 };
 
 
-export const Styleguide = ({
+export const SgStyleguide = ({
   name = 'Generic Component',
   readme,
   examples
@@ -78,22 +78,22 @@ export const Styleguide = ({
   <div>
     <Nav />
 
-    <div className="sg-styleguide" id="content">
-      <div className="sg-styleguide__header sg-styleguide-section__header">
-        <Heading level="1">{name}</Heading>
+    <div className="SgStyleguide" id="content">
+      <div className="SgStyleguide__header SgStyleguide-section__header">
+        <Heading level="h1">{name}</Heading>
       </div>
 
-      { readme ? <Styleguide_Readme readme={readme} /> : undefined }
-      { examples ? <Styleguide_Examples examples={examples} /> : undefined }
+      { readme ? <SgStyleguide_Readme readme={readme} /> : undefined }
+      { examples ? <SgStyleguide_Examples examples={examples} /> : undefined }
     </div>
   </div>
 );
 
-Styleguide.propTypes = {
+SgStyleguide.propTypes = {
   name: PropTypes.string,
   readme: PropTypes.string,
   examples: PropTypes.array
 };
 
 
-export default Styleguide;
+export default SgStyleguide;

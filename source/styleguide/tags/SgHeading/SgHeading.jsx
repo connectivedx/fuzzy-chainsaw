@@ -1,4 +1,4 @@
-export const Heading = (props) => {
+export const SgHeading = (props) => {
   const {
     tagName,
     className,
@@ -10,9 +10,9 @@ export const Heading = (props) => {
 
   const Tag = tagName || level || 'h1';
   const classStack = FcUtils.createClassStack([
-    'sg-heading',
-    `sg-heading--${weight}`,
-    `sg-heading--${level}`,
+    'SgHeading',
+    `SgHeading--${weight}`,
+    `SgHeading--${level}`,
     className
   ]);
 
@@ -23,12 +23,12 @@ export const Heading = (props) => {
   );
 };
 
-Heading.defaultProps = {
+SgHeading.defaultProps = {
   weight: 'bold',
   level: 'h1'
 };
 
-Heading.propTypes = {
+SgHeading.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
   weight: PropTypes.oneOf(['bold', 'medium', 'thin']),
@@ -37,4 +37,4 @@ Heading.propTypes = {
 };
 
 
-export default Heading;
+export default SgHeading;
