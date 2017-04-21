@@ -73,18 +73,20 @@ export const SgFileIndex = (props) => {
     ...attrs
   } = props;
 
-  return items && (
-    <RhythmComponent size={size}>
-      <HeadingComponent level="h2">{title}</HeadingComponent>
-      <ul className={className} {...attrs}>
-        { items.map((item) => (
-          <li key={item.url}>
-            <a href={item.url}>{item.content}</a>
-          </li>
-        )) }
-      </ul>
-    </RhythmComponent>
-  );
+  return items.length
+    ? (
+      <RhythmComponent size={size}>
+        <HeadingComponent level="h2">{title}</HeadingComponent>
+        <ul className={className} {...attrs}>
+          { items.map((item) => (
+            <li key={item.url}>
+              <a href={item.url}>{item.content}</a>
+            </li>
+          )) }
+        </ul>
+      </RhythmComponent>
+    )
+    : null;
 };
 
 SgFileIndex.defaultProps = {
