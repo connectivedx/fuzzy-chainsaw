@@ -10,10 +10,10 @@ test('<Wrapper />', (t) => {
   t.end();
 });
 
-test('<Wrapper size="small" />', (t) => {
-  const component = shallow(<Wrapper size="small">abc</Wrapper>);
+test('<Wrapper size="narrow" />', (t) => {
+  const component = shallow(<Wrapper size="narrow">abc</Wrapper>);
   t.ok(component.is('div'), 'tag name');
   t.ok(component.is('.Wrapper'), 'tag class');
-  t.ok(component.is('.Wrapper--small'), 'tag class');
+  t.ok(component.is('.Wrapper--narrow'), 'tag class');
   t.end();
 });

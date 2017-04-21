@@ -27,7 +27,7 @@ Media_Figure.defaultProps = {
 Media_Figure.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
-  align: PropTypes.oneOf([]),
+  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   children: PropTypes.node.isRequired
 };
 
@@ -59,7 +59,7 @@ Media_Body.defaultProps = {
 Media_Body.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
-  align: PropTypes.string,
+  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   children: PropTypes.node.isRequired
 };
 
@@ -75,7 +75,7 @@ export const Media = (props) => {
 
   const classStack = FcUtils.createClassStack([
     'Media',
-    `Media--${align}`,
+    align && `Media--${align}`,
     className
   ]);
 
@@ -87,8 +87,7 @@ export const Media = (props) => {
 };
 
 Media.defaultProps = {
-  tagName: 'div',
-  align: 'top'
+  tagName: 'div'
 };
 
 Media.propTypes = {

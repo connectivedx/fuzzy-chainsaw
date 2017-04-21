@@ -2,6 +2,11 @@
   display: flex;
 }
 
+/* media variants */
+.Media--top { align-items: flex-start; }
+.Media--middle { align-items: center; }
+.Media--bottom { align-items: flex-end; }
+
 .Media__body {
   flex: 1;
 
@@ -15,8 +20,8 @@
   margin-right: 1em;
 }
 
-.Media--middle { align-items: center; }
-.Media--bottom { align-items: flex-end; }
-
+/* figure variants */
+.Media__figure--top { align-self: flex-start; }
 .Media__figure--middle { align-self: center; }
 .Media__figure--bottom { align-self: flex-end; }
+

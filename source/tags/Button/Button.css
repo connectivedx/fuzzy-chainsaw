@@ -1,11 +1,17 @@
 .Button {
-  display: inline-block;
-  vertical-align: middle;
   padding: 1em 2em;
-  border: 2px solid var(--color-dark);
-  background-color: color(var(--color-dark) alpha(10%));
-  color: var(--color-dark);
   cursor: pointer;
+}
+
+.Button--link {
+  text-decoration: none;
+}
+
+/* variants */
+.Button--default {
+  background-color: color(var(--color-dark) alpha(10%));
+  border: 2px solid var(--color-dark);
+  color: var(--color-dark);
 
   &:--enter {
     background-color: var(--color-dark);
@@ -14,8 +20,8 @@
 }
 
 .Button--cta {
-  border: 2px solid red;
   background-color: color(var(--color-red) alpha(10%));
+  border: 2px solid red;
   color: red;
 
   &:--enter {
@@ -24,8 +30,11 @@
   }
 }
 
-.Button--link {
-  text-decoration: none;
+/* sizes */
+.Button--auto {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
 }
 
 .Button--full {

@@ -5,6 +5,7 @@
   line-height: 1em;
 }
 
+/* weights */
 .Heading--bold {
   font-weight: 700;
 }
@@ -17,6 +18,7 @@
   font-weight: 500;
 }
 
+/* levels */
 .Heading--h1 { font-size: 2em; }
 .Heading--h2 { font-size: 1.6em; }
 .Heading--h3 { font-size: 1.4em; }

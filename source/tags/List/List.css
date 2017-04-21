@@ -1,4 +1,5 @@
-.List {
+/* variants */
+.List--blank {
   list-style: none;
 }
 

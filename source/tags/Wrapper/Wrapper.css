@@ -3,10 +3,16 @@
   padding: 2em;
 }
 
+/* sizes */
+.Wrapper--narrow {
+  max-width: 640px;
+}
+
 .Wrapper--default {
   max-width: 960px;
 }
 
-.Wrapper--small {
-  max-width: 640px;
+.Wrapper--wide {
+  max-width: 960px;
 }
+

@@ -9,6 +9,7 @@
   width: 1.65em;
 }
 
+/* variants */
 .Brand--default {
   & .Brand__label { display: none; }
 

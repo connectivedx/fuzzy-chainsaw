@@ -1,8 +1,10 @@
-export const List_Item = ({
-  className = '',
-  children,
-  ...attrs
-}) => {
+export const List_Item = (props) => {
+  const {
+    className,
+    children,
+    ...attrs
+  } = props;
+
   const classStack = FcUtils.createClassStack([
     'List__item',
     className

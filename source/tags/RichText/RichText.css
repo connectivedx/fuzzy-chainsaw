@@ -24,6 +24,7 @@
 
   & button {
     @extend .Button;
+    @extend .Button--default;
   }
 
   & ul,

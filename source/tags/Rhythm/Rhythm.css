@@ -1,3 +1,4 @@
+/* variants */
 .Rhythm,
 .Rhythm--default { & > * + * { margin-top: 1em; } }
 .Rhythm--small { & > * + * { margin-top: 0.5em; } }

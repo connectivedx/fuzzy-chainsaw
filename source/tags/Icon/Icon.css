@@ -2,6 +2,7 @@
   display: inline-block;
 }
 
+/* sizes */
 .Icon--normal {
   width: 1em;
   height: 1em;
@@ -22,6 +23,7 @@
   height: 1.5em;
 }
 
+/* colors */
 .Icon--dark {
   fill: var(--color-dark);
 }

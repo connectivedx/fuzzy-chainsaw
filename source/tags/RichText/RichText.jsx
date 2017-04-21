@@ -28,7 +28,7 @@ RichText.defaultProps = {
 RichText.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf(['default']),
   children: PropTypes.node.isRequired
 };
 

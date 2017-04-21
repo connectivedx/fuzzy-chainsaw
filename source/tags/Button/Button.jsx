@@ -2,6 +2,7 @@ export const Button = (props) => {
   const {
     tagName,
     className,
+    width,
     variant,
     href,
     children,
@@ -12,6 +13,7 @@ export const Button = (props) => {
   let classStack = FcUtils.createClassStack([
     'Button',
     `Button--${variant}`,
+    `Button--${width}`,
     className
   ]);
 
@@ -28,13 +30,15 @@ export const Button = (props) => {
 
 Button.defaultProps = {
   tagName: 'button',
-  variant: 'default'
+  variant: 'default',
+  width: 'auto'
 };
 
 Button.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'link', 'cta', 'full']),
+  width: PropTypes.oneOf(['auto', 'full']),
+  variant: PropTypes.oneOf(['default', 'link', 'cta']),
   href: PropTypes.string,
   children: PropTypes.node.isRequired
 };

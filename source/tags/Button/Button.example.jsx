@@ -23,7 +23,7 @@ export default [{
 }, {
   name: 'Full width styling',
   component: (
-    <Button variant="default full">Hello World</Button>
+    <Button width="full">Hello World</Button>
   )
 }, {
   name: 'Linked Cta button',
