@@ -7,7 +7,7 @@ test('<Brand />', (t) => {
   const component = shallow(<Brand />);
   t.ok(component.is('div'), 'tag name');
   t.ok(component.is('.brand'), 'tag class');
-  t.ok(component.is('.brand--full'), 'variant class');
+  t.ok(component.is('.brand--default'), 'variant class');
   t.end();
 });
 

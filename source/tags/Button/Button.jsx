@@ -9,15 +9,15 @@ export const Button = (props) => {
   } = props;
 
   let Tag = tagName;
-  let classStack = Rucksack.createClassName([
+  let classStack = FcUtils.createClassStack([
     'button',
-    Rucksack.createVariants('button--', variant),
+    `button--${variant}`,
     className
   ]);
 
   if (href) {
     Tag = 'a';
-    classStack = Rucksack.createClassName([classStack, 'button--link']);
+    classStack = FcUtils.createClassStack([classStack, 'button--link']);
     attrs.href = href;
   }
 
@@ -32,11 +32,11 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  href: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'link', 'cta', 'full']),
+  href: PropTypes.string,
+  children: PropTypes.node.isRequired
 };
 
 export default Button;

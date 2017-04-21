@@ -1,30 +1,39 @@
-const Rhythm = ({
-  tagName = 'div',
-  className = '',
-  size = 'default',
-  deep = false,
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
-  const baseClass = deep ? 'rhythm--deep-' : 'rhythm--';
+const Rhythm = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    size,
+    deep,
+    children,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    deep
+      ? `rhythm--deep-${size}`
+      : `rhythm--${size}`,
+    className
+  ]);
 
   return (
-    <Tag className={`${baseClass}${size} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+Rhythm.defaultProps = {
+  tagName: 'div',
+  size: 'default',
+  deep: false
+};
+
 Rhythm.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  size: React.PropTypes.string,
-  deep: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool
-  ]),
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['default', 'small', 'large']),
+  deep: PropTypes.bool,
+  children: PropTypes.node.isRequired
 };
 
 export default Rhythm;

@@ -9,7 +9,7 @@
   width: 1.65em;
 }
 
-.brand--full {
+.brand--default {
   & .brand__label { display: none; }
 
   @media (--small) {

@@ -10,21 +10,21 @@ export default [{
 }, {
   name: 'tagName',
   component: (
-    <Heading level="3">
+    <Heading tagName="h3">
       Wowie Zowie
     </Heading>
   )
 }, {
   name: 'className/variant',
   component: (
-    <Heading className="super" variant="medium">
+    <Heading className="super" weight="medium">
       Leg Shaking
     </Heading>
   )
 }, {
   name: 'tagName/className/variant',
   component: (
-    <Heading tagName="div" className="duper" variant="thin">
+    <Heading tagName="div" className="duper" level="h3" weight="thin">
       Back Breaking
     </Heading>
   )

@@ -7,11 +7,11 @@ export const Icon = (props) => {
     ...attrs
   } = props;
 
-  const classStack = Rucksack.createClassName([
+  const classStack = FcUtils.createClassStack([
     'icon',
-    Rucksack.createVariants('icon--', size),
-    Rucksack.createVariants('icon--', name),
-    Rucksack.createVariants('icon--', variant),
+    `icon--${name}`,
+    `icon--${size}`,
+    `icon--${variant}`,
     className
   ]);
 
@@ -28,10 +28,10 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-  className: React.PropTypes.string,
-  size: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['normal', 'small', 'large', 'wide']),
+  variant: PropTypes.oneOf(['default', 'dark', 'light']),
+  name: PropTypes.string.isRequired
 };
 
 export default Icon;

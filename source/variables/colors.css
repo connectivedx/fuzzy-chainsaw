@@ -6,6 +6,7 @@
   color: var(--greyDark);
 */
 :root {
-  --color-primary: #e55030;
-  --color-secondary: #d1d2d4;
+  --color-dark: #222;
+  --color-light: #fff;
+  --color-red: #f00;
 }

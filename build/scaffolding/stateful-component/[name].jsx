@@ -2,7 +2,7 @@ export class {{name}} extends React.Component {
   static propTypes = {
     tagName: PropTypes.string,
     className: PropTypes.string,
-    variant: Rucksack.PropTypes.variants(['default']),
+    variant: PropTypes.oneOf(['default']),
     children: PropTypes.node
   };
 
@@ -28,7 +28,7 @@ export class {{name}} extends React.Component {
       ...attrs
     } = this.props;
 
-    const classStack = Rucksack.createClassName([
+    const classStack = FcUtils.createClassStack([
       '{{name}}',
       Rucksack.createVariants('{{name}}--', variant),
       this.state.isActive && 'is-active',

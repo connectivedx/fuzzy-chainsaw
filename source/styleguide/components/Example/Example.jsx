@@ -46,98 +46,132 @@ const filterProps = (component) => {
 };
 
 
-export const Example_Section = ({
-  type,
-  className = '',
-  children,
-  isActive = false,
-  ...attrs
-}) => (
-  <div className={`sg-example__section sg-example__section--${type} ${isActive ? 'is-active' : ''} ${className}`} {...attrs}>
-    {children}
-  </div>
-);
+export const Example_Section = (props) => {
+  const {
+    type,
+    className,
+    children,
+    isActive,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    'sg-example__section',
+    `sg-example__section--${type}`,
+    isActive && 'is-active',
+    className
+  ]);
+
+  return (
+    <div className={classStack} {...attrs}>
+      {children}
+    </div>
+  );
+};
+
+Example_Section.defaultProps = {
+  isActive: false
+};
 
 Example_Section.propTypes = {
-  type: React.PropTypes.string,
-  className: React.PropTypes.string,
-  isActive: React.PropTypes.bool,
-  children: React.PropTypes.node
+  type: PropTypes.string,
+  className: PropTypes.string,
+  isActive: PropTypes.bool,
+  children: PropTypes.node
 };
 
 
-export const Example_Wrapper = ({
-  slug,
-  children,
-  ...attrs
-}) => (
-  <div className="sg-example" {...attrs}>
-    <a className="sg-expample__anchor" id={slug}>&nbsp;</a>
-    {children}
-  </div>
-);
+export const Example_Wrapper = (props) => {
+  const {
+    slug,
+    children,
+    ...attrs
+  } = props;
+
+  return (
+    <div className="sg-example" {...attrs}>
+      <a className="sg-expample__anchor" id={slug}>&nbsp;</a>
+      {children}
+    </div>
+  );
+};
 
 Example_Wrapper.propTypes = {
-  slug: React.PropTypes.string,
-  children: React.PropTypes.node
+  slug: PropTypes.string,
+  children: PropTypes.node
 };
 
 
-export const Example_Header = ({
-  exampleName,
-  children,
-  ...attrs
-}) => (
-  <div className="sg-example__header" {...attrs}>
-    <Heading level="3" className="sg-example__name">{exampleName}</Heading>
+export const Example_Header = (props) => {
+  const {
+    exampleName,
+    children,
+    ...attrs
+  } = props;
 
-    <ul className="sg-example__tabs">
-      {children}
-    </ul>
-  </div>
-);
+  return (
+    <div className="sg-example__header" {...attrs}>
+      <Heading level="3" className="sg-example__name">{exampleName}</Heading>
+
+      <ul className="sg-example__tabs">
+        {children}
+      </ul>
+    </div>
+  );
+};
 
 Example_Header.propTypes = {
-  exampleName: React.PropTypes.string,
-  children: React.PropTypes.node
+  exampleName: PropTypes.string,
+  children: PropTypes.node
 };
 
 
-export const Example_Tab = ({
-  slug,
-  name,
-  children,
-  isActive,
-  ...attrs
-}) => (
-  <li className={`sg-example__tabs-item ${isActive ? 'is-active' : ''}`} {...attrs}>
-    <a href={`#${slug}/${name}`}>{children}</a>
-  </li>
-);
+export const Example_Tab = (props) => {
+  const {
+    slug,
+    name,
+    children,
+    isActive,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    'sg-example__tabs-item',
+    isActive && 'is-active'
+  ]);
+
+  return (
+    <li className={classStack} {...attrs}>
+      <a href={`#${slug}/${name}`}>{children}</a>
+    </li>
+  );
+};
 
 Example_Tab.propTypes = {
-  slug: React.PropTypes.string,
-  name: React.PropTypes.string,
-  isActive: React.PropTypes.bool,
-  children: React.PropTypes.node
+  slug: PropTypes.string,
+  name: PropTypes.string,
+  isActive: PropTypes.bool,
+  children: PropTypes.node
 };
 
 
-export const Example = ({
-  slug,
-  exampleName,
-  options,
-  component
-}) => {
+export const Example = (props) => {
+  const {
+    slug,
+    exampleName,
+    options,
+    component
+  } = props;
+
   const reactExample = reactElementToString(component);
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component), null, 2);
 
-  const exampleClasses = options ? [
-    options.fullWidth ? 'sg-example__section--full-width' : undefined,
-    options.noPadding ? 'sg-example__section--no-padding' : undefined,
-    options.darkBackground ? 'sg-example__section--dark-background' : undefined
-  ].filter((a) => a !== undefined).join(' ') : '';
+  const exampleClassStack = FcUtils.createClassStack([
+    options.fullWidth && 'sg-example__section--full-width',
+    options.noPadding && 'sg-example__section--no-padding',
+    options.darkBackground && 'sg-example__section--dark-background'
+  ]);
 
   return (
     <Example_Wrapper slug={slug}>
@@ -152,7 +186,7 @@ export const Example = ({
         title="Example"
         type="example"
         isActive
-        className={exampleClasses}
+        className={exampleClassStack}
         dangerouslySetInnerHTML={{ __html: htmlExample }}
       />
 
@@ -177,15 +211,22 @@ export const Example = ({
   );
 };
 
+Example.defaultProps = {
+  options: { }
+};
+
 Example.propTypes = {
-  slug: React.PropTypes.string,
-  exampleName: React.PropTypes.string,
-  options: React.PropTypes.shape({
-    fullWidth: React.PropTypes.bool,
-    noPadding: React.PropTypes.bool,
-    darkBackground: React.PropTypes.bool
+  slug: PropTypes.string,
+  exampleName: PropTypes.string,
+  options: PropTypes.shape({
+    fullWidth: PropTypes.bool,
+    noPadding: PropTypes.bool,
+    darkBackground: PropTypes.bool
   }),
-  component: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.element])
+  component: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element
+  ])
 };
 
 

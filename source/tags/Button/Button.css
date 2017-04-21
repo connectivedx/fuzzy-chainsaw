@@ -2,32 +2,33 @@
   display: inline-block;
   vertical-align: middle;
   padding: 1em 2em;
+  border: 2px solid var(--color-dark);
+  background-color: color(var(--color-dark) alpha(10%));
+  color: var(--color-dark);
   cursor: pointer;
-}
-
-.button--default {
-  border: 2px solid black;
-  background-color: #000.1;
-  color: black;
 
   &:--enter {
-    background-color: black;
-    color: white;
+    background-color: var(--color-dark);
+    color: var(--color-light);
   }
 }
 
 .button--cta {
   border: 2px solid red;
-  background-color: #f00.1;
+  background-color: color(var(--color-red) alpha(10%));
   color: red;
 
   &:--enter {
-    background-color: red;
-    color: white;
+    background-color: var(--color-red);
+    color: var(--color-light);
   }
 }
 
 .button--link {
-  display: inline-block;
   text-decoration: none;
+}
+
+.button--full {
+  display: block;
+  width: 100%;
 }

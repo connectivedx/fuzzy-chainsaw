@@ -8,9 +8,9 @@ const Brand = (props) => {
     ...attrs
   } = props;
 
-  const classStack = Rucksack.createClassName([
+  const classStack = FcUtils.createClassStack([
     'brand',
-    Rucksack.createVariants('brand--', variant),
+    `brand--${variant}`,
     className
   ]);
 
@@ -18,11 +18,10 @@ const Brand = (props) => {
     <Tag className={classStack} {...attrs}>
       <Icon name="close" className="brand__icon" />
       {
-        variant === 'full'
-        ? <span className="brand__label">
-            GenericBrand
-          </span>
-        : undefined
+        variant === 'default' &&
+        <span className="brand__label">
+          GenericBrand
+        </span>
       }
     </Tag>
   );
@@ -30,13 +29,13 @@ const Brand = (props) => {
 
 Brand.defaultProps = {
   tagName: 'div',
-  variant: 'full'
+  variant: 'default'
 };
 
 Brand.propTypes = {
-  tagName: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  className: React.PropTypes.string
+  tagName: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'compact']),
+  className: PropTypes.string
 };
 
 

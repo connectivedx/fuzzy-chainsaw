@@ -43,23 +43,6 @@ export const PlaceholderSvg = (props) => {
   );
 };
 
-PlaceholderSvg.propTypes = {
-  width: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  height: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  text: React.PropTypes.string,
-  imgColor: React.PropTypes.string,
-  textColor: React.PropTypes.string,
-  fontFamily: React.PropTypes.string,
-  fontSize: React.PropTypes.string,
-  fontWeight: React.PropTypes.string
-};
-
 PlaceholderSvg.defaultProps = {
   width: 500,
   height: 250,
@@ -69,6 +52,23 @@ PlaceholderSvg.defaultProps = {
   fontFamily: 'inherit',
   fontSize: 'inherit',
   fontWeight: 'bold'
+};
+
+PlaceholderSvg.propTypes = {
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  height: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  text: PropTypes.string,
+  imgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
+  fontWeight: PropTypes.string
 };
 
 export default PlaceholderSvg;

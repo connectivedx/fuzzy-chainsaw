@@ -1,34 +1,39 @@
-export const Heading = ({
-  tagName,
-  className = '',
-  variant = 'default',
-  level,
-  children,
-  ...attrs
-}) => {
-  let Tag = tagName || 'h1';
-  let delevel = level || 1;
+export const Heading = (props) => {
+  const {
+    tagName,
+    className,
+    weight,
+    level,
+    children,
+    ...attrs
+  } = props;
 
-  if (level !== undefined && tagName === undefined) {
-    Tag = `h${level}`;
-    delevel = level;
-  } else if (level === undefined && tagName !== undefined) {
-    Tag = tagName;
-  }
+  const Tag = tagName || level || 'h1';
+  const classStack = FcUtils.createClassStack([
+    'sg-heading',
+    `sg-heading--${weight}`,
+    `sg-heading--${level}`,
+    className
+  ]);
 
   return (
-    <Tag className={`sg-heading sg-heading--${variant} sg-heading--h${delevel} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+Heading.defaultProps = {
+  weight: 'bold',
+  level: 'h1'
+};
+
 Heading.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  level: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  weight: PropTypes.oneOf(['bold', 'medium', 'thin']),
+  level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  children: PropTypes.node.isRequired
 };
 
 

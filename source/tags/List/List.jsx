@@ -2,37 +2,57 @@ export const List_Item = ({
   className = '',
   children,
   ...attrs
-}) => (
-  <li className={`list__item ${className}`} {...attrs}>{children}</li>
-);
+}) => {
+  const classStack = FcUtils.createClassStack([
+    'list__item',
+    className
+  ]);
+
+  return (
+    <li className={classStack} {...attrs}>
+      {children}
+    </li>
+  );
+};
 
 List_Item.propTypes = {
-  className: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
 };
 
 
-export const List = ({
-  tagName,
-  className = '',
-  variant = 'unordered',
-  children,
-  ...attrs
-}) => {
+export const List = (props) => {
+  const {
+    tagName,
+    className,
+    variant,
+    children,
+    ...attrs
+  } = props;
+
   const Tag = tagName || variant === 'ordered' ? 'ol' : 'ul';
+  const classStack = FcUtils.createClassStack([
+    'list',
+    `list--${variant}`,
+    className
+  ]);
 
   return (
-    <Tag className={`list list--${variant} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+List.defaultProps = {
+  variant: 'unordered'
+};
+
 List.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['unordered', 'ordered', 'blank']),
+  children: PropTypes.node.isRequired
 };
 
 

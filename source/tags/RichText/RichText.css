@@ -24,7 +24,6 @@
 
   & button {
     @extend .button;
-    @extend .button--default;
   }
 
   & ul,

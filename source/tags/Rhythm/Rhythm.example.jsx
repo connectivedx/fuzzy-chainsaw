@@ -30,16 +30,16 @@ module.exports = [{
 }, {
   name: 'deep',
   component: (
-    <Rhythm deep="true">{children}</Rhythm>
+    <Rhythm deep>{children}</Rhythm>
   )
 }, {
   name: 'size/deep',
   component: (
-    <Rhythm deep="true" size="small">{children}</Rhythm>
+    <Rhythm deep size="small">{children}</Rhythm>
   )
 }, {
   name: 'size/deep/tagName/class',
   component: (
-    <Rhythm tagName="section" deep="true" size="large" className="red">{children}</Rhythm>
+    <Rhythm tagName="section" deep size="large" className="red">{children}</Rhythm>
   )
 }];

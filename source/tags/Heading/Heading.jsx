@@ -2,25 +2,17 @@ export const Heading = (props) => {
   const {
     tagName,
     className,
-    variant,
+    weight,
     level,
     children,
     ...attrs
-} = props;
-  let Tag = tagName || 'h1';
-  let delevel = level || 1;
+  } = props;
 
-  if (level !== undefined && tagName === undefined) {
-    Tag = `h${level}`;
-    delevel = level;
-  } else if (level === undefined && tagName !== undefined) {
-    Tag = tagName;
-  }
-
-  const classStack = Rucksack.createClassName([
+  const Tag = tagName || level || 'h1';
+  const classStack = FcUtils.createClassStack([
     'heading',
-    Rucksack.createVariants('heading--', variant),
-    Rucksack.createVariants('heading--h', delevel),
+    `heading--${weight}`,
+    `heading--${level}`,
     className
   ]);
 
@@ -32,15 +24,16 @@ export const Heading = (props) => {
 };
 
 Heading.defaultProps = {
-  variant: 'default'
+  weight: 'bold',
+  level: 'h1'
 };
 
 Heading.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  level: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  weight: PropTypes.oneOf(['bold', 'medium', 'thin']),
+  level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  children: PropTypes.node.isRequired
 };
 
 

@@ -21,6 +21,11 @@ export default [{
     <Button variant="cta">Hello World</Button>
   )
 }, {
+  name: 'Full width styling',
+  component: (
+    <Button variant="default full">Hello World</Button>
+  )
+}, {
   name: 'Linked Cta button',
   component: (
     <Button href="#/" variant="cta">Hello World</Button>

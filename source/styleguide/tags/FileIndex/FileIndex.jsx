@@ -73,31 +73,18 @@ export const FileIndex = (props) => {
     ...attrs
   } = props;
 
-  return (
-    items.length
-    ? (
-      <RhythmComponent size={size}>
-        <HeadingComponent level="2">{title}</HeadingComponent>
-        <ul className={className} {...attrs}>
-          { items.map((item) => (
-            <li key={item.url}>
-              <a href={item.url}>{item.content}</a>
-            </li>
-          )) }
-        </ul>
-      </RhythmComponent>
-    )
-    : null
+  return items && (
+    <RhythmComponent size={size}>
+      <HeadingComponent level="2">{title}</HeadingComponent>
+      <ul className={className} {...attrs}>
+        { items.map((item) => (
+          <li key={item.url}>
+            <a href={item.url}>{item.content}</a>
+          </li>
+        )) }
+      </ul>
+    </RhythmComponent>
   );
-};
-
-FileIndex.propTypes = {
-  items: React.PropTypes.array,
-  className: React.PropTypes.string,
-  size: React.PropTypes.string,
-  title: React.PropTypes.string,
-  RhythmComponent: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.element]),
-  HeadingComponent: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.element])
 };
 
 FileIndex.defaultProps = {
@@ -107,6 +94,21 @@ FileIndex.defaultProps = {
   title: '',
   RhythmComponent: Rhythm,
   HeadingComponent: Heading
+};
+
+FileIndex.propTypes = {
+  items: PropTypes.array,
+  className: PropTypes.string,
+  size: PropTypes.string,
+  title: PropTypes.string,
+  RhythmComponent: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element
+  ]),
+  HeadingComponent: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element
+  ])
 };
 
 

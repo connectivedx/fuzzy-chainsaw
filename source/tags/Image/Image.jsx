@@ -1,39 +1,56 @@
-export const Image = ({
-  className = '',
-  variant = 'default',
-  alt = '',
-  src = { },
-  ...attrs
-}) => {
-  if (typeof src === 'string') {
-    return <img alt={alt} src={src.toString()} className={`image image--${variant} ${className}`} />;
-  }
+export const Image = (props) => {
+  const {
+    className,
+    variant,
+    alt,
+    src,
+    ...attrs
+  } = props;
 
-  const imageData = {
-    src: src.src,
-    srcSet: src.srcset,
-    width: src.width,
-    height: src.height
-  };
+  const classStack = FcUtils.createClassStack([
+    'image',
+    `image--${variant}`,
+    className
+  ]);
+
+  if (typeof src === 'string') {
+    return (
+      <img
+        alt={alt}
+        src={src.toString()}
+        className={classStack}
+        {...attrs}
+      />
+    );
+  }
 
   return (
     <img
-      className={`image image--${variant} ${className}`}
+      className={classStack}
       alt={alt}
-      {...imageData}
+      {...{
+        src: src.src,
+        srcSet: src.srcset,
+        width: src.width,
+        height: src.height
+      }}
       {...attrs}
     />
   );
 };
 
+Image.defaultProps = {
+  variant: 'default'
+};
+
 Image.propTypes = {
-  className: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(['default', 'auto']),
-  alt: React.PropTypes.string.isRequired,
-  src: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object
-  ])
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'auto']),
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]).isRequired
 };
 
 

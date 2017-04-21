@@ -7,13 +7,13 @@ import {
 
 export default class ExampleComponent extends React.Component {
   static propTypes = {
-    slug: React.PropTypes.string,
-    exampleName: React.PropTypes.string,
-    exampleClasses: React.PropTypes.string,
-    exampleOuput: React.PropTypes.string,
-    reactOuput: React.PropTypes.string,
-    htmlOuput: React.PropTypes.string,
-    jsonOuput: React.PropTypes.string
+    slug: PropTypes.string,
+    exampleName: PropTypes.string,
+    exampleClasses: PropTypes.string,
+    exampleOuput: PropTypes.string,
+    reactOuput: PropTypes.string,
+    htmlOuput: PropTypes.string,
+    jsonOuput: PropTypes.string
   }
 
   state = {

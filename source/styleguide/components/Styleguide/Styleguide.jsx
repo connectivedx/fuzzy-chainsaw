@@ -6,32 +6,32 @@ import Nav from 'SgComponents/Nav/Nav';
 import Example from 'SgComponents/Example/Example';
 
 
-export const Styleguide_Readme = ({ readme }) => (
+export const Styleguide_Readme = (props) => (
   <div id="readme" className="sg-styleguide__section">
     <div className="sg-styleguide__section-header">
       <Heading level="2">Readme</Heading>
 
       <div
         className="sg-styleguide__readme"
-        dangerouslySetInnerHTML={{ __html: readme }}
+        dangerouslySetInnerHTML={{ __html: props.readme }}
       />
     </div>
   </div>
 );
 
 Styleguide_Readme.propTypes = {
-  readme: React.PropTypes.string
+  readme: PropTypes.string
 };
 
 
-export const Styleguide_Examples = ({ examples }) => (
+export const Styleguide_Examples = (props) => (
   <div id="examples" className="sg-styleguide__section">
     <Rhythm className="sg-styleguide__section-header">
       <Heading level="2">Examples</Heading>
 
       <Rhythm size="small">
-        { examples
-          .map((e) =>
+        {
+          props.examples.map((e) => (
             <div key={e.name}>
               <a
                 href={`#${slugify(e.name)}`}
@@ -41,13 +41,13 @@ export const Styleguide_Examples = ({ examples }) => (
                 {e.name}
               </a>
             </div>
-
-          )}
+          ))
+        }
       </Rhythm>
     </Rhythm>
 
-    { examples
-      .map((e) =>
+    {
+      props.examples.map((e) => (
         <Example
           key={slugify(e.name)}
           slug={slugify(e.name)}
@@ -56,15 +56,16 @@ export const Styleguide_Examples = ({ examples }) => (
           component={e.component}
           options={e.options}
         />
-        ) }
+      ))
+    }
   </div>
 );
 
 Styleguide_Examples.propTypes = {
-  examples: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
-    options: React.PropTypes.object,
-    component: React.PropTypes.element
+  examples: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    options: PropTypes.object,
+    component: PropTypes.element
   }))
 };
 
@@ -89,9 +90,9 @@ export const Styleguide = ({
 );
 
 Styleguide.propTypes = {
-  name: React.PropTypes.string,
-  readme: React.PropTypes.string,
-  examples: React.PropTypes.array
+  name: PropTypes.string,
+  readme: PropTypes.string,
+  examples: PropTypes.array
 };
 
 

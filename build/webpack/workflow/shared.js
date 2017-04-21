@@ -33,7 +33,8 @@ module.exports = {
       Styleguide: source('styleguide'),
       SgVars: source('styleguide/variables'),
       SgTags: source('styleguide/tags'),
-      SgComponents: source('styleguide/components')
+      SgComponents: source('styleguide/components'),
+      FcUtils: path.resolve(__dirname, '../../lib/fc-utilities.js')
     }
   },
   output: {
@@ -69,8 +70,8 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       React: 'react',
-      Rucksack: 'fuzzy-rucksack',
-      PropTypes: 'prop-types'
+      PropTypes: 'prop-types',
+      FcUtils: 'FcUtils'
     })
   ].filter((a) => a)
 };
