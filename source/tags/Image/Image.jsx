@@ -8,8 +8,8 @@ export const Image = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'image',
-    `image--${variant}`,
+    'Image',
+    `Image--${variant}`,
     className
   ]);
 

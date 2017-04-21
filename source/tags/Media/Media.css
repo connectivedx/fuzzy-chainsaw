@@ -1,22 +1,22 @@
-.media {
+.Media {
   display: flex;
 }
 
-.media__body {
+.Media__body {
   flex: 1;
 
-  & ~ .media__figure {
+  & ~ .Media__figure {
     margin-right: inherit;
     margin-left: 1em;
   }
 }
 
-.media__figure {
+.Media__figure {
   margin-right: 1em;
 }
 
-.media--middle { align-items: center; }
-.media--bottom { align-items: flex-end; }
+.Media--middle { align-items: center; }
+.Media--bottom { align-items: flex-end; }
 
-.media__figure--middle { align-self: center; }
-.media__figure--bottom { align-self: flex-end; }
+.Media__figure--middle { align-self: center; }
+.Media__figure--bottom { align-self: flex-end; }

@@ -9,17 +9,17 @@ const Brand = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'brand',
-    `brand--${variant}`,
+    'Brand',
+    `Brand--${variant}`,
     className
   ]);
 
   return (
     <Tag className={classStack} {...attrs}>
-      <Icon name="close" className="brand__icon" />
+      <Icon name="close" className="Brand__icon" />
       {
         variant === 'default' &&
-        <span className="brand__label">
+        <span className="Brand__label">
           GenericBrand
         </span>
       }

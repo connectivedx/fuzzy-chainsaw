@@ -4,7 +4,7 @@ export const List_Item = ({
   ...attrs
 }) => {
   const classStack = FcUtils.createClassStack([
-    'list__item',
+    'List__item',
     className
   ]);
 
@@ -32,8 +32,8 @@ export const List = (props) => {
 
   const Tag = tagName || variant === 'ordered' ? 'ol' : 'ul';
   const classStack = FcUtils.createClassStack([
-    'list',
-    `list--${variant}`,
+    'List',
+    `List--${variant}`,
     className
   ]);
 

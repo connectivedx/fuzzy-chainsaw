@@ -10,9 +10,9 @@ export const Heading = (props) => {
 
   const Tag = tagName || level || 'h1';
   const classStack = FcUtils.createClassStack([
-    'heading',
-    `heading--${weight}`,
-    `heading--${level}`,
+    'Heading',
+    `Heading--${weight}`,
+    `Heading--${level}`,
     className
   ]);
 

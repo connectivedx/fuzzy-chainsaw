@@ -1,4 +1,4 @@
-.button {
+.Button {
   display: inline-block;
   vertical-align: middle;
   padding: 1em 2em;
@@ -13,7 +13,7 @@
   }
 }
 
-.button--cta {
+.Button--cta {
   border: 2px solid red;
   background-color: color(var(--color-red) alpha(10%));
   color: red;
@@ -24,11 +24,11 @@
   }
 }
 
-.button--link {
+.Button--link {
   text-decoration: none;
 }
 
-.button--full {
+.Button--full {
   display: block;
   width: 100%;
 }

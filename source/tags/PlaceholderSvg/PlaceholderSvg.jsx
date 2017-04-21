@@ -10,18 +10,16 @@ export const PlaceholderSvg = (props) => {
     fontWeight
   } = props;
 
-  const styles = {
-    height: `${height}px`,
-    maxWidth: '100%',
-    textTransform: 'uppercase',
-    width: `${width}px`
-  };
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox={`0 0 ${width} ${height}`}
-      style={styles}
+      style={{
+        height: `${height}px`,
+        maxWidth: '100%',
+        textTransform: 'uppercase',
+        width: `${width}px`
+      }}
     >
       <rect
         fill={imgColor}

@@ -8,8 +8,8 @@ const Wrapper = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'wrapper',
-    `wrapper--${size}`,
+    'Wrapper',
+    `Wrapper--${size}`,
     className
   ]);
 

@@ -1,25 +1,25 @@
-.heading {
+.Heading {
   @apply --font--bold;
 
   font-size: 2em;
   line-height: 1em;
 }
 
-.heading--bold {
+.Heading--bold {
   font-weight: 700;
 }
 
-.heading--thin {
+.Heading--thin {
   font-weight: 300;
 }
 
-.heading--medium {
+.Heading--medium {
   font-weight: 500;
 }
 
-.heading--h1 { font-size: 2em; }
-.heading--h2 { font-size: 1.6em; }
-.heading--h3 { font-size: 1.4em; }
-.heading--h4 { font-size: 1.3em; }
-.heading--h5 { font-size: 1.2em; }
-.heading--h6 { font-size: 1.1em; }
+.Heading--h1 { font-size: 2em; }
+.Heading--h2 { font-size: 1.6em; }
+.Heading--h3 { font-size: 1.4em; }
+.Heading--h4 { font-size: 1.3em; }
+.Heading--h5 { font-size: 1.2em; }
+.Heading--h6 { font-size: 1.1em; }

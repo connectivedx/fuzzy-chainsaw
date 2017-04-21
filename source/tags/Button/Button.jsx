@@ -10,14 +10,14 @@ export const Button = (props) => {
 
   let Tag = tagName;
   let classStack = FcUtils.createClassStack([
-    'button',
-    `button--${variant}`,
+    'Button',
+    `Button--${variant}`,
     className
   ]);
 
   if (href) {
     Tag = 'a';
-    classStack = FcUtils.createClassStack([classStack, 'button--link']);
+    classStack = FcUtils.createClassStack([classStack, 'Button--link']);
     attrs.href = href;
   }
 

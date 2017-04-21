@@ -1,19 +1,19 @@
-.brand {
+.Brand {
   & > * {
     display: inline-block;
     vertical-align: middle;
   }
 }
 
-.brand__icon {
+.Brand__icon {
   width: 1.65em;
 }
 
-.brand--default {
-  & .brand__label { display: none; }
+.Brand--default {
+  & .Brand__label { display: none; }
 
   @media (--small) {
-    & .brand__label {
+    & .Brand__label {
       display: inline-block;
       margin-top: 0.1em;
       margin-left: 0.25em;

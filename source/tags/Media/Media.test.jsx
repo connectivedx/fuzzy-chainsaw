@@ -12,7 +12,7 @@ test('<Media>', (t) => {
     </Media>
   );
   t.ok(component.is('div'), 'tag name');
-  t.ok(component.is('.media'), 'tag class');
+  t.ok(component.is('.Media'), 'tag class');
   t.equal(component.text(), '<Media_Figure /><Media_Body />', 'text');
   t.end();
 });
@@ -25,7 +25,7 @@ test('<Media align="bottom">', (t) => {
     </Media>
   );
   t.ok(component.is('div'), 'tag name');
-  t.ok(component.is('.media'), 'tag class');
+  t.ok(component.is('.Media'), 'tag class');
   t.equal(component.text(), '<Media_Body /><Media_Figure />', 'text');
   t.end();
 });
