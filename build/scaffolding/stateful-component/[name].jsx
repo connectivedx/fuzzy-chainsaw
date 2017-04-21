@@ -30,17 +30,21 @@ export class {{name}} extends React.Component {
 
     const classStack = FcUtils.createClassStack([
       '{{name}}',
-      Rucksack.createVariants('{{name}}--', variant),
+      `{{name}}--${variant}`,
       this.state.isActive && 'is-active',
       className
     ]);
 
     return (
-      <Tag className={classStack} {...attrs}>
+      <Tag
+        onClick={this.toggle}
+        className={classStack}
+        {...attrs}
+      >
         {children}
       </Tag>
     );
   }
-};
+}
 
 export default {{name}};
