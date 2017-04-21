@@ -17,21 +17,21 @@ const page = () => (
       <SgFileIndex
         items={pagesIndexData}
         title="Pages"
-        className="rhythm--small"
+        className="Rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
       <SgFileIndex
         items={componentsIndexData}
         title="Components"
-        className="rhythm--small"
+        className="Rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
       <SgFileIndex
         items={tagsIndexData}
         title="Tags"
-        className="rhythm--small"
+        className="Rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
