@@ -9,7 +9,8 @@ module.exports = () => (
     dest('assets/fonts/**'),
     dest('assets/images/**'),
     dest('assets/offline/**'),
-    dest('assets/svgs/*')
+    dest('assets/svgs/*'),
+    dest('assets/vendor/*')
   ], {
     force: true
   })

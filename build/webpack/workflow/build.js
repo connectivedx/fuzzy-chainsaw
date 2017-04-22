@@ -16,6 +16,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const OfflinePlugin = require('offline-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
@@ -115,6 +116,12 @@ module.exports = (
             yandex: false,
             windows: false
           }
+        }),
+        new CopyWebpackPlugin([{
+          from: source('vendor'),
+          to: 'assets/vendor'
+        }], {
+          ignore: ['README.md']
         })
       ]
     }

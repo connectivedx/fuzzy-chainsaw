@@ -9,6 +9,7 @@ const path = require('path');
 const pkgpath = require('packpath');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const OfflinePlugin = require('offline-plugin');
@@ -16,7 +17,7 @@ const OfflinePlugin = require('offline-plugin');
 const skeletonConfig = require('../lib/skeleton-html-config.js');
 const browserWorkflow = require('./browser');
 const { dev: devPipeline } = require('../lib/postcss-plugins.js');
-const { baseUrl } = require('../../lib/path-helpers');
+const { source, baseUrl } = require('../../lib/path-helpers');
 
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 
@@ -95,6 +96,12 @@ module.exports = (
           AppCache: {
             directory: 'assets/offline/'
           }
+        }),
+        new CopyWebpackPlugin([{
+          from: source('vendor'),
+          to: 'assets/vendor'
+        }], {
+          ignore: ['README.md']
         })
       ],
       stats,
