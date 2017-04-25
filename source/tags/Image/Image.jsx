@@ -13,27 +13,11 @@ export const Image = (props) => {
     className
   ]);
 
-  if (typeof src === 'string') {
-    return (
-      <img
-        alt={alt}
-        src={src.toString()}
-        className={classStack}
-        {...attrs}
-      />
-    );
-  }
-
   return (
     <img
-      className={classStack}
       alt={alt}
-      {...{
-        src: src.src,
-        srcSet: src.srcset,
-        width: src.width,
-        height: src.height
-      }}
+      src={src}
+      className={classStack}
       {...attrs}
     />
   );
@@ -47,10 +31,7 @@ Image.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.oneOf(['default', 'auto']),
   alt: PropTypes.string.isRequired,
-  src: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]).isRequired
+  src: PropTypes.string.isRequired
 };
 
 

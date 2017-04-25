@@ -37,7 +37,6 @@
     "node": "^=6.9.2"
   },
   "devDependencies": {
-    "advanced-image-loader": "^1.0.0",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^6.2.5",

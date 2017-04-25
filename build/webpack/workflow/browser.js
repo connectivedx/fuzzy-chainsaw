@@ -34,7 +34,7 @@ module.exports = (
             use: 'null-loader'
           },
           {
-            test: /\.(gif|svg)$/i,
+            test: /\.(jpe?g|png|gif|svg)$/i,
             use: [
               {
                 loader: 'file-loader',
@@ -45,22 +45,17 @@ module.exports = (
               },
               {
                 loader: 'image-webpack-loader',
-                options: {
+                query: {
                   bypassOnDebug: true,
-                  optimizationLevel: 7,
-                  interlaced: false
+                  gifsicle: {
+                    interlaced: false
+                  },
+                  optipng: {
+                    optimizationLevel: 7
+                  }
                 }
               }
             ]
-          },
-          {
-            test: /\.(jpe?g|png)$/i,
-            loader: 'advanced-image-loader',
-            options: {
-              name: 'assets/images/css/[name]-[width]-[md5:hash:hex:8]',
-              srcset: [480, 720, 1280, 1920],
-              quality: 90
-            }
           }
         ]
       },
