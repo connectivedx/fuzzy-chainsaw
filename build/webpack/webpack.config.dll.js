@@ -5,7 +5,6 @@ const dllWorkflow = require('./workflow/dll');
 module.exports = webpackMerge(dllWorkflow, {
   entry: {
     vendor: [
-      'fuzzy-rucksack',
       'react',
       'react-dom',
       'prop-types'
