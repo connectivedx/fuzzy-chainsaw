@@ -13,7 +13,8 @@ module.exports = webpackMerge(dllWorkflow, {
     styleguide: [
       'react-dom/server',
       'react-modal',
-      'pretty-data',
+      'pretty',
+      'prismjs',
       'react-element-to-jsx-string',
       'slugify',
       'lodash.startcase'

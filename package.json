@@ -92,6 +92,7 @@
     "postcss-remove-root": "^0.0.2",
     "postcss-reporter": "^3.0.0",
     "pre-commit": "^1.2.2",
+    "prismjs": "^1.6.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "react-addons-test-utils": "^15.5.1",
     "react-modal": "^1.7.3",

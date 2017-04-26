@@ -1,6 +1,9 @@
 import Dom from 'react-dom/server';
 import reactElementToString from 'react-element-to-jsx-string';
 import pretty from 'pretty';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-jsx.min';
+import 'prismjs/components/prism-json.min';
 
 import SgHeading from 'SgTags/SgHeading/SgHeading';
 
@@ -189,15 +192,21 @@ export const SgExample = (props) => {
       />
 
       <SgExample_Section title="React" type="react">
-        <pre><code>{reactExample}</code></pre>
+        <pre>
+          <code dangerouslySetInnerHTML={{ __html: Prism.highlight(reactExample, Prism.languages.jsx) }} />
+        </pre>
       </SgExample_Section>
 
       <SgExample_Section title="HTML" type="html">
-        <pre><code>{pretty(htmlExample)}</code></pre>
+        <pre>
+          <code dangerouslySetInnerHTML={{ __html: Prism.highlight(pretty(htmlExample), Prism.languages.html) }} />
+        </pre>
       </SgExample_Section>
 
       <SgExample_Section title="JSON" type="json">
-        <pre><code>{jsonExample}</code></pre>
+        <pre>
+          <code dangerouslySetInnerHTML={{ __html: Prism.highlight(jsonExample, Prism.languages.json) }} />
+        </pre>
       </SgExample_Section>
     </SgExample_Wrapper>
   );

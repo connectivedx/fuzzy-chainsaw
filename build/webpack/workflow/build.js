@@ -63,7 +63,12 @@ module.exports = (
           {
             test: /\.css$/,
             use: 'prefix-variables-loader',
-            exclude: /variables/
+            include: [
+              source('tags'),
+              source('components'),
+              source('styleguide/tags'),
+              source('stylguide/components')
+            ]
           }
         ]
       },
