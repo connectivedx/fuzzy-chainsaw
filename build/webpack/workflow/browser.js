@@ -43,18 +43,18 @@ module.exports = (
                   name: 'assets/images/css/[name]-[md5:hash:hex:8].[ext]'
                 }
               },
-              {
-                loader: 'image-webpack-loader',
-                query: {
-                  bypassOnDebug: true,
-                  gifsicle: {
-                    interlaced: false
-                  },
-                  optipng: {
-                    optimizationLevel: 7
-                  }
-                }
-              }
+              // {
+              //   loader: 'image-webpack-loader',
+              //   query: {
+              //     bypassOnDebug: true,
+              //     // gifsicle: {
+              //     //   interlaced: false
+              //     // },
+              //     // optipng: {
+              //     //   optimizationLevel: 7
+              //     // }
+              //   }
+              // }
             ]
           }
         ]

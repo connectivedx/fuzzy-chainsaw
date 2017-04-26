@@ -1,5 +1,6 @@
 const webpackMerge = require('webpack-merge');
 
+const webpack = require('webpack');
 const dllProductionWorkflow = require('./workflow/dll.production');
 
 module.exports = webpackMerge(dllProductionWorkflow, {
@@ -10,5 +11,10 @@ module.exports = webpackMerge(dllProductionWorkflow, {
       'react-dom',
       'prop-types'
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.CI_MODE': true
+    })
+  ]
 });

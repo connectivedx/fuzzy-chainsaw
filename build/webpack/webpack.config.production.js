@@ -24,6 +24,12 @@ const staticWorkflow = require('./workflow/static');
  *
  */
 
+
+const modify = (config) => {
+  config.plugins = config.plugins.slice(2);
+  return config;
+};
+
 module.exports = [
   merge(productionWorkflow, {
     entry: {
@@ -31,9 +37,9 @@ module.exports = [
       bundle: source('bundle.jsx')
     }
   }),
-  merge(staticWorkflow, {
+  modify(merge(staticWorkflow, {
     entry: {
       static: source('static.jsx')
     }
-  })
+  }))
 ];

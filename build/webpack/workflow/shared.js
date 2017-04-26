@@ -58,13 +58,12 @@ module.exports = {
   plugins: [
     new webpack.DllReferencePlugin({
       context: path.resolve(pkgpath.self()),
+      manifest: styleguideManifest
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(pkgpath.self()),
       manifest: vendorManifest
     }),
-    // sometime styleguide won't be required
-    styleguideManifest ? new webpack.DllReferencePlugin({
-      context: path.resolve(pkgpath.self()),
-      manifest: styleguideManifest
-    }) : undefined,
     new webpack.DefinePlugin({
       'process.env.BASE_URL': JSON.stringify(baseUrl)
     }),

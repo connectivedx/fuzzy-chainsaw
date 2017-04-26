@@ -10,6 +10,7 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const { source } = require('../lib/path-helpers');
@@ -23,8 +24,19 @@ const productionWorkflow = require('./workflow/production');
  *
  */
 
-module.exports = merge(productionWorkflow, {
+const modify = (config) => {
+  config.plugins = config.plugins.slice(1);
+  return config;
+};
+
+
+module.exports = modify(merge(productionWorkflow, {
   entry: {
     bundle: source('bundle.jsx')
-  }
-});
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.CI_MODE': true
+    })
+  ]
+}));

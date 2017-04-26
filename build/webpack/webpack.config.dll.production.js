@@ -15,7 +15,6 @@ module.exports = webpackMerge(dllProductionWorkflow, {
       'react-modal',
       'pretty-data',
       'react-element-to-jsx-string',
-      'react-syntax-highlighter', // this is erroring on windows
       'slugify',
       'lodash.startcase'
     ],

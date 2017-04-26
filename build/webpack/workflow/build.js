@@ -18,7 +18,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
-const OfflinePlugin = require('offline-plugin');
+// const OfflinePlugin = require('offline-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
@@ -74,32 +74,8 @@ module.exports = (
           suffix: undefined,
           pipeline: buildPipeline
         }),
-        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
-          filename: '_skeleton.styleguide.html',
-          mode: 'styleguide',
-          baseUrl
-        })),
-        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
-          filename: '_skeleton.html',
-          excludeChunks: ['styleguide'],
-          mode: 'page',
-          baseUrl
-        })),
         new WebpackNotifierPlugin({
           title: 'FC Build'
-        }),
-        new OfflinePlugin({
-          excludes: [
-            '**/_*',
-            '**/.*',
-            '**/*.map'
-          ],
-          ServiceWorker: {
-            output: 'assets/offline/sw.js'
-          },
-          AppCache: {
-            directory: 'assets/offline/'
-          }
         }),
         new FaviconsWebpackPlugin({
           logo: source('favicon.png'),
@@ -122,7 +98,31 @@ module.exports = (
           to: 'assets/vendor'
         }], {
           ignore: ['README.md']
-        })
+        }),
+        // new OfflinePlugin({
+        //   excludes: [
+        //     '**/_*',
+        //     '**/.*',
+        //     '**/*.map'
+        //   ],
+        //   ServiceWorker: {
+        //     output: 'assets/offline/sw.js'
+        //   },
+        //   AppCache: {
+        //     directory: 'assets/offline/'
+        //   }
+        // }),
+        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
+          filename: '_skeleton.styleguide.html',
+          mode: 'styleguide',
+          baseUrl
+        })),
+        new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
+          filename: '_skeleton.html',
+          excludeChunks: ['styleguide'],
+          mode: 'page',
+          baseUrl
+        }))
       ]
     }
   )

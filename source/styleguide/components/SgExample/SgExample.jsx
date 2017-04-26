@@ -1,8 +1,6 @@
 import Dom from 'react-dom/server';
 import reactElementToString from 'react-element-to-jsx-string';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { github } from 'react-syntax-highlighter/dist/styles';
-import { pd } from 'pretty-data';
+import pretty from 'pretty';
 
 import SgHeading from 'SgTags/SgHeading/SgHeading';
 
@@ -191,21 +189,15 @@ export const SgExample = (props) => {
       />
 
       <SgExample_Section title="React" type="react">
-        <SyntaxHighlighter language="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
-          { reactExample }
-        </SyntaxHighlighter>
+        <pre><code>{reactExample}</code></pre>
       </SgExample_Section>
 
       <SgExample_Section title="HTML" type="html">
-        <SyntaxHighlighter language="html" style={github} customStyle={{ backgroundColor: 'transparent' }}>
-          { pd.xml(htmlExample) }
-        </SyntaxHighlighter>
+        <pre><code>{pretty(htmlExample)}</code></pre>
       </SgExample_Section>
 
       <SgExample_Section title="JSON" type="json">
-        <SyntaxHighlighter language="json" style={github} customStyle={{ backgroundColor: 'transparent' }}>
-          { jsonExample }
-        </SyntaxHighlighter>
+        <pre><code>{jsonExample}</code></pre>
       </SgExample_Section>
     </SgExample_Wrapper>
   );
