@@ -1,7 +1,7 @@
 import 'Source/bundle.css';
 import 'Tags/Icon/IconSet';
-// import * as OfflineRuntime from 'offline-plugin/runtime';
+import * as OfflineRuntime from 'offline-plugin/runtime';
 
-// OfflineRuntime.install();
+OfflineRuntime.install();
 
 console.log('Main Bundle!');

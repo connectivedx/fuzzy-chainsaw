@@ -18,7 +18,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
-// const OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('offline-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const skeletonConfig = require('../lib/skeleton-html-config.js');
@@ -104,19 +104,18 @@ module.exports = (
         }], {
           ignore: ['README.md']
         }),
-        // new OfflinePlugin({
-        //   excludes: [
-        //     '**/_*',
-        //     '**/.*',
-        //     '**/*.map'
-        //   ],
-        //   ServiceWorker: {
-        //     output: 'assets/offline/sw.js'
-        //   },
-        //   AppCache: {
-        //     directory: 'assets/offline/'
-        //   }
-        // }),
+        new OfflinePlugin({
+          publicPath: baseUrl,
+          excludes: [
+            '**/_*',
+            '**/.*',
+            '**/*.map'
+          ],
+          ServiceWorker: {
+            output: 'assets/offline/sw.js'
+          },
+          AppCache: false
+        }),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.styleguide.html',
           mode: 'styleguide',
