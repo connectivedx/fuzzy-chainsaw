@@ -66,7 +66,7 @@ module.exports = (
               source('tags'),
               source('components'),
               source('styleguide/tags'),
-              source('stylguide/components')
+              source('styleguide/components')
             ]
           },
           {
