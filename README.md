@@ -180,7 +180,7 @@ Connective DX’s front-end toolset.
 
 ### Is it any good?
 
-It depends.  It's a great tool for the way we build projects at [Connective DX](https://www.connectivedx.com), but may not align with your project's goals.
+It depends.  It's a great tool for the way we build projects at [Connective DX](https://www.connectivedx.com), but may not align with your project's goals.  It is more focused on integrating with a back end system than application development.
 
 ### Where’s the documentation?
 
