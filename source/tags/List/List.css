@@ -1,13 +1,14 @@
-.list {
+/* variants */
+.List--blank {
   list-style: none;
 }
 
-.list--unordered {
+.List--unordered {
   list-style-type: disc;
   padding-left: 1em;
 }
 
-.list--ordered {
+.List--ordered {
   list-style-type: decimal;
   padding-left: 1em;
 }

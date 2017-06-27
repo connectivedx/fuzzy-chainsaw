@@ -1,29 +1,46 @@
-import React from 'react';
+export const Button = (props) => {
+  const {
+    tagName,
+    className,
+    width,
+    variant,
+    href,
+    children,
+    ...attrs
+  } = props;
 
-const Button = ({
-  tagName = 'button',
-  className = '',
-  variant = 'default',
-  href,
-  children,
-  ...attrs
-}) => {
+  let Tag = tagName;
+  let classStack = FcUtils.createClassStack([
+    'Button',
+    `Button--${variant}`,
+    `Button--${width}`,
+    className
+  ]);
+
   if (href) {
-    return <a href={href} className={`button button--${variant} button--link ${className}`} {...attrs}>{children}</a>;
+    Tag = 'a';
+    classStack = FcUtils.createClassStack([classStack, 'Button--link']);
+    attrs.href = href;
   }
 
-  const Tag = tagName;
   return (
-    <Tag className={`button button--${variant} ${className}`} {...attrs}>{children}</Tag>
+    <Tag className={classStack} {...attrs}>{children}</Tag>
   );
 };
 
+Button.defaultProps = {
+  tagName: 'button',
+  variant: 'default',
+  width: 'auto'
+};
+
 Button.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  href: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  width: PropTypes.oneOf(['auto', 'full']),
+  variant: PropTypes.oneOf(['default', 'link', 'cta']),
+  href: PropTypes.string,
+  children: PropTypes.node.isRequired
 };
 
 export default Button;

@@ -1,30 +1,41 @@
-import React from 'react';
 import Icon from 'Tags/Icon/Icon';
 
-const Brand = ({
-  tagName = 'div',
-  className = '',
-  variant = 'full',
-  ...attrs
-}) => {
-  const Tag = tagName;
+const Brand = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    variant,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    'Brand',
+    `Brand--${variant}`,
+    className
+  ]);
 
   return (
-    <Tag className={`brand brand--${variant} ${className}`} {...attrs}>
-      <Icon name="close" className="brand__icon" />
-      { variant === 'full'
-        ? <span className="brand__label">
-            GenericBrand
-          </span>
-        : undefined }
+    <Tag className={classStack} {...attrs}>
+      <Icon name="close" className="Brand__icon" />
+      {
+        variant === 'default' &&
+        <span className="Brand__label">
+          GenericBrand
+        </span>
+      }
     </Tag>
   );
 };
 
+Brand.defaultProps = {
+  tagName: 'div',
+  variant: 'default'
+};
+
 Brand.propTypes = {
-  tagName: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  className: React.PropTypes.string
+  tagName: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'compact']),
+  className: PropTypes.string
 };
 
 

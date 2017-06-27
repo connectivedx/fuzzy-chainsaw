@@ -1,30 +1,37 @@
-import React from 'react';
+export const Image = (props) => {
+  const {
+    className,
+    variant,
+    alt,
+    src,
+    ...attrs
+  } = props;
 
-export const Image = ({
-  tagName = 'img',
-  className = '',
-  variant = 'default',
-  src = {},
-  ...attrs
-}) => {
-  const Tag = tagName;
+  const classStack = FcUtils.createClassStack([
+    'Image',
+    `Image--${variant}`,
+    className
+  ]);
+
   return (
-    <Tag
-      className={`image image--${variant} ${className}`}
-      {...(typeof src === 'string' ? { src } : src)} // normalized responize-loader/image-loader
+    <img
+      alt={alt}
+      src={src}
+      className={classStack}
       {...attrs}
     />
   );
 };
 
+Image.defaultProps = {
+  variant: 'default'
+};
+
 Image.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(['default', 'auto']),
-  src: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object
-  ])
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'auto']),
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired
 };
 
 

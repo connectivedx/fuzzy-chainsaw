@@ -1,15 +1,12 @@
-import React from 'react';
-import Image from './Image';
-import rancheriaFallsImage from './assets/rancheria-falls.jpg';
+import test from 'tape';
+import { shallow } from 'enzyme';
 
-export default [{
-  name: 'default',
-  component: (
-    <Image src={rancheriaFallsImage} variant="auto" />
-  ),
-  test(t, component) {
-    t.equal(component.is('img'), true, 'tag name');
-    t.equal(component.is('.image'), true, 'tag class');
-    t.end();
-  }
-}];
+import Image from './Image';
+
+test('<Image src={imgString} />', (t) => {
+  const component = shallow(<Image src="image.jpg" alt="Rancheria Falls" />);
+  t.ok(component.is('img'), 'tag name');
+  t.ok(component.is('.Image'), 'tag class');
+  t.ok(component.is('.Image--default'), 'variant class');
+  t.end();
+});

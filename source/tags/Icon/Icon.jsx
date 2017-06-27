@@ -1,22 +1,37 @@
-import React from 'react';
+export const Icon = (props) => {
+  const {
+    className,
+    size,
+    variant,
+    name,
+    ...attrs
+  } = props;
 
-const Icon = ({
-  className = '',
-  size = 'normal',
-  variant = 'default',
-  name,
-  ...attrs
-}) => (
-  <svg className={`icon icon--${size} icon--${name} icon--${variant} ${className}`} {...attrs}>
-    <use xlinkHref={`#icon-${name}`} />
-  </svg>
-);
+  const classStack = FcUtils.createClassStack([
+    'Icon',
+    `Icon--${name}`,
+    `Icon--${size}`,
+    `Icon--${variant}`,
+    className
+  ]);
+
+  return (
+    <svg className={classStack} {...attrs}>
+      <use xlinkHref={`#icon-${name}`} />
+    </svg>
+  );
+};
+
+Icon.defaultProps = {
+  size: 'normal',
+  variant: 'default'
+};
 
 Icon.propTypes = {
-  className: React.PropTypes.string,
-  size: React.PropTypes.string,
-  variant: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['normal', 'small', 'large', 'wide']),
+  variant: PropTypes.oneOf(['default', 'dark', 'light']),
+  name: PropTypes.string.isRequired
 };
 
 export default Icon;

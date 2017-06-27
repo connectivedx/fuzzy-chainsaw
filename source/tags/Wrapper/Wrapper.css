@@ -1,12 +1,18 @@
-.wrapper {
+.Wrapper {
   margin: auto;
   padding: 2em;
 }
 
-.wrapper--default {
+/* sizes */
+.Wrapper--narrow {
+  max-width: 640px;
+}
+
+.Wrapper--default {
   max-width: 960px;
 }
 
-.wrapper--small {
-  max-width: 640px;
+.Wrapper--wide {
+  max-width: 1280px;
 }
+

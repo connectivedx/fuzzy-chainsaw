@@ -1,25 +1,35 @@
-import React from 'react';
+const Wrapper = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    size,
+    children,
+    ...attrs
+  } = props;
 
-const Wrapper = ({
-  tagName = 'div',
-  className = '',
-  size = 'default',
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
+  const classStack = FcUtils.createClassStack([
+    'Wrapper',
+    `Wrapper--${size}`,
+    className
+  ]);
+
   return (
-    <Tag className={`wrapper wrapper--${size} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+Wrapper.defaultProps = {
+  tagName: 'div',
+  size: 'default'
+};
+
 Wrapper.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  size: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['narrow', 'default', 'wide']),
+  children: PropTypes.node.isRequired
 };
 
 export default Wrapper;

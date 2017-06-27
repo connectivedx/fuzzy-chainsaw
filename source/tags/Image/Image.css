@@ -1,4 +1,8 @@
-.image--auto {
+.Image {
+  position: relative;
+}
+
+.Image--auto {
   width: 100%;
   height: auto;
 }

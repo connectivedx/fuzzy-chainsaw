@@ -1,76 +1,100 @@
-import React from 'react';
+export const Media_Figure = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    align,
+    children,
+    ...attrs
+  } = props;
 
-export const Media_Figure = ({
-  tagName = 'div',
-  className = '',
-  align,
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
-  let tagClass = className;
-
-  if (align !== undefined) {
-    tagClass = `media__figure--${align} ${className}`;
-  }
+  const classStack = FcUtils.createClassStack([
+    'Media__figure',
+    align && `Media__figure--${align}`,
+    className
+  ]);
 
   return (
-    <Tag className={`media__figure ${tagClass}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
+};
+
+Media_Figure.defaultProps = {
+  tagName: 'div'
 };
 
 Media_Figure.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  align: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
+  children: PropTypes.node.isRequired
 };
 
 
-export const Media_Body = ({
-  tagName = 'div',
-  className = '',
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
+export const Media_Body = (props) => {
+  const {
+    tagName: Tag,
+    className = '',
+    children,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    'Media__body',
+    className
+  ]);
+
   return (
-    <Tag className={`media__body ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
+};
+
+Media_Body.defaultProps = {
+  tagName: 'div'
 };
 
 Media_Body.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  align: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
+  children: PropTypes.node.isRequired
 };
 
 
-export const Media = ({
-  tagName = 'div',
-  className = '',
-  align = 'top',
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
+export const Media = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    align,
+    children,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    'Media',
+    align && `Media--${align}`,
+    className
+  ]);
+
   return (
-    <Tag className={`media media--${align} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+Media.defaultProps = {
+  tagName: 'div'
+};
+
 Media.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  align: React.PropTypes.string,
-  children: React.PropTypes.node.isRequired
+  tagName: PropTypes.string,
+  className: PropTypes.string,
+  align: PropTypes.string,
+  children: PropTypes.node.isRequired
 };
 
 

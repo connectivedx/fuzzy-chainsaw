@@ -1,26 +1,20 @@
-import React from 'react';
+import test from 'tape';
+import { shallow } from 'enzyme';
+
 import Brand from './Brand';
 
-export default [{
-  name: 'default',
-  component: (
-    <Brand />
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.brand'), true, 'tag class');
-    t.equal(component.is('.brand--full'), true, 'variant class');
-    t.end();
-  }
-}, {
-  name: 'compact',
-  component: (
-    <Brand variant="compact" />
-  ),
-  test(t, component) {
-    t.equal(component.is('div'), true, 'tag name');
-    t.equal(component.is('.brand'), true, 'tag class');
-    t.equal(component.is('.brand--compact'), true, 'variant class');
-    t.end();
-  }
-}];
+test('<Brand />', (t) => {
+  const component = shallow(<Brand />);
+  t.ok(component.is('div'), 'tag name');
+  t.ok(component.is('.Brand'), 'tag class');
+  t.ok(component.is('.Brand--default'), 'variant class');
+  t.end();
+});
+
+test('<Brand variant="compact" />', (t) => {
+  const component = shallow(<Brand variant="compact" />);
+  t.ok(component.is('div'), 'tag name');
+  t.ok(component.is('.Brand'), 'tag class');
+  t.ok(component.is('.Brand--compact'), 'variant class');
+  t.end();
+});

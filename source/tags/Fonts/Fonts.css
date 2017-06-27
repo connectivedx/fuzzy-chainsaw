@@ -1,0 +1,27 @@
+/* define @font-face setup */
+@font-face {
+  @apply --font--thin;
+
+  src:
+    url('./SourceSansPro/SourceSansPro-Light.ttf') format('ttf'),
+    url('./SourceSansPro/SourceSansPro-Light.woff') format('woff'),
+    url('./SourceSansPro/SourceSansPro-Light.woff2') format('woff2');
+}
+
+@font-face {
+  @apply --font--normal;
+
+  src:
+    url('./SourceSansPro/SourceSansPro-Regular.ttf') format('ttf'),
+    url('./SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
+    url('./SourceSansPro/SourceSansPro-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  @apply --font--bold;
+
+  src:
+    url('./SourceSansPro/SourceSansPro-Bold.ttf') format('ttf'),
+    url('./SourceSansPro/SourceSansPro-Bold.woff') format('woff'),
+    url('./SourceSansPro/SourceSansPro-Bold.woff2') format('woff2');
+}

@@ -1,47 +1,36 @@
-// CSS
-require.context('SgVars/', true, /\.css$/);
-require.context('SgTags/', true, /\.css$/);
-require.context('SgComponents/', true, /\.css$/);
+import styles from 'Styleguide/styleguide.css'; // eslint-disable-line
 
 // browser Javascript
-const body = document.body;
-const nav = document.querySelector('.sg-nav');
-const toggle = nav.querySelector('.sg-nav__toggle');
-const cover = nav.querySelector('.sg-nav__cover');
+import Dom from 'react-dom';
+import SgNav from 'SgComponents/SgNav/SgNav';
+import SgExample from 'SgComponents/SgExample/SgExample.Component';
 
-body.addEventListener('click', ev => {
-  if (toggle.contains(ev.target)) {
-    body.classList.toggle('is-sg-nav-expanded');
-    nav.classList.toggle('is-expanded');
+const init = () => {
+  Dom.render(<SgNav />, document.querySelector('.SgNav'));
+
+  Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
+    .forEach((el) => {
+      const exampleSection = el.querySelector('.SgExample__section--example');
+      Dom.render(
+        <SgExample
+          slug={el.querySelector('.SgExample__anchor').getAttribute('id')}
+          exampleName={el.querySelector('.SgExample__name').innerText}
+          exampleClasses={exampleSection.getAttribute('data-classname')}
+          exampleOuput={exampleSection.innerHTML}
+          reactOuput={el.querySelector('.SgExample__section--react').innerHTML}
+          htmlOuput={el.querySelector('.SgExample__section--html').innerHTML}
+          jsonOuput={el.querySelector('.SgExample__section--json').innerHTML}
+        />,
+        el
+      );
+    });
+};
+
+
+if (process.env.NODE_ENV === 'dev') {
+  if (document.querySelector('.SgStyleguide')) {
+    init();
   }
-
-  if (cover.contains(ev.target)) {
-    body.classList.remove('is-sg-nav-expanded');
-    nav.classList.remove('is-expanded');
-  }
-});
-
-body.addEventListener('keyup', ev => {
-  if (ev.keyCode === 27) {
-    body.classList.remove('is-sg-nav-expanded');
-    nav.classList.remove('is-expanded');
-  }
-});
-
-
-const examples = Array.prototype.slice.call(document.querySelectorAll('.sg-example'));
-const examplesTabs = examples.map(e => e.querySelector('.sg-example__tabs'));
-const examplesSections = examples.map(e => e.querySelectorAll('.sg-example__section'))
-const examplesItems = examples.map(e => Array.prototype.slice.call(e.querySelectorAll('.sg-example__tabs-item')));
-
-examplesTabs.forEach((tabset, i) => {
-  tabset.addEventListener('click', ev => {
-    const active = examplesItems[i].map((item, j) => item.contains(ev.target));
-    if (active.indexOf(true) !== -1) {
-      examplesItems[i].map((item, j) => {
-        examplesItems[i][j].classList.toggle('is-active', active[j]);
-        examplesSections[i][j].classList.toggle('is-active', active[j]);
-      });
-    }
-  });
-});
+} else {
+  init();
+}

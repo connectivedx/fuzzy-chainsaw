@@ -1,72 +1,52 @@
-import React from 'react';
+import test from 'tape';
+import { shallow } from 'enzyme';
+
 import Icon from './Icon';
 
-export default [{
-  name: 'default',
-  component: (
-    <Icon name="close" />
-  ),
-  test(t, component) {
-    t.equal(component.is('svg'), true, 'tag name');
-    t.equal(component.is('.icon'), true, 'tag class');
-    t.equal(component.is('.icon--default'), true, 'size class');
-    t.equal(component.is('.icon--close'), true, 'icon name class');
-    t.equal(component.find('use').length > 0, true, 'has children');
-    t.end();
-  }
-}, {
-  name: 'small size',
-  component: (
-    <Icon size="small" name="cancel" />
-  ),
-  test(t, component) {
-    t.equal(component.is('.icon--small'), true, 'size class');
-    t.equal(component.is('.icon--cancel'), true, 'icon name class');
-    t.end();
-  }
-}, {
-  name: 'large size',
-  component: (
-    <Icon size="large" name="plus" />
-  ),
-  test(t, component) {
-    t.equal(component.is('.icon--large'), true, 'size class');
-    t.equal(component.is('.icon--plus'), true, 'icon name class');
-    t.end();
-  }
-}, {
-  name: 'wide custom size',
-  component: (
-    <Icon size="wide" name="minus" />
-  ),
-  test(t, component) {
-    t.equal(component.is('.icon--wide'), true, 'size class');
-    t.equal(component.is('.icon--minus'), true, 'icon name class');
-    t.end();
-  }
-}, {
-  name: 'light icon on dark background',
-  options: {
-    darkBackground: true
-  },
-  component: (
-    <Icon name="plus" variant="light" />
-  ),
-  test(t, component) {
-    t.equal(component.is('.icon'), true, 'icon class');
-    t.equal(component.is('.icon--plus'), true, 'icon name class');
-    t.equal(component.is('.icon--normal'), true, 'size class');
-    t.equal(component.is('.icon--light'), true, 'variant class');
-    t.end();
-  }
-}, {
-  name: 'extra attribute',
-  component: (
-    <Icon name="plus" data-id="yoyoyo" />
-  ),
-  test(t, component) {
-    t.equal(component.is('.icon--plus'), true, 'icon name class');
-    t.equal(component.props()['data-id'], 'yoyoyo', 'icon data attr');
-    t.end();
-  }
-}];
+
+test('<Icon name="close" /><Icon>', (t) => {
+  const component = shallow(<Icon name="close" />);
+  t.ok(component.is('svg'), 'tag name');
+  t.ok(component.is('.Icon'), 'tag class');
+  t.ok(component.is('.Icon--default'), 'size class');
+  t.ok(component.is('.Icon--close'), 'icon name class');
+  t.ok(component.find('use').length > 0, 'has children');
+  t.end();
+});
+
+test('<Icon size="small" name="cancel" />', (t) => {
+  const component = shallow(<Icon size="small" name="cancel" />);
+  t.ok(component.is('.Icon--small'), 'size class');
+  t.ok(component.is('.Icon--cancel'), 'icon name class');
+  t.end();
+});
+
+test('<Icon size="large" name="plus" />', (t) => {
+  const component = shallow(<Icon size="large" name="plus" />);
+  t.ok(component.is('.Icon--large'), 'size class');
+  t.ok(component.is('.Icon--plus'), 'icon name class');
+  t.end();
+});
+
+test('<Icon size="wide" name="minus" />', (t) => {
+  const component = shallow(<Icon size="wide" name="minus" />);
+  t.ok(component.is('.Icon--wide'), 'size class');
+  t.ok(component.is('.Icon--minus'), 'icon name class');
+  t.end();
+});
+
+test('<Icon name="plus" variant="light" />', (t) => {
+  const component = shallow(<Icon name="plus" variant="light" />);
+  t.ok(component.is('.Icon'), 'icon class');
+  t.ok(component.is('.Icon--plus'), 'icon name class');
+  t.ok(component.is('.Icon--normal'), 'size class');
+  t.ok(component.is('.Icon--light'), 'variant class');
+  t.end();
+});
+
+test('<Icon name="plus" data-id="yoyoyo" />', (t) => {
+  const component = shallow(<Icon name="plus" data-id="yoyoyo" />);
+  t.ok(component.is('.Icon--plus'), 'icon name class');
+  t.equal(component.props()['data-id'], 'yoyoyo', 'icon data attr');
+  t.end();
+});

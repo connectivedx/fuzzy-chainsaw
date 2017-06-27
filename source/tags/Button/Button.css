@@ -1,33 +1,43 @@
-.button {
-  display: inline-block;
-  vertical-align: middle;
+.Button {
   padding: 1em 2em;
   cursor: pointer;
 }
 
-.button--default {
-  border: 2px solid black;
-  background-color: #000.1;
-  color: black;
+.Button--link {
+  text-decoration: none;
+}
+
+/* variants */
+.Button--default {
+  background-color: color(var(--color-dark) alpha(10%));
+  border: 2px solid var(--color-dark);
+  color: var(--color-dark);
 
   &:--enter {
-    background-color: black;
-    color: white;
+    background-color: var(--color-dark);
+    color: var(--color-light);
   }
 }
 
-.button--cta {
+.Button--cta {
+  background-color: color(var(--color-red) alpha(10%));
   border: 2px solid red;
-  background-color: #f00.1;
   color: red;
 
   &:--enter {
-    background-color: red;
-    color: white;
+    background-color: var(--color-red);
+    color: var(--color-light);
   }
 }
 
-.button--link {
+/* sizes */
+.Button--auto {
   display: inline-block;
-  text-decoration: none;
+  vertical-align: middle;
+  width: auto;
+}
+
+.Button--full {
+  display: block;
+  width: 100%;
 }

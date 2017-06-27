@@ -1,5 +1,10 @@
+@import '../Rhythm/Rhythm.css';
+@import '../Heading/Heading.css';
+@import '../Button/Button.css';
+@import '../List/List.css';
+
 .rich-text {
-  @extend .rhythm--deep;
+  @extend .Rhythm--deep;
 
   & h1,
   & h2,
@@ -7,23 +12,31 @@
   & h4,
   & h5,
   & h6 {
-    @extend .heading;
+    @extend .Heading;
   }
 
-  & h1 { @extend .heading--h1; }
-  & h2 { @extend .heading--h2; }
-  & h3 { @extend .heading--h3; }
-  & h4 { @extend .heading--h4; }
-  & h5 { @extend .heading--h5; }
-  & h6 { @extend .heading--h6; }
+  & h1 { @extend .Heading--h1; }
+  & h2 { @extend .Heading--h2; }
+  & h3 { @extend .Heading--h3; }
+  & h4 { @extend .Heading--h4; }
+  & h5 { @extend .Heading--h5; }
+  & h6 { @extend .Heading--h6; }
 
   & button {
-    @extend .button;
-    @extend .button--default;
+    @extend .Button;
+    @extend .Button--default;
   }
 
   & ul,
   & ol {
-    @extend .rhythm--small;
+    @extend .Rhythm--small;
+  }
+
+  & ul {
+    @extend .List--unordered;
+  }
+
+  & ol {
+    @extend .List--ordered;
   }
 }

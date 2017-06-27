@@ -1,0 +1,9 @@
+.SgRhythm,
+.SgRhythm--default { & > * + * { margin-top: 1em; } }
+.SgRhythm--small { & > * + * { margin-top: 0.5em; } }
+.SgRhythm--large { & > * + * { margin-top: 2em; } }
+
+.SgRhythm--deep,
+.SgRhythm--deep-default { & * + * { margin-top: 1em; } }
+.SgRhythm--deep-small { & * + * { margin-top: 0.5em; } }
+.SgRhythm--deep-large { & * + * { margin-top: 2em; } }
