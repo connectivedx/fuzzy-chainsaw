@@ -1,26 +1,10 @@
-export const List_Item = (props) => {
-  const {
-    className,
-    children,
-    ...attrs
-  } = props;
-
-  const classStack = FcUtils.createClassStack([
-    'List__item',
-    className
-  ]);
-
-  return (
-    <li className={classStack} {...attrs}>
-      {children}
-    </li>
-  );
-};
-
-List_Item.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired
-};
+export const List_Item =
+  FcUtils.createBasicComponent({
+    name: 'List__item',
+    defaultProps: {
+      tagName: 'li'
+    }
+  });
 
 
 export const List = (props) => {

@@ -32,36 +32,10 @@ Media_Figure.propTypes = {
 };
 
 
-export const Media_Body = (props) => {
-  const {
-    tagName: Tag,
-    className = '',
-    children,
-    ...attrs
-  } = props;
-
-  const classStack = FcUtils.createClassStack([
-    'Media__body',
-    className
-  ]);
-
-  return (
-    <Tag className={classStack} {...attrs}>
-      {children}
-    </Tag>
-  );
-};
-
-Media_Body.defaultProps = {
-  tagName: 'div'
-};
-
-Media_Body.propTypes = {
-  tagName: PropTypes.string,
-  className: PropTypes.string,
-  align: PropTypes.oneOf(['top', 'middle', 'bottom']),
-  children: PropTypes.node.isRequired
-};
+export const Media_Body =
+  FcUtils.createBasicComponent({
+    name: 'Media_Body'
+  });
 
 
 export const Media = (props) => {
