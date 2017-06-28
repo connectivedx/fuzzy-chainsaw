@@ -6,6 +6,6 @@ import RichText from './RichText';
 test('<RichText />', (t) => {
   const component = shallow(<RichText>abc</RichText>);
   t.ok(component.is('div'), 'tag name');
-  t.ok(component.is('.rich-text'), 'tag class');
+  t.ok(component.is('.RichText'), 'tag class');
   t.end();
 });

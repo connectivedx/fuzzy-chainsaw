@@ -34,7 +34,7 @@ module.exports = {
       SgVars: source('styleguide/variables'),
       SgTags: source('styleguide/tags'),
       SgComponents: source('styleguide/components'),
-      FcUtils: path.resolve(__dirname, '../../lib/fc-utilities.js')
+      FcUtils: path.resolve(__dirname, '../../lib/fc-utilities')
     }
   },
   output: {
