@@ -5,10 +5,21 @@
   @media (--medium) { ..styles.. }
 */
 :root {
-  /* Used for style that should not cascade out */
-  @custom-media --extra-small (width <= 20em) and (width >= 0);
-  @custom-media --small  only screen and (min-width: 30em);
-  @custom-media --medium  only screen and (min-width: 48em);
-  @custom-media --large  only screen and (min-width: 64em);
-  @custom-media --extra-large  only screen and (min-width: 76.25em);
+  /* mobile first breakpoints */
+  @custom-media --extra-small only screen and (width >= 24em);
+  @custom-media --small  only screen and (width >= 32em);
+  @custom-media --medium-small  only screen and (width >= 40em);
+  @custom-media --medium  only screen and (width >= 48em);
+  @custom-media --medium-large  only screen and (width >= 56em);
+  @custom-media --large  only screen and (width >= 64em);
+  @custom-media --extra-large  only screen and (width >= 72em);
+
+  /* mobile only breakpoints */
+  @custom-media --below-extra-small only screen and (width < 24em);
+  @custom-media --below-small only screen and (width < 32em);
+  @custom-media --below-medium-small only screen and (width < 40em);
+  @custom-media --below-medium only screen and (width < 48em);
+  @custom-media --below-medium-large only screen and (width < 56em);
+  @custom-media --below-large only screen and (width < 64em);
+  @custom-media --below-extra-large only screen and (width < 72em);
 }
