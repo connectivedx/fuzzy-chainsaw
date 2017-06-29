@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr" class="no-js">
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<html lang="en-US" dir="ltr">
+<% } else { %>
+<html lang="en-US" dir="ltr" class="no-js {{theme}}">
+<% } %>
+
 <head>
 	<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 	<title>loading...</title>
@@ -20,12 +25,8 @@
 {{output}}
 <% } %>
 
-<% if (htmlWebpackPlugin.options.mode === 'page') { %>
-<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
-<% } else { %>
-<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/styleguide-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
-<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>
-<% } %>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/styleguide.dll.js"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/vendor.dll.js"></script>
 
 <!-- js entry files are automatically injected here -->
 </body>
