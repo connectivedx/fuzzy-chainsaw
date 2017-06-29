@@ -25,9 +25,9 @@
 
 /* colors */
 .Icon--dark {
-  fill: var(--color-dark);
+  fill: var(--color-black);
 }
 
 .Icon--light {
-  fill: var(--color-light);
+  fill: var(--color-white);
 }

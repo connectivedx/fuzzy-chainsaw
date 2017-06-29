@@ -4,10 +4,10 @@
 
 /* variants */
 .Link--default {
-  color: var(--color-link);
+  color: var(--color-blue);
 
   &:--enter {
-    color: color(var(--color-link) tint(10));
+    color: color(var(--color-blue) tint(10));
   }
 }
 
