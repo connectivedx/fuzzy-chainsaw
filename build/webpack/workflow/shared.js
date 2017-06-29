@@ -25,7 +25,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       Source: source(),
-      Vendor: source('vendor'),
+      Static: source('static'),
       Vars: source('variables'),
       Tags: source('tags'),
       Components: source('components'),
