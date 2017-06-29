@@ -26,6 +26,7 @@ module.exports = {
     alias: {
       Source: source(),
       Static: source('static'),
+      Lib: source('lib'),
       Vars: source('variables'),
       Tags: source('tags'),
       Components: source('components'),
