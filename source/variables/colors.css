@@ -6,11 +6,23 @@
   color: var(--greyDark);
 */
 :root {
-  /* general colors */
-  --color-dark: #222;
-  --color-light: #fff;
-  --color-red: #f00;
+  /* grayscale */
+  --color-shade--00: gray(100%);
+  --color-shade--03: gray(97%); /* #f7f7f7 */
+  --color-shade--05: gray(95%); /* #f2f2f2 */
+  --color-shade--10: gray(90%); /* #e8e8e8 */
+  --color-shade--25: gray(75%); /* #bfbfbf */
+  --color-shade--50: gray(50%); /* #8c8c8c */
+  --color-shade--75: gray(25%); /* #4b4b4b */
+  --color-shade--90: gray(10%); /* #2b2b2b */
+  --color-shade--100: gray(0%);
 
-  /* functional colors */
-  --color-link: #00f;
+  /* grayscale alias */
+  --color-white: var(--color-shade--00);
+  --color-gray: var(--color-shade--50);
+  --color-black: var(--color-shade--100);
+
+  /* general colors */
+  --color-red: #fa0000;
+  --color-blue: #0000fa;
 }

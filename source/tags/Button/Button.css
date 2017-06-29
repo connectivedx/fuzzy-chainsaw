@@ -9,13 +9,13 @@
 
 /* variants */
 .Button--default {
-  background-color: color(var(--color-dark) alpha(10%));
-  border: 2px solid var(--color-dark);
-  color: var(--color-dark);
+  background-color: color(var(--color-black) alpha(10%));
+  border: 2px solid var(--color-black);
+  color: var(--color-black);
 
   &:--enter {
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background-color: var(--color-black);
+    color: var(--color-white);
   }
 }
 
@@ -26,7 +26,7 @@
 
   &:--enter {
     background-color: var(--color-red);
-    color: var(--color-light);
+    color: var(--color-white);
   }
 }
 
