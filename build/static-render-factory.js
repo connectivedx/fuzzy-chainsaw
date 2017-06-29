@@ -15,7 +15,6 @@ const {
 
 module.exports = ({ production }) => () => {
   const pageTemplate = fs.readFileSync(dest('_skeleton.html'));
-  const styleguideTemplate = fs.readFileSync(dest('_skeleton.styleguide.html'));
   const {
     pagesContext,
     componentsContext,
@@ -23,11 +22,11 @@ module.exports = ({ production }) => () => {
     getModule
   } = require(dest('tmp/static.js')); // eslint-disable-line
 
-  const renderFiles = (list, template) =>
+  const renderFiles = (list) =>
     list.map(({ moduleName, outputPath }) => {
       const output = renderComponent({
         module: getModule(moduleName),
-        template
+        template: pageTemplate
       });
 
       return file(outputPath, output, { src: true });
@@ -35,14 +34,11 @@ module.exports = ({ production }) => () => {
 
   return (
     merge(
-      ...renderFiles(
-        getContextList(pagesContext),
-        pageTemplate
-      ),
       ...renderFiles([
+        ...getContextList(pagesContext),
         ...getContextList(componentsContext, 'styleguide/components'),
         ...getContextList(tagsContext, 'styleguide/tags')
-      ], styleguideTemplate)
+      ])
     )
     .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))
     .pipe(print())
