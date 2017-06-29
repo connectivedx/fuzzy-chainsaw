@@ -89,8 +89,8 @@ module.exports = (
           title: 'FC Dev'
         }),
         new CopyWebpackPlugin([{
-          from: source('vendor'),
-          to: 'assets/vendor'
+          from: source('static'),
+          to: 'assets/static'
         }], {
           ignore: ['README.md']
         })
