@@ -6,7 +6,7 @@
   color: var(--greyDark);
 */
 :root {
-  /* grayshades */
+  /* grayscale */
   --color-shade--00: gray(100%);
   --color-shade--03: gray(97%); /* #f7f7f7 */
   --color-shade--05: gray(95%); /* #f2f2f2 */
