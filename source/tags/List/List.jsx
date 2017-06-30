@@ -1,4 +1,4 @@
-export const List_Item =
+export const List__item =
   FcUtils.createBasicComponent({
     name: 'List__item',
     defaultProps: {

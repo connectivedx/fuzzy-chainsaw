@@ -3,7 +3,7 @@
 @import '../Button/Button.css';
 @import '../List/List.css';
 
-.rich-text {
+.RichText {
   @extend .Rhythm--deep;
 
   & h1,

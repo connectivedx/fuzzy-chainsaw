@@ -1,11 +1,11 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import { List, List_Item } from './List';
+import { List, List__item } from './List';
 
 
 test('<List>', (t) => {
-  const component = shallow(<List><List_Item>X</List_Item></List>);
+  const component = shallow(<List><List__item>X</List__item></List>);
   t.ok(component.is('ul'), 'tag name');
   t.ok(component.is('.List'), 'tag class');
   t.ok(component.is('.List--unordered'), 'tag class');
@@ -13,7 +13,7 @@ test('<List>', (t) => {
 });
 
 test('<List variant="ordered">', (t) => {
-  const component = shallow(<List variant="ordered"><List_Item>X</List_Item><List_Item>X</List_Item></List>);
+  const component = shallow(<List variant="ordered"><List__item>X</List__item><List__item>X</List__item></List>);
   t.ok(component.is('ol'), 'tag name');
   t.ok(component.is('.List'), 'tag class');
   t.ok(component.is('.List--ordered'), 'tag class');
@@ -22,7 +22,7 @@ test('<List variant="ordered">', (t) => {
 });
 
 test('<List variant="blank">', (t) => {
-  const component = shallow(<List variant="blank"><List_Item>X</List_Item><List_Item>X</List_Item></List>);
+  const component = shallow(<List variant="blank"><List__item>X</List__item><List__item>X</List__item></List>);
   t.ok(component.is('ul'), 'tag name');
   t.ok(component.is('.List'), 'tag class');
   t.ok(component.is('.List--blank'), 'tag class');
@@ -39,8 +39,8 @@ test('<List className="boogy-monster">', (t) => {
   t.end();
 });
 
-test('<List_Item className="yahoo">', (t) => {
-  const component = shallow(<List_Item className="yahoo">Horse</List_Item>);
+test('<List__item className="yahoo">', (t) => {
+  const component = shallow(<List__item className="yahoo">Horse</List__item>);
   t.ok(component.is('li'), 'tag name');
   t.ok(component.is('.List__item'), 'tag class');
   t.ok(component.is('.yahoo'), 'additional class');

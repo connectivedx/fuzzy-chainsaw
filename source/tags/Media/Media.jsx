@@ -1,4 +1,4 @@
-export const Media_Figure = (props) => {
+export const Media__figure = (props) => {
   const {
     tagName: Tag,
     className,
@@ -20,11 +20,11 @@ export const Media_Figure = (props) => {
   );
 };
 
-Media_Figure.defaultProps = {
+Media__figure.defaultProps = {
   tagName: 'div'
 };
 
-Media_Figure.propTypes = {
+Media__figure.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
   align: PropTypes.oneOf(['top', 'middle', 'bottom']),
@@ -32,9 +32,9 @@ Media_Figure.propTypes = {
 };
 
 
-export const Media_Body =
+export const Media__body =
   FcUtils.createBasicComponent({
-    name: 'Media_Body'
+    name: 'Media__body'
   });
 
 
