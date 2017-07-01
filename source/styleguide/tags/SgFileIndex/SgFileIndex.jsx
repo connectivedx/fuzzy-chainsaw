@@ -1,4 +1,3 @@
-import startCase from 'lodash.startcase';
 import Heading from 'SgTags/SgHeading/SgHeading';
 import Rhythm from 'SgTags/SgRhythm/SgRhythm';
 
@@ -33,39 +32,150 @@ const requireAllComponents = (context, prefix) =>
       return modules;
     }, {});
 
-const path2LinkList = (baseUrl = '') => (path) => {
-  const normalPath = path.substr(0, path.lastIndexOf('.') !== -1 ? path.lastIndexOf('.') : undefined);
+const path2LinkList = (baseUrl = '') => (data) => {
+  const normalPath = data.path.substr(
+    0,
+    data.path.lastIndexOf('.') !== -1
+    ? data.path.lastIndexOf('.')
+    : undefined
+  );
+
   return {
+    ...data,
     url: `${baseUrl}/${normalPath}.html`, // remove html on dev
-    content: path.replace('.html', '').split('/').map(startCase).join(' / ')
+    content:
+      data.path
+        .replace('.html', '')
+        .split('/')
+        .map((s) => s.substr(0, 1).toUpperCase() + s.substr(1))
+        .join(' / ')
   };
 };
 
+const sortFoldersFirst = (a, b) =>
+  a.path.split('/').length - b.path.split('/').length;
+
+const sortAlphabetical = (a, b) => {
+  const A = a.path.toLowerCase();
+  const B = b.path.toLowerCase();
+  return A < B
+    ? -1
+    : A > B ? 1 : 0;
+};
+
+const groupData = (res, data) => {
+  if (data.theme) {
+    if (res.themes[data.theme] === undefined && res.themes[data.theme] !== null) {
+      res.themes[data.theme] = [];
+    }
+
+    res.themes[data.theme].push(data);
+  } else if (data.pageType === 'index') {
+    res.indexes.push(data);
+  } else {
+    res.pages.push(data);
+  }
+
+  return res;
+};
+
+const pageData = requireAllpages(pagesContext);
+export const allPagesIndexData =
+  Object.keys(pageData)
+    .map((p) => ({
+      path: p.substr(2),
+      pageType: pageData[p].pageType,
+      theme: pageData[p].theme
+    }))
+    .reduce(groupData, {
+      indexes: [],
+      pages: [],
+      themes: {}
+    });
 
 export const pagesIndexData =
-  Object.keys(requireAllpages(pagesContext))
-    .map((p) => p.substr(2))
-    .sort((a, b) => a.split('/').length - b.split('/').length)
-    .map(path2LinkList());
+  allPagesIndexData.pages
+    .sort(sortFoldersFirst)
+    .sort(sortAlphabetical)
+    .map(path2LinkList(process.env.BASE_URL.slice(0, -1)));
 
+export const indexesIndexData =
+  allPagesIndexData.indexes
+    .sort(sortFoldersFirst)
+    .sort(sortAlphabetical)
+    .map(path2LinkList(process.env.BASE_URL.slice(0, -1)));
+
+export const themedPagesIndexData =
+  Object.keys(allPagesIndexData.themes)
+    .reduce((res, key) => {
+      res[key] =
+        allPagesIndexData.themes[key]
+          .sort(sortFoldersFirst)
+          .sort(sortAlphabetical)
+          .map(path2LinkList(process.env.BASE_URL.slice(0, -1)));
+
+      return res;
+    }, { });
 
 export const componentsIndexData =
   Object.keys(requireAllComponents(componentsContext, '/styleguide/components/'))
     .filter((p) => p.indexOf('/components/') !== -1)
-    .map((p) => p.substr(p.indexOf('/components/') + '/components/'.length))
+    .map((p) => ({
+      path: p.substr(p.indexOf('/components/') + '/components/'.length)
+    }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/components`));
 
 
 export const tagsIndexData =
   Object.keys(requireAllComponents(tagsContext, '/styleguide/tags/'))
-    .map((p) => p.substr(p.indexOf('/tags/') + '/tags/'.length))
+    .map((p) => ({
+      path: p.substr(p.indexOf('/tags/') + '/tags/'.length)
+    }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/tags`));
+
+
+const SgFileIndex__ItemThemed = (props) => {
+  const { url, content } = props.item;
+
+  return (
+    <li>
+      <a className="SgFileIndex__name" href={`${url}?theme=tfs`}>{content}</a>
+      &nbsp;
+      <span className="SgFileIndex__links">
+        (<a href={`${url}?theme=tfs`}>TFS</a>
+        &nbsp;/&nbsp;
+        <a href={`${url}?theme=lfs`}>LFS</a>)
+      </span>
+    </li>
+  );
+};
+
+SgFileIndex__ItemThemed.propTypes = {
+  item: PropTypes.object
+};
+
+
+const SgFileIndex__Item = (props) => {
+  const { url, content } = props.item;
+
+  return (
+    <li>
+      <a className="SgFileIndex__name" href={`${url}`}>{content}</a>
+    </li>
+  );
+};
+
+SgFileIndex__Item.propTypes = {
+  item: PropTypes.object
+};
 
 
 export const SgFileIndex = (props) => {
   const {
+    themeLinks,
     items,
     className,
+    headingSize,
     size,
     title,
     RhythmComponent,
@@ -75,13 +185,13 @@ export const SgFileIndex = (props) => {
 
   return items.length
     ? (
-      <RhythmComponent size={size}>
-        <HeadingComponent level="h2">{title}</HeadingComponent>
+      <RhythmComponent size={size} className="SgFileIndex">
+        { title && <HeadingComponent level={headingSize}>{title}</HeadingComponent> }
         <ul className={className} {...attrs}>
           { items.map((item) => (
-            <li key={item.url}>
-              <a href={item.url}>{item.content}</a>
-            </li>
+            item.theme === undefined && item.theme !== null
+              ? <SgFileIndex__ItemThemed key={item.url} item={item} />
+              : <SgFileIndex__Item key={item.url} item={item} />
           )) }
         </ul>
       </RhythmComponent>
@@ -90,26 +200,29 @@ export const SgFileIndex = (props) => {
 };
 
 SgFileIndex.defaultProps = {
+  themeLinks: false,
   items: [],
   className: '',
+  headingSize: 'h2',
   size: 'default',
-  title: '',
   RhythmComponent: Rhythm,
   HeadingComponent: Heading
 };
 
 SgFileIndex.propTypes = {
+  themeLinks: PropTypes.bool,
   items: PropTypes.array,
   className: PropTypes.string,
+  headingSize: PropTypes.string,
   size: PropTypes.string,
   title: PropTypes.string,
   RhythmComponent: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.element
+    PropTypes.node
   ]),
   HeadingComponent: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.element
+    PropTypes.node
   ])
 };
 

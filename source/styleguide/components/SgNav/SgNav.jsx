@@ -1,12 +1,5 @@
 import ReactModal from 'react-modal';
-
-import {
-  pagesIndexData,
-  componentsIndexData,
-  tagsIndexData,
-  SgFileIndex
-} from 'SgTags/SgFileIndex/SgFileIndex';
-
+import SgTableOfContents from 'SgTags/SgTableOfContents/SgTableOfContents';
 
 export class SgNav extends React.Component {
   state = {
@@ -60,9 +53,9 @@ export class SgNav extends React.Component {
           </button>
 
           <div size="large" className="SgNav__modal-content">
-            <SgFileIndex title="Pages" items={pagesIndexData} />
-            <SgFileIndex title="Components" items={componentsIndexData} />
-            <SgFileIndex title="Tags" items={tagsIndexData} />
+            <div className="SgNav__modal-wrapper">
+              <SgTableOfContents />
+            </div>
           </div>
         </ReactModal>
       </div>

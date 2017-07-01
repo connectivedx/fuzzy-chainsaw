@@ -1,0 +1,24 @@
+.SgTableOfContents {
+  & * + .SgHeading {
+    margin-top: 1em;
+  }
+
+  & .SgHeading {
+    margin-bottom: 0.25em;
+  }
+
+  & a {
+    color: black;
+  }
+
+  & > * + * { margin-top: 2em; }
+
+  @media (width >= 768px) {
+    column-gap: 2em;
+    column-width: 320px;
+
+    & > * {
+      break-inside: avoid;
+    }
+  }
+}
