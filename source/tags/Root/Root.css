@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-html {
+body {
   font-family: var(--type-font-family);
   font-size: var(--type-font-size);
   line-height: var(--type-line-height);

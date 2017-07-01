@@ -69,14 +69,16 @@
 }
 
 .SgNav__close {
-  position: absolute;
+  position: fixed;
   top: 1em;
   right: 1em;
-  width: 2em;
-  height: 2em;
+  width: 3em;
+  height: 3em;
+  padding: 0.5em;
   border: none;
   text-indent: -9999em;
   cursor: pointer;
+  background-color: var(--color-white);
 
   &::before,
   &::after {
@@ -84,7 +86,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
+    width: 2em;
     height: 2px;
     margin-left: -1em;
     background-color: var(--color-black);
@@ -95,99 +97,86 @@
 }
 
 .SgNav__modal-overlay {
-  content: '\0020';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 99;
-  background-color: color(var(--color-black) alpha(90%));
-  overflow-x: hidden;
-  overflow-y: auto;
+  background-color: var(--color-white);
   opacity: 0;
 
   &.ReactModal__Overlay--after-open {
-    transition: opacity 0.3s ease 0s;
+    transition: opacity 0.3s ease;
     opacity: 1;
   }
 
   &.ReactModal__Overlay--before-close {
-    transition: opacity 0.3s ease 0.3s;
+    transition: opacity 0.3s ease;
     opacity: 0;
   }
 }
 
 .SgNav__modal {
-  position: fixed;
-  top: 5vw;
-  left: 5vw;
-  right: 5vw;
-  bottom: 5vw;
-  padding: 2em;
-  z-index: 100;
-  font-size: 1em;
-  line-height: 1.7em;
-  overflow-x: auto;
-  overflow-y: scroll;
   background-color: var(--color-white);
-  box-shadow: var(--color-black) 0 0.5em 2em;
-  transform: translate3d(0, -5%, 0);
-  opacity: 0;
 
-  &.ReactModal__Content--after-open {
-    transition: none 0.3s ease 0.2s;
-    transition-property: transform, opacity;
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
-
-  &.ReactModal__Content--before-close {
-    transition: none 0.3s ease 0s;
-    transition-property: transform, opacity;
-    transform: translate3d(0, -5%, 0);
+  & .SgNav__close {
     opacity: 0;
   }
 
-  @media (width >= 720px) {
-    top: 15vh;
-    left: 10vw;
-    right: 10vw;
-    bottom: 15vh;
+  & .SgNav__modal-content {
+    transform-origin: top center;
+    transform: scale(0.975);
+    opacity: 0;
   }
 
-  @media (width >= 1080px) {
-    left: 50%;
-    right: auto;
-    width: 960px;
-    margin-left: calc(960px / -2);
+  &.ReactModal__Content--after-open {
+    transition: 0.3s ease 0.3s;
+
+    & .SgNav__close {
+      transition: opacity 0.3s ease;
+      opacity: 1;
+    }
+
+    & .SgNav__modal-content {
+      transition: 0.3s ease 0.3s;
+      transition-property: transform, opacity;
+      transform: none;
+      opacity: 1;
+    }
   }
 
-  @media (height >= 720px) {
-    top: 50%;
-    bottom: auto;
-    height: 640px;
-    margin-top: calc(640px / -2);
+  &.ReactModal__Content--after-close {
+    transition: 0.3s ease;
+
+    & .SgNav__close {
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    & .SgNav__modal-content {
+      transition: 0.3s ease;
+      transition-property: transform, opacity;
+      transform: scale(0.975);
+      opacity: 1;
+    }
   }
 }
 
 .SgNav__modal-content {
-  & * + .SgHeading {
-    margin-top: 1em;
+  max-height: 100vh;
+  padding: 2em;
+  z-index: 100;
+  line-height: 1.8em;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @media (width >= 1080px) {
+    padding: 3em;
   }
+}
 
-  & .SgHeading {
-    margin-bottom: 0.25em;
-  }
-
-  & > * + * { margin-top: 2em; }
-
-  @media (width >= 720px) {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-
-    & > * { flex-grow: 1; }
-    & > * + * { margin-top: 0; }
-  }
+.SgNav__modal-wrapper {
+  margin: 0 auto;
+  max-width: 1080px;
 }

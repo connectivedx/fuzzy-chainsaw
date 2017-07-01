@@ -1,37 +1,20 @@
 import Heading from 'Tags/Heading/Heading';
 import Rhythm from 'Tags/Rhythm/Rhythm';
 import Wrapper from 'Tags/Wrapper/Wrapper';
-import {
-  tagsIndexData,
-  componentsIndexData,
-  pagesIndexData,
-  SgFileIndex
-} from 'SgTags/SgFileIndex/SgFileIndex';
-
+import SgTableOfContents from 'SgTags/SgTableOfContents/SgTableOfContents';
 
 const page = () => (
-  <Wrapper>
+  <Wrapper size="wide">
     <Rhythm size="large">
-      <Heading level="h1">Hello World</Heading>
+      <Rhythm size="small">
+        <Heading level="h1">Fuzzy Chainsaw</Heading>
+        <Heading level="h4">Front End Style Guide</Heading>
+      </Rhythm>
 
-      <SgFileIndex
-        items={pagesIndexData}
-        title="Pages"
-        className="Rhythm--small"
-        RhythmComponent={Rhythm}
-        HeadingComponent={Heading}
-      />
-      <SgFileIndex
-        items={componentsIndexData}
-        title="Components"
-        className="Rhythm--small"
-        RhythmComponent={Rhythm}
-        HeadingComponent={Heading}
-      />
-      <SgFileIndex
-        items={tagsIndexData}
-        title="Tags"
-        className="Rhythm--small"
+      <br />
+
+      <SgTableOfContents
+        indexClassName="Rhythm--small"
         RhythmComponent={Rhythm}
         HeadingComponent={Heading}
       />
@@ -39,6 +22,9 @@ const page = () => (
   </Wrapper>
 );
 
-page.pageTitle = 'Hello World';
+page.pageTitle = 'Fuzzy Chainsaw';
+page.pageType = 'index';
+page.theme = null;
 
 export default page;
+
