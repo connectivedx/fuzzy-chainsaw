@@ -30,5 +30,6 @@ const page = () => (
 );
 
 page.pageTitle = 'Styleguide';
+page.pageType = 'index';
 
 export default page;

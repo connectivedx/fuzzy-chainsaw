@@ -40,5 +40,6 @@ const page = () => (
 );
 
 page.pageTitle = 'Hello World';
+page.pageType = 'index';
 
 export default page;
