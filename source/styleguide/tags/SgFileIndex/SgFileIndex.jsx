@@ -58,9 +58,9 @@ const sortFoldersFirst = (a, b) =>
 const sortAlphabetical = (a, b) => {
   const A = a.path.toLowerCase();
   const B = b.path.toLowerCase();
-  return A < B
+  return (A < B)
     ? -1
-    : A > B ? 1 : 0;
+    : (A > B) ? 1 : 0;
 };
 
 const groupData = (res, data) => {
@@ -136,16 +136,24 @@ export const tagsIndexData =
 
 const SgFileIndex__ItemThemed = (props) => {
   const { url, content } = props.item;
+  const themes = [{
+    id: 'generic',
+    name: 'Generic'
+  }];
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}?theme=tfs`}>{content}</a>
-      &nbsp;
-      <span className="SgFileIndex__links">
-        (<a href={`${url}?theme=tfs`}>TFS</a>
-        &nbsp;/&nbsp;
-        <a href={`${url}?theme=lfs`}>LFS</a>)
-      </span>
+      <a className="SgFileIndex__name" href={`${url}?theme=${themes[0]}`}>{content}</a>
+      { themes.length > 1 &&
+        <span className="SgFileIndex__links">
+          &nbsp;
+          ({ themes
+              .map((t) => (
+                <a href={`${url}?theme=${t.id}`}>{t.name}</a>
+              ))
+          })
+        </span>
+      }
     </li>
   );
 };
