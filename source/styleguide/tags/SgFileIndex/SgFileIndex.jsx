@@ -191,20 +191,27 @@ export const SgFileIndex = (props) => {
     ...attrs
   } = props;
 
-  return items.length
-    ? (
-      <RhythmComponent size={size} className="SgFileIndex">
-        { title && <HeadingComponent level={headingSize}>{title}</HeadingComponent> }
-        <ul className={className} {...attrs}>
-          { items.map((item) => (
-            item.theme === undefined && item.theme !== null
-              ? <SgFileIndex__ItemThemed key={item.url} item={item} />
-              : <SgFileIndex__Item key={item.url} item={item} />
-          )) }
-        </ul>
-      </RhythmComponent>
-    )
-    : null;
+  return (
+    <RhythmComponent size={size} className="SgFileIndex">
+      { title &&
+        <HeadingComponent level={headingSize}>
+          {title} <small className="SgFileIndex__count">{items.length}</small>
+        </HeadingComponent>
+      }
+      { items.length > 0
+        ? (
+          <ul className={className} {...attrs}>
+            { items.map((item) => (
+              item.theme === undefined && item.theme !== null
+                ? <SgFileIndex__ItemThemed key={item.url} item={item} />
+                : <SgFileIndex__Item key={item.url} item={item} />
+            )) }
+          </ul>
+        )
+        : <p>&mdash;</p>
+      }
+    </RhythmComponent>
+  );
 };
 
 SgFileIndex.defaultProps = {
