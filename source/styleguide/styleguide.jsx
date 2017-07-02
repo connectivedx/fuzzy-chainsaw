@@ -5,6 +5,7 @@ import Dom from 'react-dom';
 import SgNav from 'SgComponents/SgNav/SgNav';
 import SgExample from 'SgComponents/SgExample/SgExample.Component';
 
+
 const init = () => {
   Dom.render(<SgNav />, document.querySelector('.SgNav'));
 
@@ -27,10 +28,6 @@ const init = () => {
 };
 
 
-if (process.env.NODE_ENV === 'dev') {
-  if (document.querySelector('.SgStyleguide')) {
-    init();
-  }
-} else {
+if (document.querySelector('.SgStyleguide')) {
   init();
 }

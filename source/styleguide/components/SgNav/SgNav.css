@@ -1,182 +1,189 @@
-.SgNav,
-.SgNav__portal {
-  & a {
-    color: var(--color-black);
-
-    &:hover,
-    &:visited {
+.SgNav {
+  &,
+  &__portal {
+    & a {
       color: var(--color-black);
+
+      &:hover,
+      &:visited {
+        color: var(--color-black);
+      }
     }
   }
-}
 
-.SgNav__button {
-  display: block;
-  width: 100%;
-  padding: 1em 2em;
-  color: var(--color-white);
-  background-color: var(--color-black);
-  box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
-  border: none;
-  cursor: pointer;
-  line-height: 1.2em;
-  font-size: 0.75em;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.3s ease-in-out;
-  transition-property: background-color, box-shadow;
-  z-index: 50;
-
-  &:hover {
+  &__button {
+    display: block;
+    width: 100%;
+    padding: 1em 2em;
     color: var(--color-white);
     background-color: var(--color-black);
-    box-shadow: color(var(--color-black) alpha(25%)) 0 0.3em 1em;
+    box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
+    border: none;
+    cursor: pointer;
+    line-height: 1.2em;
+    font-size: 0.75em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    transition-property: background-color, box-shadow;
+    z-index: 50;
+
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-black);
+      box-shadow: color(var(--color-black) alpha(25%)) 0 0.3em 1em;
+    }
+
+    @media (width >= 540px) {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      width: auto;
+    }
+
+    @media (width >= 960px) {
+      right: 2.5em;
+    }
   }
 
-  @media (width >= 540px) {
-    position: absolute;
+  &__button-icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-right: 1em;
+    width: 1em;
+    height: 0.75em;
+    border: solid white;
+    border-width: 1px 0;
+
+    &::before {
+      content: "\0020";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin-top: -1px;
+      border-bottom: 1px solid white;
+    }
+  }
+
+  &__close {
+    position: fixed;
+    z-index: 1;
     top: 1em;
     right: 1em;
-    width: auto;
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+    border: none;
+    text-indent: -9999em;
+    cursor: pointer;
+    background-color: var(--color-white);
+
+    &::before,
+    &::after {
+      content: '\0020';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2em;
+      height: 2px;
+      margin-left: -1em;
+      background-color: var(--color-black);
+    }
+
+    &::before { transform: rotate(-45deg); }
+    &::after { transform: rotate(45deg); }
+
+    @media (width >= 960px) {
+      right: 2em;
+    }
   }
 
-  @media (width >= 960px) {
-    right: 2.5em;
-  }
-}
-
-.SgNav__button-icon {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -2px;
-  margin-right: 1em;
-  width: 1em;
-  height: 0.75em;
-  border: solid white;
-  border-width: 1px 0;
-
-  &::before {
-    content: "\0020";
-    position: absolute;
-    top: 50%;
+  &__overlay {
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    margin-top: -1px;
-    border-bottom: 1px solid white;
-  }
-}
-
-.SgNav__close {
-  position: fixed;
-  top: 1em;
-  right: 1em;
-  width: 3em;
-  height: 3em;
-  padding: 0.5em;
-  border: none;
-  text-indent: -9999em;
-  cursor: pointer;
-  background-color: var(--color-white);
-
-  &::before,
-  &::after {
-    content: '\0020';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 2em;
-    height: 2px;
-    margin-left: -1em;
-    background-color: var(--color-black);
-  }
-
-  &::before { transform: rotate(-45deg); }
-  &::after { transform: rotate(45deg); }
-}
-
-.SgNav__modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  background-color: var(--color-white);
-  opacity: 0;
-
-  &.ReactModal__Overlay--after-open {
-    transition: opacity 0.3s ease;
-    opacity: 1;
-  }
-
-  &.ReactModal__Overlay--before-close {
-    transition: opacity 0.3s ease;
+    bottom: 0;
+    z-index: 99;
+    background-color: var(--color-white);
     opacity: 0;
-  }
-}
 
-.SgNav__modal {
-  background-color: var(--color-white);
-
-  & .SgNav__close {
-    opacity: 0;
-  }
-
-  & .SgNav__modal-content {
-    transform-origin: top center;
-    transform: scale(0.975);
-    opacity: 0;
-  }
-
-  &.ReactModal__Content--after-open {
-    transition: 0.3s ease 0.3s;
-
-    & .SgNav__close {
+    &--after-open {
       transition: opacity 0.3s ease;
       opacity: 1;
     }
 
-    & .SgNav__modal-content {
-      transition: 0.3s ease 0.3s;
-      transition-property: transform, opacity;
-      transform: none;
-      opacity: 1;
+    &--before-close {
+      transition: opacity 0.3s ease;
+      opacity: 0;
     }
   }
 
-  &.ReactModal__Content--after-close {
-    transition: 0.3s ease;
+  &__modal {
+    background-color: var(--color-white);
 
     & .SgNav__close {
-      transition: opacity 0.3s ease;
       opacity: 0;
     }
 
     & .SgNav__modal-content {
-      transition: 0.3s ease;
-      transition-property: transform, opacity;
+      transform-origin: top center;
       transform: scale(0.975);
-      opacity: 1;
+      opacity: 0;
+    }
+
+    &--after-open {
+      transition: 0.3s ease 0.3s;
+
+      & .SgNav__close {
+        transition: opacity 0.3s ease;
+        opacity: 1;
+      }
+
+      & .SgNav__modal-content {
+        transition: 0.3s ease 0.3s;
+        transition-property: transform, opacity;
+        transform: none;
+        opacity: 1;
+      }
+    }
+
+    &--after-close {
+      transition: 0.3s ease;
+
+      & .SgNav__close {
+        transition: opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      & .SgNav__modal-content {
+        transition: 0.3s ease;
+        transition-property: transform, opacity;
+        transform: scale(0.975);
+        opacity: 1;
+      }
     }
   }
-}
 
-.SgNav__modal-content {
-  max-height: 100vh;
-  padding: 2em;
-  z-index: 100;
-  line-height: 1.8em;
-  overflow-x: hidden;
-  overflow-y: auto;
+  &__modal-content {
+    height: 100vh;
+    padding: 2em;
+    z-index: 100;
+    line-height: 1.8em;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-  @media (width >= 1080px) {
-    padding: 3em;
+    @media (width >= 1080px) {
+      padding: 3em;
+    }
   }
-}
 
-.SgNav__modal-wrapper {
-  margin: 0 auto;
-  max-width: 1080px;
+  &__modal-wrapper {
+    margin: 0 auto;
+    max-width: 1080px;
+  }
 }
