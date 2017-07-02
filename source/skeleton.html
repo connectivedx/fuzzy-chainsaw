@@ -20,9 +20,9 @@
 <body>
 
 <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
-<div id="dev-entry"></div>
+<div class="root"></div>
 <% } else { %>
-{{output}}
+<div class="root">{{output}}</div>
 <% } %>
 
 <script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/styleguide-<%= htmlWebpackPlugin.options.dllStats.hash %>.dll.js"></script>

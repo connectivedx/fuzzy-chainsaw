@@ -8,7 +8,8 @@
   }
 }
 
+.SgFileIndex__count,
 .SgFileIndex__links {
-  font-size: 70%;
-  opacity: 0.7;
+  font-size: 0.6em;
+  opacity: 0.45;
 }
