@@ -143,7 +143,7 @@ const SgFileIndex__ItemThemed = (props) => {
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}?theme=${themes[0]}`}>{content}</a>
+      <a className="SgFileIndex__name" href={`${url}?theme=${themes[0].id}`}>{content}</a>
       { themes.length > 1 &&
         <span className="SgFileIndex__links">
           &nbsp;
