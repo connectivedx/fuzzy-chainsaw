@@ -45,12 +45,12 @@ module.exports.entries = {
 };
 
 module.exports.outputFormats = {
-  dll: '[name].js',
-  js: '[name].js',
-  css: '[name].css',
-  fonts: '[name].[ext]',
-  images: '[name].[ext]',
-  favIconPrefix: 'favicon-'
+  dll: '[name]-[hash].js',
+  js: '[name]-[hash].js',
+  css: '[name]-[hash].css',
+  fonts: '[name]-[md5:hash:hex:8].[ext]',
+  images: '[name]-[md5:hash:hex:8].[ext]',
+  favIconPrefix: 'favicon-[hash:8]-'
 };
 
 module.exports.outputSort = (a, b) => {
