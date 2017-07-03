@@ -118,8 +118,6 @@ module.exports = (
         }),
         new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
           filename: '_skeleton.html',
-          excludeChunks: ['styleguide'],
-          mode: 'page',
           baseUrl
         }))
       ]
