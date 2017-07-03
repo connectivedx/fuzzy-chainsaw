@@ -1,8 +1,10 @@
 import ReactModal from 'react-modal';
 import SgTableOfContents from 'SgTags/SgTableOfContents/SgTableOfContents';
 
-// set root
-ReactModal.setAppElement('.root');
+// set root if in browser
+if (typeof document !== 'undefined') {
+  ReactModal.setAppElement('.root');
+}
 
 export class SgNav extends React.Component {
   state = {
