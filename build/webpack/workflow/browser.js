@@ -31,7 +31,10 @@ module.exports = (
           },
           {
             test: /\.md$/,
-            use: 'null-loader'
+            use: [
+              'html-loader',
+              'markdown-loader'
+            ]
           },
           {
             test: /\.(jpe?g|png|gif|svg)$/i,
