@@ -47,7 +47,7 @@ const createBasicComponent = (config) => {
   Component.propTypes = {
     tagName: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.node,
+      PropTypes.element,
       PropTypes.func
     ]),
     className: PropTypes.string,
