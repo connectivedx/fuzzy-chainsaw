@@ -29,6 +29,8 @@ const {
   linting: lintingPipeline
 } = require('../lib/postcss-plugins.js');
 
+const { outputFormats } = require(source('fc-config')); // eslint-disable-line
+
 
 /*
  *
@@ -75,7 +77,7 @@ module.exports = (
       },
       plugins: [
         new ProgressBarPlugin(),
-        new ExtractTextPlugin('assets/[name]-[hash].css'),
+        new ExtractTextPlugin(`assets/${outputFormats.css}`),
         new PostCssPipelineWebpackPlugin({
           suffix: undefined,
           pipeline: buildPipeline
@@ -85,7 +87,7 @@ module.exports = (
         }),
         new FaviconsWebpackPlugin({
           logo: source('favicon.png'),
-          prefix: 'assets/favicons/[hash:8]-',
+          prefix: `assets/favicons/${outputFormats.favIconPrefix}`,
           persistentCache: false,
           icons: {
             android: false,

@@ -10,6 +10,10 @@ const webpackMerge = require('webpack-merge');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
 
 const sharedWorkflow = require('./shared');
+const { source } = require('../../lib/path-helpers');
+
+const { outputFormats } = require(source('fc-config')); // eslint-disable-line
+
 
 module.exports = (
   webpackMerge(
@@ -22,7 +26,7 @@ module.exports = (
             loader: 'file-loader',
             options: {
               context: './source/',
-              name: 'assets/fonts/[name]-[md5:hash:hex:8].[ext]'
+              name: `assets/fonts/${outputFormats.fonts}`
             }
           },
           {
@@ -43,7 +47,7 @@ module.exports = (
                 loader: 'file-loader',
                 options: {
                   context: './source/',
-                  name: 'assets/images/css/[name]-[md5:hash:hex:8].[ext]'
+                  name: `assets/images/${outputFormats.images}`
                 }
               },
               {
@@ -55,6 +59,38 @@ module.exports = (
                   },
                   optipng: {
                     optimizationLevel: 7
+                  },
+                  svgo: {
+                    plugins: [
+                      { cleanupAttrs: true },
+                      { cleanupEnableBackground: true },
+                      { cleanupIDs: true },
+                      { cleanupListOfValues: true },
+                      { collapseGroups: true },
+                      { convertTransform: true },
+                      { minifyStyles: true },
+                      { removeAttrs: true },
+                      { removeComments: true },
+                      { removeDesc: true },
+                      { removeDimensions: true },
+                      { removeDoctype: true },
+                      { removeEditorNSData: true },
+                      { removeEmptyAttrs: true },
+                      { removeEmptyContainers: true },
+                      { removeEmptyText: true },
+                      { removeHiddenElems: true },
+                      { removeMetadata: true },
+                      { removeNonInheritableGroupAttrs: true },
+                      { removeRasterImages: true },
+                      { removeUnknownsAndDefaults: true },
+                      { removeUnusedNS: true },
+                      { removeUselessDefs: true },
+                      { removeUselessStrokeAndFill: true },
+                      { removeXMLNS: true },
+                      { removeXMLProcInst: true },
+                      { sortAttrs: true },
+                      { removeViewBox: false }
+                    ]
                   }
                 }
               }

@@ -2,9 +2,9 @@ const webpack = require('webpack');
 const StatsPlugin = require('stats-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const { source, dest } = require('../../lib/path-helpers');
 
-const { dest } = require('../../lib/path-helpers');
-
+const { outputFormats } = require(source('fc-config')); // eslint-disable-line
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -23,7 +23,7 @@ module.exports = {
   },
   output: {
     path: dest('assets/dlls'),
-    filename: '[name]-[hash].dll.js',
+    filename: outputFormats.dll,
     library: '[name]_dll',
     libraryTarget: 'umd'
   },
