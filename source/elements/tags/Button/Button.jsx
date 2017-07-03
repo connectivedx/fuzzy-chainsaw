@@ -35,7 +35,11 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  tagName: PropTypes.string,
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
   className: PropTypes.string,
   width: PropTypes.oneOf(['auto', 'full']),
   variant: PropTypes.oneOf(['default', 'link', 'cta']),
