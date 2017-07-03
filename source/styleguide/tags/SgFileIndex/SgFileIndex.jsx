@@ -4,6 +4,7 @@ import Rhythm from 'SgTags/SgRhythm/SgRhythm';
 const pagesContext = require.context('Pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 const tagsContext = require.context('Tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 const componentsContext = require.context('Components/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+const compositionsContext = require.context('Compositions/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
 const isRenderableModule = (key) => (
@@ -117,6 +118,16 @@ export const themedPagesIndexData =
       return res;
     }, { });
 
+
+export const compositionsIndexData =
+  Object.keys(requireAllComponents(compositionsContext, '/styleguide/compositions/'))
+    .filter((p) => p.indexOf('/compositions/') !== -1)
+    .map((p) => ({
+      path: p.substr(p.indexOf('/compositions/') + '/compositions/'.length)
+    }))
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/compositions`));
+
+
 export const componentsIndexData =
   Object.keys(requireAllComponents(componentsContext, '/styleguide/components/'))
     .filter((p) => p.indexOf('/components/') !== -1)
@@ -195,7 +206,11 @@ export const SgFileIndex = (props) => {
     <RhythmComponent size={size} className="SgFileIndex">
       { title &&
         <HeadingComponent level={headingSize}>
-          {title} <small className="SgFileIndex__count">{items.length}</small>
+          { title }
+          &nbsp;
+          { items.length > 0 &&
+            <small className="SgFileIndex__count">{items.length}</small>
+          }
         </HeadingComponent>
       }
       { items.length > 0

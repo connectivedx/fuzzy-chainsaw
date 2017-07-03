@@ -4,6 +4,7 @@ import SgStyleguide from 'SgComponents/SgStyleguide/SgStyleguide';
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
 export const pagesContext = require.context('Pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const componentsContext = require.context('Components/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const compositionsContext = require.context('Compositions/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const tagsContext = require.context('Tags/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 
 
@@ -68,6 +69,8 @@ export const getModule = (path) => {
     return getStyleguideModule(path, tagsContext, 'tags');
   } else if (match(normalPath, './styleguide/components/**')) {
     return getStyleguideModule(path, componentsContext, 'components');
+  } else if (match(normalPath, './styleguide/compositions/**')) {
+    return getStyleguideModule(path, compositionsContext, 'compositions');
   }
 
   const pagePath = `${normalPath}.jsx`;

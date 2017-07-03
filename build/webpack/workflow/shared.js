@@ -24,18 +24,23 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
+      FcUtils: path.resolve(__dirname, '../../lib/fc-utilities'),
+
       Source: source(),
       Static: source('static'),
       Lib: source('lib'),
-      Vars: source('variables'),
-      Tags: source('tags'),
-      Components: source('components'),
       Pages: source('pages'),
+
+      Elements: source('elements'),
+      Vars: source('elements/variables'),
+      Tags: source('elements/tags'),
+      Components: source('elements/components'),
+      Compositions: source('elements/compositions'),
+
       Styleguide: source('styleguide'),
       SgVars: source('styleguide/variables'),
       SgTags: source('styleguide/tags'),
-      SgComponents: source('styleguide/components'),
-      FcUtils: path.resolve(__dirname, '../../lib/fc-utilities')
+      SgComponents: source('styleguide/components')
     }
   },
   output: {

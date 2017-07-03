@@ -6,6 +6,7 @@ import {
   pagesIndexData,
   themedPagesIndexData,
   indexesIndexData,
+  compositionsIndexData,
   componentsIndexData,
   tagsIndexData
 } from 'SgTags/SgFileIndex/SgFileIndex';
@@ -51,6 +52,7 @@ export const SgTableOfContents = (props) => {
             )) }
         </RhythmComponent>
       }
+      <SgFileIndex {...indexProps} title="Compositions" items={compositionsIndexData} />
       <SgFileIndex {...indexProps} title="Components" items={componentsIndexData} />
       <SgFileIndex {...indexProps} title="Tags" items={tagsIndexData} />
     </div>
