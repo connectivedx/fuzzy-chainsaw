@@ -86,13 +86,14 @@ module.exports = (
         new FaviconsWebpackPlugin({
           logo: source('favicon.png'),
           prefix: 'assets/favicons/[hash:8]-',
+          persistentCache: false,
           icons: {
-            android: true,
-            appleIcon: true,
+            android: false,
+            appleIcon: false,
             appleStartup: false,
             coast: false,
             favicons: true,
-            firefox: true,
+            firefox: false,
             opengraph: false,
             twitter: false,
             yandex: false,
