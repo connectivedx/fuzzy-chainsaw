@@ -22,6 +22,9 @@ module.exports = (config) => {
       stats: {
         chunks: false
       }
+    },
+    client: {
+      captureConsole: false
     }
   });
 };
