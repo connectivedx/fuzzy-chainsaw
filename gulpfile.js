@@ -8,6 +8,7 @@ const webpackWatch = require('./build/webpack-watch-factory');
 
 // build configs
 const buildConfig = require('./build/webpack/webpack.config.build');
+const buildCiConfig = require('./build/webpack/webpack.config.build.ci');
 const productionConfig = require('./build/webpack/webpack.config.production');
 const productionCiConfig = require('./build/webpack/webpack.config.production.ci');
 
@@ -22,6 +23,7 @@ gulp.task('clean:post', require('./build/clean-post'));
 
 // build tasks
 gulp.task('webpack:build', webpackBuild(buildConfig));
+gulp.task('webpack:build:ci', webpackBuild(buildCiConfig));
 gulp.task('webpack:production', webpackBuild(productionConfig));
 gulp.task('webpack:production:ci', webpackBuild(productionCiConfig));
 
@@ -45,7 +47,8 @@ gulp.task('build', series(
   'clean:pre',
   'webpack:build',
   'static:render',
-  'clean:post'
+  'clean:post',
+  'test'
 ));
 
 // builds a production ready set
@@ -60,6 +63,13 @@ gulp.task('production', series(
 // builds a minimal set of static
 // assets (only /assets folder, no html)
 // hint: this will be faster for integrators
+gulp.task('build:ci', series(
+  'clean:pre',
+  'webpack:build:ci',
+  'clean:post'
+));
+
+// builds a minimal set of minified static assets
 gulp.task('production:ci', series(
   'clean:pre',
   'webpack:production:ci',
