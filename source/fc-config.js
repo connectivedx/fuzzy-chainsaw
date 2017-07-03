@@ -61,13 +61,10 @@ module.exports.outputSort = (a, b) => {
   if (aName === 'styleguide' && bName !== 'bundle') return 1;
   if (aName === 'bundle' && (bName.indexOf('bundle.*') !== -1)) return 0;
   if (aName === 'bundle' && (bName.indexOf('bundle.*') !== -1)) return 1;
-  if (aName === 'bundle.tfs') return 1;
-  if (aName === 'bundle.lfs') return 1;
   return 0;
 };
 
 
 module.exports.themes = [
-  'tfs',
-  'lfs'
+  'generic'
 ];
