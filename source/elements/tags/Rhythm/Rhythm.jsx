@@ -29,7 +29,11 @@ Rhythm.defaultProps = {
 };
 
 Rhythm.propTypes = {
-  tagName: PropTypes.string,
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
   className: PropTypes.string,
   size: PropTypes.oneOf(['default', 'small', 'large']),
   deep: PropTypes.bool,

@@ -33,7 +33,11 @@ Brand.defaultProps = {
 };
 
 Brand.propTypes = {
-  tagName: PropTypes.string,
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
   variant: PropTypes.oneOf(['default', 'compact']),
   className: PropTypes.string
 };

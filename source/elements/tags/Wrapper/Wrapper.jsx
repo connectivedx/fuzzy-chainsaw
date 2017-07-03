@@ -26,7 +26,11 @@ Wrapper.defaultProps = {
 };
 
 Wrapper.propTypes = {
-  tagName: PropTypes.string,
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
   className: PropTypes.string,
   size: PropTypes.oneOf(['narrow', 'default', 'wide']),
   children: PropTypes.node.isRequired
