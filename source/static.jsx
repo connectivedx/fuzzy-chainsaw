@@ -1,9 +1,10 @@
 import match from 'minimatch';
 import SgStyleguide from 'SgComponents/SgStyleguide/SgStyleguide';
 
-export const pagesContext = require.context('Pages/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
-export const componentsContext = require.context('Components/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
-export const tagsContext = require.context('Tags/', true, /^(?!.*\.test\.jsx$).*\.jsx$/);
+// this regex selects *.jsx and *.md files, but skips *.test.jsx
+export const pagesContext = require.context('Pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const componentsContext = require.context('Components/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const tagsContext = require.context('Tags/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 
 
 const requireOrFail = (context) => (path) => {
@@ -77,6 +78,7 @@ export const getModule = (path) => {
 
     return {
       pageTitle: module.pageTitle,
+      theme: module.theme,
       Component: React.createElement(module, null)
     };
   }

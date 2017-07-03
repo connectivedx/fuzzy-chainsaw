@@ -250,6 +250,10 @@ ast-types-flow@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ast-types-flow/-/ast-types-flow-0.0.7.tgz#f70b735c6bca1a5c9c22d982c3e39e7feba3bdad"
 
+ast-types@0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.9.6.tgz#102c9e9e9005d3e7e3829bf0c4fa24ee862ee9b9"
+
 async-each-series@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/async-each-series/-/async-each-series-1.1.0.tgz#f42fd8155d38f21a5b8ea07c28e063ed1700b138"
@@ -1703,13 +1707,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
     create-hash "^1.1.0"
     inherits "^2.0.1"
 
-create-react-class@^15.5.2:
-  version "15.5.2"
-  resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.5.2.tgz#6a8758348df660b88326a0e764d569f274aad681"
-  dependencies:
-    fbjs "^0.8.9"
-    object-assign "^4.1.1"
-
 cross-spawn@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
@@ -1981,7 +1978,7 @@ debug@2.6.3:
   dependencies:
     ms "0.7.2"
 
-debug@2.6.4, debug@^2.1.1, debug@^2.2.0, debug@^2.6.0:
+debug@^2.1.1, debug@^2.2.0, debug@^2.6.0:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
   dependencies:
@@ -2567,6 +2564,13 @@ es6-symbol@3.1.1, es6-symbol@^3.1, es6-symbol@^3.1.1, es6-symbol@~3.1, es6-symbo
     d "1"
     es5-ext "~0.10.14"
 
+es6-templates@^0.2.2:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/es6-templates/-/es6-templates-0.2.3.tgz#5cb9ac9fb1ded6eb1239342b81d792bbb4078ee4"
+  dependencies:
+    recast "~0.11.12"
+    through "~2.3.6"
+
 es6-weak-map@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/es6-weak-map/-/es6-weak-map-2.0.2.tgz#5e3ab32251ffd1538a1f8e5ffa1357772f92d96f"
@@ -2727,7 +2731,7 @@ esprima@^2.6.0, esprima@^2.7.1:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
 
-esprima@^3.1.1:
+esprima@^3.1.1, esprima@~3.1.0:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
 
@@ -3083,23 +3087,11 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-finalhandler@1.0.1:
+finalhandler@1.0.1, finalhandler@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.1.tgz#bcd15d1689c0e5ed729b6f7f541a6df984117db8"
   dependencies:
     debug "2.6.3"
-    encodeurl "~1.0.1"
-    escape-html "~1.0.3"
-    on-finished "~2.3.0"
-    parseurl "~1.3.1"
-    statuses "~1.3.1"
-    unpipe "~1.0.0"
-
-finalhandler@~1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.2.tgz#d0e36f9dbc557f2de14423df6261889e9d60c93a"
-  dependencies:
-    debug "2.6.4"
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
     on-finished "~2.3.0"
@@ -3874,7 +3866,17 @@ html-entities@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
 
-html-minifier@^3.0.3, html-minifier@^3.2.3:
+html-loader@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-0.4.5.tgz#5fbcd87cd63a5c49a7fce2fe56f425e05729c68c"
+  dependencies:
+    es6-templates "^0.2.2"
+    fastparse "^1.1.1"
+    html-minifier "^3.0.1"
+    loader-utils "^1.0.2"
+    object-assign "^4.1.0"
+
+html-minifier@^3.0.1, html-minifier@^3.0.3, html-minifier@^3.2.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.4.3.tgz#eb3a7297c804611f470454eeebe0aacc427e424a"
   dependencies:
@@ -5258,7 +5260,7 @@ longest@^1.0.0, longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-loose-envify@^1.0.0, loose-envify@^1.1.0:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
   dependencies:
@@ -6922,7 +6924,7 @@ prismjs@^1.6.0:
   optionalDependencies:
     clipboard "^1.5.5"
 
-private@^0.1.6:
+private@^0.1.6, private@~0.1.5:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.7.tgz#68ce5e8a1ef0a23bb570cc28537b5332aba63ef1"
 
@@ -6965,6 +6967,13 @@ promise@^7.0.1, promise@^7.1.1:
   resolved "https://registry.yarnpkg.com/promise/-/promise-7.1.1.tgz#489654c692616b8aa55b0724fa809bb7db49c5bf"
   dependencies:
     asap "~2.0.3"
+
+prop-types@^15.5.10:
+  version "15.5.10"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
 
 prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
   version "15.5.8"
@@ -7180,6 +7189,10 @@ react-addons-test-utils@^15.5.1:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-dom-factories@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.0.tgz#f43c05e5051b304f33251618d5bc859b29e46b6d"
+
 react-dom@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
@@ -7200,15 +7213,14 @@ react-element-to-jsx-string@^6.0.0:
     stringify-object "^3.2.0"
     traverse "^0.6.6"
 
-react-modal@^1.7.3:
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-1.7.7.tgz#70205f51c58708c487aff681ba3fed7946e391d9"
+react-modal@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-2.2.1.tgz#22563782688bbb43441ac436156d6cb5dcb60c8b"
   dependencies:
-    create-react-class "^15.5.2"
     element-class "^0.2.0"
     exenv "1.2.0"
-    lodash.assign "^4.2.0"
-    prop-types "^15.5.7"
+    prop-types "^15.5.10"
+    react-dom-factories "^1.0.0"
 
 react-test-renderer@^15.5.4:
   version "15.5.4"
@@ -7321,6 +7333,15 @@ readline2@^1.0.1:
     code-point-at "^1.0.0"
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
+
+recast@~0.11.12:
+  version "0.11.23"
+  resolved "https://registry.yarnpkg.com/recast/-/recast-0.11.23.tgz#451fd3004ab1e4df9b4e4b66376b2a21912462d3"
+  dependencies:
+    ast-types "0.9.6"
+    esprima "~3.1.0"
+    private "~0.1.5"
+    source-map "~0.5.0"
 
 rechoir@^0.6.2:
   version "0.6.2"
@@ -7884,7 +7905,7 @@ source-map@0.4.x, source-map@^0.4.2, source-map@~0.4.1:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@0.5.x, source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
+source-map@0.5.x, source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.0, source-map@~0.5.1, source-map@~0.5.3:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
@@ -8461,7 +8482,7 @@ through2@~1.1.1:
     readable-stream ">=1.1.13-1 <1.2.0-0"
     xtend ">=4.0.0 <4.1.0-0"
 
-"through@>=2.2.7 <3", through@^2.3.6, through@~2.3.4, through@~2.3.8:
+"through@>=2.2.7 <3", through@^2.3.6, through@~2.3.4, through@~2.3.6, through@~2.3.8:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 

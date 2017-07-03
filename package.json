@@ -95,7 +95,7 @@
     "prismjs": "^1.6.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "react-addons-test-utils": "^15.5.1",
-    "react-modal": "^1.7.3",
+    "react-modal": "^2.2.1",
     "react-test-renderer": "^15.5.4",
     "reset-css": "^2.2.0",
     "run-sequence": "^1.2.2",
@@ -113,6 +113,7 @@
     "webpack-svgstore-plugin": "^4.0.0"
   },
   "dependencies": {
+    "html-loader": "^0.4.5",
     "http-server": "^0.9.0",
     "minimatch": "^3.0.3",
     "pretty": "^2.0.0",

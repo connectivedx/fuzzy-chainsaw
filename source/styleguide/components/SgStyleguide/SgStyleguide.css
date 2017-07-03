@@ -1,3 +1,5 @@
+@import "../../tags/SgHeading/SgHeading.css";
+
 .ReactModal__Body--open {
   overflow: hidden;
 }
@@ -31,6 +33,42 @@
 
     & .sg-heading {
       margin-bottom: 0.5em;
+    }
+  }
+
+  &__heading-text,
+  &__expander {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__expander {
+    margin-top: 0.1em;
+    margin-left: 0.25em;
+    width: 0;
+    height: 0;
+    border-top: 5px solid black;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+
+  &__section--readme {
+    & .SgStyleguide__section-heading--readme {
+      cursor: pointer;
+    }
+
+    &:not(.is-expanded) {
+      & .SgStyleguide__section-header {
+        padding-bottom: 1px;
+      }
+
+      & .SgStyleguide__readme {
+        display: none;
+      }
+
+      & .SgStyleguide__expander {
+        transform: rotate(-90deg);
+      }
     }
   }
 
@@ -75,5 +113,21 @@
       display: inline-block;
       padding: 0.25em;
     }
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      @extend .SgHeading;
+    }
+
+    & h1 { @extend .SgHeading--h1; }
+    & h2 { @extend .SgHeading--h2; }
+    & h3 { @extend .SgHeading--h3; }
+    & h4 { @extend .SgHeading--h4; }
+    & h5 { @extend .SgHeading--h5; }
+    & h6 { @extend .SgHeading--h6; }
   }
 }
