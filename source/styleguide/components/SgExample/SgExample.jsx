@@ -86,11 +86,17 @@ export const SgExample_Wrapper = (props) => {
   const {
     slug,
     children,
+    className,
     ...attrs
   } = props;
 
+  const classStack = FcUtils.createClassStack([
+    'SgExample',
+    className
+  ]);
+
   return (
-    <div className="SgExample" {...attrs}>
+    <div className={classStack} {...attrs}>
       <a className="SgExample__anchor" id={slug}>&nbsp;</a>
       {children}
     </div>
@@ -99,6 +105,7 @@ export const SgExample_Wrapper = (props) => {
 
 SgExample_Wrapper.propTypes = {
   slug: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node
 };
 
@@ -160,6 +167,7 @@ export const SgExample = (props) => {
   const {
     slug,
     exampleName,
+    theme,
     options,
     component
   } = props;
@@ -175,7 +183,7 @@ export const SgExample = (props) => {
   ]);
 
   return (
-    <SgExample_Wrapper slug={slug}>
+    <SgExample_Wrapper slug={slug} className={`${theme}-theme-section`}>
       <SgExample_Header exampleName={exampleName}>
         <SgExample_Tab slug={slug} name="example" isActive>Example</SgExample_Tab>
         <SgExample_Tab slug={slug} name="react">React</SgExample_Tab>
@@ -213,12 +221,14 @@ export const SgExample = (props) => {
 };
 
 SgExample.defaultProps = {
-  options: { }
+  options: { },
+  theme: 'generic'
 };
 
 SgExample.propTypes = {
   slug: PropTypes.string,
   exampleName: PropTypes.string,
+  theme: PropTypes.string,
   options: PropTypes.shape({
     fullWidth: PropTypes.bool,
     noPadding: PropTypes.bool,
