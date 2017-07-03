@@ -7,15 +7,18 @@ import Example from 'SgComponents/SgExample/SgExample';
 
 
 export const SgStyleguide_Readme = (props) => (
-  <div id="readme" className="SgStyleguide__section">
-    <div className="SgStyleguide__section-header">
-      <Heading level="h2">Readme</Heading>
+  <div id="readme" className="SgStyleguide__section SgStyleguide__section--readme">
+    <Rhythm className="SgStyleguide__section-header">
+      <Heading level="h2" className="SgStyleguide__section-heading--readme">
+        <span className="SgStyleguide__heading-text">Readme</span>
+        <span className="SgStyleguide__expander" />
+      </Heading>
 
       <div
-        className="SgStyleguide__readme"
+        className="SgStyleguide__readme SgRhythm"
         dangerouslySetInnerHTML={{ __html: props.readme }}
       />
-    </div>
+    </Rhythm>
   </div>
 );
 
@@ -32,10 +35,12 @@ export const SgStyleguide_Examples = (props) => (
       <Rhythm size="small">
         {
           props.examples.map((e) => (
-            <div key={e.name}>
+            <div
+              key={`${slugify(e.name)}-${e.theme}`}
+              className={`SgStyleguide__example-link ${e.theme || 'generic'}-theme-section`}
+            >
               <a
-                href={`#${slugify(e.name)}`}
-                key={slugify(e.name)}
+                href={`#${slugify(e.name)}-${e.theme}`}
                 value={slugify(e.name)}
               >
                 {e.name}
@@ -49,9 +54,10 @@ export const SgStyleguide_Examples = (props) => (
     {
       props.examples.map((e) => (
         <Example
-          key={slugify(e.name)}
-          slug={slugify(e.name)}
+          key={`${slugify(e.name)}-${e.theme}`}
+          slug={`${slugify(e.name)}-${e.theme}`}
           tagName={e.name}
+          theme={e.theme}
           exampleName={e.name}
           component={e.component}
           options={e.options}
@@ -63,9 +69,10 @@ export const SgStyleguide_Examples = (props) => (
 
 SgStyleguide_Examples.propTypes = {
   examples: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    theme: PropTypes.string,
     options: PropTypes.object,
-    component: PropTypes.element
+    component: PropTypes.element.isRequired
   }))
 };
 
@@ -79,12 +86,13 @@ export const SgStyleguide = ({
     <Nav />
 
     <div className="SgStyleguide" id="content">
-      <div className="SgStyleguide__header SgStyleguide-section__header">
+      <Rhythm size="small" className="SgStyleguide__header SgStyleguide-section__header">
         <Heading level="h1">{name}</Heading>
-      </div>
+        <p><a href="?theme=generic">Generic</a></p>
+      </Rhythm>
 
-      { readme ? <SgStyleguide_Readme readme={readme} /> : undefined }
-      { examples ? <SgStyleguide_Examples examples={examples} /> : undefined }
+      { readme && <SgStyleguide_Readme readme={readme} /> }
+      { examples && <SgStyleguide_Examples examples={examples} /> }
     </div>
   </div>
 );
