@@ -4,6 +4,7 @@ const Dom = require('react-dom/server');
 const renderComponent = ({ template, module }) =>
   template.toString()
     .replace('{{title}}', module.pageTitle)
+    .replace('{{theme}}', module.theme ? `${module.theme}-theme` : '')
     .replace('{{output}}', Dom.renderToStaticMarkup(module.Component));
 
 const processUnprefixedContext = (key) => {
