@@ -1,8 +1,23 @@
 const path = require('path');
 const pkgpath = require('packpath');
 
-const { directories, baseUrl } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
+const { directories, baseUrl: packageBaseUrl } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 
-module.exports.baseUrl = process.env.BASE_URL || baseUrl || '/';
-module.exports.source = (...paths) => path.resolve(pkgpath.self(), directories.source, ...paths);
-module.exports.dest = (...paths) => path.resolve(pkgpath.self(), directories.dest, ...paths);
+const baseUrl = process.env.BASE_URL || packageBaseUrl || '/';
+const source = (...paths) => path.resolve(pkgpath.self(), directories.source, ...paths);
+const dest = (...paths) => path.resolve(pkgpath.self(), directories.dest, ...paths);
+
+const sourceAll = (entry) =>
+  Object.keys(entry)
+    .reduce((entries, key) => {
+      entries[key] = source(entry[key]);
+      return entries;
+    }, {});
+
+
+module.exports = {
+  baseUrl,
+  source,
+  dest,
+  sourceAll
+};
