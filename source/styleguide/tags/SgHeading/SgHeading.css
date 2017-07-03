@@ -2,23 +2,23 @@
   font-family: sans-serif;
   font-size: 2em;
   line-height: 1em;
-}
 
-.SgHeading--default {
-  font-weight: 700;
-}
+  &--default {
+    font-weight: 700;
+  }
 
-.SgHeading--thin {
-  font-weight: 300;
-}
+  &--thin {
+    font-weight: 300;
+  }
 
-.SgHeading--medium {
-  font-weight: 500;
-}
+  &--medium {
+    font-weight: 500;
+  }
 
-.SgHeading--h1 { font-size: 2em; }
-.SgHeading--h2 { font-size: 1.6em; }
-.SgHeading--h3 { font-size: 1.4em; }
-.SgHeading--h4 { font-size: 1.3em; }
-.SgHeading--h5 { font-size: 1.2em; }
-.SgHeading--h6 { font-size: 1.1em; }
+  &--h1 { font-size: 2em; }
+  &--h2 { font-size: 1.6em; }
+  &--h3 { font-size: 1.4em; }
+  &--h4 { font-size: 1.3em; }
+  &--h5 { font-size: 1.2em; }
+  &--h6 { font-size: 1.1em; }
+}
