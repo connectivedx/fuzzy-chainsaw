@@ -4,76 +4,76 @@
 
 .SgStyleguide {
   position: relative;
-}
 
-.SgStyleguide__header {
-  padding: 1em;
+  &__header {
+    padding: 1em;
 
-  @media (width >= 540px) {
-    padding-right: 14em;
-  }
-
-  @media (width >= 960px) {
-    padding-left: 2em;
-  }
-}
-
-.SgStyleguide__section-header {
-  background-color: var(--color-background);
-  padding: 1em 1em 2em;
-
-  @media (width >= 960px) {
-    padding: 2em;
-  }
-
-  & a {
-    color: var(--color-link);
-  }
-
-  & .sg-heading {
-    margin-bottom: 0.5em;
-  }
-}
-
-.SgStyleguide__readme {
-  padding: 1em;
-  background-color: gray(245);
-
-  @media (width >= 960px) {
-    padding: 2em;
-  }
-
-  & table {
-    border-collapse: collapse;
-
-    & * {
-      margin: 0;
+    @media (width >= 540px) {
+      padding-right: 14em;
     }
 
-    & + * {
-      margin-top: 2em;
+    @media (width >= 960px) {
+      padding-left: 2em;
     }
   }
 
-  & tr:nth-child(even) {
-    background-color: gray(230);
+  &__section-header {
+    background-color: var(--color-background);
+    padding: 1em 1em 2em;
+
+    @media (width >= 960px) {
+      padding: 2em;
+    }
+
+    & a {
+      color: var(--color-link);
+    }
+
+    & .sg-heading {
+      margin-bottom: 0.5em;
+    }
   }
 
-  & th,
-  & td {
-    border: 1px solid gray(200);
-    padding: 0.75em 0.5em;
-  }
+  &__readme {
+    padding: 1em;
+    background-color: gray(245);
 
-  & th {
-    font-weight: bold;
-  }
+    @media (width >= 960px) {
+      padding: 2em;
+    }
 
-  & code {
-    background-color: var(--color-white);
-    border-radius: 0.125em 0.25em;
-    color: firebrick;
-    display: inline-block;
-    padding: 0.25em;
+    & table {
+      border-collapse: collapse;
+
+      & * {
+        margin: 0;
+      }
+
+      & + * {
+        margin-top: 2em;
+      }
+    }
+
+    & tr:nth-child(even) {
+      background-color: gray(230);
+    }
+
+    & th,
+    & td {
+      border: 1px solid gray(200);
+      padding: 0.75em 0.5em;
+    }
+
+    & th {
+      font-weight: bold;
+    }
+
+    & code {
+      background-color: var(--color-white);
+      border-radius: 0.125em 0.25em;
+      color: firebrick;
+      display: inline-block;
+      padding: 0.25em;
+    }
   }
 }

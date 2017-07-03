@@ -6,10 +6,11 @@
       text-decoration: underline;
     }
   }
+
+  &__count,
+  &__links {
+    font-size: 0.6em;
+    opacity: 0.45;
+  }
 }
 
-.SgFileIndex__count,
-.SgFileIndex__links {
-  font-size: 0.6em;
-  opacity: 0.45;
-}
