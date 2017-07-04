@@ -177,13 +177,13 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    @media (width >= 1080px) {
-      padding: 3em;
+    @media (width >= 960px) {
+      padding: 3em 2em;
     }
   }
 
   &__modal-wrapper {
     margin: 0 auto;
-    max-width: 1080px;
+    max-width: 1280px;
   }
 }
