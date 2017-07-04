@@ -31,10 +31,11 @@ const entries = {
   static: 'static.jsx',
   devScript: 'dev.jsx',
   styleguide: 'styleguide/styleguide.jsx',
-  bundle: 'bundle.jsx'
+  bundle: 'bundle.jsx',
+  'bundle-generic': 'bundle-generic.css.jsx' // generic theme css file
 };
 
-const bundles = ['bundle'];
+const bundles = ['bundle', 'bundle-generic'];
 
 module.exports.entries = {
   static: pick(entries, ['static']),
