@@ -5,6 +5,7 @@ import Rhythm from 'SgTags/SgRhythm/SgRhythm';
 import Nav from 'SgComponents/SgNav/SgNav';
 import Example from 'SgComponents/SgExample/SgExample';
 
+import { themes } from 'Source/fc-config';
 
 export const SgStyleguide_Readme = (props) => (
   <div id="readme" className="SgStyleguide__section SgStyleguide__section--readme">
@@ -86,9 +87,20 @@ export const SgStyleguide = ({
     <Nav />
 
     <div className="SgStyleguide" id="content">
-      <Rhythm size="small" className="SgStyleguide__header SgStyleguide-section__header">
+      <Rhythm size="small" className="SgStyleguide__header">
         <Heading level="h1">{name}</Heading>
-        <p><a href="?theme=generic">Generic</a></p>
+        { themes.length > 0 &&
+          <div className="SgStyleguide__themes">
+            { themes
+              .map((theme) => <a key={theme.id} href={`?theme=${theme.id}`}>{theme.name}</a>)
+              .reduce((list, item, i) => {
+                if (i > 0) list.push(<span key={`seperator-${i}`}>/</span>);
+                list.push(item);
+                return list;
+              }, [])
+            }
+          </div>
+        }
       </Rhythm>
 
       { readme && <SgStyleguide_Readme readme={readme} /> }

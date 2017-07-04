@@ -19,6 +19,10 @@
     }
   }
 
+  &__themes {
+    & span { margin: auto 0.25em; }
+  }
+
   &__section-header {
     background-color: var(--color-background);
     padding: 1em 1em 2em;

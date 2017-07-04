@@ -11,11 +11,15 @@ const SgFileIndex__ItemThemed = (props) => {
       <a className="SgFileIndex__name" href={`${url}?theme=${themes[0].id}`}>{content}</a>
       { themes.length > 1 &&
         <span className="SgFileIndex__links">
-          &nbsp;
           ({ themes
-              .map((t) => (
-                <a href={`${url}?theme=${t.id}`}>{t.name}</a>
-              ))
+            .map((t) => (
+              <a key={t.id} href={`${url}?theme=${t.id}`}>{t.name}</a>
+            ))
+            .reduce((list, item, i) => {
+              if (i > 0) list.push(<span key={`seperator-${i}`}>/</span>);
+              list.push(item);
+              return list;
+            }, [])
           })
         </span>
       }

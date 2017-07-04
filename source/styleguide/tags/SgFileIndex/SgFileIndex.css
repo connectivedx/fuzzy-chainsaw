@@ -12,5 +12,13 @@
     font-size: 0.6em;
     opacity: 0.45;
   }
+
+  &__links {
+    margin-left: 0.5em;
+
+    & span {
+      margin: auto 0.25em;
+    }
+  }
 }
 
