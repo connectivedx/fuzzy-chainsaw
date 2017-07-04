@@ -54,13 +54,14 @@ module.exports.outputFormats = {
 };
 
 module.exports.outputSort = (a, b) => {
-  const aName = a.names[0];
-  const bName = b.names[0];
+  const A = a.names[0];
+  const B = b.names[0];
 
-  if (aName === 'devScript') return -1;
-  if (aName === 'styleguide' && bName !== 'bundle') return 1;
-  if (aName === 'bundle' && (bName.indexOf('bundle.*') !== -1)) return 0;
-  if (aName === 'bundle' && (bName.indexOf('bundle.*') !== -1)) return 1;
+  if (A === 'devScript') return -1;
+  if (A === 'styleguide' && B !== 'bundle') return 1;
+  if (A === 'styleguide' && (B.indexOf('bundle-') !== -1)) return -1;
+  if (A === 'bundle' && (B.indexOf('bundle-') !== -1)) return -1;
+  if (A === 'bundle' && (B.indexOf('bundle-') === -1)) return 1;
   return 0;
 };
 
