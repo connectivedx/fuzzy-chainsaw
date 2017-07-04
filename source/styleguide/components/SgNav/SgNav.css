@@ -178,7 +178,7 @@
     overflow-y: auto;
 
     @media (width >= 960px) {
-      padding: 3em 2em;
+      padding: 3em;
     }
   }
 
