@@ -1,15 +1,15 @@
 import Heading from 'SgTags/SgHeading/SgHeading';
 import Rhythm from 'SgTags/SgRhythm/SgRhythm';
 
+import SgFileIndex from 'SgTags/SgFileIndex/SgFileIndex';
 import {
-  SgFileIndex,
   pagesIndexData,
   themedPagesIndexData,
   indexesIndexData,
   compositionsIndexData,
   componentsIndexData,
   tagsIndexData
-} from 'SgTags/SgFileIndex/SgFileIndex';
+} from 'SgTags/SgTableOfContents/fileIndexData';
 
 export const SgTableOfContents = (props) => {
   const {
