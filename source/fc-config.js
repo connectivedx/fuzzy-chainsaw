@@ -65,6 +65,7 @@ module.exports.outputSort = (a, b) => {
 };
 
 
-module.exports.themes = [
-  'generic'
-];
+module.exports.themes = [{
+  id: 'generic',
+  name: 'Generic'
+}];
