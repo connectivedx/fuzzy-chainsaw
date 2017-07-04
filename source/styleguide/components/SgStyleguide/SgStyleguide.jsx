@@ -89,7 +89,7 @@ export const SgStyleguide = ({
     <div className="SgStyleguide" id="content">
       <Rhythm size="small" className="SgStyleguide__header">
         <Heading level="h1">{name}</Heading>
-        { themes.length > 0 &&
+        { themes.length > 1 &&
           <div className="SgStyleguide__themes">
             { themes
               .map((theme) => <a key={theme.id} href={`?theme=${theme.id}`}>{theme.name}</a>)
