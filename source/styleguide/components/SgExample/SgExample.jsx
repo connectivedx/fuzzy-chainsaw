@@ -6,6 +6,7 @@ import 'prismjs/components/prism-jsx.min';
 import 'prismjs/components/prism-json.min';
 
 import SgHeading from 'SgTags/SgHeading/SgHeading';
+import { themes } from 'Source/fc-config';
 
 const filterProps = (component) => {
   const copy = {
@@ -222,7 +223,7 @@ export const SgExample = (props) => {
 
 SgExample.defaultProps = {
   options: { },
-  theme: 'generic'
+  theme: themes[0].id
 };
 
 SgExample.propTypes = {

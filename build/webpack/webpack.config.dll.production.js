@@ -1,26 +1,14 @@
 const webpackMerge = require('webpack-merge');
-
 const dllProductionWorkflow = require('./workflow/dll.production');
+const { source } = require('../lib/path-helpers');
+
+const { dlls } = require(source('fc-config')); // eslint-disable-line
 
 module.exports = webpackMerge(dllProductionWorkflow, {
   entry: {
-    vendor: [
-      'react',
-      'react-dom',
-      'prop-types'
-    ],
-    styleguide: [
-      'react-dom/server',
-      'react-modal',
-      'pretty',
-      'prismjs',
-      'react-element-to-jsx-string',
-      'slugify',
-      'lodash.startcase'
-    ],
-    tests: [
-      'tape',
-      'enzyme'
-    ]
+    vendor: dlls.vendor,
+    styleguide: dlls.styleguide,
+    tests: dlls.tests
   }
 });
+

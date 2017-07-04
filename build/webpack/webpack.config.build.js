@@ -12,10 +12,11 @@
 */
 const merge = require('webpack-merge');
 
-const { source } = require('../lib/path-helpers');
+const { source, sourceAll } = require('../lib/path-helpers');
 const buildWorkflow = require('./workflow/build');
 const staticWorkflow = require('./workflow/static');
 
+const { entries } = require(source('fc-config')); // eslint-disable-line
 
 /*
  *
@@ -31,14 +32,9 @@ const modify = (config) => {
 
 module.exports = [
   merge(buildWorkflow, {
-    entry: {
-      styleguide: source('styleguide/styleguide.jsx'),
-      bundle: source('bundle.jsx')
-    }
+    entry: sourceAll(entries.build)
   }),
   modify(merge(staticWorkflow, {
-    entry: {
-      static: source('static.jsx')
-    }
+    entry: sourceAll(entries.static)
   }))
 ];

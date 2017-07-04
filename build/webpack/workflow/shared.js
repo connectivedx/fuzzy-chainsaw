@@ -9,6 +9,8 @@ const webpack = require('webpack');
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 const { source, dest, baseUrl } = require('../../lib/path-helpers');
 
+const { outputFormats } = require(source('fc-config')); // eslint-disable-line
+
 let vendorManifest;
 let styleguideManifest;
 
@@ -46,7 +48,7 @@ module.exports = {
   output: {
     path: dest(),
     publicPath: baseUrl,
-    filename: 'assets/[name]-[hash].js',
+    filename: `assets/${outputFormats.js}`,
     libraryTarget: 'umd'
   },
   module: {

@@ -7,13 +7,14 @@ import SgExample from 'SgComponents/SgExample/SgExample.Container';
 import SgStyleguide from 'SgComponents/SgStyleguide/SgStyleguide.Container';
 
 
-const init = () => {
-  const ui = {
-    nav: document.querySelector('.SgNav'),
-    styleguide: document.querySelector('.SgStyleguide__section--readme'),
-    examples: Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
-  };
+const ui = {
+  nav: document.querySelector('.SgNav'),
+  styleguide: document.querySelector('.SgStyleguide'),
+  examples: Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
+};
 
+
+const init = () => {
   // Table of contents
   Dom.render(<SgNav />, ui.nav);
 
@@ -25,6 +26,6 @@ const init = () => {
 };
 
 
-if (document.querySelector('.SgStyleguide')) {
+if (ui.styleguide) {
   init();
 }
