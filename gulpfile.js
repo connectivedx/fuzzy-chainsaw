@@ -91,6 +91,12 @@ gulp.task('scaffold:component', scaffoldFactory({
   dest: 'components'
 }));
 
+// gulp scaffold:composition --name [name]
+gulp.task('scaffold:composition', scaffoldFactory({
+  src: 'stateless-component',
+  dest: 'composition'
+}));
+
 // gulp scaffold:component:stateful --name [name]
 gulp.task('scaffold:component:stateful', scaffoldFactory({
   src: 'stateful-component',

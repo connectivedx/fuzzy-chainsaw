@@ -34,6 +34,7 @@
     "watch": "gulp watch",
     "new:tag": "gulp scaffold:tag --name",
     "new:component": "gulp scaffold:component --name",
+    "new:composition": "gulp scaffold:composition --name",
     "new:stateful": "gulp scaffold:component:stateful --name"
   },
   "engines": {
