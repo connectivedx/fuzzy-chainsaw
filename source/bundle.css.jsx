@@ -11,3 +11,4 @@ require('Tags/RichText/RichText.css');
 // require the rest of the components
 requireAll(require.context('Tags/', true, /\.css$/));
 requireAll(require.context('Components/', true, /\.css$/));
+requireAll(require.context('Compositions/', true, /\.css$/));
