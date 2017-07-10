@@ -28,7 +28,9 @@ const processPrefixedContext = (prefix) => (key) => {
 const getContextKeys = (context) =>
   context.keys()
     .filter((key) => key.indexOf('.test.jsx') === -1)
-    .filter((key) => key.indexOf('.example.jsx') === -1);
+    .filter((key) => key.indexOf('.example.jsx') === -1)
+    .filter((key) => key.indexOf('.md') === -1);
+
 
 const getContextList = (context, prefix = false) =>
   getContextKeys(context)
