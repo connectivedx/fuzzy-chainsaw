@@ -38,6 +38,7 @@ module.exports = {
       Tags: source('elements/tags'),
       Components: source('elements/components'),
       Compositions: source('elements/compositions'),
+      Modifiers: source('elements/modifiers'),
 
       Styleguide: source('styleguide'),
       SgVars: source('styleguide/variables'),
