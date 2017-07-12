@@ -25,4 +25,9 @@
   /* general colors */
   --color-red: #fa0000;
   --color-blue: #0000fa;
+
+  /* theme colors */
+
+  /* generic theme */
+  --generic-color-blue: #0000fa;
 }
