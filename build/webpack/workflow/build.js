@@ -69,6 +69,7 @@ module.exports = (
               source('elements/tags'),
               source('elements/components'),
               source('elements/compositions'),
+              source('elements/modifiers'),
               source('styleguide/tags'),
               source('stylguide/components')
             ]
