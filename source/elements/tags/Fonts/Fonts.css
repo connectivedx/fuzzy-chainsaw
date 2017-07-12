@@ -1,7 +1,7 @@
 /* define @font-face setup */
 @font-face {
-  @apply --font--thin;
-
+  font-family: var(--font-stack--default);
+  font-weight: var(--font-weight--thin);
   src:
     url('./SourceSansPro/SourceSansPro-Light.ttf') format('ttf'),
     url('./SourceSansPro/SourceSansPro-Light.woff') format('woff'),
@@ -9,8 +9,8 @@
 }
 
 @font-face {
-  @apply --font--normal;
-
+  font-family: var(--font-stack--default);
+  font-weight: var(--font-weight--normal);
   src:
     url('./SourceSansPro/SourceSansPro-Regular.ttf') format('ttf'),
     url('./SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
@@ -18,8 +18,8 @@
 }
 
 @font-face {
-  @apply --font--bold;
-
+  font-family: var(--font-stack--default);
+  font-weight: var(--font-weight--bold);
   src:
     url('./SourceSansPro/SourceSansPro-Bold.ttf') format('ttf'),
     url('./SourceSansPro/SourceSansPro-Bold.woff') format('woff'),
