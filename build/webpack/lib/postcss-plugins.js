@@ -6,8 +6,8 @@
 const postcss = require('postcss');
 
 // standard
+const nested = require('postcss-nested');
 const cssnext = require('postcss-cssnext');
-const colorAlpha = require('postcss-color-alpha');
 const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
@@ -32,8 +32,12 @@ module.exports.linting = [
 ];
 
 const standard = [
-  cssnext(),
-  colorAlpha(),
+  nested(),
+  cssnext({
+    features: {
+      nesting: false
+    }
+  }),
   extend(),
   discardEmpty(),
   removeRoot()
