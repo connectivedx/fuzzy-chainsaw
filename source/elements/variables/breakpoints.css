@@ -6,20 +6,20 @@
 */
 :root {
   /* mobile first breakpoints */
-  @custom-media --extra-small only screen and (width >= 24em);
-  @custom-media --small  only screen and (width >= 32em);
-  @custom-media --medium-small  only screen and (width >= 40em);
-  @custom-media --medium  only screen and (width >= 48em);
-  @custom-media --medium-large  only screen and (width >= 56em);
-  @custom-media --large  only screen and (width >= 64em);
-  @custom-media --extra-large  only screen and (width >= 72em);
+  @custom-media --extra-small only screen and (width >= 384px);
+  @custom-media --small  only screen and (width >= 512px);
+  @custom-media --medium-small  only screen and (width >= 640px);
+  @custom-media --medium  only screen and (width >= 768px);
+  @custom-media --medium-large  only screen and (width >= 896px);
+  @custom-media --large  only screen and (width >= 1024px);
+  @custom-media --extra-large  only screen and (width >= 1152px);
 
   /* mobile only breakpoints */
-  @custom-media --below-extra-small only screen and (width < 24em);
-  @custom-media --below-small only screen and (width < 32em);
-  @custom-media --below-medium-small only screen and (width < 40em);
-  @custom-media --below-medium only screen and (width < 48em);
-  @custom-media --below-medium-large only screen and (width < 56em);
-  @custom-media --below-large only screen and (width < 64em);
-  @custom-media --below-extra-large only screen and (width < 72em);
+  @custom-media --below-extra-small only screen and (width < 384px);
+  @custom-media --below-small only screen and (width < 512px);
+  @custom-media --below-medium-small only screen and (width < 640px);
+  @custom-media --below-medium only screen and (width < 768px);
+  @custom-media --below-medium-large only screen and (width < 896px);
+  @custom-media --below-large only screen and (width < 1024px);
+  @custom-media --below-extra-large only screen and (width < 1152px);
 }
