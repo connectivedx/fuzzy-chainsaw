@@ -51,6 +51,7 @@ module.exports.linting = [
   reporter()
 ];
 
+
 const standard = [
   nested(),
   cssnext({
@@ -64,6 +65,7 @@ const standard = [
   removeRoot()
 ];
 
+
 module.exports.dev = [
   ...module.exports.linting,
   cssImport({
@@ -71,6 +73,7 @@ module.exports.dev = [
   }),
   ...standard
 ];
+
 
 module.exports.build = [
   postcss.plugin('fix-escaping-error', () => (css) => {
@@ -83,6 +86,7 @@ module.exports.build = [
     sort: true
   })
 ];
+
 
 module.exports.production = [
   ...postcssPlugins.production,
