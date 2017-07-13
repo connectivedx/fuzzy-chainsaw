@@ -4,6 +4,7 @@ const pick = (dict, keys) =>
     return obj;
   }, {});
 
+
 // dll libraries
 module.exports.dlls = {
   // client libs
@@ -45,6 +46,8 @@ module.exports.entries = {
   ci: pick(entries, [...bundles])
 };
 
+// define the output formats for
+// different file types
 module.exports.outputFormats = {
   dll: '[name]-[hash].js',
   js: '[name]-[hash].js',
@@ -54,6 +57,8 @@ module.exports.outputFormats = {
   favIconPrefix: 'favicon-[hash:8]-'
 };
 
+// This function sorts entry files before
+// they are injected into the skeleton
 module.exports.outputSort = (a, b) => {
   const A = a.names[0];
   const B = b.names[0];
@@ -66,8 +71,15 @@ module.exports.outputSort = (a, b) => {
   return 0;
 };
 
-
+// define themes and theme metadata
 module.exports.themes = [{
   id: 'generic',
   name: 'Generic'
 }];
+
+// define additional postcss plugins to
+// add to the standard plugins
+module.exports.postcssPlugins = {
+  build: [],
+  production: []
+};

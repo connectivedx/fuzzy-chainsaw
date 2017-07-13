@@ -25,6 +25,10 @@ const reporter = require('postcss-reporter');
 // production
 const cssnano = require('cssnano');
 
+const { source } = require('../../lib/path-helpers');
+
+const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
+
 
 module.exports.linting = [
   stylelint(),
@@ -39,6 +43,7 @@ const standard = [
     }
   }),
   extend(),
+  ...postcssPlugins.build,
   discardEmpty(),
   removeRoot()
 ];
@@ -62,5 +67,6 @@ module.exports.build = [
 ];
 
 module.exports.production = [
+  ...postcssPlugins.production,
   cssnano()
 ];
