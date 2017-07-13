@@ -1,5 +1,6 @@
 import Icon from 'Tags/Icon/Icon';
 
+
 const Brand = (props) => {
   const {
     tagName: Tag,

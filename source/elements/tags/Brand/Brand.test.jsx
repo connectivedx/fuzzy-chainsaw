@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Brand from './Brand';
 
+
 test('<Brand />', (t) => {
   const component = shallow(<Brand />);
   t.ok(component.is('div'), 'tag name');

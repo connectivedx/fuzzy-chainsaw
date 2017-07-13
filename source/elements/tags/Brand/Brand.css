@@ -3,21 +3,21 @@
     display: inline-block;
     vertical-align: middle;
   }
-}
 
-.Brand__icon {
-  width: 1.65em;
-}
+  &__icon {
+    width: 1.65em;
+  }
 
-/* variants */
-.Brand--default {
-  & .Brand__label { display: none; }
+  /* variants */
+  &--default {
+    & .Brand__label { display: none; }
 
-  @media (--small) {
-    & .Brand__label {
-      display: inline-block;
-      margin-top: 0.1em;
-      margin-left: 0.25em;
+    @media (--small) {
+      & .Brand__label {
+        display: inline-block;
+        margin-top: 0.1em;
+        margin-left: 0.25em;
+      }
     }
   }
 }
