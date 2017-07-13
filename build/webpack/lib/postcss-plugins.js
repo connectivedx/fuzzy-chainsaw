@@ -12,9 +12,6 @@ const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 
-// dev
-const cssImport = require('postcss-import');
-
 // build
 const mqpacker = require('css-mqpacker');
 
@@ -25,17 +22,18 @@ const reporter = require('postcss-reporter');
 // production
 const cssnano = require('cssnano');
 
-const { source } = require('../../lib/path-helpers');
-
-const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
+// dev
+const cssImport = require('postcss-import');
 
 // setup resolver for postcss-import
-const path = require('path');
 const ResolverFactory = require('enhanced-resolve/lib/ResolverFactory');
 const NodeJsInputFileSystem = require('enhanced-resolve/lib/NodeJsInputFileSystem');
 const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSystem');
 
+const { source } = require('../../lib/path-helpers');
 const { resolve } = require('../workflow/shared');
+
+const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
 
 
 const fileSystem = new CachedInputFileSystem(new NodeJsInputFileSystem(), 60000);
@@ -53,6 +51,7 @@ module.exports.linting = [
   reporter()
 ];
 
+
 const standard = [
   nested(),
   cssnext({
@@ -66,6 +65,7 @@ const standard = [
   removeRoot()
 ];
 
+
 module.exports.dev = [
   ...module.exports.linting,
   cssImport({
@@ -73,6 +73,7 @@ module.exports.dev = [
   }),
   ...standard
 ];
+
 
 module.exports.build = [
   postcss.plugin('fix-escaping-error', () => (css) => {
@@ -85,6 +86,7 @@ module.exports.build = [
     sort: true
   })
 ];
+
 
 module.exports.production = [
   ...postcssPlugins.production,

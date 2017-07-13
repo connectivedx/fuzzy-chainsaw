@@ -2,9 +2,9 @@
   Collects errors and warnings output by webpack when run through gulp
   and emits them to the console (without this all errors and warnings are swallowed)
 */
-
 const chalk = require('chalk');
 const gutil = require('gulp-util');
+
 
 module.exports = (err, stats, done) => {
   if (err) {

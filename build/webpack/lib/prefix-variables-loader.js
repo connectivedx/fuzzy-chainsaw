@@ -4,6 +4,7 @@ const defaultOptions = {
   path: 'Vars/index.css'
 };
 
+
 module.exports = function prefixVariables(content) {
   const options = Object.assign(
     {},
