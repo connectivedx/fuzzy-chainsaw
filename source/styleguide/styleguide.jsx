@@ -1,10 +1,10 @@
-import styles from 'Styleguide/styleguide.css'; // eslint-disable-line
+import styles from '@styleguide/styleguide.css'; // eslint-disable-line
 
 // browser Javascript
 import Dom from 'react-dom';
-import SgNav from 'SgComponents/SgNav/SgNav';
-import SgExample from 'SgComponents/SgExample/SgExample.Container';
-import SgStyleguide from 'SgComponents/SgStyleguide/SgStyleguide.Container';
+import SgNav from '@sg-components/SgNav/SgNav';
+import SgExample from '@sg-components/SgExample/SgExample.Container';
+import SgStyleguide from '@sg-components/SgStyleguide/SgStyleguide.Container';
 
 
 const ui = {
