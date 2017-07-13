@@ -1,3 +1,3 @@
 # Vendor files
 
-This directory is copied directory into the output directory on builds.
+This directory is copied directly into the output directory on builds.
