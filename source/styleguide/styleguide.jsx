@@ -1,7 +1,10 @@
+// import css first
 import styles from '@styleguide/styleguide.css'; // eslint-disable-line
 
-// browser Javascript
+// npm modules
 import Dom from 'react-dom';
+
+// component modules
 import SgNav from '@sg-components/SgNav/SgNav';
 import SgExample from '@sg-components/SgExample/SgExample.Container';
 import SgStyleguide from '@sg-components/SgStyleguide/SgStyleguide.Container';
