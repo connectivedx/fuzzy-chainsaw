@@ -1,3 +1,3 @@
-const context = require.context('Source/', true, /\.test\.jsx$/);
+const context = require.context('@source/', true, /\.test\.jsx$/);
 
 context.keys().forEach(context);

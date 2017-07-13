@@ -1,7 +1,7 @@
-import Heading from 'Tags/Heading/Heading';
-import Rhythm from 'Tags/Rhythm/Rhythm';
-import Wrapper from 'Tags/Wrapper/Wrapper';
-import SgTableOfContents from 'SgTags/SgTableOfContents/SgTableOfContents';
+import Heading from '@tags/Heading/Heading';
+import Rhythm from '@tags/Rhythm/Rhythm';
+import Wrapper from '@tags/Wrapper/Wrapper';
+import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
 
 const page = () => (
   <Wrapper size="wide">

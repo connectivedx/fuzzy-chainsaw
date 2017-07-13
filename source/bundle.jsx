@@ -1,6 +1,12 @@
-import 'Source/bundle.css';
-import 'Tags/Icon/IconSet';
-import 'Lib/theme-handler';
-import 'Lib/offline-runtime';
+// import css before other
+// files to preserve ordering
+import '@source/bundle.css';
 
+// import FC deps
+import '@tags/Icon/IconSet';
+import '@lib/theme-handler';
+import '@lib/offline-runtime';
+
+
+// program
 console.log('Main Bundle!');

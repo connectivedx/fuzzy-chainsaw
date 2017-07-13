@@ -1,7 +1,7 @@
-export const pagesContext = require.context('Pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const tagsContext = require.context('Tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const componentsContext = require.context('Components/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const compositionsContext = require.context('Compositions/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const tagsContext = require.context('@tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const componentsContext = require.context('@components/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const compositionsContext = require.context('@compositions/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
 const isRenderableModule = (key) => (

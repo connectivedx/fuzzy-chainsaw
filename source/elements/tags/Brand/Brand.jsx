@@ -1,4 +1,4 @@
-import Icon from 'Tags/Icon/Icon';
+import Icon from '@tags/Icon/Icon';
 
 
 const Brand = (props) => {

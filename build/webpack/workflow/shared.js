@@ -6,7 +6,6 @@ const path = require('path');
 const pkgpath = require('packpath');
 const webpack = require('webpack');
 
-const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 const { source, dest, baseUrl } = require('../../lib/path-helpers');
 
 const { outputFormats } = require(source('fc-config')); // eslint-disable-line
@@ -28,22 +27,22 @@ module.exports = {
     alias: {
       FcUtils: path.resolve(__dirname, '../../lib/fc-utilities'),
 
-      Source: source(),
-      Static: source('static'),
-      Lib: source('lib'),
-      Pages: source('pages'),
+      '@source': source(),
+      '@static': source('static'),
+      '@lib': source('lib'),
+      '@pages': source('pages'),
 
-      Elements: source('elements'),
-      Vars: source('elements/variables'),
-      Tags: source('elements/tags'),
-      Components: source('elements/components'),
-      Compositions: source('elements/compositions'),
-      Modifiers: source('elements/modifiers'),
+      '@elements': source('elements'),
+      '@vars': source('elements/variables'),
+      '@tags': source('elements/tags'),
+      '@components': source('elements/components'),
+      '@compositions': source('elements/compositions'),
+      '@modifiers': source('elements/modifiers'),
 
-      Styleguide: source('styleguide'),
-      SgVars: source('styleguide/variables'),
-      SgTags: source('styleguide/tags'),
-      SgComponents: source('styleguide/components')
+      '@styleguide': source('styleguide'),
+      '@sg-vars': source('styleguide/variables'),
+      '@sg-tags': source('styleguide/tags'),
+      '@sg-components': source('styleguide/components')
     }
   },
   output: {

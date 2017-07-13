@@ -2,6 +2,7 @@ import Dom from 'react-dom/server';
 import { getModule } from './static';
 import { themes } from './fc-config';
 
+
 const { pageTitle, theme, Component } = getModule(location.pathname.replace(/\.html/, ''));
 
 // mock a server render

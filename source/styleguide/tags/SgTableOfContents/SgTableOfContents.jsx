@@ -1,7 +1,7 @@
-import Heading from 'SgTags/SgHeading/SgHeading';
-import Rhythm from 'SgTags/SgRhythm/SgRhythm';
+import Heading from '@sg-tags/SgHeading/SgHeading';
+import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
 
-import SgFileIndex from 'SgTags/SgFileIndex/SgFileIndex';
+import SgFileIndex from '@sg-tags/SgFileIndex/SgFileIndex';
 import {
   pagesIndexData,
   themedPagesIndexData,
@@ -9,7 +9,7 @@ import {
   compositionsIndexData,
   componentsIndexData,
   tagsIndexData
-} from 'SgTags/SgTableOfContents/fileIndexData';
+} from '@sg-tags/SgTableOfContents/fileIndexData';
 
 
 export const SgTableOfContents = (props) => {

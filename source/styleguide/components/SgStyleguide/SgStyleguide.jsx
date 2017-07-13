@@ -1,11 +1,11 @@
 import slugify from 'slugify';
 
-import Heading from 'SgTags/SgHeading/SgHeading';
-import Rhythm from 'SgTags/SgRhythm/SgRhythm';
-import Nav from 'SgComponents/SgNav/SgNav';
-import Example from 'SgComponents/SgExample/SgExample';
+import Heading from '@sg-tags/SgHeading/SgHeading';
+import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
+import Nav from '@sg-components/SgNav/SgNav';
+import Example from '@sg-components/SgExample/SgExample';
 
-import { themes } from 'Source/fc-config';
+import { themes } from '@source/fc-config';
 
 
 export const SgStyleguide_Readme = (props) => (
