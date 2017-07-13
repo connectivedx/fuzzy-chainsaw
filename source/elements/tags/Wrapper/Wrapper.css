@@ -1,18 +1,17 @@
 .Wrapper {
   margin: auto;
   padding: 2em;
-}
 
-/* sizes */
-.Wrapper--narrow {
-  max-width: 640px;
-}
+  /* sizes */
+  &--narrow {
+    max-width: 640px;
+  }
 
-.Wrapper--default {
-  max-width: 960px;
-}
+  &--default {
+    max-width: 960px;
+  }
 
-.Wrapper--wide {
-  max-width: 1280px;
+  &--wide {
+    max-width: 1280px;
+  }
 }
-

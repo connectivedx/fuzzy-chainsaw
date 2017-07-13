@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Wrapper from './Wrapper';
 
+
 test('<Wrapper />', (t) => {
   const component = shallow(<Wrapper>abc</Wrapper>);
   t.ok(component.is('div'), 'tag name');
