@@ -7,6 +7,11 @@ import '@tags/Icon/IconSet';
 import '@lib/theme-handler';
 import '@lib/offline-runtime';
 
+// import npm modules
+import select from 'dom-select';
 
 // program
-console.log('Main Bundle!');
+const rootEl = select('.root'); // eslint-disable-line
+
+// remove no-js class
+rootEl.classList.remove('no-js');

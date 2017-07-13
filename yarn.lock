@@ -2360,6 +2360,10 @@ dom-converter@~0.1:
   dependencies:
     utila "~0.3"
 
+dom-select@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dom-select/-/dom-select-1.1.1.tgz#2627150dd6d2f6a4d7a5c13d1581d2e51b70eefc"
+
 dom-serialize@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/dom-serialize/-/dom-serialize-2.2.1.tgz#562ae8999f44be5ea3076f5419dcd59eb43ac95b"
