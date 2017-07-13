@@ -3,7 +3,12 @@ import Heading from 'Tags/Heading/Heading';
 import Rhythm from 'Tags/Rhythm/Rhythm';
 
 import randySavage from './assets/randy-savage.jpg';
-import { Media, Media__figure, Media__body } from './Media';
+import {
+  Media,
+  Media__figure,
+  Media__body
+} from './Media';
+
 
 export default [{
   name: 'media to the left',
