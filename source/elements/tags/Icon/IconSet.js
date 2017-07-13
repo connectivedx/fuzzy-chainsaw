@@ -1,4 +1,7 @@
-const __svg__ = { path: './assets/**/*.svg', name: 'assets/svgs/iconset-[hash].svg' };
+const __svg__ = { // eslint-disable-line
+  path: './assets/**/*.svg',
+  name: 'assets/svgs/iconset-[hash].svg'
+};
 
 ((options) => {
   let ajax = new XMLHttpRequest();
