@@ -28,6 +28,8 @@
 		"location": true,
 		"React": true,
 		"FcUtils": true,
-		"PropTypes": true
+		"PropTypes": true,
+		"XMLHttpRequest": true,
+		"XDomainRequest": true
 	}
 }
