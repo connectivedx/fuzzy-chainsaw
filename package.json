@@ -121,6 +121,7 @@
     "webpack-svgstore-plugin": "^4.0.1"
   },
   "dependencies": {
+    "dom-select": "^1.1.1",
     "html-loader": "^0.4.5",
     "http-server": "^0.10.0",
     "minimatch": "^3.0.4",
