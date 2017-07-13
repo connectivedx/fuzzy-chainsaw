@@ -1,8 +1,8 @@
 const requireAll = (context) => context.keys().map(context);
 
-require('Vars/index.css');
+require('@vars/index.css');
 
 // require the rest of the components
-requireAll(require.context('Tags/', true, /\.generic.css$/));
-requireAll(require.context('Components/', true, /\.generic.css$/));
-requireAll(require.context('Compositions/', true, /\.generic.css$/));
+requireAll(require.context('@tags/', true, /\.generic.css$/));
+requireAll(require.context('@components/', true, /\.generic.css$/));
+requireAll(require.context('@compositions/', true, /\.generic.css$/));

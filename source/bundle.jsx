@@ -1,6 +1,6 @@
-import 'Source/bundle.css';
-import 'Tags/Icon/IconSet';
-import 'Lib/theme-handler';
-import 'Lib/offline-runtime';
+import '@source/bundle.css';
+import '@tags/Icon/IconSet';
+import '@lib/theme-handler';
+import '@lib/offline-runtime';
 
 console.log('Main Bundle!');
