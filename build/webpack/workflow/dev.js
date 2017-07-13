@@ -66,7 +66,7 @@ module.exports = (
               source('elements')
             ],
             options: {
-              path: 'Vars/index.css'
+              path: '@vars/index.css'
             }
           },
           {
@@ -76,7 +76,7 @@ module.exports = (
               source('styleguide')
             ],
             options: {
-              path: 'SgVars/index.css'
+              path: '@sg-vars/index.css'
             }
           },
           {
