@@ -38,13 +38,13 @@ const entries = {
   devScript: 'dev.jsx',
   styleguide: 'styleguide/styleguide.jsx',
   bundle: 'bundle.jsx',
-  'bundle-generic': 'bundle-generic.css.jsx' // generic theme css file
+  'bundle-generic': 'bundle-generic.jsx' // generic theme bundle
 };
 
 // defines the standard bundle entries
 const bundles = ['bundle', 'bundle-generic'];
 
-// export sets of entries for different
+// export sets of entries for different proccesses
 module.exports.entries = {
   static: pick(entries, ['static']),
   build: pick(entries, ['styleguide', ...bundles]),
