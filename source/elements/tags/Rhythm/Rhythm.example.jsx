@@ -1,5 +1,6 @@
 import Rhythm from './Rhythm';
 
+
 const children = [
   <div key="1">abc</div>,
   <div key="2">123</div>,
@@ -10,7 +11,6 @@ const children = [
   </div>
 ];
 
-// const children = 'bunnies!';
 
 module.exports = [{
   name: 'default',

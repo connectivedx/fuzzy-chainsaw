@@ -1,10 +1,15 @@
 /* variants */
-.Rhythm,
-.Rhythm--default { & > * + * { margin-top: 1em; } }
-.Rhythm--small { & > * + * { margin-top: 0.5em; } }
-.Rhythm--large { & > * + * { margin-top: 2em; } }
+.Rhythm {
+  &,
+  &--default { & > * + * { margin-top: 1em; } }
+  &--small { & > * + * { margin-top: 0.5em; } }
+  &--large { & > * + * { margin-top: 2em; } }
 
-.Rhythm--deep,
-.Rhythm--deep-default { & * + * { margin-top: 1em; } }
-.Rhythm--deep-small { & * + * { margin-top: 0.5em; } }
-.Rhythm--deep-large { & * + * { margin-top: 2em; } }
+  &--deep {
+    &,
+    &-default { & * + * { margin-top: 1em; } }
+    &-small { & * + * { margin-top: 0.5em; } }
+    &-large { & * + * { margin-top: 2em; } }
+  }
+}
+
