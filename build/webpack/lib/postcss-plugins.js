@@ -29,6 +29,24 @@ const { source } = require('../../lib/path-helpers');
 
 const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
 
+// setup resolver for postcss-import
+const path = require('path');
+const ResolverFactory = require('enhanced-resolve/lib/ResolverFactory');
+const NodeJsInputFileSystem = require('enhanced-resolve/lib/NodeJsInputFileSystem');
+const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSystem');
+
+const { resolve } = require('../workflow/shared');
+
+
+const fileSystem = new CachedInputFileSystem(new NodeJsInputFileSystem(), 60000);
+const resolver = ResolverFactory.createResolver({
+  alias: resolve.alias,
+  extensions: ['.css'],
+  modules: [source(), 'node_modules'],
+  useSyncFileSystemCalls: true,
+  fileSystem
+});
+
 
 module.exports.linting = [
   stylelint(),
@@ -50,7 +68,9 @@ const standard = [
 
 module.exports.dev = [
   ...module.exports.linting,
-  cssImport(),
+  cssImport({
+    resolve: (id, basedir) => resolver.resolveSync({}, basedir, id)
+  }),
   ...standard
 ];
 

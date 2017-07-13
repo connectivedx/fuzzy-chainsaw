@@ -61,15 +61,23 @@ module.exports = (
           },
           {
             test: /\.css$/,
-            use: 'prefix-variables-loader',
+            loader: 'prefix-variables-loader',
             include: [
-              source('elements/tags'),
-              source('elements/components'),
-              source('elements/compositions'),
-              source('elements/modifiers'),
-              source('styleguide/tags'),
-              source('styleguide/components')
-            ]
+              source('elements')
+            ],
+            options: {
+              path: 'Vars/index.css'
+            }
+          },
+          {
+            test: /\.css$/,
+            loader: 'prefix-variables-loader',
+            include: [
+              source('styleguide')
+            ],
+            options: {
+              path: 'SgVars/index.css'
+            }
           },
           {
             test: /\.css$/,
