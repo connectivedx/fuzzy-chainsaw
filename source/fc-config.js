@@ -7,11 +7,14 @@ const pick = (dict, keys) =>
 
 // dll libraries
 module.exports.dlls = {
-  // client libs
+  // modules required for regular bundle
   vendor: [
-    'react'
+    'dom-select'
   ],
+
+  // modules required for styleguide
   styleguide: [
+    'react',
     'react-dom/server',
     'prop-types',
     'react-modal',
@@ -21,6 +24,8 @@ module.exports.dlls = {
     'react-element-to-jsx-string',
     'slugify'
   ],
+
+  // modules required for tests
   tests: [
     'tape',
     'enzyme'
@@ -36,8 +41,10 @@ const entries = {
   'bundle-generic': 'bundle-generic.css.jsx' // generic theme css file
 };
 
+// defines the standard bundle entries
 const bundles = ['bundle', 'bundle-generic'];
 
+// export sets of entries for different
 module.exports.entries = {
   static: pick(entries, ['static']),
   build: pick(entries, ['styleguide', ...bundles]),
