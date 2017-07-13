@@ -10,7 +10,6 @@
   Where possible, favor making changes in webpack configuration from here as opposed
   to the shared configurations to keep it easy to apply upgrades.
 */
-const path = require('path');
 const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
@@ -43,11 +42,6 @@ module.exports = (
   webpackMerge(
     browserWorkflow,
     {
-      resolveLoader: {
-        alias: {
-          'prefix-variables-loader': path.resolve(__dirname, '../lib/prefix-variables-loader')
-        }
-      },
       module: {
         rules: [
           {
@@ -61,18 +55,6 @@ module.exports = (
           {
             test: /\.css$/,
             use: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
-          },
-          {
-            test: /\.css$/,
-            use: 'prefix-variables-loader',
-            include: [
-              source('elements/tags'),
-              source('elements/components'),
-              source('elements/compositions'),
-              source('elements/modifiers'),
-              source('styleguide/tags'),
-              source('stylguide/components')
-            ]
           }
         ]
       },
