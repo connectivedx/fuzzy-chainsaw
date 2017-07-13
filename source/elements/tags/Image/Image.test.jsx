@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Image from './Image';
 
+
 test('<Image src={imgString} />', (t) => {
   const component = shallow(<Image src="image.jpg" alt="Rancheria Falls" />);
   t.ok(component.is('img'), 'tag name');

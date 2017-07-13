@@ -1,7 +1,10 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import { List, List__item } from './List';
+import {
+  List,
+  List__item
+} from './List';
 
 
 test('<List>', (t) => {

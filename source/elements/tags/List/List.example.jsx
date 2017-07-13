@@ -1,4 +1,8 @@
-import { List, List__item } from './List';
+import {
+  List,
+  List__item
+} from './List';
+
 
 export default [{
   name: 'default',

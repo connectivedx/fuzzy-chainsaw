@@ -8,6 +8,7 @@ import 'prismjs/components/prism-json.min';
 import SgHeading from 'SgTags/SgHeading/SgHeading';
 import { themes } from 'Source/fc-config';
 
+
 const filterProps = (component) => {
   const copy = {
     type: component.type.name,

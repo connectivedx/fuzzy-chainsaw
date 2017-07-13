@@ -3,6 +3,7 @@ import imageSrc from './assets/rancheria-falls.jpg';
 import imageSrcMd from './assets/rancheria-falls-md.jpg';
 import imageSrcLg from './assets/rancheria-falls-lg.jpg';
 
+
 export default [{
   name: 'Default image behavior',
   component: (

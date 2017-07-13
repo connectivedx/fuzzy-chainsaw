@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Heading from './Heading';
 
+
 test('<Heading>', (t) => {
   const component = shallow(<Heading>Hello</Heading>);
   t.ok(component.is('h1'), 'tag name');

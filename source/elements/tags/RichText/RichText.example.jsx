@@ -1,5 +1,6 @@
 import RichText from './RichText';
 
+
 export default [{
   name: 'default',
   component: (

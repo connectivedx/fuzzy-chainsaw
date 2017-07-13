@@ -1,33 +1,33 @@
 .Icon {
   display: inline-block;
-}
 
-/* sizes */
-.Icon--normal {
-  width: 1em;
-  height: 1em;
-}
+  /* sizes */
+  &--normal {
+    width: 1em;
+    height: 1em;
+  }
 
-.Icon--small {
-  width: 0.5em;
-  height: 0.5em;
-}
+  &--small {
+    width: 0.5em;
+    height: 0.5em;
+  }
 
-.Icon--large {
-  width: 2em;
-  height: 2em;
-}
+  &--large {
+    width: 2em;
+    height: 2em;
+  }
 
-.Icon--wide {
-  width: 3em;
-  height: 1.5em;
-}
+  &--wide {
+    width: 3em;
+    height: 1.5em;
+  }
 
-/* colors */
-.Icon--dark {
-  fill: var(--color-black);
-}
+  /* colors */
+  &--dark {
+    fill: var(--color-black);
+  }
 
-.Icon--light {
-  fill: var(--color-white);
+  &--light {
+    fill: var(--color-white);
+  }
 }

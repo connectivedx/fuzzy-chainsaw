@@ -1,7 +1,11 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import { Media, Media__figure, Media__body } from './Media';
+import {
+  Media,
+  Media__figure,
+  Media__body
+} from './Media';
 
 
 test('<Media>', (t) => {

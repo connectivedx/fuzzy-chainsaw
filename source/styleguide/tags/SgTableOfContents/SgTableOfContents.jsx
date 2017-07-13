@@ -11,6 +11,7 @@ import {
   tagsIndexData
 } from 'SgTags/SgTableOfContents/fileIndexData';
 
+
 export const SgTableOfContents = (props) => {
   const {
     hidePages,
@@ -78,5 +79,6 @@ SgTableOfContents.propTypes = {
     PropTypes.node
   ])
 };
+
 
 export default SgTableOfContents;

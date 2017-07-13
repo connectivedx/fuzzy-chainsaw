@@ -3,25 +3,17 @@
   font-weight: var(--font-weight--bold);
   font-size: 2em;
   line-height: 1em;
-}
 
-/* weights */
-.Heading--bold {
-  font-weight: 700;
-}
+  /* weights */
+  &--thin { font-weight: 300; }
+  &--bold { font-weight: 700; }
+  &--medium { font-weight: 500; }
 
-.Heading--thin {
-  font-weight: 300;
+  /* levels */
+  &--h1 { font-size: 2em; }
+  &--h2 { font-size: 1.6em; }
+  &--h3 { font-size: 1.4em; }
+  &--h4 { font-size: 1.3em; }
+  &--h5 { font-size: 1.2em; }
+  &--h6 { font-size: 1.1em; }
 }
-
-.Heading--medium {
-  font-weight: 500;
-}
-
-/* levels */
-.Heading--h1 { font-size: 2em; }
-.Heading--h2 { font-size: 1.6em; }
-.Heading--h3 { font-size: 1.4em; }
-.Heading--h4 { font-size: 1.3em; }
-.Heading--h5 { font-size: 1.2em; }
-.Heading--h6 { font-size: 1.1em; }

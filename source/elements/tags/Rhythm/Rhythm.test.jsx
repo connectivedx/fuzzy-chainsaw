@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Rhythm from './Rhythm';
 
+
 test('<Rhythm />', (t) => {
   const component = shallow(<Rhythm>abc</Rhythm>);
   t.ok(component.is('div'), 'tag name');

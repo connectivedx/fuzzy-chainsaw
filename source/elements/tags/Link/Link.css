@@ -1,20 +1,20 @@
 .Link {
   text-decoration: underline;
-}
 
-/* variants */
-.Link--default {
-  color: var(--color-blue);
+  /* variants */
+  &--default {
+    color: var(--color-blue);
 
-  &:--enter {
-    color: color(var(--color-blue) tint(10));
+    &:--enter {
+      color: color(var(--color-blue) tint(10));
+    }
   }
-}
 
-.Link--cta {
-  color: var(--color-red);
+  &--cta {
+    color: var(--color-red);
 
-  &:--enter {
-    color: color(var(--color-red) tint(10));
+    &:--enter {
+      color: color(var(--color-red) tint(10));
+    }
   }
 }
