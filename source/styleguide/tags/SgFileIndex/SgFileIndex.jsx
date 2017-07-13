@@ -1,6 +1,6 @@
-import Heading from 'SgTags/SgHeading/SgHeading';
-import Rhythm from 'SgTags/SgRhythm/SgRhythm';
-import { themes } from 'Source/fc-config';
+import Heading from '@sg-tags/SgHeading/SgHeading';
+import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
+import { themes } from '@source/fc-config';
 
 
 const SgFileIndex__ItemThemed = (props) => {

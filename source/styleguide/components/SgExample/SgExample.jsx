@@ -5,8 +5,8 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx.min';
 import 'prismjs/components/prism-json.min';
 
-import SgHeading from 'SgTags/SgHeading/SgHeading';
-import { themes } from 'Source/fc-config';
+import SgHeading from '@sg-tags/SgHeading/SgHeading';
+import { themes } from '@source/fc-config';
 
 
 const filterProps = (component) => {
