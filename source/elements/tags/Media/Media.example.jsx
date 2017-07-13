@@ -1,6 +1,6 @@
-import Image from 'Tags/Image/Image';
-import Heading from 'Tags/Heading/Heading';
-import Rhythm from 'Tags/Rhythm/Rhythm';
+import Image from '@tags/Image/Image';
+import Heading from '@tags/Heading/Heading';
+import Rhythm from '@tags/Rhythm/Rhythm';
 
 import randySavage from './assets/randy-savage.jpg';
 import {
