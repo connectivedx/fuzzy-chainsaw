@@ -74,6 +74,8 @@ Command | Description
 --- | ---
 `dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
 `watch` | Compiles src directory to output directory and watches for file changes.
+`dll:ci` | Builds a DLL library of only the vendor files required only for integration.
+`build:ci` | Compiles only source files required for backend integration.
 `dll:production:ci` | Builds a production ready DLL library of vendor files required only for integration.
 `production:ci` | Compiles required assets to output directory – skips styleguide and html generation.
 
@@ -85,6 +87,7 @@ Use these task to build a full copy of the website, including the DLL generation
 Command | Description
 --- | ---
 `full:build` | runs `dll` and `build` tasks
+`full:build:ci` | runs `dll:ci` and `build:ci` tasks
 `full:production` | runs `dll:production` and `build:production` tasks
 `full:production:ci` | runs `dll:production:ci` and `build:production:ci` tasks
 
@@ -97,7 +100,7 @@ Command | Description
 --- | ---
 `new:tag [name]` | Creates a new tag component in the `/source/tags` directory.
 `new:component [name]` | Creates a new stateless integration component in the `/source/components` directory.
-`new:stateful [name]` | Creates a new stateful integration component in the `/source/components` directory.
+`new:composition [name]` | Creates a new stateless integration component in the `/source/compositions` directory.
 
 
 #### DLL Explaination
