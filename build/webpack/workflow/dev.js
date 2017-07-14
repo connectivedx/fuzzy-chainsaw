@@ -23,14 +23,10 @@ const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); /
 const stats = {
   hash: false,
   version: false,
-  chunks: false,
-  children: false,
+  modules: false,
   colors: true,
-  cached: true,
-  cachedAssets: true,
   error: true,
-  errorDetails: true,
-  reasons: true
+  errorDetails: true
 };
 
 module.exports = (

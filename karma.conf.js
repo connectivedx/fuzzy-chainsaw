@@ -19,9 +19,7 @@ module.exports = (config) => {
     },
     webpack: testWorkflow,
     webpackMiddleware: {
-      stats: {
-        chunks: false
-      }
+      stats: testWorkflow.stats
     },
     client: {
       captureConsole: false
