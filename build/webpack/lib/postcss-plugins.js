@@ -1,8 +1,7 @@
 /*
   Configures PostCSS plugins for all webpack builds.
-
-  The settings here map to the `postcss` property on the webpack configuration.
 */
+
 const postcss = require('postcss');
 
 // standard

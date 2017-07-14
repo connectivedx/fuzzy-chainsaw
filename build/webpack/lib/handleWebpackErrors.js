@@ -2,8 +2,11 @@
   Collects errors and warnings output by webpack when run through gulp
   and emits them to the console (without this all errors and warnings are swallowed)
 */
+
 const chalk = require('chalk');
 const gutil = require('gulp-util');
+
+const statsConfig = require('./webpack-stats');
 
 
 module.exports = (err, stats, done) => {
@@ -13,12 +16,7 @@ module.exports = (err, stats, done) => {
   }
 
   // see https://webpack.github.io/docs/node.js-api.html#stats-tostring
-  gutil.log(stats.toString({
-    colors: true,
-    modules: false,
-    version: false,
-    hash: false
-  }));
+  gutil.log(stats.toString(statsConfig));
 
   if (stats.hasWarnings() || stats.hasErrors()) {
     gutil.log(chalk.bgRed('Webpack completed with errors or warnings.'), '\u0007');

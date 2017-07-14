@@ -1,6 +1,7 @@
 /*
-The z-indexes for the project.
-z-index: var(--index-nav);
+  The z-indexes for the project.
+
+  z-index: var(--zindex--nav);
 */
 :root {
   --zindex--hidden: -1;

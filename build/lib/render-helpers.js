@@ -1,5 +1,9 @@
-const Dom = require('react-dom/server');
+/*
+  This provides helpers for staticly rendering
+  react components into html markup
+*/
 
+const Dom = require('react-dom/server');
 
 const renderComponent = ({ template, module }) =>
   template.toString()

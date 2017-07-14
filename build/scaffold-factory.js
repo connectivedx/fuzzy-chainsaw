@@ -1,3 +1,8 @@
+/*
+  This provides a factory that returns a gulp task
+  for scaffolding directories.
+*/
+
 const gutil = require('gulp-util');
 const path = require('path');
 const minimist = require('minimist');
@@ -5,6 +10,7 @@ const chalk = require('chalk');
 const dopl = require('dopl');
 
 const { source } = require('./lib/path-helpers');
+
 
 const scaffoldComponent = ({
   name,

@@ -1,7 +1,10 @@
-/* define property mixins for each font family and weight used */
+/*
+  Define font variables.
+*/
+
 :root {
   /* Individual font names */
-  --font-name--default: 'Source Sans Pro';
+  --font-name--default: 'Helvetica Neue';
 
   /* font stacks */
   --font-stack--default: var(--font-name--default), 'Helvetica', sans-serif;
