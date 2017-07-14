@@ -1,18 +1,20 @@
 /*
   The breakpoints for all resolutions represented as pairs with the breakpoint name and its associated pixel width.
-  Note custom-media variables and general variables do not conflict with one anohter. The below variables can (if need be) be reused as a general veriable else where.
+  Note custom-media variables do not conflict with custom-properties
   http://cssnext.io/features/#custom-media-queries
+
   @media (--medium) { ..styles.. }
 */
+
 :root {
   /* mobile first breakpoints */
   @custom-media --extra-small only screen and (width >= 384px);
-  @custom-media --small  only screen and (width >= 512px);
-  @custom-media --medium-small  only screen and (width >= 640px);
-  @custom-media --medium  only screen and (width >= 768px);
-  @custom-media --medium-large  only screen and (width >= 896px);
-  @custom-media --large  only screen and (width >= 1024px);
-  @custom-media --extra-large  only screen and (width >= 1152px);
+  @custom-media --small only screen and (width >= 512px);
+  @custom-media --medium-small only screen and (width >= 640px);
+  @custom-media --medium only screen and (width >= 768px);
+  @custom-media --medium-large only screen and (width >= 896px);
+  @custom-media --large only screen and (width >= 1024px);
+  @custom-media --extra-large only screen and (width >= 1152px);
 
   /* mobile only breakpoints */
   @custom-media --below-extra-small only screen and (width < 384px);

@@ -2,9 +2,10 @@
   The color palette for the project.
   http://cssnext.io/features/#color-function
 
-  background-color: var(--primary);
-  color: var(--greyDark);
+  background-color: var(--color-black);
+  color: var(--color-white);
 */
+
 :root {
   /* grayscale */
   --color-shade--00: gray(100%);
