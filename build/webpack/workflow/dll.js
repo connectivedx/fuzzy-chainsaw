@@ -60,5 +60,5 @@ module.exports = {
       title: 'FC Dll'
     })
   ],
-  stats: Object.assign({}, stats, { quiet: true })
+  stats
 };
