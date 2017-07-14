@@ -109,6 +109,13 @@ DLLs are libraries of vendor files that are referenced by other tasks.  This spe
 
 > For most task this will be enough, but if you are building production ready code, be sure to use `dll:production` before running a production build tasks. Using the development DLL file in production, or visa-versa will result in hard to debug errors.
 
+#### BASE_URL
+
+The `BASE_URL` defines the root path where the bundled files will be located.  If you are uploading to a non-root path on a server (`http://myserver.com/this-path`) this will need to be defined.
+
+```
+BASE_URL=/this-path/ npm run build
+```
 
 ## Goals
 
