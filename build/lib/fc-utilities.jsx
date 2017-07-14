@@ -1,3 +1,8 @@
+/*
+  Helper function for creating a nice className
+  from an array of unknown values
+*/
+
 const createClassStack = (classList) => (
   classList
     .map((className) => {
@@ -10,6 +15,12 @@ const createClassStack = (classList) => (
     .filter((a) => a)
     .join(' ')
 );
+
+
+/*
+  Helper function for quickly creating a
+  basic component with a className
+*/
 
 const createBasicComponent = (config) => {
   const {
@@ -61,6 +72,7 @@ const createBasicComponent = (config) => {
 
   return Component;
 };
+
 
 module.exports = {
   createBasicComponent,
