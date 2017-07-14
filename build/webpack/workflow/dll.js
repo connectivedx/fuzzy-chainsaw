@@ -1,6 +1,6 @@
 /*
-  Webpack configuration to precompile
-  vendor modules before main bundle
+  Webpack configuration to precompile vendor
+  modules before the main bundle
 */
 
 const webpack = require('webpack');
