@@ -5,6 +5,7 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
+const stats = require('../lib/webpack-stats');
 const sharedWorkflow = require('./shared');
 
 
@@ -34,12 +35,7 @@ module.exports = (
           'process.env.NODE_ENV': JSON.stringify('test')
         })
       ],
-      stats: {
-        hash: false,
-        version: false,
-        modules: false,
-        color: true
-      }
+      stats
     }
   )
 );

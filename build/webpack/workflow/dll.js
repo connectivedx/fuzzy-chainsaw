@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const StatsPlugin = require('stats-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const stats = require('../lib/webpack-stats');
 const { source, dest } = require('../../lib/path-helpers');
 
 const { outputFormats } = require(source('fc-config')); // eslint-disable-line
@@ -59,10 +60,5 @@ module.exports = {
       title: 'FC Dll'
     })
   ],
-  stats: {
-    quiet: true,
-    hash: false,
-    version: false,
-    modules: false
-  }
+  stats: Object.assign({}, stats, { quiet: true })
 };
