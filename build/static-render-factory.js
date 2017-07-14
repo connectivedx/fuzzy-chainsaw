@@ -1,3 +1,8 @@
+/*
+  This task takes renders static html
+  using the static webpack bundle
+*/
+
 const gulp = require('gulp');
 const file = require('gulp-file');
 const merge = require('gulp-merge');

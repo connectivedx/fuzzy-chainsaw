@@ -1,3 +1,8 @@
+/*
+  This task starts the karma test runner
+  in singleRun mode.
+*/
+
 const Server = require('karma').Server;
 const gutil = require('gulp-util');
 const path = require('path');

@@ -1,5 +1,10 @@
+/*
+  This task deletes old files before a webpack bundle
+*/
+
 const del = require('del');
 const { dest } = require('./lib/path-helpers');
+
 
 module.exports = () => (
   del([
