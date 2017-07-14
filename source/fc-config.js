@@ -14,6 +14,7 @@ module.exports.dlls = {
 
   // modules required for styleguide
   styleguide: [
+    'object.assign',
     'react',
     'react-dom/server',
     'prop-types',
