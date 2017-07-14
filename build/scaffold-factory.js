@@ -38,7 +38,7 @@ module.exports = ({ src, dest }) => () => {
   return scaffoldComponent({
     name: argv.name,
     src: path.resolve(__dirname, 'scaffolding', src),
-    output: source(dest, argv.name)
+    output: source('elements', dest, argv.name)
   });
 };
 
