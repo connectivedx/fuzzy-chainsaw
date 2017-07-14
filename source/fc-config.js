@@ -18,7 +18,7 @@ module.exports.dlls = {
     'react',
     'react-dom/server',
     'prop-types',
-    'react-modal',
+    // 'react-modal', // failing on windows build in DLL
     'minimatch',
     'pretty',
     'prismjs',
