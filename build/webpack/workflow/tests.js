@@ -1,14 +1,12 @@
 /*
   Configures how unit test files are processed by webpack.
-  This is a shared base webpack configuration, and the options may be overridden by consumers of this factory.
-  Note: Tests are compiled with babel and written to a temporary folder, executed, and then deleted after the build (by post-clean)
-
-  Paths and such are passed down from the webpack.config.js, this only configures the actions webpack will perform.
 */
+
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const sharedWorkflow = require('./shared');
+
 
 module.exports = (
   webpackMerge(

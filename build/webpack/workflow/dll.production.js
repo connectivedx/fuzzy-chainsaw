@@ -1,7 +1,14 @@
+/*
+  Webpack configuration to precompile
+  vendor modules before main bundle
+  in production mode
+*/
+
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const dllConfig = require('./dll.js');
+
 
 module.exports = webpackMerge(
   dllConfig,

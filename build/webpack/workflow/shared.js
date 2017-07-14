@@ -2,6 +2,7 @@
   Defines the shared webpack config used by all workflows.
   This is a shared base webpack configuration, and the options may be overridden by consumers of this factory.
 */
+
 const path = require('path');
 const pkgpath = require('packpath');
 const webpack = require('webpack');
@@ -18,7 +19,9 @@ try {
   styleguideManifest = require(dest('assets/dlls/styleguide-manifest.json')); // eslint-disable-line
 } catch (e) {
   // let failures happen
+  // styleguide manifest will be missing on CI builds
 }
+
 
 module.exports = {
   devtool: 'source-map',
@@ -85,5 +88,5 @@ module.exports = {
       PropTypes: 'prop-types',
       FcUtils: 'FcUtils'
     })
-  ].filter((a) => a)
+  ].filter((a) => a) // filter undefined when running in CI mode
 };
