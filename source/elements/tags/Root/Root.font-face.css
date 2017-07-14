@@ -1,0 +1,17 @@
+/*
+
+If you need @font-face you can add them here
+using this example as a reference.
+
+*/
+
+/*
+@font-face {
+  font-family: var(--font-stack--default);
+  font-weight: var(--font-weight--normal);
+  src:
+    url('./assets/SourceSansPro-Regular.ttf') format('ttf'),
+    url('./assets/SourceSansPro-Regular.woff') format('woff'),
+    url('./assets/SourceSansPro-Regular.woff2') format('woff2');
+}
+*/
