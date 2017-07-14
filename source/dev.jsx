@@ -1,7 +1,12 @@
 import Dom from 'react-dom/server';
+import assign from 'object.assign';
+
 import { getModule } from './static';
 import { themes } from './fc-config';
 
+
+// shim object.assign for ie11
+assign.shim();
 
 const { pageTitle, theme, Component } = getModule(location.pathname.replace(/\.html/, ''));
 
