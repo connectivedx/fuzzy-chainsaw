@@ -125,6 +125,7 @@
     "html-loader": "^0.4.5",
     "http-server": "^0.10.0",
     "minimatch": "^3.0.4",
+    "object.assign": "^4.0.4",
     "pretty": "^2.0.0",
     "pretty-data": "^0.40.0",
     "prop-types": "^15.5.10",
