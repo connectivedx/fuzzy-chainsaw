@@ -1,3 +1,8 @@
+/*
+  Autoprefix variables files before css files
+  This is used on the dev process.
+*/
+
 const loaderUtils = require('loader-utils');
 
 const defaultOptions = {
