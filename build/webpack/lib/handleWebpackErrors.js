@@ -15,8 +15,9 @@ module.exports = (err, stats, done) => {
   // see https://webpack.github.io/docs/node.js-api.html#stats-tostring
   gutil.log(stats.toString({
     colors: true,
-    chunks: false,
-    version: false
+    modules: false,
+    version: false,
+    hash: false
   }));
 
   if (stats.hasWarnings() || stats.hasErrors()) {

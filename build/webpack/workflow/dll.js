@@ -54,6 +54,9 @@ module.exports = {
     })
   ],
   stats: {
-    quiet: true
+    quiet: true,
+    hash: false,
+    version: false,
+    modules: false
   }
 };
