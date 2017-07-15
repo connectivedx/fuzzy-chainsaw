@@ -1,0 +1,27 @@
+.Media {
+  display: flex;
+
+  /* media variants */
+  &--top { align-items: flex-start; }
+  &--middle { align-items: center; }
+  &--bottom { align-items: flex-end; }
+
+  &__body {
+    flex: 1;
+
+    & ~ .Media__figure {
+      margin-right: inherit;
+      margin-left: 1em;
+    }
+  }
+
+  &__figure {
+    margin-right: 1em;
+  }
+
+  /* figure variants */
+  &__figure--top { align-self: flex-start; }
+  &__figure--middle { align-self: center; }
+  &__figure--bottom { align-self: flex-end; }
+}
+

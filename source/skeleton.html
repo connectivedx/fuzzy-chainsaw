@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<html lang="en-US" dir="ltr">
+<% } else { %>
+<html lang="en-US" dir="ltr" class="no-js {{theme}} {{htmlClass}}">
+<% } %>
+
+<head>
+	<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+	<title>loading...</title>
+	<% } else { %>
+	<title>{{title}}</title>
+	<% } %>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- add meta tags, analytics, and font services -->
+
+	<!-- css files are automatically injected here -->
+</head>
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<body>
+<% } else { %>
+<body class="{{bodyClass}}">
+<% } %>
+
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<div class="root"></div>
+<% } else { %>
+<div class="root">{{output}}</div>
+<% } %>
+
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/styleguide-<%= htmlWebpackPlugin.options.dllStats.hash %>.js"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.baseUrl %>assets/dlls/vendor-<%= htmlWebpackPlugin.options.dllStats.hash %>.js"></script>
+
+<!-- js entry files are automatically injected here -->
+</body>
+</html>

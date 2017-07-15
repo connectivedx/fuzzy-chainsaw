@@ -1,11 +1,16 @@
 {
 	"extends": "airbnb",
+	"parser": "babel-eslint",
 	"rules": {
+		"arrow-parens": ["error", "always"],
 		"max-len": 0,
 		"comma-dangle": ["error", "never"],
 		"camelcase": 0,
 		"no-param-reassign": 0,
+		"no-plusplus": 0,
 		"linebreak-style": 0,
+		"prefer-stateless-function": 0,
+		"jsx-a11y/no-static-element-interactions": 0,
 		"import/no-named-as-default": 0,
 		"import/no-extraneous-dependencies": 0,
 		"import/no-unresolved": 0,
@@ -13,6 +18,18 @@
 		"react/no-danger": 0,
 		"react/jsx-pascal-case": 0,
 		"react/forbid-prop-types": 0,
-		"react/require-default-props": 0
+		"react/require-default-props": 0,
+		"react/react-in-jsx-scope": 0,
+		"react/no-array-index-key": 0
+	},
+	"globals": {
+		"document": true,
+		"window": true,
+		"location": true,
+		"React": true,
+		"FcUtils": true,
+		"PropTypes": true,
+		"XMLHttpRequest": true,
+		"XDomainRequest": true
 	}
 }

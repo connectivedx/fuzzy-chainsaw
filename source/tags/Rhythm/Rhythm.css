@@ -1,9 +1,0 @@
-.rhythm,
-.rhythm--default { & > * + * { margin-top: 1em; } }
-.rhythm--small { & > * + * { margin-top: 0.5em; } }
-.rhythm--large { & > * + * { margin-top: 2em; } }
-
-.rhythm--deep,
-.rhythm--deep-default { & * + * { margin-top: 1em; } }
-.rhythm--deep-small { & * + * { margin-top: 0.5em; } }
-.rhythm--deep-large { & * + * { margin-top: 2em; } }

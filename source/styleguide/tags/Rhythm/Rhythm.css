@@ -1,9 +1,0 @@
-.sg-rhythm,
-.sg-rhythm--default { & > * + * { margin-top: 1em; } }
-.sg-rhythm--small { & > * + * { margin-top: 0.5em; } }
-.sg-rhythm--large { & > * + * { margin-top: 2em; } }
-
-.sg-rhythm--deep,
-.sg-rhythm--deep-default { & * + * { margin-top: 1em; } }
-.sg-rhythm--deep-small { & * + * { margin-top: 0.5em; } }
-.sg-rhythm--deep-large { & * + * { margin-top: 2em; } }

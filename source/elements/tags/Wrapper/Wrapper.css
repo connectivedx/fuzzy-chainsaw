@@ -1,0 +1,17 @@
+.Wrapper {
+  margin: auto;
+  padding: 2em;
+
+  /* sizes */
+  &--narrow {
+    max-width: 640px;
+  }
+
+  &--default {
+    max-width: 960px;
+  }
+
+  &--wide {
+    max-width: 1280px;
+  }
+}

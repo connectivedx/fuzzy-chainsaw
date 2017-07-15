@@ -1,47 +1,34 @@
-// CSS
-require.context('SgVars/', true, /\.css$/);
-require.context('SgTags/', true, /\.css$/);
-require.context('SgComponents/', true, /\.css$/);
+// import css first
+import styles from '@styleguide/styleguide.css'; // eslint-disable-line
 
-// browser Javascript
-const body = document.body;
-const nav = document.querySelector('.sg-nav');
-const toggle = nav.querySelector('.sg-nav__toggle');
-const cover = nav.querySelector('.sg-nav__cover');
+// npm modules
+import Dom from 'react-dom';
 
-body.addEventListener('click', ev => {
-  if (toggle.contains(ev.target)) {
-    body.classList.toggle('is-sg-nav-expanded');
-    nav.classList.toggle('is-expanded');
-  }
-
-  if (cover.contains(ev.target)) {
-    body.classList.remove('is-sg-nav-expanded');
-    nav.classList.remove('is-expanded');
-  }
-});
-
-body.addEventListener('keyup', ev => {
-  if (ev.keyCode === 27) {
-    body.classList.remove('is-sg-nav-expanded');
-    nav.classList.remove('is-expanded');
-  }
-});
+// component modules
+import SgNav from '@sg-components/SgNav/SgNav';
+import SgExample from '@sg-components/SgExample/SgExample.Container';
+import SgStyleguide from '@sg-components/SgStyleguide/SgStyleguide.Container';
 
 
-const examples = Array.prototype.slice.call(document.querySelectorAll('.sg-example'));
-const examplesTabs = examples.map(e => e.querySelector('.sg-example__tabs'));
-const examplesSections = examples.map(e => e.querySelectorAll('.sg-example__section'))
-const examplesItems = examples.map(e => Array.prototype.slice.call(e.querySelectorAll('.sg-example__tabs-item')));
+const ui = {
+  nav: document.querySelector('.SgNav'),
+  styleguide: document.querySelector('.SgStyleguide'),
+  examples: Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
+};
 
-examplesTabs.forEach((tabset, i) => {
-  tabset.addEventListener('click', ev => {
-    const active = examplesItems[i].map((item, j) => item.contains(ev.target));
-    if (active.indexOf(true) !== -1) {
-      examplesItems[i].map((item, j) => {
-        examplesItems[i][j].classList.toggle('is-active', active[j]);
-        examplesSections[i][j].classList.toggle('is-active', active[j]);
-      });
-    }
-  });
-});
+
+const init = () => {
+  // Table of contents
+  Dom.render(<SgNav />, ui.nav);
+
+  // Readme toggle
+  SgStyleguide(ui.styleguide);
+
+  // Example tabsets
+  ui.examples.forEach(SgExample);
+};
+
+
+if (ui.styleguide) {
+  init();
+}

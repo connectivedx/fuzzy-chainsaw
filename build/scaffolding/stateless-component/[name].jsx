@@ -1,26 +1,39 @@
-import React from 'react';
+export const {{name}} = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    variant,
+    children,
+    ...attrs
+  } = props;
 
+  const classStack = FcUtils.createClassStack([
+    '{{name}}',
+    `{{name}}--${variant}`,
+    className
+  ]);
 
-export const {{name}} = ({
-  tagName = 'div',
-  className = '',
-  variant = 'default',
-  children,
-  ...attrs
-}) => {
-  const Tag = tagName;
   return (
-    <Tag className={`{{className}} {{className}}--${variant} ${className}`} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
 };
 
+{{name}}.defaultProps = {
+  tagName: 'div',
+  variant: 'default'
+};
+
 {{name}}.propTypes = {
-  tagName: React.PropTypes.string,
-  className: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(['default']),
-  children: React.PropTypes.node
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['default']),
+  children: PropTypes.node
 };
 
 
