@@ -66,7 +66,7 @@ Dependencies have been updated to their latest versions, the most major change w
 - `postcss-nesting` has been replaced with `postcss-nested` which behaves more like sass than the standards track.
 - Removes `@apply` from postcss plugins.
 - Adds Webpack aliases for project folders like `@tags`, `@components`, etc.  Look at `build/webpack/workflow/shared.js` for a complete listing
-
+- Adds `htmlClass` and `bodyClass` page options
 
 ### Output
 
