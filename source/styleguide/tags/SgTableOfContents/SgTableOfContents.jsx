@@ -11,6 +11,12 @@ import {
   tagsIndexData
 } from '@sg-tags/SgTableOfContents/fileIndexData';
 
+import { themes } from '@source/fc-config';
+
+
+const getTheme = (id) =>
+  themes.filter((theme) => theme.id === id)[0];
+
 
 export const SgTableOfContents = (props) => {
   const {
@@ -47,7 +53,7 @@ export const SgTableOfContents = (props) => {
                 key={key}
                 {...indexProps}
                 headingSize="h3"
-                title={`${key.toUpperCase()} Pages`}
+                title={`${getTheme(key).name} Pages`}
                 items={themedPagesIndexData[key]}
               />
             )) }
