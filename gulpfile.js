@@ -1,40 +1,105 @@
 const gulp = require('gulp');
 const sequence = require('run-sequence');
 
+const scaffoldFactory = require('./build/scaffold-factory');
+const staticRender = require('./build/static-render-factory');
+const webpackBuild = require('./build/webpack-build-factory');
+const webpackWatch = require('./build/webpack-watch-factory');
 
-// define build tasks
+// build configs
+const buildConfig = require('./build/webpack/webpack.config.build');
+const buildCiConfig = require('./build/webpack/webpack.config.build.ci');
+const productionConfig = require('./build/webpack/webpack.config.production');
+const productionCiConfig = require('./build/webpack/webpack.config.production.ci');
+
+// duplicates gulp 4 type series api
+const series = (...task) => (done) => sequence(...task, done);
+
+
+// clean certain directories and files
+// before and after builds
 gulp.task('clean:pre', require('./build/clean-pre'));
 gulp.task('clean:post', require('./build/clean-post'));
-gulp.task('webpack:build', require('./build/webpack-build'));
-gulp.task('webpack:production', require('./build/webpack-production'));
-gulp.task('webpack:watch', require('./build/webpack-watch'));
-gulp.task('webpack:watch:integration', require('./build/webpack-watch-integration'));
 
+// build tasks
+gulp.task('webpack:build', webpackBuild(buildConfig));
+gulp.task('webpack:build:ci', webpackBuild(buildCiConfig));
+gulp.task('webpack:production', webpackBuild(productionConfig));
+gulp.task('webpack:production:ci', webpackBuild(productionCiConfig));
 
-// define workflows
-gulp.task('build', done => {
-  sequence('clean:pre', 'webpack:build', 'clean:post', done);
-});
+// watch is a minimal watcher for intergration
+// not requiring page rendering (only /assets)
+gulp.task('webpack:watch', webpackWatch(productionCiConfig));
+gulp.task('watch', series('clean:pre', 'webpack:watch'));
 
-gulp.task('production', done => {
-  sequence('clean:pre', 'webpack:production', 'clean:post', done);
-});
+// static rendering with create static html from
+// source pages and automatically constructs
+// a component library for tags and components
+gulp.task('static:render', staticRender({ production: false }));
+gulp.task('static:render:production', staticRender({ production: true }));
 
-gulp.task('watch', done => {
-  sequence('clean:pre', 'webpack:watch', done);
-});
+// test code using karma
+gulp.task('test', require('./build/karma-test'));
 
-gulp.task('watch:integration', done => {
-  sequence('clean:pre', 'webpack:watch:integration', done);
-});
+// builds for quick publishing
+// to a static server
+gulp.task('build', series(
+  'clean:pre',
+  'webpack:build',
+  'static:render',
+  'clean:post',
+  'test'
+));
 
+// builds a production ready set
+// of static assets and html
+gulp.task('production', series(
+  'clean:pre',
+  'webpack:production',
+  'static:render:production',
+  'clean:post'
+));
+
+// builds a minimal set of static
+// assets (only /assets folder, no html)
+// hint: this will be faster for integrators
+gulp.task('build:ci', series(
+  'clean:pre',
+  'webpack:build:ci',
+  'clean:post'
+));
+
+// builds a minimal set of minified static assets
+gulp.task('production:ci', series(
+  'clean:pre',
+  'webpack:production:ci',
+  'clean:post'
+));
 
 // scaffolding tasks
 // tasks here require cli arguments
 
 // gulp scaffold:tag --name [name]
-gulp.task('scaffold:tag', require('./build/scaffold-tag'));
+gulp.task('scaffold:tag', scaffoldFactory({
+  src: 'stateless-component',
+  dest: 'tags'
+}));
 
 // gulp scaffold:component --name [name]
-gulp.task('scaffold:component', require('./build/scaffold-component'));
+gulp.task('scaffold:component', scaffoldFactory({
+  src: 'stateless-component',
+  dest: 'components'
+}));
+
+// gulp scaffold:composition --name [name]
+gulp.task('scaffold:composition', scaffoldFactory({
+  src: 'stateless-component',
+  dest: 'composition'
+}));
+
+// gulp scaffold:component:stateful --name [name]
+gulp.task('scaffold:component:stateful', scaffoldFactory({
+  src: 'stateful-component',
+  dest: 'components'
+}));
 

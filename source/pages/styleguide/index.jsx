@@ -1,40 +1,29 @@
-import React from 'react';
-import Skeleton from 'Tags/Skeleton/Skeleton';
-import Heading from 'Tags/Heading/Heading';
-import Rhythm from 'Tags/Rhythm/Rhythm';
-import Wrapper from 'Tags/Wrapper/Wrapper';
-import {
-  getTagsIndexData,
-  getComponentsIndexData,
-  FileIndex
-} from 'SgTags/FileIndex/FileIndex';
+import Heading from '@tags/Heading/Heading';
+import Rhythm from '@tags/Rhythm/Rhythm';
+import Wrapper from '@tags/Wrapper/Wrapper';
+import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
 
-const page = ({ locals }) => (
-  <Skeleton title="Styleguide">
-    <Wrapper>
-      <Rhythm size="large">
-        <Heading level="1">Styleguide</Heading>
-        <FileIndex
-          items={getComponentsIndexData(locals)}
-          title="Components"
-          className="rhythm--small"
-          RhythmComponent={Rhythm}
-          HeadingComponent={Heading}
-        />
-        <FileIndex
-          items={getTagsIndexData(locals)}
-          title="Tags"
-          className="rhythm--small"
-          RhythmComponent={Rhythm}
-          HeadingComponent={Heading}
-        />
+const page = () => (
+  <Wrapper size="wide">
+    <Rhythm size="large">
+      <Rhythm size="small">
+        <Heading level="h1">Fuzzy Chainsaw</Heading>
+        <Heading level="h4">Component Style Guide</Heading>
       </Rhythm>
-    </Wrapper>
-  </Skeleton>
+
+      <br />
+
+      <SgTableOfContents
+        hidePages
+        indexClassName="Rhythm--small"
+        RhythmComponent={Rhythm}
+        HeadingComponent={Heading}
+      />
+    </Rhythm>
+  </Wrapper>
 );
 
-page.propTypes = {
-  locals: React.PropTypes.object
-};
+page.pageTitle = 'Component Style Guide';
+page.pageType = 'index';
 
 export default page;

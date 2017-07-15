@@ -1,0 +1,16 @@
+.List {
+  /* variants */
+  &--blank {
+    list-style: none;
+  }
+
+  &--unordered {
+    list-style-type: disc;
+    padding-left: 1em;
+  }
+
+  &--ordered {
+    list-style-type: decimal;
+    padding-left: 1em;
+  }
+}

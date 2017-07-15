@@ -1,0 +1,43 @@
+.Button {
+  padding: 1em 2em;
+  cursor: pointer;
+
+  /* variants */
+  &--default {
+    background-color: color(var(--color-black) alpha(10%));
+    border: 2px solid var(--color-black);
+    color: var(--color-black);
+
+    &:--enter {
+      background-color: var(--color-black);
+      color: var(--color-white);
+    }
+  }
+
+  &--cta {
+    background-color: color(var(--color-red) alpha(10%));
+    border: 2px solid red;
+    color: red;
+
+    &:--enter {
+      background-color: var(--color-red);
+      color: var(--color-white);
+    }
+  }
+
+  &--link {
+    text-decoration: none;
+  }
+
+  /* sizes */
+  &--auto {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+  }
+
+  &--full {
+    display: block;
+    width: 100%;
+  }
+}

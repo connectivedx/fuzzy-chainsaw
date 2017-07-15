@@ -1,0 +1,16 @@
+/*
+  Define font variables.
+*/
+
+:root {
+  /* Individual font names */
+  --font-name--default: 'Helvetica Neue';
+
+  /* font stacks */
+  --font-stack--default: var(--font-name--default), 'Helvetica', sans-serif;
+
+  /* property-set defining the light font-face */
+  --font-weight--thin: 300;
+  --font-weight--normal: 500;
+  --font-weight--bold: 700;
+}
