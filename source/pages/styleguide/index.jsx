@@ -25,6 +25,5 @@ const page = () => (
 
 page.pageTitle = 'Component Style Guide';
 page.pageType = 'index';
-page.theme = null;
 
 export default page;

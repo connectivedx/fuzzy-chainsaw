@@ -24,7 +24,7 @@ const page = () => (
 
 page.pageTitle = 'Fuzzy Chainsaw';
 page.pageType = 'index';
-page.theme = null;
+
 
 export default page;
 

@@ -2,7 +2,7 @@
 <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 <html lang="en-US" dir="ltr">
 <% } else { %>
-<html lang="en-US" dir="ltr" class="no-js {{theme}}">
+<html lang="en-US" dir="ltr" class="no-js {{theme}} {{htmlClass}}">
 <% } %>
 
 <head>
@@ -18,7 +18,11 @@
 
 	<!-- css files are automatically injected here -->
 </head>
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 <body>
+<% } else { %>
+<body class="{{bodyClass}}">
+<% } %>
 
 <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 <div class="root"></div>

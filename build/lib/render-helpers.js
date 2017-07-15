@@ -8,6 +8,8 @@ const Dom = require('react-dom/server');
 const renderComponent = ({ template, module }) =>
   template.toString()
     .replace('{{title}}', module.pageTitle)
+    .replace('{{htmlClass}}', module.htmlClass ? module.htmlClass : '')
+    .replace('{{bodyClass}}', module.bodyClass ? module.bodyClass : '')
     .replace('{{theme}}', module.theme ? `Theme--${module.theme}` : '')
     .replace('{{output}}', Dom.renderToStaticMarkup(module.Component));
 
