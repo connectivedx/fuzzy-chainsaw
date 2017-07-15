@@ -79,11 +79,9 @@ export const getModule = (path) => {
   if (pagePathList.indexOf(pagePath) !== -1) {
     const module = pagesContext(pagePath).default;
 
-    return {
-      pageTitle: module.pageTitle,
-      theme: module.theme,
+    return Object.assign({ }, module, {
       Component: React.createElement(module, null)
-    };
+    });
   }
 
   return PageNotFound;
