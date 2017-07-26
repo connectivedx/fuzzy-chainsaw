@@ -117,6 +117,16 @@ The `BASE_URL` defines the root path where the bundled files will be located.  I
 BASE_URL=/this-path/ npm run build
 ```
 
+
+## Configuration
+
+### fc-config
+
+`source/fc-config.js` is used to configure the fuzzy chainsaw build tools.  This is where you can define webpack bundles, dll bundles, and theme options.
+
+By default FC is setup with a `generic` theme, but this can be removed or updated depending on if you need multibrand/multi-theme support.
+
+
 ## Goals
 
 We have tried to be thoughtful in our architectural decisions, and drive based on a few goals:
