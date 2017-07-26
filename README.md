@@ -134,15 +134,31 @@ This might be subtitled, Unix Philosophy.  The system should be composed of many
 
 We were inspired by the patterns in Brad Frost's [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/) and Lonely Planet's [Rizzo](https://github.com/lonelyplanet/rizzo) component API.  Our goal is to think about user interfaces as compositions of many small components. We've tried to build tools that help us think in this fashion.
 
-Components are written using React JSX, which provides a great model for composing component and managing dependencies.  Components are split into two categories, __Tags__ or __Components__. Tags are generally more reuseable, whereas Components are generally connected more directly to a CMS data model.
+Components are written using React JSX, which provides a great model for composing component and managing dependencies.  Elements are split into two categories, __Tags__, __Components__, __Compositions__. Tags will be mostly generic small elements, where components and compositions are collections of smaller elements.
 
 #### Tags
 
 Found in `/source/tags`
 
+Tags are small, reuseable elements that can be used in many contexts.
+
 #### Components
 
 Found in `/source/components`
+
+Components are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
+
+#### Compositions
+
+Found in `/source/compositions`
+
+Compositions are specific arrangments of Tags and Components with minimal styling requirements.
+
+#### Modifiers
+
+Found in `/source/modifiers`
+
+Modifiers are css styles and/or javascript containers that don't require specific html be defined.
 
 
 ### Reuseability between projects
@@ -164,18 +180,19 @@ The web development world is evolving rapidly. A tool that can automate the myri
 
 #### Building and watching
 
-There are some very helpful command line scripts to help with development and continuous-integration. You can build a static set of files using `npm run build` or `npm run production` and create a local server to preview using `npm run start`. Use `npm run watch` if you are developing, this creates a server at http://localhost:8080 that updates as file changes.
+There are some very helpful command line scripts to help with development and continuous-integration. You can build a static set of files using `npm run build` or `npm run production` and create a local server to preview using `npm run start`. Use `npm run dev` if you are developing, this creates a server at http://localhost:8080 that updates as file changes.
 
 #### Scaffolding components
 
 Since you will likely be creating a number of tags and components, there are also some commands to help with that common task.
 
 ```
-npm run new-tag [Name]
-npm run new-component [Name]
+npm run new:tag [Name]
+npm run new:component [Name]
+npm run new:composition [Name]
 ```
 
-> Remember that component names use [PascalCase](https://en.wikipedia.org/wiki/PascalCase)
+> Remember that elements names use [PascalCase](https://en.wikipedia.org/wiki/PascalCase)
 
 
 ## FAQ
@@ -207,4 +224,4 @@ Fuzzy Chainsaw was developed to work best with Node's [most recent LTS release](
 
 ## License
 
-MIT Copyright (c) 2016 Connective DX
+MIT Copyright (c) 2017 Connective DX
