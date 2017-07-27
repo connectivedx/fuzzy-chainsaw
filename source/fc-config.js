@@ -84,10 +84,3 @@ module.exports.themes = [{
   id: 'generic',
   name: 'Generic'
 }];
-
-// define additional postcss plugins to
-// add to the standard plugins
-module.exports.postcssPlugins = {
-  build: [],
-  production: []
-};
