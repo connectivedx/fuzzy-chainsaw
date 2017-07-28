@@ -1,7 +1,9 @@
 import Heading from '@tags/Heading/Heading';
 import Rhythm from '@tags/Rhythm/Rhythm';
 import Wrapper from '@tags/Wrapper/Wrapper';
-import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
+
+import { TableOfContents } from '@styleguide/TableOfContents';
+import archive from '@source/archive';
 
 const page = () => (
   <Wrapper size="wide">
@@ -13,11 +15,7 @@ const page = () => (
 
       <br />
 
-      <SgTableOfContents
-        indexClassName="Rhythm--small"
-        RhythmComponent={Rhythm}
-        HeadingComponent={Heading}
-      />
+      <TableOfContents archive={archive} />
     </Rhythm>
   </Wrapper>
 );
