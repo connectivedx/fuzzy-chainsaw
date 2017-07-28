@@ -1,4 +1,4 @@
-const pick = (dict, keys) =>
+const pick = (dict, ...keys) =>
   keys.reduce((obj, key) => {
     obj[key] = dict[key];
     return obj;
@@ -21,8 +21,9 @@ module.exports.dlls = {
 
 // define entry points relative to source
 const entries = {
-  archive: 'archive.jsx',
-  devScript: 'dev.jsx',
+  pages: 'pages.jsx',
+  elements: 'elements.jsx',
+  dev: 'dev.jsx',
   bundle: 'bundle.jsx',
   'bundle-generic': 'bundle-generic.jsx' // generic theme bundle
 };
@@ -32,10 +33,11 @@ const bundles = ['bundle', 'bundle-generic'];
 
 // export sets of entries for different proccesses
 module.exports.entries = {
-  archive: pick(entries, ['archive']),
-  build: pick(entries, ['styleguide', ...bundles]),
-  dev: pick(entries, ['devScript', 'styleguide', ...bundles]),
-  ci: pick(entries, [...bundles])
+  pages: pick(entries, 'pages'),
+  elements: pick(entries, 'elements'),
+  build: pick(entries, 'pages', 'elements', ...bundles),
+  dev: pick(entries, 'dev', ...bundles),
+  ci: pick(entries, ...bundles)
 };
 
 // defined the output directories
@@ -69,7 +71,7 @@ module.exports.outputSort = (a, b) => {
   const A = a.names[0];
   const B = b.names[0];
 
-  if (A === 'devScript') return -1;
+  if (A === 'dev') return -1;
   if (A === 'bundle' && (B.indexOf('bundle-') !== -1)) return -1;
   if (A === 'bundle' && (B.indexOf('bundle-') === -1)) return 1;
   return 0;
@@ -80,10 +82,3 @@ module.exports.themes = [{
   id: 'generic',
   name: 'Generic'
 }];
-
-// define additional postcss plugins to
-// add to the standard plugins
-module.exports.postcssPlugins = {
-  build: [],
-  production: []
-};
