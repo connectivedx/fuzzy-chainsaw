@@ -12,20 +12,6 @@ module.exports.dlls = {
     'dom-select'
   ],
 
-  // modules required for styleguide
-  styleguide: [
-    'object.assign',
-    'react',
-    'react-dom/server',
-    'prop-types',
-    // 'react-modal', // failing on windows build in DLL
-    'minimatch',
-    'pretty',
-    'prismjs',
-    'react-element-to-jsx-string',
-    'slugify'
-  ],
-
   // modules required for tests
   tests: [
     'tape',
@@ -33,11 +19,10 @@ module.exports.dlls = {
   ]
 };
 
-// define entry points
+// define entry points relative to source
 const entries = {
-  static: 'static.jsx',
+  archive: 'archive.jsx',
   devScript: 'dev.jsx',
-  styleguide: 'styleguide/styleguide.jsx',
   bundle: 'bundle.jsx',
   'bundle-generic': 'bundle-generic.jsx' // generic theme bundle
 };
@@ -47,11 +32,24 @@ const bundles = ['bundle', 'bundle-generic'];
 
 // export sets of entries for different proccesses
 module.exports.entries = {
-  static: pick(entries, ['static']),
+  archive: pick(entries, ['archive']),
   build: pick(entries, ['styleguide', ...bundles]),
   dev: pick(entries, ['devScript', 'styleguide', ...bundles]),
-  production: pick(entries, ['styleguide', ...bundles]),
   ci: pick(entries, [...bundles])
+};
+
+// defined the output directories
+// for different file types
+module.exports.outputDirectories = {
+  assets: 'assets',
+  css: 'assets',
+  js: 'assets',
+  dll: 'assets/dlls',
+  images: 'assets/images',
+  favIcons: 'assets/favicons',
+  fonts: 'assets/fonts',
+  svgs: 'assets/svgs',
+  static: 'assets/static'
 };
 
 // define the output formats for
@@ -72,8 +70,6 @@ module.exports.outputSort = (a, b) => {
   const B = b.names[0];
 
   if (A === 'devScript') return -1;
-  if (A === 'styleguide' && B !== 'bundle') return 1;
-  if (A === 'styleguide' && (B.indexOf('bundle-') !== -1)) return -1;
   if (A === 'bundle' && (B.indexOf('bundle-') !== -1)) return -1;
   if (A === 'bundle' && (B.indexOf('bundle-') === -1)) return 1;
   return 0;

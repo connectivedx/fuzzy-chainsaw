@@ -2,13 +2,16 @@
 // files to preserve ordering
 import '@source/bundle.css';
 
-// import FC deps
+// import FC helpers
+import 'fuzzy-chainsaw-build/helpers/theme-handler';
+import 'fuzzy-chainsaw-build/helpers/offline-runtime';
+
+// Ajax IconSet svg
 import '@tags/Icon/IconSet';
-import '@lib/theme-handler';
-import '@lib/offline-runtime';
 
 // import npm modules
 import select from 'dom-select';
+
 
 // program
 const rootEl = select('.root'); // eslint-disable-line
