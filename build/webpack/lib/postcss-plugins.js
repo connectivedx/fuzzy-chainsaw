@@ -10,6 +10,7 @@ const cssnext = require('postcss-cssnext');
 const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
+const mixins = require('postcss-mixins');
 
 // build
 const mqpacker = require('css-mqpacker');
@@ -59,6 +60,7 @@ const standard = [
     }
   }),
   extend(),
+  mixins(),
   ...postcssPlugins.build,
   discardEmpty(),
   removeRoot()
