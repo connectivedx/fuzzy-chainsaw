@@ -57,6 +57,7 @@ module.exports = (fcBuildConfig) => {
     })
   };
 
+
   return {
     fcBuildConfig,
     karmaConfig: require('./karma.conf')(fcBuildConfig),
