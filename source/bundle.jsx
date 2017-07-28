@@ -11,7 +11,7 @@ import '@lib/offline-runtime';
 import select from 'dom-select';
 
 // program
-const rootEl = select('.root'); // eslint-disable-line
+const html = select('html');
 
 // remove no-js class
-rootEl.classList.remove('no-js');
+html.classList.remove('no-js');
