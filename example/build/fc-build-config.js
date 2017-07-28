@@ -1,19 +1,18 @@
 const path = require('path');
 const buildConfig = require('fuzzy-chainsaw-build');
 
-const { baseUrl, directories } = require('./package.json');
+const pkg = require('./package.json');
+const fcConfig = require('./fc-config');
 
-const fcConfigPath = path.resolve(__dirname, '..', directories.source, 'fc-config.js');
-const fcConfig = require(fcConfigPath); // eslint-disable-line
 
 module.exports = buildConfig({
+  pkg,
   fcConfig,
-  fcConfigPath,
-  baseUrl,
+  baseUrl: pkg.baseUrl,
   directories: {
     root: path.resolve(__dirname, '..'),
-    source: path.resolve(__dirname, '..', directories.source),
-    dest: path.resolve(__dirname, '..', directories.dest)
+    source: path.resolve(__dirname, '..', pkg.directories.source),
+    dest: path.resolve(__dirname, '..', pkg.directories.dest)
   },
   postcssPlugins: [
     require('postcss-mixins') // eslint-disable-line

@@ -1,19 +1,18 @@
 const path = require('path');
-const ReactDom = require('react-dom/server');
+const React = require('react-dom');
 const styleguideConfig = require('fuzzy-chainsaw-styleguide');
 
-const { baseUrl, directories } = require('./package.json');
+const pkg = require('./package.json');
+const fcConfig = require('./fc-config');
 
-const fcConfigPath = path.resolve(__dirname, '..', directories.source, 'fc-config.js');
-const fcConfig = require(fcConfigPath); // eslint-disable-line
 
 module.exports = styleguideConfig({
+  pkg,
   fcConfig,
-  fcConfigPath,
-  baseUrl,
+  baseUrl: pkg.baseUrl,
   directories: {
     root: path.resolve(__dirname, '..'),
-    dest: path.resolve(__dirname, '..', directories.dest)
+    dest: path.resolve(__dirname, '..', pkg.directories.dest)
   },
   variables: {
     colors: {
@@ -30,6 +29,6 @@ module.exports = styleguideConfig({
     }
   },
   demoRender: (component) => {
-    ReactDom.render(component);
+    React.render(component);
   }
 });
