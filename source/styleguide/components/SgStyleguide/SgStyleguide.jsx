@@ -1,4 +1,5 @@
-import slugify from 'slugify';
+import RandToken from 'rand-token';
+import { parse } from 'querystring';
 
 import Heading from '@sg-tags/SgHeading/SgHeading';
 import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
@@ -29,45 +30,56 @@ SgStyleguide_Readme.propTypes = {
 };
 
 
-export const SgStyleguide_Examples = (props) => (
-  <div id="examples" className="SgStyleguide__section">
-    <Rhythm className="SgStyleguide__section-header">
-      <Heading level="h2">Examples</Heading>
+export const SgStyleguide_Examples = (props) => {
+  const { theme } = parse(location.search.substr(1));
+  const examples = props.examples
+    .filter((ex) => {
+      if (theme) {
+        return theme === ex.theme || ex.theme === undefined;
+      }
+      return true;
+    })
+    .map((ex) => {
+      const slug = ex.name.split(' ').map((s) => s.replace(/\W/g, '')).join('-').toLowerCase();
+      return Object.assign({}, ex, {
+        slug: `${slug}-${RandToken.generate(8)}`
+      });
+    });
 
-      <Rhythm size="small">
-        {
-          props.examples.map((e) => (
-            <div
-              key={`${slugify(e.name)}-${e.theme}`}
-              className={`SgStyleguide__example-link ${e.theme || 'generic'}-theme-section`}
-            >
-              <a
-                href={`#${slugify(e.name)}-${e.theme}`}
-                value={slugify(e.name)}
-              >
-                {e.name}
-              </a>
-            </div>
-          ))
-        }
+
+  return (
+    <div id="examples" className="SgStyleguide__section">
+      <Rhythm className="SgStyleguide__section-header">
+        <Heading level="h2">Examples</Heading>
+
+        <Rhythm size="small">
+          {
+            examples.map((e) => (
+              <div key={e.slug} className="SgStyleguide__example-link">
+                <a href={`#${e.slug}`} value={e.name}>
+                  {e.name}
+                </a>
+              </div>
+            ))
+          }
+        </Rhythm>
       </Rhythm>
-    </Rhythm>
 
-    {
-      props.examples.map((e) => (
-        <Example
-          key={`${slugify(e.name)}-${e.theme}`}
-          slug={`${slugify(e.name)}-${e.theme}`}
-          tagName={e.name}
-          theme={e.theme}
-          exampleName={e.name}
-          component={e.component}
-          options={e.options}
-        />
-      ))
-    }
-  </div>
-);
+      {
+        examples.map((e) => (
+          <Example
+            key={e.slug}
+            slug={e.slug}
+            exampleName={e.name}
+            component={e.component}
+            theme={e.theme}
+            options={e.options}
+          />
+        ))
+      }
+    </div>
+  );
+};
 
 SgStyleguide_Examples.propTypes = {
   examples: PropTypes.arrayOf(PropTypes.shape({
