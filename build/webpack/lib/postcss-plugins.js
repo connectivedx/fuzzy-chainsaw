@@ -33,8 +33,6 @@ const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSyste
 const { source } = require('../../lib/path-helpers');
 const { resolve } = require('../workflow/shared');
 
-const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
-
 
 const fileSystem = new CachedInputFileSystem(new NodeJsInputFileSystem(), 60000);
 const resolver = ResolverFactory.createResolver({
@@ -61,7 +59,6 @@ const standard = [
   }),
   extend(),
   mixins(),
-  ...postcssPlugins.build,
   discardEmpty(),
   removeRoot()
 ];
@@ -90,6 +87,5 @@ module.exports.build = [
 
 
 module.exports.production = [
-  ...postcssPlugins.production,
   cssnano()
 ];
