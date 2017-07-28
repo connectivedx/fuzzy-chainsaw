@@ -1,4 +1,4 @@
-/*
+,/*
   Defines the shared webpack config used by all workflows.
   This is a shared base webpack configuration, and the options may be overridden by consumers of this factory.
 */

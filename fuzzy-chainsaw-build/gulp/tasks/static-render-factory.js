@@ -11,20 +11,20 @@ const gulpif = require('gulp-if');
 const htmlmin = require('gulp-htmlmin');
 const fs = require('fs');
 
-const { dest } = require('./lib/path-helpers');
 const {
   getContextList,
   renderComponent
 } = require('./lib/render-helpers');
 
 
-module.exports = ({ production }) => () => {
+module.exports = ({ pathHelpers }) => ({ production }) => () => {
+  const { dest } = pathHelpers;
   const pageTemplate = fs.readFileSync(dest('_skeleton.html'));
   const {
     pagesContext,
-    compositionsContext,
-    componentsContext,
-    tagsContext,
+    // compositionsContext,
+    // componentsContext,
+    // tagsContext,
     getModule
   } = require(dest('tmp/static.js')); // eslint-disable-line
 
@@ -41,10 +41,10 @@ module.exports = ({ production }) => () => {
   return (
     merge(
       ...renderFiles([
-        ...getContextList(pagesContext),
-        ...getContextList(compositionsContext, 'styleguide/compositions'),
-        ...getContextList(componentsContext, 'styleguide/components'),
-        ...getContextList(tagsContext, 'styleguide/tags')
+        ...getContextList(pagesContext)
+        // ...getContextList(compositionsContext, 'styleguide/compositions'),
+        // ...getContextList(componentsContext, 'styleguide/components'),
+        // ...getContextList(tagsContext, 'styleguide/tags')
       ])
     )
     .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))

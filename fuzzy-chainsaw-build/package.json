@@ -1,0 +1,7 @@
+{
+  "name": "fuzzy-chainsaw-build",
+  "version": "3.0.0-beta",
+  "scripts": {
+  	"build": ""
+  }
+}

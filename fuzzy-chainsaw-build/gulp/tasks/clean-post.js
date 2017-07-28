@@ -3,11 +3,9 @@
 */
 
 const del = require('del');
-const { dest } = require('./lib/path-helpers');
 
-
-module.exports = () => (
+module.exports = ({ pathHelpers }) => () => (
   del([
-    dest('tmp')
+    pathHelpers.dest('tmp')
   ], { force: true })
 );

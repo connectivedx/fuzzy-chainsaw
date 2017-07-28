@@ -5,13 +5,11 @@
 
 const Server = require('karma').Server;
 const gutil = require('gulp-util');
-const path = require('path');
-const pkgpath = require('packpath');
 
 
-module.exports = (done) => {
+module.exports = ({ pathHelpers }) => (done) => {
   new Server({
-    configFile: path.resolve(pkgpath.self(), 'karma.conf.js'),
+    configFile: pathHelpers.root('karma.conf.js'),
     singleRun: true
   }).on('browser_error', (browser, err) => {
     gutil.log(`Karma Run Failed: ${err.message}`);

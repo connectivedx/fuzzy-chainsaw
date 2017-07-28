@@ -9,8 +9,6 @@ const minimist = require('minimist');
 const chalk = require('chalk');
 const dopl = require('dopl');
 
-const { source } = require('./lib/path-helpers');
-
 
 const scaffoldComponent = ({
   name,
@@ -37,8 +35,8 @@ module.exports = ({ src, dest }) => () => {
 
   return scaffoldComponent({
     name: argv.name,
-    src: path.resolve(__dirname, 'scaffolding', src),
-    output: source('elements', dest, argv.name)
+    src, // TODO: allow abs. path
+    output: path.resolve(dest, argv.name)
   });
 };
 
