@@ -9,7 +9,8 @@ const pick = (dict, keys) =>
 module.exports.dlls = {
   // modules required for regular bundle
   vendor: [
-    'dom-select'
+    'dom-select',
+    'querystring'
   ],
 
   // modules required for styleguide
@@ -18,12 +19,11 @@ module.exports.dlls = {
     'react',
     'react-dom/server',
     'prop-types',
-    // 'react-modal', // failing on windows build in DLL
     'minimatch',
     'pretty',
     'prismjs',
     'react-element-to-jsx-string',
-    'slugify'
+    'rand-token'
   ],
 
   // modules required for tests
