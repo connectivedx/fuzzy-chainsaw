@@ -6,6 +6,7 @@
 		"max-len": 0,
 		"comma-dangle": ["error", "never"],
 		"camelcase": 0,
+		"no-multi-assign": 0,
 		"no-param-reassign": 0,
 		"no-plusplus": 0,
 		"linebreak-style": 0,

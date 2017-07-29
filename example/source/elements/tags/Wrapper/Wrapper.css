@@ -1,6 +1,5 @@
 .Wrapper {
   margin: auto;
-  padding: 2em;
 
   /* sizes */
   &--narrow {

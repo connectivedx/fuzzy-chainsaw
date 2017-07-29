@@ -1,4 +1,4 @@
-import Icon from '@tags/Icon/Icon';
+import { Icon } from '@tags';
 
 
 const Brand = (props) => {
@@ -15,15 +15,16 @@ const Brand = (props) => {
     className
   ]);
 
+  const Label = variant === 'default' && (
+    <span className="Brand__label">
+      GenericBrand
+    </span>
+  );
+
   return (
     <Tag className={classStack} {...attrs}>
       <Icon name="close" className="Brand__icon" />
-      {
-        variant === 'default' &&
-        <span className="Brand__label">
-          GenericBrand
-        </span>
-      }
+      {Label}
     </Tag>
   );
 };
@@ -34,11 +35,7 @@ Brand.defaultProps = {
 };
 
 Brand.propTypes = {
-  tagName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  tagName: PropTypes.tagName,
   variant: PropTypes.oneOf(['default', 'compact']),
   className: PropTypes.string
 };

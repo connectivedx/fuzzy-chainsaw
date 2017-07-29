@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Brand from './Brand';
+import { Brand } from '@tags';
 
 
 test('<Brand />', (t) => {

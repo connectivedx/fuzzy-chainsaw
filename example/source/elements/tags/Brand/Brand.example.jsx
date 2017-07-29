@@ -1,4 +1,4 @@
-import Brand from './Brand';
+import { Brand } from '@tags';
 
 
 export default [{

@@ -73,7 +73,6 @@ const createBasicComponent = (config) => {
   return Component;
 };
 
-
 module.exports = {
   createBasicComponent,
   createClassStack

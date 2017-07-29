@@ -5,6 +5,7 @@
 		"max-len": 0,
 		"comma-dangle": ["error", "never"],
 		"camelcase": 0,
+		"no-multi-assign": 0,
 		"no-param-reassign": 0,
 		"no-plusplus": 0,
 		"linebreak-style": 0,
@@ -19,7 +20,7 @@
 		"react/forbid-prop-types": 0,
 		"react/require-default-props": 0,
 		"react/react-in-jsx-scope": 0,
-		"react/no-array-index-key": 0
+		"react/no-array-index-key": 0,
 	},
 	"globals": {
 		"document": true,

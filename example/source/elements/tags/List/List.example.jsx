@@ -1,48 +1,45 @@
-import {
-  List,
-  List__item
-} from './List';
+import { List } from '@tags';
 
 
 export default [{
   name: 'default',
   component: (
     <List>
-      <List__item>Horse</List__item>
-      <List__item>Dog</List__item>
-      <List__item className="is-leader">Pig</List__item>
+      <List.Item>Horse</List.Item>
+      <List.Item>Dog</List.Item>
+      <List.Item className="is-leader">Pig</List.Item>
     </List>
   )
 }, {
   name: 'ordered list',
   component: (
     <List variant="ordered">
-      <List__item className="is-leader">Pig</List__item>
-      <List__item>Dog</List__item>
-      <List__item>Horse</List__item>
+      <List.Item className="is-leader">Pig</List.Item>
+      <List.Item>Dog</List.Item>
+      <List.Item>Horse</List.Item>
     </List>
   )
 }, {
   name: 'blank list',
   component: (
     <List variant="blank">
-      <List__item className="is-leader">Pig</List__item>
-      <List__item>Dog</List__item>
-      <List__item>Horse</List__item>
+      <List.Item className="is-leader">Pig</List.Item>
+      <List.Item>Dog</List.Item>
+      <List.Item>Horse</List.Item>
     </List>
   )
 }, {
   name: 'list w/ class',
   component: (
     <List className="boogy-monster">
-      <List__item className="is-leader">Pig</List__item>
-      <List__item>Dog</List__item>
-      <List__item>Horse</List__item>
+      <List.Item className="is-leader">Pig</List.Item>
+      <List.Item>Dog</List.Item>
+      <List.Item>Horse</List.Item>
     </List>
   )
 }, {
   name: 'list item w/ class',
   component: (
-    <List__item className="yahoo">Horse</List__item>
+    <List.Item className="yahoo">Horse</List.Item>
   )
 }];

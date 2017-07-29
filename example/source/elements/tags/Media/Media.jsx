@@ -80,4 +80,7 @@ Media.propTypes = {
 };
 
 
-export default Media;
+export default Object.assign(Media, {
+  Figure: Media__figure,
+  Body: Media__body
+});

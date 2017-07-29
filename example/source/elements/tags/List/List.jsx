@@ -1,12 +1,3 @@
-export const List__item =
-  FcUtils.createBasicComponent({
-    name: 'List__item',
-    defaultProps: {
-      tagName: 'li'
-    }
-  });
-
-
 export const List = (props) => {
   const {
     tagName,
@@ -46,4 +37,14 @@ List.propTypes = {
 };
 
 
-export default List;
+export const List__item = FcUtils.createBasicComponent({
+  name: 'List__Item',
+  defaultProps: {
+    tagName: 'li'
+  }
+});
+
+
+export default Object.assign(List, {
+  Item: 'List__item'
+});
