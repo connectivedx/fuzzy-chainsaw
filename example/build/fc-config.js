@@ -8,17 +8,22 @@ module.exports.dlls = {
     'dom-select'
   ],
 
-  // modules required for tests
-  tests: [
-    'tape',
-    'enzyme'
+  static: [
+    'react',
+    'react-dom'
   ]
+
+  // // modules required for tests
+  // tests: [
+  //   'tape',
+  //   'enzyme'
+  // ]
 };
 
 
 // define entry points relative to source
 const entries = {
-  // archive is used in build mode
+  // archive is used in build and dev mode
   // for styleguide and static site generation
   archive: 'archive.jsx',
 
@@ -41,8 +46,9 @@ module.exports.entries = {
 };
 
 
-// defined the output directories
+// define the output directories
 // for different file types
+// (don't include leading or trailing slash)
 module.exports.outputDirectories = {
   assets: 'assets',
   css: 'assets',
@@ -52,7 +58,8 @@ module.exports.outputDirectories = {
   favIcons: 'assets/favicons',
   fonts: 'assets/fonts',
   svgs: 'assets/svgs',
-  static: 'assets/static'
+  static: 'assets/static',
+  offline: 'assets/offline'
 };
 
 

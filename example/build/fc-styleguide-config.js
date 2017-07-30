@@ -1,8 +1,8 @@
 const path = require('path');
-const React = require('react-dom');
+const ReactDom = require('react-dom/server');
 const styleguideConfig = require('fuzzy-chainsaw-styleguide');
 
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const fcConfig = require('./fc-config');
 
 
@@ -28,7 +28,7 @@ module.exports = styleguideConfig({
       'background-dark': '#333'
     }
   },
-  demoRender: (component) => {
-    React.render(component);
-  }
+  demoRender: (component) => (
+    ReactDom.renderToStaticMarkup(component)
+  )
 });

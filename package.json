@@ -25,5 +25,8 @@
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
     "pre-commit": "^1.2.2"
+  },
+  "devDependencies": {
+    "postcss-import-webpack-resolver": "^1.0.1"
   }
 }

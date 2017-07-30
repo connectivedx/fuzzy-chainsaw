@@ -24,23 +24,31 @@ const SvgStorePlugin = require('webpack-svgstore-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const stats = require('./lib/webpack-stats');
-// const { production: postcssProductionPipeline } = require('./lib/postcss-plugins.js');
 
 
-module.exports = (buildConfig) => (factoryOpts) => {
-  const { source, dest, baseUrl } = buildConfig.pathHelpers;
-  const { entries, outputFormats } = buildConfig.fcConfig;
+module.exports = (fcBuildConfig) => (factoryOpts) => {
+  const { pkg, postcssPlugins } = fcBuildConfig;
+  const { baseUrl, dest, source, sourceAll } = fcBuildConfig.pathHelpers;
+  const { entries, outputDirectories, outputFormats, outputSort } = fcBuildConfig.fcConfig;
+
+  const skeletonConfig = {
+    // dllStats,
+    template: source('lib/skeleton.html'),
+    inject: true,
+    chunksSortMode: outputSort
+  };
 
   const shared = {
     devtool: 'source-map',
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: Object.assign({
-        FcUtils: path.resolve(__dirname, '../../lib/fc-utilities'),
+        FcUtils: path.resolve(__dirname, '../lib/fc-utilities'),
 
         '@source': source(),
-        '@static': source('static'),
+        '@config': source('config'),
         '@lib': source('lib'),
+        '@static': source('static'),
         '@pages': source('pages'),
 
         '@elements': source('elements'),
@@ -48,24 +56,26 @@ module.exports = (buildConfig) => (factoryOpts) => {
         '@tags': source('elements/tags'),
         '@components': source('elements/components'),
         '@compositions': source('elements/compositions'),
-        '@modifiers': source('elements/modifiers'),
-
-        '@styleguide': source('styleguide'),
-        '@sg-vars': source('styleguide/variables'),
-        '@sg-tags': source('styleguide/tags'),
-        '@sg-components': source('styleguide/components')
-      }, buildConfig.alias)
+        '@modifiers': source('elements/modifiers')
+      }, fcBuildConfig.alias)
+    },
+    resolveLoader: {
+      modules: [
+        path.resolve(__dirname, '..', 'node_modules'),
+        path.resolve(fcBuildConfig.directories.root, 'node_modules')
+      ]
     },
     output: {
       path: dest(),
       publicPath: baseUrl,
-      filename: `assets/${outputFormats.js}`,
+      filename: `${outputDirectories.js}/${outputFormats.js}`,
       libraryTarget: 'umd'
     },
     module: {
       rules: [
         {
           test: /\.(jsx|js)$/,
+          exclude: /node_modules\/(?!(FcUtils)\/)/,
           enforce: 'pre',
           loader: 'eslint-loader' // linting
         },
@@ -81,8 +91,8 @@ module.exports = (buildConfig) => (factoryOpts) => {
     },
     plugins: [
       new webpack.DllReferencePlugin({
-        context: buildConfig.root,
-        manifest: require(dest('assets/dlls/vendor-manifest.json')) // eslint-disable-line
+        context: fcBuildConfig.root,
+        manifest: dest(`${outputDirectories.dll}/vendor-manifest.json`) // eslint-disable-line
       }),
       new webpack.DefinePlugin({
         'process.env.BASE_URL': JSON.stringify(baseUrl)
@@ -95,7 +105,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
     ]
   };
 
-  const browser = {
+  const assets = {
     module: {
       rules: [
         {
@@ -103,7 +113,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
           loader: 'file-loader',
           options: {
             context: './source/',
-            name: `assets/fonts/${outputFormats.fonts}`
+            name: `${outputDirectories.fonts}/${outputFormats.fonts}`
           }
         },
         {
@@ -124,7 +134,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
               loader: 'file-loader',
               options: {
                 context: './source/',
-                name: `assets/images/${outputFormats.images}`
+                name: `${outputDirectories.fonts}/${outputFormats.images}`
               }
             },
             {
@@ -188,7 +198,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
           enforce: 'pre',
           loader: 'postcss-loader', // linting
           options: {
-            plugins: lintingPipeline
+            plugins: postcssPlugins.linting(fcBuildConfig, { alias: shared.resolve.alias })
           }
         },
         {
@@ -199,17 +209,17 @@ module.exports = (buildConfig) => (factoryOpts) => {
     },
     plugins: [
       new ProgressBarPlugin(),
-      new ExtractTextPlugin(`assets/${outputFormats.css}`),
+      new ExtractTextPlugin(`${outputDirectories.css}/${outputFormats.css}`),
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
-        pipeline: buildPipeline
+        pipeline: postcssPlugins.build(fcBuildConfig, { alias: shared.resolve.alias })
       }),
       new WebpackNotifierPlugin({
         title: 'FC Build'
       }),
       new FaviconsWebpackPlugin({
-        logo: source('favicon.png'),
-        prefix: `assets/favicons/${outputFormats.favIconPrefix}`,
+        logo: source('lib/favicon.png'),
+        prefix: `${outputDirectories.favIcons}/${outputFormats.favIconPrefix}`,
         persistentCache: false,
         icons: {
           android: false,
@@ -226,7 +236,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
       }),
       new CopyWebpackPlugin([{
         from: source('static'),
-        to: 'assets/static'
+        to: outputDirectories.static
       }], {
         ignore: ['README.md']
       }),
@@ -257,7 +267,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
       }),
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
-        pipeline: postcssProductionPipeline
+        pipeline: postcssPlugins.production(fcBuildConfig, { alias: shared.resolve.alias })
       }),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
@@ -286,7 +296,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: devPipeline
+                plugins: postcssPlugins.dev(fcBuildConfig, { alias: shared.resolve.alias })
               }
             }
           ]
@@ -343,13 +353,13 @@ module.exports = (buildConfig) => (factoryOpts) => {
         rewrites: [{ from: /.*\.html/, to: '/index.html' }]
       },
       publicPath: '/',
-      contentBase: directories.dest,
+      contentBase: pkg.directories.dest,
       stats,
       hot: true
     }
   };
 
-  const staticConfig = {
+  const archive = {
     output: {
       filename: 'tmp/[name].js'
     },
@@ -402,31 +412,31 @@ module.exports = (buildConfig) => (factoryOpts) => {
     ]
   };
 
-    // build-ci mode
+  // build-ci mode
   if (factoryOpts.build && factoryOpts.ci) {
-    return merge(shared, browser, build, ci, entries.ci);
+    return merge(shared, assets, build, ci, { entry: sourceAll(entries.ci) });
 
   // build mode
   } else if (factoryOpts.build) {
     return [
-      merge(shared, browser, build, entries.build),
-      merge(shared, browser, staticConfig, entries.static)
+      merge(shared, assets, build, { entry: sourceAll(entries.build) }),
+      merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
     ];
 
   // production-ci mode
   } else if (factoryOpts.production && factoryOpts.ci) {
-    return merge(shared, browser, build, production, ci, entries.ci);
+    return merge(shared, assets, build, production, ci, { entry: sourceAll(entries.ci) });
 
   // production mode
   } else if (factoryOpts.production) {
     return [
-      merge(shared, browser, build, production, entries.build),
-      merge(shared, browser, staticConfig, entries.static)
+      merge(shared, assets, build, production, { entry: sourceAll(entries.build) }),
+      merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
     ];
 
   // static mode
   } else if (factoryOpts.static) {
-    return merge(shared, browser, staticConfig, entries.static);
+    return merge(shared, assets, archive, { entry: sourceAll(entries.archive) });
 
   // test mode
   } else if (factoryOpts.test) {
@@ -434,5 +444,5 @@ module.exports = (buildConfig) => (factoryOpts) => {
   }
 
   // dev mode
-  return merge(dev, entries.dev);
+  return merge(dev, { entry: sourceAll(entries.dev) });
 };

@@ -1,3 +1,3 @@
 # Lib Folder
 
-Put non element code here.
+Put non element code and assets here.

@@ -14,7 +14,7 @@ const fs = require('fs');
 const {
   getContextList,
   renderComponent
-} = require('./lib/render-helpers');
+} = require('../lib/render-helpers');
 
 
 module.exports = ({ pathHelpers }) => ({ production }) => () => {

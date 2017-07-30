@@ -1,9 +1,11 @@
-import Heading from '@tags/Heading/Heading';
-import Rhythm from '@tags/Rhythm/Rhythm';
-import Wrapper from '@tags/Wrapper/Wrapper';
+import {
+  Heading,
+  Rhythm,
+  Wrapper
+} from '@tags';
 
-import { TableOfContents } from '@styleguide/TableOfContents';
-import archive from '@source/archive';
+// import { TableOfContents } from 'fuzzy-chainsaw-styleguide/source/components';
+// import archive from '@source/archive';
 
 const page = () => (
   <Wrapper size="wide">
@@ -15,11 +17,11 @@ const page = () => (
 
       <br />
 
-      <TableOfContents archive={archive} />
     </Rhythm>
   </Wrapper>
 );
 
+      // <TableOfContents archive={archive} />
 page.pageTitle = 'Fuzzy Chainsaw';
 page.pageType = 'index';
 

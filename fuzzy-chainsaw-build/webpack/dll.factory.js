@@ -12,10 +12,9 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const stats = require('./lib/webpack-stats');
 
 
-module.exports = (buildConfig) => (factoryOpts) => {
-  const { dest } = buildConfig.lib.pathHelpers;
-  const { outputFormats } = buildConfig.fcConfig;
-  const { dlls } = buildConfig.fcConfig;
+module.exports = (buildConfig) => (factoryOpts = {}) => {
+  const { dest } = buildConfig.pathHelpers;
+  const { dlls, outputDirectories, outputFormats } = buildConfig.fcConfig;
 
   const ciEntry = {
     entry: {
@@ -24,12 +23,10 @@ module.exports = (buildConfig) => (factoryOpts) => {
   };
 
   const allEntry = {
-    entry: {
-      vendor: dlls.vendor,
-      styleguide: dlls.styleguide,
-      tests: dlls.tests
-    }
+    entry: dlls
   };
+
+  const entry = factoryOpts.ci ? ciEntry : allEntry;
 
   const shared = {
     devtool: 'inline-source-map',
@@ -47,7 +44,7 @@ module.exports = (buildConfig) => (factoryOpts) => {
       'react/lib/ReactContext': true
     },
     output: {
-      path: dest('assets/dlls'),
+      path: dest(outputDirectories.dll),
       filename: outputFormats.dll,
       library: '[name]_dll',
       libraryTarget: 'umd'
@@ -65,9 +62,9 @@ module.exports = (buildConfig) => (factoryOpts) => {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(['assets/dlls'], { root: dest() }),
+      new CleanWebpackPlugin([outputDirectories.dll], { root: dest() }),
       new webpack.DllPlugin({
-        path: dest('assets/dlls/[name]-manifest.json'),
+        path: dest(`${outputDirectories.dll}/[name]-manifest.json`),
         name: '[name]_dll'
       }),
       new StatsPlugin('dll-stats.json', {
@@ -99,19 +96,11 @@ module.exports = (buildConfig) => (factoryOpts) => {
     ]
   };
 
-  // dll-production-ci mode
-  if (factoryOpts.production && factoryOpts.ci) {
-    return merge(shared, production, ciEntry);
-
-  // dll-production mode
-  } else if (factoryOpts.production) {
-    return merge(shared, production, allEntry);
-
-  // dll-build-ci mode
-  } else if (factoryOpts.ci) {
-    return merge(shared, ciEntry);
+  // dll-production/ci mode
+  if (factoryOpts.production) {
+    return merge({}, shared, production, entry);
   }
 
-  // dll-build mode
-  return merge(shared, allEntry);
+  // dll-build/ci mode
+  return merge({}, shared, entry);
 };

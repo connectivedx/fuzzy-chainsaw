@@ -1,7 +1,10 @@
+const React = require('react');
+const PropsTypes = require('prop-types');
+
 // Alias tagName propType because it
 // gets used frequently
 
-PropTypes.tagName = PropTypes.oneOfType([
+PropsTypes.tagName = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.element,
   PropTypes.func
@@ -32,6 +35,8 @@ const createClassStack = (classList) => (
   basic component with a className
 */
 
+const omit = require('lodash.omit');
+
 const createBasicComponent = (config) => {
   const {
     name,
@@ -41,24 +46,21 @@ const createBasicComponent = (config) => {
 
   const Component = (props) => {
     const {
-      tagName: Tag,
+      tagName,
       className,
       variant,
-      children,
-      ...attrs
+      children
     } = props;
 
-    const classStack = createClassStack([
+    const attrs = omit(props, 'tagName', 'className', 'variant', 'children');
+
+    attrs.className = createClassStack([
       name,
       variants && `${name}--${variant}`,
       className
     ]);
 
-    return (
-      <Tag className={classStack} {...attrs}>
-        {children}
-      </Tag>
-    );
+    return React.createElement(tagName, attrs, children);
   };
 
   Component.displayName = name;

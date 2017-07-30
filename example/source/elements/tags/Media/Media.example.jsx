@@ -1,8 +1,4 @@
-import Image from '@tags/Image/Image';
-import Heading from '@tags/Heading/Heading';
-import Rhythm from '@tags/Rhythm/Rhythm';
-
-import { Media } from '@tags';
+import { Image, Heading, Media, Rhythm } from '@tags';
 import randySavage from './assets/randy-savage.jpg';
 
 

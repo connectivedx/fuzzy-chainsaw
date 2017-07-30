@@ -1,25 +1,16 @@
-import { filterByAttributes } from 'fuzzy-chainsaw-styleguide/helpers/context';
+// import {
+//   filterByAttributes,
+//   filterByPath
+// } from 'fuzzy-chainsaw-styleguide/helpers/context';
 
-const fileRegex = /^(?!.*\.test\.jsx$).*\.(jsx|md)$/;
+const filterByAttributes = (a) => a;
+const filterByPath = (a) => a;
 
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
-const pagesContext = require.context('@pages/', true, fileRegex);
-const compositionsContext = require.context('@compositions/', true, fileRegex);
-const componentsContext = require.context('@components/', true, fileRegex);
-const tagsContext = require.context('@tags/', true, fileRegex);
+const pagesContext = require.context('@pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+const elementsContext = require.context('@elements/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 
 // http://localhost:8080/styleguide/?element=tags/Heading&example=QiRiY3n
-const pageGroups = [{
-  title: 'Indexes',
-  filter: filterByAttributes({ pageType: 'index' })
-}, {
-  title: 'Pages',
-  filter: filterByAttributes({ theme: undefined, pageType: (type) => type !== 'index' })
-}, {
-  title: 'Generic Pages',
-  filter: filterByAttributes({ theme: 'generic', pageType: (type) => type !== 'index' })
-}];
-
 const elementGroups = [{
   filter: filterByAttributes({ pageType: undefined })
 }, {
@@ -42,21 +33,37 @@ const elementGroups = [{
 
 export default {
   pages: [{
+    title: 'Indexes',
+    context: pagesContext,
+    filter: filterByAttributes({ pageType: 'index' })
+  }, {
     title: 'Pages',
     context: pagesContext,
-    groups: pageGroups
+    filter: filterByAttributes({ theme: undefined, pageType: (type) => type !== 'index' })
+  }, {
+    title: 'Generic Pages',
+    context: pagesContext,
+    filter: filterByAttributes({ theme: 'generic', pageType: (type) => type !== 'index' })
   }],
   elements: [{
     title: 'Compositions',
-    context: compositionsContext,
+    context: elementsContext,
+    filter: filterByPath('compositions/**/*'),
     groups: elementGroups
   }, {
     title: 'Components',
-    context: componentsContext,
+    context: elementsContext,
+    filter: filterByPath('components/**/*'),
     groups: elementGroups
   }, {
     title: 'Tags',
-    context: tagsContext,
+    context: elementsContext,
+    filter: filterByPath('tags/**/*'),
+    groups: elementGroups
+  }, {
+    title: 'Modifiers',
+    context: elementsContext,
+    filter: filterByPath('modifiers/**/*'),
     groups: elementGroups
   }]
 };

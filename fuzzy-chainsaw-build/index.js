@@ -57,25 +57,20 @@ module.exports = (fcBuildConfig) => {
     })
   };
 
-
   return {
     fcBuildConfig,
-    karmaConfig: require('./karma.conf')(fcBuildConfig),
-    installBuildTasks: require('./gulp/installBuildTasks')(fcBuildConfig, webpackConfigs),
-    tasks: {
-      cleanPre: require('./gulp/tasks/clean-pre')(fcBuildConfig),
-      cleanPost: require('./gulp/tasks/clean-post')(fcBuildConfig),
-      karmaTest: require('./gulp/tasks/karma-test')(fcBuildConfig),
-      scaffoldFactory: require('./gulp/tasks/scaffold-factory')(fcBuildConfig),
-      staticRenderFactory: require('./gulp/tasks/static-render-factory')(fcBuildConfig),
-      webpackBuildFactory: require('./gulp/tasks/webpack-build-factory')(fcBuildConfig),
-      webpackWatchFactory: require('./gulp/tasks/webpack-watch-factory')(fcBuildConfig)
-    },
-    fcUtils: require('./lib/fc-utilities'),
-    renderHelpers: require('./lib/render-helpers'),
     pathHelpers,
     webpackConfigFactory,
     webpackDllFactory,
-    webpackConfigs
+    webpackConfigs,
+    karmaConfigFactory: require('./testing/karma.conf.factory')(fcBuildConfig),
+    installBuildTasks: require('./installBuildTasks')(fcBuildConfig, webpackConfigs),
+    tasks: {
+      cleanFactory: require('./gulp-tasks/clean-factory')(fcBuildConfig),
+      karmaTestFactory: require('./gulp-tasks/karma-test-factory')(fcBuildConfig),
+      scaffoldFactory: require('./gulp-tasks/scaffold-factory')(fcBuildConfig),
+      // staticRenderFactory: require('./gulp-tasks/static-render-factory')(fcBuildConfig),
+      webpackFactory: require('./gulp-tasks/webpack-factory')(fcBuildConfig)
+    }
   };
 };
