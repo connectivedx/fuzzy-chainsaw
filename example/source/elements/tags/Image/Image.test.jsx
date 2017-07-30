@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Image from './Image';
+import { Image } from '@tags';
 
 
 test('<Image src={imgString} />', (t) => {

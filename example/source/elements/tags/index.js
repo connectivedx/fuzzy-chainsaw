@@ -1,3 +1,4 @@
+// export tag aliases
 export Brand from '@tags/Brand/Brand';
 export Button from '@tags/Button/Button';
 export Heading from '@tags/Heading/Heading';

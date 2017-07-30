@@ -1,18 +1,14 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import {
-  Media,
-  Media__figure,
-  Media__body
-} from './Media';
+import { Media } from '@tags';
 
 
 test('<Media>', (t) => {
   const component = shallow(
     <Media>
-      <Media__figure>abc</Media__figure>
-      <Media__body>123</Media__body>
+      <Media.Figure>abc</Media.Figure>
+      <Media.Body>123</Media.Body>
     </Media>
   );
   t.ok(component.is('div'), 'tag name');
@@ -24,8 +20,8 @@ test('<Media>', (t) => {
 test('<Media align="bottom">', (t) => {
   const component = shallow(
     <Media align="bottom">
-      <Media__body>123</Media__body>
-      <Media__figure>abc</Media__figure>
+      <Media.Body>123</Media.Body>
+      <Media.Figure>abc</Media.Figure>
     </Media>
   );
   t.ok(component.is('div'), 'tag name');

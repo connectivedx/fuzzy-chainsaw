@@ -1,4 +1,4 @@
-import Icon from './Icon';
+import { Icon } from '@tags';
 
 
 export default [{

@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Wrapper from './Wrapper';
+import { Wrapper } from '@tags';
 
 
 test('<Wrapper />', (t) => {

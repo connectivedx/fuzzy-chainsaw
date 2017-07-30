@@ -25,11 +25,7 @@ Media__figure.defaultProps = {
 };
 
 Media__figure.propTypes = {
-  tagName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  tagName: PropTypes.tagName,
   className: PropTypes.string,
   align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   children: PropTypes.node.isRequired
@@ -69,11 +65,7 @@ Media.defaultProps = {
 };
 
 Media.propTypes = {
-  tagName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  tagName: PropTypes.tagName,
   className: PropTypes.string,
   align: PropTypes.string,
   children: PropTypes.node.isRequired

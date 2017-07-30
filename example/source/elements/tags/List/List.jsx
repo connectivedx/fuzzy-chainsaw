@@ -26,11 +26,7 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  tagName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  tagName: PropTypes.tagName,
   className: PropTypes.string,
   variant: PropTypes.oneOf(['unordered', 'ordered', 'blank']),
   children: PropTypes.node.isRequired

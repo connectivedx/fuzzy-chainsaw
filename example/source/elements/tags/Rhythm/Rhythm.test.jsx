@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Rhythm from './Rhythm';
+import { Rhythm } from '@tags';
 
 
 test('<Rhythm />', (t) => {

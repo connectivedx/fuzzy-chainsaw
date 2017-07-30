@@ -1,5 +1,4 @@
-import RichText from './RichText';
-
+import { RichText } from '@tags';
 
 export default [{
   name: 'default',

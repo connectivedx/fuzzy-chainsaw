@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Heading from './Heading';
+import { Heading } from '@tags';
 
 
 test('<Heading>', (t) => {

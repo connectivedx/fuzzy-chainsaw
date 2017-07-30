@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Button from './Button';
+import { Button } from '@tags';
 
 
 test('<Button>', (t) => {

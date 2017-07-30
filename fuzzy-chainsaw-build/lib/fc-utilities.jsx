@@ -1,3 +1,13 @@
+// Alias tagName propType because it
+// gets used frequently
+
+PropTypes.tagName = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.element,
+  PropTypes.func
+]);
+
+
 /*
   Helper function for creating a nice className
   from an array of unknown values

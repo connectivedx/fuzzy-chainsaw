@@ -1,4 +1,4 @@
-import Wrapper from './Wrapper';
+import { Wrapper } from '@tags';
 
 
 export default [{

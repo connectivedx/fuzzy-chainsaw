@@ -1,8 +1,4 @@
-const pick = (dict, ...keys) =>
-  keys.reduce((obj, key) => {
-    obj[key] = dict[key];
-    return obj;
-  }, {});
+const pick = require('lodash.pick');
 
 
 // dll libraries
@@ -19,26 +15,31 @@ module.exports.dlls = {
   ]
 };
 
+
 // define entry points relative to source
 const entries = {
-  pages: 'pages.jsx',
-  elements: 'elements.jsx',
+  // archive is used in build mode
+  // for styleguide and static site generation
+  archive: 'archive.jsx',
+
+  // dev is used in dev mode
   dev: 'dev.jsx',
+
+  // bundle is the entry shared between all themes
   bundle: 'bundle.jsx',
-  'bundle-generic': 'bundle-generic.jsx' // generic theme bundle
+
+  // bundle-generic is the entry used for the generic theme
+  'bundle-generic': 'bundle-generic.jsx'
 };
 
-// defines the standard bundle entries
-const bundles = ['bundle', 'bundle-generic'];
-
-// export sets of entries for different proccesses
+// export sets of entries for different tasks
 module.exports.entries = {
-  pages: pick(entries, 'pages'),
-  elements: pick(entries, 'elements'),
-  build: pick(entries, 'pages', 'elements', ...bundles),
-  dev: pick(entries, 'dev', ...bundles),
-  ci: pick(entries, ...bundles)
+  archive: pick(entries, 'archive'),
+  build: pick(entries, 'archive', 'bundle', 'bundle-generic'),
+  dev: pick(entries, 'dev', 'bundle', 'bundle-generic'),
+  ci: pick(entries, 'bundle', 'bundle-generic')
 };
+
 
 // defined the output directories
 // for different file types
@@ -54,6 +55,7 @@ module.exports.outputDirectories = {
   static: 'assets/static'
 };
 
+
 // define the output formats for
 // different file types
 module.exports.outputFormats = {
@@ -64,6 +66,7 @@ module.exports.outputFormats = {
   images: '[name]-[md5:hash:hex:8].[ext]',
   favIconPrefix: 'favicon-[hash:8]-'
 };
+
 
 // This function sorts entry files before
 // they are injected into the skeleton
@@ -76,6 +79,7 @@ module.exports.outputSort = (a, b) => {
   if (A === 'bundle' && (B.indexOf('bundle-') === -1)) return 1;
   return 0;
 };
+
 
 // define themes and theme metadata
 module.exports.themes = [{

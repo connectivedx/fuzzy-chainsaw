@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Icon from './Icon';
+import { Icon } from '@tags';
 
 
 test('<Icon name="close" /><Icon>', (t) => {

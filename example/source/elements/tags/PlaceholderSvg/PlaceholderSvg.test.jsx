@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import PlaceholderSvg from './PlaceholderSvg';
+import { PlaceholderSvg } from '@tags';
 
 test('<PlaceholderSvg />', (t) => {
   const component = shallow(<PlaceholderSvg />);

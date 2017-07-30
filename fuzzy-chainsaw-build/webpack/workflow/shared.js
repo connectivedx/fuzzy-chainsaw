@@ -31,8 +31,9 @@ module.exports = {
       FcUtils: path.resolve(__dirname, '../../lib/fc-utilities'),
 
       '@source': source(),
-      '@static': source('static'),
+      '@config': source('config'),
       '@lib': source('lib'),
+      '@static': source('static'),
       '@pages': source('pages'),
 
       '@elements': source('elements'),
@@ -40,12 +41,7 @@ module.exports = {
       '@tags': source('elements/tags'),
       '@components': source('elements/components'),
       '@compositions': source('elements/compositions'),
-      '@modifiers': source('elements/modifiers'),
-
-      '@styleguide': source('styleguide'),
-      '@sg-vars': source('styleguide/variables'),
-      '@sg-tags': source('styleguide/tags'),
-      '@sg-components': source('styleguide/components')
+      '@modifiers': source('elements/modifiers')
     }
   },
   output: {

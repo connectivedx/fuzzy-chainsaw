@@ -1,4 +1,5 @@
-import PlaceholderSvg from './PlaceholderSvg';
+import { PlaceholderSvg } from '@tags';
+
 
 export default [{
   name: 'Default',

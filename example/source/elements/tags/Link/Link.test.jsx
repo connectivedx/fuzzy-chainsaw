@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import Link from './Link';
+import { Link } from '@tags';
 
 
 test('<Link href="#">', (t) => {

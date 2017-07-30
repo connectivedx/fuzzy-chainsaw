@@ -1,7 +1,7 @@
 import test from 'tape';
 import { shallow } from 'enzyme';
 
-import RichText from './RichText';
+import { RichText } from '@tags';
 
 
 test('<RichText />', (t) => {

@@ -29,11 +29,7 @@ Heading.defaultProps = {
 };
 
 Heading.propTypes = {
-  tagName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  tagName: PropTypes.tagName,
   className: PropTypes.string,
   weight: PropTypes.oneOf(['bold', 'medium', 'thin']),
   level: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),

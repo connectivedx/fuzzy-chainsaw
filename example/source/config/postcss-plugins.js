@@ -23,27 +23,13 @@ const cssnano = require('cssnano');
 
 // dev
 const cssImport = require('postcss-import');
+const createResolver = require('postcss-import-webpack-resolver');
 
 // setup resolver for postcss-import
-const ResolverFactory = require('enhanced-resolve/lib/ResolverFactory');
-const NodeJsInputFileSystem = require('enhanced-resolve/lib/NodeJsInputFileSystem');
-const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSystem');
-
 const { source } = require('../../lib/path-helpers');
 const { resolve } = require('../workflow/shared');
 
 const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
-
-
-const fileSystem = new CachedInputFileSystem(new NodeJsInputFileSystem(), 60000);
-const resolver = ResolverFactory.createResolver({
-  alias: resolve.alias,
-  extensions: ['.css'],
-  modules: [source(), 'node_modules'],
-  useSyncFileSystemCalls: true,
-  fileSystem
-});
-
 
 module.exports.linting = [
   stylelint(),
@@ -68,7 +54,10 @@ const standard = [
 module.exports.dev = [
   ...module.exports.linting,
   cssImport({
-    resolve: (id, basedir) => resolver.resolveSync({}, basedir, id)
+    resolve: createResolver({
+      alias: resolve.alias,
+      modules: [source(), 'node_modules']
+    })
   }),
   ...standard
 ];

@@ -1,4 +1,4 @@
-import Rhythm from './Rhythm';
+import { Rhythm } from '@tags';
 
 
 const children = [

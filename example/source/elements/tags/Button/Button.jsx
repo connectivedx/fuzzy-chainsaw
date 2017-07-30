@@ -35,17 +35,15 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  tagName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  tagName: PropTypes.tagName,
   className: PropTypes.string,
   width: PropTypes.oneOf(['auto', 'full']),
   variant: PropTypes.oneOf(['default', 'link', 'cta']),
   href: PropTypes.string,
   children: PropTypes.node.isRequired
 };
+
+Button.pageType = 'action';
 
 
 export default Button;
