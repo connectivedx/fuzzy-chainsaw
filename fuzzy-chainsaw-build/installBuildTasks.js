@@ -35,7 +35,7 @@ module.exports = (fcBuildConfig, webpackConfigs) => (gulp, taskOptions = { skip:
   gulpTask('webpack-dll:production', webpackFactory(webpackConfigs.dllProduction));
   gulpTask('webpack-dll:production:ci', webpackFactory(webpackConfigs.dllProductionCi));
 
-  // build tasks
+  // build tasks[]
   gulpTask('webpack:build', webpackFactory(webpackConfigs.build));
   gulpTask('webpack:build:ci', webpackFactory(webpackConfigs.buildCi));
   gulpTask('webpack:production', webpackFactory(webpackConfigs.production));

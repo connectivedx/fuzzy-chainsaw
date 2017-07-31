@@ -45,7 +45,7 @@ module.exports = (buildConfig) => (factoryOpts = {}) => {
     },
     output: {
       path: dest(outputDirectories.dll),
-      filename: outputFormats.dll,
+      filename: '[name].dll.js',
       library: '[name]_dll',
       libraryTarget: 'umd'
     },

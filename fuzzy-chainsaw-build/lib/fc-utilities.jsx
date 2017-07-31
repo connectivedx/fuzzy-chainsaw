@@ -1,5 +1,6 @@
 const React = require('react');
 const PropsTypes = require('prop-types');
+const omit = require('lodash.omit');
 
 // Alias tagName propType because it
 // gets used frequently
@@ -34,8 +35,6 @@ const createClassStack = (classList) => (
   Helper function for quickly creating a
   basic component with a className
 */
-
-const omit = require('lodash.omit');
 
 const createBasicComponent = (config) => {
   const {

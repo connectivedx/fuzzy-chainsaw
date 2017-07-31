@@ -13,6 +13,7 @@ const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 
 // webpack plugins
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
@@ -24,16 +25,38 @@ const SvgStorePlugin = require('webpack-svgstore-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const stats = require('./lib/webpack-stats');
+const defaultPostcssPlugins = require('../lib/postcss-plugins');
 
 
 module.exports = (fcBuildConfig) => (factoryOpts) => {
-  const { pkg, postcssPlugins } = fcBuildConfig;
+  const { pkg, postcssPlugins, fcConfig, webpackOpts = {} } = fcBuildConfig;
   const { baseUrl, dest, source, sourceAll } = fcBuildConfig.pathHelpers;
-  const { entries, outputDirectories, outputFormats, outputSort } = fcBuildConfig.fcConfig;
+  const { entries, outputDirectories, outputFormats, outputSort } = fcConfig;
+
+  const postcssPipelines = postcssPlugins
+    ? postcssPlugins(defaultPostcssPlugins, fcBuildConfig)
+    : defaultPostcssPlugins;
+
+  const alias = Object.assign({
+    FcUtils: path.resolve(__dirname, '../lib/fc-utilities'),
+
+    '@source': source(),
+    '@config': source('config'),
+    '@lib': source('lib'),
+    '@static': source('static'),
+    '@pages': source('pages'),
+
+    '@elements': source('elements'),
+    '@vars': source('elements/variables'),
+    '@tags': source('elements/tags'),
+    '@components': source('elements/components'),
+    '@compositions': source('elements/compositions'),
+    '@modifiers': source('elements/modifiers')
+  }, fcBuildConfig.alias);
 
   const skeletonConfig = {
     // dllStats,
-    template: source('lib/skeleton.html'),
+    template: source(fcConfig.skeletonSource || 'lib/skeleton.html'),
     inject: true,
     chunksSortMode: outputSort
   };
@@ -42,22 +65,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     devtool: 'source-map',
     resolve: {
       extensions: ['.js', '.jsx'],
-      alias: Object.assign({
-        FcUtils: path.resolve(__dirname, '../lib/fc-utilities'),
-
-        '@source': source(),
-        '@config': source('config'),
-        '@lib': source('lib'),
-        '@static': source('static'),
-        '@pages': source('pages'),
-
-        '@elements': source('elements'),
-        '@vars': source('elements/variables'),
-        '@tags': source('elements/tags'),
-        '@components': source('elements/components'),
-        '@compositions': source('elements/compositions'),
-        '@modifiers': source('elements/modifiers')
-      }, fcBuildConfig.alias)
+      alias
     },
     resolveLoader: {
       modules: [
@@ -75,7 +83,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
       rules: [
         {
           test: /\.(jsx|js)$/,
-          exclude: /node_modules\/(?!(FcUtils)\/)/,
+          exclude: /node_modules/, // (?!(FcUtils)\/)/,
           enforce: 'pre',
           loader: 'eslint-loader' // linting
         },
@@ -92,16 +100,22 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     plugins: [
       new webpack.DllReferencePlugin({
         context: fcBuildConfig.root,
-        manifest: dest(`${outputDirectories.dll}/vendor-manifest.json`) // eslint-disable-line
+        manifest: dest(`${outputDirectories.dll}/vendor-manifest.json`)
       }),
-      new webpack.DefinePlugin({
+      new AddAssetHtmlPlugin({
+        filepath: dest(`${outputDirectories.dll}/vendor.dll.js`),
+        includeSourcemap: false,
+        hash: true,
+        outputPath: outputDirectories.dll
+      }),
+      new webpack.DefinePlugin(Object.assign({
         'process.env.BASE_URL': JSON.stringify(baseUrl)
-      }),
-      new webpack.ProvidePlugin({
+      }, webpackOpts.definePlugin)),
+      new webpack.ProvidePlugin(Object.assign({
         React: 'react',
         PropTypes: 'prop-types',
         FcUtils: 'FcUtils'
-      })
+      }, webpackOpts.definePlugin))
     ]
   };
 
@@ -112,7 +126,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
           loader: 'file-loader',
           options: {
-            context: './source/',
+            context: pkg.directories.source,
             name: `${outputDirectories.fonts}/${outputFormats.fonts}`
           }
         },
@@ -133,7 +147,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
             {
               loader: 'file-loader',
               options: {
-                context: './source/',
+                context: pkg.directories.source,
                 name: `${outputDirectories.fonts}/${outputFormats.images}`
               }
             },
@@ -190,17 +204,21 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     ]
   };
 
+
+  const cssLinting = {
+    test: /\.css$/,
+    enforce: 'pre',
+    loader: 'postcss-loader', // linting
+    exclude: /node_modules/, // (?!(FcUtils)\/)/,
+    options: {
+      plugins: postcssPipelines.linting(fcBuildConfig, { alias })
+    }
+  };
+
   const build = {
     module: {
       rules: [
-        {
-          test: /\.css$/,
-          enforce: 'pre',
-          loader: 'postcss-loader', // linting
-          options: {
-            plugins: postcssPlugins.linting(fcBuildConfig, { alias: shared.resolve.alias })
-          }
-        },
+        cssLinting,
         {
           test: /\.css$/,
           use: ExtractTextPlugin.extract('css-loader?-minimize&sourceMap')
@@ -212,13 +230,13 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
       new ExtractTextPlugin(`${outputDirectories.css}/${outputFormats.css}`),
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
-        pipeline: postcssPlugins.build(fcBuildConfig, { alias: shared.resolve.alias })
+        pipeline: postcssPipelines.build(fcBuildConfig, { alias })
       }),
       new WebpackNotifierPlugin({
         title: 'FC Build'
       }),
       new FaviconsWebpackPlugin({
-        logo: source('lib/favicon.png'),
+        logo: source(fcConfig.favIcon || 'lib/favicon.png'),
         prefix: `${outputDirectories.favIcons}/${outputFormats.favIconPrefix}`,
         persistentCache: false,
         icons: {
@@ -235,39 +253,41 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
         }
       }),
       new CopyWebpackPlugin([{
-        from: source('static'),
+        from: alias['@static'],
         to: outputDirectories.static
       }], {
         ignore: ['README.md']
       }),
-      new OfflinePlugin({
-        publicPath: baseUrl,
-        excludes: [
-          '**/_*',
-          '**/.*',
-          '**/*.map'
-        ],
-        ServiceWorker: {
-          output: 'assets/offline/sw.js'
-        },
-        AppCache: false
-      }),
+      fcBuildConfig.skipOfflinePlugin ? undefined : (
+        new OfflinePlugin({
+          publicPath: baseUrl,
+          excludes: [
+            '**/_*',
+            '**/.*',
+            '**/*.map'
+          ],
+          ServiceWorker: {
+            output: `${outputDirectories.dll}/sw.js`
+          },
+          AppCache: false
+        })
+      ),
       new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
         filename: '_skeleton.html',
         baseUrl
       }))
-    ]
+    ].filter((a) => a)
   };
 
   const production = {
     devtool: 'source-map',
     plugins: [
-      new webpack.DefinePlugin({
+      new webpack.DefinePlugin(Object.assign({
         'process.env.NODE_ENV': JSON.stringify('production')
-      }),
+      }, webpackOpts.definePluginProduction)),
       new PostCssPipelineWebpackPlugin({
         suffix: undefined,
-        pipeline: postcssPlugins.production(fcBuildConfig, { alias: shared.resolve.alias })
+        pipeline: postcssPipelines.production(fcBuildConfig, { alias })
       }),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
@@ -288,6 +308,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     },
     module: {
       rules: [
+        cssLinting,
         {
           test: /\.css$/,
           use: [
@@ -296,7 +317,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: postcssPlugins.dev(fcBuildConfig, { alias: shared.resolve.alias })
+                plugins: postcssPipelines.dev(fcBuildConfig, { alias })
               }
             }
           ]
@@ -305,20 +326,10 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
           test: /\.css$/,
           loader: 'prefix-variables-loader',
           include: [
-            source('elements')
+            alias['@elements']
           ],
           options: {
             path: '@vars/index.css'
-          }
-        },
-        {
-          test: /\.css$/,
-          loader: 'prefix-variables-loader',
-          include: [
-            source('styleguide')
-          ],
-          options: {
-            path: '@sg-vars/index.css'
           }
         },
         {
@@ -328,9 +339,9 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
       ]
     },
     plugins: [
-      new webpack.DefinePlugin({
+      new webpack.DefinePlugin(Object.assign({
         'process.env.NODE_ENV': JSON.stringify('dev')
-      }),
+      }, webpackOpts.definePluginDev)),
       new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
         filename: 'index.html',
         mode: 'dev',
@@ -341,8 +352,8 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
         title: 'FC Dev'
       }),
       new CopyWebpackPlugin([{
-        from: source('static'),
-        to: 'assets/static'
+        from: alias['@static'],
+        to: outputDirectories.static
       }], {
         ignore: ['README.md']
       })
@@ -360,9 +371,6 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
   };
 
   const archive = {
-    output: {
-      filename: 'tmp/[name].js'
-    },
     module: {
       rules: [
         {
@@ -383,11 +391,11 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     node: {
       fs: 'empty'
     },
-    externals: {
+    externals: Object.assign({
       'react/addons': true,
       'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': true
-    },
+      'react/lib/ReactContext': true,
+    }, fcConfig.testExternals),
     module: {
       rules: [
         {
@@ -397,18 +405,18 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
       ]
     },
     plugins: [
-      new webpack.DefinePlugin({
+      new webpack.DefinePlugin(Object.assign({
         'process.env.NODE_ENV': JSON.stringify('test')
-      })
+      }, webpackOpts.definePluginTest))
     ],
     stats
   };
 
   const ci = {
     plugins: [
-      new webpack.DefinePlugin({
+      new webpack.DefinePlugin(Object.assign({
         'process.env.CI_MODE': true
-      })
+      }, webpackOpts.definePluginCi))
     ]
   };
 
@@ -444,5 +452,5 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
   }
 
   // dev mode
-  return merge(dev, { entry: sourceAll(entries.dev) });
+  return merge(shared, assets, dev, { entry: sourceAll(entries.dev) });
 };

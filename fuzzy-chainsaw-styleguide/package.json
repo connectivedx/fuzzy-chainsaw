@@ -3,5 +3,11 @@
   "version": "3.0.0-beta",
   "scripts": {
   	"build": ""
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "prismjs": "^1.6.0",
+    "pretty": "^2.0.0",
+    "react-element-to-jsx-string": "^10.1.0"
   }
 }

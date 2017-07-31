@@ -9,7 +9,7 @@ const postcss = require('postcss');
 const stylelint = require('stylelint');
 const reporter = require('postcss-reporter');
 
-module.exports.linting = () => [
+const linting = () => [
   stylelint(),
   reporter()
 ];
@@ -19,10 +19,12 @@ module.exports.linting = () => [
 const nested = require('postcss-nested');
 const cssnext = require('postcss-cssnext');
 const extend = require('postcss-extend');
+const mixins = require('postcss-mixins');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 
-module.exports.standard = () => [
+const standard = () => [
+  mixins(),
   nested(),
   cssnext({
     features: {
@@ -39,18 +41,18 @@ module.exports.standard = () => [
 const cssImport = require('postcss-import');
 const createResolver = require('postcss-import-webpack-resolver');
 
-module.exports.dev = (fcBuildConfig, factoryOptions) => {
+const dev = (fcBuildConfig, factoryOptions) => {
   const { pathHelpers } = fcBuildConfig;
 
   return [
-    ...module.exports.linting(fcBuildConfig, factoryOptions),
+    ...linting(fcBuildConfig, factoryOptions),
     cssImport({
       resolve: createResolver({
         alias: factoryOptions.alias,
         modules: [pathHelpers.source(), 'node_modules']
       })
     }),
-    ...module.exports.standard(fcBuildConfig, factoryOptions)
+    ...standard(fcBuildConfig, factoryOptions)
   ];
 };
 
@@ -58,13 +60,13 @@ module.exports.dev = (fcBuildConfig, factoryOptions) => {
 // build
 const mqpacker = require('css-mqpacker');
 
-module.exports.build = (fcBuildConfig, factoryOptions) => [
+const build = (fcBuildConfig, factoryOptions) => [
   postcss.plugin('fix-escaping-error', () => (css) => {
     css.walkRules((rule) => {
       rule.selector = rule.selector.replace(/\\--/gi, '--');
     });
   }),
-  ...module.exports.standard(fcBuildConfig, factoryOptions),
+  ...standard(fcBuildConfig, factoryOptions),
   mqpacker({
     sort: true
   })
@@ -73,6 +75,14 @@ module.exports.build = (fcBuildConfig, factoryOptions) => [
 // production
 const cssnano = require('cssnano');
 
-module.exports.production = () => [
+const production = () => [
   cssnano()
 ];
+
+module.exports = {
+  linting,
+  standard,
+  dev,
+  build,
+  production
+};

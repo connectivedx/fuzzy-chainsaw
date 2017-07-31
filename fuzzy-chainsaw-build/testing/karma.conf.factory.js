@@ -9,7 +9,7 @@ module.exports = (fcBuildConfig) => {
     browsers: ['PhantomJS'],
     files: [
       { pattern: dest('assets/dlls/*.js'), watched: false },
-      { pattern: source(`${directories.source}/**/*.test.*`), watched: true }
+      { pattern: source('**/*.test.jsx'), watched: true }
     ],
     frameworks: ['tap'],
     preprocessors: {
