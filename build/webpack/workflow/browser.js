@@ -22,6 +22,7 @@ module.exports = (
         rules: [
           {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
+            exclude: /static/,
             loader: 'file-loader',
             options: {
               context: './source/',
@@ -30,10 +31,12 @@ module.exports = (
           },
           {
             test: /\.json$/,
+            exclude: /static/,
             use: 'json-loader'
           },
           {
             test: /\.md$/,
+            exclude: /static/,
             use: [
               'html-loader',
               'markdown-loader'
@@ -41,6 +44,7 @@ module.exports = (
           },
           {
             test: /\.(jpe?g|png|gif|svg)$/i,
+            exclude: /static/,
             use: [
               {
                 loader: 'file-loader',

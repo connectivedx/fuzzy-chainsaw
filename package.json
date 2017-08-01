@@ -1,6 +1,6 @@
 {
   "name": "fuzzy-chainsaw",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Boilerplate for component-based UI development",
   "repository": "connectivedx/fuzzy-chainsaw",
   "bugs": {
@@ -56,6 +56,7 @@
     "cssnano": "^3.7.7",
     "del": "^3.0.0",
     "dopl": "0.2.0",
+    "enhanced-resolve": "^3.4.1",
     "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
@@ -94,6 +95,7 @@
     "postcss-extend": "^1.0.5",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
+    "postcss-mixins": "^6.0.1",
     "postcss-nested": "^2.0.3",
     "postcss-pipeline-webpack-plugin": "^3.0.0",
     "postcss-remove-root": "^0.0.2",
@@ -129,9 +131,9 @@
     "pretty": "^2.0.0",
     "pretty-data": "^0.40.0",
     "prop-types": "^15.5.10",
+    "rand-token": "^0.3.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-element-to-jsx-string": "^10.1.0",
-    "slugify": "^1.1.0"
+    "react-element-to-jsx-string": "^10.1.0"
   }
 }

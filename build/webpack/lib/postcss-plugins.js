@@ -10,6 +10,7 @@ const cssnext = require('postcss-cssnext');
 const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
+const mixins = require('postcss-mixins');
 
 // build
 const mqpacker = require('css-mqpacker');
@@ -31,8 +32,6 @@ const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSyste
 
 const { source } = require('../../lib/path-helpers');
 const { resolve } = require('../workflow/shared');
-
-const { postcssPlugins } = require(source('fc-config')); // eslint-disable-line
 
 
 const fileSystem = new CachedInputFileSystem(new NodeJsInputFileSystem(), 60000);
@@ -59,7 +58,7 @@ const standard = [
     }
   }),
   extend(),
-  ...postcssPlugins.build,
+  mixins(),
   discardEmpty(),
   removeRoot()
 ];
@@ -88,6 +87,5 @@ module.exports.build = [
 
 
 module.exports.production = [
-  ...postcssPlugins.production,
   cssnano()
 ];
