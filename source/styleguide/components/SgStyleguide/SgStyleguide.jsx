@@ -31,9 +31,9 @@ SgStyleguide_Readme.propTypes = {
 
 
 export const SgStyleguide_Examples = (props) => {
-  const theme = global.location
+  const theme = global.location // eslint-disable-line
     ? parse(global.location.search.substr(1)).theme
-    : themes[0].id;
+    : themes.length > 0 ? themes[0].id : undefined;
 
   const examples = props.examples
     .filter((ex) => {
