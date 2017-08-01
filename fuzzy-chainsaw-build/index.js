@@ -1,7 +1,7 @@
 /* eslint global-require: 0 */
 
 module.exports = (fcBuildConfig) => {
-  const pathHelpers = require('./lib/path-helpers')(fcBuildConfig);
+  const pathHelpers = require('./helpers/path-helpers')(fcBuildConfig);
 
   Object.assign(fcBuildConfig, { pathHelpers });
 

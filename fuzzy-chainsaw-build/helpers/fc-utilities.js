@@ -7,8 +7,10 @@ var omit = require('lodash.omit');
 
 require('object.assign').shim();
 
-// Alias tagName propType because it
-// gets used frequently
+/*
+  Alias tagName propType because it
+  gets used frequently
+*/
 
 PropsTypes.tagName = PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.func]);
 

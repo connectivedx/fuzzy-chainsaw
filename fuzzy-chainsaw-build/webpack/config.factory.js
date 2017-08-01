@@ -25,7 +25,7 @@ const SvgStorePlugin = require('webpack-svgstore-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const stats = require('./lib/webpack-stats');
-const defaultPostcssPlugins = require('../lib/postcss-plugins');
+const defaultPostcssPlugins = require('./lib/postcss-plugins');
 
 
 module.exports = (fcBuildConfig) => (factoryOpts) => {
@@ -38,7 +38,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     : defaultPostcssPlugins;
 
   const alias = Object.assign({
-    FcUtils: path.resolve(__dirname, '../lib/fc-utilities'),
+    FcUtils: path.resolve(__dirname, '../helpers/fc-utilities'),
 
     '@source': source(),
     '@config': source('config'),
