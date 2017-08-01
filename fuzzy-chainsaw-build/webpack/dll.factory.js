@@ -14,7 +14,7 @@ const stats = require('./lib/webpack-stats');
 
 module.exports = (buildConfig) => (factoryOpts = {}) => {
   const { dest } = buildConfig.pathHelpers;
-  const { dlls, outputDirectories, outputFormats } = buildConfig.fcConfig;
+  const { dlls, outputDirectories } = buildConfig.fcConfig;
 
   const ciEntry = {
     entry: {
@@ -38,7 +38,6 @@ module.exports = (buildConfig) => (factoryOpts = {}) => {
     },
     externals: {
       jsdom: 'window',
-      cheerio: 'window',
       'react/lib/ExecutionEnvironment': true,
       'react/addons': true,
       'react/lib/ReactContext': true

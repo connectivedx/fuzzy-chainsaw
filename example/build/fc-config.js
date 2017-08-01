@@ -8,21 +8,21 @@ module.exports.dlls = {
     'dom-select'
   ],
 
-  static: [
+  archive: [
     'react',
     'react-dom'
-  ]
+  ],
 
-  // // modules required for tests
-  // tests: [
-  //   'tape',
-  //   'enzyme'
-  // ]
+  // modules required for tests
+  tests: [
+    'tape',
+    'enzyme'
+  ]
 };
 
 
-// define entry points relative to source
-const entries = {
+// define entry files relative to the source directory
+module.exports.entryFiles = {
   // archive is used in build and dev mode
   // for styleguide and static site generation
   archive: 'archive.jsx',
@@ -34,15 +34,20 @@ const entries = {
   bundle: 'bundle.jsx',
 
   // bundle-generic is the entry used for the generic theme
-  'bundle-generic': 'bundle-generic.jsx'
+  'bundle-generic': 'bundle-generic.jsx',
+
+  // tests is an entry for tape tests
+  tests: 'tests.js'
 };
+
 
 // export sets of entries for different tasks
 module.exports.entries = {
-  archive: pick(entries, 'archive'),
-  build: pick(entries, 'archive', 'bundle', 'bundle-generic'),
-  dev: pick(entries, 'dev', 'bundle', 'bundle-generic'),
-  ci: pick(entries, 'bundle', 'bundle-generic')
+  archive: pick(module.exports.entryFiles, 'archive'),
+  build: pick(module.exports.entryFiles, 'archive', 'bundle', 'bundle-generic'),
+  dev: pick(module.exports.entryFiles, 'dev', 'bundle', 'bundle-generic'),
+  ci: pick(module.exports.entryFiles, 'bundle', 'bundle-generic'),
+  tests: pick(module.exports.entryFiles, 'tests')
 };
 
 

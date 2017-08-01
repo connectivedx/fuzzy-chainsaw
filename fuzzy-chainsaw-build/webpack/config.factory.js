@@ -61,6 +61,19 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
     chunksSortMode: outputSort
   };
 
+  const dllRelatedPlugins = [
+    new webpack.DllReferencePlugin({
+      context: fcBuildConfig.root,
+      manifest: dest(`${outputDirectories.dll}/vendor-manifest.json`)
+    }),
+    new AddAssetHtmlPlugin({
+      filepath: dest(`${outputDirectories.dll}/vendor.dll.js`),
+      includeSourcemap: false,
+      hash: true,
+      outputPath: outputDirectories.dll
+    })
+  ];
+
   const shared = {
     devtool: 'source-map',
     resolve: {
@@ -98,16 +111,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
       ]
     },
     plugins: [
-      new webpack.DllReferencePlugin({
-        context: fcBuildConfig.root,
-        manifest: dest(`${outputDirectories.dll}/vendor-manifest.json`)
-      }),
-      new AddAssetHtmlPlugin({
-        filepath: dest(`${outputDirectories.dll}/vendor.dll.js`),
-        includeSourcemap: false,
-        hash: true,
-        outputPath: outputDirectories.dll
-      }),
+      ...dllRelatedPlugins,
       new webpack.DefinePlugin(Object.assign({
         'process.env.BASE_URL': JSON.stringify(baseUrl)
       }, webpackOpts.definePlugin)),
@@ -267,7 +271,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
             '**/*.map'
           ],
           ServiceWorker: {
-            output: `${outputDirectories.dll}/sw.js`
+            output: `${outputDirectories.offline}/sw.js`
           },
           AppCache: false
         })
@@ -387,14 +391,14 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
   };
 
   const test = {
-    devtool: 'cheap-eval-source-map',
+    // devtool: 'cheap-eval-source-map',
     node: {
       fs: 'empty'
     },
     externals: Object.assign({
       'react/addons': true,
       'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': true,
+      'react/lib/ReactContext': true
     }, fcConfig.testExternals),
     module: {
       rules: [
@@ -405,6 +409,10 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
       ]
     },
     plugins: [
+      new webpack.DllReferencePlugin({
+        context: fcBuildConfig.root,
+        manifest: dest(`${outputDirectories.dll}/tests-manifest.json`)
+      }),
       new webpack.DefinePlugin(Object.assign({
         'process.env.NODE_ENV': JSON.stringify('test')
       }, webpackOpts.definePluginTest))

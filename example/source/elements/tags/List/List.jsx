@@ -34,7 +34,7 @@ List.propTypes = {
 
 
 export const List__item = FcUtils.createBasicComponent({
-  name: 'List__Item',
+  name: 'List__item',
   defaultProps: {
     tagName: 'li'
   }
@@ -42,5 +42,5 @@ export const List__item = FcUtils.createBasicComponent({
 
 
 export default Object.assign(List, {
-  Item: 'List__item'
+  Item: List__item
 });

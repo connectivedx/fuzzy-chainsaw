@@ -42,7 +42,7 @@ test('<List className="boogy-monster">', (t) => {
 test('<List.Item className="yahoo">', (t) => {
   const component = shallow(<List.Item className="yahoo">Horse</List.Item>);
   t.ok(component.is('li'), 'tag name');
-  t.ok(component.hasClass('List.Item'), 'tag class');
+  t.ok(component.hasClass('List__item'), 'tag class');
   t.ok(component.hasClass('yahoo'), 'additional class');
   t.equal(component.render().text(), 'Horse', 'content');
   t.end();
