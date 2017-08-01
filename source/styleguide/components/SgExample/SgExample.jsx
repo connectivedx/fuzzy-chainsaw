@@ -224,7 +224,7 @@ export const SgExample = (props) => {
 
 SgExample.defaultProps = {
   options: { },
-  theme: themes[0].id
+  theme: themes.length > 0 ? themes[0].id : undefined
 };
 
 SgExample.propTypes = {

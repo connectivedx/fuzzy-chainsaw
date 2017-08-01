@@ -1,9 +1,28 @@
 # History
 
-This file keeps a list of changes between versions.
+This file keeps a list of changes between revisions.
 
 
-## 2.0.0 Changes
+## 2.0.1 Release
+
+Fixes minor bugs and some instant feedback while upgrading a project.
+
+### Changes
+
+- Adds `enhanced-resolve@^3.4.1` dependency to yarn and packages (#256)
+- Adds `postcss-mixins@^6.0.1` to postcss-plugin list by default since @apply went away in cssnext
+- Adds `rand-token@^0.3.0` to dependencies
+- Removes `slugify@^1.1.0` from dependencies
+- Updates readmes to use correct scaffolding-cli commands and add notes on the fc-config file (#252).
+- Fixes a typo in the gulp scaffolding config for compositions
+- Update clean-pre gulp task to clean correct directory `static` instead of old `vendor` folder
+- Updates `build` to exclude common assets in `static` from webpack loaders (this means you cannot practically include static assets into a bundle)
+- Updates fc-config.js dll section defaults
+- Updates styleguide anchor logic to allow duplicate names
+- Remove `postcss` plugins from `fc-config.js` because it could be sucked up into webpack and cause critical dependencies (will revisit postcss config in a 2.x type release).
+
+
+## 2.0.0 Release
 
 Dependencies have been updated to their latest versions, the most major change was from Webpack 1 to Webpack 3.
 
