@@ -31,12 +31,16 @@ SgStyleguide_Readme.propTypes = {
 
 
 export const SgStyleguide_Examples = (props) => {
-  const { theme } = parse(location.search.substr(1));
+  const theme = global.location
+    ? parse(global.location.search.substr(1)).theme
+    : themes[0].id;
+
   const examples = props.examples
     .filter((ex) => {
       if (theme) {
         return theme === ex.theme || ex.theme === undefined;
       }
+
       return true;
     })
     .map((ex) => {
