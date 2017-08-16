@@ -2,6 +2,13 @@
 
 This file keeps a list of changes between revisions.
 
+## 2.0.2 Release
+
+Fixes a major bug related to outputing bundles files outside of the project directory root.
+
+ - Injects `module.paths = require.main.paths` at the start static.js before build render
+ - Moves postcss-mixins plugin to the start of the postcss pipeline to solve an issue with unexpanded selectors.
+
 
 ## 2.0.1 Release
 
