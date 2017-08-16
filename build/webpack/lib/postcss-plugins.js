@@ -51,6 +51,7 @@ module.exports.linting = [
 
 
 const standard = [
+  mixins(),
   nested(),
   cssnext({
     features: {
@@ -58,7 +59,6 @@ const standard = [
     }
   }),
   extend(),
-  mixins(),
   discardEmpty(),
   removeRoot()
 ];

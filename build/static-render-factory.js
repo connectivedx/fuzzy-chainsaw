@@ -18,7 +18,26 @@ const {
 } = require('./lib/render-helpers');
 
 
+/*
+  When the output directory is outside of the directory containing
+  node_modules, we need to force the module resolution algorithm to use
+  this file's node_module search paths instead of the desination.
+*/
+const injectModulePaths = (staticPath) => {
+  const staticBundle = fs.readFileSync(staticPath);
+
+  const fixedStaticBundle =
+    staticBundle.indexOf('module.paths = require.main.paths') === -1
+      ? `module.paths = require.main.paths;${staticBundle}`
+      : staticBundle;
+
+  fs.writeFileSync(staticPath, fixedStaticBundle);
+};
+
+
 module.exports = ({ production }) => () => {
+  injectModulePaths(dest('tmp/static.js'));
+
   const pageTemplate = fs.readFileSync(dest('_skeleton.html'));
   const {
     pagesContext,
