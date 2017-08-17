@@ -2,7 +2,7 @@
   "name": "fuzzy-chainsaw-styleguide",
   "version": "3.0.0-beta",
   "scripts": {
-  	"build": ""
+    "build": ""
   },
   "dependencies": {
     "gulp": "^3.9.1",
