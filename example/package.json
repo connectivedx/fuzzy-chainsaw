@@ -14,6 +14,10 @@
   },
   "scripts": {
     "postinstall": "npm run dll",
+  	"link": "npm-run-all link:build link:styleguide link:packages",
+  	"link:build": "cd ../packages/fuzzy-chainsaw-build && yarn link",
+  	"link:styleguide": "cd ../packages/fuzzy-chainsaw-styleguide && yarn link",
+  	"link:packages": "yarn link fuzzy-chainsaw-build && yarn link fuzzy-chainsaw-styleguide",
     "start": "http-server ./dist -p 8081",
     "dev": "gulp clean:pre && npm-run-all --parallel dev:webpack dev:test",
     "dev:webpack": "webpack-dev-server --config ./build/webpack.dev-config.js --progress",
