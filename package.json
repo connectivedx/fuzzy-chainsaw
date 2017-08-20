@@ -1,5 +1,5 @@
 {
-  "name": "fuzzy-chainsaw-monorepo",
+  "name": "fuzzy-chainsaw",
   "version": "3.0.0-beta",
   "description": "",
   "directories": {
@@ -25,6 +25,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
     "lerna": "^2.0.0",
+    "npx": "^9.5.0",
     "postcss-import-webpack-resolver": "^1.0.1",
     "pre-commit": "^1.2.2"
   }

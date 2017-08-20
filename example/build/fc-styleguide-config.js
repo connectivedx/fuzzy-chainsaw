@@ -16,16 +16,25 @@ module.exports = styleguideConfig({
   },
   variables: {
     colors: {
-      black: '#000',
-      'gray-darker': '#333',
-      'gray-dark': '#666',
-      gray: '#999',
-      'gray-light': '#bbb',
-      'gray-lighter': '#ddd',
-      white: '#fff',
-      link: '#369',
-      background: '#eaeaea',
-      'background-dark': '#333'
+      background: '#fff',
+      text: '#666',
+      active: '#4925a0',
+      inlineCode: '#4925a0',
+      tableHeaders: '#000',
+      tableRowBorder: '#999',
+      headerBackground: '#fff',
+      headerTitle: '#999',
+      headerLinks: '#666',
+      headerBorder: '#ddd',
+      exampleHeaderBackground: '#222',
+      exampleHeaderForeground: '#fff',
+      exampleBackground: '#eee',
+      exampleForeground: '#222',
+      exampleDarkBackground: '#111',
+      exampleDarkForeground: '#fff',
+      codeHeaderBackground: '#4925a0',
+      codeHeaderForeground: '#fff',
+      codeBackground: '#090226'
     }
   },
   demoRender: (component) => (

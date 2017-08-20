@@ -152,7 +152,7 @@ module.exports = (fcBuildConfig) => (factoryOpts) => {
               loader: 'file-loader',
               options: {
                 context: pkg.directories.source,
-                name: `${outputDirectories.fonts}/${outputFormats.images}`
+                name: `${outputDirectories.images}/${outputFormats.images}`
               }
             },
             {

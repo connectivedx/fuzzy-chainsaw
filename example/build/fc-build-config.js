@@ -8,9 +8,9 @@ const fcConfig = require('./fc-config');
 module.exports = buildConfig({
   pkg,
   fcConfig,
-  // postcssPlugins: (plugins, fcBuildConfig) => {
-  //   return plugins;
-  // },
+  postcssPlugins: (plugins, fcBuildConfig) => { // eslint-disable-line
+    return plugins;
+  },
   baseUrl: pkg.baseUrl,
   directories: {
     root: path.resolve(__dirname, '..'),
@@ -26,5 +26,5 @@ module.exports = buildConfig({
   //   definePluginCi: {}
   // },
   // skeletonSource: 'lib/skeleton.html',
-  // testExt/ernals: {}
+  // testExternals: {}
 });
