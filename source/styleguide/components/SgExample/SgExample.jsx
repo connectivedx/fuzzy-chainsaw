@@ -17,7 +17,12 @@ const filterProps = (component) => {
 
   const processChild = (child) => (
     Object.keys(child)
-      .filter((key) => !(child[key] === null || Object.keys(child[key]).length === 0))
+      .filter((key) => {
+        if (!child[key]) return false;
+        if (Array.isArray(child[key])) return child[key].length > 0;
+        if (typeof child[key] === 'object') return Object.keys(child[key]).length > 0;
+        return false;
+      })
       .reduce((sum, key) => {
         if (key === 'props' && child.props.children !== undefined) {
           let children = child.props.children;
