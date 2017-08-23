@@ -180,13 +180,10 @@ export const SgExample = (props) => {
   } = props;
 
   const reactExample = reactElementToString(component, {
-    displayName: (element) => {
-      if (typeof element.type === 'string') return element.type;
-      if (element.type.name) return element.type.name;
-      if (element.props && element.props.tagName) return element.props.tagName;
-      return 'unknown-element';
-    }
+    displayName: getTagName,
+    showDefaultProps: false
   });
+
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component), null, 2);
 
