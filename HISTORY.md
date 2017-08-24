@@ -2,9 +2,22 @@
 
 This file keeps a list of changes between revisions.
 
+
+## 2.0.3 Release
+
+Fixes styleguide rendering bugs related to the way code examples were being processsed that would cause IE11 to fail and generate unuseable markup examples.
+
+### Changes
+
+- Adds `babel-plugin-add-react-displayname@^0.0.4` to `package.json` devDependencies and `.babelrc`
+- Updates `SgExample` styleguide component to output code examples correctly.
+
+
 ## 2.0.2 Release
 
 Fixes a major bug related to outputing bundles files outside of the project directory root.
+
+### Changes
 
  - Injects `module.paths = require.main.paths` at the start static.js before build render
  - Moves postcss-mixins plugin to the start of the postcss pipeline to solve an issue with unexpanded selectors.
