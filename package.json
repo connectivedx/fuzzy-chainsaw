@@ -1,6 +1,6 @@
 {
   "name": "fuzzy-chainsaw",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Boilerplate for component-based UI development",
   "repository": "connectivedx/fuzzy-chainsaw",
   "bugs": {
@@ -44,6 +44,7 @@
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^7.1.1",
+    "babel-plugin-add-react-displayname": "^0.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-es2015": "^6.24.1",

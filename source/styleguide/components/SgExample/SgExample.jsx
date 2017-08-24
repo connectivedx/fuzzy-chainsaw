@@ -9,40 +9,63 @@ import SgHeading from '@sg-tags/SgHeading/SgHeading';
 import { themes } from '@source/fc-config';
 
 
+const getTagName = (element) => {
+  if (typeof element === 'string') return element;
+  if (typeof element.type === 'string') return element.type;
+  if (element.type.displayName) return element.type.displayName;
+  if (element.type.name) return element.type.name;
+  if (element.props && element.props.tagName) return element.props.tagName;
+  return 'unknown-element';
+};
+
+
 const filterProps = (component) => {
-  const copy = {
-    type: component.type.name,
-    props: Object.assign({}, component.props)
+  const pickInfo = (obj) =>
+    Object.keys(obj).reduce((res, key) => {
+      if (key === 'type') res[key] = getTagName({ type: obj.type });
+      if (key === 'props') {
+        res[key] = Object.assign({}, obj.props);
+
+        // skip default props
+        if (obj.type.defaultProps) {
+          Object.keys(obj.type.defaultProps).forEach((propKey) => {
+            delete res.props[propKey];
+          });
+        }
+      }
+
+      return res;
+    }, { });
+
+  const processChild = (childComponent) => {
+    const getChildren = (children) => {
+      if (Array.isArray(children)) {
+        return children.map(processChild);
+      } else if (typeof children === 'object') {
+        return [
+          processChild(children)
+        ];
+      }
+
+      return children;
+    };
+
+    if (typeof childComponent === 'string') {
+      return childComponent;
+    }
+
+    const info = pickInfo(childComponent);
+    if (childComponent.props.children) {
+      info.props.children = getChildren(childComponent.props.children);
+    }
+
+    return info;
   };
 
-  const processChild = (child) => (
-    Object.keys(child)
-      .filter((key) => !(child[key] === null || Object.keys(child[key]).length === 0))
-      .reduce((sum, key) => {
-        if (key === 'props' && child.props.children !== undefined) {
-          let children = child.props.children;
+  const copy = pickInfo(component);
 
-          if (Array.isArray(children)) {
-            children = child.props.children.map(processChild);
-          } else if (typeof children === 'object') {
-            children = processChild(children);
-          }
-
-          sum.props = Object.assign({ }, child.props, { children });
-        } else if (key === 'type') {
-          if (child.type && child.type.name) sum.type = child.type.name;
-          else sum.type = child.type;
-        } else {
-          sum[key] = child[key];
-        }
-
-        return sum;
-      }, { })
-  );
-
-
-  if (Array.isArray(copy.props.children)) {
-    copy.props.children = copy.props.children.map(processChild);
+  if (Array.isArray(component.props.children)) {
+    copy.props.children = component.props.children.map(processChild);
   }
 
   return copy;
@@ -174,7 +197,11 @@ export const SgExample = (props) => {
     component
   } = props;
 
-  const reactExample = reactElementToString(component);
+  const reactExample = reactElementToString(component, {
+    displayName: getTagName,
+    showDefaultProps: false
+  });
+
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component), null, 2);
 

@@ -7,8 +7,8 @@ export default (el) => {
     const active = items.map((item) => item.contains(ev.target));
     if (active.indexOf(true) !== -1) {
       items.forEach((item, j) => {
-        items[j].classList.toggle('is-active', active[j]);
-        sections[j].classList.toggle('is-active', active[j]);
+        items[j].classList[active[j] ? 'add' : 'remove']('is-active');
+        sections[j].classList[active[j] ? 'add' : 'remove']('is-active');
       });
     }
   });
