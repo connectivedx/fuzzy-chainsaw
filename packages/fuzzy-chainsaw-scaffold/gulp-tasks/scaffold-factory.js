@@ -4,7 +4,6 @@
 */
 
 const gutil = require('gulp-util');
-const path = require('path');
 const minimist = require('minimist');
 const chalk = require('chalk');
 const dopl = require('dopl');
@@ -30,13 +29,13 @@ const scaffoldComponent = ({
 };
 
 
-module.exports = ({ src, dest }) => () => {
+module.exports = ({ source, dest }) => () => {
   const argv = minimist(process.argv.slice(2));
 
   return scaffoldComponent({
     name: argv.name,
-    src, // TODO: allow abs. path
-    output: path.resolve(dest, argv.name)
+    src: source(), // TODO: allow abs. path
+    output: dest(argv.name)
   });
 };
 
