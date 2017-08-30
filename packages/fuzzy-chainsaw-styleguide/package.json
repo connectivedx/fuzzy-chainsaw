@@ -1,9 +1,9 @@
 {
   "name": "fuzzy-chainsaw-styleguide",
   "version": "3.0.0-beta",
+  "main": "index.js",
   "scripts": {
-    "link": "yarn link",
-    "build": ""
+    "link": "yarn link"
   },
   "dependencies": {
     "gulp": "^3.9.1",

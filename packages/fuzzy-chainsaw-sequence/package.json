@@ -1,0 +1,11 @@
+{
+  "name": "fuzzy-chainsaw-sequence",
+  "version": "3.0.0-beta",
+  "main": "index.js",
+  "scripts": {
+    "link": "yarn link"
+  },
+  "dependencies": {
+    "run-sequence": "^2.1.0"
+  }
+}
