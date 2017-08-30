@@ -11,12 +11,6 @@ module.exports.dlls = {
   archive: [
     'react',
     'react-dom'
-  ],
-
-  // modules required for tests
-  tests: [
-    'tape',
-    'enzyme'
   ]
 };
 
@@ -44,7 +38,7 @@ module.exports.entryFiles = {
 // export sets of entries for different tasks
 module.exports.entries = {
   archive: pick(module.exports.entryFiles, 'archive'),
-  build: pick(module.exports.entryFiles, 'archive', 'bundle', 'bundle-generic'),
+  build: pick(module.exports.entryFiles, 'bundle', 'bundle-generic'),
   dev: pick(module.exports.entryFiles, 'dev', 'bundle', 'bundle-generic'),
   ci: pick(module.exports.entryFiles, 'bundle', 'bundle-generic'),
   tests: pick(module.exports.entryFiles, 'tests')
