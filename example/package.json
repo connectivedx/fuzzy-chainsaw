@@ -1,4 +1,4 @@
-    {
+{
   "name": "fuzzy-chainsaw",
   "version": "3.0.0-beta",
   "description": "Boilerplate for component-based UI development",
@@ -62,9 +62,9 @@
     "npm-run-all": "^4.0.2",
     "postcss": "^6.0.8",
     "react": "^15.6.1",
-    "reset-css": "^2.2.0",
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^15.6.1",
+    "reset-css": "^2.2.0",
     "stylelint-config-standard": "^16.0.0",
     "tape": "^4.7.0",
     "webpack": "^3.4.1",
