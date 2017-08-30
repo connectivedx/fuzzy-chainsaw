@@ -58,18 +58,20 @@ module.exports = (config) => (factoryOpts = {}) => {
     '@pages': source('pages'),
 
     '@elements': source('elements'),
-    '@vars': source('elements/variables'),
+    '@vars': source('variables'),
     '@tags': source('elements/tags'),
     '@components': source('elements/components'),
     '@compositions': source('elements/compositions'),
     '@modifiers': source('elements/modifiers')
   }, config.alias);
 
+
   const skeletonConfig = {
     template: source(projectConfig.skeletonSource || 'lib/skeleton.html'),
     inject: true,
     chunksSortMode: projectConfig.outputSort
   };
+
 
   const vendorDll = {
     plugins: [
