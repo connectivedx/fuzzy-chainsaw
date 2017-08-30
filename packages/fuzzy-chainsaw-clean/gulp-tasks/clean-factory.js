@@ -4,9 +4,9 @@
 
 const del = require('del');
 
-module.exports = (fcBuildConfig) => (factoryOptions) => {
-  const { dest } = fcBuildConfig.pathHelpers;
-  const { outputDirectories } = fcBuildConfig.fcConfig;
+module.exports = (config) => (factoryOptions) => {
+  const { dest } = config.pathHelpers;
+  const { outputDirectories } = config.projectConfig;
 
   let paths = [];
 

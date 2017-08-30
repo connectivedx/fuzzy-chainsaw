@@ -1,0 +1,11 @@
+{
+  "name": "fuzzy-chainsaw-clean",
+  "version": "3.0.0-beta",
+  "main": "index.js",
+  "scripts": {
+    "link": "yarn link"
+  },
+  "dependencies": {
+    "del": "^3.0.0"
+  }
+}
