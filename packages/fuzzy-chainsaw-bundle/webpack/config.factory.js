@@ -71,19 +71,37 @@ module.exports = (config) => (factoryOpts = {}) => {
     chunksSortMode: projectConfig.outputSort
   };
 
-  const dllRelatedPlugins = [
-    new webpack.DllReferencePlugin({
-      context: config.root,
-      manifest: dest(outputDirectories.dll, 'vendor-manifest.json')
-    }),
-    new AddAssetHtmlPlugin({
-      filepath: dest(outputDirectories.dll, 'vendor.dll.js'),
-      includeSourcemap: false,
-      hash: false,
-      publicPath: baseUrl + outputDirectories.dll,
-      outputPath: baseUrl + outputDirectories.dll
-    })
-  ];
+  const vendorDll = {
+    plugins: [
+      new webpack.DllReferencePlugin({
+        context: config.root,
+        manifest: dest(outputDirectories.dll, 'vendor-manifest.json')
+      }),
+      new AddAssetHtmlPlugin({
+        filepath: dest(outputDirectories.dll, 'vendor.dll.js'),
+        includeSourcemap: false,
+        hash: false,
+        publicPath: baseUrl + outputDirectories.dll,
+        outputPath: baseUrl + outputDirectories.dll
+      })
+    ]
+  };
+
+  const archiveDll = {
+    plugins: [
+      new webpack.DllReferencePlugin({
+        context: config.root,
+        manifest: dest(outputDirectories.dll, 'archive-manifest.json')
+      }),
+      new AddAssetHtmlPlugin({
+        filepath: dest(outputDirectories.dll, 'archive.dll.js'),
+        includeSourcemap: false,
+        hash: false,
+        publicPath: baseUrl + outputDirectories.dll,
+        outputPath: baseUrl + outputDirectories.dll
+      })
+    ]
+  };
 
   const shared = {
     devtool: 'source-map',
@@ -107,7 +125,6 @@ module.exports = (config) => (factoryOpts = {}) => {
       rules: framework.build.webpackLoaders
     },
     plugins: [
-      ...dllRelatedPlugins,
       new webpack.DefinePlugin(Object.assign({
         'process.env.BASE_URL': JSON.stringify(baseUrl)
       }, webpackOpts.definePlugin)),
@@ -379,27 +396,6 @@ module.exports = (config) => (factoryOpts = {}) => {
         }
       ]
     },
-    externals: [
-      nodeExternals({
-        whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
-      })
-    ],
-    plugins: [
-      new webpack.DllReferencePlugin({
-        context: config.root,
-        manifest: dest(outputDirectories.dll, 'archive-manifest.json')
-      }),
-      new AddAssetHtmlPlugin({
-        filepath: dest(outputDirectories.dll, 'archive.dll.js'),
-        includeSourcemap: false,
-        hash: false,
-        publicPath: baseUrl + outputDirectories.dll,
-        outputPath: baseUrl + outputDirectories.dll
-      }),
-      new StatsPlugin(`${outputDirectories.js}/archive-stats.json`, {
-        exclude: [/node_modules/]
-      })
-    ]
     output: {
       filename: `${outputDirectories.js}/[name].js`
     }
@@ -413,34 +409,43 @@ module.exports = (config) => (factoryOpts = {}) => {
     ]
   };
 
+  const excludeExternals = {
+    externals: [
+      nodeExternals({
+        whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i]
+      })
+    ]
+  };
+
   // production-ci mode
   if (factoryOpts.production && factoryOpts.ci) {
-    return merge(shared, assets, build, ci, production, { entry: sourceAll(entries.ci) });
+    return merge(vendorDll, shared, assets, build, ci, production, { entry: sourceAll(entries.ci) });
 
   // production mode
   } else if (factoryOpts.production) {
     return [
-      merge(shared, assets, build, production, { entry: sourceAll(entries.build) }),
+      merge(vendorDll, shared, assets, build, production, { entry: sourceAll(entries.build) }),
       merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
     ];
 
   // build-ci mode
   } else if (factoryOpts.build && factoryOpts.ci) {
-    return merge(shared, assets, build, ci, { entry: sourceAll(entries.ci) });
+    return merge(vendorDll, shared, assets, build, ci, { entry: sourceAll(entries.ci) });
 
   // build mode
   } else if (factoryOpts.build) {
     return [
-      merge(shared, assets, build, { entry: sourceAll(entries.build) }),
-      merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
+      merge(vendorDll, shared, assets, build, { entry: sourceAll(entries.build) }),
+      merge(shared, assets, archive, excludeExternals, { entry: sourceAll(entries.archive) })
     ];
+
   // archive mode
   } else if (factoryOpts.archive) {
     return merge(shared, assets, archive, { entry: sourceAll(entries.archive) });
 
   // dev mode
   } else if (factoryOpts.dev) {
-    return merge(shared, assets, dev, { entry: sourceAll(entries.dev) });
+    return merge(vendorDll, archiveDll, shared, assets, dev, { entry: sourceAll(entries.dev) });
   }
 
   // shared
