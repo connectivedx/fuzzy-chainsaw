@@ -400,6 +400,9 @@ module.exports = (config) => (factoryOpts = {}) => {
         exclude: [/node_modules/]
       })
     ]
+    output: {
+      filename: `${outputDirectories.js}/[name].js`
+    }
   };
 
   const ci = {

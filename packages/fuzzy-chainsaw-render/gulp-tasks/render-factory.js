@@ -35,12 +35,11 @@ module.exports = ({ pathHelpers, framework, projectConfig }) => ({ production })
   const { outputDirectories } = projectConfig;
   const { isFileRenderable, getOutputName, renderComponent: render } = framework.render;
 
-  const template = fs.readFileSync(dest('_skeleton.html'));
-  const stats = require(dest(outputDirectories.js, 'archive-stats.json')); // eslint-disable-line
-
-  const archivePath = dest(outputDirectories.js, `archive-${stats.hash}.js`);
+  const archivePath = dest(outputDirectories.js, 'archive.js');
   injectModulePaths(archivePath);
+
   const archive = require(archivePath); // eslint-disable-line
+  const template = fs.readFileSync(dest('_skeleton.html'));
 
   const listings = selectListing(archive.pages, { isFileRenderable, getOutputName });
 
