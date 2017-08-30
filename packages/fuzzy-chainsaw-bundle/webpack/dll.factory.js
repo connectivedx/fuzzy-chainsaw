@@ -8,13 +8,12 @@ const merge = require('webpack-merge');
 const StatsPlugin = require('stats-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const { webpackStats: stats } = require('fuzzy-chainsaw-shared');
 
-const stats = require('./lib/webpack-stats');
 
-
-module.exports = (buildConfig) => (factoryOpts = {}) => {
-  const { dest } = buildConfig.pathHelpers;
-  const { dlls, outputDirectories } = buildConfig.fcConfig;
+module.exports = (config) => (factoryOpts = {}) => {
+  const { dest } = config.pathHelpers;
+  const { dlls, outputDirectories } = config.projectConfig;
 
   const ciEntry = {
     entry: {
@@ -66,7 +65,7 @@ module.exports = (buildConfig) => (factoryOpts = {}) => {
         path: dest(`${outputDirectories.dll}/[name]-manifest.json`),
         name: '[name]_dll'
       }),
-      new StatsPlugin('dll-stats.json', {
+      new StatsPlugin(`${outputDirectories.dll}/dll-stats.json`, {
         chunkModules: true,
         exclude: [/node_modules/]
       }),

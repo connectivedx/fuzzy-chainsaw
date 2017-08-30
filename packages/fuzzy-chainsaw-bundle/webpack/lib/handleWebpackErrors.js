@@ -6,7 +6,7 @@
 const chalk = require('chalk');
 const gutil = require('gulp-util');
 
-const statsConfig = require('./webpack-stats');
+const { webpackStats } = require('fuzzy-chainsaw-shared');
 
 
 module.exports = (err, stats, done) => {
@@ -16,7 +16,7 @@ module.exports = (err, stats, done) => {
   }
 
   // see https://webpack.github.io/docs/node.js-api.html#stats-tostring
-  gutil.log(stats.toString(statsConfig));
+  gutil.log(stats.toString(webpackStats));
 
   if (stats.hasWarnings() || stats.hasErrors()) {
     gutil.log(chalk.bgRed('Webpack completed with errors or warnings.'), '\u0007');
