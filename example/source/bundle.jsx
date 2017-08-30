@@ -3,8 +3,8 @@
 import '@source/bundle.css';
 
 // import FC helpers
-import 'fuzzy-chainsaw-build/helpers/theme-handler';
-import 'fuzzy-chainsaw-build/helpers/offline-runtime';
+import 'fuzzy-chainsaw-bundle/helpers/theme-handler';
+import 'fuzzy-chainsaw-bundle/helpers/offline-runtime';
 
 // Ajax IconSet svg
 import '@tags/Icon/IconSet';

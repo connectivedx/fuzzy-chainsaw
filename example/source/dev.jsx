@@ -1,7 +1,11 @@
-import startDevMode from 'fuzzy-chainsaw-build/dev';
-import archive from '@config/archive';
+import startDevMode from 'fuzzy-chainsaw-bundle/helpers/start-dev-mode';
+import framework from 'fuzzy-chainsaw-framework-react';
+import * as archive from './archive';
+import { themes } from '../build/project-config';
 
 startDevMode({
   appRoot: '.root',
-  archive
+  framework,
+  archive,
+  themes
 });
