@@ -1,4 +1,4 @@
-{
+    {
   "name": "fuzzy-chainsaw",
   "version": "3.0.0-beta",
   "description": "Boilerplate for component-based UI development",
@@ -14,9 +14,6 @@
   },
   "scripts": {
     "postinstall": "npm run dll",
-    "link": "npm-run-all link:packages link:example",
-    "link:packages": "cd .. && npx lerna run link",
-    "link:example": "yarn link fuzzy-chainsaw-build fuzzy-chainsaw-styleguide",
     "start": "http-server ./dist -p 8081",
     "dev": "gulp clean:pre && npm-run-all --parallel dev:webpack test:dev",
     "dev:webpack": "webpack-dev-server --config ./build/webpack.dev-config.js --progress",
@@ -28,10 +25,10 @@
     "build:ci": "gulp build:ci",
     "production": "gulp production",
     "production:ci": "gulp production:ci",
-    "full:build": "npm-run-all dll build",
-    "full:build:ci": "npm-run-all dll:ci build:ci",
-    "full:production": "npm-run-all dll:production production",
-    "full:production:ci": "npm-run-all dll:production:ci production:ci",
+    "full:build": "gulp full:build",
+    "full:build:ci": "gulp full:build:ci",
+    "full:production": "gulp full:production",
+    "full:production:ci": "gulp full:production:ci",
     "test": "gulp test",
     "test:dev": "gulp test:dev",
     "watch": "gulp watch",

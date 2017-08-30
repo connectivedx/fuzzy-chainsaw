@@ -6,7 +6,9 @@
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "link": "npm-run-all link:packages link:example",
+    "link:packages": "lerna run link",
+    "link:example": "yarn link fuzzy-chainsaw-bundle fuzzy-chainsaw-clean fuzzy-chainsaw-framework-react fuzzy-chainsaw-render fuzzy-chainsaw-scaffold fuzzy-chainsaw-sequence fuzzy-chainsaw-shared fuzzy-chainsaw-styleguide fuzzy-chainsaw-test"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
     "lerna": "^2.0.0",
+    "npm-run-all": "^4.0.2",
     "npx": "^9.5.0",
     "postcss-import-webpack-resolver": "^1.0.1",
     "pre-commit": "^1.2.2"
