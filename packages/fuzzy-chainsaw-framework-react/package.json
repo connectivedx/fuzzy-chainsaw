@@ -1,0 +1,12 @@
+{
+  "name": "fuzzy-chainsaw-framework-react",
+  "version": "3.0.0-beta",
+  "main": "index.js",
+  "scripts": {
+    "link": "yarn link"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
