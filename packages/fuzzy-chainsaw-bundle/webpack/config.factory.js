@@ -21,7 +21,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const PostCssPipelineWebpackPlugin = require('postcss-pipeline-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const StatsPlugin = require('stats-webpack-plugin');
 const SvgStorePlugin = require('webpack-svgstore-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
@@ -47,6 +46,7 @@ module.exports = (config) => (factoryOpts = {}) => {
   const postcssPipelines = postcssPlugins
     ? postcssPlugins(defaultPostcssPlugins, config)
     : defaultPostcssPlugins;
+
 
   const alias = Object.assign({
     FcUtils: path.resolve(__dirname, '../helpers/fc-utilities'),
@@ -89,6 +89,7 @@ module.exports = (config) => (factoryOpts = {}) => {
     ]
   };
 
+
   const archiveDll = {
     plugins: [
       new webpack.DllReferencePlugin({
@@ -104,6 +105,7 @@ module.exports = (config) => (factoryOpts = {}) => {
       })
     ]
   };
+
 
   const shared = {
     devtool: 'source-map',
@@ -137,6 +139,7 @@ module.exports = (config) => (factoryOpts = {}) => {
       }, webpackOpts.definePlugin))
     ]
   };
+
 
   const assets = {
     module: {
@@ -234,6 +237,7 @@ module.exports = (config) => (factoryOpts = {}) => {
     }
   };
 
+
   const build = {
     module: {
       rules: [
@@ -298,6 +302,7 @@ module.exports = (config) => (factoryOpts = {}) => {
     ].filter((a) => a)
   };
 
+
   const production = {
     devtool: 'source-map',
     plugins: [
@@ -316,6 +321,7 @@ module.exports = (config) => (factoryOpts = {}) => {
       })
     ]
   };
+
 
   const dev = {
     devtool: 'inline-source-map',
@@ -389,6 +395,7 @@ module.exports = (config) => (factoryOpts = {}) => {
     }
   };
 
+
   const archive = {
     module: {
       rules: [
@@ -403,6 +410,7 @@ module.exports = (config) => (factoryOpts = {}) => {
     }
   };
 
+
   const ci = {
     plugins: [
       new webpack.DefinePlugin(Object.assign({
@@ -411,6 +419,7 @@ module.exports = (config) => (factoryOpts = {}) => {
     ]
   };
 
+
   const excludeExternals = {
     externals: [
       nodeExternals({
@@ -418,6 +427,7 @@ module.exports = (config) => (factoryOpts = {}) => {
       })
     ]
   };
+
 
   // production-ci mode
   if (factoryOpts.production && factoryOpts.ci) {
