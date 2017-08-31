@@ -5,6 +5,22 @@ require('fuzzy-chainsaw-bundle/helpers/shim');
 var _require = require('fuzzy-chainsaw-render/lib/render-helpers'),
     selectListing = _require.selectListing;
 
+var normalizePath = function normalizePath(path) {
+  var isFile = path.indexOf('.html') !== -1;
+  var isFolder = path.substr(-1) === '/';
+  var assetPath = void 0;
+
+  if (isFile) {
+    assetPath = path;
+  } else if (isFolder) {
+    assetPath = path + 'index.html';
+  } else {
+    assetPath = path + '.html';
+  }
+
+  return assetPath.substr(1);
+};
+
 module.exports = function (_ref) {
   var appRoot = _ref.appRoot,
       framework = _ref.framework,
@@ -16,12 +32,19 @@ module.exports = function (_ref) {
       render = _framework$render.renderComponent;
 
 
+  var modulePath = normalizePath(location.pathname);
   var modules = selectListing(archive.pages, { isFileRenderable: isFileRenderable, getOutputName: getOutputName });
-  var module = modules[location.pathname.replace(/\.html/, '').substr(1) + '.html'];
+  var module = modules[modulePath];
 
   // mock a server render
-  document.querySelector(appRoot).innerHTML = render(module);
-  document.title = module.pageTitle;
+  if (module) {
+    document.querySelector(appRoot).innerHTML = render(module);
+    document.title = module.pageTitle;
+  } else {
+    // 404, no module found
+    document.querySelector(appRoot).innerHTML = '<h1>Not Found</h1><code>' + modulePath + '</code>';
+    document.title = '404';
+  }
 
   // get module theme property or first theme in fc config
   if (themes.length > 0) {
