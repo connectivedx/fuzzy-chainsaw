@@ -10,7 +10,8 @@ module.exports.dlls = {
 
   archive: [
     'react',
-    'react-dom'
+    'react-dom',
+    'prop-types'
   ]
 };
 

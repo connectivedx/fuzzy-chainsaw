@@ -1,10 +1,6 @@
 export class {{name}} extends React.Component {
   static propTypes = {
-    tagName: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-      PropTypes.func
-    ]),
+    tagName: FcUtils.PropTypes.tagName,
     className: PropTypes.string,
     variant: PropTypes.oneOf(['default']),
     children: PropTypes.node

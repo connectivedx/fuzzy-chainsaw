@@ -26,7 +26,7 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  tagName: PropTypes.tagName,
+  tagName: FcUtils.PropTypes.tagName,
   className: PropTypes.string,
   variant: PropTypes.oneOf(['unordered', 'ordered', 'blank']),
   children: PropTypes.node.isRequired

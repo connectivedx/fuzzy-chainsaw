@@ -35,7 +35,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  tagName: PropTypes.tagName,
+  tagName: FcUtils.PropTypes.tagName,
   className: PropTypes.string,
   width: PropTypes.oneOf(['auto', 'full']),
   variant: PropTypes.oneOf(['default', 'link', 'cta']),

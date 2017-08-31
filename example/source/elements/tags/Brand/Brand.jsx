@@ -35,7 +35,7 @@ Brand.defaultProps = {
 };
 
 Brand.propTypes = {
-  tagName: PropTypes.tagName,
+  tagName: FcUtils.PropTypes.tagName,
   variant: PropTypes.oneOf(['default', 'compact']),
   className: PropTypes.string
 };
