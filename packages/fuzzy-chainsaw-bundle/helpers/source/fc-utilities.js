@@ -1,19 +1,22 @@
+/* eslint-disable */
+
 const React = require('react');
 const PropsTypes = require('prop-types');
 const omit = require('lodash.omit');
 
-require('object.assign').shim();
 
 /*
   Alias tagName propType because it
   gets used frequently
 */
 
-PropsTypes.tagName = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.element,
-  PropTypes.func
-]);
+const FcPropTypes = {
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ])
+};
 
 
 /*
@@ -71,7 +74,7 @@ const createBasicComponent = (config) => {
   Component.defaultProps = defaultProps || { tagName: 'div' };
 
   Component.propTypes = {
-    tagName: PropsTypes.tagName,
+    tagName: FcPropTypes.tagName,
     className: PropTypes.string,
     children: PropTypes.node
   };
@@ -86,5 +89,6 @@ const createBasicComponent = (config) => {
 
 module.exports = {
   createBasicComponent,
-  createClassStack
+  createClassStack,
+  PropTypes: FcPropTypes
 };

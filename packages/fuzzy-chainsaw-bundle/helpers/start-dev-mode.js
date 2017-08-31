@@ -1,14 +1,23 @@
-import assign from 'object.assign';
-import { selectListing } from 'fuzzy-chainsaw-render/lib/render-helpers';
+/* eslint-disable */
 
-// shim object.assign for ie11
-assign.shim();
+require('fuzzy-chainsaw-bundle/helpers/shim');
 
-export default ({ appRoot, framework, archive, themes }) => {
-  const { isFileRenderable, getOutputName, renderComponent: render } = framework.render;
+var _require = require('fuzzy-chainsaw-render/lib/render-helpers'),
+    selectListing = _require.selectListing;
 
-  const modules = selectListing(archive.pages, { isFileRenderable, getOutputName });
-  const module = modules[`${location.pathname.replace(/\.html/, '').substr(1)}.html`];
+module.exports = function (_ref) {
+  var appRoot = _ref.appRoot,
+      framework = _ref.framework,
+      archive = _ref.archive,
+      themes = _ref.themes;
+  var _framework$render = framework.render,
+      isFileRenderable = _framework$render.isFileRenderable,
+      getOutputName = _framework$render.getOutputName,
+      render = _framework$render.renderComponent;
+
+
+  var modules = selectListing(archive.pages, { isFileRenderable: isFileRenderable, getOutputName: getOutputName });
+  var module = modules[location.pathname.replace(/\.html/, '').substr(1) + '.html'];
 
   // mock a server render
   document.querySelector(appRoot).innerHTML = render(module);
@@ -16,8 +25,8 @@ export default ({ appRoot, framework, archive, themes }) => {
 
   // get module theme property or first theme in fc config
   if (themes.length > 0) {
-    const themeId = module.theme || themes[0].id;
-    document.querySelector('html').classList.add(`Theme--${themeId}`);
+    var themeId = module.theme || themes[0].id;
+    document.querySelector('html').classList.add('Theme--' + themeId);
   }
 
   if (module.htmlClass) {
