@@ -93,3 +93,6 @@ module.exports.themes = [{
   id: 'generic',
   name: 'Generic'
 }];
+
+
+module.exports.skeletonSource = 'lib/skeleton.html';

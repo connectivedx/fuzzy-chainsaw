@@ -324,6 +324,7 @@ module.exports = (config) => (factoryOpts = {}) => {
 
 
   const dev = {
+    cache: false,
     devtool: 'inline-source-map',
     resolveLoader: {
       alias: {

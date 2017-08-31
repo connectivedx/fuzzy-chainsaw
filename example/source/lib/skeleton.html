@@ -1,8 +1,16 @@
 <!DOCTYPE html>
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<html lang="en-US" dir="ltr" class="no-js">
+<% } else { %>
 <html lang="en-US" dir="ltr" class="no-js {{theme}} {{htmlClass}}">
+<% } %>
 
 <head>
+	<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+	<title></title>
+	<% } else { %>
 	<title>{{pageTitle}}</title>
+	<% } %>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +18,18 @@
 
 	<!-- css files are automatically injected here -->
 </head>
-<body class="{{bodyClass}}">
 
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<body>
+<% } else { %>
+<body class="{{bodyClass}}">
+<% } %>
+
+<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+<div class="root"></div>
+<% } else { %>
 <div class="root">{{output}}</div>
+<% } %>
 
 <!-- js entry files are automatically injected here -->
 </body>
