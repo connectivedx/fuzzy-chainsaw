@@ -22,35 +22,61 @@ const normalizePath = (path) => {
 
 
 module.exports = ({ appRoot, framework, archive, themes }) => {
-  const { isFileRenderable, getOutputName, renderComponent: render } = framework.render;
+  const { isFileRenderable, getOutputName, renderComponentDev, NotFoundComponent } = framework.render;
 
-  const modulePath = normalizePath(location.pathname);
   const modules = selectListing(archive.pages, { isFileRenderable, getOutputName });
-  const module = modules[modulePath];
 
+  const render = (locationPath) => {
+    const modulePath = normalizePath(locationPath);
+    let module = modules[modulePath];
+
+    console.log(modulePath);
+
+    if (!module) {
+      // 404, no module found
+      module = NotFoundComponent;
+    }
+
+    document.title = module.pageTitle;
+    renderComponentDev(appRoot, module, { modulePath })
+
+    // get module theme property or first theme in fc config
+    if (themes && themes.length > 0) {
+      const themeId = module.theme || themes[0].id;
+      document.querySelector('html').classList.add(`Theme--${themeId}`);
+    }
+
+    if (module.htmlClass) {
+      document.querySelector('html').classList.add(module.htmlClass);
+    }
+
+    if (module.bodyClass) {
+      document.querySelector('body').classList.add(module.bodyClass);
+    }
+  }
 
   // mock a server render
-  if (module) {
-    document.querySelector(appRoot).innerHTML = render(module);
-    document.title = module.pageTitle;
-  } else {
-    // 404, no module found
-    document.querySelector(appRoot).innerHTML = `<h1>Not Found</h1><code>${modulePath}</code>`;
-    document.title = '404';
+  render(location.pathname);
+
+  if (!history.state) {
+    history.replaceState({ href: location.pathname }, null, location.pathname);
   }
 
+  // take over links to other pages
+  document.addEventListener('click', (ev) => {
+    if (ev.target.tagName.toUpperCase() === 'A') {
+      const href = ev.target.getAttribute('href');
 
-  // get module theme property or first theme in fc config
-  if (themes.length > 0) {
-    const themeId = module.theme || themes[0].id;
-    document.querySelector('html').classList.add(`Theme--${themeId}`);
-  }
+      if (href && href.indexOf('/styleguide') !== 0) {
+        ev.preventDefault();
 
-  if (module.htmlClass) {
-    document.querySelector('html').classList.add(module.htmlClass);
-  }
+        render(href);
+        history.pushState({ href }, null, href);
+      }
+    }
+  });
 
-  if (module.bodyClass) {
-    document.querySelector('body').classList.add(module.bodyClass);
-  }
+  window.addEventListener('popstate', (ev) => {
+    render(history.state.href);
+  });
 };

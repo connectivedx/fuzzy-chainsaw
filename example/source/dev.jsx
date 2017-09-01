@@ -5,7 +5,7 @@ import * as archive from './archive';
 import { themes } from '../build/project-config';
 
 startDevMode({
-  appRoot: '.root',
+  appRoot: document.querySelector('.root'),
   framework,
   archive,
   themes
