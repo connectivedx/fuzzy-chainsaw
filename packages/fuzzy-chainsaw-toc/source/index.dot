@@ -1,0 +1,10 @@
+<div class="FcTableOfContents">
+	{{~it.listing :listing}}
+		<h2>{{=listing.title}}</h2>
+		<ul>
+			{{~listing.files :file}}
+				<li><a href="{{=file.url}}">{{=file.title}}</a></li>
+			{{~}}
+		</ul>
+	{{~}}
+</div>

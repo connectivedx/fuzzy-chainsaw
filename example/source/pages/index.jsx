@@ -4,8 +4,8 @@ import {
   Wrapper
 } from '@tags';
 
-// import { TableOfContents } from 'fuzzy-chainsaw-styleguide/source/components';
-// import archive from '@source/archive';
+import TableOfContents from 'fuzzy-chainsaw-toc';
+import archive from '@source/archive';
 
 const page = () => (
   <Wrapper size="wide">
@@ -15,13 +15,11 @@ const page = () => (
         <Heading level="h4">Front End Style Guide</Heading>
       </Rhythm>
 
-      <br />
-
+      <div dangerouslySetInnerHTML={{ __html: TableOfContents(archive) }} />
     </Rhythm>
   </Wrapper>
 );
 
-      // <TableOfContents archive={archive} />
 page.pageTitle = 'Fuzzy Chainsaw';
 page.pageType = 'index';
 
