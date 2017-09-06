@@ -27,10 +27,11 @@ module.exports = function (_ref) {
       archive = _ref.archive,
       themes = _ref.themes;
   var _framework$render = framework.render,
-      isFileRenderable = _framework$render.isFileRenderable,
-      getOutputName = _framework$render.getOutputName,
       renderComponentDev = _framework$render.renderComponentDev,
       NotFoundComponent = _framework$render.NotFoundComponent;
+  var _framework$utils = framework.utils,
+      isFileRenderable = _framework$utils.isFileRenderable,
+      getOutputName = _framework$utils.getOutputName;
 
 
   var modules = selectListing(archive.pages, { isFileRenderable: isFileRenderable, getOutputName: getOutputName });
@@ -38,8 +39,6 @@ module.exports = function (_ref) {
   var render = function render(locationPath) {
     var modulePath = normalizePath(locationPath);
     var module = modules[modulePath];
-
-    console.log(modulePath);
 
     if (!module) {
       // 404, no module found
@@ -76,7 +75,7 @@ module.exports = function (_ref) {
     if (ev.target.tagName.toUpperCase() === 'A') {
       var href = ev.target.getAttribute('href');
 
-      if (href && href.indexOf('/styleguide') !== 0) {
+      if (href && href.indexOf('styleguide.html') !== 0) {
         ev.preventDefault();
 
         render(href);

@@ -27,8 +27,9 @@ const filterByAttributes = (match) => (filename, module) => {
 };
 
 
-const filterByPath = (filePattern) => (filename) =>
-  minimatch(filename, filePattern);
+const filterByPath = (filePattern) => (filename) => {
+  return minimatch(filename.substr(2), filePattern);
+}
 
 
 

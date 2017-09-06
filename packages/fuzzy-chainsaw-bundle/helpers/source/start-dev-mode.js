@@ -22,15 +22,14 @@ const normalizePath = (path) => {
 
 
 module.exports = ({ appRoot, framework, archive, themes }) => {
-  const { isFileRenderable, getOutputName, renderComponentDev, NotFoundComponent } = framework.render;
+  const { renderComponentDev, NotFoundComponent } = framework.render;
+  const { isFileRenderable, getOutputName } = framework.utils;
 
   const modules = selectListing(archive.pages, { isFileRenderable, getOutputName });
 
   const render = (locationPath) => {
     const modulePath = normalizePath(locationPath);
     let module = modules[modulePath];
-
-    console.log(modulePath);
 
     if (!module) {
       // 404, no module found
@@ -67,7 +66,7 @@ module.exports = ({ appRoot, framework, archive, themes }) => {
     if (ev.target.tagName.toUpperCase() === 'A') {
       const href = ev.target.getAttribute('href');
 
-      if (href && href.indexOf('/styleguide') !== 0) {
+      if (href && href.indexOf('styleguide.html') !== 0) {
         ev.preventDefault();
 
         render(href);

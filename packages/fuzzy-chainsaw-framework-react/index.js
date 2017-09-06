@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 module.exports = {
-  test: require('./test/index'),
-  build: require('./build/index'),
-  render: require('./render/index')
+  test: require('./lib/test'),
+  build: require('./lib/build'),
+  render: require('./lib/render'),
+  utils: require('./lib/utils')
 };
