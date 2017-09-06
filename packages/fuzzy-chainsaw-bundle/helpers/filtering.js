@@ -37,13 +37,8 @@ var filterByPath = function filterByPath(filePattern) {
   };
 };
 
-var structureArchiveData = function structureArchiveData(archive) {
-
-  return {};
-};
 
 module.exports = {
-  structureArchiveData: structureArchiveData,
   filterByAttributes: filterByAttributes,
   filterByPath: filterByPath
 };

@@ -31,15 +31,8 @@ const filterByPath = (filePattern) => (filename) =>
   minimatch(filename, filePattern);
 
 
-const structureArchiveData = (archive) => {
-
-  return {};
-}
-
-
 
 module.exports = {
-  structureArchiveData,
   filterByAttributes,
   filterByPath
 };

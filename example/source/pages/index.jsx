@@ -5,7 +5,7 @@ import {
 } from '@tags';
 
 import TableOfContents from 'fuzzy-chainsaw-toc';
-import archive from '@source/archive';
+import * as archive from '@source/archive';
 
 const page = () => (
   <Wrapper size="wide">

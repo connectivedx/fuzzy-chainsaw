@@ -12,6 +12,9 @@
     "juice": "^4.1.1",
     "minimatch": "^3.0.4",
     "mkdirp": "^0.5.1",
+    "postcss": "^6.0.10",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-nested": "^2.1.2",
     "rimraf": "^2.6.1"
   }
 }

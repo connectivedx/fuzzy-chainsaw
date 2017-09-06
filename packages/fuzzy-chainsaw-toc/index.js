@@ -1,12 +1,11 @@
-/* eslint-disable */
-
-const fs = require('fs');
 const template = require('./dist/template');
 
-const TableOfContents = (rawArchive) => {
+const structureArchiveData = require('fuzzy-chainsaw-shared/lib/structure-archive-data');
+
+const tableOfContents = (rawArchive) => {
   const archive = structureArchiveData(rawArchive);
   return template(archive);
-}
+};
 
-module.exports = TableOfContents;
+module.exports = tableOfContents;
 

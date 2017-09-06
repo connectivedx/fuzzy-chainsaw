@@ -1,7 +1,7 @@
 import {
   filterByAttributes,
   filterByPath
-} from 'fuzzy-chainsaw-render/lib/filtering';
+} from 'fuzzy-chainsaw-bundle/helpers/filtering';
 
 
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
@@ -37,11 +37,11 @@ export const pages = [{
 }, {
   title: 'Pages',
   context: pagesContext,
-  filter: filterByAttributes({ theme: undefined, pageType: (type) => type !== 'index' })
+  filter: filterByAttributes({ theme: undefined, pageType: (pageType) => pageType !== 'index' })
 }, {
   title: 'Generic Pages',
   context: pagesContext,
-  filter: filterByAttributes({ theme: 'generic', pageType: (type) => type !== 'index' })
+  filter: filterByAttributes({ theme: 'generic', pageType: (pageType) => pageType !== 'index' })
 }];
 
 
