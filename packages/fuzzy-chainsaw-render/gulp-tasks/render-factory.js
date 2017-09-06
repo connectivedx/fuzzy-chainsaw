@@ -33,7 +33,8 @@ const injectModulePaths = (modulePath) => {
 module.exports = ({ pathHelpers, framework, projectConfig }) => ({ production }) => () => {
   const { dest } = pathHelpers;
   const { outputDirectories } = projectConfig;
-  const { isFileRenderable, getOutputName, renderComponent: render } = framework.render;
+  const { renderComponent: render } = framework.render;
+  const { isFileRenderable, getOutputName } = framework.utils;
 
   const archivePath = dest(outputDirectories.js, 'archive.js');
   injectModulePaths(archivePath);
