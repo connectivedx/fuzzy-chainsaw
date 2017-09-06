@@ -33,10 +33,9 @@ var filterByAttributes = function filterByAttributes(match) {
 
 var filterByPath = function filterByPath(filePattern) {
   return function (filename) {
-    return minimatch(filename, filePattern);
+    return minimatch(filename.substr(2), filePattern);
   };
 };
-
 
 module.exports = {
   filterByAttributes: filterByAttributes,

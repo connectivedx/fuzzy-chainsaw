@@ -4,8 +4,10 @@ import {
   Wrapper
 } from '@tags';
 
-import TableOfContents from 'fuzzy-chainsaw-toc';
+import tableOfContents from 'fuzzy-chainsaw-toc';
 import * as archive from '@source/archive';
+
+const toc = tableOfContents(archive);
 
 const page = () => (
   <Wrapper size="wide">
@@ -15,7 +17,7 @@ const page = () => (
         <Heading level="h4">Front End Style Guide</Heading>
       </Rhythm>
 
-      <div dangerouslySetInnerHTML={{ __html: TableOfContents(archive) }} />
+      <div className="RichText" dangerouslySetInnerHTML={{ __html: toc }} />
     </Rhythm>
   </Wrapper>
 );

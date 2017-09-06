@@ -1,38 +1,76 @@
 module.exports = (archive) => {
-  const { pages, elements } = archive;
-  const getListings = (listingTree) =>
-    listingTree.map((listing) => {
-      const files = [];
+  const { pages, elements, isFileRenderable, getOutputName, themes } = archive;
 
-      listing.context.keys()
-          // TODO: filter filetypes
-        .forEach((key) => {
-          const moduleWrapper = listing.context(key);
-          const module = moduleWrapper.default || moduleWrapper;
+  const getListings = (listingTree, options = { isElements: false }) =>
+    listingTree
+      .map((listing) => {
+        const files = [];
+        let groups = [];
 
-          if (listing.filter ? listing.filter(key, module) : true) {
-            files.push({
-              title: module.pageTitle,
-              url: key
-            });
-          }
-        });
+        if (listing.groups) {
+          groups = listing.groups.map((group) => ({
+            title: group.title,
+            hideThemeLinks: module.hideThemeLinks || false,
+            files: []
+          }));
+        }
 
-      return {
-        title: listing.title,
-        hasThemeLinks: false,
-        files
-      };
-    });
+        if (listing.hidden) return false;
+
+        // get a list of file name
+        listing.context.keys()
+          // files to just renderable modules
+          .filter(isFileRenderable || (() => true))
+          .forEach((key) => {
+            const moduleWrapper = listing.context(key);
+            const module = moduleWrapper.default || moduleWrapper;
+
+            // hides the index.jsx file on dev mode
+            if (typeof module !== 'function') return;
+
+            if (listing.filter ? listing.filter(key, module) : true) {
+              let url = `${process.env.BASE_URL}${getOutputName(key)}`;
+
+              if (options.isElements) {
+                const type = url.substr(1, url.indexOf('/', 1) - 1);
+                const filename = url.substr(url.lastIndexOf('/') + 1);
+                const element = filename.substr(0, filename.indexOf('.'));
+
+                url = `${process.env.BASE_URL}styleguide.html?${type}=${element}`;
+              }
+
+              const file = {
+                title: module.pageTitle || module.displayName,
+                hideThemeLinks: module.hideThemeLinks || false,
+                url
+              };
+
+              if (listing.groups) {
+                listing.groups.forEach((group, i) => {
+                  if (group.filter ? group.filter(key, module) : true) {
+                    groups[i].files.push(file);
+                  }
+                });
+              } else {
+                files.push(file);
+              }
+            }
+          });
+
+        return {
+          title: listing.title,
+          hideThemeLinks: listing.hideThemeLinks || false,
+          files,
+          groups
+        };
+      })
+      .filter((a) => a);
 
   return {
-    themes: [{
-      id: 'generic',
-      title: 'Generic'
-    }],
+    themes,
     listings: [
       ...getListings(pages),
-      ...getListings(elements)
+      ...getListings(elements, { isElements: true })
     ]
   };
 };

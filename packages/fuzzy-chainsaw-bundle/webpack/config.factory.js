@@ -32,7 +32,7 @@ const defaultPostcssPlugins = require('./lib/postcss-plugins');
 module.exports = (config) => (factoryOpts = {}) => {
   const { pkg, postcssPlugins, framework, projectConfig, webpackOpts = {} } = config;
   const { entries, outputDirectories, outputFormats } = projectConfig;
-  const { baseUrl, dest, source } = config.pathHelpers;
+  const { baseUrl, dest, source, root: rootPath } = config.pathHelpers;
 
   // This takes a simple object of entry:filepath pairs
   // and runs each filepath through the source() helper
@@ -51,8 +51,10 @@ module.exports = (config) => (factoryOpts = {}) => {
   const alias = Object.assign({
     FcUtils: path.resolve(__dirname, '../helpers/fc-utilities'),
 
+    '@root': rootPath(),
+    '@build': rootPath('build'),
+
     '@source': source(),
-    '@config': source('config'),
     '@lib': source('lib'),
     '@static': source('static'),
     '@pages': source('pages'),
@@ -324,6 +326,7 @@ module.exports = (config) => (factoryOpts = {}) => {
 
 
   const dev = {
+    // BUG FOR SLOW SLOW SLOW https://github.com/webpack/webpack/issues/5478
     cache: false,
     devtool: 'inline-source-map',
     resolveLoader: {

@@ -1,3 +1,34 @@
 .FcTableOfContents {
-  background-color: red;
+  column-width: 320px;
+  column-count: 3;
+
+  &__listing {
+    break-inside: avoid;
+    margin-bottom: config(padding);
+  }
+
+  &__listingHeader {
+    font-size: config(headerFontSize);
+  }
+
+  &__listingGroup {
+    margin-bottom: config(padding);
+  }
+
+  &__listingGroupHeader {
+    font-size: config(groupHeaderFontSize);
+  }
+
+  &__listingList {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  &__listingItem {
+
+  }
+
+  &__themeLinks {
+    opacity: 0.5;
+  }
 }

@@ -1,10 +1,57 @@
 <div class="FcTableOfContents">
-	{{~it.listing :listing}}
-		<h2>{{=listing.title}}</h2>
-		<ul>
-			{{~listing.files :file}}
-				<li><a href="{{=file.url}}">{{=file.title}}</a></li>
-			{{~}}
-		</ul>
+	{{~it.listings :listing}}
+		<div class="FcTableOfContents__listing">
+			<h2 class="FcTableOfContents__listingHeader">{{=listing.title}}</h2>
+			<ul class="FcTableOfContents__listingList">
+				{{~listing.files :file}}
+					<li class="FcTableOfContents__listingFile">
+						<span>
+							<a href="{{=file.url}}">{{=file.title}}</a>
+						</span>
+
+						&nbsp;
+
+						{{? !listing.hideThemeLinks && !file.hideThemeLinks }}
+							<span class="FcTableOfContents__themeLinks">
+							({{~it.themes :theme}}
+								<a href="{{=file.url}}&theme={{=theme.id}}">{{=theme.title}}</a>
+							{{~}})
+							</span>
+						{{?}}
+					</li>
+				{{~}}
+
+				{{~listing.groups :group}}
+					{{?group.files.length > 0}}
+						<li class="FcTableOfContents__listingGroup">
+							{{?group.title}}
+								<h3 class="FcTableOfContents__listingGroupHeader">{{=group.title}}</h3>
+							{{?}}
+
+							<ul class="FcTableOfContents__listingList">
+								{{~group.files :file}}
+									<li class="FcTableOfContents__listingFile">
+										<span>
+											<a href="{{=file.url}}">{{=file.title}}</a>
+										</span>
+
+										&nbsp;
+
+										{{? !listing.hideThemeLinks && !group.hideThemeLinks && !file.hideThemeLinks }}
+											<span class="FcTableOfContents__themeLinks">
+											({{~it.themes :theme:index}}
+												{{?index}}, {{?}}
+												<a href="{{=file.url}}&theme={{=theme.id}}">{{=theme.name}}</a>
+											{{~}})
+											</span>
+										{{?}}
+									</li>
+								{{~}}
+							</ul>
+						</li>
+					{{?}}
+				{{~}}
+			</ul>
+		</div>
 	{{~}}
 </div>
