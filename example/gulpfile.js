@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const sequence = require('fuzzy-chainsaw-sequence');
-const { clean, bundle, render, styleguide, test } = require('./build/build-config');
+const { clean, bundle, render, styleguide, scaffold, test } = require('./build/build-config');
 
 
 // add cleaning tasks
@@ -18,6 +18,8 @@ styleguide.installGulpTasks(gulp);
 // add test tasks
 test.installGulpTasks(gulp);
 
+// add scaffold tasks
+scaffold.installGulpTasks(gulp);
 
 // add main build/dev/production task sequences
 sequence.installGulpTasks(gulp);

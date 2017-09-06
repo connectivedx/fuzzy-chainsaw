@@ -21,7 +21,7 @@ const scaffoldComponent = ({
 
   return dopl({
     src,
-    output,
+    output: `${output}/${name}`,
     data: {
       name
     }
@@ -29,13 +29,15 @@ const scaffoldComponent = ({
 };
 
 
-module.exports = ({ source, dest }) => () => {
+module.exports = ({ src, dest }) => () => {
   const argv = minimist(process.argv.slice(2));
+
+  console.log(src, dest);
 
   return scaffoldComponent({
     name: argv.name,
-    src: source(), // TODO: allow abs. path
-    output: dest(argv.name)
+    src, // TODO: allow abs. path
+    output: dest
   });
 };
 
