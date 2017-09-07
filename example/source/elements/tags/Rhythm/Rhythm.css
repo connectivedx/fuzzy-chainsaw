@@ -1,15 +1,15 @@
 /* variants */
 .Rhythm {
   &,
-  &--default { & > * + * { margin-top: 1em; } }
-  &--small { & > * + * { margin-top: 0.5em; } }
-  &--large { & > * + * { margin-top: 2em; } }
+  &--default { & > * + * { margin-top: get-spacing(medium); } }
+  &--small { & > * + * { margin-top: get-spacing(medium-small); } }
+  &--large { & > * + * { margin-top: get-spacing(medium-large); } }
 
   &--deep {
     &,
-    &-default { & * + * { margin-top: 1em; } }
-    &-small { & * + * { margin-top: 0.5em; } }
-    &-large { & * + * { margin-top: 2em; } }
+    &-default { & * + * { margin-top: get-spacing(medium); } }
+    &-small { & * + * { margin-top: get-spacing(medium-small); } }
+    &-large { & * + * { margin-top: get-spacing(medium-large); } }
   }
 }
 

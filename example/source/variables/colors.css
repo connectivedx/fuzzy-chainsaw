@@ -3,7 +3,7 @@
   http://cssnext.io/features/#color-function
 
   background-color: var(--color-black);
-  color: var(--color-white);
+  color: get-color(white); // fast
 */
 
 :root {
@@ -30,5 +30,8 @@
   /* theme colors */
 
   /* generic theme */
-  --generic-color-blue: #0000fa;
+  --color-blue--generic: #0000fa;
+
+  /* add default */
+  --color-default: var(--color-black);
 }

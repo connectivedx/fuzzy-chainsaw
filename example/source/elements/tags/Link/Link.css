@@ -3,18 +3,18 @@
 
   /* variants */
   &--default {
-    color: var(--color-blue);
+    color: get-color(blue);
 
     &:--enter {
-      color: color(var(--color-blue) tint(10));
+      color: color(get-color(blue) tint(10));
     }
   }
 
   &--cta {
-    color: var(--color-red);
+    color: get-color(red);
 
     &:--enter {
-      color: color(var(--color-red) tint(10));
+      color: color(get-color(red) tint(10));
     }
   }
 }

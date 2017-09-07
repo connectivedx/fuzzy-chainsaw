@@ -1,6 +1,6 @@
 .Heading {
-  font-family: var(--font-stack--default);
-  font-weight: var(--font-weight--bold);
+  font-family: get-font(stack, default);
+  font-weight: get-font(weight, bold);
   font-size: 2em;
   line-height: 1em;
 

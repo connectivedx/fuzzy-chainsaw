@@ -4,24 +4,24 @@
 
   /* variants */
   &--default {
-    background-color: color(var(--color-black) alpha(10%));
-    border: 2px solid var(--color-black);
-    color: var(--color-black);
+    background-color: color(get-color(black) alpha(10%));
+    border: 2px solid get-color(black);
+    color: get-color(black);
 
     &:--enter {
-      background-color: var(--color-black);
-      color: var(--color-white);
+      background-color: get-color(black);
+      color: get-color(white);
     }
   }
 
   &--cta {
-    background-color: color(var(--color-red) alpha(10%));
+    background-color: color(get-color(red) alpha(10%));
     border: 2px solid red;
     color: red;
 
     &:--enter {
-      background-color: var(--color-red);
-      color: var(--color-white);
+      background-color: get-color(red);
+      color: get-color(white);
     }
   }
 

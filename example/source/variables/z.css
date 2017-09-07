@@ -1,0 +1,16 @@
+/*
+  The z-indexes for the project.
+
+  z-index: var(--z-heigh);
+*/
+:root {
+  --z-under: -1;
+  --z-base: 0;
+  --z-low: 100;
+  --z-mid: 200;
+  --z-high: 300;
+  --z-top: 400;
+
+  /* add default */
+  --z-default: var(--z-base);
+}

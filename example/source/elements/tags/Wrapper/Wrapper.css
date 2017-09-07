@@ -2,15 +2,15 @@
   margin: auto;
 
   /* sizes */
-  &--narrow {
-    max-width: 640px;
+  &--small {
+    max-width: get-wrapper(small);
   }
 
-  &--default {
-    max-width: 960px;
+  &--medium {
+    max-width: get-wrapper(medium);
   }
 
-  &--wide {
-    max-width: 1280px;
+  &--large {
+    max-width: get-wrapper(large);
   }
 }

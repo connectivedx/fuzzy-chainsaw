@@ -6,22 +6,23 @@
   &--middle { align-items: center; }
   &--bottom { align-items: flex-end; }
 
+  /* sub components */
+  &__figure {
+    margin-right: get-spacing(default);
+
+    /* figure variants */
+    &--top { align-self: flex-start; }
+    &--middle { align-self: center; }
+    &--bottom { align-self: flex-end; }
+  }
+
   &__body {
     flex: 1;
 
     & ~ .Media__figure {
       margin-right: inherit;
-      margin-left: 1em;
+      margin-left: get-spacing(default);
     }
   }
-
-  &__figure {
-    margin-right: 1em;
-  }
-
-  /* figure variants */
-  &__figure--top { align-self: flex-start; }
-  &__figure--middle { align-self: center; }
-  &__figure--bottom { align-self: flex-end; }
 }
 

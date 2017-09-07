@@ -1,33 +1,37 @@
+:root {
+  --icon-base-size: 1em;
+}
+
 .Icon {
   display: inline-block;
 
   /* sizes */
   &--normal {
-    width: 1em;
-    height: 1em;
+    width: calc(var(--icon-base-size) * 1);
+    height: calc(var(--icon-base-size) * 1);
   }
 
   &--small {
-    width: 0.5em;
-    height: 0.5em;
+    width: calc(var(--icon-base-size) * 0.5);
+    height: calc(var(--icon-base-size) * 0.5);
   }
 
   &--large {
-    width: 2em;
-    height: 2em;
+    width: calc(var(--icon-base-size) * 2);
+    height: calc(var(--icon-base-size) * 2);
   }
 
   &--wide {
-    width: 3em;
-    height: 1.5em;
+    width: calc(var(--icon-base-size) * 3);
+    height: calc(var(--icon-base-size) * 1.5);
   }
 
   /* colors */
   &--dark {
-    fill: var(--color-black);
+    fill: get-color(black);
   }
 
   &--light {
-    fill: var(--color-white);
+    fill: get-color(white);
   }
 }

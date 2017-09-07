@@ -1,0 +1,12 @@
+:root {
+  --wrapper-extra-small: 384px;
+  --wrapper-small: 512px;
+  --wrapper-medium-small: 640px;
+  --wrapper-medium: 768px;
+  --wrapper-medium-large: 960px;
+  --wrapper-large: 1280px;
+  --wrapper-extra-large: 1440px;
+
+  /* add default */
+  --wrapper-default: var(--wrapper-medium);
+}

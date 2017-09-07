@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: var(--type-font-family);
-  font-size: var(--type-font-size);
-  line-height: var(--type-line-height);
+  font-family: get-type(font-family);
+  font-size: get-type(font-size);
+  line-height: get-type(line-height);
 }
 
 pre,
