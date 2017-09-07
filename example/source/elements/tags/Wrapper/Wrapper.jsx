@@ -36,5 +36,7 @@ Wrapper.propTypes = {
   children: PropTypes.node.isRequired
 };
 
+Wrapper.pageType = 'layout';
+
 
 export default Wrapper;

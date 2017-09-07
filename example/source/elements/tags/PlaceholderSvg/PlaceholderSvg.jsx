@@ -69,4 +69,6 @@ PlaceholderSvg.propTypes = {
   fontWeight: PropTypes.string
 };
 
+PlaceholderSvg.pageType = 'content';
+
 export default PlaceholderSvg;
