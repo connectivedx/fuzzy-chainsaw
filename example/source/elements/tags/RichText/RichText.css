@@ -2,6 +2,7 @@
 @import "~@tags/Heading/Heading.css";
 @import "~@tags/Button/Button.css";
 @import "~@tags/List/List.css";
+@import "~@tags/Link/Link.css";
 
 .RichText {
   @extend .Rhythm--deep;
@@ -38,5 +39,10 @@
 
   & ol {
     @extend .List--ordered;
+  }
+
+  & a {
+    @extend .Link;
+    @extend .Link--default;
   }
 }
