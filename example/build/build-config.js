@@ -29,7 +29,7 @@ const directories = {
 const sharedConfig = {
   pkg,
   projectConfig,
-  baseUrl: pkg.baseUrl,
+  baseUrl: process.env.BASE_URL || pkg.baseUrl || '/',
   framework: reactFramework,
   directories
 };
@@ -50,7 +50,7 @@ module.exports.test = testConfig(
 module.exports.styleguide = styleguideConfig(
   Object.assign({}, sharedConfig, {
     directories: Object.assign({}, directories, {
-      dest: rootPath(dest, 'styleguide')
+      styleguide: rootPath(dest, 'styleguide')
     }),
     variables: {
       colors: {

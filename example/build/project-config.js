@@ -59,7 +59,8 @@ module.exports.outputDirectories = {
   fonts: 'assets/fonts',
   svgs: 'assets/svgs',
   static: 'assets/static',
-  offline: 'assets/offline'
+  offline: 'assets/offline',
+  styleguide: 'styleguide'
 };
 
 
