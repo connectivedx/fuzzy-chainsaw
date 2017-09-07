@@ -1,7 +1,7 @@
 import {
   Heading,
-  Rhythm,
   Padding,
+  Rhythm,
   Wrapper
 } from '@tags';
 
