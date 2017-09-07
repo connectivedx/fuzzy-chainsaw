@@ -8,7 +8,9 @@ const tableOfContents = (rawArchive, config) => {
     config: Object.assign({
       headerFontSize: '1.25em',
       groupHeaderFontSize: '1em',
-      padding: '1.25em'
+      padding: '1.25em',
+      themeLinkFontSize: '0.75em',
+      themeLinkOpacity: '0.5'
     }, config)
   });
 

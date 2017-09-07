@@ -29,6 +29,7 @@
   }
 
   &__themeLinks {
-    opacity: 0.5;
+    opacity: config(themeLinkOpacity);
+    font-size: config(themeLinkFontSize)
   }
 }
