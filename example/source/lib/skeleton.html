@@ -31,6 +31,11 @@
 <div class="root">{{output}}</div>
 <% } %>
 
+
+<% if (htmlWebpackPlugin.options.demo) { %>
+<script src="${htmlWebpackPlugin.options.baseUrl}${htmlWebpackPlugin.options.outputDirectories.js}/archive.js"></script>
+<script src="${htmlWebpackPlugin.options.baseUrl}${htmlWebpackPlugin.options.outputDirectories.styleguide}/demo.js"></script>
+<% } %>
 <!-- js entry files are automatically injected here -->
 </body>
 </html>

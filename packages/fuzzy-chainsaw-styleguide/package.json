@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
-    "prismjs": "^1.6.0",
+    "gulp-print": "^2.0.1",
+    "gulp-util": "^3.0.8",
     "pretty": "^2.0.0",
+    "prismjs": "^1.6.0",
     "react-element-to-jsx-string": "^10.1.0"
   }
 }

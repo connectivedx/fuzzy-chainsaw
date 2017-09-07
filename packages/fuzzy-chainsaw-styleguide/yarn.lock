@@ -411,7 +411,14 @@ graceful-fs@~1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-1.2.3.tgz#15a4806a57547cb2d2dbf27f42e89a8c3451b364"
 
-gulp-util@^3.0.0:
+gulp-print@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-print/-/gulp-print-2.0.1.tgz#1acee58eac8af2d3c4ad3329dbe465758393c414"
+  dependencies:
+    gulp-util "^3.0.6"
+    map-stream "~0.0.6"
+
+gulp-util@^3.0.0, gulp-util@^3.0.6, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -765,6 +772,10 @@ lru-cache@^3.2.0:
 map-cache@^0.2.0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
+
+map-stream@~0.0.6:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.0.7.tgz#8a1f07896d82b10926bd3744a2420009f88974a8"
 
 micromatch@^2.3.7:
   version "2.3.11"

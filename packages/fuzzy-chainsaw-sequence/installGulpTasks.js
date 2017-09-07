@@ -24,6 +24,7 @@ module.exports = (gulp, taskOptions) => {
     'clean:pre',
     'webpack:build',
     'render',
+    'styleguide',
     'clean:post',
     'test'
   ));
