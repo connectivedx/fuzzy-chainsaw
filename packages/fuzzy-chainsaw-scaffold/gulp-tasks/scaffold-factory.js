@@ -32,8 +32,6 @@ const scaffoldComponent = ({
 module.exports = ({ src, dest }) => () => {
   const argv = minimist(process.argv.slice(2));
 
-  console.log(src, dest);
-
   return scaffoldComponent({
     name: argv.name,
     src, // TODO: allow abs. path
