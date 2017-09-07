@@ -10,7 +10,7 @@ module.exports = (archive) => {
         if (listing.groups) {
           groups = listing.groups.map((group) => ({
             title: group.title,
-            hideThemeLinks: module.hideThemeLinks || false,
+            hideThemeLinks: group.hideThemeLinks || false,
             files: []
           }));
         }
