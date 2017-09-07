@@ -32,6 +32,8 @@ List.propTypes = {
   children: PropTypes.node.isRequired
 };
 
+List.pageType = 'content';
+
 
 export const List__item = FcUtils.createBasicComponent({
   name: 'List__item',

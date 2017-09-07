@@ -1,3 +1,39 @@
+export const Media = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    align,
+    children,
+    ...attrs
+  } = props;
+
+  const classStack = FcUtils.createClassStack([
+    'Media',
+    align && `Media--${align}`,
+    className
+  ]);
+
+  return (
+    <Tag className={classStack} {...attrs}>
+      {children}
+    </Tag>
+  );
+};
+
+Media.defaultProps = {
+  tagName: 'div'
+};
+
+Media.propTypes = {
+  tagName: FcUtils.PropTypes.tagName,
+  className: PropTypes.string,
+  align: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
+
+Media.pageType = 'layout';
+
+
 export const Media__figure = (props) => {
   const {
     tagName: Tag,
@@ -36,40 +72,6 @@ export const Media__body =
   FcUtils.createBasicComponent({
     name: 'Media__body'
   });
-
-
-export const Media = (props) => {
-  const {
-    tagName: Tag,
-    className,
-    align,
-    children,
-    ...attrs
-  } = props;
-
-  const classStack = FcUtils.createClassStack([
-    'Media',
-    align && `Media--${align}`,
-    className
-  ]);
-
-  return (
-    <Tag className={classStack} {...attrs}>
-      {children}
-    </Tag>
-  );
-};
-
-Media.defaultProps = {
-  tagName: 'div'
-};
-
-Media.propTypes = {
-  tagName: FcUtils.PropTypes.tagName,
-  className: PropTypes.string,
-  align: PropTypes.string,
-  children: PropTypes.node.isRequired
-};
 
 
 export default Object.assign(Media, {

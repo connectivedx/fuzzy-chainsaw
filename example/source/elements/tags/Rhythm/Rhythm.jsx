@@ -40,5 +40,6 @@ Rhythm.propTypes = {
   children: PropTypes.node.isRequired
 };
 
+Rhythm.pageType = 'layout';
 
 export default Rhythm;

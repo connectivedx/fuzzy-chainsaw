@@ -8,5 +8,7 @@ export const Link =
     }
   });
 
+Link.pageType = 'action';
+
 
 export default Link;

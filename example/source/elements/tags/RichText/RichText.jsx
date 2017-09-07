@@ -8,5 +8,7 @@ export const RichText =
     }
   });
 
+RichText.pageType = 'content';
+
 
 export default RichText;
