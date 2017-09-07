@@ -1,0 +1,13 @@
+.Padding {
+  padding: get-spacing(medium);
+
+  /* bigger */
+  &--extra-large { padding: get-spacing(extra-large); }
+  &--large { padding: get-spacing(large); }
+  &--medium-large { padding: get-spacing(medium-large); }
+
+  /* smaller */
+  &--medium-small { padding: get-spacing(medium-small); }
+  &--small { padding: get-spacing(small); }
+  &--extra-small { padding: get-spacing(extra-small); }
+}
