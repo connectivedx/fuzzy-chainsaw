@@ -2,15 +2,7 @@
   margin: auto;
 
   /* sizes */
-  &--small {
-    max-width: get-wrapper(small);
-  }
-
-  &--medium {
-    max-width: get-wrapper(medium);
-  }
-
-  &--large {
-    max-width: get-wrapper(large);
-  }
+  &--small { max-width: get-wrapper(small); }
+  &--medium { max-width: get-wrapper(medium); }
+  &--large { max-width: get-wrapper(large); }
 }

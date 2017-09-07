@@ -22,7 +22,7 @@ const Wrapper = (props) => {
 
 Wrapper.defaultProps = {
   tagName: 'div',
-  size: 'default'
+  size: 'medium'
 };
 
 Wrapper.propTypes = {
@@ -32,7 +32,7 @@ Wrapper.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  size: PropTypes.oneOf(['narrow', 'default', 'wide']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   children: PropTypes.node.isRequired
 };
 
