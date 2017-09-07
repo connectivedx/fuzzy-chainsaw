@@ -36,5 +36,6 @@ Heading.propTypes = {
   children: PropTypes.node.isRequired
 };
 
+Heading.pageType = 'content';
 
 export default Heading;

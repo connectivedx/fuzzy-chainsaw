@@ -34,5 +34,7 @@ Image.propTypes = {
   src: PropTypes.string.isRequired
 };
 
+Image.pageType = 'content';
+
 
 export default Image;

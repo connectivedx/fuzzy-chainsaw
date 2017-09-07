@@ -34,5 +34,6 @@ Icon.propTypes = {
   name: PropTypes.string.isRequired
 };
 
+Icon.pageType = 'content';
 
 export default Icon;

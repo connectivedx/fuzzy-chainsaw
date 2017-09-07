@@ -40,5 +40,7 @@ Brand.propTypes = {
   className: PropTypes.string
 };
 
+Brand.pageType = 'content';
+
 
 export default Brand;
