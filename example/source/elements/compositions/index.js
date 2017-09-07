@@ -1,3 +1,5 @@
-// export composition aliases
+const context = require.context('./', true, /^(?!.*\.(test|example)\.jsx$).*\.(jsx)$/);
 
-// export MyComposition from '@compositions/MyComposition/MyComposition';
+context.keys().forEach((key) => {
+  module.exports[key.substr(2, key.indexOf('/', 2) - 2)] = context(key).default;
+});
