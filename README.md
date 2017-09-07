@@ -38,6 +38,14 @@ To install npm modules for each of the packages, you can do:
 npm run setup
 ```
 
+### Building Package Distributable
+
+To build packages that require compilation, you can do:
+
+```
+npm run setup
+```
+
 ### Linking Packages
 
 This is a mono-repo containing a number of packages, to develop locally you will need link them instead of referencing the modules from npm.
@@ -53,7 +61,6 @@ You can always unlink local modules later by deleting the `node_modules` folder,
 ```
 npm run unlink
 ```
-
 
 ### Deleting node_modules for all packages
 
