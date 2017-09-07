@@ -1,3 +1,3 @@
 const get = require('./get-factory');
 
-module.exports = get('font');
+module.exports = get('type');
