@@ -36,6 +36,7 @@ module.exports = (gulp, taskOptions) => {
     'clean:pre',
     'webpack:production',
     'render:production',
+    'styleguide',
     'clean:post'
   ));
 

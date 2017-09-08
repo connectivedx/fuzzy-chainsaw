@@ -5,5 +5,5 @@ module.exports = (config) => (gulp, taskOptions) => {
   const copyStyleguide = require('./gulp-tasks/copy-styleguide-factory')(config);
 
   // copy styleguide
-  gulpTask('styleguide', copyStyleguide({ singleRun: true }));
+  gulpTask('styleguide', copyStyleguide({}));
 };
