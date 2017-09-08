@@ -1,7 +1,7 @@
 /*
   The z-indexes for the project.
 
-  z-index: var(--z-heigh);
+  z-index: var(--z-high);
 */
 :root {
   --z-under: -1;

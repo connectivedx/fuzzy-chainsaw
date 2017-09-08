@@ -19,9 +19,9 @@
   /* mobile only breakpoints */
   @custom-media --below-extra-small only screen and (width < 384px);
   @custom-media --below-small only screen and (width < 512px);
-  @custom-media --below-ms only screen and (width < 640px);
-  @custom-media --below-md only screen and (width < 768px);
+  @custom-media --below-medium-small only screen and (width < 640px);
+  @custom-media --below-medium only screen and (width < 768px);
   @custom-media --below-medium-large only screen and (width < 960px);
-  @custom-media --below-lg only screen and (width < 1152px);
+  @custom-media --below-large only screen and (width < 1152px);
   @custom-media --below-extra-large only screen and (width < 1280px);
 }
