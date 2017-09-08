@@ -26,7 +26,7 @@ const injectModulePaths = (modulePath) => {
       ? `module.paths = require.main.paths;${module}`
       : module;
 
-  fs.writeFileSync(modulePath, fixedModule);
+  fs.writeFileSync(modulePath.replace('.js', '.fixed.js'), fixedModule);
 };
 
 
@@ -39,7 +39,7 @@ module.exports = ({ pathHelpers, framework, projectConfig }) => ({ production })
   const archivePath = dest(outputDirectories.js, 'archive.js');
   injectModulePaths(archivePath);
 
-  const archive = require(archivePath); // eslint-disable-line
+  const archive = require(archivePath.replace('.js', '.fixed.js')); // eslint-disable-line
   const template = fs.readFileSync(dest('_skeleton.html'));
 
   const listings = selectListing(archive.pages, { isFileRenderable, getOutputName });
