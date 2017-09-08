@@ -24,17 +24,18 @@ var normalizePath = function normalizePath(path) {
 module.exports = function (_ref) {
   var appRoot = _ref.appRoot,
       framework = _ref.framework,
-      archive = _ref.archive,
-      themes = _ref.themes;
+      archive = _ref.archive;
   var _framework$render = framework.render,
       renderComponentDev = _framework$render.renderComponentDev,
       NotFoundComponent = _framework$render.NotFoundComponent;
   var _framework$utils = framework.utils,
       isFileRenderable = _framework$utils.isFileRenderable,
       getOutputName = _framework$utils.getOutputName;
+  var pages = archive.pages,
+      themes = archive.themes;
 
 
-  var modules = selectListing(archive.pages, { isFileRenderable: isFileRenderable, getOutputName: getOutputName });
+  var modules = selectListing(pages, { isFileRenderable: isFileRenderable, getOutputName: getOutputName });
 
   var render = function render(locationPath) {
     var modulePath = normalizePath(locationPath);

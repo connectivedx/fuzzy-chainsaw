@@ -72,12 +72,12 @@ export const elements = [{
 
 export { themes, isFileRenderable, getOutputName };
 
-// if (window) {
-//   window.archive = {
-//     elements,
-//     pages,
-//     themes,
-//     isFileRenderable,
-//     getOutputName
-//   };
-// }
+if (global.document) {
+  global.archive = {
+    elements,
+    pages,
+    themes,
+    isFileRenderable,
+    getOutputName
+  };
+}

@@ -21,11 +21,12 @@ const normalizePath = (path) => {
 };
 
 
-module.exports = ({ appRoot, framework, archive, themes }) => {
+module.exports = ({ appRoot, framework, archive }) => {
   const { renderComponentDev, NotFoundComponent } = framework.render;
   const { isFileRenderable, getOutputName } = framework.utils;
+  const { pages, themes } = archive;
 
-  const modules = selectListing(archive.pages, { isFileRenderable, getOutputName });
+  const modules = selectListing(pages, { isFileRenderable, getOutputName });
 
   const render = (locationPath) => {
     const modulePath = normalizePath(locationPath);

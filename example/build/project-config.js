@@ -40,7 +40,7 @@ module.exports.entryFiles = {
 module.exports.entries = {
   archive: pick(module.exports.entryFiles, 'archive'),
   build: pick(module.exports.entryFiles, 'bundle', 'bundle-generic'),
-  dev: pick(module.exports.entryFiles, 'dev', 'bundle', 'bundle-generic'),
+  dev: pick(module.exports.entryFiles, 'dev', 'archive', 'bundle', 'bundle-generic'),
   ci: pick(module.exports.entryFiles, 'bundle', 'bundle-generic'),
   tests: pick(module.exports.entryFiles, 'tests')
 };
