@@ -15,7 +15,7 @@
   "scripts": {
     "postinstall": "npm run dll",
     "start": "http-server ./dist -p 8081",
-    "dev": "gulp clean:pre && npm-run-all --parallel dev:webpack test:dev",
+    "dev": "gulp clean:pre && gulp styleguide && npm-run-all --parallel dev:webpack test:dev",
     "dev:webpack": "webpack-dev-server --config ./build/webpack.dev-config.js --progress",
     "dll": "gulp webpack-dll:build",
     "dll:ci": "gulp webpack-dll:build:ci",
