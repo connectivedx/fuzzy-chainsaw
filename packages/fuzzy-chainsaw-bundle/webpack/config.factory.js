@@ -390,7 +390,11 @@ module.exports = (config) => (factoryOpts = {}) => {
     stats,
     devServer: {
       historyApiFallback: {
-        rewrites: [{ from: /.*\.html/, to: '/index.html' }]
+        rewrites: [
+          { from: /.*\.html/, to: '/index.html' }
+          // demo passthrough,
+          // styleguide passthrough
+        ]
       },
       publicPath: '/',
       contentBase: pkg.directories.dest,
@@ -399,6 +403,17 @@ module.exports = (config) => (factoryOpts = {}) => {
     }
   };
 
+  const styleguide = {
+    plugins: [
+      new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
+        filename: 'styleguide/demo.html',
+        mode: 'dev',
+        demo: true,
+        baseUrl,
+        outputDirectories
+      }))
+    ]
+  };
 
   const archive = {
     module: {
@@ -440,7 +455,7 @@ module.exports = (config) => (factoryOpts = {}) => {
   // production mode
   } else if (factoryOpts.production) {
     return [
-      merge(vendorDll, shared, assets, build, production, { entry: sourceAll(entries.build) }),
+      merge(vendorDll, shared, assets, build, styleguide, production, { entry: sourceAll(entries.build) }),
       merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
     ];
 
@@ -451,7 +466,7 @@ module.exports = (config) => (factoryOpts = {}) => {
   // build mode
   } else if (factoryOpts.build) {
     return [
-      merge(vendorDll, shared, assets, build, { entry: sourceAll(entries.build) }),
+      merge(vendorDll, shared, assets, build, styleguide, { entry: sourceAll(entries.build) }),
       merge(shared, assets, archive, excludeExternals, { entry: sourceAll(entries.archive) })
     ];
 
@@ -461,7 +476,7 @@ module.exports = (config) => (factoryOpts = {}) => {
 
   // dev mode
   } else if (factoryOpts.dev) {
-    return merge(vendorDll, archiveDll, shared, assets, dev, { entry: sourceAll(entries.dev) });
+    return merge(vendorDll, archiveDll, shared, assets, dev, styleguide, { entry: sourceAll(entries.dev) });
   }
 
   // shared
