@@ -456,7 +456,7 @@ module.exports = (config) => (factoryOpts = {}) => {
   } else if (factoryOpts.production) {
     return [
       merge(vendorDll, shared, assets, build, styleguide, production, { entry: sourceAll(entries.build) }),
-      merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
+      merge(shared, assets, archive, excludeExternals, { entry: sourceAll(entries.archive) })
     ];
 
   // build-ci mode
