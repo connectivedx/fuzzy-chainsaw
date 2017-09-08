@@ -3,8 +3,8 @@ import {
   filterByPath
 } from 'fuzzy-chainsaw-bundle/helpers/filtering';
 
-export { isFileRenderable, getOutputName } from 'fuzzy-chainsaw-framework-react/lib/utils';
-export { themes } from '@build/project-config';
+import { isFileRenderable, getOutputName } from 'fuzzy-chainsaw-framework-react/lib/utils';
+import { themes } from '@build/project-config';
 
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
 const pagesContext = require.context('@pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
@@ -69,3 +69,15 @@ export const elements = [{
   filter: filterByPath('modifiers/**/*'),
   groups: elementGroups
 }];
+
+export { themes, isFileRenderable, getOutputName };
+
+// if (window) {
+//   window.archive = {
+//     elements,
+//     pages,
+//     themes,
+//     isFileRenderable,
+//     getOutputName
+//   };
+// }
