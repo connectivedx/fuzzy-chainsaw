@@ -391,6 +391,8 @@ module.exports = (config) => (factoryOpts = {}) => {
     devServer: {
       historyApiFallback: {
         rewrites: [
+          { from: /\/styleguide\/index.html/, to: '/styleguide/index.html' },
+          { from: /\/styleguide\/demo.html/, to: '/styleguide/demo.html' },
           { from: /.*\.html/, to: '/index.html' }
           // demo passthrough,
           // styleguide passthrough
@@ -403,14 +405,29 @@ module.exports = (config) => (factoryOpts = {}) => {
     }
   };
 
-  const styleguide = {
+  const demo = {
+    plugins: [
+      new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
+        filename: 'styleguide/demo.html',
+        mode: 'dev',
+        demo: true,
+        includeArchive: true,
+        baseUrl,
+        outputDirectories,
+        excludeChunks: ['dev']
+      }))
+    ]
+  };
+
+  const demo_dev = {
     plugins: [
       new HtmlWebpackPlugin(Object.assign({}, skeletonConfig, {
         filename: 'styleguide/demo.html',
         mode: 'dev',
         demo: true,
         baseUrl,
-        outputDirectories
+        outputDirectories,
+        excludeChunks: ['dev']
       }))
     ]
   };
@@ -455,7 +472,7 @@ module.exports = (config) => (factoryOpts = {}) => {
   // production mode
   } else if (factoryOpts.production) {
     return [
-      merge(vendorDll, shared, assets, build, styleguide, production, { entry: sourceAll(entries.build) }),
+      merge(vendorDll, shared, assets, build, demo, production, { entry: sourceAll(entries.build) }),
       merge(shared, assets, archive, excludeExternals, { entry: sourceAll(entries.archive) })
     ];
 
@@ -466,8 +483,8 @@ module.exports = (config) => (factoryOpts = {}) => {
   // build mode
   } else if (factoryOpts.build) {
     return [
-      merge(vendorDll, shared, assets, build, styleguide, { entry: sourceAll(entries.build) }),
-      merge(shared, assets, archive, excludeExternals, { entry: sourceAll(entries.archive) })
+      merge(vendorDll, shared, assets, build, demo, { entry: sourceAll(entries.build) }),
+      merge(shared, assets, archive, { entry: sourceAll(entries.archive) })
     ];
 
   // archive mode
@@ -476,7 +493,7 @@ module.exports = (config) => (factoryOpts = {}) => {
 
   // dev mode
   } else if (factoryOpts.dev) {
-    return merge(vendorDll, archiveDll, shared, assets, dev, styleguide, { entry: sourceAll(entries.dev) });
+    return merge(vendorDll, archiveDll, shared, assets, dev, demo_dev, { entry: sourceAll(entries.dev) });
   }
 
   // shared

@@ -26,7 +26,6 @@
 <body class="{{bodyClass}}">
 <% } %>
 
-<pre><%= JSON.stringify(htmlWebpackPlugin, null, 2) %></pre>
 
 <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 <div class="root"></div>
@@ -43,8 +42,14 @@ function loadScript(url) {
 	document.getElementsByTagName('body')[0].appendChild(script);
 }
 
-loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.js %>/archive.js');
-loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.styleguide %>/demo.js');
+document.addEventListener('DOMContentLoaded', function() {
+	<% if (htmlWebpackPlugin.options.includeArchive) { %>
+	loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.dll %>/archive.dll.js');
+	loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.js %>/archive.js');
+	<% } %>
+
+	loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.styleguide %>/demo.js');
+});
 </script>
 <% } %>
 
