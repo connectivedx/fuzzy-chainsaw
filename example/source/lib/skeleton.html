@@ -6,18 +6,19 @@
 <% } %>
 
 <head>
-	<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
-	<title></title>
-	<% } else { %>
-	<title>{{pageTitle}}</title>
-	<% } %>
+		<% if (htmlWebpackPlugin.options.mode === 'dev') { %>
+		<title></title>
+		<% } else { %>
+		<title>{{pageTitle}}</title>
+		<% } %>
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- add meta tags, analytics, and font services -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- add meta tags, analytics, and font services -->
 
-	<!-- css files are automatically injected here -->
+		<!-- inject css files -->
 </head>
+
 
 <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 <body>
@@ -25,17 +26,28 @@
 <body class="{{bodyClass}}">
 <% } %>
 
+<pre><%= JSON.stringify(htmlWebpackPlugin, null, 2) %></pre>
+
 <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
 <div class="root"></div>
 <% } else { %>
 <div class="root">{{output}}</div>
 <% } %>
 
-
 <% if (htmlWebpackPlugin.options.demo) { %>
-<script src="${htmlWebpackPlugin.options.baseUrl}${htmlWebpackPlugin.options.outputDirectories.js}/archive.js"></script>
-<script src="${htmlWebpackPlugin.options.baseUrl}${htmlWebpackPlugin.options.outputDirectories.styleguide}/demo.js"></script>
+<script>
+function loadScript(url) {
+	var script = document.createElement('script');
+	script.setAttribute('src', url);
+	script.setAttribute('type', 'text/javascript');
+	document.getElementsByTagName('body')[0].appendChild(script);
+}
+
+loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.js %>/archive.js');
+loadScript('<%= htmlWebpackPlugin.options.baseUrl %><%= htmlWebpackPlugin.options.outputDirectories.styleguide %>/demo.js');
+</script>
 <% } %>
-<!-- js entry files are automatically injected here -->
+
+<!-- inject js files -->
 </body>
 </html>
