@@ -42,7 +42,7 @@ Use these commands to develop a local copy of the website. These will watch for 
 
 Command | Description
 --- | ---
-`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
+`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explanation](#dll-explaination)
 `dev` | Starts the development server and karama test runner in watch modes.
 `build:dev` | Runs webpack-dev-server that watches for file changes. Starts a local sever at `http://0.0.0.0:8080` (also accessible at `http://localhost:8080`)
 `test:dev` | Runs the karma test runner in watch mode
@@ -53,7 +53,7 @@ Use build commands if you want to quickly build a static representation of your 
 
 Command | Description
 --- | ---
-`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
+`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explanation](#dll-explaination)
 `build` | Compiles source files into output directory
 `test` | Runs the Karama test in single run mode
 `start` | Starts a static server at `http://localhost:8081` pointing at the output directory
@@ -64,7 +64,7 @@ Use production commands to build a minimized static representation of the websit
 
 Command | Description
 --- | ---
-`dll:production` | Builds a production ready DLL library of vendor files. [DLL Explaination](#dll-explaination)
+`dll:production` | Builds a production ready DLL library of vendor files. [DLL Explanation](#dll-explaination)
 `production` | Compiles and minimizes source files into output directory
 
 
@@ -72,7 +72,7 @@ Command | Description
 
 Command | Description
 --- | ---
-`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
+`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explanation](#dll-explaination)
 `watch` | Compiles src directory to output directory and watches for file changes.
 `dll:ci` | Builds a DLL library of only the vendor files required only for integration.
 `build:ci` | Compiles only source files required for backend integration.
@@ -103,7 +103,7 @@ Command | Description
 `new:composition [name]` | Creates a new stateless integration component in the `/source/compositions` directory.
 
 
-#### DLL Explaination
+#### DLL Explanation
 
 DLLs are libraries of vendor files that are referenced by other tasks.  This speeds up subsequent runs by referencing the DLL dependency tree instead of rebuilding it for every tasks. DLL files will only change when `node_modules` are update, and will be automatically generated after each `npm install` or `yarn`.
 
