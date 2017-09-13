@@ -65,7 +65,8 @@ Use production commands to build a minimized static representation of the websit
 Command | Description
 --- | ---
 `dll:production` | Builds a production ready DLL library of vendor files. [DLL Explanation](#dll-explaination)
-`production` | Compiles and minimizes source files into output directory
+`build:production` | Compiles and minimizes source files into output directory
+`production` | Runs `dll:production` and `build:production` tasks
 
 
 ### Integration Tasks
