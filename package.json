@@ -38,7 +38,7 @@
     "new:stateful": "gulp scaffold:component:stateful --name"
   },
   "engines": {
-    "node": "^=6.11.1"
+    "node": ">=6.11.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
