@@ -1,6 +1,6 @@
 {
   "name": "fuzzy-chainsaw",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Boilerplate for component-based UI development",
   "repository": "connectivedx/fuzzy-chainsaw",
   "bugs": {
@@ -23,11 +23,12 @@
     "build:dev": "webpack-dev-server --config ./build/webpack/webpack.config.dev.js --progress",
     "build": "gulp build",
     "build:ci": "gulp build:ci",
-    "production": "gulp production",
+    "build:production": "gulp production",
+    "production": "npm-run-all dll:production build:production",
     "production:ci": "gulp production:ci",
     "full:build": "npm-run-all dll build",
     "full:build:ci": "npm-run-all dll:ci build:ci",
-    "full:production": "npm-run-all dll:production production",
+    "full:production": "npm-run-all dll:production build:production",
     "full:production:ci": "npm-run-all dll:production:ci production:ci",
     "test": "gulp test",
     "test:dev": "karma start --auto-watch",
