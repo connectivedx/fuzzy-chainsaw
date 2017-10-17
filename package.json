@@ -47,6 +47,7 @@
     "babel-plugin-add-react-displayname": "^0.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
@@ -58,7 +59,7 @@
     "del": "^3.0.0",
     "dopl": "0.2.0",
     "enhanced-resolve": "^3.4.1",
-    "enzyme": "^2.9.1",
+    "enzyme": "^3.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-loader": "^1.9.0",
@@ -125,6 +126,7 @@
   },
   "dependencies": {
     "dom-select": "^1.1.1",
+    "enzyme-adapter-react-16": "^1.0.2",
     "html-loader": "^0.4.5",
     "http-server": "^0.10.0",
     "minimatch": "^3.0.4",
@@ -133,8 +135,8 @@
     "pretty-data": "^0.40.0",
     "prop-types": "^15.5.10",
     "rand-token": "^0.3.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-element-to-jsx-string": "^10.1.0"
   }
 }
