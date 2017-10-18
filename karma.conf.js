@@ -8,6 +8,7 @@ module.exports = (config) => {
   config.set({
     browsers: ['PhantomJS'],
     files: [
+      'node_modules/babel-polyfill/dist/polyfill.js',
       { pattern: dest(`assets/dlls/vendor-${hash}.js`), watched: false },
       { pattern: dest(`assets/dlls/styleguide-${hash}.js`), watched: false },
       { pattern: dest(`assets/dlls/tests-${hash}.js`), watched: false },
