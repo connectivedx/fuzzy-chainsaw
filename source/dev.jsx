@@ -1,4 +1,4 @@
-import Dom from 'react-dom/server';
+import Dom from 'react-dom';
 import assign from 'object.assign';
 
 import { getModule } from './static';
@@ -17,7 +17,7 @@ const {
 } = getModule(location.pathname.replace(/\.html/, ''));
 
 // mock a server render
-document.querySelector('.root').innerHTML = Dom.renderToStaticMarkup(Component);
+Dom.render(Component, document.querySelector('.root'));
 document.title = pageTitle;
 
 // get module theme property or first theme in fc config
