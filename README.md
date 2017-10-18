@@ -125,6 +125,8 @@ BASE_URL=/this-path/ npm run build
 "baseUrl": "/this-path/",
 ```
 
+_Note: `BASE_URL` should always have leading and trailing slashes._
+
 
 ## Configuration
 
