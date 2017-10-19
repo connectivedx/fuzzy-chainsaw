@@ -112,11 +112,23 @@ DLLs are libraries of vendor files that are referenced by other tasks.  This spe
 
 #### BASE_URL
 
-The `BASE_URL` defines the root path where the bundled files will be located.  If you are uploading to a non-root path on a server (`http://myserver.com/this-path`) this will need to be defined.
+The `BASE_URL` defines the root path where the bundled files will be located.  If you are uploading to a non-root path on a server (`http://myserver.com/this-path/`) this will need to be defined. This can be done on a one-off basis via build commands, or permanently via `package.json`.
+
+If you are developing locally, or if your project will be served at the root of a domain or IP (`http://myserver.com/` or `http://133.713.37/`), you don't have to worry about configuring the `BASE_URL` at all.
+
+##### Define via build commands
 
 ```
 BASE_URL=/this-path/ npm run build
 ```
+
+##### Define via package.json
+
+```
+"baseUrl": "/this-path/",
+```
+
+_Note: `BASE_URL` should always have a leading and trailing slash._
 
 
 ## Configuration
