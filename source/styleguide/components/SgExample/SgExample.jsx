@@ -225,8 +225,9 @@ export const SgExample = (props) => {
         type="example"
         isActive
         className={exampleClassStack}
-        dangerouslySetInnerHTML={{ __html: htmlExample }}
-      />
+      >
+        {component}
+      </SgExample_Section>
 
       <SgExample_Section title="React" type="react">
         <pre>

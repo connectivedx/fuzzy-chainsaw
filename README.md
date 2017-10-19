@@ -42,7 +42,7 @@ Use these commands to develop a local copy of the website. These will watch for 
 
 Command | Description
 --- | ---
-`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
+`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explanation](#dll-explaination)
 `dev` | Starts the development server and karama test runner in watch modes.
 `build:dev` | Runs webpack-dev-server that watches for file changes. Starts a local sever at `http://0.0.0.0:8080` (also accessible at `http://localhost:8080`)
 `test:dev` | Runs the karma test runner in watch mode
@@ -53,7 +53,7 @@ Use build commands if you want to quickly build a static representation of your 
 
 Command | Description
 --- | ---
-`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
+`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explanation](#dll-explaination)
 `build` | Compiles source files into output directory
 `test` | Runs the Karama test in single run mode
 `start` | Starts a static server at `http://localhost:8081` pointing at the output directory
@@ -64,15 +64,16 @@ Use production commands to build a minimized static representation of the websit
 
 Command | Description
 --- | ---
-`dll:production` | Builds a production ready DLL library of vendor files. [DLL Explaination](#dll-explaination)
-`production` | Compiles and minimizes source files into output directory
+`dll:production` | Builds a production ready DLL library of vendor files. [DLL Explanation](#dll-explaination)
+`build:production` | Compiles and minimizes source files into output directory
+`production` | Runs `dll:production` and `build:production` tasks
 
 
 ### Integration Tasks
 
 Command | Description
 --- | ---
-`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explaination](#dll-explaination)
+`dll` | Builds a DLL library of vendor files to speed up future builds. [DLL Explanation](#dll-explaination)
 `watch` | Compiles src directory to output directory and watches for file changes.
 `dll:ci` | Builds a DLL library of only the vendor files required only for integration.
 `build:ci` | Compiles only source files required for backend integration.
@@ -103,7 +104,7 @@ Command | Description
 `new:composition [name]` | Creates a new stateless integration component in the `/source/compositions` directory.
 
 
-#### DLL Explaination
+#### DLL Explanation
 
 DLLs are libraries of vendor files that are referenced by other tasks.  This speeds up subsequent runs by referencing the DLL dependency tree instead of rebuilding it for every tasks. DLL files will only change when `node_modules` are update, and will be automatically generated after each `npm install` or `yarn`.
 
@@ -111,11 +112,23 @@ DLLs are libraries of vendor files that are referenced by other tasks.  This spe
 
 #### BASE_URL
 
-The `BASE_URL` defines the root path where the bundled files will be located.  If you are uploading to a non-root path on a server (`http://myserver.com/this-path`) this will need to be defined.
+The `BASE_URL` defines the root path where the bundled files will be located.  If you are uploading to a non-root path on a server (`http://myserver.com/this-path/`) this will need to be defined. This can be done on a one-off basis via build commands, or permanently via `package.json`.
+
+If you are developing locally, or if your project will be served at the root of a domain or IP (`http://myserver.com/` or `http://133.713.37/`), you don't have to worry about configuring the `BASE_URL` at all.
+
+##### Define via build commands
 
 ```
 BASE_URL=/this-path/ npm run build
 ```
+
+##### Define via package.json
+
+```
+"baseUrl": "/this-path/",
+```
+
+_Note: `BASE_URL` should always have a leading and trailing slash._
 
 
 ## Configuration
@@ -200,7 +213,17 @@ Since you will likely be creating a number of tags and components, there are als
 npm run new:tag [Name]
 npm run new:component [Name]
 npm run new:composition [Name]
+npm run new:stateful [Name]
 ```
+
+Components come in a variety of shapes and sizes!
+
+- Tags are small, reuseable elements that can be used in many contexts.
+- Components are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
+- Compositions are specific arrangments of Tags and Components with minimal styling requirements.
+- Stateful components are elements that require tracking of internal state properties. The scaffolding for Stateful components intends for a more application-based implementation of React.
+
+You can read more on Stateless vs. Stateful components [here](https://reactjs.org/docs/state-and-lifecycle.html)
 
 > Remember that elements names use [PascalCase](https://en.wikipedia.org/wiki/PascalCase)
 
