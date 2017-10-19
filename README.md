@@ -213,7 +213,17 @@ Since you will likely be creating a number of tags and components, there are als
 npm run new:tag [Name]
 npm run new:component [Name]
 npm run new:composition [Name]
+npm run new:stateful [Name]
 ```
+
+Components come in a variety of shapes and sizes!
+
+- Tags are small, reuseable elements that can be used in many contexts.
+- Components are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
+- Compositions are specific arrangments of Tags and Components with minimal styling requirements.
+- Stateful components are elements that require tracking of internal state properties. The scaffolding for Stateful components intends for a more application-based implementation of React.
+
+You can read more on Stateless vs. Stateful components [here](https://reactjs.org/docs/state-and-lifecycle.html)
 
 > Remember that elements names use [PascalCase](https://en.wikipedia.org/wiki/PascalCase)
 
