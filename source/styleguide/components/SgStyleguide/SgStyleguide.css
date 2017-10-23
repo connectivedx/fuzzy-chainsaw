@@ -27,7 +27,6 @@
   }
 
   &__theme-link {
-    color: var(--color-black);
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase;
