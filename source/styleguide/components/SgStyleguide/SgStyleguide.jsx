@@ -94,6 +94,24 @@ SgStyleguide_Examples.propTypes = {
   }))
 };
 
+const SgStyleguide__ThemeLinks = () => {
+  const activeTheme = global.location // eslint-disable-line
+    ? parse(global.location.search.substr(1)).theme
+    : themes.length > 0 ? themes[0].id : undefined;
+
+  return (
+    <div className="SgStyleguide__themes">
+      { themes
+        .map((theme) => <a className={theme.id === activeTheme ? 'SgStyleguide__theme-link SgStyleguide__theme-link--active' : 'SgStyleguide__theme-link'} key={theme.id} href={`?theme=${theme.id}`}>{theme.name}</a>)
+        .reduce((list, item, i) => {
+          if (i > 0) list.push(<span key={`seperator-${i}`}>/</span>);
+          list.push(item);
+          return list;
+        }, [])
+      }
+    </div>
+  );
+};
 
 export const SgStyleguide = ({
   name = 'Generic Component',
@@ -106,18 +124,7 @@ export const SgStyleguide = ({
     <div className="SgStyleguide" id="content">
       <Rhythm size="small" className="SgStyleguide__header">
         <Heading level="h1">{name}</Heading>
-        { themes.length > 1 &&
-          <div className="SgStyleguide__themes">
-            { themes
-              .map((theme) => <a key={theme.id} href={`?theme=${theme.id}`}>{theme.name}</a>)
-              .reduce((list, item, i) => {
-                if (i > 0) list.push(<span key={`seperator-${i}`}>/</span>);
-                list.push(item);
-                return list;
-              }, [])
-            }
-          </div>
-        }
+        {themes.length > 1 && <SgStyleguide__ThemeLinks />}
       </Rhythm>
 
       { readme && <SgStyleguide_Readme readme={readme} /> }
