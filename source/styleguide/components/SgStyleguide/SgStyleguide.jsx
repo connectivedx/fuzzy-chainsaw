@@ -9,6 +9,22 @@ import Example from '@sg-components/SgExample/SgExample';
 import { themes } from '@source/fc-config';
 
 
+const getActiveTheme = (location) => {
+  if (location) {
+    return parse(global.location.search.substr(1)).theme;
+  } else if (themes.length > 0) {
+    return themes[0].id;
+  }
+  return undefined;
+};
+
+const getLinkClassing = (theme) => {
+  if (theme.id === getActiveTheme(global.location)) {
+    return 'SgStyleguide__theme-link SgStyleguide__theme-link--active';
+  }
+  return 'SgStyleguide__theme-link';
+};
+
 export const SgStyleguide_Readme = (props) => (
   <div id="readme" className="SgStyleguide__section SgStyleguide__section--readme">
     <Rhythm className="SgStyleguide__section-header">
@@ -29,11 +45,8 @@ SgStyleguide_Readme.propTypes = {
   readme: PropTypes.string
 };
 
-
 export const SgStyleguide_Examples = (props) => {
-  const theme = global.location // eslint-disable-line
-    ? parse(global.location.search.substr(1)).theme
-    : themes.length > 0 ? themes[0].id : undefined;
+  const theme = getActiveTheme(global.location);
 
   const examples = props.examples
     .filter((ex) => {
@@ -59,7 +72,7 @@ export const SgStyleguide_Examples = (props) => {
         <Rhythm size="small">
           {
             examples.map((e) => (
-              <div key={e.slug} className="SgStyleguide__example-link">
+              <div key={e.slug} className={getLinkClassing}>
                 <a href={`#${e.slug}`} value={e.name}>
                   {e.name}
                 </a>
@@ -94,24 +107,18 @@ SgStyleguide_Examples.propTypes = {
   }))
 };
 
-const SgStyleguide__ThemeLinks = () => {
-  const activeTheme = global.location // eslint-disable-line
-    ? parse(global.location.search.substr(1)).theme
-    : themes.length > 0 ? themes[0].id : undefined;
-
-  return (
-    <div className="SgStyleguide__themes">
-      { themes
-        .map((theme) => <a className={theme.id === activeTheme ? 'SgStyleguide__theme-link SgStyleguide__theme-link--active' : 'SgStyleguide__theme-link'} key={theme.id} href={`?theme=${theme.id}`}>{theme.name}</a>)
-        .reduce((list, item, i) => {
-          if (i > 0) list.push(<span key={`seperator-${i}`}>/</span>);
-          list.push(item);
-          return list;
-        }, [])
-      }
-    </div>
-  );
-};
+const SgStyleguide__ThemeLinks = () => (
+  <div className="SgStyleguide__themes">
+    { themes
+      .map((theme) => <a className={getLinkClassing(theme)} key={theme.id} href={`?theme=${theme.id}`}>{theme.name}</a>)
+      .reduce((list, item, i) => {
+        if (i > 0) list.push(<span key={`seperator-${i}`}>/</span>);
+        list.push(item);
+        return list;
+      }, [])
+    }
+  </div>
+);
 
 export const SgStyleguide = ({
   name = 'Generic Component',
@@ -138,6 +145,5 @@ SgStyleguide.propTypes = {
   readme: PropTypes.string,
   examples: PropTypes.array
 };
-
 
 export default SgStyleguide;
