@@ -7,8 +7,11 @@
 
 body {
   font-family: var(--type-font-family);
-  font-size: var(--type-font-size);
   line-height: var(--type-line-height);
+
+  @media (--responsive-type) {
+    font-size: calc(1rem + (1.25 - 1) * (100vw - 20rem ) / (80 - 20));
+  }
 }
 
 pre,

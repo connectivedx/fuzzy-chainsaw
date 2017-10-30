@@ -10,10 +10,43 @@
   &--medium { font-weight: 500; }
 
   /* levels */
-  &--h1 { font-size: 2em; }
-  &--h2 { font-size: 1.6em; }
-  &--h3 { font-size: 1.4em; }
-  &--h4 { font-size: 1.3em; }
-  &--h5 { font-size: 1.2em; }
-  &--h6 { font-size: 1.1em; }
+  &--h1 {
+    font-size: 2em;
+
+    @media (--small) {
+      font-size: 6.25vw; /* 48px / 768px * 100 */
+    }
+
+    @media (--medium) {
+      font-size: 4rem; /* 64px / 16px */
+    }
+  }
+
+  &--h2 {
+    font-size: 1.75em;
+
+    @media (--small) {
+      font-size: 4.16vw; /* 32px / 768px * 100 */
+    }
+
+    @media (--medium) {
+      font-size: 2.25rem; /* 36px / 16px */
+    }
+  }
+
+  &--h3 {
+    font-size: 1.5em;
+
+    @media (--small) {
+      font-size: 3.38vw; /* 26px / 768px * 100 */
+    }
+
+    @media (--medium) {
+      font-size: 1.75rem; /* 28px / 16px */
+    }
+  }
+
+  &--h4 { font-size: 1.25em; }
+  &--h5 { font-size: 1.125em; }
+  &--h6 { font-size: 1em; }
 }

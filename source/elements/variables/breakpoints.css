@@ -16,6 +16,9 @@
   @custom-media --large only screen and (width >= 1024px);
   @custom-media --extra-large only screen and (width >= 1152px);
 
+  /* 320px (2oem) and 1280px (60em) breakpoints between which responsive typography is being applied */
+  @custom-media --responsive-type only screen and (width >= 20em) and (width <= 80em);
+
   /* mobile only breakpoints */
   @custom-media --below-extra-small only screen and (width < 384px);
   @custom-media --below-small only screen and (width < 512px);
