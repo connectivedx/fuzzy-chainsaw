@@ -219,7 +219,7 @@ export const SgExample = (props) => {
         <SgExample_Tab slug={slug} name="react">React</SgExample_Tab>
         <SgExample_Tab slug={slug} name="html">HTML</SgExample_Tab>
         <SgExample_Tab slug={slug} name="json">JSON</SgExample_Tab>
-        <SgExample_Tab slug={slug} name="json">Notes</SgExample_Tab>
+        <SgExample_Tab slug={slug} name="notes">Notes</SgExample_Tab>
       </SgExample_Header>
 
       <SgExample_Section
