@@ -249,7 +249,7 @@ export const SgExample = (props) => {
         </pre>
       </SgExample_Section>
 
-      <SgExample_Section title="JSON" type="json">
+      <SgExample_Section title="NOTES" type="string">
         <pre>
           {devNotes}
         </pre>
