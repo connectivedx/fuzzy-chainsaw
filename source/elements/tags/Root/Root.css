@@ -5,13 +5,19 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--type-font-family);
-  line-height: var(--type-line-height);
+:root,
+html {
+  font-size: var(--type-font-size);
 
   @media (--responsive-type) {
-    font-size: calc(1rem + (1.25 - 1) * (100vw - 20rem ) / (80 - 20));
+    font-size: calc(1rem + (1.25 - 1) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
   }
+}
+
+body {
+  font-family: var(--type-font-family);
+  font-size: var(--font-size--min-unit);
+  line-height: var(--type-line-height);
 }
 
 pre,

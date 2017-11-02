@@ -19,8 +19,8 @@
   --font-size--min-unit: 1rem;
   --font-size--max: 1.25;
   --font-size--max-unit: 1.25rem;
-  --min-width: 20;
-  --min-width-unit: 20em;
-  --max-width: 80;
-  --max-width-unit: 80em;
+  --min-width: 640;
+  --min-width-unit: 640px;
+  --max-width: 1024;
+  --max-width-unit: 1024px;
 }
