@@ -219,7 +219,9 @@ export const SgExample = (props) => {
         <SgExample_Tab slug={slug} name="react">React</SgExample_Tab>
         <SgExample_Tab slug={slug} name="html">HTML</SgExample_Tab>
         <SgExample_Tab slug={slug} name="json">JSON</SgExample_Tab>
-        <SgExample_Tab slug={slug} name="notes">Notes</SgExample_Tab>
+        {devNotes &&
+          <SgExample_Tab slug={slug} name="notes">Notes</SgExample_Tab>
+        }
       </SgExample_Header>
 
       <SgExample_Section
@@ -249,11 +251,13 @@ export const SgExample = (props) => {
         </pre>
       </SgExample_Section>
 
-      <SgExample_Section title="NOTES" type="string">
-        <pre>
-          {devNotes}
-        </pre>
-      </SgExample_Section>
+      {devNotes &&
+        <SgExample_Section title="NOTES" type="string">
+          <pre>
+            {devNotes}
+          </pre>
+        </SgExample_Section>
+      }
     </SgExample_Wrapper>
   );
 };
