@@ -1,5 +1,5 @@
 # Accordion
-Accepts children as content containers to be transposes into HTML5 detail / summary accordion sections.
+Accepts children (any node type) as content containers to be transposes into HTML5 detail / summary accordion sections.
 
 ## Props
 
@@ -21,4 +21,4 @@ Property | Function
 `weight` | Defines the heading font weight for an accordion section.
 `icon` | Defines a stateless icon to be used for an accordion section.
 `openIcon` | Defines the open state icon for an accordion section.
-`closeIcon` | Defines the close icon for an accordion section.
+`closeIcon` | Defines the close state icon for an accordion section.
