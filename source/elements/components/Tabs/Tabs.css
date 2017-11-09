@@ -1,0 +1,150 @@
+:root {
+  --tabs__tabbing-textAlignment: center;
+  --tabs__tabbing-padding: 1rem;
+  --tabs__pane-padding: 4rem;
+  --tabs__vertical-pane-size: 70%;
+  --tabs__vertical-tabbings-size: 30%;
+  --tabs__border-size: 1px;
+  --tabs__border-style: solid;
+  --tabs__border-color: var(--color-gray);
+  --tabs__border: var(--tabs__border-size) var(--tabs__border-style) var(--tabs__border-color);
+}
+
+.Tabs {
+  &__tabbings {
+    border: var(--tabs__border);
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+
+    &::before {
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    & .Link {
+      display: block;
+      padding: var(--tabs__tabbing-padding);
+      text-align: var(--tabs__tabbing-textAlignment);
+    }
+  }
+
+  &__panes {
+    border: var(--tabs__border);
+    display: none;
+    padding: var(--tabs__pane-padding);
+  }
+
+  & [aria-hidden] {
+    display: none;
+  }
+
+  & > input:checked,
+  & > input[data-checked="true"] {
+    & + .Tabs__tabbings {
+      & + .Tabs__panes {
+        display: block;
+      }
+    }
+  }
+
+  /* Variations with alignemnts */
+  @media (--medium) {
+    /* Horizontal Tabs */
+    &--horizontal--top,
+    &--horizontal--bottom {
+      display: flex;
+      flex-flow: row wrap;
+
+      & .Tabs__tabbings {
+        border-right: none;
+        flex: 1 auto;
+        order: 1;
+        width: auto;
+
+        &:last-of-type { border-right: var(--tabs__border); }
+      }
+
+      & .Tabs__panes {
+        flex: 1 auto;
+        flex-basis: 100%;
+      }
+    }
+
+    &--horizontal--top {
+      & .Tabs__panes {
+        border-top: none;
+        order: 2;
+      }
+
+      & > input:checked {
+        & + .Tabs__tabbings { border-bottom: none; }
+      }
+    }
+
+    &--horizontal--bottom {
+      & .Tabs__panes {
+        border-bottom: none;
+        order: 0;
+      }
+
+      & > input:checked {
+        & + .Tabs__tabbings { border-top: none; }
+      }
+    }
+
+    /* Vertical Tabs */
+    &--vertical--left,
+    &--vertical--right {
+      & .Tabs__tabbings {
+        background-color: #fff;
+        border-top: none;
+        width: var(--tabs__vertical-tabbings-size);
+        position: relative;
+        z-index: 2;
+
+        &:first-of-type { border-top: var(--tabs__border); }
+      }
+
+      & .Tabs__panes {
+        position: relative;
+        width: var(--tabs__vertical-pane-size);
+        z-index: 1;
+      }
+    }
+
+    &--vertical--left {
+      & .Tabs__tabbings {
+        clear: left;
+        float: left;
+
+        &.active { border-right: none; }
+      }
+
+      & .Tabs__panes {
+        float: right;
+        left: -0.05rem;
+      }
+    }
+
+    &--vertical--right {
+      & .Tabs__tabbings {
+        clear: right;
+        float: right;
+
+        &.active { border-left: none; }
+      }
+
+      & .Tabs__panes {
+        float: left;
+        right: -0.05rem;
+      }
+    }
+  }
+}
