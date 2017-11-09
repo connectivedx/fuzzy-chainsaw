@@ -9,60 +9,63 @@
   &--bold { font-weight: 700; }
   &--medium { font-weight: 500; }
 
-  /* levels */
+  /* levels
+    For min heading font size and to calculate modular scaling, used: http://type-scale.com/?size=25&scale=1.125&text=A%20Visual%20Type%20Scale&webfont=Open+Sans&font-family=%27Open%20Sans%27,%20sans-serif&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=#333
+    For max heading font size, used http://type-scale.com/?size=25&scale=1.250&text=A%20Visual%20Type%20Scale&webfont=Open+Sans&font-family=%27Open%20Sans%27,%20sans-serif&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=#333
+  */
   &--h1 {
-    font-size: 3.2rem; /* 64/1.25=51.2px 51.2px/16=3.2 */
-    margin-top: calc((1.4rem - 3.2rem) + 1.4rem);
+    font-size: 1.802rem;
+    margin-top: calc((1.4rem - 1.802rem) + 1.4rem);
     margin-bottom: 1.4rem;
 
     @media (--responsive-type) {
-      font-size: calc(3.2rem + (4 - 3.2) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+      font-size: calc(1.802rem + (3.051 - 1.802) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
     }
 
     @media (--large) {
-      font-size: 4rem; /* 64px / 16px */
+      font-size: 3.051rem;
     }
   }
 
   &--h2 {
-    font-size: 1.8rem; /* 36/1.25=28.8px 28.8px/16=3.2 */
-    margin-top: calc((1.4rem - 1.8rem) + 1.4rem);
+    font-size: 1.602rem;
+    margin-top: calc((1.4rem - 1.602rem) + 1.4rem);
     margin-bottom: 1.4rem;
 
     @media (--responsive-type) {
-      font-size: calc(2.25rem + (2.25 - 1.8) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+      font-size: calc(1.602rem + (2.441 - 1.602) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
     }
 
     @media (--large) {
-      font-size: 2.25rem; /* 36px / 16px */
+      font-size: 2.441rem;
     }
   }
 
   &--h3 {
-    font-size: 1.5rem;
-    margin-top: calc((1.4rem - 1.5rem) + 1.4rem);
+    font-size: 1.424rem;
+    margin-top: calc((1.4rem - 1.424rem) + 1.4rem);
     margin-bottom: 1.4rem;
 
     @media (--responsive-type) {
-      font-size: calc(1.75rem + (1.75 - 1.5) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+      font-size: calc(1.424rem + (1.953 - 1.424) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
     }
 
     @media (--large) {
-      font-size: 1.75rem; /* 28px / 16px */
+      font-size: 1.953rem;
     }
   }
 
   &--h4 {
-    font-size: 1.25rem;
-    margin-top: calc((1.4rem - 1.25rem) + 1.4rem);
+    font-size: 1.266rem;
+    margin-top: calc((1.4rem - 1.266rem) + 1.4rem);
     margin-bottom: 1.4rem;
 
     @media (--responsive-type) {
-      font-size: calc(1.5rem + (1.5 - 1.25) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+      font-size: calc(1.266rem + (1.563 - 1.266) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
     }
 
     @media (--large) {
-      font-size: 1.5rem; /* 28px / 16px */
+      font-size: 1.563em;
     }
   }
 
@@ -72,11 +75,11 @@
     margin-bottom: 1.4rem;
 
     @media (--responsive-type) {
-      font-size: calc(1.25rem + (1.25 - 1.125) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+      font-size: calc(1.125rem + (1.25 - 1.125) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
     }
 
     @media (--large) {
-      font-size: 1.25rem; /* 36px / 16px */
+      font-size: 1.25rem;
     }
   }
 
@@ -84,5 +87,13 @@
     font-size: 1rem;
     margin-top: calc((1.4rem - 1rem) + 1.4rem);
     margin-bottom: 1.4rem;
+
+    @media (--responsive-type) {
+      font-size: calc(1rem + (1 - 1) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+    }
+
+    @media (--large) {
+      font-size: 1rem;
+    }
   }
 }

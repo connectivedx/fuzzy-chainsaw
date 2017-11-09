@@ -8,6 +8,9 @@
 
   /* The base line height for the root html element. */
   --type-line-height: 1.4;
+  --type-line-height--min: 1.5;
+  --type-line-height--min-unit: 1.5em;
+  --type-line-height--max: 1.8;
 
   /* The base font-family for the root html element. */
   --type-font-family: var(--font-stack--default);
