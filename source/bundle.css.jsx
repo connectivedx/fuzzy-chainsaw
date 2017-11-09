@@ -12,3 +12,4 @@ require('@tags/RichText/RichText.css');
 requireAll(require.context('@tags/', true, /\.css$/));
 requireAll(require.context('@components/', true, /\.css$/));
 requireAll(require.context('@compositions/', true, /\.css$/));
+requireAll(require.context('@modifiers', true, /\.css$/));
