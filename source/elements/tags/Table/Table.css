@@ -1,0 +1,253 @@
+@import "../Heading/Heading.css";
+
+:root {
+  --padding-default: 1.25em;
+  --padding-half: calc(var(--padding-default) * 0.5);
+}
+
+.Table {
+  & caption {
+    text-align: left;
+    padding: var(--padding-half) var(--padding-default);
+  }
+
+  & thead {
+    & th,
+    & td {
+      padding-top: calc(var(--padding-half) * 0.75);
+    }
+  }
+
+  & th,
+  & td {
+    padding: calc(var(--padding-half) * 0.5) var(--padding-default);
+    vertical-align: middle;
+  }
+
+  & th {
+    font-weight: bold;
+  }
+
+  & tbody {
+    /* maybe should be headings? */
+    & th {
+      @extend .Heading;
+      @extend .Heading--h4;
+    }
+  }
+
+  /* this will be entered using a rich text */
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-weight: bold;
+  }
+
+  & small {
+    font-size: 0.9em;
+  }
+
+  /* variants */
+  &--default,
+  &--auto {
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: left;
+    font-size: 0.9em;
+    padding-right: 1px;
+  }
+
+  &--default {
+    & .Table__root {
+      width: 100%;
+      min-width: 640px;
+    }
+
+    & th,
+    & td {
+      min-width: 12em;
+    }
+  }
+
+  &--auto {
+    display: inline-block;
+  }
+
+  &--preferences {
+    & .Table__root {
+      width: 100%;
+    }
+
+    & thead {
+      & th,
+      & td {
+        padding-top: calc(var(--padding-half) * 1.25);
+      }
+    }
+
+    & th,
+    & td {
+      padding: var(--padding-half) calc(var(--padding-half) * 0.5);
+
+      &:first-child {
+        min-width: 200px;
+      }
+
+      &:not(:first-child) {
+        text-align: center;
+        vertical-align: top;
+      }
+
+      &:first-child { padding-left: var(--padding-default); }
+
+      &:last-child { padding-right: var(--padding-default); }
+    }
+  }
+
+  &--responsive {
+    & table {
+      border-collapse: separate;
+      width: 100%;
+
+      & th,
+      & td {
+        padding: calc(var(--padding-default) * 0.75);
+      }
+
+      & thead {
+        background-color: transparent;
+
+        & th {
+          border-bottom: 1px solid var(--color-shade--10);
+          text-align: left;
+          text-transform: uppercase;
+        }
+      }
+
+      & tbody {
+        td {
+          background-color: var(--color-shade--03);
+          border-top: 12px solid var(--color-white);
+        }
+      }
+
+      & tfoot {
+        td {
+          font-weight: var(--font-weight--bold);
+        }
+      }
+
+      @media only screen and (width <= 45em) {
+        border-collapse: collapse;
+
+        & thead {
+          display: none;
+          visibility: hidden;
+        }
+
+        & tr {
+          &::after {
+            content: '';
+            display: block;
+            clear: both;
+          }
+        }
+
+        & td {
+          display: block;
+          padding: 0.5rem 1rem;
+          position: relative;
+          text-align: center;
+          width: 100%;
+
+          &:empty {
+            display: none;
+          }
+
+          &:first-of-type {
+            font-size: 1rem;
+            padding: var(--padding-default);
+            text-transform: uppercase;
+            width: 100%;
+
+            &::after {
+              display: none;
+
+              @nest .table--clear & {
+                display: block;
+              }
+            }
+          }
+
+          &:nth-of-type(n+2) {
+            border-top: none;
+            padding-top: 2rem;
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &::after {
+            content: attr(data-heading);
+            display: block;
+            font-size: 0.85rem;
+            font-weight: var(--font-weight--bold);
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+            width: 100%;
+
+            tfoot & {
+              color: white;
+            }
+          }
+        }
+
+        & tbody {
+          & tr {
+            &:last-of-type td {
+              border-bottom: 1px solid var(--color-shade--10);
+            }
+          }
+
+          & td {
+            background-color: transparent;
+            border-top: 0;
+          }
+        }
+
+        & tfoot {
+          & td {
+            background-color: var(--color-shade--10);
+            border-top: 1px solid var(--color-shade--10);
+            margin-top: 0;
+
+            &::after {
+              top: 0.5rem;
+            }
+
+            &:first-of-type {
+              background-color: var(--color-shade--10);
+
+              &::after {
+                display: none;
+              }
+            }
+
+            &:last-of-type {
+              &::after {
+                top: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
