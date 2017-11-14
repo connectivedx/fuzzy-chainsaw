@@ -34,7 +34,7 @@ Table.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'auto', 'preferences', 'responsive']),
+  variant: PropTypes.oneOf(['default', 'auto', 'inline-data', 'responsive']),
   children: PropTypes.node
 };
 
