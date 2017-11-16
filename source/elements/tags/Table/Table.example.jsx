@@ -5,7 +5,7 @@ export default [{
   component: (
     <Table>
       <caption>
-        Table caption
+        Table caption can be a headline describing table content or a plain text.
       </caption>
       <thead>
         <tr>

@@ -1,36 +1,42 @@
 :root {
-  --padding-default: 1.25em;
-  --padding-half: calc(var(--padding-default) * 0.5);
-  --table-cell--border: 1px solid var(--color-shade--03);
-  --table-cell--bg-color: var(--color-shade--03);
+  --border-collapse: separate;
+  --cell--padding: 0.75em;
+  --cell--text-align: left;
+  --cell--border: 1px solid var(--color-shade--10);
+  --cell--bg-color: var(--color-shade--05);
+  --cell--display: table-cell;
+  --label-color: var(--color-shade--90);
+  --td--bg-color: transparent;
+  --td-value--display: none;
+  --td-value--font-size: 1rem;
+  --thead--visibility: table-header-group;
+  --txt--transform-toggle: none;
 }
 
 .Table {
+  & table {
+    border-spacing: 0;
+    margin: 1em 0;
+    width: 100%;
+  }
+
   & caption {
     text-align: left;
-    padding: var(--padding-half) var(--padding-default);
+    padding: var(--cell--padding);
   }
 
-  & thead {
-    & th,
-    & td {
-      padding-top: calc(var(--padding-half) * 0.75);
-    }
+  thead {
+    background-color: var(--cell--bg-color);
+    display: var(--thead--visibility);
+    font-weight: bold;
+    text-transform: uppercase;
   }
 
-  & th,
-  & td {
-    padding: calc(var(--padding-half) * 0.5) var(--padding-default);
-  }
-
-  & th {
-    font-weight: var(--font-weight--bold);
-  }
-
-  & tfoot {
-    & td {
-      font-weight: var(--font-weight--bold);
-    }
+  th,
+  td {
+    border-bottom: var(--cell--border);
+    padding: var(--cell--padding);
+    text-align: var(--cell--text-align);
   }
 
   & small {
@@ -62,145 +68,118 @@
   }
 
   &--responsive {
-    & table {
-      border-collapse: separate;
-      width: 100%;
+    & table { border-collapse: var(--border-collapse); }
 
-      & th,
+    td {
+      display: var(--cell--display);
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    tbody,
+    tfoot {
       & td {
-        border-bottom: var(--table-cell--border);
-        padding: calc(var(--padding-default) * 0.75);
+        &:first-of-type { background-color: var(--cell--bg-color); }
+
+        &:not(:first-of-type)::before {
+          content: attr(data-heading);
+          color: var(--label-color);
+          display: var(--td-value--display);
+          font-weight: var(--font-weight--normal);
+          margin-bottom: 0.5em;
+        }
+      }
+
+      /* data values to be displayed inline on small screens, vs. stacked */
+      .table--inline & {
+        & td:not(:first-of-type) {
+          text-align: left;
+
+          &::before {
+            left: 2%;
+            position: absolute;
+          }
+        }
+      }
+    }
+
+    tbody {
+      & td {
+        &:first-of-type {
+          background-color: var(--td--bg-color);
+        }
+      }
+    }
+
+    tfoot {
+      background-color: var(--cell--bg-color);
+      font-weight: var(--font-weight--bold);
+    }
+
+    @media only screen and (width <= 45em) {
+      & table {
+        border-collapse: collapse;
+        position: relative;
       }
 
       & thead {
-        background-color: transparent;
-
-        & th {
-          text-align: left;
-          text-transform: uppercase;
-        }
+        display: none;
+        visibility: hidden;
       }
 
-      & tfoot {
-        td {
-          background-color: var(--table-cell--bg-color);
-          font-weight: var(--font-weight--bold);
-        }
-      }
-
-      @media only screen and (width <= 45em) {
-        border-collapse: collapse;
-
-        & thead {
-          display: none;
-          visibility: hidden;
-        }
-
-        & tr {
-          &::after {
-            content: '';
-            display: block;
-            clear: both;
-          }
-        }
-
-        & td {
-          font-weight: var(--font-weight--normal);
+      tr {
+        &::after {
+          content: '';
           display: block;
-          padding: 0.5rem 1rem;
-          position: relative;
-          text-align: center;
-          width: 100%;
+          clear: both;
+        }
+      }
 
-          &:empty {
-            display: none;
-          }
+      th,
+      td {
+        display: block;
+        text-align: center;
+      }
 
+      tbody,
+      tfoot {
+        td {
           &:first-of-type {
-            font-size: 1rem;
-            padding: var(--padding-default);
-            text-transform: uppercase;
-            width: 100%;
-
-            &::after {
-              display: none;
-
-              @nest .table--clear & {
-                display: block;
-              }
-            }
-          }
-
-          &:nth-of-type(n+2) {
-            border-top: none;
-            padding-top: 2rem;
-          }
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-          &::after {
-            content: attr(data-heading);
-            display: block;
-            font-size: 0.85rem;
+            background-color: var(--cell--bg-color);
             font-weight: var(--font-weight--bold);
-            position: absolute;
-            top: 0;
-            left: 0;
-            line-height: 1.2;
             text-transform: uppercase;
-            width: 100%;
-
-            tfoot & {
-              color: white;
-            }
-          }
-        }
-
-        & tbody {
-          & tr {
-            &:last-of-type td {
-              border-bottom: 1px solid var(--color-shade--10);
-            }
           }
 
-          & td {
-            background-color: transparent;
-            border-top: 0;
-          }
-        }
-
-        & tfoot {
-          & td {
-            background-color: var(--color-shade--10);
-            border-top: 1px solid var(--color-shade--10);
-            margin-top: 0;
-
-            &::after {
-              top: 0.5rem;
-            }
-
-            &:first-of-type {
-              background-color: var(--color-shade--10);
-
-              &::after {
-                display: none;
-              }
-            }
-
-            &:last-of-type {
-              &::after {
-                top: 0.5rem;
-              }
-            }
+          &:not(:first-of-type)::before {
+            content: attr(data-heading);
+            color: var(--label-color);
+            display: block;
+            font-weight: var(--font-weight--bold);
+            margin-bottom: 0.5em;
           }
         }
       }
     }
   }
 
-  &--inline-data {
+  &.Table--inline-data {
     @extend .Table--responsive;
+
+    @media only screen and (width <= 45em) {
+      /* data values to be displayed inline on small screens, vs. stacked */
+      td:not(:first-of-type) {
+        padding-left: 50%;
+        text-align: left;
+
+        &::before {
+          left: 2%;
+          position: absolute;
+        }
+      }
+    }
   }
 }
+
+table.RichText * + * { margin-top: 0; }
