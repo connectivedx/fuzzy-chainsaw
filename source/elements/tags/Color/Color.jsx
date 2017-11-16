@@ -12,7 +12,7 @@ export const Color = (props) => {
 
   const classStack = FcUtils.createClassStack([
     'Color',
-    `Color--${variant}`,
+    `Color--${variant} bg--${colorName}`,
     className
   ]);
 
@@ -23,7 +23,7 @@ export const Color = (props) => {
         <List key={color.name} variant="blank" className="Color--swatch__details">
           <List__item><strong>{color.name}</strong></List__item>
           <List__item>{color.hex}</List__item>
-          <List__item>{color.css};</List__item>
+          <List__item>{color.css}</List__item>
         </List>
       )) }
     </Tag>
@@ -48,7 +48,7 @@ Color.propTypes = {
   variant: PropTypes.oneOf(['default', 'swatch']),
   colorValues: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    colorName: PropTypes.PropTypes.oneOf(['white', 'science-blue']),
+    colorName: PropTypes.string.isRequired,
     hex: PropTypes.string.isRequired,
     css: PropTypes.string.isRequired
   }))

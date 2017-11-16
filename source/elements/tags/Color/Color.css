@@ -1,13 +1,17 @@
 .Color {
   &--swatch {
-    border: 1px solid var(--color-gray);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
     margin: 0.5em 0;
 
     &__preview {
-      border-bottom: 1px solid var(--color-gray);
+      border-bottom: 1px solid var(--color-shade--10);
       display: block;
       height: 4rem;
       width: 100%;
+
+      .Color-contrast-test & {
+        border: none;
+      }
 
       &--middle {
         display: block;
@@ -18,8 +22,18 @@
     }
 
     &__details {
+      background-color: white;
+      border: 1px solid white;
       font-size: 1rem;
-      margin: 0.5rem;
+      padding: 0.5rem;
+
+      .Color-contrast-test & {
+        background-color: transparent;
+        border: none;
+
+        & li:nth-child(1) { font-size: 150%; }
+        & li:nth-child(3) { font-size: 80%; }
+      }
     }
   }
 }
@@ -83,6 +97,17 @@
 
     &-white {
       background-color: var(--color-white);
+    }
+
+    .Color-contrast-test & {
+      &-dark,
+      &-black,
+      &-gray,
+      &-shade--75,
+      &-shade--90,
+      &-shade--100 {
+        color: white;
+      }
     }
   }
 
