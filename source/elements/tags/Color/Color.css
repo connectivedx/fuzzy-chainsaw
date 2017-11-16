@@ -1,0 +1,132 @@
+.Color {
+  &--swatch {
+    border: 1px solid var(--color-gray);
+    margin: 0.5em 0;
+
+    &__preview {
+      border-bottom: 1px solid var(--color-gray);
+      display: block;
+      height: 4rem;
+      width: 100%;
+
+      &--middle {
+        display: block;
+        font-size: 1rem;
+        padding: 0.5em;
+        text-align: center;
+      }
+    }
+
+    &__details {
+      font-size: 1rem;
+      margin: 0.5rem;
+    }
+  }
+}
+
+.bg {
+  &--color {
+    &-blue {
+      background-color: var(--color-blue);
+    }
+
+    &-red {
+      background-color: var(--color-red);
+    }
+
+    /* grayscale */
+    &-shade {
+      &--00 {
+        background-color: var(--color-shade--00);
+      }
+
+      &--03 {
+        background-color: var(--color-shade--03); /* #f7f7f7 */
+      }
+
+      &--05 {
+        background-color: var(--color-shade--05); /* #f2f2f2 */
+      }
+
+      &--10 {
+        background-color: var(--color-shade--10); /* #e8e8e8 */
+      }
+
+      &--25 {
+        background-color: var(--color-shade--25); /* #bfbfbf */
+      }
+
+      &--50 {
+        background-color: var(--color-shade--50); /* #8c8c8c */
+      }
+
+      &--75 {
+        background-color: var(--color-shade--75); /* #4b4b4b */
+      }
+
+      &--90 {
+        background-color: var(--color-shade--90); /* #2b2b2b */
+      }
+
+      &--100 {
+        background-color: var(--color-shade--100);
+      }
+    }
+
+    &-black {
+      background-color: var(--color-black);
+    }
+
+    &-gray {
+      background-color: var(--color-gray);
+    }
+
+    &-white {
+      background-color: var(--color-white);
+    }
+  }
+
+  /* generic theme colors */
+  &--generic-color {
+    &-blue {
+      background-color: var(--generic-color-blue);
+    }
+
+    &-green {
+      background-color: var(--generic-color-green);
+    }
+
+    &-red {
+      background-color: var(--generic-color-red);
+    }
+  }
+}
+
+.Grid--swatch {
+  @media (--small) {
+    display: grid;
+    grid-gap: 1.25em;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  }
+
+  &.Wrapper {
+    padding: 2em 0;
+  }
+}
+
+.txt {
+  &--large {
+    display: block;
+    font-size: 1.25rem;
+  }
+
+  &--normal {
+    display: block;
+    font-size: 1.125rem;
+  }
+
+  &--small {
+    display: block;
+    font-size: 1rem;
+  }
+}
