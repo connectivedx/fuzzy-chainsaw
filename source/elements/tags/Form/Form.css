@@ -1,16 +1,19 @@
-input,
+legend,
+label { display: block; }
+
+input:not([type="range"], [type="color"], [type="radio"], [type="checkbox"]),
 textarea,
 select {
-  border: 0.1rem solid var(--color-gray);
+  border: 0.01rem solid var(--color-shade--50);
   display: block;
   height: 2.75rem;
-  margin: 0.2em 0;
+  margin: 0.5rem 0;
   padding: 0.625rem;
   width: 100%;
   max-width: 28.75rem;
 
   &:focus {
-    outline: 2px dotted var(--color-shade--03);
+    outline: 2px dotted var(--color-blue);
     outline-offset: 3px;
   }
 }
@@ -20,6 +23,37 @@ fieldset {
   & .List--unordered {
     list-style: none;
     padding-left: 0;
+  }
+
+  & .List__item:not(.List--unordered .List__item) { margin-bottom: 1.25rem; }
+}
+
+[type="checkbox"],
+[type="radio"] {
+  display: none;
+}
+
+label {
+  [type="checkbox"] + &,
+  [type="radio"] + & {
+    margin-bottom: 0.75rem;
+
+    &::before {
+      background-color: white;
+      border-radius: 2px;
+      box-shadow: 0 0 0 1px var(--color-shade--25);
+      content: '\a0';
+      display: inline-block;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      margin-right: 0.5rem;
+      text-indent: 1rem;
+      width: 1.25rem;
+
+      [type="checkbox"]:checked & {
+        content: '\2713';
+      }
+    }
   }
 }
 
