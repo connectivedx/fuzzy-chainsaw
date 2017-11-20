@@ -41,3 +41,11 @@ test('<Form__input>', (t) => {
   t.ok(component.is('.Form__input'), 'tag class');
   t.end();
 });
+
+test('<Form__input>', (t) => {
+  const component = shallow(<Form__input>Hello World</Form__input>);
+  t.ok(component.is('input'), 'tag name');
+  t.ok(component.is('.Form__input'), 'tag class');
+  t.end();
+});
+

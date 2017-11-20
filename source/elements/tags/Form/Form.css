@@ -1,3 +1,28 @@
+input,
+textarea,
+select {
+  border: 0.1rem solid var(--color-gray);
+  display: block;
+  height: 2.75rem;
+  margin: 0.2em 0;
+  padding: 0.625rem;
+  width: 100%;
+  max-width: 28.75rem;
+
+  &:focus {
+    outline: 2px dotted var(--color-shade--03);
+    outline-offset: 3px;
+  }
+}
+
+fieldset {
+  & .List--ordered,
+  & .List--unordered {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
 .Form {
-  /* Put rules here */
+  /* styles */
 }

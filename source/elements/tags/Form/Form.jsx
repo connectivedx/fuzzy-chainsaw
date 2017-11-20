@@ -3,6 +3,7 @@ import {
   List__item
 } from '@tags/List/List';
 
+/* Form element */
 export const Form = (props) => {
   const {
     tagName: Tag,
@@ -41,6 +42,7 @@ Form.propTypes = {
   children: PropTypes.node
 };
 
+/* Fieldset element */
 export const Form__fieldset = (props) => {
   const {
     tagName: Fieldset,
@@ -88,6 +90,7 @@ Form__fieldset.propTypes = {
   children: PropTypes.node
 };
 
+/* Legend element */
 export const Form__legend = (props) => {
   const {
     tagName: Legend,
@@ -123,6 +126,7 @@ Form__legend.propTypes = {
   children: PropTypes.node
 };
 
+/* Label element */
 export const Form__label =
   FcUtils.createBasicComponent({
     name: 'Label',
@@ -133,10 +137,11 @@ export const Form__label =
     }
   });
 
+/* Input element */
 export const Form__input = (props) => {
   const {
     tagName: input,
-    forId,
+    id,
     type = 'text',
     className,
     ...attrs
@@ -149,7 +154,7 @@ export const Form__input = (props) => {
   ]);
 
   return (
-    <input id={forId} type={type} className={classStack} {...attrs} />
+    <input id={id} type={type} className={classStack} {...attrs} />
   );
 };
 
@@ -164,13 +169,12 @@ Form__input.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  forId: PropTypes.bool,
+  id: PropTypes.string,
   type: PropTypes.oneOf(['text', 'checkbox', 'radio', 'email', 'url', 'search', 'password', 'number', 'color', 'range', 'date', 'file', 'time', 'month', 'tel'])
 };
 
 export const Form__inputOptionSet = (props) => {
   const {
-    tagName,
     className,
     inputClassName,
     labelClassName,
@@ -213,7 +217,6 @@ export const Form__inputOptionSet = (props) => {
   return (
     <fieldset
       className={classStack}
-      labelHidden={labelHidden}
       {...attrs}
     >
       {
@@ -257,7 +260,6 @@ export const Form__inputOptionSet = (props) => {
 };
 
 Form__inputOptionSet.defaultProps = {
-  tagName: 'fieldset',
   variant: 'default',
   options: []
 };
@@ -272,7 +274,7 @@ Form__inputOptionSet.propTypes = {
   inputClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   legendHidden: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'table', 'required']),
+  variant: PropTypes.oneOf(['default', 'table', 'required', 'radio', 'checkbox']),
   children: PropTypes.node,
   id: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['radio', 'checkbox']).isRequired,
@@ -295,7 +297,7 @@ Form__inputOptionSet.propTypes = {
 export const Form__textarea = (props) => {
   const {
     tagName: Textarea,
-    forId,
+    id,
     rows,
     cols,
     children,
@@ -303,7 +305,7 @@ export const Form__textarea = (props) => {
   } = props;
 
   return (
-    <Textarea id={forId} rows={rows} cols={cols} {...attrs}>{children}</Textarea>
+    <Textarea id={id} rows={rows} cols={cols} {...attrs}>{children}</Textarea>
   );
 };
 
@@ -317,7 +319,7 @@ Form__textarea.propTypes = {
     PropTypes.element,
     PropTypes.func
   ]),
-  forId: PropTypes.bool,
+  id: PropTypes.string,
   rows: PropTypes.string,
   cols: PropTypes.string,
   children: PropTypes.node
@@ -349,7 +351,7 @@ Form__inputSelect.defaultProps = {
 };
 
 Form__inputSelect.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired
