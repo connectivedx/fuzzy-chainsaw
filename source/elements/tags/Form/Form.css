@@ -1,10 +1,24 @@
+@import "../Heading/Heading.css";
+@import "../Rhythm/Rhythm.css";
+
+:root {
+  --color-error: #cd2026;
+  --color-success: #4aa564;
+}
+
 legend,
 label { display: block; }
 
-input:not([type="range"], [type="color"], [type="radio"], [type="checkbox"]),
+legend {
+  @extend .Heading--h3;
+  @extend .Heading--bold;
+}
+
+input:not([type="range"], [type="color"], [type="checkbox"], [type="radio"]),
 textarea,
 select {
-  border: 0.01rem solid var(--color-shade--50);
+  border: 1px solid var(--color-shade--50);
+  cursor: auto;
   display: block;
   height: 2.75rem;
   margin: 0.5rem 0;
@@ -13,8 +27,16 @@ select {
   max-width: 28.75rem;
 
   &:focus {
-    outline: 2px dotted var(--color-blue);
+    outline: 2px dotted var(--color-shade--25);
     outline-offset: 3px;
+  }
+
+  &.input-error {
+    border: 3px solid var(--color-error);
+  }
+
+  &.input-success {
+    border: 3px solid var(--color-success);
   }
 }
 
@@ -25,33 +47,117 @@ fieldset {
     padding-left: 0;
   }
 
-  & .List__item:not(.List--unordered .List__item) { margin-bottom: 1.25rem; }
+  & .List--ordered { @extend .Rhythm--large; }
+  & .List--unordered { @extend .Rhythm--small; }
 }
 
 [type="checkbox"],
 [type="radio"] {
-  display: none;
+  &:checked,
+  &:not(:checked) {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+
+    & + label {
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1.25rem;
+      padding-left: 1.75rem;
+      position: relative;
+
+      &::before,
+      &::after {
+        background-color: white;
+        border: 0.0625rem solid var(--color-shade--25);
+        border-radius: 100%;
+        content: '';
+        position: absolute;
+      }
+
+      &::before {
+        left: 0;
+        top: 0;
+        height: 1.125em;
+        width: 1.125em;
+      }
+
+      &::after {
+        border: none;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+
+  &:focus + label::before {
+    border-color: var(--color-shade--50);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
 }
 
-label {
-  [type="checkbox"] + &,
-  [type="radio"] + & {
-    margin-bottom: 0.75rem;
+[type="radio"] {
+  &:not(:checked) + label::after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
 
-    &::before {
-      background-color: white;
-      border-radius: 2px;
-      box-shadow: 0 0 0 1px var(--color-shade--25);
-      content: '\a0';
-      display: inline-block;
-      height: 1.25rem;
-      line-height: 1.25rem;
-      margin-right: 0.5rem;
-      text-indent: 1rem;
-      width: 1.25rem;
+  &:checked + label::after {
+    background-color: var(--color-shade--50);
+    left: 0.25em;
+    top: 0.25em;
+    height: 0.75em;
+    width: 0.75em;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 
-      [type="checkbox"]:checked & {
-        content: '\2713';
+[type="checkbox"] {
+  &:checked,
+  &:not(:checked) {
+    & + label {
+      &::before,
+      &::after {
+        border-radius: 2px;
+      }
+    }
+  }
+
+  &:checked {
+    & + label {
+      &::before {
+        background-color: var(--color-shade--50);
+      }
+
+      &::after {
+        background-color: white;
+        box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+        height: 0.125em;
+        width: 0.125em;
+        left: 0.3125em;
+        top: 0.5625em;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &:focus {
+    & + label {
+      &::after {
+        background-color: var(--color-shade--50);
+      }
+    }
+  }
+
+  &:hover {
+    & + label {
+      &::before {
+        border-color: var(--color-shade--50);
       }
     }
   }
@@ -59,4 +165,11 @@ label {
 
 .Form {
   /* styles */
+}
+
+.input {
+  &-error--message,
+  &-success--message { font-weight: var(--font-weight--bold); }
+  &-error--message { color: var(--color-error); }
+  &-success--message { color: var(--color-success); }
 }

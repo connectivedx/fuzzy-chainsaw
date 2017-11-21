@@ -24,13 +24,13 @@ export default [{
         <List variant="ordered">
           <List__item>
             <Form__label htmlFor="error-field">Error message <b role="presentation" className="required">*</b></Form__label>
-            <Form__input id="error-field" required aria-required="true" aria-describedby="error-field--error" />
-            <span id="error-field--error" className="error error--hidden active" role="alert">Example of field-level error message.</span>
+            <Form__input id="error-field" className="input-error" required aria-required="true" aria-describedby="error-field--error" />
+            <span id="error-field--error" className="input-error--message error--hidden active" role="alert">Example of field-level error message.</span>
           </List__item>
           <List__item>
             <Form__label htmlFor="success-field">Success message <b role="presentation" className="required">*</b></Form__label>
-            <Form__input id="success-field" required aria-required="true" aria-describedby="success-field--success" />
-            <span id="success-field--success" className="success success--hidden active" aria-live="polite">Example of field-level success message.</span>
+            <Form__input id="success-field" className="input-success" required aria-required="true" aria-describedby="success-field--success" />
+            <span id="success-field--success" className="input-success--message success--hidden active" aria-live="polite">Example of field-level success message.</span>
           </List__item>
           <List__item>
             <Form__label htmlFor="note-field">Note message <b role="presentation" className="required">*</b></Form__label>
@@ -79,7 +79,7 @@ export default [{
           </List__item>
           <List__item>
             <Form__inputOptionSet
-              id="option"
+              id="radio-option"
               legend="Radio buttons"
               type="radio"
               variant="radio"
@@ -92,7 +92,7 @@ export default [{
           </List__item>
           <List__item>
             <Form__inputOptionSet
-              id="option"
+              id="checkbox-option"
               legend="Checkboxes"
               type="checkbox"
               variant="checkbox"
