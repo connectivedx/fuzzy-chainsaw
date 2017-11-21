@@ -21,3 +21,6 @@ button {
   background-color: transparent;
   font-size: 1em;
 }
+
+b,
+strong { font-weight: var(--font-weight--bold); }

@@ -1,9 +1,14 @@
+@import "../Button/Button.css";
 @import "../Heading/Heading.css";
 @import "../Rhythm/Rhythm.css";
 
 :root {
   --color-error: #cd2026;
   --color-success: #4aa564;
+}
+
+.required {
+  color: var(--color-error);
 }
 
 legend,
@@ -14,7 +19,7 @@ legend {
   @extend .Heading--bold;
 }
 
-input:not([type="range"], [type="color"], [type="checkbox"], [type="radio"]),
+input:not([type="range"], [type="color"], [type="checkbox"], [type="radio"], [type="file"]),
 textarea,
 select {
   border: 1px solid var(--color-shade--50);
@@ -26,7 +31,8 @@ select {
   width: 100%;
   max-width: 28.75rem;
 
-  &:focus {
+  &:focus,
+  &#text-field--focused {
     outline: 2px dotted var(--color-shade--25);
     outline-offset: 3px;
   }
@@ -164,7 +170,26 @@ fieldset {
 }
 
 .Form {
-  /* styles */
+  &__input--upload {
+    @extend .Button;
+    @extend .Button--default;
+
+    overflow: hidden;
+    position: relative;
+    width: fit-content;
+
+    & [type="file"] {
+      cursor: pointer;
+      font-size: 1.75em;
+      min-height: 100%;
+      min-width: 100%;
+      opacity: 0;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
 }
 
 .input {
