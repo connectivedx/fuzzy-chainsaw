@@ -1,0 +1,47 @@
+.Alert {
+  background-color: #f1f1f1;
+  padding: 1rem 2rem;
+  position: relative;
+
+  &::before {
+    background-color: #8b8b8b;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 0.5rem;
+  }
+
+  &--success {
+    background-color: #e7f4e4;
+
+    &::before {
+      background-color: #358450;
+    }
+  }
+
+  &--warning {
+    background-color: #fff1d2;
+
+    &::before {
+      background-color: #fdb81e;
+    }
+  }
+
+  &--error {
+    background-color: #fff6f6;
+
+    &::before {
+      background-color: #a40000;
+    }
+  }
+
+  &--information {
+    background-color: #e9f3f3;
+
+    &::before {
+      background-color: #00739f;
+    }
+  }
+}
