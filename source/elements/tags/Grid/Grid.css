@@ -1,3 +1,7 @@
+:root {
+  --grid--gap: 1.25rem;
+}
+
 .Grid {
   @media (--small) {
     display: flex;
@@ -5,13 +9,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0 -0.625rem;
+    margin: 0 calc(var(--grid--gap) / -2);
     padding: 0;
 
     @supports (display: grid) {
       display: grid;
       grid-auto-flow: row;
-      grid-gap: 1.25rem;
+      grid-gap: var(--grid--gap);
       grid-template-columns: repeat(2, 1fr);
       margin: 0;
     }
@@ -27,7 +31,7 @@
     margin: 0 auto;
 
     @nest .wrapper & {
-      margin: 0 -0.625rem;
+      margin: 0 calc(var(--grid--gap) / -2);
     }
 
     @supports (display: grid) {
@@ -39,28 +43,42 @@
     }
   }
 
-  &--cards {
+  &--auto-fit {
     @media (--small) {
       @supports (display: grid) {
-        grid-template-columns: repeat(auto-fit, minmax(215px, 220px));
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         grid-template-rows: repeat(auto, 1fr);
-        grid-gap: 1.25rem;
+
+        & .Grid__item {
+          grid-column: auto;
+        }
+      }
+    }
+  }
+
+  &--auto-fill {
+    @media (--small) {
+      @supports (display: grid) {
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+        grid-template-rows: repeat(auto, 1fr);
+
+        & .Grid__item {
+          grid-column: auto;
+        }
       }
     }
   }
 
   &__item {
-    margin: 0.625rem 0;
+    margin: calc(var(--grid--gap) / 2) 0;
 
     @media (--small) {
       display: inline-block;
-      flex-basis: calc(50% - 1.25rem);
-      margin: 0.625rem;
-      width: calc(50% - 1.25rem);
+      flex-basis: calc(50% - var(--grid--gap));
+      margin: calc(var(--grid--gap) / 2);
+      width: calc(50% - var(--grid--gap));
 
-      &--span-twelve,
-      &--primary,
-      &--secondary {
+      &--span-twelve {
         flex-basis: 100%;
         width: 100%;
       }
@@ -77,9 +95,7 @@
       @supports (display: grid) {
         grid-column: auto / span 3;
 
-        &--span-twelve,
-        &--primary,
-        &--secondary {
+        &--span-twelve {
           grid-column: auto / span 6;
         }
       }
@@ -87,78 +103,63 @@
 
     @media (--medium) {
       &--span-one {
-        flex-basis: calc(calc(calc(1 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(1 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(1 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(1 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-two {
-        flex-basis: calc(calc(calc(2 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(2 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(2 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(2 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-three {
-        flex-basis: calc(calc(calc(3 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(3 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(3 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(3 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-four {
-        flex-basis: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(4 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(4 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-five {
-        flex-basis: calc(calc(calc(5 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(5 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(5 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(5 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-six {
-        flex-basis: calc(calc(calc(6 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(6 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(6 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(6 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-seven {
-        flex-basis: calc(calc(calc(7 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(7 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(7 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(7 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-eight {
-        flex-basis: calc(calc(calc(8 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(8 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(8 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(8 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-nine {
-        flex-basis: calc(calc(calc(9 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(9 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(9 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(9 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-ten {
-        flex-basis: calc(calc(calc(10 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(10 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(10 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(10 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-eleven {
-        flex-basis: calc(calc(calc(11 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(11 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(11 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(11 / 12) * 100%) - var(--grid--gap));
       }
 
       &--span-twelve {
         flex-basis: 100%;
         width: 100%;
-      }
-
-      &--primary,
-      &--secondary {
-        margin: 0;
-      }
-
-      &--primary {
-        flex-basis: calc(calc(calc(8 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(8 / 12) * 100%) - 1.25rem);
-      }
-
-      &--secondary {
-        flex-basis: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
       }
 
       @supports (display: grid) {
@@ -173,9 +174,7 @@
         &--span-nine,
         &--span-ten,
         &--span-eleven,
-        &--span-twelve,
-        &--primary,
-        &--secondary {
+        &--span-twelve {
           width: auto;
         }
 
@@ -226,41 +225,6 @@
         &--span-twelve {
           grid-column: 1 / -1;
         }
-
-        &--primary {
-          grid-column: auto / span 8;
-        }
-
-        &--secondary {
-          grid-column: auto / span 4;
-        }
-      }
-    }
-
-    @media (--large) {
-      &--primary {
-        flex-basis: calc(calc(calc(7 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(7 / 12) * 100%) - 1.25rem);
-      }
-
-      &--secondary {
-        flex-basis: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
-      }
-
-      @supports (display: grid) {
-        &--primary,
-        &--secondary {
-          width: auto;
-        }
-
-        &--primary {
-          grid-column: auto / span 7;
-        }
-
-        &--secondary {
-          grid-column: 9 / span 4;
-        }
       }
     }
   }
@@ -273,7 +237,7 @@
       margin: 0.75em 0;
 
       @media (--small) {
-        margin: 0.625rem;
+        margin: calc(var(--grid--gap) / 2);
 
         @supports (display: grid) {
           margin: 0;
@@ -297,8 +261,8 @@
       }
 
       & .Grid__item {
-        flex-basis: calc(calc(calc(6 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(6 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(6 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(6 / 12) * 100%) - var(--grid--gap));
       }
     }
 
@@ -308,8 +272,8 @@
       }
 
       & .Grid__item {
-        flex-basis: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(4 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(4 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(4 / 12) * 100%) - var(--grid--gap));
       }
     }
 
@@ -319,8 +283,8 @@
       }
 
       & .Grid__item {
-        flex-basis: calc(calc(calc(3 / 12) * 100%) - 1.25rem);
-        width: calc(calc(calc(3 / 12) * 100%) - 1.25rem);
+        flex-basis: calc(calc(calc(3 / 12) * 100%) - var(--grid--gap));
+        width: calc(calc(calc(3 / 12) * 100%) - var(--grid--gap));
       }
     }
 

@@ -40,7 +40,7 @@ Grid.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'primary', 'secondary', 'cards', '2-up', '3-up', '4-up']),
+  variant: PropTypes.oneOf(['default', 'primary', 'secondary', 'auto-fit', '2-up', '3-up', '4-up']),
   children: PropTypes.node
 };
 

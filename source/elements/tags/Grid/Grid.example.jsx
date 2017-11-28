@@ -33,11 +33,23 @@ export default [{
     </Grid>
   )
 }, {
-  name: 'Primary and secondary content',
+  name: 'Auto-fit (min-width: 10rem)',
   component: (
-    <Grid className="Sg--pattern">
-      <Grid__item tagName="main" role="main" className="Grid__item--primary">Primary content</Grid__item>
-      <Grid__item tagName="aside" role="complementary" className="Grid__item--secondary">Secondary content</Grid__item>
+    <Grid variant="auto-fit" className="Sg--pattern">
+      <Grid__item>1</Grid__item>
+      <Grid__item>2</Grid__item>
+      <Grid__item>3</Grid__item>
+      <Grid__item>4</Grid__item>
+    </Grid>
+  )
+}, {
+  name: 'Auto-fill (min-width: 10rem)',
+  component: (
+    <Grid variant="auto-fill" className="Sg--pattern">
+      <Grid__item>1</Grid__item>
+      <Grid__item>2</Grid__item>
+      <Grid__item>3</Grid__item>
+      <Grid__item>4</Grid__item>
     </Grid>
   )
 }, {
