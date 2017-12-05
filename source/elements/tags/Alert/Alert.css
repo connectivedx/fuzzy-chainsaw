@@ -52,7 +52,7 @@
   }
 
   &--error {
-    background-color: color(var(--color-red) alpha(-85%));/* #fff6f6 */
+    background-color: color(var(--color-red) alpha(-85%));
 
     &::before {
       background-color: var(--color-red);
