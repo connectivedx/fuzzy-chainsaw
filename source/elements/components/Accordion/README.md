@@ -1,7 +1,6 @@
 # Accordion
-Accepts children (any node type) as content containers to be transposes into HTML5 detail / summary accordion sections.
 
-## Props
+## Accordion Props
 
 Property | Function
 --- | ---
@@ -11,14 +10,9 @@ Property | Function
 `children` | Defines the children elements passed to the component.
 `singly` | Defines if single (true) or multi (false) sections can opened at any given time (default is multi-sections, aka false).
 
-
-## Children Props
+## Accordion Title Props
 
 Property | Function
 --- | ---
-`title` | Defines the heading text for an accordion section.
-`level` | Defines the heading font size for an accordion section.
-`weight` | Defines the heading font weight for an accordion section.
-`icon` | Defines a stateless icon to be used for an accordion section.
-`openIcon` | Defines the open state icon for an accordion section.
-`closeIcon` | Defines the close state icon for an accordion section.
+`level` | Defines the title font size for an accordion section.
+`weight` | Defines the title font weight for an accordion section.
