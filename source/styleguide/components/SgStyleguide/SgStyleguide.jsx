@@ -91,6 +91,7 @@ export const SgStyleguide_Examples = (props) => {
             component={e.component}
             theme={e.theme}
             options={e.options}
+            devNotes={e.devNotes}
           />
         ))
       }
