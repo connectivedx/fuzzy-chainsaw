@@ -8,7 +8,7 @@ import {
   Form__inputSelect,
   Form__textarea
 } from './Form';
-
+import Button from '../Button/Button';
 import {
   List,
   List__item
@@ -44,13 +44,26 @@ export default [{
     </Form__fieldset>
   )
 }, {
+  name: 'Disabled input field',
+  component: (
+    <Form__fieldset>
+      <List variant="ordered">
+        <List__item>
+          <Form__label htmlFor="text-field--disabled">Text input disabled</Form__label>
+          <Form__input id="text-field--disabled" disabled />
+        </List__item>
+      </List>
+    </Form__fieldset>
+  )
+}, {
   name: 'Required input',
   component: (
     <Form__fieldset>
       <List variant="ordered">
         <List__item>
-          <Form__label htmlFor="required-field">Text field <b role="presentation" className="required">*</b></Form__label>
-          <Form__input id="required-field" required aria-required="true" aria-describedby="error-field--error" />
+          <Form__label htmlFor="required-field">Required field <b role="presentation" className="required">*</b></Form__label>
+          <Form__input id="required-field" required aria-required="true" aria-describedby="required-field--error" />
+          <span id="required-field--error" className="Alert--field-level Alert--error Alert--hidden" role="alert">This field is required.</span>
         </List__item>
       </List>
     </Form__fieldset>
@@ -63,7 +76,7 @@ export default [{
         <List__item>
           <Form__label htmlFor="error-field">Error message <b role="presentation" className="required">*</b></Form__label>
           <Form__input id="error-field" className="input-error" required aria-required="true" aria-describedby="error-field--error" />
-          <span id="error-field--error" className="input-error--message error--hidden active" role="alert">Example of field-level error message.</span>
+          <span id="error-field--error" className="Alert--field-level Alert--error Alert--hidden active" role="alert">Example of field-level error message.</span>
         </List__item>
       </List>
     </Form__fieldset>
@@ -76,7 +89,7 @@ export default [{
         <List__item>
           <Form__label htmlFor="success-field">Success message <b role="presentation" className="required">*</b></Form__label>
           <Form__input id="success-field" className="input-success" required aria-required="true" aria-describedby="success-field--success" />
-          <span id="success-field--success" className="input-success--message success--hidden active" aria-live="polite">Example of field-level success message.</span>
+          <span id="success-field--success" className="Alert--field-level Alert--success Alert--hidden active" aria-live="polite">Example of field-level success message.</span>
         </List__item>
       </List>
     </Form__fieldset>
@@ -89,7 +102,7 @@ export default [{
         <List__item>
           <Form__label htmlFor="note-field">Note message</Form__label>
           <Form__input id="note-field" />
-          <span id="note-field--success" className="note note--hidden active" aria-live="polite">Example of field-level note message.</span>
+          <span id="note-field--success" className="Alert--field-level Alert--information" aria-live="polite">Example of field-level note message.</span>
         </List__item>
       </List>
     </Form__fieldset>
@@ -278,17 +291,17 @@ export default [{
           <List__item>
             <Form__label htmlFor="error-field">Error message <b role="presentation" className="required">*</b></Form__label>
             <Form__input id="error-field" className="input-error" required aria-required="true" aria-describedby="error-field--error" />
-            <span id="error-field--error" className="input-error--message error--hidden active" role="alert">Example of field-level error message.</span>
+            <span id="error-field--error" className="Alert--field-level Alert--error Alert--hidden active" role="alert">Example of field-level error message.</span>
           </List__item>
           <List__item>
             <Form__label htmlFor="success-field">Success message <b role="presentation" className="required">*</b></Form__label>
             <Form__input id="success-field" className="input-success" required aria-required="true" aria-describedby="success-field--success" />
-            <span id="success-field--success" className="input-success--message success--hidden active" aria-live="polite">Example of field-level success message.</span>
+            <span id="success-field--success" className="Alert--field-level Alert--success Alert--hidden active" aria-live="polite">Example of field-level success message.</span>
           </List__item>
           <List__item>
             <Form__label htmlFor="note-field">Note message <b role="presentation" className="required">*</b></Form__label>
             <Form__input id="note-field" required aria-required="true" aria-describedby="note-field--success" />
-            <span id="note-field--success" className="note note--hidden active" aria-live="polite">Example of field-level note message.</span>
+            <span id="note-field--success" className="Alert--field-level Alert--information" aria-live="polite">Example of field-level note message.</span>
           </List__item>
           <List__item>
             <Form__label htmlFor="text-field">Text field</Form__label>
@@ -357,6 +370,7 @@ export default [{
             />
           </List__item>
         </List>
+        <Button>Submit form</Button>
       </Form__fieldset>
     </Form>
   )

@@ -2,13 +2,8 @@
 @import "../Heading/Heading.css";
 @import "../Rhythm/Rhythm.css";
 
-:root {
-  --color-error: #cd2026;
-  --color-success: #4aa564;
-}
-
 .required {
-  color: var(--color-error);
+  color: var(--color-red);
 }
 
 legend,
@@ -38,15 +33,17 @@ select {
   }
 
   &.input-error {
-    border: 3px solid var(--color-error);
+    border: 3px solid var(--color-red);
   }
 
   &.input-success {
-    border: 3px solid var(--color-success);
+    border: 3px solid var(--color-green);
   }
 }
 
 fieldset {
+  @extend .Rhythm--default;
+
   & .List--ordered,
   & .List--unordered {
     list-style: none;
@@ -192,9 +189,17 @@ fieldset {
   }
 }
 
-.input {
-  &-error--message,
-  &-success--message { font-weight: var(--font-weight--bold); }
-  &-error--message { color: var(--color-error); }
-  &-success--message { color: var(--color-success); }
+.Alert {
+  &--field-level {
+    &.Alert--error,
+    &.Alert--success { font-weight: var(--font-weight--bold); }
+    &.Alert--error { color: var(--color-red); }
+    &.Alert--success { color: var(--color-green); }
+  }
+
+  &--hidden {
+    display: none;
+
+    &.active { display: block; }
+  }
 }
