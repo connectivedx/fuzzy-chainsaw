@@ -68,7 +68,10 @@
   }
 
   &--responsive {
-    & .Table__root { border-collapse: var(--border-collapse); }
+    & .Table__root {
+      border-collapse: var(--border-collapse);
+      width: 100%;
+    }
 
     .Table__data {
       display: var(--cell--display);
