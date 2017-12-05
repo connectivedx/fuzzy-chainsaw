@@ -12,6 +12,8 @@ const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 const mixins = require('postcss-mixins');
 
+const perv = require('../../perv');
+
 // build
 const mqpacker = require('css-mqpacker');
 
@@ -51,6 +53,7 @@ module.exports.linting = [
 
 
 const standard = [
+  perv(),
   mixins(),
   nested(),
   cssnext({
