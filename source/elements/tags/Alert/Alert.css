@@ -1,47 +1,69 @@
 .Alert {
-  background-color: #f1f1f1;
+  background-color: color(var(--color-gray) alpha(-85%));
   padding: 1rem 2rem;
   position: relative;
 
-  &::before {
-    background-color: #8b8b8b;
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 0.5rem;
+  &--page-level {
+    .Alert__body {
+      margin: 0 auto;
+      max-width: 60rem;
+    }
+  }
+
+  &--form-level {
+    &::before {
+      background-color: var(--color-gray);
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 0.5rem;
+    }
+  }
+
+  &--field-level {
+    &.Alert--success,
+    &.Alert--error,
+    &.Alert--information {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    &.Alert--success { color: var(--color-green); }
+    &.Alert--error { color: var(--color-red); }
+    &.Alert--information { font-style: italic; }
   }
 
   &--success {
-    background-color: #e7f4e4;
+    background-color: color(var(--color-green) alpha(-85%));
 
     &::before {
-      background-color: #358450;
+      background-color: var(--color-green);
     }
   }
 
   &--warning {
-    background-color: #fff1d2;
+    background-color: color(var(--color-yellow) alpha(-85%));
 
     &::before {
-      background-color: #fdb81e;
+      background-color: var(--color-yellow);
     }
   }
 
   &--error {
-    background-color: #fff6f6;
+    background-color: color(var(--color-red) alpha(-85%));/* #fff6f6 */
 
     &::before {
-      background-color: #a40000;
+      background-color: var(--color-red);
     }
   }
 
   &--information {
-    background-color: #e9f3f3;
+    background-color: color(var(--color-blue) alpha(-85%));
 
     &::before {
-      background-color: #00739f;
+      background-color: var(--color-blue);
     }
   }
 }

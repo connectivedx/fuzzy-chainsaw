@@ -2,6 +2,7 @@ export const Alert = (props) => {
   const {
     tagName: Tag,
     className,
+    level,
     variant,
     children,
     ...attrs
@@ -9,13 +10,14 @@ export const Alert = (props) => {
 
   const classStack = FcUtils.createClassStack([
     'Alert',
+    `Alert--${level}-level`,
     `Alert--${variant}`,
     className
   ]);
 
   return (
     <Tag className={classStack} {...attrs}>
-      <div className="Alert-body">
+      <div className="Alert__body">
         {children}
       </div>
     </Tag>
@@ -24,6 +26,7 @@ export const Alert = (props) => {
 
 Alert.defaultProps = {
   tagName: 'div',
+  level: 'page',
   variant: 'default'
 };
 
@@ -34,6 +37,7 @@ Alert.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
+  level: PropTypes.oneOf(['page', 'form', 'field']),
   variant: PropTypes.oneOf(['default', 'success', 'warning', 'error', 'information']),
   children: PropTypes.node
 };
