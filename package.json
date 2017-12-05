@@ -39,7 +39,7 @@
     "new:stateful": "gulp scaffold:component:stateful --name"
   },
   "engines": {
-    "node": ">=6.11.1"
+    "node": ">=8.9.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -107,9 +107,8 @@
     "prismjs": "^1.6.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "querystring": "^0.2.0",
-    "react-addons-test-utils": "^15.6.0",
-    "react-modal": "^2.2.2",
-    "react-test-renderer": "^15.6.1",
+    "react-modal": "^3.1.7",
+    "react-test-renderer": "^16.2.0",
     "reset-css": "^2.2.0",
     "run-sequence": "^2.0.0",
     "stats-webpack-plugin": "^0.6.1",
@@ -138,6 +137,6 @@
     "rand-token": "^0.3.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-element-to-jsx-string": "^10.1.0"
+    "react-element-to-jsx-string": "^13.1.0"
   }
 }
