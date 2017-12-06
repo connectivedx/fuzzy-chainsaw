@@ -20,7 +20,21 @@
   }
 
   &__themes {
-    & span { margin: auto 0.25em; }
+    & span {
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__theme-link {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &--active {
+      border-bottom: 1px solid;
+      font-weight: bold;
+    }
   }
 
   &__section-header {
