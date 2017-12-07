@@ -11,8 +11,7 @@ const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 const mixins = require('postcss-mixins');
-
-const perv = require('../../perv');
+const exportVars = require('postcss-export-vars');
 
 // build
 const mqpacker = require('css-mqpacker');
@@ -53,7 +52,11 @@ module.exports.linting = [
 
 
 const standard = [
-  perv(),
+  exportVars({
+    file: './source/styleguide/tags/SgColorSwatch/SgColorSwatch__variables',
+    type: 'json',
+    match: ['--color']
+  }),
   mixins(),
   nested(),
   cssnext({
