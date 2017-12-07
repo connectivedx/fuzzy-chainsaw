@@ -45,12 +45,24 @@
 
   &--auto-fit {
     @media (--small) {
+      align-content: flex-start;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+
+      & .Grid__item {
+        flex: 1 auto;
+        margin: calc(var(--grid--gap) / 2);
+      }
+
       @supports (display: grid) {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         grid-template-rows: repeat(auto, 1fr);
 
         & .Grid__item {
           grid-column: auto;
+          margin: 0;
         }
       }
     }
@@ -58,12 +70,24 @@
 
   &--auto-fill {
     @media (--small) {
+      align-content: flex-start;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: baseline;
+
+      & .Grid__item {
+        flex-basis: 10rem;
+        margin: calc(var(--grid--gap) / 2);
+      }
+
       @supports (display: grid) {
+        display: grid;
         grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
         grid-template-rows: repeat(auto, 1fr);
 
         & .Grid__item {
           grid-column: auto;
+          margin: 0;
         }
       }
     }
