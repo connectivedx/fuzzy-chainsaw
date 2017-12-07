@@ -1,0 +1,25 @@
+.SgColorSwatch {
+  border: 1px solid var(--color-gray);
+  box-shadow: 1px 0.25em 1em -0.33em color(var(--color-black) alpha(15%));
+  display: flex;
+  flex-basis: 300px;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0 0.5rem 2rem;
+  min-height: 300px;
+}
+
+.SgColorSwatch__panel {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-gray);
+  padding: 1rem 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.SgColorSwatch__wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
