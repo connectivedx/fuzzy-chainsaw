@@ -1,6 +1,6 @@
 import Heading from '@tags/Heading/Heading';
 import Wrapper from '@tags/Wrapper/Wrapper';
-import SgColorSwatch from '@sg-tags/SgColorSwatch/SgColorSwatch';
+import SgColorSwatch from '@sg-components/SgColorSwatch/SgColorSwatch';
 
 const page = () => (
   <Wrapper size="wide">
