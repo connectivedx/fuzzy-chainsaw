@@ -53,7 +53,7 @@ module.exports.linting = [
 
 const standard = [
   exportVars({
-    file: './source/styleguide/tags/SgColorSwatch/SgColorSwatch__variables',
+    file: './source/styleguide/components/SgColorSwatch/SgColorSwatch__variables',
     type: 'json',
     match: ['--color']
   }),
