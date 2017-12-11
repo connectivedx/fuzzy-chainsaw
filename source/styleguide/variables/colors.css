@@ -6,14 +6,14 @@ background-color: var(--primary);
 color: var(--greyDark);
 */
 :root {
-  --color-black: #000;
-  --color-gray-darker: #333;
-  --color-gray-dark: #666;
-  --color-gray: #999;
-  --color-gray-light: #bbb;
-  --color-gray-lighter: #ddd;
-  --color-white: #fff;
-  --color-link: #369;
-  --color-background: #eaeaea;
-  --color-background-dark: #333;
+  --sg-color-black: #000;
+  --sg-color-gray-darker: #333;
+  --sg-color-gray-dark: #666;
+  --sg-color-gray: #999;
+  --sg-color-gray-light: #bbb;
+  --sg-color-gray-lighter: #ddd;
+  --sg-color-white: #fff;
+  --sg-color-link: #369;
+  --sg-color-background: #eaeaea;
+  --sg-color-background-dark: #333;
 }
