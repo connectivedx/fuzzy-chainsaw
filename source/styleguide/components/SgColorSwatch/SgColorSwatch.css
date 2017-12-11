@@ -1,6 +1,6 @@
 .SgColorSwatch {
-  border: 1px solid var(--color-gray);
-  box-shadow: 1px 0.25em 1em -0.33em color(var(--color-black) alpha(15%));
+  border: 1px solid var(--sg-color-gray);
+  box-shadow: 1px 0.25em 1em -0.33em color(var(--sg-color-black) alpha(15%));
   display: flex;
   flex-basis: 300px;
   flex-direction: column;
@@ -10,16 +10,62 @@
 }
 
 .SgColorSwatch__panel {
-  background-color: var(--color-white);
-  border-top: 1px solid var(--color-gray);
+  background-color: var(--sg-color-white);
+  border-top: 1px solid var(--sg-color-gray);
   padding: 1rem 0.5rem;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .SgColorSwatch__wrapper {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.SgColorSwatch__accessibility {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+
+  &__badge {
+    background-color: black;
+    border-radius: 10%;
+    color: var(--sg-color-white);
+    margin: 0.2em;
+    padding: 0.1em 0.3em;
+    position: relative;
+
+    &::before {
+      content: 'A';
+      position: absolute;
+      top: -1.5em;
+    }
+
+    &--primary {
+      &::before {
+        color: var(--sg-color-black);
+      }
+    }
+
+    &--secondary {
+      &::before {
+        color: var(--sg-color-white);
+      }
+    }
+
+    &--normal {
+      &::before {
+        font-size: 14pt;
+        left: calc(50% - 5px);
+      }
+    }
+
+    &--large {
+      &::before {
+        font-size: 18pt;
+        left: calc(50% - 8px);
+      }
+    }
+  }
 }
