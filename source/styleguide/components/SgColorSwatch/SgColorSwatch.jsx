@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import SgHeading from '@sg-tags/SgHeading/SgHeading';
 import colorVars from './SgColorSwatch__variables.json';
 
 export const SgColorSwatch = (props) => {
@@ -29,7 +30,7 @@ export const SgColorSwatch = (props) => {
       {
         colorVars ?
         Object.keys(colorVars).map((color, i) => {
-          const title = color.substr(color.indexOf('color') + 5);
+          const title = color.substr(color.indexOf('color') + 5).split(/(?=[A-Z])/).join(' ');
           const hex = colorVars[color];
           const rgb = chroma(hex).rgb();
 
@@ -71,11 +72,18 @@ export const SgColorSwatch = (props) => {
                 </div>
               </SgColorSwatch__accessibility>
               <SgColorSwatch__panel>
-                {title}
-                <br />
-                <p>Hex: {hex}</p>
-                <p>rgb: ({rgb[0]}, {rgb[1]}, {rgb[2]})
-                </p>
+                <div className="SgColorSwatch__panel__title">
+                  <SgHeading level="h6">Name</SgHeading>
+                  <p>{title}</p>
+                </div>
+                <div className="SgColorSwatch__panel__hex">
+                  <SgHeading level="h6">Hex</SgHeading>
+                  <p>{hex}</p>
+                </div>
+                <div className="SgColorSwatch__panel__rgb">
+                  <SgHeading level="h6">RGB</SgHeading>
+                  <p>{rgb[0]}, {rgb[1]}, {rgb[2]}</p>
+                </div>
               </SgColorSwatch__panel>
             </Tag>
           );

@@ -12,8 +12,25 @@
 .SgColorSwatch__panel {
   background-color: var(--sg-color-white);
   border-top: 1px solid var(--sg-color-gray);
-  padding: 1rem 0.5rem;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+
+  & > * {
+    padding: 0.5rem 1rem 0 0;
+  }
+
+  &__title {
+    width: 60%;
+  }
+
+  &__hex {
+    width: 40%;
+  }
+
+  &__rgb {
+    width: 100%;
+  }
 }
 
 .SgColorSwatch__wrapper {
