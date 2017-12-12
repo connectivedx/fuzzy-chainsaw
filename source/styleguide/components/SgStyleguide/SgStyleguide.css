@@ -151,7 +151,10 @@
   }
 
   &__content {
-    margin-left: 250px;
-    width: 100%;
+    align-content: right;
+
+    .SgNav--isSticky + & {
+      margin-left: 300px;
+    }
   }
 }

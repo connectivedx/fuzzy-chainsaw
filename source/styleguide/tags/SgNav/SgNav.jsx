@@ -1,3 +1,5 @@
+import Heading from '@sg-tags/SgHeading/SgHeading';
+import Icon from '@tags/Icon/Icon';
 import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
 
 export const SgNav = (props) => {
@@ -14,6 +16,7 @@ export const SgNav = (props) => {
 
   return (
     <Tag className={classStack} {...attrs}>
+      <Heading className="SgNav__heading">Fuzzy Chainsaw<Icon name="plus" size="small" inline /></Heading>
       <SgTableOfContents />
     </Tag>
   );

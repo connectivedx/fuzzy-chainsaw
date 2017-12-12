@@ -1,5 +1,14 @@
 .SgNav {
+  display: inline-block;
   padding: 1em;
-  width: 250px;
-  position: fixed;
+  min-width: 300px;
+
+  &--isSticky {
+    position: fixed;
+    top: 0;
+  }
+
+  &__heading {
+    margin-bottom: 1em;
+  }
 }
