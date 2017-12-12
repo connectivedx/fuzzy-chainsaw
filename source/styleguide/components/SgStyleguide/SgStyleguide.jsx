@@ -3,8 +3,9 @@ import { parse } from 'querystring';
 
 import Heading from '@sg-tags/SgHeading/SgHeading';
 import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
-import Nav from '@sg-components/SgNav/SgNav';
+import Nav from '@sg-tags/SgNav/SgNav';
 import Example from '@sg-components/SgExample/SgExample';
+import Wrapper from '@tags/Wrapper/Wrapper';
 
 import { themes } from '@source/fc-config';
 
@@ -126,10 +127,10 @@ export const SgStyleguide = ({
   readme,
   examples
 }) => (
-  <div>
+  <Wrapper className="SgStyleguide" size="wide">
     <Nav />
 
-    <div className="SgStyleguide" id="content">
+    <div className="SgStyleguide__content">
       <Rhythm size="small" className="SgStyleguide__header">
         <Heading level="h1">{name}</Heading>
         {themes.length > 1 && <SgStyleguide__ThemeLinks />}
@@ -138,7 +139,7 @@ export const SgStyleguide = ({
       { readme && <SgStyleguide_Readme readme={readme} /> }
       { examples && <SgStyleguide_Examples examples={examples} /> }
     </div>
-  </div>
+  </Wrapper>
 );
 
 SgStyleguide.propTypes = {
