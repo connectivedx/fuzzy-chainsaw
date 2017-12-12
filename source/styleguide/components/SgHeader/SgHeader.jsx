@@ -1,3 +1,6 @@
+import SgHeading from '@sg-tags/SgHeading/SgHeading';
+import Icon from '@tags/Icon/Icon';
+
 export const SgHeader = (props) => {
   const {
     tagName: Tag,
@@ -13,6 +16,13 @@ export const SgHeader = (props) => {
 
   return (
     <Tag className={classStack} {...attrs}>
+      <Icon
+        className="SgHeader__menuIcon"
+        id="openNavTrigger"
+        name="menu"
+        size="large"
+      />
+      <SgHeading className="SgHeader__title" level="h1">Fuzzy Chainsaw</SgHeading>
       {children}
     </Tag>
   );

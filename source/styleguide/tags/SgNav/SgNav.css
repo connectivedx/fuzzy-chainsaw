@@ -1,11 +1,18 @@
 .SgNav {
   display: inline-block;
-  padding: 1em;
+  left: -300px;
   min-width: 300px;
+  padding: 1em;
+  position: absolute;
+  transition: left 0.5s;
 
   &--isSticky {
     position: fixed;
     top: 0;
+  }
+
+  &--isActive {
+    left: 0;
   }
 
   &__heading {

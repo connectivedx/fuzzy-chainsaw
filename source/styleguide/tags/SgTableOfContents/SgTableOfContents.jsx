@@ -42,11 +42,12 @@ export const SgTableOfContents = (props) => {
             title="File Indexes"
             items={indexesIndexData}
           />
-          <SgFileIndex
+          {pagesIndexData.length > 0 ? <SgFileIndex
             {...indexProps}
             title="Pages"
             items={pagesIndexData}
-          />
+          /> :
+          <div /> }
           { Object.keys(themedPagesIndexData)
             .map((key) => (
               <SgFileIndex
@@ -59,9 +60,9 @@ export const SgTableOfContents = (props) => {
             )) }
         </RhythmComponent>
       }
-      <SgFileIndex {...indexProps} title="Compositions" items={compositionsIndexData} />
-      <SgFileIndex {...indexProps} title="Components" items={componentsIndexData} />
-      <SgFileIndex {...indexProps} title="Tags" items={tagsIndexData} />
+      { compositionsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Compositions" items={compositionsIndexData} /> : <div /> }
+      { componentsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Components" items={componentsIndexData} /> : <div /> }
+      { tagsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Tags" items={tagsIndexData} /> : <div /> }
     </div>
   );
 };
