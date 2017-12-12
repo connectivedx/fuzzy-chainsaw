@@ -1,0 +1,5 @@
+.SgHeader {
+  border: solid 1px var(--color-gray-light);
+  height: 5em;
+  width: 100%;
+}

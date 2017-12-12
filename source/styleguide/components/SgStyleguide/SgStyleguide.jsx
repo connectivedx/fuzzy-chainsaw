@@ -5,7 +5,7 @@ import Heading from '@sg-tags/SgHeading/SgHeading';
 import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
 import Nav from '@sg-tags/SgNav/SgNav';
 import Example from '@sg-components/SgExample/SgExample';
-import Wrapper from '@tags/Wrapper/Wrapper';
+import Header from '@sg-components/SgHeader/SgHeader';
 
 import { themes } from '@source/fc-config';
 
@@ -127,19 +127,22 @@ export const SgStyleguide = ({
   readme,
   examples
 }) => (
-  <Wrapper className="SgStyleguide" size="wide">
-    <Nav />
+  <div>
+    <Header />
+    <div className="SgStyleguide">
+      <Nav />
 
-    <div className="SgStyleguide__content">
-      <Rhythm size="small" className="SgStyleguide__header">
-        <Heading level="h1">{name}</Heading>
-        {themes.length > 1 && <SgStyleguide__ThemeLinks />}
-      </Rhythm>
+      <div className="SgStyleguide__content">
+        <Rhythm size="small" className="SgStyleguide__header">
+          <Heading level="h1">{name}</Heading>
+          {themes.length > 1 && <SgStyleguide__ThemeLinks />}
+        </Rhythm>
 
-      { readme && <SgStyleguide_Readme readme={readme} /> }
-      { examples && <SgStyleguide_Examples examples={examples} /> }
+        { readme && <SgStyleguide_Readme readme={readme} /> }
+        { examples && <SgStyleguide_Examples examples={examples} /> }
+      </div>
     </div>
-  </Wrapper>
+  </div>
 );
 
 SgStyleguide.propTypes = {
