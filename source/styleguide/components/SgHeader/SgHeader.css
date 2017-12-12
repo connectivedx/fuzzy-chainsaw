@@ -1,6 +1,7 @@
 .SgHeader {
   border: solid 1px var(--color-gray-light);
   height: 5em;
+  overflow: hidden;
   position: relative;
   width: 100%;
 
