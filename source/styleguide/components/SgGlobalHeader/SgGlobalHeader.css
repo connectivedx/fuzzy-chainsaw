@@ -1,0 +1,28 @@
+.SgGlobalHeader {
+  border: solid 1px var(--color-gray-light);
+  height: 5em;
+  overflow: hidden;
+  width: 100%;
+
+  &__title {
+    margin-left: 2em;
+    line-height: 2.5em !important;
+    transition: margin-left 0.5s;
+
+    &--navIsOpen {
+      margin-left: calc(300px);
+    }
+  }
+
+  &__toggle {
+    left: 0.5em;
+    position: fixed;
+    top: 1em;
+    z-index: 5;
+    transition: left 0.5s;
+
+    &--navIsOpen {
+      left: calc(300px - 3.5em);
+    }
+  }
+}

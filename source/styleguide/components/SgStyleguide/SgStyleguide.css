@@ -7,6 +7,11 @@
 .SgStyleguide {
   display: flex;
   position: relative;
+  transition: margin 0.5s;
+
+  .SgPageShell--openNav + & {
+    margin-left: 300px;
+  }
 
   &__header {
     padding: 1em;
@@ -152,11 +157,6 @@
 
   &__content {
     align-content: right;
-    transition: margin 0.5s;
     width: 100%;
-
-    .SgNav--isActive + & {
-      margin-left: 300px;
-    }
   }
 }

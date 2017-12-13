@@ -1,6 +1,6 @@
 import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
 
-export const SgNav = (props) => {
+export const SgNavigation = (props) => {
   const {
     tagName: Tag,
     className,
@@ -8,23 +8,23 @@ export const SgNav = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'SgNav',
+    'SgNavigation',
     className
   ]);
 
   return (
-    <Tag className={classStack} id="SgNav" {...attrs}>
+    <Tag className={classStack} id="SgNavigation" {...attrs}>
       <SgTableOfContents />
     </Tag>
   );
 };
 
-SgNav.defaultProps = {
+SgNavigation.defaultProps = {
   tagName: 'div',
   variant: 'default'
 };
 
-SgNav.propTypes = {
+SgNavigation.propTypes = {
   tagName: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
@@ -34,4 +34,4 @@ SgNav.propTypes = {
 };
 
 
-export default SgNav;
+export default SgNavigation;

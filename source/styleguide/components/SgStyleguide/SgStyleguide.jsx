@@ -3,9 +3,8 @@ import { parse } from 'querystring';
 
 import Heading from '@sg-tags/SgHeading/SgHeading';
 import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
-import Nav from '@sg-tags/SgNav/SgNav';
 import Example from '@sg-components/SgExample/SgExample';
-import Header from '@sg-components/SgHeader/SgHeader';
+import PageShell from '@sg-components/SgPageShell/SgPageShell';
 
 import { themes } from '@source/fc-config';
 
@@ -128,10 +127,8 @@ export const SgStyleguide = ({
   examples
 }) => (
   <div>
-    <Header />
+    <PageShell />
     <div className="SgStyleguide">
-      <Nav />
-
       <div className="SgStyleguide__content">
         <Rhythm size="small" className="SgStyleguide__header">
           <Heading level="h1">{name}</Heading>

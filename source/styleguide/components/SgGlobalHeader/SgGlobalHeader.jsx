@@ -1,7 +1,7 @@
 import SgHeading from '@sg-tags/SgHeading/SgHeading';
-import Icon from '@tags/Icon/Icon';
+import SgToggleButton from '@sg-components/SgToggleButton/SgToggleButton';
 
-export const SgHeader = (props) => {
+export const SgGlobalHeader = (props) => {
   const {
     tagName: Tag,
     className,
@@ -10,30 +10,30 @@ export const SgHeader = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'SgHeader',
+    'SgGlobalHeader',
     className
   ]);
 
   return (
     <Tag className={classStack} {...attrs}>
-      <Icon
-        className="SgHeader__menuIcon"
-        id="openNavTrigger"
-        name="menu"
-        size="large"
+      <SgToggleButton
+        id="SgNavToggle"
+        className="SgGlobalHeader__toggle"
+        primeAsset="menu"
+        secondAsset="close"
       />
-      <SgHeading className="SgHeader__title" level="h1">Fuzzy Chainsaw</SgHeading>
+      <SgHeading className="SgGlobalHeader__title" id="SgGlobalHeaderTitle" level="h1">Fuzzy Chainsaw</SgHeading>
       {children}
     </Tag>
   );
 };
 
-SgHeader.defaultProps = {
+SgGlobalHeader.defaultProps = {
   tagName: 'div',
   variant: 'default'
 };
 
-SgHeader.propTypes = {
+SgGlobalHeader.propTypes = {
   tagName: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
@@ -44,4 +44,4 @@ SgHeader.propTypes = {
 };
 
 
-export default SgHeader;
+export default SgGlobalHeader;
