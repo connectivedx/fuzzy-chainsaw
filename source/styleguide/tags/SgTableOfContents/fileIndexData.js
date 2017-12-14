@@ -1,7 +1,8 @@
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const tagsContext = require.context('@tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const componentsContext = require.context('@components/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const compositionsContext = require.context('@compositions/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const templatesContext = require.context('@templates/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
 const isRenderableModule = (key) => (
@@ -128,27 +129,34 @@ export const themedPagesIndexData =
     }, { });
 
 
-export const compositionsIndexData =
-  Object.keys(requireAllComponents(compositionsContext, '/styleguide/compositions/'))
-    .filter((p) => p.indexOf('/compositions/') !== -1)
+export const templatesIndexData =
+  Object.keys(requireAllComponents(templatesContext, '/styleguide/templates/'))
+    .filter((p) => p.indexOf('/templates/') !== -1)
     .map((p) => ({
-      path: p.substr(p.indexOf('/compositions/') + '/compositions/'.length)
+      path: p.substr(p.indexOf('/templates/') + '/templates/'.length)
     }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/compositions`));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/templates`));
 
 
-export const componentsIndexData =
-  Object.keys(requireAllComponents(componentsContext, '/styleguide/components/'))
-    .filter((p) => p.indexOf('/components/') !== -1)
+export const organismsIndexData =
+  Object.keys(requireAllComponents(organismsContext, '/styleguide/organisms/'))
+    .filter((p) => p.indexOf('/organisms/') !== -1)
     .map((p) => ({
-      path: p.substr(p.indexOf('/components/') + '/components/'.length)
+      path: p.substr(p.indexOf('/organisms/') + '/organisms/'.length)
     }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/components`));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/organisms`));
 
 
-export const tagsIndexData =
-  Object.keys(requireAllComponents(tagsContext, '/styleguide/tags/'))
+export const moleculesIndexData =
+  Object.keys(requireAllComponents(moleculesContext, '/styleguide/molecules/'))
     .map((p) => ({
-      path: p.substr(p.indexOf('/tags/') + '/tags/'.length)
+      path: p.substr(p.indexOf('/molecules/') + '/molecules/'.length)
     }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/tags`));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/molecules`));
+
+export const atomsIndexData =
+  Object.keys(requireAllComponents(atomsContext, '/styleguide/atoms/'))
+    .map((p) => ({
+      path: p.substr(p.indexOf('/atoms/') + '/atoms/'.length)
+    }))
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/atoms`));

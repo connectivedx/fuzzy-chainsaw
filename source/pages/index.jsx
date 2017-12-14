@@ -1,6 +1,6 @@
-import Heading from '@tags/Heading/Heading';
-import Rhythm from '@tags/Rhythm/Rhythm';
-import Wrapper from '@tags/Wrapper/Wrapper';
+import Heading from '@atoms/Heading/Heading';
+import Rhythm from '@atoms/Rhythm/Rhythm';
+import Wrapper from '@atoms/Wrapper/Wrapper';
 import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
 
 const page = () => (

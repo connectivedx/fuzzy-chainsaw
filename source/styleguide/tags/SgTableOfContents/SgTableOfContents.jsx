@@ -6,9 +6,10 @@ import {
   pagesIndexData,
   themedPagesIndexData,
   indexesIndexData,
-  compositionsIndexData,
-  componentsIndexData,
-  tagsIndexData
+  templatesIndexData,
+  organismsIndexData,
+  moleculesIndexData,
+  atomsIndexData
 } from '@sg-tags/SgTableOfContents/fileIndexData';
 
 import { themes } from '@source/fc-config';
@@ -59,9 +60,10 @@ export const SgTableOfContents = (props) => {
             )) }
         </RhythmComponent>
       }
-      <SgFileIndex {...indexProps} title="Compositions" items={compositionsIndexData} />
-      <SgFileIndex {...indexProps} title="Components" items={componentsIndexData} />
-      <SgFileIndex {...indexProps} title="Tags" items={tagsIndexData} />
+      <SgFileIndex {...indexProps} title="Templates" items={templatesIndexData} />
+      <SgFileIndex {...indexProps} title="Organisms" items={organismsIndexData} />
+      <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} />
+      <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} />
     </div>
   );
 };
