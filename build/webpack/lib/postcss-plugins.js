@@ -11,6 +11,7 @@ const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 const mixins = require('postcss-mixins');
+const responsiveFont = require('postcss-responsive-font');
 
 // build
 const mqpacker = require('css-mqpacker');
@@ -58,6 +59,7 @@ const standard = [
       nesting: false
     }
   }),
+  responsiveFont(),
   extend(),
   discardEmpty(),
   removeRoot()
