@@ -35,8 +35,8 @@ In order for the plugin to not capture the color variables used by the Styleguid
 `./styleguide/variables/colors.css` with '--sg-color'.
 
 ## WCAG 2.0 Standard Tests
-The SgColorSwatch measures contrast ratios against 'A', 'AA', and 'AAA' standards of WCAG 2.0. 
-By default all three of these tests are displayed inside the component in browser.
+The SgColorSwatch measures contrast ratios against the 'AA', and 'AAA' standards of WCAG 2.0. 
+By default both of these tests are displayed inside the component in browser.
 
 The tests contrast '--color-text--primary' and '--color-text--secondary' against all variables prefixed with '--color'.
 
