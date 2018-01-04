@@ -1,6 +1,6 @@
-import chroma from 'chroma-js';
 import SgHeading from '@sg-tags/SgHeading/SgHeading';
 import colorVars from './SgColorSwatch__variables.json';
+import { createObject, getContrast, runWCAGTest } from './SgColorSwatch.Container';
 
 export const SgColorSwatch = (props) => {
   const {
@@ -15,62 +15,29 @@ export const SgColorSwatch = (props) => {
     className
   ]);
 
-  const wcagAA = (ratio, size) => {
-    if (size === 'large' && ratio > 3) {
-      return 'PASS';
-    } else if (size === 'normal' && ratio > 4.5) {
-      return 'PASS';
-    }
-
-    return 'FAIL';
-  };
-
   return (
     <SgColorSwatch__wrapper>
       {
         colorVars ?
         Object.keys(colorVars).map((color, i) => {
           const title = color.substr(color.indexOf('color') + 5).split(/(?=[A-Z])/).join(' ');
-          const hex = colorVars[color];
-          const rgb = chroma(hex).rgb();
+          const obj = createObject(colorVars[color]);
 
           /* contrast tests */
-          const contrastPrimary = chroma.contrast(colorVars[color], colorVars.colorTextPrimary);
-          const contrastSecondary = chroma.contrast(colorVars[color], colorVars.colorTextSecondary);
+          const contrastPrimary = getContrast(obj.hex, colorVars.colorTextPrimary);
+          const contrastSecondary = getContrast(obj.hex, colorVars.colorTextSecondary);
 
           return (
             <Tag
               key={i}
               className={classStack}
               {...attrs}
-              style={{ backgroundColor: colorVars[color] }}
+              style={{ backgroundColor: obj.hex }}
             >
-              <SgColorSwatch__accessibility>
-                <div className="SgColorSwatch__accessibility__badge
-                  SgColorSwatch__accessibility__badge--primary
-                  SgColorSwatch__accessibility__badge--normal"
-                >
-                  {wcagAA(contrastPrimary, 'normal')}
-                </div>
-                <div className="SgColorSwatch__accessibility__badge
-                  SgColorSwatch__accessibility__badge--primary
-                  SgColorSwatch__accessibility__badge--large"
-                >
-                  {wcagAA(contrastPrimary, 'large')}
-                </div>
-                <div className="SgColorSwatch__accessibility__badge
-                  SgColorSwatch__accessibility__badge--secondary
-                  SgColorSwatch__accessibility__badge--normal"
-                >
-                  {wcagAA(contrastSecondary, 'normal')}
-                </div>
-                <div className="SgColorSwatch__accessibility__badge
-                  SgColorSwatch__accessibility__badge--secondary
-                  SgColorSwatch__accessibility__badge--large"
-                >
-                  {wcagAA(contrastSecondary, 'large')}
-                </div>
-              </SgColorSwatch__accessibility>
+              <SgColorSwatch__accessibility contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="A" />
+              <SgColorSwatch__accessibility variant="no-badge" contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AA" />
+              <SgColorSwatch__accessibility variant="no-badge" contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AAA" />
+
               <SgColorSwatch__panel>
                 <div className="SgColorSwatch__panel__title">
                   <SgHeading level="h6">Name</SgHeading>
@@ -78,11 +45,13 @@ export const SgColorSwatch = (props) => {
                 </div>
                 <div className="SgColorSwatch__panel__hex">
                   <SgHeading level="h6">Hex</SgHeading>
-                  <p>{hex}</p>
+                  <p>{obj.hex}</p>
                 </div>
                 <div className="SgColorSwatch__panel__rgb">
                   <SgHeading level="h6">RGB</SgHeading>
-                  <p>{rgb[0]}, {rgb[1]}, {rgb[2]}</p>
+                  {obj.rgb.a ?
+                    <p>{obj.rgb.r}, {obj.rgb.g}, {obj.rgb.b}, {obj.rgb.a}</p> : <p>{obj.rgb.r}, {obj.rgb.g}, {obj.rgb.b}</p>
+                  }
                 </div>
               </SgColorSwatch__panel>
             </Tag>
@@ -109,18 +78,66 @@ SgColorSwatch.propTypes = {
   colors: PropTypes.object
 };
 
+const SgColorSwatch__accessibility = (props) => {
+  const {
+    tagName: Tag,
+    className,
+    variant,
+    children,
+    contrastPrimary,
+    contrastSecondary,
+    level,
+    ...attrs
+  } = props;
 
-export default SgColorSwatch;
+  const classStack = FcUtils.createClassStack([
+    'SgColorSwatch__accessibility',
+    `SgColorSwatch__accessibility--${variant}`,
+    level === 'A' && 'SgColorSwatch__accessibility--single',
+    level === 'AA' && 'SgColorSwatch__accessibility--double',
+    level === 'AAA' && 'SgColorSwatch__accessibility--triple',
+    className
+  ]);
 
+  return (
+    <Tag className={classStack} {...attrs}>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--normal">
+        {runWCAGTest(contrastPrimary, 'normal', level)}
+      </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--large">
+        {runWCAGTest(contrastPrimary, 'large', level)}
+      </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--normal">
+        {runWCAGTest(contrastSecondary, 'normal', level)}
+      </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--large">
+        {runWCAGTest(contrastSecondary, 'large', level)}
+      </div>
+    </Tag>
+  );
+};
+
+SgColorSwatch__accessibility.defaultProps = {
+  tagName: 'div',
+  level: 'AA'
+};
+
+SgColorSwatch__accessibility.propTypes = {
+  tagName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
+  className: PropTypes.string,
+  variant: PropTypes.string,
+  children: PropTypes.node,
+  contrastPrimary: PropTypes.string.isRequired,
+  contrastSecondary: PropTypes.string.isRequired,
+  level: PropTypes.string
+};
 
 const SgColorSwatch__wrapper = FcUtils.createBasicComponent({
   name: 'SgColorSwatch__wrapper',
-  defaultProps: {
-    tagName: 'div'
-  }
-});
-const SgColorSwatch__accessibility = FcUtils.createBasicComponent({
-  name: 'SgColorSwatch__accessibility',
   defaultProps: {
     tagName: 'div'
   }
@@ -132,3 +149,5 @@ const SgColorSwatch__panel = FcUtils.createBasicComponent({
     tagName: 'div'
   }
 });
+
+export default SgColorSwatch;

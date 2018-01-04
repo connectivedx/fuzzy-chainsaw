@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: flex-end;
   margin: 0 0.5rem 2rem;
-  min-height: 300px;
+  min-height: 350px;
 }
 
 .SgColorSwatch__panel {
@@ -43,7 +43,9 @@
 .SgColorSwatch__accessibility {
   display: flex;
   justify-content: center;
-  padding: 0.5em;
+  padding: 0 0 0.5em;
+  position: relative;
+  min-width: 50px;
 
   &__badge {
     background-color: black;
@@ -54,7 +56,7 @@
     position: relative;
 
     &::before {
-      content: 'A';
+      content: 'B';
       position: absolute;
       top: -1.5em;
     }
@@ -82,6 +84,34 @@
       &::before {
         font-size: 18pt;
         left: calc(50% - 8px);
+      }
+    }
+  }
+
+  &--single::before {
+    content: "'A'";
+  }
+
+  &--double::before {
+    content: "'AA'";
+  }
+
+  &--triple::before {
+    content: "'AAA'";
+  }
+
+  &::before {
+    position: absolute;
+    top: 0.25em;
+    left: -4em;
+    text-align: right;
+    min-width: 3em;
+  }
+
+  &--no-badge {
+    .SgColorSwatch__accessibility__badge {
+      &::before {
+        content: none;
       }
     }
   }
