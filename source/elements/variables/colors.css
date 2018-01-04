@@ -4,6 +4,10 @@
 
   background-color: var(--color-black);
   color: var(--color-white);
+
+  IMPORTANT:
+  In order for the project colors to be included by the SgColorSwatch,
+  please prefix all variables inside this file with '---color'.
 */
 
 :root {
@@ -11,14 +15,24 @@
   --color-generic--blue: #003346;
   --color-generic--green: #358450;
   --color-generic--red: #a40000;
-  --color-text--primary: var(--color-black);
-  --color-text--secondary: var(--color-white);
 
   /* general colors */
   --color-red: #fa0000;
   --color-blue: #0000fa;
 
+  /* text colors */
+  --color-text--primary: var(--color-black);
+  --color-text--secondary: var(--color-white);
+
   /* grayscale */
   --color-white: #fff;
+  --color-gray: #8c8c8c;
   --color-black: #000;
+
+  /* translucents */
+  --color--alpha100: rgb(255, 255, 255, 1);
+  --color--alpha80: rgb(255, 255, 255, 0.8);
+  --color--alpha50: rgb(255, 255, 255, 0.5);
+  --color--alpha25: rgb(255, 255, 255, 0.25);
+  --color--alpha0: rgb(255, 255, 255, 0);
 }
