@@ -7,6 +7,7 @@ const postcss = require('postcss');
 // standard
 const nested = require('postcss-nested');
 const cssnext = require('postcss-cssnext');
+const responsiveType = require('postcss-responsive-type');
 const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
@@ -58,6 +59,7 @@ const standard = [
       nesting: false
     }
   }),
+  responsiveType(),
   extend(),
   discardEmpty(),
   removeRoot()
