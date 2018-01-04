@@ -60,10 +60,10 @@ export const SgTableOfContents = (props) => {
             )) }
         </RhythmComponent>
       }
-      <SgFileIndex {...indexProps} title="Templates" items={templatesIndexData} />
-      <SgFileIndex {...indexProps} title="Organisms" items={organismsIndexData} />
-      <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} />
-      <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} />
+      {templatesIndexData.length > 0 && <SgFileIndex {...indexProps} title="Templates" items={templatesIndexData} /> }
+      {organismsIndexData.length > 0 && <SgFileIndex {...indexProps} title="Organisms" items={organismsIndexData} /> }
+      {moleculesIndexData.length > 0 && <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} /> }
+      {atomsIndexData.length > 0 && <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} /> }
     </div>
   );
 };
