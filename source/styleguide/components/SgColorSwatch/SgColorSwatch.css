@@ -5,8 +5,8 @@
   flex-basis: 300px;
   flex-direction: column;
   justify-content: flex-end;
-  margin: 0 0.5rem 2rem;
-  min-height: 350px;
+  margin: 0 0.5rem 2rem 3rem;
+  min-height: 300px;
 }
 
 .SgColorSwatch__panel {
