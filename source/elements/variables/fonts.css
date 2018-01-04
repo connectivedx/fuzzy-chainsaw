@@ -13,4 +13,14 @@
   --font-weight--thin: 300;
   --font-weight--normal: 500;
   --font-weight--bold: 700;
+
+  /* property-set needed to achieve responsive typography */
+  --font-size--min: 1;
+  --font-size--min-unit: 1rem;
+  --font-size--max: 1.25;
+  --font-size--max-unit: 1.25rem;
+  --min-width: 32;
+  --min-width-unit: 32rem;
+  --max-width: 64;
+  --max-width-unit: 64rem;
 }

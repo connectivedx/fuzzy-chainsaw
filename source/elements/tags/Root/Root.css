@@ -5,10 +5,25 @@
   box-sizing: border-box;
 }
 
+:root,
+html {
+  font-size: var(--type-font-size);
+  line-height: 1.4;
+
+  @media (--responsive-type) {
+    font-size: calc(var(--font-size--min-unit) + (var(--font-size--max) - var(--font-size--min)) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+  }
+
+  @media (--large) { font-size: var(--font-size--max-unit); }
+}
+
 body {
   font-family: var(--type-font-family);
-  font-size: var(--type-font-size);
   line-height: var(--type-line-height);
+
+  @media (--responsive-type) {
+    line-height: calc(var(--type-line-height--min-unit) + (var(--type-line-height--max) - var(--type-line-height--min)) * (100vw - var(--min-width-unit)) / (var(--max-width) - var(--min-width)));
+  }
 }
 
 pre,
