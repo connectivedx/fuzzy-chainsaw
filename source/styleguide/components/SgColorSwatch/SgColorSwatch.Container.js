@@ -1,8 +1,11 @@
 import chroma from 'chroma-js';
 
-/* NOTE that HSL support scaffolding is here, but this component does not yet support recieving an HSL format. */
 
 const createObject = (value) => {
+  /*
+    NOTE that HSL support scaffolding is exists in this function.
+    However this component does not yet support recieving an HSL format.
+  */
   const colorObject =
     {
       hex: '',
@@ -62,17 +65,19 @@ const createObject = (value) => {
   return colorObject;
 };
 
+/* Gets the contrast ratio between two colors */
 const getContrast = (color1, color2) => chroma.contrast(color1, color2);
 
+/*
+  ratio: contrast ratio returned by 'getContrast' above
+  size: text size for the test. WCAG traditionally tests 14pt and 18pt font for 'normal' and 'large' respectively
+  level: the level of the test (e.g 'A', 'AA', or 'AAA')
+*/
 const runWCAGTest = (ratio, size, level) => {
   switch (level) {
+    /* fun fact, 'A' WCAG standard does not have a contrast ratio criteria. */
     case 'A':
-      if (size === 'large' && ratio > 3) {
-        return 'PASS';
-      } else if (size === 'normal' && ratio > 4.5) {
-        return 'PASS';
-      }
-      return 'FAIL';
+      return 'PASS';
 
     case 'AA':
       if (size === 'large' && ratio > 3) {
