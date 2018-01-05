@@ -36,7 +36,7 @@ export const SgColorSwatch = (props) => {
               {...attrs}
               style={{ backgroundColor: obj.hex }}
             >
-              <SgColorSwatch__accessibility variant="no-badge" contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AA" />
+              <SgColorSwatch__accessibility contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AA" />
               <SgColorSwatch__accessibility variant="no-badge" contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AAA" />
 
               <SgColorSwatch__panel>
