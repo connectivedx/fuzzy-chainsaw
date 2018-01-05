@@ -52,11 +52,6 @@ module.exports.linting = [
 
 
 const standard = [
-  exportVars({
-    file: './source/styleguide/components/SgColorSwatch/SgColorSwatch__variables',
-    type: 'json',
-    match: ['--color']
-  }),
   mixins(),
   nested(),
   cssnext({
@@ -74,6 +69,11 @@ module.exports.dev = [
   ...module.exports.linting,
   cssImport({
     resolve: (id, basedir) => resolver.resolveSync({}, basedir, id)
+  }),
+  exportVars({
+    file: './source/styleguide/components/SgColorSwatch/SgColorSwatch__variables',
+    type: 'json',
+    match: ['--color']
   }),
   ...standard
 ];
