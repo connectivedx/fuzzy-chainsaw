@@ -11,7 +11,6 @@ const extend = require('postcss-extend');
 const discardEmpty = require('postcss-discard-empty');
 const removeRoot = require('postcss-remove-root');
 const mixins = require('postcss-mixins');
-const exportVars = require('postcss-export-vars');
 
 // build
 const mqpacker = require('css-mqpacker');
@@ -69,11 +68,6 @@ module.exports.dev = [
   ...module.exports.linting,
   cssImport({
     resolve: (id, basedir) => resolver.resolveSync({}, basedir, id)
-  }),
-  exportVars({
-    file: './source/styleguide/components/SgColorSwatch/SgColorSwatch__variables',
-    type: 'json',
-    match: ['--color']
   }),
   ...standard
 ];
