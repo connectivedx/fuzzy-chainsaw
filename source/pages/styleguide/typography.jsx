@@ -73,7 +73,7 @@ const page = () => (
   </Wrapper>
 );
 
-page.pageTitle = 'Typography';
+page.pageTitle = 'StyleGuide | Typography';
 page.pageType = 'index';
 
 export default page;
