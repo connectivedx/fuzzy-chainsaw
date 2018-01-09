@@ -11,13 +11,44 @@ body {
   line-height: var(--type-line-height);
 }
 
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+
+  &::before {
+    content: open-quote;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
+
 pre,
 code {
   font-family: monospace;
   line-height: 1.4em;
 }
 
+blockquote {
+  padding: 1em;
+  background-color: whitesmoke;
+}
+
 button {
   background-color: transparent;
   font-size: 1em;
+}
+
+hr {
+  height: 1px;
+  background-color: darkgray;
+  border: 0;
 }
