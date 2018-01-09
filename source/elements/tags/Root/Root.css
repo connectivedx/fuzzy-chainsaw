@@ -7,7 +7,8 @@
 
 body {
   font-family: var(--type-font-family);
-  font-size: var(--type-font-size);
+  font-size: responsive var(--type-font-size-min) var(--type-font-size-max);
+  font-range: var(--type-font-size-range);
   line-height: var(--type-line-height);
 }
 
