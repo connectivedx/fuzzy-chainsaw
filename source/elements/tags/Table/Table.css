@@ -2,10 +2,10 @@
   --border-collapse: separate;
   --cell--padding: 0.75em;
   --cell--text-align: left;
-  --cell--border: 1px solid var(--color-shade--10);
-  --cell--bg-color: var(--color-shade--05);
+  --cell--border: 1px solid var(--color-gray);
+  --cell--bg-color: var(--color-gray);
   --cell--display: table-cell;
-  --label-color: var(--color-shade--90);
+  --label-color: var(--color-black);
   --td--bg-color: transparent;
   --td-value--display: none;
   --td-value--font-size: 1rem;
