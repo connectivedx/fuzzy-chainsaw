@@ -6,30 +6,10 @@
 }
 
 body {
-  font-family: var(--type-font-family);
-  font-size: responsive var(--type-font-size-min) var(--type-font-size-max);
-  font-range: var(--type-font-size-range);
+  font-family: var(--font-family--default);
+  font-size: responsive var(--type-responsive-min) var(--type-responsive-max);
+  font-range: var(--type-responsive-range);
   line-height: var(--type-line-height);
-}
-
-strong {
-  font-weight: bold;
-}
-
-em {
-  font-style: italic;
-}
-
-q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
-
-  &::before {
-    content: open-quote;
-  }
-
-  &::after {
-    content: close-quote;
-  }
 }
 
 pre,
@@ -38,18 +18,7 @@ code {
   line-height: 1.4em;
 }
 
-blockquote {
-  padding: 1em;
-  background-color: whitesmoke;
-}
-
 button {
   background-color: transparent;
   font-size: 1em;
-}
-
-hr {
-  height: 1px;
-  background-color: darkgray;
-  border: 0;
 }
