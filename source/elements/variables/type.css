@@ -3,13 +3,11 @@
 */
 
 :root {
-  /* The base font-size for the root html element. */
-  --type-font-size: 100%;
-
-  /* The base line height for the root html element. */
+  /* Base body line height for the body element. */
   --type-line-height: 1.4;
 
-  /* The base font-family for the root html element. */
-  --type-font-family: var(--font-stack--default);
+  /* Base body responsive typography. */
+  --type-responsive-min: 0.85rem;
+  --type-responsive-max: 1rem;
+  --type-responsive-range: 384px 1152px;
 }
-

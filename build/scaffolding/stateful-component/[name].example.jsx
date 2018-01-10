@@ -4,5 +4,6 @@ export default [{
   name: 'Default styling',
   component: (
     <{{name}}>Lorem ipsum</{{name}}>
-  )
+  ),
+  devNotes: ''
 }];

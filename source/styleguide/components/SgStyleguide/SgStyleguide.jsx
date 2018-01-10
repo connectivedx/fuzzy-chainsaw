@@ -72,7 +72,7 @@ export const SgStyleguide_Examples = (props) => {
         <Rhythm size="small">
           {
             examples.map((e) => (
-              <div key={e.slug} className={getLinkClassing}>
+              <div key={e.slug} className={getLinkClassing({})}>
                 <a href={`#${e.slug}`} value={e.name}>
                   {e.name}
                 </a>
@@ -91,6 +91,7 @@ export const SgStyleguide_Examples = (props) => {
             component={e.component}
             theme={e.theme}
             options={e.options}
+            devNotes={e.devNotes}
           />
         ))
       }

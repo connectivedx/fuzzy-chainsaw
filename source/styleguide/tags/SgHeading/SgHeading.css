@@ -3,7 +3,7 @@
   font-size: 2em;
   line-height: 1em;
 
-  &--default {
+  &--bold {
     font-weight: 700;
   }
 

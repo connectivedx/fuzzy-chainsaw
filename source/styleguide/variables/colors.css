@@ -1,19 +1,24 @@
 /*
-The color palette for the project.
-http://cssnext.io/features/#color-function
+  The color palette for the project.
+  http://cssnext.io/features/#color-function
 
-background-color: var(--primary);
-color: var(--greyDark);
+  background-color: var(--primary);
+  color: var(--greyDark);
+
+  IMPORTANT:
+  In order for the styleguide colors to not be included by the SgColorSwatch,
+  please prefix all variables inside this file with '--sg-color'.
 */
+
 :root {
-  --color-black: #000;
-  --color-gray-darker: #333;
-  --color-gray-dark: #666;
-  --color-gray: #999;
-  --color-gray-light: #bbb;
-  --color-gray-lighter: #ddd;
-  --color-white: #fff;
-  --color-link: #369;
-  --color-background: #eaeaea;
-  --color-background-dark: #333;
+  --sg-color-black: #000;
+  --sg-color-gray-darker: #333;
+  --sg-color-gray-dark: #666;
+  --sg-color-gray: #999;
+  --sg-color-gray-light: #bbb;
+  --sg-color-gray-lighter: #ddd;
+  --sg-color-white: #fff;
+  --sg-color-link: #369;
+  --sg-color-background: #eaeaea;
+  --sg-color-background-dark: #333;
 }
