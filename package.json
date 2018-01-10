@@ -103,6 +103,7 @@
     "postcss-pipeline-webpack-plugin": "^3.0.0",
     "postcss-remove-root": "^0.0.2",
     "postcss-reporter": "^4.0.0",
+    "postcss-responsive-type": "^1.0.0",
     "pre-commit": "^1.2.2",
     "prismjs": "^1.6.0",
     "progress-bar-webpack-plugin": "^1.9.3",

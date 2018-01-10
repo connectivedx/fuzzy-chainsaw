@@ -6,8 +6,9 @@
 }
 
 body {
-  font-family: var(--type-font-family);
-  font-size: var(--type-font-size);
+  font-family: var(--font-family--default);
+  font-size: responsive var(--type-responsive-min) var(--type-responsive-max);
+  font-range: var(--type-responsive-range);
   line-height: var(--type-line-height);
 }
 
