@@ -9,8 +9,8 @@
 
   &__header {
     & .SgHeading {
-      background-color: var(--color-gray-darker);
-      color: var(--color-white);
+      background-color: var(--sg-color-gray-darker);
+      color: var(--sg-color-white);
       font-size: 1em;
       font-weight: 500;
       line-height: 40px;
@@ -29,7 +29,7 @@
   }
 
   &__tabs {
-    background-color: var(--color-background);
+    background-color: var(--sg-color-background);
     border-bottom: none;
     display: flex;
     font-size: 0.8em;
@@ -44,8 +44,8 @@
     text-align: center;
 
     & a {
-      background-color: var(--color-gray-light);
-      color: var(--color-gray-darker);
+      background-color: var(--sg-color-gray-light);
+      color: var(--sg-color-gray-darker);
       display: block;
       padding: 1em;
       text-decoration: none;
@@ -55,20 +55,20 @@
       }
 
       &:hover {
-        background-color: var(--color-gray-lighter);
-        border-color: var(--color-gray-lighter);
+        background-color: var(--sg-color-gray-lighter);
+        border-color: var(--sg-color-gray-lighter);
       }
     }
 
     &.is-active a {
-      background-color: var(--color-white);
-      color: var(--color-gray-dark);
+      background-color: var(--sg-color-white);
+      color: var(--sg-color-gray-dark);
     }
   }
 
   &__section {
     display: none;
-    background-color: var(--color-white);
+    background-color: var(--sg-color-white);
     overflow: auto;
     padding: 1em;
 
@@ -90,7 +90,7 @@
     }
 
     &--dark-background {
-      background-color: var(--color-background-dark);
+      background-color: var(--sg-color-background-dark);
     }
   }
 }

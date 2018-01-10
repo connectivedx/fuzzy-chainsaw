@@ -38,7 +38,7 @@
   }
 
   &__section-header {
-    background-color: var(--color-background);
+    background-color: var(--sg-color-background);
     padding: 1em 1em 2em;
 
     @media (width >= 960px) {
@@ -46,7 +46,7 @@
     }
 
     & a {
-      color: var(--color-link);
+      color: var(--sg-color-link);
     }
 
     & .sg-heading {
@@ -125,7 +125,7 @@
     }
 
     & code {
-      background-color: var(--color-white);
+      background-color: var(--sg-color-white);
       border-radius: 0.125em 0.25em;
       color: firebrick;
       display: inline-block;

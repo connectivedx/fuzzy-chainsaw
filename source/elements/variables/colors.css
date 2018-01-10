@@ -4,31 +4,35 @@
 
   background-color: var(--color-black);
   color: var(--color-white);
+
+  IMPORTANT:
+  In order for the project colors to be included by the SgColorSwatch,
+  please prefix all variables inside this file with '---color'.
 */
 
 :root {
-  /* grayscale */
-  --color-shade--00: gray(100%);
-  --color-shade--03: gray(97%); /* #f7f7f7 */
-  --color-shade--05: gray(95%); /* #f2f2f2 */
-  --color-shade--10: gray(90%); /* #e8e8e8 */
-  --color-shade--25: gray(75%); /* #bfbfbf */
-  --color-shade--50: gray(50%); /* #8c8c8c */
-  --color-shade--75: gray(25%); /* #4b4b4b */
-  --color-shade--90: gray(10%); /* #2b2b2b */
-  --color-shade--100: gray(0%);
-
-  /* grayscale alias */
-  --color-white: var(--color-shade--00);
-  --color-gray: var(--color-shade--50);
-  --color-black: var(--color-shade--100);
+  /* generic theme */
+  --color-generic--blue: #003346;
+  --color-generic--green: #358450;
+  --color-generic--red: #a40000;
 
   /* general colors */
   --color-red: #fa0000;
   --color-blue: #0000fa;
 
-  /* theme colors */
+  /* text colors */
+  --color-text--primary: var(--color-black);
+  --color-text--secondary: var(--color-white);
 
-  /* generic theme */
-  --generic-color-blue: #0000fa;
+  /* grayscale */
+  --color-white: #fff;
+  --color-gray: #8c8c8c;
+  --color-black: #000;
+
+  /* translucents */
+  --color--alpha100: rgb(0, 0, 0, 1);
+  --color--alpha80: rgb(0, 0, 0, 0.8);
+  --color--alpha50: rgb(0, 0, 0, 0.5);
+  --color--alpha25: rgb(0, 0, 0, 0.25);
+  --color--alpha0: rgb(0, 0, 0, 0);
 }
