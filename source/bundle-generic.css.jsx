@@ -6,4 +6,4 @@ require('@vars/index.css');
 // require the rest of the molecules
 requireAll(require.context('@atoms/', true, /\.generic.css$/));
 requireAll(require.context('@molecules/', true, /\.generic.css$/));
-requireAll(require.context('@compositions/', true, /\.generic.css$/));
+requireAll(require.context('@organisms/', true, /\.generic.css$/));

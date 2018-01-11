@@ -6,7 +6,7 @@ import {
   pagesIndexData,
   themedPagesIndexData,
   indexesIndexData,
-  compositionsIndexData,
+  organismsIndexData,
   moleculesIndexData,
   atomsIndexData
 } from '@sg-atoms/SgTableOfContents/fileIndexData';
@@ -59,7 +59,7 @@ export const SgTableOfContents = (props) => {
             )) }
         </RhythmComponent>
       }
-      <SgFileIndex {...indexProps} title="Compositions" items={compositionsIndexData} />
+      <SgFileIndex {...indexProps} title="Organisms" items={organismsIndexData} />
       <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} />
       <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} />
     </div>

@@ -1,7 +1,7 @@
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const compositionsContext = require.context('@compositions/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
 const isRenderableModule = (key) => (
@@ -128,13 +128,13 @@ export const themedPagesIndexData =
     }, { });
 
 
-export const compositionsIndexData =
-  Object.keys(requireAll(compositionsContext, '/styleguide/compositions/'))
-    .filter((p) => p.indexOf('/compositions/') !== -1)
+export const organismsIndexData =
+  Object.keys(requireAll(organismsContext, '/styleguide/organisms/'))
+    .filter((p) => p.indexOf('/organisms/') !== -1)
     .map((p) => ({
-      path: p.substr(p.indexOf('/compositions/') + '/compositions/'.length)
+      path: p.substr(p.indexOf('/organisms/') + '/organisms/'.length)
     }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/compositions`));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/organisms`));
 
 
 export const moleculesIndexData =

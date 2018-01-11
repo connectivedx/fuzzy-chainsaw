@@ -41,7 +41,7 @@ module.exports = ({ production }) => () => {
   const pageTemplate = fs.readFileSync(dest('_skeleton.html'));
   const {
     pagesContext,
-    compositionsContext,
+    organismsContext,
     moleculesContext,
     atomsContext,
     getModule
@@ -61,7 +61,7 @@ module.exports = ({ production }) => () => {
     merge(
       ...renderFiles([
         ...getContextList(pagesContext),
-        ...getContextList(compositionsContext, 'styleguide/compositions'),
+        ...getContextList(organismsContext, 'styleguide/organisms'),
         ...getContextList(moleculesContext, 'styleguide/molecules'),
         ...getContextList(atomsContext, 'styleguide/atoms')
       ])

@@ -39,7 +39,7 @@ module.exports = {
       '@vars': source('elements/variables'),
       '@atoms': source('elements/atoms'),
       '@molecules': source('elements/molecules'),
-      '@compositions': source('elements/compositions'),
+      '@organisms': source('elements/organisms'),
       '@modifiers': source('elements/modifiers'),
 
       '@styleguide': source('styleguide'),
