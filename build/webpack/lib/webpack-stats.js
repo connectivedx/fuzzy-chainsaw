@@ -8,6 +8,6 @@ module.exports = {
   version: false,
   modules: false,
   colors: true,
-  error: true,
+  errors: true,
   errorDetails: true
 };
