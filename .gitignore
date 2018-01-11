@@ -4,3 +4,4 @@ dist
 .DS_Store
 *.log
 stats
+source/styleguide/components/SgColorSwatch/SgColorSwatch__variables.json

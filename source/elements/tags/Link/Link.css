@@ -17,4 +17,20 @@
       color: color(var(--color-red) tint(10));
     }
   }
+
+  &--dark {
+    color: var(--color-text--primary);
+
+    &:--enter {
+      color: color(var(--color-text--primary) tint(10));
+    }
+  }
+
+  &--light {
+    color: var(--color-text--secondary);
+
+    &:--enter {
+      color: color(var(--color-text--secondary) tint(10));
+    }
+  }
 }
