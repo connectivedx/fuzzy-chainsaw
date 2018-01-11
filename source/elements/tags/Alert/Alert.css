@@ -1,7 +1,13 @@
 .Alert {
-  background-color: color(var(--color-gray) alpha(-85%));
+  background-color: color(var(--color-white) blackness(15%));
   padding: 1rem 2rem;
   position: relative;
+
+  &__body {
+    display: table-cell;
+    padding-left: 3rem;
+    vertical-align: top;
+  }
 
   &--page-level {
     .Alert__body {
@@ -36,7 +42,8 @@
   }
 
   &--success {
-    background-color: color(var(--color-green) alpha(-85%));
+    background-color: color(var(--color-green) blend(var(--color-white) 75%));
+    background-image: url(./images/checkmark.svg);
 
     &::before {
       background-color: var(--color-green);
@@ -44,7 +51,8 @@
   }
 
   &--warning {
-    background-color: color(var(--color-yellow) alpha(-85%));
+    background-color: color(var(--color-yellow) blend(var(--color-white) 75%));
+    background-image: url(./images/warning.svg);
 
     &::before {
       background-color: var(--color-yellow);
@@ -52,7 +60,8 @@
   }
 
   &--error {
-    background-color: color(var(--color-red) alpha(-85%));
+    background-color: color(var(--color-red) blend(var(--color-white) 90%));
+    background-image: url(./images/error.svg);
 
     &::before {
       background-color: var(--color-red);
@@ -60,7 +69,8 @@
   }
 
   &--information {
-    background-color: color(var(--color-blue) alpha(-85%));
+    background-color: color(var(--color-blue) blend(var(--color-white) 90%));
+    background-image: url(./images/info.svg);
 
     &::before {
       background-color: var(--color-blue);
