@@ -1,11 +1,11 @@
 import match from 'minimatch';
-import SgStyleguide from '@sg-components/SgStyleguide/SgStyleguide';
+import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide';
 
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const compositionsContext = require.context('@compositions/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
-export const componentsContext = require.context('@components/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
-export const tagsContext = require.context('@tags/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 
 
 const requireOrFail = (context) => (path) => {
@@ -65,10 +65,10 @@ const getStyleguideModule = (path, context, type) => {
 export const getModule = (path) => {
   const normalPath = normalizePath(path);
 
-  if (match(normalPath, './styleguide/tags/**')) {
-    return getStyleguideModule(path, tagsContext, 'tags');
-  } else if (match(normalPath, './styleguide/components/**')) {
-    return getStyleguideModule(path, componentsContext, 'components');
+  if (match(normalPath, './styleguide/atoms/**')) {
+    return getStyleguideModule(path, atomsContext, 'atoms');
+  } else if (match(normalPath, './styleguide/molecules/**')) {
+    return getStyleguideModule(path, moleculesContext, 'molecules');
   } else if (match(normalPath, './styleguide/compositions/**')) {
     return getStyleguideModule(path, compositionsContext, 'compositions');
   }

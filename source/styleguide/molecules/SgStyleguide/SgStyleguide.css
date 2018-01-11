@@ -1,4 +1,4 @@
-@import "~@sg-tags/SgHeading/SgHeading.css";
+@import "~@sg-atoms/SgHeading/SgHeading.css";
 
 .ReactModal__Body--open {
   overflow: hidden;

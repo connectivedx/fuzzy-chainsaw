@@ -5,9 +5,9 @@ import styles from '@styleguide/styleguide.css'; // eslint-disable-line
 import Dom from 'react-dom';
 
 // component modules
-import SgNav from '@sg-components/SgNav/SgNav';
-import SgExample from '@sg-components/SgExample/SgExample.Container';
-import SgStyleguide from '@sg-components/SgStyleguide/SgStyleguide.Container';
+import SgNav from '@sg-molecules/SgNav/SgNav';
+import SgExample from '@sg-molecules/SgExample/SgExample.Container';
+import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide.Container';
 
 
 const ui = {

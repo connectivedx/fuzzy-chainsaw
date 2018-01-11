@@ -1,15 +1,15 @@
-import Heading from '@sg-tags/SgHeading/SgHeading';
-import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
+import Heading from '@sg-atoms/SgHeading/SgHeading';
+import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 
-import SgFileIndex from '@sg-tags/SgFileIndex/SgFileIndex';
+import SgFileIndex from '@sg-atoms/SgFileIndex/SgFileIndex';
 import {
   pagesIndexData,
   themedPagesIndexData,
   indexesIndexData,
   compositionsIndexData,
-  componentsIndexData,
-  tagsIndexData
-} from '@sg-tags/SgTableOfContents/fileIndexData';
+  moleculesIndexData,
+  atomsIndexData
+} from '@sg-atoms/SgTableOfContents/fileIndexData';
 
 import { themes } from '@source/fc-config';
 
@@ -60,8 +60,8 @@ export const SgTableOfContents = (props) => {
         </RhythmComponent>
       }
       <SgFileIndex {...indexProps} title="Compositions" items={compositionsIndexData} />
-      <SgFileIndex {...indexProps} title="Components" items={componentsIndexData} />
-      <SgFileIndex {...indexProps} title="Tags" items={tagsIndexData} />
+      <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} />
+      <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} />
     </div>
   );
 };

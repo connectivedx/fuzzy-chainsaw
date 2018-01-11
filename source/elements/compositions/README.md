@@ -1,3 +1,3 @@
 # Compositions
 
-Compositions are specific arrangments of Tags and Components with minimal styling requirements.
+Compositions are specific arrangments of Atoms and Molecules with minimal styling requirements.

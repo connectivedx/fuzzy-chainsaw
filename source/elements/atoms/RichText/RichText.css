@@ -1,7 +1,7 @@
-@import "~@tags/Rhythm/Rhythm.css";
-@import "~@tags/Heading/Heading.css";
-@import "~@tags/Button/Button.css";
-@import "~@tags/List/List.css";
+@import "~@atoms/Rhythm/Rhythm.css";
+@import "~@atoms/Heading/Heading.css";
+@import "~@atoms/Button/Button.css";
+@import "~@atoms/List/List.css";
 
 .RichText {
   @extend .Rhythm--deep;

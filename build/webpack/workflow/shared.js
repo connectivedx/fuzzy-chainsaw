@@ -37,15 +37,15 @@ module.exports = {
 
       '@elements': source('elements'),
       '@vars': source('elements/variables'),
-      '@tags': source('elements/tags'),
-      '@components': source('elements/components'),
+      '@atoms': source('elements/atoms'),
+      '@molecules': source('elements/molecules'),
       '@compositions': source('elements/compositions'),
       '@modifiers': source('elements/modifiers'),
 
       '@styleguide': source('styleguide'),
       '@sg-vars': source('styleguide/variables'),
-      '@sg-tags': source('styleguide/tags'),
-      '@sg-components': source('styleguide/components')
+      '@sg-atoms': source('styleguide/atoms'),
+      '@sg-molecules': source('styleguide/molecules')
     }
   },
   output: {

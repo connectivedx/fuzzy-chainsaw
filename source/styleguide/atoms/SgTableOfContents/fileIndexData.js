@@ -1,6 +1,6 @@
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const tagsContext = require.context('@tags/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const componentsContext = require.context('@components/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const compositionsContext = require.context('@compositions/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
@@ -24,7 +24,7 @@ const requireAllpages = () =>
     }, { });
 
 
-const requireAllComponents = (context, prefix) =>
+const requireAll = (context, prefix) =>
   context.keys()
     .filter(isRenderableModule)
     .reduce((modules, key) => {
@@ -129,7 +129,7 @@ export const themedPagesIndexData =
 
 
 export const compositionsIndexData =
-  Object.keys(requireAllComponents(compositionsContext, '/styleguide/compositions/'))
+  Object.keys(requireAll(compositionsContext, '/styleguide/compositions/'))
     .filter((p) => p.indexOf('/compositions/') !== -1)
     .map((p) => ({
       path: p.substr(p.indexOf('/compositions/') + '/compositions/'.length)
@@ -137,18 +137,18 @@ export const compositionsIndexData =
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/compositions`));
 
 
-export const componentsIndexData =
-  Object.keys(requireAllComponents(componentsContext, '/styleguide/components/'))
-    .filter((p) => p.indexOf('/components/') !== -1)
+export const moleculesIndexData =
+  Object.keys(requireAll(moleculesContext, '/styleguide/molecules/'))
+    .filter((p) => p.indexOf('/molecules/') !== -1)
     .map((p) => ({
-      path: p.substr(p.indexOf('/components/') + '/components/'.length)
+      path: p.substr(p.indexOf('/molecules/') + '/molecules/'.length)
     }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/components`));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/molecules`));
 
 
-export const tagsIndexData =
-  Object.keys(requireAllComponents(tagsContext, '/styleguide/tags/'))
+export const atomsIndexData =
+  Object.keys(requireAll(atomsContext, '/styleguide/atoms/'))
     .map((p) => ({
-      path: p.substr(p.indexOf('/tags/') + '/tags/'.length)
+      path: p.substr(p.indexOf('/atoms/') + '/atoms/'.length)
     }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/tags`));
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/atoms`));

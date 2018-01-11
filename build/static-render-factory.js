@@ -42,8 +42,8 @@ module.exports = ({ production }) => () => {
   const {
     pagesContext,
     compositionsContext,
-    componentsContext,
-    tagsContext,
+    moleculesContext,
+    atomsContext,
     getModule
   } = require(dest('tmp/static.js')); // eslint-disable-line
 
@@ -62,8 +62,8 @@ module.exports = ({ production }) => () => {
       ...renderFiles([
         ...getContextList(pagesContext),
         ...getContextList(compositionsContext, 'styleguide/compositions'),
-        ...getContextList(componentsContext, 'styleguide/components'),
-        ...getContextList(tagsContext, 'styleguide/tags')
+        ...getContextList(moleculesContext, 'styleguide/molecules'),
+        ...getContextList(atomsContext, 'styleguide/atoms')
       ])
     )
     .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))

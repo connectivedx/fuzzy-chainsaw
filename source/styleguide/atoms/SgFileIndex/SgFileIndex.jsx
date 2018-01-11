@@ -1,5 +1,5 @@
-import Heading from '@sg-tags/SgHeading/SgHeading';
-import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
+import Heading from '@sg-atoms/SgHeading/SgHeading';
+import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import { themes } from '@source/fc-config';
 
 

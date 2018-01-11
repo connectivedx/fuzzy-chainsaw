@@ -1,10 +1,10 @@
 import RandToken from 'rand-token';
 import { parse } from 'querystring';
 
-import Heading from '@sg-tags/SgHeading/SgHeading';
-import Rhythm from '@sg-tags/SgRhythm/SgRhythm';
-import Nav from '@sg-components/SgNav/SgNav';
-import Example from '@sg-components/SgExample/SgExample';
+import Heading from '@sg-atoms/SgHeading/SgHeading';
+import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
+import Nav from '@sg-molecules/SgNav/SgNav';
+import Example from '@sg-molecules/SgExample/SgExample';
 
 import { themes } from '@source/fc-config';
 

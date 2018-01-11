@@ -1,5 +1,5 @@
 import ReactModal from 'react-modal';
-import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
+import SgTableOfContents from '@sg-atoms/SgTableOfContents/SgTableOfContents';
 
 
 // set root if in browser
