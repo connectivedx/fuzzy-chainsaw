@@ -21,8 +21,10 @@ const getActiveTheme = (location) => {
 const getLinkClassing = (theme) => {
   if (theme.id === getActiveTheme(global.location)) {
     return 'SgStyleguide__theme-link SgStyleguide__theme-link--active';
+  } else if (theme.id) {
+    return 'SgStyleguide__theme-link';
   }
-  return 'SgStyleguide__theme-link';
+  return 'SgStyleguide__example-link';
 };
 
 export const SgStyleguide_Readme = (props) => (
