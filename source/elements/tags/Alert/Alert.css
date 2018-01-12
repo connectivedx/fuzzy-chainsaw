@@ -1,11 +1,14 @@
 .Alert {
   background-color: color(var(--color-white) blackness(15%));
-  padding: 1rem 2rem;
+  background-position: 1.5rem 1rem;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  padding: 1rem 1rem 0.85rem 1.5rem;
   position: relative;
 
   &__body {
     display: table-cell;
-    padding-left: 3rem;
+    padding-left: 2.5rem;
     vertical-align: top;
   }
 
@@ -52,7 +55,7 @@
 
   &--warning {
     background-color: color(var(--color-yellow) blend(var(--color-white) 75%));
-    background-image: url(./images/warning.svg);
+    background-image: url(./images/warning.png);
 
     &::before {
       background-color: var(--color-yellow);
