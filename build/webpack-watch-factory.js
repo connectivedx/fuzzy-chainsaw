@@ -10,7 +10,7 @@ const watch = require('gulp-watch');
 const { source } = require('./lib/path-helpers');
 
 module.exports = () => () => {
-	watch([ source('elements/components/**') ], () => {
+	watch([ source('**/**') ], () => {
 		gulp.start('webpack:watch:sequence');
 	}); 
 };
