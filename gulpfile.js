@@ -36,7 +36,7 @@ gulp.task('webpack:watch:build', webpackBuild(productionCiConfig, false));
 // watch is a minimal watcher for intergration
 // not requiring page rendering (only /assets)
 gulp.task('watch', series('clean:pre', 'webpack:watch:build', 'webpack:watch')); //pre tasks before webpack:watch (happens once)
-gulp.task('webpack:watch', webpackWatch(productionCiConfig)); //gulp watch using webpack:watch:sequence below
+gulp.task('webpack:watch', webpackWatch()); //gulp watch using webpack:watch:sequence below
 gulp.task('webpack:watch:sequence', series('clean:pre', 'webpack:watch:build', 'clean:post')); //repeated watch factory sequence
 
 // static rendering with create static html from
