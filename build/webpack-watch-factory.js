@@ -5,9 +5,12 @@
   This is different than development mode.
 */
 
-const webpack = require('webpack');
-const handleWebpackErrors = require('./webpack/lib/handleWebpackErrors');
+const gulp = require('gulp');
+const watch = require('gulp-watch');
+const { source } = require('./lib/path-helpers');
 
-module.exports = (config) => () => {
-  webpack(config).watch({ }, handleWebpackErrors);
+module.exports = () => {
+	watch([ source('**/**') ], () => {
+		gulp.start('webpack:watch:sequence');
+	}); 
 };

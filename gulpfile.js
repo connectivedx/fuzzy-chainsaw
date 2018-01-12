@@ -26,16 +26,18 @@ const series = (...task) => (done) => sequence(...task, done);
 gulp.task('clean:pre', require('./build/clean-pre'));
 gulp.task('clean:post', require('./build/clean-post'));
 
-// build tasks
-gulp.task('webpack:build', webpackBuild(buildConfig));
-gulp.task('webpack:build:ci', webpackBuild(buildCiConfig));
-gulp.task('webpack:production', webpackBuild(productionConfig));
-gulp.task('webpack:production:ci', webpackBuild(productionCiConfig));
+// build tasks: webpackBuild(factoryType, exitOnError);
+gulp.task('webpack:build', webpackBuild(buildConfig, true));
+gulp.task('webpack:build:ci', webpackBuild(buildCiConfig, true));
+gulp.task('webpack:production', webpackBuild(productionConfig, true));
+gulp.task('webpack:production:ci', webpackBuild(productionCiConfig, true));
+gulp.task('webpack:watch:build', webpackBuild(productionCiConfig, false));
 
 // watch is a minimal watcher for intergration
 // not requiring page rendering (only /assets)
-gulp.task('webpack:watch', webpackWatch(productionCiConfig));
-gulp.task('watch', series('clean:pre', 'webpack:watch'));
+gulp.task('watch', series('clean:pre', 'webpack:watch:build', 'webpack:watch')); //pre tasks before webpack:watch (happens once)
+gulp.task('webpack:watch', webpackWatch()); //gulp watch using webpack:watch:sequence below
+gulp.task('webpack:watch:sequence', series('clean:pre', 'webpack:watch:build', 'clean:post')); //repeated watch factory sequence
 
 // static rendering with create static html from
 // source pages and automatically constructs

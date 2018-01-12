@@ -9,7 +9,7 @@ const gutil = require('gulp-util');
 const statsConfig = require('./webpack-stats');
 
 
-module.exports = (err, stats, done) => {
+module.exports = (err, stats, done, exitOnError) => {
   if (err) {
     if (done) { done(err); return; }
     gutil.log('[webpack-error]', err);
@@ -20,7 +20,7 @@ module.exports = (err, stats, done) => {
 
   if (stats.hasWarnings() || stats.hasErrors()) {
     gutil.log(chalk.bgRed('Webpack completed with errors or warnings.'), '\u0007');
-    if (done) process.exit(1);
+    if (done && exitOnError) process.exit(1);
   }
 
   if (done) {
