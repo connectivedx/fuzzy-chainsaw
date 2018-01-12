@@ -1,13 +1,12 @@
 .Alert {
   background-color: color(var(--color-white) blackness(15%));
-  background-position: 1.5rem 1rem;
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
   padding: 1rem 1rem 0.85rem 1.5rem;
   position: relative;
 
   &__body {
-    display: table-cell;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
     padding-left: 2.5rem;
     vertical-align: top;
   }
@@ -29,6 +28,8 @@
       top: 0;
       width: 0.5rem;
     }
+
+    .Alert__body { display: table-cell; }
   }
 
   &--field-level {
@@ -46,37 +47,41 @@
 
   &--success {
     background-color: color(var(--color-green) blend(var(--color-white) 75%));
-    background-image: url(./images/checkmark.svg);
 
     &::before {
       background-color: var(--color-green);
     }
+
+    .Alert__body { background-image: url(./images/checkmark.svg); }
   }
 
   &--warning {
     background-color: color(var(--color-yellow) blend(var(--color-white) 75%));
-    background-image: url(./images/warning.png);
 
     &::before {
       background-color: var(--color-yellow);
     }
+
+    .Alert__body { background-image: url(./images/warning.svg); }
   }
 
   &--error {
     background-color: color(var(--color-red) blend(var(--color-white) 90%));
-    background-image: url(./images/error.svg);
 
     &::before {
       background-color: var(--color-red);
     }
+
+    .Alert__body { background-image: url(./images/error.svg); }
   }
 
   &--information {
     background-color: color(var(--color-blue) blend(var(--color-white) 90%));
-    background-image: url(./images/info.svg);
 
     &::before {
       background-color: var(--color-blue);
     }
+
+    .Alert__body { background-image: url(./images/info.svg); }
   }
 }
