@@ -89,7 +89,7 @@ module.exports = (
                       { removeUnusedNS: true },
                       { removeUselessDefs: true },
                       { removeUselessStrokeAndFill: true },
-                      { removeXMLNS: true },
+                      { removeXMLNS: false },
                       { removeXMLProcInst: true },
                       { sortAttrs: true },
                       { removeViewBox: false }

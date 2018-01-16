@@ -4,11 +4,14 @@
   position: relative;
 
   &__body {
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: 1.5rem;
-    padding-left: 2.5rem;
-    vertical-align: top;
+    .Alert--page-level &,
+    .Alert--form-level & {
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      padding-left: 2.5rem;
+      vertical-align: top;
+    }
   }
 
   &--page-level {
@@ -38,6 +41,8 @@
     &.Alert--information {
       background-color: transparent;
       padding: 0;
+
+      .Alert__body { background-image: none; }
     }
 
     &.Alert--success { color: var(--color-green); }
@@ -46,7 +51,7 @@
   }
 
   &--success {
-    background-color: color(var(--color-green) blend(var(--color-white) 75%));
+    background-color: color(var(--color-green) blend(var(--color-white) 90%));
 
     &::before {
       background-color: var(--color-green);
