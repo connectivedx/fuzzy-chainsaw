@@ -12,6 +12,11 @@ const buildCiConfig = require('./build/webpack/webpack.config.build.ci');
 const productionConfig = require('./build/webpack/webpack.config.production');
 const productionCiConfig = require('./build/webpack/webpack.config.production.ci');
 
+// for color swatches
+const postcss = require('gulp-postcss');
+const exportVars = require('postcss-export-vars');
+const watch = require('gulp-watch');
+
 // duplicates gulp 4 type series api
 const series = (...task) => (done) => sequence(...task, done);
 
@@ -21,16 +26,18 @@ const series = (...task) => (done) => sequence(...task, done);
 gulp.task('clean:pre', require('./build/clean-pre'));
 gulp.task('clean:post', require('./build/clean-post'));
 
-// build tasks
-gulp.task('webpack:build', webpackBuild(buildConfig));
-gulp.task('webpack:build:ci', webpackBuild(buildCiConfig));
-gulp.task('webpack:production', webpackBuild(productionConfig));
-gulp.task('webpack:production:ci', webpackBuild(productionCiConfig));
+// build tasks: webpackBuild(factoryType, exitOnError);
+gulp.task('webpack:build', webpackBuild(buildConfig, true));
+gulp.task('webpack:build:ci', webpackBuild(buildCiConfig, true));
+gulp.task('webpack:production', webpackBuild(productionConfig, true));
+gulp.task('webpack:production:ci', webpackBuild(productionCiConfig, true));
+gulp.task('webpack:watch:build', webpackBuild(productionCiConfig, false));
 
 // watch is a minimal watcher for intergration
 // not requiring page rendering (only /assets)
-gulp.task('webpack:watch', webpackWatch(productionCiConfig));
-gulp.task('watch', series('clean:pre', 'webpack:watch'));
+gulp.task('watch', series('clean:pre', 'webpack:watch:build', 'webpack:watch')); //pre tasks before webpack:watch (happens once)
+gulp.task('webpack:watch', webpackWatch()); //gulp watch using webpack:watch:sequence below
+gulp.task('webpack:watch:sequence', series('clean:pre', 'webpack:watch:build', 'clean:post')); //repeated watch factory sequence
 
 // static rendering with create static html from
 // source pages and automatically constructs
@@ -40,6 +47,24 @@ gulp.task('static:render:production', staticRender({ production: true }));
 
 // test code using karma
 gulp.task('test', require('./build/karma-test'));
+
+gulp.task('colorSwatch', series('export-colors', 'color-watch'));
+
+// extract vars for ColorSwatches
+gulp.task('export-colors', () => { // eslint-disable-line
+  return gulp.src('source/elements/variables/colors.css')
+  .pipe(postcss([exportVars({
+    file: './source/styleguide/molecules/SgColorSwatch/SgColorSwatch__variables.json',
+    type: 'json',
+    match: ['--color']
+  })]));
+});
+
+gulp.task('color-watch', () => { // eslint-disable-line
+  return watch('source/elements/variables/colors.css', () => {
+    gulp.start('export-colors');
+  });
+});
 
 // builds for quick publishing
 // to a static server

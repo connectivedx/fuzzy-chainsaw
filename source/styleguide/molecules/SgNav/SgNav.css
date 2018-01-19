@@ -2,11 +2,11 @@
   &,
   &__portal {
     & a {
-      color: var(--color-black);
+      color: var(--sg-color-black);
 
       &:hover,
       &:visited {
-        color: var(--color-black);
+        color: var(--sg-color-black);
       }
     }
   }
@@ -15,9 +15,9 @@
     display: block;
     width: 100%;
     padding: 1em 2em;
-    color: var(--color-white);
-    background-color: var(--color-black);
-    box-shadow: color(var(--color-black) alpha(10%)) 0 0 0.5em;
+    color: var(--sg-color-white);
+    background-color: var(--sg-color-black);
+    box-shadow: color(var(--sg-color-black) alpha(10%)) 0 0 0.5em;
     border: none;
     cursor: pointer;
     line-height: 1.2em;
@@ -30,9 +30,9 @@
     z-index: 50;
 
     &:hover {
-      color: var(--color-white);
-      background-color: var(--color-black);
-      box-shadow: color(var(--color-black) alpha(25%)) 0 0.3em 1em;
+      color: var(--sg-color-white);
+      background-color: var(--sg-color-black);
+      box-shadow: color(var(--sg-color-black) alpha(25%)) 0 0.3em 1em;
     }
 
     @media (width >= 540px) {
@@ -80,7 +80,7 @@
     border: none;
     text-indent: -9999em;
     cursor: pointer;
-    background-color: var(--color-white);
+    background-color: var(--sg-color-white);
 
     &::before,
     &::after {
@@ -91,7 +91,7 @@
       width: 2em;
       height: 2px;
       margin-left: -1em;
-      background-color: var(--color-black);
+      background-color: var(--sg-color-black);
     }
 
     &::before { transform: rotate(-45deg); }
@@ -109,7 +109,7 @@
     right: 0;
     bottom: 0;
     z-index: 99;
-    background-color: var(--color-white);
+    background-color: var(--sg-color-white);
     opacity: 0;
 
     &--after-open {
@@ -124,7 +124,7 @@
   }
 
   &__modal {
-    background-color: var(--color-white);
+    background-color: var(--sg-color-white);
 
     & .SgNav__close {
       opacity: 0;

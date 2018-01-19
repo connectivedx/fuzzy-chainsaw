@@ -21,8 +21,10 @@ const getActiveTheme = (location) => {
 const getLinkClassing = (theme) => {
   if (theme.id === getActiveTheme(global.location)) {
     return 'SgStyleguide__theme-link SgStyleguide__theme-link--active';
+  } else if (theme.id) {
+    return 'SgStyleguide__theme-link';
   }
-  return 'SgStyleguide__theme-link';
+  return 'SgStyleguide__example-link';
 };
 
 export const SgStyleguide_Readme = (props) => (
@@ -72,7 +74,7 @@ export const SgStyleguide_Examples = (props) => {
         <Rhythm size="small">
           {
             examples.map((e) => (
-              <div key={e.slug} className={getLinkClassing}>
+              <div key={e.slug} className={getLinkClassing({})}>
                 <a href={`#${e.slug}`} value={e.name}>
                   {e.name}
                 </a>
