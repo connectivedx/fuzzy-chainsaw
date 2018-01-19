@@ -7,6 +7,11 @@
   &--unordered {
     list-style-type: disc;
     padding-left: 1em;
+
+    /* nested unordered list */
+    .List & {
+      list-style-type: circle;
+    }
   }
 
   &--ordered {

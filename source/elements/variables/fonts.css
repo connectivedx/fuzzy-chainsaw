@@ -6,8 +6,11 @@
   /* Individual font names */
   --font-name--default: 'Helvetica Neue';
 
-  /* font stacks */
+  /* Base font stacks */
   --font-stack--default: var(--font-name--default), 'Helvetica', sans-serif;
+
+  /* Base body font-family */
+  --font-family--default: var(--font-stack--default);
 
   /* property-set defining the light font-face */
   --font-weight--thin: 300;
