@@ -12,4 +12,5 @@ require('@atoms/RichText/RichText.css');
 requireAll(require.context('@atoms/', true, /\.css$/));
 requireAll(require.context('@molecules/', true, /\.css$/));
 requireAll(require.context('@organisms/', true, /\.css$/));
+requireAll(require.context('@templates/', true, /\.css$/));
 requireAll(require.context('@modifiers', true, /\.css$/));

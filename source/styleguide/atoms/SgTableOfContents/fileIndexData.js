@@ -2,6 +2,7 @@ export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.e
 export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const templatesContext = require.context('@templates/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 
 
 const isRenderableModule = (key) => (
@@ -127,6 +128,13 @@ export const themedPagesIndexData =
       return res;
     }, { });
 
+export const templatesIndexData =
+  Object.keys(requireAll(templatesContext, '/styleguide/templates/'))
+    .filter((p) => p.indexOf('/templates/') !== -1)
+    .map((p) => ({
+      path: p.substr(p.indexOf('/templates/') + '/templates/'.length)
+    }))
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/templates`));
 
 export const organismsIndexData =
   Object.keys(requireAll(organismsContext, '/styleguide/organisms/'))

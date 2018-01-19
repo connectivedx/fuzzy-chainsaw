@@ -3,6 +3,7 @@ import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide';
 
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const templatesContext = require.context('@templates/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
@@ -71,6 +72,8 @@ export const getModule = (path) => {
     return getStyleguideModule(path, moleculesContext, 'molecules');
   } else if (match(normalPath, './styleguide/organisms/**')) {
     return getStyleguideModule(path, organismsContext, 'organisms');
+  } else if (match(normalPath, './styleguide/templates/**')) {
+    return getStyleguideModule(path, templatesContext, 'templates');
   }
 
   const pagePath = `${normalPath}.jsx`;

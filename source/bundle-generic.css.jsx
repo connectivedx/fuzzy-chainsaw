@@ -7,3 +7,5 @@ require('@vars/index.css');
 requireAll(require.context('@atoms/', true, /\.generic.css$/));
 requireAll(require.context('@molecules/', true, /\.generic.css$/));
 requireAll(require.context('@organisms/', true, /\.generic.css$/));
+requireAll(require.context('@templates/', true, /\.generic.css$/));
+requireAll(require.context('@modifiers/', true, /\.generic.css$/));
