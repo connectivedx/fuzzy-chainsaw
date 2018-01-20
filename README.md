@@ -1,6 +1,6 @@
 # Fuzzy Chainsaw
 
-[Fuzzy Chainsaw](https://github.com/connectivedx/fuzzy-chainsaw) is [Connective DX](https://www.connectivedx.com)'s in-house toolset for making static websites and component styleguides.  It's great for producing static web assets with an emphasis on atomic driven architecture.
+[Fuzzy Chainsaw](https://github.com/connectivedx/fuzzy-chainsaw) is [Connective DX](https://www.connectivedx.com)'s in-house toolset for making static websites and atomic styleguides.  It's great for producing static web assets with an emphasis on atomic driven architecture.
 
 > To get started, [download](https://github.com/connectivedx/fuzzy-chainsaw/archive/develop.zip) a copy of this repository from github.
 
@@ -99,9 +99,9 @@ Scaffolding tasks are used to quickly create new atoms and molecules while devel
 
 Command | Description
 --- | ---
-`new:atom [name]` | Creates a new atom component in the `/source/atom` directory.
-`new:molecule [name]` | Creates a molecule stateless integration molecule in the `/source/molecule` directory.
-`new:organisms [name]` | Creates a new stateless integration organisms in the `/source/organisms` directory.
+`new:atom [name]` | Creates a new atom component in the `/source/atoms` directory.
+`new:molecule [name]` | Creates a molecule stateless integration molecule in the `/source/molecules` directory.
+`new:organism [name]` | Creates a new stateless integration organism in the `/source/organisms` directory.
 
 
 #### DLL Explanation
@@ -151,9 +151,11 @@ We have tried to be thoughtful in our architectural decisions, and drive based o
 
 ### Emphasize module development
 
-This might be subtitled, Unix Philosophy.  The system should be composed of many smaller pieces that each have a single responsibility.  This means making use of modules from [NPM](https://www.npmjs.com) and developing our files using CommonJS module format.
+This might be subtitled, Unix Philosophy. The system should be composed of many smaller pieces that each have a single responsibility.  This means making use of modules from [NPM](https://www.npmjs.com) and developing our files using CommonJS module format.
 
 ### Atomic-based architecture
+
+We were inspired by the patterns in Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).  Our goal is to think about user interfaces as organisms of many small molecules and atoms. We've tried to build tools that help us think in this fashion.
 
 Fuzzy Chainsaw projects are written using React JSX, which provides a great model for composing components and managing dependencies.  Elements are split into three categories, __Atoms__, __Molecules__, __Organisms__. Atoms will be mostly generic small elements, where as molecules and organisms are collections of smaller elements.
 
@@ -210,7 +212,7 @@ Since you will likely be creating a number of atoms and molecules, there are als
 ```
 npm run new:atom [Name]
 npm run new:molecule [Name]
-npm run new:organisms [Name]
+npm run new:organism [Name]
 npm run new:stateful [Name]
 ```
 
