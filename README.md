@@ -1,6 +1,6 @@
 # Fuzzy Chainsaw
 
-[Fuzzy Chainsaw](https://github.com/connectivedx/fuzzy-chainsaw) is [Connective DX](https://www.connectivedx.com)'s in-house toolset for making static websites and component styleguides.  It's great for producing static web assets with an emphasis on component driven architecture.
+[Fuzzy Chainsaw](https://github.com/connectivedx/fuzzy-chainsaw) is [Connective DX](https://www.connectivedx.com)'s in-house toolset for making static websites and component styleguides.  It's great for producing static web assets with an emphasis on atomic driven architecture.
 
 > To get started, [download](https://github.com/connectivedx/fuzzy-chainsaw/archive/develop.zip) a copy of this repository from github.
 
@@ -95,13 +95,13 @@ Command | Description
 
 ### Scaffolding tasks
 
-Scaffolding tasks are used to quickly create new tags and components while developing a website.
+Scaffolding tasks are used to quickly create new atoms and molecules while developing a website.
 
 Command | Description
 --- | ---
-`new:tag [name]` | Creates a new tag component in the `/source/tags` directory.
-`new:component [name]` | Creates a new stateless integration component in the `/source/components` directory.
-`new:composition [name]` | Creates a new stateless integration component in the `/source/compositions` directory.
+`new:atom [name]` | Creates a new atom component in the `/source/atom` directory.
+`new:molecule [name]` | Creates a molecule stateless integration molecule in the `/source/molecule` directory.
+`new:organisms [name]` | Creates a new stateless integration organisms in the `/source/organisms` directory.
 
 
 #### DLL Explanation
@@ -145,7 +145,7 @@ By default FC is setup with a `generic` theme, but this can be removed or update
 We have tried to be thoughtful in our architectural decisions, and drive based on a few goals:
 
 - Emphasize modular development
-- Component based Architecture
+- Atomic based Architecture
 - Reuseability between projects
 - Reduce development friction
 
@@ -153,48 +153,46 @@ We have tried to be thoughtful in our architectural decisions, and drive based o
 
 This might be subtitled, Unix Philosophy.  The system should be composed of many smaller pieces that each have a single responsibility.  This means making use of modules from [NPM](https://www.npmjs.com) and developing our files using CommonJS module format.
 
-### Component-based architecture
+### Atomic-based architecture
 
-We were inspired by the patterns in Brad Frost's [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/) and Lonely Planet's [Rizzo](https://github.com/lonelyplanet/rizzo) component API.  Our goal is to think about user interfaces as compositions of many small components. We've tried to build tools that help us think in this fashion.
+Fuzzy Chainsaw projects are written using React JSX, which provides a great model for composing components and managing dependencies.  Elements are split into three categories, __Atoms__, __Molecules__, __Organisms__. Atoms will be mostly generic small elements, where as molecules and organisms are collections of smaller elements.
 
-Components are written using React JSX, which provides a great model for composing component and managing dependencies.  Elements are split into two categories, __Tags__, __Components__, __Compositions__. Tags will be mostly generic small elements, where components and compositions are collections of smaller elements.
+#### Atoms
 
-#### Tags
+Found in `/source/elements/atoms`
 
-Found in `/source/tags`
+Atoms are small, reuseable elements that can be used in many contexts.
 
-Tags are small, reuseable elements that can be used in many contexts.
+#### Molecules
 
-#### Components
+Found in `/source/elements/molecules`
 
-Found in `/source/components`
+Molecules are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
 
-Components are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
+#### Organisms
 
-#### Compositions
+Found in `/source/elements/organisms`
 
-Found in `/source/compositions`
-
-Compositions are specific arrangments of Tags and Components with minimal styling requirements.
+Organisms are specific arrangments of Atoms and Molecules with minimal styling requirements.
 
 #### Modifiers
 
-Found in `/source/modifiers`
+Found in `/source/elements/modifiers`
 
 Modifiers are css styles and/or javascript containers that don't require specific html be defined.
 
 
 ### Reuseability between projects
 
-Using work between projects has historically been a difficult nut to crack. We've selected technologies that have proven to be easily portable, and used an opionated folder and file naming scheme that self contains components.
+Using work between projects has historically been a difficult nut to crack. We've selected technologies that have proven to be easily portable, and used an opionated folder and file naming scheme that self contains molecules.
 
 #### Naming conventions
 
 Defining strong naming conventions help to ease the pain of context switching between projects.  Instead of focusing on the naming style of your fellow developers, you can focus on the goals of their code.
 
-#### Component structure
+#### Molecule structure
 
-All tags and components share a similar set of files. Once you learn how one component is put together, you will have a very good idea how all component operate. Our preference is to repeat simple patterns many times instead of building fewer complex monolithic components.
+All atoms and molecules share a similar set of files. Once you learn how one molecule is put together, you will have a very good idea how all molecule operate. Our preference is to repeat simple patterns many times instead of building fewer complex monolithic molecules.
 
 
 ### Reduce development friction
@@ -207,23 +205,23 @@ There are some very helpful command line scripts to help with development and co
 
 #### Scaffolding components
 
-Since you will likely be creating a number of tags and components, there are also some commands to help with that common task.
+Since you will likely be creating a number of atoms and molecules, there are also some commands to help with that common task.
 
 ```
-npm run new:tag [Name]
-npm run new:component [Name]
-npm run new:composition [Name]
+npm run new:atom [Name]
+npm run new:molecule [Name]
+npm run new:organisms [Name]
 npm run new:stateful [Name]
 ```
 
-Components come in a variety of shapes and sizes!
+Molecules come in a variety of shapes and sizes!
 
-- Tags are small, reuseable elements that can be used in many contexts.
-- Components are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
-- Compositions are specific arrangments of Tags and Components with minimal styling requirements.
-- Stateful components are elements that require tracking of internal state properties. The scaffolding for Stateful components intends for a more application-based implementation of React.
+- Atoms are small, reuseable elements that can be used in many contexts.
+- Molecules are generally more singular purpose elements that are tied to a business requirement, or complex reusuable elmenets that require internal state.
+- Organisms are specific arrangments of Atoms and Molecules with minimal styling requirements.
+- Stateful molecules are elements that require tracking of internal state properties. The scaffolding for Stateful molecule intends for a more application-based implementation of React.
 
-You can read more on Stateless vs. Stateful components [here](https://reactjs.org/docs/state-and-lifecycle.html)
+You can read more on Stateless vs. Stateful molecules [here](https://reactjs.org/docs/state-and-lifecycle.html)
 
 > Remember that elements names use [PascalCase](https://en.wikipedia.org/wiki/PascalCase)
 
