@@ -54,7 +54,7 @@ gulp.task('colorSwatch', series('export-colors', 'color-watch'));
 gulp.task('export-colors', () => { // eslint-disable-line
   return gulp.src('source/elements/variables/colors.css')
   .pipe(postcss([exportVars({
-    file: './source/styleguide/components/SgColorSwatch/SgColorSwatch__variables.json',
+    file: './source/styleguide/molecules/SgColorSwatch/SgColorSwatch__variables.json',
     type: 'json',
     match: ['--color']
   })]));
@@ -104,27 +104,33 @@ gulp.task('production:ci', series(
 // scaffolding tasks
 // tasks here require cli arguments
 
-// gulp scaffold:tag --name [name]
-gulp.task('scaffold:tag', scaffoldFactory({
+// gulp scaffold:atom --name [name]
+gulp.task('scaffold:atom', scaffoldFactory({
   src: 'stateless-component',
-  dest: 'tags'
+  dest: 'atoms'
 }));
 
-// gulp scaffold:component --name [name]
-gulp.task('scaffold:component', scaffoldFactory({
+// gulp scaffold:molecule --name [name]
+gulp.task('scaffold:molecule', scaffoldFactory({
   src: 'stateless-component',
-  dest: 'components'
+  dest: 'molecules'
 }));
 
-// gulp scaffold:composition --name [name]
-gulp.task('scaffold:composition', scaffoldFactory({
+// gulp scaffold:organism --name [name]
+gulp.task('scaffold:organism', scaffoldFactory({
   src: 'stateless-component',
-  dest: 'compositions'
+  dest: 'organisms'
+}));
+
+// gulp scaffold:template --name [name]
+gulp.task('scaffold:template', scaffoldFactory({
+  src: 'stateless-component',
+  dest: 'templates'
 }));
 
 // gulp scaffold:component:stateful --name [name]
-gulp.task('scaffold:component:stateful', scaffoldFactory({
+gulp.task('scaffold:molecule:stateful', scaffoldFactory({
   src: 'stateful-component',
-  dest: 'components'
+  dest: 'molecules'
 }));
 
