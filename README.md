@@ -255,4 +255,4 @@ Fuzzy Chainsaw was developed to work best with Node's [most recent LTS release](
 
 ## License
 
-MIT Copyright (c) 2017 Connective DX
+MIT Copyright (c) 2018 Connective DX
