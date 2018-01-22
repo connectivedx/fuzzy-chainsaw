@@ -39,8 +39,8 @@ const path2LinkList = (baseUrl = '') => (data) => {
   const normalPath = data.path.substr(
     0,
     data.path.lastIndexOf('.') !== -1
-    ? data.path.lastIndexOf('.')
-    : undefined
+      ? data.path.lastIndexOf('.')
+      : undefined
   );
 
   return {
