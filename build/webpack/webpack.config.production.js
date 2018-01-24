@@ -4,6 +4,7 @@
     - bundle static render bundle
 */
 
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const { source, sourceAll } = require('../lib/path-helpers');
@@ -22,7 +23,7 @@ const modify = (config) => {
 
 module.exports = [
   merge(productionWorkflow, {
-    entry: sourceAll(entries.production)
+    entry: sourceAll(entries.production)  
   }),
   modify(merge(staticWorkflow, {
     entry: sourceAll(entries.static)
