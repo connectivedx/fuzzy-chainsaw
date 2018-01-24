@@ -4,7 +4,6 @@
     - bundle static render bundle
 */
 
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const { source, sourceAll } = require('../lib/path-helpers');
