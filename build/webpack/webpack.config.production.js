@@ -22,7 +22,7 @@ const modify = (config) => {
 
 module.exports = [
   merge(productionWorkflow, {
-    entry: sourceAll(entries.production)
+    entry: sourceAll(entries.production)  
   }),
   modify(merge(staticWorkflow, {
     entry: sourceAll(entries.static)

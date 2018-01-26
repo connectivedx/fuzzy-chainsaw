@@ -31,7 +31,7 @@ gulp.task('webpack:build', webpackBuild(buildConfig, true));
 gulp.task('webpack:build:ci', webpackBuild(buildCiConfig, true));
 gulp.task('webpack:production', webpackBuild(productionConfig, true));
 gulp.task('webpack:production:ci', webpackBuild(productionCiConfig, true));
-gulp.task('webpack:watch:build', webpackBuild(productionCiConfig, false));
+gulp.task('webpack:watch:build', webpackBuild(productionConfig, false));
 
 // watch is a minimal watcher for intergration
 // not requiring page rendering (only /assets)
@@ -76,21 +76,21 @@ gulp.task('build', series(
   'test'
 ));
 
-// builds a production ready set
-// of static assets and html
-gulp.task('production', series(
-  'clean:pre',
-  'webpack:production',
-  'static:render:production',
-  'clean:post'
-));
-
 // builds a minimal set of static
 // assets (only /assets folder, no html)
 // hint: this will be faster for integrators
 gulp.task('build:ci', series(
   'clean:pre',
   'webpack:build:ci',
+  'clean:post'
+));
+
+// builds a production ready set
+// of static assets and html
+gulp.task('production', series(
+  'clean:pre',
+  'webpack:production',
+  'static:render:production',
   'clean:post'
 ));
 
