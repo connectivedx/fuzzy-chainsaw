@@ -35,19 +35,17 @@ test('<Heading className="super" weight="medium">', (t) => {
   t.end();
 });
 
-const testD = (
-  <Heading
-    tagName="div"
-    className="duper"
-    level="h3"
-    weight="thin"
-  >
-    Back Breaking
-  </Heading>
-);
-
 test('<Heading tagName="div" className="duper" variant="h3 thin">', (t) => {
-  const component = shallow(testD);
+  const component = shallow(
+    <Heading
+      tagName="div"
+      className="duper"
+      level="h3"
+      weight="thin"
+    >
+      Back Breaking
+    </Heading>
+  );
   t.ok(component.is('div'), 'tag name');
   t.ok(component.hasClass('Heading'), 'tag class');
   t.ok(component.hasClass('Heading--h3'), 'variant class');

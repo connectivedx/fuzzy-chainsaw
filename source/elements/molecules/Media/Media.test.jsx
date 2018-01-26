@@ -8,30 +8,26 @@ import {
 } from './Media';
 
 
-const testA = (
-  <Media>
-    <Media__figure>abc</Media__figure>
-    <Media__body>123</Media__body>
-  </Media>
-);
-
 test('<Media>', (t) => {
-  const component = shallow(testA);
+  const component = shallow(
+    <Media>
+      <Media__figure>abc</Media__figure>
+      <Media__body>123</Media__body>
+    </Media>
+  );
   t.ok(component.is('div'), 'tag name');
   t.ok(component.hasClass('Media'), 'tag class');
   t.equal(component.render().text(), 'abc123', 'text');
   t.end();
 });
 
-const testB = (
-  <Media align="bottom">
-    <Media__body>123</Media__body>
-    <Media__figure>abc</Media__figure>
-  </Media>
-);
-
 test('<Media align="bottom">', (t) => {
-  const component = shallow(testB);
+  const component = shallow(
+    <Media align="bottom">
+      <Media__body>123</Media__body>
+      <Media__figure>abc</Media__figure>
+    </Media>
+  );
   t.ok(component.is('div'), 'tag name');
   t.ok(component.hasClass('Media'), 'tag class');
   t.ok(component.hasClass('Media--bottom'), 'variant class');

@@ -122,7 +122,7 @@ export const SgExample_Wrapper = (props) => {
 
   return (
     <div className={classStack} {...attrs}>
-      <a href="#/" className="SgExample__anchor" id={slug}>&nbsp;</a>
+      <a className="SgExample__anchor" id={slug}>&nbsp;</a>
       {children}
     </div>
   );
