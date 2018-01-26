@@ -6,7 +6,7 @@ import Dom from 'react-dom';
 
 // component modules
 import SgNav from '@sg-molecules/SgNav/SgNav';
-import SgExample from '@sg-molecules/SgExample/SgExample.Container';
+import SgExample from '@sg-organisms/SgExample/SgExample.Container';
 import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide.Container';
 
 

@@ -4,7 +4,7 @@ import { parse } from 'querystring';
 import Heading from '@sg-atoms/SgHeading/SgHeading';
 import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import Nav from '@sg-molecules/SgNav/SgNav';
-import Example from '@sg-molecules/SgExample/SgExample';
+import Example from '@sg-organisms/SgExample/SgExample';
 
 import { themes } from '@source/fc-config';
 
