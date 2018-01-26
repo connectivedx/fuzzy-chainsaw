@@ -18,16 +18,25 @@ const createObject = (value) => {
     colorObject.hex = value;
     /* create rest of the obj */
 
-    [colorObject.rgb.r, colorObject.rgb.g, colorObject.rgb.b] = chroma(value).rgb();
-    [colorObject.hsl.h, colorObject.hsl.s, colorObject.hsl.l] = chroma(value).hsl();
+    const rgb = chroma(value).rgb();
+    colorObject.rgb.r = rgb[0];
+    colorObject.rgb.g = rgb[1];
+    colorObject.rgb.b = rgb[2];
+
+    const hsl = chroma(value).hsl();
+    colorObject.hsl.h = hsl[0];
+    colorObject.hsl.s = hsl[1];
+    colorObject.hsl.l = hsl[2];
 
   /* rbg colors */
   } else if (value.substr(0, 3) === 'rgb') {
     const rgb = value.substring(4, (value.length - 1)).split(', ');
-    [colorObject.rgb.r, colorObject.rgb.g, colorObject.rgb.b] = rgb;
+    colorObject.rgb.r = rgb[0];
+    colorObject.rgb.g = rgb[1];
+    colorObject.rgb.b = rgb[2];
 
     if (rgb[3]) {
-      [colorObject.rgb.a] = [rgb[3]];
+      colorObject.rgb.a = rgb[3];
 
       const tempHex = chroma(parseInt(rgb[0], 10), parseInt(rgb[1], 10), parseInt(rgb[2], 10)).hex();
 
@@ -43,9 +52,12 @@ const createObject = (value) => {
       colorObject.hex = chroma(parseInt(rgb[0], 10), parseInt(rgb[1], 10), parseInt(rgb[2], 10)).hex();
     }
 
-    [colorObject.hsl.h, colorObject.hsl.s, colorObject.hsl.l] = chroma(colorObject.hex).hsl();
+    const hsl = chroma(colorObject.hex).hsl();
+    colorObject.hsl.h = hsl[0];
+    colorObject.hsl.s = hsl[1];
+    colorObject.hsl.l = hsl[2];
 
-    /* hsl colors */
+  /* hsl colors */
   } else if (value.substr(0, 2) === 'hsl') {
     /* todo hsl */
   }

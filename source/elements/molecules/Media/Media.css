@@ -6,10 +6,6 @@
   &--middle { align-items: center; }
   &--bottom { align-items: flex-end; }
 
-  &__figure {
-    margin-right: 1em;
-  }
-
   &__body {
     flex: 1;
 
@@ -17,6 +13,10 @@
       margin-right: inherit;
       margin-left: 1em;
     }
+  }
+
+  &__figure {
+    margin-right: 1em;
   }
 
   /* figure variants */
