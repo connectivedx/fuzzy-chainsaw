@@ -1,15 +1,16 @@
 const requireAll = (context) => context.keys().map(context);
 
-// import variables before components
+// import variables before molecules
 require('@vars/index.css');
 
-// require any components that
+// require any molecules that
 // need to preserve ordering
-require('@tags/Root/Root.css');
-require('@tags/RichText/RichText.css');
+require('@atoms/Root/Root.css');
+require('@atoms/RichText/RichText.css');
 
-// require the rest of the components
-requireAll(require.context('@tags/', true, /\.css$/));
-requireAll(require.context('@components/', true, /\.css$/));
-requireAll(require.context('@compositions/', true, /\.css$/));
+// require the rest of the molecules
+requireAll(require.context('@atoms/', true, /\.css$/));
+requireAll(require.context('@molecules/', true, /\.css$/));
+requireAll(require.context('@organisms/', true, /\.css$/));
+requireAll(require.context('@templates/', true, /\.css$/));
 requireAll(require.context('@modifiers', true, /\.css$/));

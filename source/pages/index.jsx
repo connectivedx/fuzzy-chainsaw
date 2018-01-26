@@ -1,7 +1,7 @@
-import Heading from '@tags/Heading/Heading';
-import Rhythm from '@tags/Rhythm/Rhythm';
-import Wrapper from '@tags/Wrapper/Wrapper';
-import SgTableOfContents from '@sg-tags/SgTableOfContents/SgTableOfContents';
+import Heading from '@atoms/Heading/Heading';
+import Rhythm from '@atoms/Rhythm/Rhythm';
+import Wrapper from '@atoms/Wrapper/Wrapper';
+import SgTableOfContents from '@sg-atoms/SgTableOfContents/SgTableOfContents';
 
 const page = () => (
   <Wrapper size="wide">

@@ -37,15 +37,18 @@ module.exports = {
 
       '@elements': source('elements'),
       '@vars': source('elements/variables'),
-      '@tags': source('elements/tags'),
-      '@components': source('elements/components'),
-      '@compositions': source('elements/compositions'),
+      '@atoms': source('elements/atoms'),
+      '@molecules': source('elements/molecules'),
+      '@organisms': source('elements/organisms'),
+      '@templates': source('elements/templates'),
       '@modifiers': source('elements/modifiers'),
 
       '@styleguide': source('styleguide'),
       '@sg-vars': source('styleguide/variables'),
-      '@sg-tags': source('styleguide/tags'),
-      '@sg-components': source('styleguide/components')
+      '@sg-atoms': source('styleguide/atoms'),
+      '@sg-molecules': source('styleguide/molecules'),
+      '@sg-organisms': source('styleguide/organisms'),
+      '@sg-templates': source('styleguide/templates')
     }
   },
   output: {

@@ -1,0 +1,42 @@
+@import "~@atoms/Rhythm/Rhythm.css";
+@import "~@atoms/Heading/Heading.css";
+@import "~@atoms/Button/Button.css";
+@import "~@atoms/List/List.css";
+
+.RichText {
+  @extend .Rhythm--deep;
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @extend .Heading;
+  }
+
+  & h1 { @extend .Heading--h1; }
+  & h2 { @extend .Heading--h2; }
+  & h3 { @extend .Heading--h3; }
+  & h4 { @extend .Heading--h4; }
+  & h5 { @extend .Heading--h5; }
+  & h6 { @extend .Heading--h6; }
+
+  & button {
+    @extend .Button;
+    @extend .Button--default;
+  }
+
+  & ul,
+  & ol {
+    @extend .Rhythm--small;
+  }
+
+  & ul {
+    @extend .List--unordered;
+  }
+
+  & ol {
+    @extend .List--ordered;
+  }
+}

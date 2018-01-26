@@ -7,7 +7,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const { source, sourceAll } = require('../lib/path-helpers');
-const buildWorkflow = require('./workflow/build');
+const ciBuildWorkflow = require('./workflow/build.ci');
 
 const { entries } = require(source('fc-config')); // eslint-disable-line
 
@@ -19,7 +19,7 @@ const modify = (config) => {
 };
 
 
-module.exports = modify(merge(buildWorkflow, {
+module.exports = modify(merge(ciBuildWorkflow, {
   entry: sourceAll(entries.ci),
   plugins: [
     new webpack.DefinePlugin({
