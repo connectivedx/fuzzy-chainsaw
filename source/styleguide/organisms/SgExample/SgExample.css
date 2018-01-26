@@ -112,7 +112,8 @@
       color: var(--sg-color-white);
 
       &:hover {
-        color: var(--sg-color-gray-darker);
+        background-color: var(--sg-color-white);
+        color: var(--sg-color-black);
       }
     }
 
