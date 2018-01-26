@@ -70,26 +70,6 @@
     border-right: 5px solid transparent;
   }
 
-  &__section--readme {
-    & .SgStyleguide__section-heading--readme {
-      cursor: pointer;
-    }
-
-    &:not(.is-expanded) {
-      & .SgStyleguide__section-header {
-        padding-bottom: 1px;
-      }
-
-      & .SgStyleguide__readme {
-        display: none;
-      }
-
-      & .SgStyleguide__expander {
-        transform: rotate(-90deg);
-      }
-    }
-  }
-
   &__readme {
     padding: 1em;
     background-color: gray(245);
@@ -147,5 +127,25 @@
     & h4 { @extend .SgHeading--h4; }
     & h5 { @extend .SgHeading--h5; }
     & h6 { @extend .SgHeading--h6; }
+  }
+
+  &__section--readme {
+    & .SgStyleguide__section-heading--readme {
+      cursor: pointer;
+    }
+
+    &:not(.is-expanded) {
+      & .SgStyleguide__section-header {
+        padding-bottom: 1px;
+      }
+
+      & .SgStyleguide__readme {
+        display: none;
+      }
+
+      & .SgStyleguide__expander {
+        transform: rotate(-90deg);
+      }
+    }
   }
 }

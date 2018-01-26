@@ -123,6 +123,19 @@
     }
   }
 
+  &__modal-content {
+    height: 100vh;
+    padding: 2em;
+    z-index: 100;
+    line-height: 1.8em;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @media (width >= 960px) {
+      padding: 3em;
+    }
+  }
+
   &__modal {
     background-color: var(--sg-color-white);
 
@@ -166,19 +179,6 @@
         transform: scale(0.975);
         opacity: 1;
       }
-    }
-  }
-
-  &__modal-content {
-    height: 100vh;
-    padding: 2em;
-    z-index: 100;
-    line-height: 1.8em;
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    @media (width >= 960px) {
-      padding: 3em;
     }
   }
 
