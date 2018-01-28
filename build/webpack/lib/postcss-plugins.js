@@ -56,7 +56,10 @@ const standard = [
   nested(),
   cssnext({
     features: {
-      nesting: false
+      nesting: false,
+      customProperties:{
+        warnings: false
+      }      
     }
   }),
   responsiveType(),

@@ -1,0 +1,43 @@
+.Grid {
+  @supports (display: grid) {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--v-space);
+  }
+
+  @media (--grid) {
+    @supports (display: grid) {
+      grid-column-gap: var(--h-space);
+      grid-template-columns: repeat(var(--count), 1fr);
+    }
+
+    &--fit {
+      @supports (display: grid) { grid-template-columns: repeat(auto-fit, minmax(var(--size), 1fr)); }
+    }
+
+    &--fill {
+      @supports (display: grid) { grid-template-columns: repeat(auto-fill, minmax(var(--size), 1fr)); }
+    }
+
+    &--fit,
+    &--fill {
+      @supports (display: grid) {
+        grid-template-rows: repeat(auto, 1fr);
+
+        & .Grid__Column {
+          grid-column: auto;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &__Column {
+    order: var(--order);
+    outline: 1px solid black;
+
+    @media (--grid) {
+      @supports (display: grid) { grid-column: auto / span var(--size); }
+    }
+  }
+}

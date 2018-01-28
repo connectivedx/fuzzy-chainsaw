@@ -24,4 +24,7 @@
   @custom-media --below-medium-large only screen and (width < 896px);
   @custom-media --below-large only screen and (width < 1024px);
   @custom-media --below-extra-large only screen and (width < 1152px);
+
+  /* grid only breakpoints */
+  @custom-media --grid only screen and (min-width: 768px);
 }
