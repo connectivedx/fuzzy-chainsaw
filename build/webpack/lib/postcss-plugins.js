@@ -25,6 +25,8 @@ const cssnano = require('cssnano');
 
 // dev
 const cssImport = require('postcss-import');
+const cssLoop = require('postcss-for');
+const cssLoopAt = require('postcss-at-rules-variables');
 
 // setup resolver for postcss-import
 const ResolverFactory = require('enhanced-resolve/lib/ResolverFactory');
@@ -53,6 +55,8 @@ module.exports.linting = [
 
 const standard = [
   mixins(),
+  cssLoopAt(),
+  cssLoop(),  
   nested(),
   cssnext({
     features: {

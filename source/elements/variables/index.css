@@ -2,5 +2,6 @@
 @import "./colors.css";
 @import "./custom-selectors.css";
 @import "./fonts.css";
+@import "./grid.css";
 @import "./type.css";
 @import "./zindex.css";

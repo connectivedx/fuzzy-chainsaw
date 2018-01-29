@@ -1,0 +1,47 @@
+.Grid {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (--grid) {
+    flex-direction: row;
+
+    &--fit {
+      flex: 1;
+      justify-content: space-around;
+
+      & .Grid__Column {
+        flex: 1;
+      }
+    }
+
+    &--fill {
+      justify-content: baseline;
+
+      & .Grid__Column {
+        flex-basis: 5rem;
+      }
+    }
+
+    &--fit,
+    &--fill {
+      align-content: flex-start;
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+
+  &__Column {
+    @media (--grid) {
+      @for $i from 1 to var(--grid--column--count) {
+        &--size-$i {
+          display: inline-block;
+          margin: 0 calc(var(--grid--column--padding) / 2) var(--grid--column--padding);
+          width: calc(calc(calc(100% / var(--grid--column--count)) * $i) - var(--grid--column--padding));
+        }
+      }
+    }
+  }
+}

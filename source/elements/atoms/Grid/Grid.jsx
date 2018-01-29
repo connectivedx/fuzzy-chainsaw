@@ -4,10 +4,6 @@ export const Grid = (props) => {
     className,
     variant,
     children,
-    hSpace,
-    vSpace,
-    count,
-    size,
     ...attrs
   } = props;
 
@@ -17,15 +13,8 @@ export const Grid = (props) => {
     className
   ]);
 
-  const styleStack = {
-    '--h-space': hSpace,
-    '--v-space': vSpace,
-    '--count': count,
-    '--size': size
-  };
-
   return (
-    <Tag className={classStack} style={styleStack} {...attrs}>
+    <Tag className={classStack} {...attrs}>
       {children}
     </Tag>
   );
@@ -33,11 +22,7 @@ export const Grid = (props) => {
 
 Grid.defaultProps = {
   tagName: 'div',
-  variant: 'default',
-  hSpace: '16px',
-  vSpace: '16px',
-  count: '12',
-  size: '10rem'
+  variant: 'default'
 };
 
 Grid.propTypes = {
@@ -48,10 +33,6 @@ Grid.propTypes = {
   ]),
   className: PropTypes.string,
   variant: PropTypes.oneOf(['default', 'fit', 'fill']),
-  hSpace: PropTypes.string,
-  vSpace: PropTypes.string,
-  count: PropTypes.string,
-  size: PropTypes.string,
   children: PropTypes.node
 };
 
@@ -64,28 +45,18 @@ export const Grid__Column = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'Grid__Column'
+    'Grid__Column',
+    `Grid__Column--size-${size}`,
+    (order) && `Grid__Column--order-${order}`
   ]);
 
-  const styleStack = {};
-
-  /* Column Sizes */
-  styleStack['--size'] = size;
-
-  /* Column Orders */
-  if (Grid__Column.defaultProps.order !== order) {
-    styleStack['--order'] = order;
-  }
-
   return (
-    <Tag className={classStack} style={styleStack} {...attrs} />
+    <Tag className={classStack} {...attrs} />
   );
 };
 
 Grid__Column.defaultProps = {
-  tagName: 'div',
-  size: '12',
-  order: '0'
+  tagName: 'div'
 };
 
 Grid__Column.propTypes = {
@@ -95,10 +66,7 @@ Grid__Column.propTypes = {
     PropTypes.func
   ]),
   size: PropTypes.string,
-  order: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ])
+  order: PropTypes.string
 };
 
 export default Grid;
