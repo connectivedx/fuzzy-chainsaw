@@ -60,10 +60,7 @@ const standard = [
   nested(),
   cssnext({
     features: {
-      nesting: false,
-      customProperties:{
-        warnings: false
-      }      
+      nesting: false    
     }
   }),
   responsiveType(),

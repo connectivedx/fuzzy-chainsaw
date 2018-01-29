@@ -5,8 +5,10 @@
 	/* The default global column padding. */
 	--grid--column--padding: 16px;
 
+	/* The default global horizontal space between grid columns */
 	--grid--column--horizontal--gap: 16px;
 
+	/* The default global vertical space between grid columns */
 	--grid--column--vertical--gap: 16px;
 
 	/* The default global gutter gap between columns. */
