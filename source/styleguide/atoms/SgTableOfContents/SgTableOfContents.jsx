@@ -9,7 +9,8 @@ import {
   templatesIndexData,
   organismsIndexData,
   moleculesIndexData,
-  atomsIndexData
+  atomsIndexData,
+  modifiersIndexData
 } from '@sg-atoms/SgTableOfContents/fileIndexData';
 
 import { themes } from '@source/fc-config';
@@ -60,10 +61,11 @@ export const SgTableOfContents = (props) => {
             )) }
         </RhythmComponent>
       }
-      <SgFileIndex {...indexProps} title="Templates" items={templatesIndexData} />
-      <SgFileIndex {...indexProps} title="Organisms" items={organismsIndexData} />
-      <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} />
-      <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} />
+      { templatesIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Templates" items={templatesIndexData} size="default" /> : null }
+      { organismsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Organisms" items={organismsIndexData} size="default" /> : null }
+      { moleculesIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Molecules" items={moleculesIndexData} size="default" /> : null }
+      { atomsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Atoms" items={atomsIndexData} size="default" /> : null }
+      { modifiersIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Modifiers" items={modifiersIndexData} size="default" /> : null }
     </div>
   );
 };
