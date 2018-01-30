@@ -3,6 +3,7 @@ export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.e
 export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
 export const templatesContext = require.context('@templates/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const modifiersContext = require.context('@modifiers/', true, /^(?!.*\.test).*\.example.jsx$/);
 
 
 const isRenderableModule = (key) => (
@@ -15,7 +16,7 @@ const isRenderableModule = (key) => (
 
 // builds a path:module object
 // { './source/page.jsx': require('./source/page.jsx') }
-const requireAllpages = () =>
+const requireAllPages = () =>
   pagesContext.keys()
     .filter(isRenderableModule)
     .reduce((modules, key) => {
@@ -25,7 +26,7 @@ const requireAllpages = () =>
     }, { });
 
 
-const requireAll = (context, prefix) =>
+const requireAllComponents = (context, prefix) =>
   context.keys()
     .filter(isRenderableModule)
     .reduce((modules, key) => {
@@ -87,7 +88,7 @@ const groupData = (res, data) => {
 };
 
 
-const pageData = requireAllpages(pagesContext);
+const pageData = requireAllPages(pagesContext);
 export const allPagesIndexData =
   Object.keys(pageData)
     .map((p) => ({
@@ -129,7 +130,7 @@ export const themedPagesIndexData =
     }, { });
 
 export const templatesIndexData =
-  Object.keys(requireAll(templatesContext, '/styleguide/templates/'))
+  Object.keys(requireAllComponents(templatesContext, '/styleguide/templates/'))
     .filter((p) => p.indexOf('/templates/') !== -1)
     .map((p) => ({
       path: p.substr(p.indexOf('/templates/') + '/templates/'.length)
@@ -137,7 +138,7 @@ export const templatesIndexData =
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/templates`));
 
 export const organismsIndexData =
-  Object.keys(requireAll(organismsContext, '/styleguide/organisms/'))
+  Object.keys(requireAllComponents(organismsContext, '/styleguide/organisms/'))
     .filter((p) => p.indexOf('/organisms/') !== -1)
     .map((p) => ({
       path: p.substr(p.indexOf('/organisms/') + '/organisms/'.length)
@@ -146,17 +147,25 @@ export const organismsIndexData =
 
 
 export const moleculesIndexData =
-  Object.keys(requireAll(moleculesContext, '/styleguide/molecules/'))
+  Object.keys(requireAllComponents(moleculesContext, '/styleguide/molecules/'))
     .filter((p) => p.indexOf('/molecules/') !== -1)
     .map((p) => ({
       path: p.substr(p.indexOf('/molecules/') + '/molecules/'.length)
     }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/molecules`));
 
-
 export const atomsIndexData =
-  Object.keys(requireAll(atomsContext, '/styleguide/atoms/'))
+  Object.keys(requireAllComponents(atomsContext, '/styleguide/atoms/'))
     .map((p) => ({
       path: p.substr(p.indexOf('/atoms/') + '/atoms/'.length)
     }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/atoms`));
+
+export const modifiersIndexData =
+  Object.keys(requireAllComponents(modifiersContext, '/styleguide/modifiers/'))
+    .filter((p) => p.indexOf('/modifiers/') !== -1)
+    .map((p) => ({
+      path: p.substr(p.indexOf('/modifiers/') + '/modifiers/'.length)
+    }))
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/modifiers`));
+
