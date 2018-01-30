@@ -145,7 +145,7 @@
     "rand-token": "^0.3.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-element-to-jsx-string": "^13.1.0",
+    "react-element-to-string": "1.0.2",
     "scroll": "^2.0.1",
     "statum": "^0.1.2"
   }

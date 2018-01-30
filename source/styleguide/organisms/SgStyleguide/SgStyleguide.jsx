@@ -4,7 +4,7 @@ import { parse } from 'querystring';
 import SgExpander from '@sg-atoms/SgExpander/SgExpander';
 import Heading from '@sg-atoms/SgHeading/SgHeading';
 import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
-import Example from '@sg-molecules/SgExample/SgExample';
+import Example from '@sg-organisms/SgExample/SgExample';
 import Icon from '@atoms/Icon/Icon';
 import SgGlobalHeader from '@sg-organisms/SgGlobalHeader/SgGlobalHeader';
 import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation';

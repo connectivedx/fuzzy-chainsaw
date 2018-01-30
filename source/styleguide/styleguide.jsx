@@ -9,7 +9,7 @@ import SgExpander from '@sg-atoms/SgExpander/SgExpander.Container';
 import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation.Container';
 import SgPageShell from '@sg-molecules/SgPageShell/SgPageShell.Container';
 import SgTableOfContents from '@sg-molecules/SgTableOfContents/SgTableOfContents.Container';
-import SgExample from '@sg-molecules/SgExample/SgExample.Container';
+import SgExample from '@sg-organisms/SgExample/SgExample.Container';
 import SgStyleguide from '@sg-organisms/SgStyleguide/SgStyleguide.Container';
 
 const ui = {

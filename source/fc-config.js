@@ -22,7 +22,7 @@ module.exports.dlls = {
     'minimatch',
     'pretty',
     'prismjs',
-    'react-element-to-jsx-string',
+    'react-element-to-string',
     'rand-token'
   ],
 
