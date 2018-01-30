@@ -41,9 +41,10 @@ module.exports = ({ production }) => () => {
   const pageTemplate = fs.readFileSync(dest('_skeleton.html'));
   const {
     pagesContext,
-    compositionsContext,
-    componentsContext,
-    tagsContext,
+    templatesContext,
+    organismsContext,
+    moleculesContext,
+    atomsContext,
     getModule
   } = require(dest('tmp/static.js')); // eslint-disable-line
 
@@ -61,9 +62,10 @@ module.exports = ({ production }) => () => {
     merge(
       ...renderFiles([
         ...getContextList(pagesContext),
-        ...getContextList(compositionsContext, 'styleguide/compositions'),
-        ...getContextList(componentsContext, 'styleguide/components'),
-        ...getContextList(tagsContext, 'styleguide/tags')
+        ...getContextList(templatesContext, 'styleguide/templates'),
+        ...getContextList(organismsContext, 'styleguide/organisms'),
+        ...getContextList(moleculesContext, 'styleguide/molecules'),
+        ...getContextList(atomsContext, 'styleguide/atoms')
       ])
     )
     .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))

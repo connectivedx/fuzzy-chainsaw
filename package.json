@@ -1,6 +1,6 @@
 {
   "name": "fuzzy-chainsaw",
-  "version": "2.1.0",
+  "version": "2.4.6",
   "description": "Boilerplate for component-based UI development",
   "repository": "connectivedx/fuzzy-chainsaw",
   "bugs": {
@@ -33,10 +33,11 @@
     "test": "gulp test",
     "test:dev": "karma start --auto-watch",
     "watch": "gulp watch",
-    "new:tag": "gulp scaffold:tag --name",
-    "new:component": "gulp scaffold:component --name",
-    "new:composition": "gulp scaffold:composition --name",
-    "new:stateful": "gulp scaffold:component:stateful --name"
+    "new:atom": "gulp scaffold:atom --name",
+    "new:molecule": "gulp scaffold:molecule --name",
+    "new:organism": "gulp scaffold:organism --name",
+    "new:template": "gulp scaffold:template --name",
+    "new:stateful": "gulp scaffold:molecule:stateful --name"
   },
   "engines": {
     "node": ">=8.9.0"

@@ -1,7 +1,7 @@
-import Heading from '@tags/Heading/Heading';
-import Rhythm from '@tags/Rhythm/Rhythm';
-import Wrapper from '@tags/Wrapper/Wrapper';
-import SgColorSwatch from '@sg-components/SgColorSwatch/SgColorSwatch';
+import Heading from '@atoms/Heading/Heading';
+import Rhythm from '@atoms/Rhythm/Rhythm';
+import Wrapper from '@atoms/Wrapper/Wrapper';
+import SgColorSwatch from '@sg-molecules/SgColorSwatch/SgColorSwatch';
 
 const page = () => (
   <Wrapper size="wide">
