@@ -1,5 +1,5 @@
 import match from 'minimatch';
-import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide';
+import SgStyleguide from '@sg-organisms/SgStyleguide/SgStyleguide';
 
 // this regex selects *.jsx and *.md files, but skips *.test.jsx
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);

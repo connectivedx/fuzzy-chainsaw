@@ -26,6 +26,7 @@
 		"document": true,
 		"window": true,
 		"location": true,
+		"localStorage": true,
 		"React": true,
 		"FcUtils": true,
 		"PropTypes": true,

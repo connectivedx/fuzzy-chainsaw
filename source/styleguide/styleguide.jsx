@@ -1,34 +1,53 @@
 // import css first
 import styles from '@styleguide/styleguide.css'; // eslint-disable-line
 
-// npm modules
-import Dom from 'react-dom';
+// icon set
+import '@sg-atoms/SgIcon/SgIconSet';
 
 // component modules
-import SgNav from '@sg-molecules/SgNav/SgNav';
+import SgExpander from '@sg-atoms/SgExpander/SgExpander.Container';
+import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation.Container';
+import SgPageShell from '@sg-molecules/SgPageShell/SgPageShell.Container';
+import SgTableOfContents from '@sg-molecules/SgTableOfContents/SgTableOfContents.Container';
 import SgExample from '@sg-molecules/SgExample/SgExample.Container';
-import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide.Container';
-
+import SgStyleguide from '@sg-organisms/SgStyleguide/SgStyleguide.Container';
 
 const ui = {
-  nav: document.querySelector('.SgNav'),
+  examples: Array.prototype.slice.call(document.querySelectorAll('.SgExample')),
+  root: document.querySelector('.SgStyleguide__root'),
+  shell: document.querySelector('.SgPageShell'),
   styleguide: document.querySelector('.SgStyleguide'),
-  examples: Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
+  toggles: Array.prototype.slice.call(document.querySelectorAll('.SgToggleButton')),
+  menu: document.querySelector('.SgTableOfContents')
 };
 
-
 const init = () => {
-  // Table of contents
-  Dom.render(<SgNav />, ui.nav);
-
-  // Readme toggle
+  // styleguide bits
   SgStyleguide(ui.styleguide);
 
   // Example tabsets
   ui.examples.forEach(SgExample);
 };
 
+const shellInit = () => {
+  // shell
+  SgPageShell(ui.shell);
+};
+
+if (ui.menu) {
+  SgNavigation(ui.menu);
+  SgTableOfContents(ui.menu);
+}
 
 if (ui.styleguide) {
   init();
+}
+
+if (ui.shell) {
+  shellInit();
+}
+
+if (ui.root) {
+  // SgExpander (needed globally)
+  SgExpander(ui.root);
 }

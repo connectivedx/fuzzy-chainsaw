@@ -21,4 +21,8 @@
   --sg-color-link: #369;
   --sg-color-background: #eaeaea;
   --sg-color-background-dark: #333;
+
+  /* styelguide theme */
+  --sg-color-primary: var(--sg-color-link);
+  --sg-color-secondary: var(--sg-color-gray-light);
 }

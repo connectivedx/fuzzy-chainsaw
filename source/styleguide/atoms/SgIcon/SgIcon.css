@@ -1,0 +1,33 @@
+.SgIcon {
+  display: inline-block;
+
+  /* sizes */
+  &--normal {
+    width: 1em;
+    height: 1em;
+  }
+
+  &--small {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  &--large {
+    width: 2em;
+    height: 2em;
+  }
+
+  &--wide {
+    width: 3em;
+    height: 1.5em;
+  }
+
+  /* colors */
+  &--dark {
+    fill: var(--sg-color-black);
+  }
+
+  &--light {
+    fill: var(--sg-color-white);
+  }
+}

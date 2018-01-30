@@ -13,7 +13,7 @@
 
   &__name {
     &.is-active {
-      background-color: color(var(--sg-color-primary) alpha(-75%));
+      background-color: color(var(--sg-color-gray-lighter) alpha(-75%));
       display: inline-block;
       padding: 0.25em 0;
       position: relative;
@@ -21,7 +21,7 @@
 
       &::before,
       &::after {
-        background-color: color(var(--sg-color-primary) alpha(-75%));
+        background-color: color(var(--sg-color-gray-lighter) alpha(-75%));
         bottom: 0;
         content: '';
         display: inline-block;

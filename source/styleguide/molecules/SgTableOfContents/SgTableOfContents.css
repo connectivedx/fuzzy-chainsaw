@@ -14,11 +14,21 @@
   & > * + * { margin-top: 2em; }
 
   @media (width >= 768px) {
-    column-gap: 2em;
-    column-width: 320px;
+    display: flex;
+    justify-content: space-between;
 
     & > * {
       break-inside: avoid;
+      flex-basis: 320px;
+      margin-top: 0;
+    }
+
+    .SgPageShell__navigation & {
+      display: block;
+
+      & > * + * {
+        margin-top: 2em;
+      }
     }
   }
 }
