@@ -1,5 +1,5 @@
 import Dom from 'react-dom/server';
-import reactElementToString from 'react-element-to-jsx-string';
+import reactElementToString from 'react-element-to-string';
 import pretty from 'pretty';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx.min';
