@@ -23,7 +23,7 @@ const processUnprefixedContext = (key) => {
 
 const processPrefixedContext = (prefix) => (key) => {
   const full = key.substr(0, key.indexOf('.jsx')).substr(1);
-  const name = full.substring(full.lastIndexOf('/'), full.lastIndexOf('.'));
+  const name = full.substr(full.lastIndexOf('/'));
 
   return {
     outputPath: `${prefix}${name}.html`,
@@ -31,20 +31,11 @@ const processPrefixedContext = (prefix) => (key) => {
   };
 };
 
-const getContextKeys = (context, prefix) => {
-  let result;
-  // for pages we are looking for '.jsx' files for rendering.
-  if (!prefix) {
-    result = context.keys()
-      .filter((key) => key.indexOf('.jsx') !== -1);
-  } else {
-    // for elements, we are looking for the 'example.jsx' file to feed the SgStyleguide component.
-    result = context.keys()
-      .filter((key) => key.indexOf('.example.jsx') !== -1);
-  }
-
-  return result;
-};
+const getContextKeys = (context) =>
+  context.keys()
+    .filter((key) => key.indexOf('.test.jsx') === -1)
+    .filter((key) => key.indexOf('.example.jsx') === -1)
+    .filter((key) => key.indexOf('.md') === -1);
 
 
 const getContextList = (context, prefix = false) =>
