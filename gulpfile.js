@@ -134,9 +134,3 @@ gulp.task('scaffold:molecule:stateful', scaffoldFactory({
   dest: 'molecules'
 }));
 
-// gulp scaffold:modifier --name [name]
-gulp.task('scaffold:modifier', scaffoldFactory({
-  src: 'modifier-scaffolding',
-  dest: 'modifiers'
-}));
-
