@@ -121,8 +121,7 @@ export const SgExample_Wrapper = (props) => {
   ]);
 
   return (
-    <div className={classStack} {...attrs}>
-      <a className="SgExample__anchor" id={slug}>&nbsp;</a>
+    <div className={classStack} id={slug} {...attrs}>
       {children}
     </div>
   );
@@ -145,10 +144,6 @@ export const SgExample_Header = (props) => {
   return (
     <div className="SgExample__header" {...attrs}>
       <SgHeading level="h3" className="SgExample__name">{exampleName}</SgHeading>
-
-      <ul className="SgExample__tabs">
-        {children}
-      </ul>
     </div>
   );
 };
@@ -206,32 +201,28 @@ export const SgExample = (props) => {
   const htmlExample = Dom.renderToStaticMarkup(component);
   const jsonExample = JSON.stringify(filterProps(component), null, 2);
 
-  const exampleClassStack = FcUtils.createClassStack([
-    options.fullWidth && 'SgExample__section--full-width',
-    options.noPadding && 'SgExample__section--no-padding',
-    options.darkBackground && 'SgExample__section--dark-background'
+  const classStack = FcUtils.createClassStack([
+    'SgExample',
+    options.fullWidth && 'SgExample--full-width',
+    options.darkBackground && 'SgExample--dark-background',
+    `${theme}-theme-section`
   ]);
 
   return (
-    <SgExample_Wrapper slug={slug} className={`${theme}-theme-section`}>
-      <SgExample_Header exampleName={exampleName}>
-        <SgExample_Tab slug={slug} name="example" isActive>Example</SgExample_Tab>
+    <SgExample_Wrapper slug={slug} className={classStack}>
+      <SgExample_Header exampleName={exampleName} />
+
+      <div className="SgExample__component">
+        {component}
+      </div>
+
+      <ul className="SgExample__tabs">
         <SgExample_Tab slug={slug} name="react">React</SgExample_Tab>
         <SgExample_Tab slug={slug} name="html">HTML</SgExample_Tab>
-        <SgExample_Tab slug={slug} name="json">JSON</SgExample_Tab>
         {devNotes &&
           <SgExample_Tab slug={slug} name="notes">Notes</SgExample_Tab>
         }
-      </SgExample_Header>
-
-      <SgExample_Section
-        title="Example"
-        type="example"
-        isActive
-        className={exampleClassStack}
-      >
-        {component}
-      </SgExample_Section>
+      </ul>
 
       <SgExample_Section title="React" type="react">
         <pre>
