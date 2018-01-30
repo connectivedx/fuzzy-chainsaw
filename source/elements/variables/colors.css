@@ -17,8 +17,10 @@
   --color-generic--red: #a40000;
 
   /* general colors */
-  --color-red: #fa0000;
-  --color-blue: #0000fa;
+  --color-blue: #00739f;
+  --color-green: #358450;
+  --color-red: #a40000;
+  --color-yellow: #fdb81e;
 
   /* text colors */
   --color-text--primary: var(--color-black);
