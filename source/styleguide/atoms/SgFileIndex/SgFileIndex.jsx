@@ -2,15 +2,18 @@ import Heading from '@sg-atoms/SgHeading/SgHeading';
 import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import { themes } from '@source/fc-config';
 
-
 const SgFileIndex__ItemThemed = (props) => {
   const { url, content } = props.item;
 
   const firstTheme = themes.length ? `?theme=${themes[0].id}` : '';
+  const isCatalog = (props.item.path.match('@') !== null) ? 'true' : 'false';
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{content}</a>
+      { isCatalog === 'true' &&
+        <button type="button" data-is-catalog={isCatalog} data-catalog-path={props.item.url.replace('/styleguide', '/source/elements')}>+</button>
+      }
+      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{content.replace('@', '')}</a>
       { themes.length > 1 &&
         <span className="SgFileIndex__links">
           ({ themes

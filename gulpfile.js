@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sequence = require('run-sequence');
 
 const scaffoldFactory = require('./build/scaffold-factory');
+const catalogFactory = require('./build/catalog-factory');
 const staticRender = require('./build/static-render-factory');
 const webpackBuild = require('./build/webpack-build-factory');
 const webpackWatch = require('./build/webpack-watch-factory');
@@ -100,6 +101,12 @@ gulp.task('production:ci', series(
   'webpack:production:ci',
   'clean:post'
 ));
+
+//builds connection to FC component library
+gulp.task('get:catalog', catalogFactory({
+  src: 'https://github.com/drolsen/fuzzy-chainsaw-library',
+  dest: './source/catalog'
+}));
 
 // scaffolding tasks
 // tasks here require cli arguments

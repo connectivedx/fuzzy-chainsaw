@@ -41,19 +41,20 @@ const PageNotFound = {
 };
 
 const getStyleguideModule = (path, context, type) => {
-  const name = path.substr(`./styleguide/${type}/`.length - 1);
+  const pathName = path.substr(`./styleguide/${type}/`.length - 1);
+  const moduleName = path.substr(`./styleguide/${type}/`.length - 1).replace('@', '');
   const requirer = requireOrFail(context);
-  const tag = requirer(`./${name}/${name}.jsx`);
+  const tag = requirer(`./${pathName}/${moduleName}.jsx`);
   const titleType = type.substr(0, 1).toUpperCase() + type.substr(1);
 
   if (tag) {
     return {
-      pageTitle: `${name} / ${titleType}`,
+      pageTitle: `${moduleName} / ${titleType}`,
       Component: (
         <SgStyleguide
-          name={name}
-          readme={requirer(`./${name}/README.md`)}
-          examples={requirer(`./${name}/${name}.example.jsx`)}
+          name={moduleName}
+          readme={requirer(`./${pathName}/README.md`)}
+          examples={requirer(`./${pathName}/${moduleName}.example.jsx`)}
           locals={{ }}
         />
       )
@@ -65,7 +66,6 @@ const getStyleguideModule = (path, context, type) => {
 
 export const getModule = (path) => {
   const normalPath = normalizePath(path);
-
   if (match(normalPath, './styleguide/atoms/**')) {
     return getStyleguideModule(path, atomsContext, 'atoms');
   } else if (match(normalPath, './styleguide/molecules/**')) {

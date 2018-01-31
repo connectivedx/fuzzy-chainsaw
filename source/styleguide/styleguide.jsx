@@ -8,11 +8,12 @@ import Dom from 'react-dom';
 import SgNav from '@sg-molecules/SgNav/SgNav';
 import SgExample from '@sg-molecules/SgExample/SgExample.Container';
 import SgStyleguide from '@sg-molecules/SgStyleguide/SgStyleguide.Container';
-
+import SgTableOfContents from '@sg-atoms/SgTableOfContents/SgTableOfContents.Container';
 
 const ui = {
   nav: document.querySelector('.SgNav'),
   styleguide: document.querySelector('.SgStyleguide'),
+  catalog: document.querySelector('[data-is-catalog="true"]'),
   examples: Array.prototype.slice.call(document.querySelectorAll('.SgExample'))
 };
 
@@ -28,6 +29,9 @@ const init = () => {
   ui.examples.forEach(SgExample);
 };
 
+if (ui.catalog) {
+  SgTableOfContents(document.body);
+}
 
 if (ui.styleguide) {
   init();

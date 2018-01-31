@@ -3,11 +3,13 @@
 */
 
 const del = require('del');
-const { dest } = require('./lib/path-helpers');
+const { dest, source } = require('./lib/path-helpers');
 
 
 module.exports = () => (
   del([
+    source('catalog/'),
+    source('elements/**/@*'),
     dest('**/*.html'),
     dest('*.json'),
     dest('assets/*.{js,js.map,css,css.map}'),

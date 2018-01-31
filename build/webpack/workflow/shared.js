@@ -25,6 +25,9 @@ try {
 
 module.exports = {
   devtool: 'source-map',
+  node: {
+    fs: "empty",
+  },  
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
@@ -48,7 +51,12 @@ module.exports = {
       '@sg-atoms': source('styleguide/atoms'),
       '@sg-molecules': source('styleguide/molecules'),
       '@sg-organisms': source('styleguide/organisms'),
-      '@sg-templates': source('styleguide/templates')
+      '@sg-templates': source('styleguide/templates'),
+
+      '@cg-atoms': source('catalog/elements/atoms'),
+      '@cg-molecules': source('catalog/elements/molecules'),
+      '@cg-organisms': source('catalog/elements/atoms'),
+      '@cg-templates': source('catalog/elements/atoms')
     }
   },
   output: {
