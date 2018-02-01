@@ -18,60 +18,6 @@ const getTagName = (element) => {
   return 'unknown-element';
 };
 
-
-const filterProps = (component) => {
-  const pickInfo = (obj) =>
-    Object.keys(obj).reduce((res, key) => {
-      if (key === 'type') res[key] = getTagName({ type: obj.type });
-      if (key === 'props') {
-        res[key] = Object.assign({}, obj.props);
-
-        // skip default props
-        if (obj.type.defaultProps) {
-          Object.keys(obj.type.defaultProps).forEach((propKey) => {
-            delete res.props[propKey];
-          });
-        }
-      }
-
-      return res;
-    }, { });
-
-  const processChild = (childComponent) => {
-    const getChildren = (children) => {
-      if (Array.isArray(children)) {
-        return children.map(processChild);
-      } else if (typeof children === 'object') {
-        return [
-          processChild(children)
-        ];
-      }
-
-      return children;
-    };
-
-    if (typeof childComponent === 'string') {
-      return childComponent;
-    }
-
-    const info = pickInfo(childComponent);
-    if (childComponent.props.children) {
-      info.props.children = getChildren(childComponent.props.children);
-    }
-
-    return info;
-  };
-
-  const copy = pickInfo(component);
-
-  if (Array.isArray(component.props.children)) {
-    copy.props.children = component.props.children.map(processChild);
-  }
-
-  return copy;
-};
-
-
 export const SgExample_Section = (props) => {
   const {
     type,
@@ -199,7 +145,6 @@ export const SgExample = (props) => {
   });
 
   const htmlExample = Dom.renderToStaticMarkup(component);
-  const jsonExample = JSON.stringify(filterProps(component), null, 2);
 
   const classStack = FcUtils.createClassStack([
     'SgExample',
@@ -233,12 +178,6 @@ export const SgExample = (props) => {
       <SgExample_Section title="HTML" type="html">
         <pre>
           <code dangerouslySetInnerHTML={{ __html: Prism.highlight(pretty(htmlExample), Prism.languages.html) }} />
-        </pre>
-      </SgExample_Section>
-
-      <SgExample_Section title="JSON" type="json">
-        <pre>
-          <code dangerouslySetInnerHTML={{ __html: Prism.highlight(jsonExample, Prism.languages.json) }} />
         </pre>
       </SgExample_Section>
 

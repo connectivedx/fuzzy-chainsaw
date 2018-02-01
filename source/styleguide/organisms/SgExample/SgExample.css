@@ -69,12 +69,12 @@
 
   &__section {
     background-color: var(--sg-color-white);
-    max-height: 0;
+    display: none;
     overflow: auto;
 
     &.is-active {
       border: 1px solid var(--sg-color-gray-lighter);
-      max-height: none;
+      display: block;
       margin: 1em 3em;
       padding: 1em;
     }

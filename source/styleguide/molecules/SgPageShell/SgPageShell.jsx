@@ -57,9 +57,9 @@ export const SgPageShell__main = (props) => {
   ]);
 
   return (
-    <main className={classStack} {...attrs} role="main" id="sg-main">
+    <div className={classStack} {...attrs} role="main" id="sg-main">
       {children}
-    </main>
+    </div>
   );
 };
 
