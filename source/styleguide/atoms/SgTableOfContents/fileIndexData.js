@@ -1,8 +1,8 @@
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const templatesContext = require.context('@templates/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test).*\.example.jsx$/);
+export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test).*\.example.jsx$/);
+export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test).*\.example.jsx$/);
+export const templatesContext = require.context('@templates/', true, /^(?!.*\.test).*\.example.jsx$/);
 export const modifiersContext = require.context('@modifiers/', true, /^(?!.*\.test).*\.example.jsx$/);
 
 
