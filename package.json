@@ -146,6 +146,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-element-to-string": "1.0.2",
+    "react-custom-scrollbars": "^4.2.1",
     "scroll": "^2.0.1",
     "statum": "^0.1.2"
   }

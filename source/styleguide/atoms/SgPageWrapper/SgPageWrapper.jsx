@@ -28,7 +28,7 @@ SgPageWrapper.defaultProps = {
 SgPageWrapper.propTypes = {
   tagName: PropTypes.string,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   variant: PropTypes.oneOf(['default', 'large'])
 };
 

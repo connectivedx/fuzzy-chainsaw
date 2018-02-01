@@ -35,6 +35,14 @@
     }
   }
 
+  &__section {
+    width: 95%;
+
+    @media (--sg-large) {
+      width: 100%;
+    }
+  }
+
   &__section-header {
     background-color: var(--sg-color-white);
     position: sticky;
@@ -52,21 +60,21 @@
         display: flex;
         flex-wrap: nowrap;
         justify-content: flex-start;
-        overflow-x: auto;
+        overflow: hidden;
         width: 100%;
       }
 
       .SgStyleguide__arrow {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 2em;
-        border: none;
         background-color: var(--sg-color-white);
+        border: none;
+        bottom: 0;
         cursor: pointer;
-        pointer-events: none;
         opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 5px;
         transition: opacity 0.3s ease;
+        width: 2em;
 
         &.is-overflowing {
           pointer-events: auto;

@@ -36,7 +36,7 @@ export default (el) => {
       width += getWidth(ui.links[i]);
     }
 
-    state.listWidth = width;
+    state.listWidth = width + 40;
   };
 
   const updateArrowOverflow = () => {
