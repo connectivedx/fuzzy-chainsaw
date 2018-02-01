@@ -7,6 +7,7 @@ export const templatesContext = require.context('@templates/', true, /^(?!.*\.te
 export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
+export const modifiersContext = require.context('@modifiers/', true, /^(?!.*\.test\.jsx$).*\.(jsx|md)$/);
 
 
 const requireOrFail = (context) => (path) => {
@@ -43,7 +44,7 @@ const PageNotFound = {
 const getStyleguideModule = (path, context, type) => {
   const name = path.substr(`./styleguide/${type}/`.length - 1);
   const requirer = requireOrFail(context);
-  const tag = requirer(`./${name}/${name}.jsx`);
+  const tag = requirer(`./${name}/${name}.example.jsx`);
   const titleType = type.substr(0, 1).toUpperCase() + type.substr(1);
 
   if (tag) {
@@ -74,6 +75,8 @@ export const getModule = (path) => {
     return getStyleguideModule(path, organismsContext, 'organisms');
   } else if (match(normalPath, './styleguide/templates/**')) {
     return getStyleguideModule(path, templatesContext, 'templates');
+  } else if (match(normalPath, './styleguide/modifiers/**')) {
+    return getStyleguideModule(path, modifiersContext, 'modifiers');
   }
 
   const pagePath = `${normalPath}.jsx`;

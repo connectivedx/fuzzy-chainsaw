@@ -45,6 +45,7 @@ module.exports = ({ production }) => () => {
     organismsContext,
     moleculesContext,
     atomsContext,
+    modifiersContext,
     getModule
   } = require(dest('tmp/static.js')); // eslint-disable-line
 
@@ -65,7 +66,8 @@ module.exports = ({ production }) => () => {
         ...getContextList(templatesContext, 'styleguide/templates'),
         ...getContextList(organismsContext, 'styleguide/organisms'),
         ...getContextList(moleculesContext, 'styleguide/molecules'),
-        ...getContextList(atomsContext, 'styleguide/atoms')
+        ...getContextList(atomsContext, 'styleguide/atoms'),
+        ...getContextList(modifiersContext, 'styleguide/modifiers')
       ])
     )
     .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))

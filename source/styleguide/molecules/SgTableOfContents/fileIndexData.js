@@ -1,8 +1,8 @@
 export const pagesContext = require.context('@pages/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const templatesContext = require.context('@templates/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
-export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test|.*\.example).*\.jsx$/);
+export const atomsContext = require.context('@atoms/', true, /^(?!.*\.test).*\.example.jsx$/);
+export const moleculesContext = require.context('@molecules/', true, /^(?!.*\.test).*\.example.jsx$/);
+export const organismsContext = require.context('@organisms/', true, /^(?!.*\.test).*\.example.jsx$/);
+export const templatesContext = require.context('@templates/', true, /^(?!.*\.test).*\.example.jsx$/);
 export const modifiersContext = require.context('@modifiers/', true, /^(?!.*\.test).*\.example.jsx$/);
 
 
@@ -16,7 +16,7 @@ const isRenderableModule = (key) => (
 
 // builds a path:module object
 // { './source/page.jsx': require('./source/page.jsx') }
-const requireAllpages = () =>
+const requireAllPages = () =>
   pagesContext.keys()
     .filter(isRenderableModule)
     .reduce((modules, key) => {
@@ -90,7 +90,7 @@ const groupData = (res, data) => {
 };
 
 
-const pageData = requireAllpages(pagesContext);
+const pageData = requireAllPages(pagesContext);
 export const allPagesIndexData =
   Object.keys(pageData)
     .map((p) => ({
@@ -160,6 +160,7 @@ export const organismsIndexData =
 
 export const moleculesIndexData =
   Object.keys(requireAllComponents(moleculesContext, '/styleguide/molecules/'))
+    .filter((p) => p.indexOf('/molecules/') !== -1)
     .map((p) => ({
       path: p.substr(p.indexOf('/molecules/') + '/molecules/'.length)
     }))
@@ -171,3 +172,4 @@ export const atomsIndexData =
       path: p.substr(p.indexOf('/atoms/') + '/atoms/'.length)
     }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/atoms`));
+

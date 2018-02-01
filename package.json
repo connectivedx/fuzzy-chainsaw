@@ -37,7 +37,8 @@
     "new:molecule": "gulp scaffold:molecule --name",
     "new:organism": "gulp scaffold:organism --name",
     "new:template": "gulp scaffold:template --name",
-    "new:stateful": "gulp scaffold:molecule:stateful --name"
+    "new:stateful": "gulp scaffold:molecule:stateful --name",
+    "new:modifier": "gulp scaffold:modifier --name"
   },
   "engines": {
     "node": ">=8.9.0"
