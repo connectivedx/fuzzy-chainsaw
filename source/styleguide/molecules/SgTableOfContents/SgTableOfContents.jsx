@@ -2,7 +2,6 @@ import Heading from '@sg-atoms/SgHeading/SgHeading';
 import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import SgFileIndex from '@sg-molecules/SgFileIndex/SgFileIndex';
 import { themes } from '@source/fc-config';
-
 import {
   pagesIndexData,
   themedPagesIndexData,
