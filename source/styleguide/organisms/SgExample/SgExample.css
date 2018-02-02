@@ -12,15 +12,15 @@
     & .SgHeading {
       font-weight: 500;
       line-height: 40px;
-      padding: 0 1rem;
+      padding: 0 3rem;
 
       @media (width >= 640px) {
         font-size: 1.5em;
       }
 
-      @media (width >= 960px) {
+      @media (width >= 540px) {
         font-size: 1.7em;
-        padding: 1rem 2rem;
+        padding: 1rem 3rem;
       }
     }
   }
@@ -29,14 +29,14 @@
     border-bottom: none;
     display: flex;
     font-size: 0.8em;
-    padding: 0 1rem 1rem;
+    padding: 0 3rem 1rem;
 
     @media (width >= 640px) {
       font-size: 1em;
     }
 
-    @media (width >= 960px) {
-      padding: 0 2rem;
+    @media (width >= 540px) {
+      padding: 0 3rem;
     }
   }
 
@@ -69,28 +69,24 @@
 
   &__section {
     background-color: var(--sg-color-white);
-    max-height: 0;
+    display: none;
     overflow: auto;
 
     &.is-active {
       border: 1px solid var(--sg-color-gray-lighter);
-      max-height: none;
-      margin: 0.125em 1rem 1em;
+      display: block;
+      margin: 1em 3em;
       padding: 1em;
-
-      @media (width >= 960px) {
-        margin: 0.125em 2rem 1em;
-      }
     }
   }
 
   &__component {
     background-color: var(--sg-color-white);
     overflow: auto;
-    padding: 1em 1rem;
+    padding: 1em 3em;
 
-    @media (width >= 960px) {
-      padding: 1em 2rem 2em;
+    @media (width >= 540px) {
+      padding: 1em 3em 2em;
     }
   }
 

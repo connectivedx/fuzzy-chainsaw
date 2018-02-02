@@ -1,5 +1,6 @@
 import Heading from '@sg-atoms/SgHeading/SgHeading';
 import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
+import SgExpander from '@sg-atoms/SgExpander/SgExpander';
 import { themes } from '@source/fc-config';
 
 
@@ -62,11 +63,14 @@ export const SgFileIndex = (props) => {
     ...attrs
   } = props;
 
+  const cleanTitle = `toggle-${title.toLowerCase().replace(/\s/g, '-')}`;
+
   return (
-    <RhythmComponent size={size} className="SgFileIndex">
+    <RhythmComponent className="SgFileIndex">
       { title &&
-        <HeadingComponent level={headingSize}>
+        <HeadingComponent level={headingSize} className="SgStyleguide__toggleTrigger SgStyleguide__toggleTrigger--reverse" id={cleanTitle}>
           { title }
+          <SgExpander />
           &nbsp;
           { items.length > 0 &&
             <small className="SgFileIndex__count">{items.length}</small>
@@ -75,7 +79,7 @@ export const SgFileIndex = (props) => {
       }
       { items.length > 0
         ? (
-          <ul className={className} {...attrs}>
+          <ul className={`SgStyleguide__toggleTarget Rhythm ${className}`} {...attrs}>
             { items.map((item) => (
               item.theme === undefined && item.theme !== null
                 ? <SgFileIndex__ItemThemed key={item.url} item={item} />
@@ -83,7 +87,7 @@ export const SgFileIndex = (props) => {
             )) }
           </ul>
         )
-        : <p>&mdash;</p>
+        : <ul className={`SgStyleguide__toggleTarget Rhythm ${className}`} {...attrs} />
       }
     </RhythmComponent>
   );

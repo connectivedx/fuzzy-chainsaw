@@ -1,26 +1,44 @@
 import Heading from '@atoms/Heading/Heading';
 import Rhythm from '@atoms/Rhythm/Rhythm';
-import Wrapper from '@atoms/Wrapper/Wrapper';
+import SgPageWrapper from '@sg-atoms/SgPageWrapper/SgPageWrapper';
 import SgColorSwatch from '@sg-molecules/SgColorSwatch/SgColorSwatch';
+import {
+  SgPageShell,
+  SgPageShell__header,
+  SgPageShell__navigation,
+  SgPageShell__main,
+  SgPageShell__body }
+  from '@sg-molecules/SgPageShell/SgPageShell';
+import SgGlobalHeader from '@sg-organisms/SgGlobalHeader/SgGlobalHeader';
+import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation';
 
 const page = () => (
-  <Wrapper size="wide">
-    <Rhythm>
-      <Heading>Fuzzy Chainsaw Colors</Heading>
-      <Heading level="h3">We are generating Project Colors! Neat!</Heading>
-      <p>Colors are cool! (And so are you!) You can see all of the color variables defined in &#39;variables/colors.css&#39; here!</p>
-      <Heading level="h2">Accessibility</Heading>
-      <p>
-        We run 2 Accessibility tests based on the <a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0 Standards</a> for web content.
-        For each font color in the project, we test to the AA Standard for &#34;normal&#34; and &#34;large&#34; font size categories.
-      </p>
-    </Rhythm>
-    <br />
-    <SgColorSwatch />
-  </Wrapper>
+  <SgPageShell>
+    <SgPageShell__header>
+      <SgGlobalHeader />
+    </SgPageShell__header>
+    <SgPageShell__body>
+      <SgPageShell__navigation>
+        <SgNavigation />
+      </SgPageShell__navigation>
+      <SgPageShell__main>
+        <SgPageWrapper>
+          <Rhythm>
+            <Heading>Fuzzy Chainsaw Colors</Heading>
+            <p>
+              We run two accessibility tests based on the <a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0 Standards</a> for web content.
+              For each font color defined within the project, we test color contrast to the AA Standard for the defined “normal” (14pt/18px) and “large” (18pt/24px) font sizes.
+            </p>
+          </Rhythm>
+          <br />
+          <SgColorSwatch />
+        </SgPageWrapper>
+      </SgPageShell__main>
+    </SgPageShell__body>
+  </SgPageShell>
 );
 
-page.pageTitle = 'StyleGuide | Colors';
-page.pageType = 'index';
+page.pageTitle = 'Style Guide | Colors';
+page.pageType = 'styleguide';
 
 export default page;

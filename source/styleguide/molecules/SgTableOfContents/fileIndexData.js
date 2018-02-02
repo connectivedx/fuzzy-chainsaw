@@ -52,7 +52,9 @@ const path2LinkList = (baseUrl = '') => (data) => {
         .replace('.html', '')
         .split('/')
         .map((s) => s.substr(0, 1).toUpperCase() + s.substr(1))
-        .join(' / ')
+        .map((s) => (s.match(/Styleguide/) ? s.replace('Styleguide', 'Style Guide') : s)) // for clarity
+        .map((s) => (s.match(/Index/) ? s.replace('Index', 'Home') : s)) // for clarity
+        .join('\xa0') // &nbsp;
   };
 };
 
@@ -129,6 +131,15 @@ export const themedPagesIndexData =
       return res;
     }, { });
 
+export const modifiersIndexData =
+  Object.keys(requireAllComponents(modifiersContext, '/styleguide/modifiers/'))
+    .filter((p) => p.indexOf('/modifiers/') !== -1)
+    .map((p) => ({
+      path: p.substr(p.indexOf('/modifiers/') + '/modifiers/'.length)
+    }))
+    .map(path2LinkList(`${process.env.BASE_URL}styleguide/modifiers`));
+
+
 export const templatesIndexData =
   Object.keys(requireAllComponents(templatesContext, '/styleguide/templates/'))
     .filter((p) => p.indexOf('/templates/') !== -1)
@@ -136,6 +147,7 @@ export const templatesIndexData =
       path: p.substr(p.indexOf('/templates/') + '/templates/'.length)
     }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/templates`));
+
 
 export const organismsIndexData =
   Object.keys(requireAllComponents(organismsContext, '/styleguide/organisms/'))
@@ -160,12 +172,4 @@ export const atomsIndexData =
       path: p.substr(p.indexOf('/atoms/') + '/atoms/'.length)
     }))
     .map(path2LinkList(`${process.env.BASE_URL}styleguide/atoms`));
-
-export const modifiersIndexData =
-  Object.keys(requireAllComponents(modifiersContext, '/styleguide/modifiers/'))
-    .filter((p) => p.indexOf('/modifiers/') !== -1)
-    .map((p) => ({
-      path: p.substr(p.indexOf('/modifiers/') + '/modifiers/'.length)
-    }))
-    .map(path2LinkList(`${process.env.BASE_URL}styleguide/modifiers`));
 

@@ -1,0 +1,10 @@
+/*
+  Allows you to create your own selectors
+  http://cssnext.io/features/#custom-selectors
+
+  .MyModule:--enter {
+    ...
+  }
+*/
+@custom-selector :--enter :hover, :active;
+@custom-selector :--haf :hover, :active, :focus;

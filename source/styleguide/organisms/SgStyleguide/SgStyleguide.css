@@ -1,0 +1,229 @@
+@import "~@sg-atoms/SgHeading/SgHeading.css";
+
+.SgStyleguide {
+  padding: 2em 0;
+  position: relative;
+  transition: margin 0.5s;
+
+  .SgPageShell--openNav + & {
+    margin-left: 300px;
+  }
+
+  &__header {
+    padding: 1em;
+
+    @media (--sg-small) {
+      padding: 1em 3em;
+    }
+  }
+
+  &__themes {
+    & span {
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__theme-link {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &--active {
+      border-bottom: 1px solid;
+      font-weight: bold;
+    }
+  }
+
+  &__section {
+    width: 95%;
+
+    @media (--sg-large) {
+      width: 100%;
+    }
+  }
+
+  &__section-header {
+    background-color: var(--sg-color-white);
+    position: sticky;
+    top: 65px;
+    width: 100%;
+    z-index: 5;
+
+    &__wrapper {
+      border-bottom: 1px solid var(--sg-color-gray-lighter);
+      display: flex;
+      margin: 1em;
+      padding: 0.75em 0 0;
+
+      .SgStyleguide__section-examplesList {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .SgStyleguide__arrow {
+        background-color: var(--sg-color-white);
+        border: none;
+        bottom: 0;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 5px;
+        transition: opacity 0.3s ease;
+        width: 2em;
+
+        &.is-overflowing {
+          pointer-events: auto;
+          opacity: 1;
+        }
+
+        &--left {
+          left: 0;
+          border-right: 1px solid var(--sg-color-gray-lighter);
+        }
+
+        &--right {
+          right: 0;
+          border-left: 1px solid var(--sg-color-gray-lighter);
+        }
+      }
+
+      .SgStyleguide__example-link {
+        flex: 0 0 auto;
+        padding-bottom: 0.5em;
+
+        &.is-active {
+          & a {
+            color: var(--sg-color-primary) !important;
+            font-weight: bold;
+          }
+        }
+
+        & a {
+          color: var(--sg-color-link);
+          margin-right: 0.5em;
+          text-decoration: none;
+
+          &::after {
+            color: var(--sg-color-gray-light);
+            content: '|';
+            margin-left: 0.5em;
+          }
+        }
+
+        &:last-child {
+          & a {
+            margin-right: 0;
+
+            &::after {
+              content: '';
+              margin-left: 0;
+            }
+          }
+        }
+      }
+
+      @media (--sg-small) {
+        margin: 1em 3em 0;
+      }
+    }
+  }
+
+  &__heading-text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__section--readme {
+    &:not(.is-expanded) {
+      padding-bottom: 1px;
+    }
+  }
+
+  &__readme {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: gray(245);
+
+    @media (width >= 960px) {
+      padding: 2em;
+    }
+
+    & h1:first-of-type {
+      display: none;
+    }
+
+    & table {
+      border-collapse: collapse;
+
+      & * {
+        margin: 0;
+      }
+
+      & + * {
+        margin-top: 2em;
+      }
+    }
+
+    & tr:nth-child(even) {
+      background-color: gray(230);
+    }
+
+    & th,
+    & td {
+      border: 1px solid gray(200);
+      padding: 0.75em 0.5em;
+    }
+
+    & th {
+      font-weight: bold;
+    }
+
+    & code {
+      background-color: var(--sg-color-white);
+      border-radius: 0.125em 0.25em;
+      color: firebrick;
+      display: inline-block;
+      padding: 0.25em;
+    }
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      @extend .SgHeading;
+    }
+
+    & h1 { @extend .SgHeading--h1; }
+    & h2 { @extend .SgHeading--h2; }
+    & h3 { @extend .SgHeading--h3; }
+    & h4 { @extend .SgHeading--h4; }
+    & h5 { @extend .SgHeading--h5; }
+    & h6 { @extend .SgHeading--h6; }
+  }
+
+  &__content {
+    align-content: right;
+    width: 100%;
+  }
+
+  &__toggleTrigger {
+    cursor: pointer;
+    color: var(--sg-color-primary);
+    font-weight: normal;
+  }
+
+  &__toggleTarget {
+    display: none;
+
+    &.is-expanded {
+      display: block;
+    }
+  }
+}
