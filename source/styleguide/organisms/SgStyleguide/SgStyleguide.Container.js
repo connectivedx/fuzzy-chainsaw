@@ -5,6 +5,7 @@ import windowWidth from '@lib/windowWidth';
 export default (el) => {
   /* query select needed pieces */
   const ui = {
+    scrollContainer: document.querySelector('.SgScrollbars__container--content'), // content scrollbar container
     listContainer: el.querySelector('.SgStyleguide__section-header'), // wrapper around list
     listContent: el.querySelector('.SgStyleguide__section-examplesList'), // list of links
     arrowLeft: el.querySelector('.SgStyleguide__arrow--left'), // arrow left contained by wrapper
@@ -90,7 +91,7 @@ export default (el) => {
 
       if (!state.scrolledExamples.slice(-1).pop()) {
         state.currentExample = 0;
-      } else if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      } else if ((ui.scrollContainer.innerHeight + ui.scrollContainer.scrollY) >= ui.scrollContainer.offsetHeight) {
         state.currentExample = ui.links.length - 1;
       } else {
         state.currentExample = state.scrolledExamples.slice(-1).pop();
@@ -149,7 +150,7 @@ export default (el) => {
   ui.listContent.addEventListener('scroll', onContentScroll);
 
   /* event watcher for page scroll */
-  document.addEventListener('scroll', onPageScroll(ui.examples));
+  ui.scrollContainer.addEventListener('scroll', onPageScroll(ui.examples));
 
   /* event watcher for tab arrow clicks */
   ui.arrowLeft.addEventListener('click', onArrowClick(false));

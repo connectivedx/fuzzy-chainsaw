@@ -23,8 +23,9 @@ export const SgPageShell__navigation = (props) => {
   return (
     <nav className={classStack} {...attrs}>
       <Scrollbars
-        renderTrackVertical={(trackProps) => <div {...trackProps} className="SgPageShell__navigation--scrollbar" />}
-        renderThumbVertical={(thumbProps) => <div {...thumbProps} className="SgPageShell__navigation--scrollbar--thumb" />}
+        renderTrackVertical={(trackProps) => <div {...trackProps} className="SgScrollbars__track" />}
+        renderThumbVertical={(thumbProps) => <div {...thumbProps} className="SgScrollbars__thumb" />}
+        renderView={(containerProps) => <div {...containerProps} className="SgScrollbars__container--nav" />}
       >
         {children}
       </Scrollbars>
@@ -86,8 +87,9 @@ export const SgPageShell = (props) => {
   return (
     <div className={classStack} {...attrs}>
       <Scrollbars
-        renderTrackVertical={(trackProps) => <div {...trackProps} className="SgPageShell__navigation--scrollbar" />}
-        renderThumbVertical={(thumbProps) => <div {...thumbProps} className="SgPageShell__navigation--scrollbar--thumb" />}
+        renderTrackVertical={(trackProps) => <div {...trackProps} className="SgScrollbars__track" />}
+        renderThumbVertical={(thumbProps) => <div {...thumbProps} className="SgScrollbars__thumb" />}
+        renderView={(containerProps) => <div {...containerProps} className="SgScrollbars__container--content" />}
       >
         {children}
       </Scrollbars>
