@@ -1,0 +1,19 @@
+:root {
+	/* The default global column count for grid systems. */
+	--grid--column--count: 12;
+
+	/* The default global column padding. */
+	--grid--column--padding: 16px;
+
+	/* The default global horizontal space between grid columns */
+	--grid--column--horizontal--gap: 16px;
+
+	/* The default global vertical space between grid columns */
+	--grid--column--vertical--gap: 16px;
+
+	/* The default global gutter gap between columns. */
+	--grid--gutter--width: 16px;
+
+	/* The maximum width of a wrapper on the page. */
+	--grid--wrapper--max-width: 1220px;
+}
