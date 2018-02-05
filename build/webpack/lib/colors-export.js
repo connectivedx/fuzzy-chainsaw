@@ -4,7 +4,7 @@ const startCase = require('lodash.startcase');
 
 /* Converts variable property to camelcase JSON key */
 const getPropName = (string) => {
-  let name = string.split('-').filter(String);
+  const name = string.split('-').filter(String);
   let i = name.length;
 
   while (i--) {
@@ -40,7 +40,7 @@ module.exports = postcss.plugin('colors-export', (files, filters, options) =>
     };
 
     /* Collects our results */
-    let jsonObject = {};
+    const jsonObject = {};
 
     /* Walk CSS Stream */
     css.walkRules((rules) => {
@@ -69,7 +69,7 @@ module.exports = postcss.plugin('colors-export', (files, filters, options) =>
     const now = Date.now() / 1000;
     const then = now - 60;
     fs.utimesSync(options.dest, then, then, (err) => { 
-      if (err) throw err 
+      if (err) throw err;
     });
   }
 );
