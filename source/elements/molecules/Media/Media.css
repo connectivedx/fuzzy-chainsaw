@@ -6,6 +6,10 @@
   &--middle { align-items: center; }
   &--bottom { align-items: flex-end; }
 
+  &__figure {
+    margin-right: 1em;
+  }
+
   &__body {
     flex: 1;
 
@@ -15,13 +19,8 @@
     }
   }
 
-  &__figure {
-    margin-right: 1em;
-  }
-
   /* figure variants */
   &__figure--top { align-self: flex-start; }
   &__figure--middle { align-self: center; }
   &__figure--bottom { align-self: flex-end; }
 }
-

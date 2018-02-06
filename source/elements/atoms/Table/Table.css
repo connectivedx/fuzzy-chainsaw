@@ -81,10 +81,26 @@
       }
     }
 
-    .Table__body,
     .Table__foot {
+      background-color: var(--cell--bg-color);
+      font-weight: var(--font-weight--bold);
+
       & .Table__data {
-        &:first-of-type { background-color: var(--cell--bg-color); }
+        &:not(:first-of-type)::before {
+          content: attr(data-heading);
+          color: var(--label-color);
+          display: var(--td-value--display);
+          font-weight: var(--font-weight--normal);
+          margin-bottom: 0.5em;
+        }
+      }
+    }
+
+    .Table__body {
+      & .Table__data {
+        &:first-of-type {
+          background-color: var(--td--bg-color);
+        }
 
         &:not(:first-of-type)::before {
           content: attr(data-heading);
@@ -94,7 +110,10 @@
           margin-bottom: 0.5em;
         }
       }
+    }
 
+    .Table__body,
+    .Table__foot {
       /* data values to be displayed inline on small screens, vs. stacked */
       .table--inline & {
         & .Table__data:not(:first-of-type) {
@@ -106,19 +125,6 @@
           }
         }
       }
-    }
-
-    .Table__body {
-      & .Table__data {
-        &:first-of-type {
-          background-color: var(--td--bg-color);
-        }
-      }
-    }
-
-    .Table__foot {
-      background-color: var(--cell--bg-color);
-      font-weight: var(--font-weight--bold);
     }
 
     @media only screen and (width <= 45em) {
