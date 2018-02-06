@@ -44,7 +44,8 @@ SgGlobalHeader.propTypes = {
     PropTypes.element,
     PropTypes.func
   ]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  variant: PropTypes.string
 };
 
 
