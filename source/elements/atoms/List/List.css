@@ -27,6 +27,10 @@
 
       &--description {
         padding-bottom: 1em;
+
+        &:last-of-type {
+          padding-bottom: 0;
+        }
       }
     }
   }
