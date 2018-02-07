@@ -46,13 +46,13 @@ export default [{
   name: 'description list',
   component: (
     <List variant="description">
-      <List__item variant="title" className="is-leader">Pig</List__item>
+      <List__item variant="term" className="is-leader">Pig</List__item>
       <List__item variant="description">Leader</List__item>
 
-      <List__item variant="title">Dog</List__item>
+      <List__item variant="term">Dog</List__item>
       <List__item variant="description">Enforcer</List__item>
 
-      <List__item variant="title">Horse</List__item>
+      <List__item variant="term">Horse</List__item>
       <List__item variant="description">Laborer</List__item>
     </List>
   )

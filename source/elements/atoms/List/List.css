@@ -21,7 +21,7 @@
 
   &--description {
     & .List__item {
-      &--title {
+      &--term {
         font-weight: bold;
       }
 

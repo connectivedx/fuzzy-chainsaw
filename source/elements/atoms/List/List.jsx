@@ -9,10 +9,11 @@ export const List__item = (props) => {
 
   const getTagName = () => {
     switch (variant) {
-      case 'title':
+      case 'term':
         return 'dt';
       case 'description':
         return 'dd';
+      case 'item':
       default:
         return 'li';
     }
@@ -33,7 +34,7 @@ export const List__item = (props) => {
 };
 
 List__item.defaultProps = {
-  variant: 'li'
+  variant: 'item'
 };
 
 List__item.propTypes = {
@@ -43,7 +44,7 @@ List__item.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['unordered', 'ordered', 'blank']),
+  variant: PropTypes.oneOf(['item', 'description', 'term']),
   children: PropTypes.node.isRequired
 };
 
@@ -63,6 +64,7 @@ export const List = (props) => {
         return 'ol';
       case 'description':
         return 'dl';
+      case 'unordered':
       default:
         return 'ul';
     }
@@ -93,7 +95,7 @@ List.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['unordered', 'ordered', 'blank']),
+  variant: PropTypes.oneOf(['unordered', 'ordered', 'blank', 'description']),
   children: PropTypes.node.isRequired
 };
 
