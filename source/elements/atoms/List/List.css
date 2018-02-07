@@ -18,4 +18,16 @@
     list-style-type: decimal;
     padding-left: 1em;
   }
+
+  &--description {
+    & .List__item {
+      &--title {
+        font-weight: bold;
+      }
+
+      &--description {
+        padding-bottom: 1em;
+      }
+    }
+  }
 }
