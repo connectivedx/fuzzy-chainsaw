@@ -33,7 +33,7 @@ export const List__item = (props) => {
 };
 
 List__item.defaultProps = {
-  variant: 'unordered'
+  variant: 'li'
 };
 
 List__item.propTypes = {
