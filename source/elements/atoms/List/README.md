@@ -11,7 +11,7 @@ Will default to a `ul` if  `variant` and `tagName` are both undefined.
 Property | Default | Valid Values | Description
 --- | --- | --- |:---
 `tagName` |  &nbsp; | any HTML tag | Defines the component tagName.
-`variant` |  `default` (ul) | `ordered` (ol), `description` (dl), `blank` (ul) | Defines the component variation used in the CSS.
+`variant` |  `default` (`ul`) | `ordered` (`ol`), `description` (`dl`), `blank` (`ul`) | Defines the component variation used in the CSS.
 `className` | &nbsp; | any string | Defines CSS `className` to add to the component's class list.
 `children` | &nbsp; |  &nbsp; | Defines the child elements passed to the component.
 
@@ -29,6 +29,6 @@ Will default to a `li` if  `variant` and `tagName` are both undefined.
 Property | Default | Valid Values | Description
 --- | --- | --- |:---
 `tagName` |  &nbsp; | any HTML tag | Defines the component tagName.
-`variant` |  `default` (li) | `description` (dd), `title` (dt) | Defines the component variation used in the CSS.
+`variant` |  `default` (`li`) | `description` (`dd`), `title` (`dt`) | Defines the component variation used in the CSS.
 `className` | &nbsp; | any string | Defines CSS `className` to add to the component's class list.
 `children` | &nbsp; |  &nbsp; | Defines the child elements passed to the component.
