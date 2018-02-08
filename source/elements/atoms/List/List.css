@@ -19,7 +19,7 @@
     padding-left: 1em;
   }
 
-  &--description {
+  &--definition {
     & .List__item {
       &--term {
         font-weight: bold;

@@ -62,7 +62,7 @@ export const List = (props) => {
     switch (variant) {
       case 'ordered':
         return 'ol';
-      case 'description':
+      case 'definition':
         return 'dl';
       case 'unordered':
       default:
@@ -95,7 +95,7 @@ List.propTypes = {
     PropTypes.func
   ]),
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['unordered', 'ordered', 'blank', 'description']),
+  variant: PropTypes.oneOf(['unordered', 'ordered', 'blank', 'definition']),
   children: PropTypes.node.isRequired
 };
 

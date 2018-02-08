@@ -42,11 +42,11 @@ test('<List className="boogy-monster">', (t) => {
   t.end();
 });
 
-test('<List variant="description">', (t) => {
-  const component = shallow(<List variant="description"><List__item variant="term">X</List__item><List__item variant="description">X</List__item></List>);
+test('<List variant="definition">', (t) => {
+  const component = shallow(<List variant="description"><List__item variant="term">X</List__item><List__item variant="definition">X</List__item></List>);
   t.ok(component.is('dl'), 'tag name');
   t.ok(component.hasClass('List'), 'tag class');
-  t.ok(component.hasClass('List--description'), 'tag class');
+  t.ok(component.hasClass('List--definition'), 'tag class');
   t.equal(component.children().length, 2, 'number of children');
   t.end();
 });

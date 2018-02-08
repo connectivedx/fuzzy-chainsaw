@@ -43,10 +43,10 @@ export default [{
     </List>
   )
 }, {
-  name: 'description list',
+  name: 'definition list',
   component: (
-    <List variant="description">
-      <List__item variant="term" className="is-leader">Pig</List__item>
+    <List variant="definition">
+      <List__item variant="term">Pig</List__item>
       <List__item variant="description">Leader</List__item>
 
       <List__item variant="term">Dog</List__item>
