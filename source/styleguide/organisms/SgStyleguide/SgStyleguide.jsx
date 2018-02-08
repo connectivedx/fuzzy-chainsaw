@@ -87,6 +87,7 @@ export const SgStyleguide_Examples = (props) => {
             key={e.slug}
             slug={e.slug}
             exampleName={e.name}
+            devNotes={e.devNotes}
             component={e.component}
             theme={e.theme}
             options={e.options}
@@ -101,6 +102,7 @@ SgStyleguide_Examples.propTypes = {
   examples: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     theme: PropTypes.string,
+    devNotes: PropTypes.string,
     options: PropTypes.object,
     component: PropTypes.element.isRequired
   }))
