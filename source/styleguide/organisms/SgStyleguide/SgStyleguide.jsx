@@ -66,8 +66,8 @@ export const SgStyleguide_Examples = (props) => {
           </button>
           <div className="SgStyleguide__section-examplesList">
             {
-              examples.map((e) => (
-                <div key={e.slug} className="SgStyleguide__example-link">
+              examples.map((e, i) => (
+                <div key={e.slug} className={`SgStyleguide__example-link ${(i === 0) ? ' is-active' : ''}`}>
                   <a href={`#${e.slug}`} value={e.name}>
                     {e.name}
                   </a>
