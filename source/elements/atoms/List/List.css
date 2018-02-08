@@ -18,4 +18,20 @@
     list-style-type: decimal;
     padding-left: 1em;
   }
+
+  &--definition {
+    & .List__item {
+      &--term {
+        font-weight: bold;
+      }
+
+      &--description {
+        padding-bottom: 1em;
+
+        &:last-of-type {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
 }

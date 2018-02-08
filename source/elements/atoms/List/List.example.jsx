@@ -43,6 +43,20 @@ export default [{
     </List>
   )
 }, {
+  name: 'definition list',
+  component: (
+    <List variant="definition">
+      <List__item variant="term">Pig</List__item>
+      <List__item variant="description">Leader</List__item>
+
+      <List__item variant="term">Dog</List__item>
+      <List__item variant="description">Enforcer</List__item>
+
+      <List__item variant="term">Horse</List__item>
+      <List__item variant="description">Laborer</List__item>
+    </List>
+  )
+}, {
   name: 'blank list',
   component: (
     <List variant="blank">
