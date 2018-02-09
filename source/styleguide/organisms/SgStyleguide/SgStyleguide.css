@@ -45,8 +45,10 @@
 
   &__section-header {
     background-color: var(--sg-color-white);
+    position: relative;
     position: sticky;
     top: 65px;
+    transition: top 1ms;
     width: 100%;
     z-index: 5;
 

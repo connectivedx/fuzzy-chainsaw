@@ -11,6 +11,16 @@ export default (el) => {
     active: el.querySelector('.SgStyleguide__example-link.is-active')
   };
 
+  const isSupported = (prop, value) => {
+    const d = document.createElement('div');
+    d.style[prop] = value;
+    return d.style[prop] === value;
+  };
+
+  if (!isSupported('position', 'sticky')) {
+    ui.listContainer.style.top = 0;
+  }
+
   const setActive = (elm) => {
     elm.className += ' is-active'; // IE friendly
   };
@@ -35,6 +45,14 @@ export default (el) => {
 
     clearActive(ui.links[exampleCollection.length]);
     ui.listContent.scrollLeft = (ui.active.offsetLeft - ui.active.offsetWidth);
+
+    // IE / Edge Sticky support
+    if (!isSupported('position', 'sticky')) {
+      ui.listContainer.style.top = 0;
+      if (ui.scrollContainer.scrollTop > 180) {
+        ui.listContainer.style.top = [(ui.scrollContainer.scrollTop - 180), 'px'].join('');
+      }
+    }
   };
 
   const onArrowClick = (dir) => {
