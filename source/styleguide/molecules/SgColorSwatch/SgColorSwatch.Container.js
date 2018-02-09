@@ -69,6 +69,8 @@ const runWCAGTest = (ratio, size, level) => {
     case 'AA':
       if (size === 'large' && ratio > 3) {
         return 'PASS';
+      } else if (size === 'large--bold' && ratio > 3) {
+        return 'PASS';
       } else if (size === 'normal' && ratio > 4.5) {
         return 'PASS';
       }
@@ -76,6 +78,8 @@ const runWCAGTest = (ratio, size, level) => {
 
     case 'AAA':
       if (size === 'large' && ratio > 4.5) {
+        return 'PASS';
+      } else if (size === 'large--bold' && ratio > 4.5) {
         return 'PASS';
       } else if (size === 'normal' && ratio > 7) {
         return 'PASS';

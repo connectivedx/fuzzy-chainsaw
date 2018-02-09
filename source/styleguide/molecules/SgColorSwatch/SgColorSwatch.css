@@ -75,8 +75,17 @@
 
     &--normal {
       &::before {
-        font-size: 14pt;
+        font-size: 12pt;
         left: calc(50% - 5px);
+      }
+    }
+
+    &--large--bold {
+      &::before {
+        font-size: 14pt;
+        font-weight: bold;
+        left: calc(50% - 5px);
+        top: -1.45em;
       }
     }
 
@@ -84,6 +93,7 @@
       &::before {
         font-size: 18pt;
         left: calc(50% - 8px);
+        top: -1.35em;
       }
     }
   }

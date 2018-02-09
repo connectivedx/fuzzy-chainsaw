@@ -103,11 +103,17 @@ const SgColorSwatch__accessibility = (props) => {
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--normal">
         {runWCAGTest(contrastPrimary, 'normal', level)}
       </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--large--bold">
+        {runWCAGTest(contrastPrimary, 'large--bold', level)}
+      </div>
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--large">
         {runWCAGTest(contrastPrimary, 'large', level)}
       </div>
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--normal">
         {runWCAGTest(contrastSecondary, 'normal', level)}
+      </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--large--bold">
+        {runWCAGTest(contrastSecondary, 'large--bold', level)}
       </div>
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--large">
         {runWCAGTest(contrastSecondary, 'large', level)}
