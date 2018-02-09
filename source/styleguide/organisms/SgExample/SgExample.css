@@ -87,7 +87,7 @@
     margin-bottom: 1em;
 
     @media (width >= 540px) {
-      padding: 1em 3em 1em;
+      padding: 1em 3em;
     }
   }
 
