@@ -6,7 +6,6 @@ const postcss = require('postcss');
 
 // standard
 const nested = require('postcss-nested');
-const selectorMerge = require('postcss-merge-selectors');
 const cssnext = require('postcss-cssnext');
 const responsiveType = require('postcss-responsive-type');
 const extend = require('postcss-extend');
@@ -22,6 +21,7 @@ const stylelint = require('stylelint');
 const reporter = require('postcss-reporter');
 
 // production
+const selectorMerge = require('postcss-merge-selectors');
 const cssnano = require('cssnano');
 
 // dev
