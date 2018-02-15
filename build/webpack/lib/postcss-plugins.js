@@ -6,6 +6,7 @@ const postcss = require('postcss');
 
 // standard
 const nested = require('postcss-nested');
+const selectorMerge = require('postcss-merge-selectors');
 const cssnext = require('postcss-cssnext');
 const responsiveType = require('postcss-responsive-type');
 const extend = require('postcss-extend');
@@ -93,5 +94,6 @@ module.exports.build = [
 
 
 module.exports.production = [
+  selectorMerge(),
   cssnano()
 ];
