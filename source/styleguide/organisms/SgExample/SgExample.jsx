@@ -150,6 +150,7 @@ export const SgExample = (props) => {
     'SgExample',
     options.fullWidth && 'SgExample--full-width',
     options.darkBackground && 'SgExample--dark-background',
+    options.noPadding && 'SgExample--full-width',
     `${theme}-theme-section`
   ]);
 
