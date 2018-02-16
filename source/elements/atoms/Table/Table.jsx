@@ -1,6 +1,6 @@
 export const Table__head =
   FcUtils.createBasicComponent({
-    name: 'Table__head',
+    name: 'table__head',
     defaultProps: {
       tagName: 'thead'
     }
@@ -8,7 +8,7 @@ export const Table__head =
 
 export const Table__foot =
   FcUtils.createBasicComponent({
-    name: 'Table__foot',
+    name: 'table__foot',
     defaultProps: {
       tagName: 'tfoot'
     }
@@ -16,7 +16,7 @@ export const Table__foot =
 
 export const Table__body =
   FcUtils.createBasicComponent({
-    name: 'Table__body',
+    name: 'table__body',
     defaultProps: {
       tagName: 'tbody'
     }
@@ -24,7 +24,7 @@ export const Table__body =
 
 export const Table__row =
   FcUtils.createBasicComponent({
-    name: 'Table__row',
+    name: 'table__row',
     defaultProps: {
       tagName: 'tr'
     }
@@ -32,7 +32,7 @@ export const Table__row =
 
 export const Table__header =
   FcUtils.createBasicComponent({
-    name: 'Table__header',
+    name: 'table__header',
     defaultProps: {
       tagName: 'th'
     }
@@ -40,7 +40,7 @@ export const Table__header =
 
 export const Table__data =
   FcUtils.createBasicComponent({
-    name: 'Table__data',
+    name: 'table__data',
     defaultProps: {
       tagName: 'td'
     }
@@ -56,14 +56,14 @@ export const Table = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'Table',
-    `Table--${variant}`,
+    'table',
+    `table--${variant}`,
     className
   ]);
 
   return (
     <Tag className={classStack} {...attrs}>
-      <table className="Table__root RichText">
+      <table className="table__root rich-text">
         {children}
       </table>
     </Tag>
