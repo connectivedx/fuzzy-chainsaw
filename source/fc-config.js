@@ -84,3 +84,6 @@ module.exports.themes = [{
   id: 'generic',
   name: 'Generic'
 }];
+
+// true to enable webpack error & success notifications
+module.exports.enableNotifier = true;

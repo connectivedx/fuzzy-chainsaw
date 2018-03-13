@@ -18,6 +18,14 @@ const { source, baseUrl } = require('../../lib/path-helpers');
 
 const { directories } = require(path.resolve(pkgpath.self(), 'package.json')); // eslint-disable-line
 
+const { enableNotifier } = require(source('fc-config')); // eslint-disable-line
+
+const notifierPlugin = enableNotifier ? [
+  new WebpackNotifierPlugin({
+    title: 'FC Dev'
+  })
+] : [];
+
 module.exports = (
   webpackMerge(
     browserWorkflow,
@@ -70,7 +78,7 @@ module.exports = (
           }
         ]
       },
-      plugins: [
+      plugins: notifierPlugin.concat([
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('dev')
         }),
@@ -80,16 +88,13 @@ module.exports = (
           baseUrl
         })),
         new webpack.HotModuleReplacementPlugin(),
-        new WebpackNotifierPlugin({
-          title: 'FC Dev'
-        }),
         new CopyWebpackPlugin([{
           from: source('static'),
           to: 'assets/static'
         }], {
           ignore: ['README.md']
         })
-      ],
+      ]),
       stats,
       devServer: {
         historyApiFallback: {
