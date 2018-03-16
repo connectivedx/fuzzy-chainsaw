@@ -3,16 +3,16 @@ import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import SgExpander from '@sg-atoms/SgExpander/SgExpander';
 import { themes } from '@source/fc-config';
 
+const pascalToSpaced = (text) => text.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
 
 const SgFileIndex__ItemThemed = (props) => {
   const { url, content } = props.item;
-  const spacedContent = content.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
 
   const firstTheme = themes.length ? `?theme=${themes[0].id}` : '';
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{spacedContent}</a>
+      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{pascalToSpaced(content)}</a>
       { themes.length > 1 &&
         <span className="SgFileIndex__links">
           ({ themes
@@ -38,11 +38,10 @@ SgFileIndex__ItemThemed.propTypes = {
 
 const SgFileIndex__Item = (props) => {
   const { url, content } = props.item;
-  const spacedContent = content.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}`}>{spacedContent}</a>
+      <a className="SgFileIndex__name" href={`${url}`}>{pascalToSpaced(content)}</a>
     </li>
   );
 };
