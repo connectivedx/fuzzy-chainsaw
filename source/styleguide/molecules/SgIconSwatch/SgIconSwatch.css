@@ -6,17 +6,21 @@
   width: 100%;
   text-align: center;
 
-  @media (--sg-medium) {
+  @media (--sg-medium-small) {
     margin: 0.5rem;
     max-width: calc(calc(100% / 2) - 1rem);
   }
 
-  @media (--sg-large) {
+  @media (--sg-medium) {
     max-width: calc(calc(100% / 3) - 1rem);
   }
 
-  @media (--sg-extra-large) {
+  @media (--sg-large) {
     max-width: calc(calc(100% / 4) - 1rem);
+  }
+
+  @media (--sg-extra-large) {
+    max-width: calc(calc(100% / 5) - 1rem);
   }
 
   & img {
