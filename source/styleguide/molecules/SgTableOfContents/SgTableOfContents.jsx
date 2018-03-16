@@ -5,7 +5,7 @@ import { themes } from '@source/fc-config';
 import {
   pagesIndexData,
   themedPagesIndexData,
-  indexesIndexData,
+  sgPagesIndexData,
   templatesIndexData,
   organismsIndexData,
   moleculesIndexData,
@@ -45,7 +45,7 @@ export const SgTableOfContents = (props) => {
         <SgFileIndex
           {...indexProps}
           title="Style Guide"
-          items={indexesIndexData}
+          items={sgPagesIndexData}
           size="default"
         />
       }

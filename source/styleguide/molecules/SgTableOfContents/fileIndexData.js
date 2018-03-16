@@ -80,8 +80,8 @@ const groupData = (res, data) => {
     }
 
     res.themes[data.theme].push(data);
-  } else if (data.pageType === 'index') {
-    res.indexes.push(data);
+  } else if (data.pageType === 'styleguide') {
+    res.sgPages.push(data);
   } else {
     res.pages.push(data);
   }
@@ -99,7 +99,7 @@ export const allPagesIndexData =
       theme: pageData[p].theme
     }))
     .reduce(groupData, {
-      indexes: [],
+      sgPages: [],
       pages: [],
       themes: {}
     });
@@ -112,8 +112,8 @@ export const pagesIndexData =
     .map(path2LinkList(process.env.BASE_URL.slice(0, -1)));
 
 
-export const indexesIndexData =
-  allPagesIndexData.indexes
+export const sgPagesIndexData =
+  allPagesIndexData.sgPages
     .sort(sortFoldersFirst)
     .sort(sortAlphabetical)
     .map(path2LinkList(process.env.BASE_URL.slice(0, -1)));

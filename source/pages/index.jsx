@@ -53,7 +53,7 @@ const page = () => (
 );
 
 page.pageTitle = 'Fuzzy Chainsaw Style Guide';
-page.pageType = 'index';
+page.pageType = 'styleguide';
 
 
 export default page;
