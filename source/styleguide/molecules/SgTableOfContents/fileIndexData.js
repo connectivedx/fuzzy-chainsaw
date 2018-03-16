@@ -13,12 +13,17 @@ const isRenderableModule = (key) => (
   key.substr(0, 1) !== '_' // skip partial files
 );
 
+const isSkippedPage = (key) => (
+  key.indexOf('index.jsx') === -1 // skip index page
+);
+
 
 // builds a path:module object
 // { './source/page.jsx': require('./source/page.jsx') }
 const requireAllPages = () =>
   pagesContext.keys()
     .filter(isRenderableModule)
+    .filter(isSkippedPage)
     .reduce((modules, key) => {
       const newKey = key.replace(/\.jsx$/, '.html');
       modules[newKey] = pagesContext(key).default;
@@ -52,8 +57,6 @@ const path2LinkList = (baseUrl = '') => (data) => {
         .replace('.html', '')
         .split('/')
         .map((s) => s.substr(0, 1).toUpperCase() + s.substr(1))
-        .map((s) => (s.match(/Styleguide/) ? s.replace('Styleguide', 'Style Guide') : s)) // for clarity
-        .map((s) => (s.match(/Index/) ? s.replace('Index', 'Home') : s)) // for clarity
         .join('\xa0') // &nbsp;
   };
 };
