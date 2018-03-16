@@ -18,10 +18,12 @@ import {
 
 import { themes } from '@source/fc-config';
 
+const pascalToSpaced = (text) => text.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
+
 export const SgStyleguide_ReadmeHeading = (props) => (
   <div>
     <Heading level="h1" className="SgStyleguide__section--readme SgStyleguide__toggleTrigger">
-      {props.name}
+      {pascalToSpaced(props.name)}
       <SgExpander />
     </Heading>
     <div
