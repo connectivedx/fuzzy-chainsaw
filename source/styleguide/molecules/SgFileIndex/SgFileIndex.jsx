@@ -6,12 +6,13 @@ import { themes } from '@source/fc-config';
 
 const SgFileIndex__ItemThemed = (props) => {
   const { url, content } = props.item;
+  const spacedContent = content.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
 
   const firstTheme = themes.length ? `?theme=${themes[0].id}` : '';
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{content}</a>
+      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{spacedContent}</a>
       { themes.length > 1 &&
         <span className="SgFileIndex__links">
           ({ themes
