@@ -5,7 +5,7 @@ import { themes } from '@source/fc-config';
 import {
   pagesIndexData,
   themedPagesIndexData,
-  indexesIndexData,
+  sgPagesIndexData,
   templatesIndexData,
   organismsIndexData,
   moleculesIndexData,
@@ -45,7 +45,7 @@ export const SgTableOfContents = (props) => {
         <SgFileIndex
           {...indexProps}
           title="Style Guide"
-          items={indexesIndexData}
+          items={sgPagesIndexData}
           size="default"
         />
       }
@@ -70,9 +70,9 @@ export const SgTableOfContents = (props) => {
           />
         )) }
       { templatesIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Templates" items={filterIndexData(templatesIndexData, searchFilter)} size="default" /> : null }
-      { organismsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Organisms" items={filterIndexData(organismsIndexData, searchFilter)} size="default" /> : null }
-      { moleculesIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Molecules" items={filterIndexData(moleculesIndexData, searchFilter)} size="default" /> : null }
       { atomsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Atoms" items={filterIndexData(atomsIndexData, searchFilter)} size="default" /> : null }
+      { moleculesIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Molecules" items={filterIndexData(moleculesIndexData, searchFilter)} size="default" /> : null }
+      { organismsIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Organisms" items={filterIndexData(organismsIndexData, searchFilter)} size="default" /> : null }
       { modifiersIndexData.length > 0 ? <SgFileIndex {...indexProps} title="Modifiers" items={filterIndexData(modifiersIndexData, searchFilter)} size="default" /> : null }
     </div>
   );
