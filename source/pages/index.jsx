@@ -52,7 +52,7 @@ const page = () => (
   </SgPageShell>
 );
 
-page.pageTitle = 'Fuzzy Chainsaw Style Guide';
+page.pageTitle = 'Style Guide | Home';
 page.pageType = 'styleguide';
 
 
