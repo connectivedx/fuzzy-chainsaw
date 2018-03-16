@@ -1,6 +1,3 @@
-import Prism from 'prismjs';
-import 'prismjs/components/prism-jsx.min';
-import 'prismjs/components/prism-json.min';
 import './SgIconSwatch.Container.js';
 
 export const SgIconSwatch = (props) => {
@@ -20,15 +17,6 @@ export const SgIconSwatch = (props) => {
       </div>
       <div className="SgIconSwatch__details">
         <strong>{icon.name}</strong>
-        <pre>
-          <code dangerouslySetInnerHTML={{
-            __html: Prism.highlight(
-              ['import Icon from \'./Icon\';\n<Icon name="', icon.name, '" />'].join(''),
-              Prism.languages.jsx
-            )
-          }}
-          />
-        </pre>
       </div>
     </div>
   );
