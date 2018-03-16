@@ -38,10 +38,11 @@ SgFileIndex__ItemThemed.propTypes = {
 
 const SgFileIndex__Item = (props) => {
   const { url, content } = props.item;
+  const spacedContent = content.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}`}>{content}</a>
+      <a className="SgFileIndex__name" href={`${url}`}>{spacedContent}</a>
     </li>
   );
 };
