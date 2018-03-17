@@ -1,4 +1,5 @@
 import Heading from '@sg-atoms/SgHeading/SgHeading';
+import Icon from '@sg-atoms/SgIcon/SgIcon';
 import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import SgExpander from '@sg-atoms/SgExpander/SgExpander';
 import { themes } from '@source/fc-config';
@@ -58,17 +59,21 @@ export const SgFileIndex = (props) => {
     headingSize,
     size,
     title,
+    icon,
     RhythmComponent,
     HeadingComponent,
     ...attrs
   } = props;
 
   const cleanTitle = `toggle-${title.toLowerCase().replace(/\s/g, '-')}`;
+  const indexIcon = (icon) ? <Icon name={icon} /> : '';
 
   return (
     <RhythmComponent className="SgFileIndex">
       { title &&
         <HeadingComponent level={headingSize} className="SgStyleguide__toggleTrigger SgStyleguide__toggleTrigger--reverse" id={cleanTitle}>
+          { indexIcon }
+          &nbsp;
           { title }
           <SgExpander />
           &nbsp;
@@ -110,6 +115,7 @@ SgFileIndex.propTypes = {
   headingSize: PropTypes.string,
   size: PropTypes.string,
   title: PropTypes.string,
+  icon: PropTypes.string,
   RhythmComponent: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.node
