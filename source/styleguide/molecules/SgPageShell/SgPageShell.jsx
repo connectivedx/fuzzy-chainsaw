@@ -1,5 +1,3 @@
-import { Scrollbars } from 'react-custom-scrollbars';
-
 export const SgPageShell__header = FcUtils.createBasicComponent({
   name: 'SgPageShell__header',
   defaultProps: {
@@ -22,13 +20,7 @@ export const SgPageShell__navigation = (props) => {
 
   return (
     <nav className={classStack} {...attrs}>
-      <Scrollbars
-        renderTrackVertical={(trackProps) => <div {...trackProps} className="SgScrollbars__track" />}
-        renderThumbVertical={(thumbProps) => <div {...thumbProps} className="SgScrollbars__thumb" />}
-        renderView={(containerProps) => <div {...containerProps} className="SgScrollbars__container--nav" />}
-      >
-        {children}
-      </Scrollbars>
+      {children}
     </nav>
   );
 };
@@ -58,9 +50,9 @@ export const SgPageShell__main = (props) => {
   ]);
 
   return (
-    <div className={classStack} {...attrs} role="main" id="sg-main">
+    <main className={classStack} {...attrs} role="main" id="sg-main">
       {children}
-    </div>
+    </main>
   );
 };
 
@@ -86,13 +78,7 @@ export const SgPageShell = (props) => {
 
   return (
     <div className={classStack} {...attrs}>
-      <Scrollbars
-        renderTrackVertical={(trackProps) => <div {...trackProps} className="SgScrollbars__track" />}
-        renderThumbVertical={(thumbProps) => <div {...thumbProps} className="SgScrollbars__thumb" />}
-        renderView={(containerProps) => <div {...containerProps} className="SgScrollbars__container--content" />}
-      >
-        {children}
-      </Scrollbars>
+      {children}
     </div>
   );
 };
