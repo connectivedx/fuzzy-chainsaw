@@ -9,6 +9,7 @@ import SgExpander from '@sg-atoms/SgExpander/SgExpander.Container';
 import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation.Container';
 import SgPageShell from '@sg-molecules/SgPageShell/SgPageShell.Container';
 import SgTableOfContents from '@sg-molecules/SgTableOfContents/SgTableOfContents.Container';
+import SgIconSearch from '@sg-molecules/SgIconSwatch/SgIconSwatch.Container';
 import SgExample from '@sg-organisms/SgExample/SgExample.Container';
 import SgStyleguide from '@sg-organisms/SgStyleguide/SgStyleguide.Container';
 
@@ -18,7 +19,8 @@ const ui = {
   shell: document.querySelector('.SgPageShell'),
   styleguide: document.querySelector('.SgStyleguide'),
   toggles: Array.prototype.slice.call(document.querySelectorAll('.SgToggleButton')),
-  menu: document.querySelector('.SgTableOfContents')
+  menu: document.querySelector('.SgTableOfContents'),
+  iconSearch: document.querySelector('.SgIconSwatch__search')
 };
 
 const init = () => {
@@ -41,6 +43,10 @@ if (ui.menu) {
 
 if (ui.styleguide) {
   init();
+}
+
+if (ui.iconSearch) {
+  SgIconSearch(ui.iconSearch);
 }
 
 if (ui.shell) {

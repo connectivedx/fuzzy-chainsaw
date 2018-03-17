@@ -1,6 +1,6 @@
 const __svg__ = { // eslint-disable-line
   path: './assets/**/*.svg',
-  name: 'assets/svgs/iconset-[hash].svg'
+  name: 'assets/svgs/sg-iconset-[hash].svg'
 };
 
 ((options) => {

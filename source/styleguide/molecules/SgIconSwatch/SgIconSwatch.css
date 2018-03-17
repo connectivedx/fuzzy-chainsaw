@@ -1,0 +1,58 @@
+.SgIconSwatch {
+  border: 1px solid var(--sg-color-gray);
+  box-shadow: 1px 0.25rem 1rem -0.33rem color(var(--sg-color-black) alpha(15%));
+  display: inline-block;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+
+  @media (--sg-medium-small) {
+    margin: 0.5rem;
+    max-width: calc(calc(100% / 2) - 1rem);
+  }
+
+  @media (--sg-medium) {
+    max-width: calc(calc(100% / 3) - 1rem);
+  }
+
+  @media (--sg-large) {
+    max-width: calc(calc(100% / 4) - 1rem);
+  }
+
+  @media (--sg-extra-large) {
+    max-width: calc(calc(100% / 5) - 1rem);
+  }
+
+  & img {
+    margin: 0.5rem;
+    height: 50px;
+  }
+
+  & pre {
+    border: 1px solid var(--sg-color-gray);
+    box-shadow: 1px 0.25rem 1rem -0.33rem color(var(--sg-color-black) alpha(15%));
+    margin-top: 0.5rem;
+    overflow: auto;
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  &__search {
+    border: none;
+    border-bottom: 1px solid var(--sg-color-gray);
+    margin: 1rem 0;
+    padding: 0.85rem;
+    width: 100%;
+
+    @media (--sg-large) {
+      margin: 1rem 0.5rem;
+      max-width: calc(calc(100% / 2) - 1rem);
+      width: calc(100% - 1rem);
+    }
+
+    @media (--sg-extra-large) {
+      margin: 1rem;
+      max-width: calc(calc(100% / 2) - 2rem);
+    }
+  }
+}

@@ -52,8 +52,8 @@ const page = () => (
   </SgPageShell>
 );
 
-page.pageTitle = 'Fuzzy Chainsaw Style Guide';
-page.pageType = 'index';
+page.pageTitle = 'Style Guide | Home';
+page.pageType = 'styleguide';
 
 
 export default page;
