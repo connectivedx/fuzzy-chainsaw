@@ -1,0 +1,123 @@
+.SgExample {
+  padding: 2em 0;
+  border-bottom: 1px dashed var(--sg-color-gray-lighter);
+
+  &__anchor {
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+  &__header {
+    & .SgHeading {
+      font-weight: 500;
+      line-height: 40px;
+      padding: 0 3rem;
+
+      @media (width >= 640px) {
+        font-size: 1.5em;
+      }
+
+      @media (width >= 540px) {
+        font-size: 1.7em;
+        padding: 1rem 3rem;
+      }
+    }
+  }
+
+  &__tabs {
+    border-bottom: none;
+    display: flex;
+    font-size: 0.8em;
+    padding: 0 3rem 1rem;
+
+    @media (width >= 640px) {
+      font-size: 1em;
+    }
+
+    @media (width >= 540px) {
+      padding: 0 3rem;
+    }
+  }
+
+  &__tabs-item {
+    border: 1px solid var(--sg-color-gray-light);
+    border-radius: 3px;
+    margin-right: 1em;
+    text-align: center;
+
+    & a {
+      color: var(--sg-color-gray-darker);
+      display: block;
+      padding: 1em;
+      text-decoration: none;
+
+      @media (width >= 540px) {
+        padding: 1em 2em;
+      }
+
+      &:hover {
+        background-color: var(--sg-color-gray-lighter);
+        border-color: var(--sg-color-gray-lighter);
+      }
+    }
+
+    &.is-active a {
+      background-color: var(--sg-color-gray-lighter);
+    }
+  }
+
+  &__section {
+    background-color: var(--sg-color-white);
+    display: none;
+    overflow: auto;
+
+    &.is-active {
+      border: 1px solid var(--sg-color-gray-lighter);
+      display: block;
+      margin: 1em 3em;
+      padding: 1em;
+    }
+  }
+
+  &__component {
+    background-color: var(--sg-color-white);
+    overflow: auto;
+    padding: 1em 3em;
+
+    @media (width >= 540px) {
+      padding: 1em 3em 2em;
+    }
+  }
+
+  &--full-width {
+    .SgExample__component {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &--dark-background {
+    background-color: var(--sg-color-background-dark);
+    color: var(--sg-color-white);
+    border-color: var(--sg-color-white);
+
+    .SgExample__component {
+      background-color: var(--sg-color-background-dark);
+      color: initial;
+    }
+
+    .SgExample__tabs-item a {
+      color: var(--sg-color-white);
+
+      &:hover {
+        background-color: var(--sg-color-white);
+        color: var(--sg-color-black);
+      }
+    }
+
+    .SgExample__section {
+      color: initial;
+    }
+  }
+}

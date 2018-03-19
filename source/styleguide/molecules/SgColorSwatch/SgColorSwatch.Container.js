@@ -1,6 +1,5 @@
 import chroma from 'chroma-js';
 
-
 const createObject = (value) => {
   /*
     NOTE that HSL support scaffolding is exists in this function.
@@ -18,25 +17,16 @@ const createObject = (value) => {
     colorObject.hex = value;
     /* create rest of the obj */
 
-    const rgb = chroma(value).rgb();
-    colorObject.rgb.r = rgb[0];
-    colorObject.rgb.g = rgb[1];
-    colorObject.rgb.b = rgb[2];
-
-    const hsl = chroma(value).hsl();
-    colorObject.hsl.h = hsl[0];
-    colorObject.hsl.s = hsl[1];
-    colorObject.hsl.l = hsl[2];
+    [colorObject.rgb.r, colorObject.rgb.g, colorObject.rgb.b] = chroma(value).rgb();
+    [colorObject.hsl.h, colorObject.hsl.s, colorObject.hsl.l] = chroma(value).hsl();
 
   /* rbg colors */
   } else if (value.substr(0, 3) === 'rgb') {
     const rgb = value.substring(4, (value.length - 1)).split(', ');
-    colorObject.rgb.r = rgb[0];
-    colorObject.rgb.g = rgb[1];
-    colorObject.rgb.b = rgb[2];
+    [colorObject.rgb.r, colorObject.rgb.g, colorObject.rgb.b] = rgb;
 
     if (rgb[3]) {
-      colorObject.rgb.a = rgb[3];
+      [colorObject.rgb.a] = [rgb[3]];
 
       const tempHex = chroma(parseInt(rgb[0], 10), parseInt(rgb[1], 10), parseInt(rgb[2], 10)).hex();
 
@@ -52,12 +42,9 @@ const createObject = (value) => {
       colorObject.hex = chroma(parseInt(rgb[0], 10), parseInt(rgb[1], 10), parseInt(rgb[2], 10)).hex();
     }
 
-    const hsl = chroma(colorObject.hex).hsl();
-    colorObject.hsl.h = hsl[0];
-    colorObject.hsl.s = hsl[1];
-    colorObject.hsl.l = hsl[2];
+    [colorObject.hsl.h, colorObject.hsl.s, colorObject.hsl.l] = chroma(colorObject.hex).hsl();
 
-  /* hsl colors */
+    /* hsl colors */
   } else if (value.substr(0, 2) === 'hsl') {
     /* todo hsl */
   }
@@ -82,6 +69,8 @@ const runWCAGTest = (ratio, size, level) => {
     case 'AA':
       if (size === 'large' && ratio > 3) {
         return 'PASS';
+      } else if (size === 'large--bold' && ratio > 3) {
+        return 'PASS';
       } else if (size === 'normal' && ratio > 4.5) {
         return 'PASS';
       }
@@ -89,6 +78,8 @@ const runWCAGTest = (ratio, size, level) => {
 
     case 'AAA':
       if (size === 'large' && ratio > 4.5) {
+        return 'PASS';
+      } else if (size === 'large--bold' && ratio > 4.5) {
         return 'PASS';
       } else if (size === 'normal' && ratio > 7) {
         return 'PASS';
@@ -105,5 +96,83 @@ const runWCAGTest = (ratio, size, level) => {
   }
 };
 
+/* Binds the events to UI controls for color accessibility testing. */
+const SgColorInit = (el) => {
+  const level = el.querySelector('.SgColorSwatch__controls--level');
+  const weight = el.querySelector('.SgColorSwatch__controls--weight');
 
-module.exports = { createObject, getContrast, runWCAGTest };
+  const double = el.querySelectorAll('.SgColorSwatch__accessibility--double');
+  const triple = el.querySelectorAll('.SgColorSwatch__accessibility--triple');
+  const normal = el.querySelectorAll('.SgColorSwatch__accessibility__badge--normal');
+  const largeBold = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large--bold');
+  const large = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large');
+
+  const search = el.querySelector('.SgColorSwatch__search');
+
+  let i = double.length;
+  let j = largeBold.length;
+
+  while (i--) {
+    triple[i].style.display = 'none';
+  }
+
+  while (j--) {
+    largeBold[j].style.display = 'none';
+    large[j].style.display = 'none';
+  }
+
+  const churn = () => {
+    const weightSelector = el.querySelectorAll(weight.options[weight.options.selectedIndex].value);
+    const levelSelector = el.querySelectorAll(level.options[level.options.selectedIndex].value);
+
+    let m = weightSelector.length;
+    while (m--) {
+      normal[m].style.display = 'none';
+      largeBold[m].style.display = 'none';
+      large[m].style.display = 'none';
+      weightSelector[m].removeAttribute('style');
+    }
+
+    let l = levelSelector.length;
+    while (l--) {
+      double[l].style.display = 'none';
+      triple[l].style.display = 'none';
+      levelSelector[l].removeAttribute('style');
+    }
+  };
+
+  level.addEventListener('change', () => {
+    churn();
+  });
+
+  weight.addEventListener('change', () => {
+    churn();
+  });
+
+  search.addEventListener('keyup', (e) => {
+    const query = e.target.value;
+    const colors = document.querySelectorAll('.SgColorSwatch');
+    let o = colors.length;
+    // unable to consolidate to single loop
+    if (query.length === 0) {
+      while (o--) {
+        colors[o].style.display = '';
+      }
+    } else {
+      while (o--) {
+        if (!colors[o].dataset.colorName.toLowerCase().match(query.toLowerCase())) {
+          colors[o].style.display = 'none';
+        } else {
+          colors[o].style.display = '';
+        }
+      }
+    }
+  });
+};
+
+module.exports = {
+  createObject,
+  getContrast,
+  runWCAGTest,
+  SgColorInit
+};

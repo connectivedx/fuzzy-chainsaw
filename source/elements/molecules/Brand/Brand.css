@@ -1,4 +1,4 @@
-.Brand {
+.brand {
   & > * {
     display: inline-block;
     vertical-align: middle;
@@ -10,10 +10,10 @@
 
   /* variants */
   &--default {
-    & .Brand__label { display: none; }
+    & .brand__label { display: none; }
 
     @media (--small) {
-      & .Brand__label {
+      & .brand__label {
         display: inline-block;
         margin-top: 0.1em;
         margin-left: 0.25em;

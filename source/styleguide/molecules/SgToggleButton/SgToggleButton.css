@@ -1,0 +1,30 @@
+.SgToggleButton {
+  cursor: pointer;
+  height: 2.5em;
+  position: relative;
+  width: 2.5em;
+
+  &__icon {
+    position: absolute;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+
+    &--menu {
+      opacity: 1;
+    }
+
+    &--close {
+      opacity: 0;
+    }
+  }
+
+  &--is-active {
+    .SgToggleButton__icon--menu {
+      opacity: 0;
+    }
+
+    .SgToggleButton__icon--close {
+      opacity: 1;
+    }
+  }
+}

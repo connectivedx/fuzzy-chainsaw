@@ -1,0 +1,57 @@
+.SgFileIndex {
+  & a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__count {
+    color: var(--sg-color-black);
+  }
+
+  &__name {
+    padding: 0.25em 0.5rem;
+
+    &.is-active {
+      background-color: color(var(--sg-color-gray-lighter) alpha(-75%));
+      display: inline-block;
+      position: relative;
+      width: calc(100% - 2em);
+
+      &::before,
+      &::after {
+        background-color: color(var(--sg-color-gray-lighter) alpha(-75%));
+        bottom: 0;
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        width: 1em;
+      }
+
+      &::before {
+        left: -1em;
+      }
+
+      &::after {
+        right: -1em;
+      }
+    }
+  }
+
+  &__count,
+  &__links {
+    font-size: 0.6em;
+    opacity: 0.45;
+  }
+
+  &__links {
+    margin-left: 0.5em;
+
+    & span {
+      margin: auto 0.25em;
+    }
+  }
+}

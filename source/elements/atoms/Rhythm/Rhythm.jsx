@@ -10,8 +10,8 @@ const Rhythm = (props) => {
 
   const classStack = FcUtils.createClassStack([
     deep
-      ? `Rhythm--deep-${size}`
-      : `Rhythm--${size}`,
+      ? `rhythm--deep-${size}`
+      : `rhythm--${size}`,
     className
   ]);
 

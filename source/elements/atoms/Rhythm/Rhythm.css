@@ -1,5 +1,5 @@
 /* variants */
-.Rhythm {
+.rhythm {
   &,
   &--default { & > * + * { margin-top: 1em; } }
   &--small { & > * + * { margin-top: 0.5em; } }

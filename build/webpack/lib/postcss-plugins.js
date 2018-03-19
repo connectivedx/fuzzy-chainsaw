@@ -25,13 +25,14 @@ const cssnano = require('cssnano');
 
 // dev
 const cssImport = require('postcss-import');
+const colorsExport = require('./colors-export');
 
 // setup resolver for postcss-import
 const ResolverFactory = require('enhanced-resolve/lib/ResolverFactory');
 const NodeJsInputFileSystem = require('enhanced-resolve/lib/NodeJsInputFileSystem');
 const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSystem');
 
-const { source } = require('../../lib/path-helpers');
+const { source, styleguide } = require('../../lib/path-helpers');
 const { resolve } = require('../workflow/shared');
 
 
@@ -54,6 +55,9 @@ module.exports.linting = [
 const standard = [
   mixins(),
   nested(),
+  colorsExport(['colors.css'], ['--color-'], {
+    dest: styleguide('molecules/SgColorSwatch/SgColorSwatch__Colors.json')
+  }),  
   cssnext({
     features: {
       nesting: false

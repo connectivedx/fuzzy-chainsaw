@@ -2,11 +2,24 @@
   border: 1px solid var(--sg-color-gray);
   box-shadow: 1px 0.25em 1em -0.33em color(var(--sg-color-black) alpha(15%));
   display: flex;
-  flex-basis: 300px;
+  flex-basis: 200px;
   flex-direction: column;
   justify-content: flex-end;
   margin: 0 0.5rem 2rem 3rem;
   min-height: 300px;
+
+  &__controls {
+    padding: 0.5rem;
+
+    + .SgColorSwatch__controls {
+      margin-left: 0.5rem;
+    }
+
+    &.SgColorSwatch__search {
+      max-width: 250px;
+      width: 100%;
+    }
+  }
 }
 
 .SgColorSwatch__panel {
@@ -14,22 +27,12 @@
   border-top: 1px solid var(--sg-color-gray);
   display: flex;
   flex-wrap: wrap;
+  font-size: 0.85rem;
+  flex-direction: column;
   padding: 2rem;
 
   & > * {
     padding: 0.5rem 1rem 0 0;
-  }
-
-  &__title {
-    width: 60%;
-  }
-
-  &__hex {
-    width: 40%;
-  }
-
-  &__rgb {
-    width: 100%;
   }
 }
 
@@ -37,7 +40,7 @@
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .SgColorSwatch__accessibility {
@@ -75,8 +78,17 @@
 
     &--normal {
       &::before {
-        font-size: 14pt;
+        font-size: 12pt;
         left: calc(50% - 5px);
+      }
+    }
+
+    &--large--bold {
+      &::before {
+        font-size: 14pt;
+        font-weight: bold;
+        left: calc(50% - 5px);
+        top: -1.45em;
       }
     }
 
@@ -84,6 +96,7 @@
       &::before {
         font-size: 18pt;
         left: calc(50% - 8px);
+        top: -1.35em;
       }
     }
   }
