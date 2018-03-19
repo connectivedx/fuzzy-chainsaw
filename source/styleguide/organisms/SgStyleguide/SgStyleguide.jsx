@@ -3,7 +3,7 @@ import { parse } from 'querystring';
 
 import SgExpander from '@sg-atoms/SgExpander/SgExpander';
 import Heading from '@sg-atoms/SgHeading/SgHeading';
-import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
+import SgRhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import Example from '@sg-organisms/SgExample/SgExample';
 import Icon from '@atoms/Icon/Icon';
 import SgGlobalHeader from '@sg-organisms/SgGlobalHeader/SgGlobalHeader';
@@ -123,7 +123,7 @@ export const SgStyleguide = ({
       </SgPageShell__navigation>
       <SgPageShell__main>
         <div className="SgStyleguide" id="content">
-          <Rhythm size="small" className="SgStyleguide__header">
+          <SgRhythm size="small" className="SgStyleguide__header">
             { readme
               ? <SgStyleguide_ReadmeHeading name={name} readme={readme} />
               : <Heading level="h1">{name}</Heading>
@@ -141,7 +141,7 @@ export const SgStyleguide = ({
                 }
               </div>
             }
-          </Rhythm>
+          </SgRhythm>
 
           { examples && <SgStyleguide_Examples examples={examples} /> }
         </div>

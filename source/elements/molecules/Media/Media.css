@@ -1,4 +1,4 @@
-.Media {
+.media {
   display: flex;
 
   /* media variants */
@@ -13,7 +13,7 @@
   &__body {
     flex: 1;
 
-    & ~ .Media__figure {
+    & ~ .media__figure {
       margin-right: inherit;
       margin-left: 1em;
     }

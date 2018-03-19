@@ -13,7 +13,7 @@
   --txt--transform-toggle: none;
 }
 
-.Table {
+.table {
   & &__root {
     border-spacing: 0;
     margin: 1em 0;
@@ -52,13 +52,13 @@
   }
 
   &--default {
-    & .Table__root {
+    & .table__root {
       width: 100%;
       min-width: 40em;
     }
 
-    & .Table__header,
-    & .Table__data {
+    & .table__header,
+    & .table__data {
       min-width: 12em;
     }
   }
@@ -68,12 +68,12 @@
   }
 
   &--responsive {
-    & .Table__root {
+    & .table__root {
       border-collapse: var(--border-collapse);
       width: 100%;
     }
 
-    .Table__data {
+    .table__data {
       display: var(--cell--display);
 
       &:empty {
@@ -81,11 +81,11 @@
       }
     }
 
-    .Table__foot {
+    .table__foot {
       background-color: var(--cell--bg-color);
       font-weight: var(--font-weight--bold);
 
-      & .Table__data {
+      & .table__data {
         &:not(:first-of-type)::before {
           content: attr(data-heading);
           color: var(--label-color);
@@ -96,8 +96,8 @@
       }
     }
 
-    .Table__body {
-      & .Table__data {
+    .table__body {
+      & .table__data {
         &:first-of-type {
           background-color: var(--td--bg-color);
         }
@@ -112,11 +112,11 @@
       }
     }
 
-    .Table__body,
-    .Table__foot {
+    .table__body,
+    .table__foot {
       /* data values to be displayed inline on small screens, vs. stacked */
       .table--inline & {
-        & .Table__data:not(:first-of-type) {
+        & .table__data:not(:first-of-type) {
           text-align: left;
 
           &::before {
@@ -128,17 +128,17 @@
     }
 
     @media only screen and (width <= 45em) {
-      & .Table__root {
+      & .table__root {
         border-collapse: collapse;
         position: relative;
       }
 
-      & .Table__head {
+      & .table__head {
         display: none;
         visibility: hidden;
       }
 
-      .Table__row {
+      .table__row {
         &::after {
           content: '';
           display: block;
@@ -146,15 +146,15 @@
         }
       }
 
-      .Table__header,
-      .Table__data {
+      .table__header,
+      .table__data {
         display: block;
         text-align: center;
       }
 
-      .Table__body,
-      .Table__foot {
-        .Table__data {
+      .table__body,
+      .table__foot {
+        .table__data {
           &:first-of-type {
             background-color: var(--cell--bg-color);
             font-weight: var(--font-weight--bold);
@@ -173,12 +173,12 @@
     }
   }
 
-  &.Table--inline-data {
-    @extend .Table--responsive;
+  &.table--inline-data {
+    @extend .table--responsive;
 
     @media only screen and (width <= 45em) {
       /* data values to be displayed inline on small screens, vs. stacked */
-      .Table__data:not(:first-of-type) {
+      .table__data:not(:first-of-type) {
         padding-left: 50%;
         text-align: left;
 

@@ -8,8 +8,8 @@ export const Media__figure = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'Media__figure',
-    align && `Media__figure--${align}`,
+    'media__figure',
+    align && `media__figure--${align}`,
     className
   ]);
 
@@ -38,7 +38,7 @@ Media__figure.propTypes = {
 
 export const Media__body =
   FcUtils.createBasicComponent({
-    name: 'Media__body'
+    name: 'media__body'
   });
 
 
@@ -52,8 +52,8 @@ export const Media = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'Media',
-    align && `Media--${align}`,
+    'media',
+    align && `media--${align}`,
     className
   ]);
 

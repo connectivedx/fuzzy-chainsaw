@@ -21,8 +21,8 @@ export const List__item = (props) => {
 
   const Tag = tagName || getTagName();
   const classStack = FcUtils.createClassStack([
-    'List__item',
-    `List__item--${variant}`,
+    'list__item',
+    `list__item--${variant}`,
     className
   ]);
 
@@ -72,8 +72,8 @@ export const List = (props) => {
 
   const Tag = tagName || getTagName();
   const classStack = FcUtils.createClassStack([
-    'List',
-    `List--${variant}`,
+    'list',
+    `list--${variant}`,
     className
   ]);
 
