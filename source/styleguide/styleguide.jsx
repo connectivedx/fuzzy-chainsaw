@@ -10,7 +10,7 @@ import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation.Container';
 import SgPageShell from '@sg-molecules/SgPageShell/SgPageShell.Container';
 import SgTableOfContents from '@sg-molecules/SgTableOfContents/SgTableOfContents.Container';
 import SgIconSearch from '@sg-molecules/SgIconSwatch/SgIconSwatch.Container';
-import SgColorInit from '@sg-molecules/SgColorSwatch/SgColorSwatch.Container';
+import { SgColorInit } from '@sg-molecules/SgColorSwatch/SgColorSwatch.Container';
 import SgExample from '@sg-organisms/SgExample/SgExample.Container';
 import SgStyleguide from '@sg-organisms/SgStyleguide/SgStyleguide.Container';
 
