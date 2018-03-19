@@ -214,9 +214,17 @@
   }
 
   &__toggleTrigger {
-    cursor: pointer;
     color: var(--sg-color-primary);
+    cursor: pointer;
+    display: flex;
     font-weight: normal;
+    align-items: center;
+
+    & .SgIcon {
+      fill: var(--sg-color-primary);
+      margin-left: -20px;
+      width: 15px;
+    }
   }
 
   &__toggleTarget {
