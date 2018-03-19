@@ -222,7 +222,6 @@
 
     & .SgIcon {
       fill: var(--sg-color-primary);
-      margin-left: -20px;
       width: 15px;
     }
   }

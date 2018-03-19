@@ -47,6 +47,7 @@ export const SgTableOfContents = (props) => {
           title="Style Guide"
           items={sgPagesIndexData}
           size="default"
+          icon="styleguide"
         />
       }
 
