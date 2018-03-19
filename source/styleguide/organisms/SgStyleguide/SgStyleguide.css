@@ -45,8 +45,10 @@
 
   &__section-header {
     background-color: var(--sg-color-white);
+    position: relative;
     position: sticky;
     top: 65px;
+    transition: top 1ms;
     width: 100%;
     z-index: 5;
 
@@ -69,17 +71,11 @@
         border: none;
         bottom: 0;
         cursor: pointer;
-        opacity: 0;
-        pointer-events: none;
+        outline: none;
         position: absolute;
         top: 5px;
         transition: opacity 0.3s ease;
         width: 2em;
-
-        &.is-overflowing {
-          pointer-events: auto;
-          opacity: 1;
-        }
 
         &--left {
           left: 0;
@@ -95,6 +91,17 @@
       .SgStyleguide__example-link {
         flex: 0 0 auto;
         padding-bottom: 0.5em;
+        position: relative;
+
+        &::before {
+          content: '';
+          cursor: pointer;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
 
         & a {
           color: var(--sg-color-link);
