@@ -4,6 +4,7 @@ import Rhythm from '@sg-atoms/SgRhythm/SgRhythm';
 import SgExpander from '@sg-atoms/SgExpander/SgExpander';
 import { themes } from '@source/fc-config';
 
+const pascalToSpaced = (text) => text.replace(/([a-zA-Z])(?=[A-Z])/g, '$1 ');
 
 const SgFileIndex__ItemThemed = (props) => {
   const { url, content } = props.item;
@@ -12,7 +13,7 @@ const SgFileIndex__ItemThemed = (props) => {
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{content}</a>
+      <a className="SgFileIndex__name" href={`${url}${firstTheme}`}>{pascalToSpaced(content)}</a>
       { themes.length > 1 &&
         <span className="SgFileIndex__links">
           ({ themes
@@ -41,7 +42,7 @@ const SgFileIndex__Item = (props) => {
 
   return (
     <li>
-      <a className="SgFileIndex__name" href={`${url}`}>{content}</a>
+      <a className="SgFileIndex__name" href={`${url}`}>{pascalToSpaced(content)}</a>
     </li>
   );
 };
