@@ -8,10 +8,10 @@ export const Icon = (props) => {
   } = props;
 
   const classStack = FcUtils.createClassStack([
-    'Icon',
-    `Icon--${name}`,
-    `Icon--${size}`,
-    `Icon--${variant}`,
+    'icon',
+    `icon--${name}`,
+    `icon--${size}`,
+    `icon--${variant}`,
     className
   ]);
 

@@ -84,7 +84,7 @@ export const SgFileIndex = (props) => {
       }
       { items.length > 0
         ? (
-          <ul className={`SgStyleguide__toggleTarget Rhythm ${className}`} {...attrs}>
+          <ul className={`SgStyleguide__toggleTarget SgRhythm ${className}`} {...attrs}>
             { items.map((item) => (
               item.theme === undefined && item.theme !== null
                 ? <SgFileIndex__ItemThemed key={item.url} item={item} />
@@ -92,7 +92,7 @@ export const SgFileIndex = (props) => {
             )) }
           </ul>
         )
-        : <ul className={`SgStyleguide__toggleTarget Rhythm ${className}`} {...attrs} />
+        : <ul className={`SgStyleguide__toggleTarget SgRhythm ${className}`} {...attrs} />
       }
     </RhythmComponent>
   );

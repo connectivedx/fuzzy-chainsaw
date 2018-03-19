@@ -1,6 +1,6 @@
 export const Link =
   FcUtils.createBasicComponent({
-    name: 'Link',
+    name: 'link',
     variants: ['default', 'cta'],
     defaultProps: {
       tagName: 'a',

@@ -14,6 +14,7 @@ const { source } = require('./lib/path-helpers');
 
 const scaffoldComponent = ({
   name,
+  cssName,
   src,
   output
 }) => {
@@ -26,7 +27,8 @@ const scaffoldComponent = ({
     src,
     output,
     data: {
-      name
+      name,
+      cssName
     }
   });
 };
@@ -37,6 +39,7 @@ module.exports = ({ src, dest }) => () => {
 
   return scaffoldComponent({
     name: argv.name,
+    cssName: argv.name.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase(),
     src: path.resolve(__dirname, 'scaffolding', src),
     output: source('elements', dest, argv.name)
   });
