@@ -32,10 +32,11 @@ export const SgColorSwatch = (props) => {
               key={i}
               className={classStack}
               {...attrs}
+              data-color-name={title}
               style={{ backgroundColor: obj.hex }}
             >
               <SgColorSwatch__accessibility contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AA" />
-              <SgColorSwatch__accessibility variant="no-badge" contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AAA" />
+              <SgColorSwatch__accessibility contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AAA" />
 
               <SgColorSwatch__panel>
                 <div className="SgColorSwatch__panel__title">
@@ -103,11 +104,17 @@ const SgColorSwatch__accessibility = (props) => {
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--normal">
         {runWCAGTest(contrastPrimary, 'normal', level)}
       </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--large--bold">
+        {runWCAGTest(contrastPrimary, 'large--bold', level)}
+      </div>
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--large">
         {runWCAGTest(contrastPrimary, 'large', level)}
       </div>
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--normal">
         {runWCAGTest(contrastSecondary, 'normal', level)}
+      </div>
+      <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--large--bold">
+        {runWCAGTest(contrastSecondary, 'large--bold', level)}
       </div>
       <div className="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--large">
         {runWCAGTest(contrastSecondary, 'large', level)}
@@ -146,6 +153,13 @@ const SgColorSwatch__panel = FcUtils.createBasicComponent({
   name: 'SgColorSwatch__panel',
   defaultProps: {
     tagName: 'div'
+  }
+});
+
+export const SgColorSwatch__search = FcUtils.createBasicComponent({
+  name: 'SgColorSwatch__controls SgColorSwatch__search',
+  defaultProps: {
+    tagName: 'input'
   }
 });
 
