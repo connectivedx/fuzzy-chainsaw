@@ -1,5 +1,5 @@
 import SgHeading from '@sg-atoms/SgHeading/SgHeading';
-import { createObject, getContrast, runWCAGTest, initControls } from './SgColorSwatch.Container';
+import { createObject, getContrast, runWCAGTest } from './SgColorSwatch.Container';
 import colorVars from './SgColorSwatch__Colors.json';
 
 export const SgColorSwatch = (props) => {
@@ -26,10 +26,6 @@ export const SgColorSwatch = (props) => {
           /* contrast tests */
           const contrastPrimary = getContrast(obj.hex, colorVars.colorTextPrimary);
           const contrastSecondary = getContrast(obj.hex, colorVars.colorTextSecondary);
-
-          setTimeout(() => {
-            initControls();
-          });
 
           return (
             <Tag

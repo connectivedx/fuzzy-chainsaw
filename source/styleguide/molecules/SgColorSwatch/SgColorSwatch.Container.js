@@ -97,17 +97,17 @@ const runWCAGTest = (ratio, size, level) => {
 };
 
 /* Binds the events to UI controls for color accessibility testing. */
-const initControls = () => {
-  const level = document.querySelector('.SgColorSwatch__controls--level');
-  const weight = document.querySelector('.SgColorSwatch__controls--weight');
+const SgColorInit = (el) => {
+  const level = el.querySelector('.SgColorSwatch__controls--level');
+  const weight = el.querySelector('.SgColorSwatch__controls--weight');
 
-  const double = document.querySelectorAll('.SgColorSwatch__accessibility--double');
-  const triple = document.querySelectorAll('.SgColorSwatch__accessibility--triple');
-  const normal = document.querySelectorAll('.SgColorSwatch__accessibility__badge--normal');
-  const largeBold = document.querySelectorAll('.SgColorSwatch__accessibility__badge--large--bold');
-  const large = document.querySelectorAll('.SgColorSwatch__accessibility__badge--large');
+  const double = el.querySelectorAll('.SgColorSwatch__accessibility--double');
+  const triple = el.querySelectorAll('.SgColorSwatch__accessibility--triple');
+  const normal = el.querySelectorAll('.SgColorSwatch__accessibility__badge--normal');
+  const largeBold = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large--bold');
+  const large = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large');
 
-  const search = document.querySelector('.SgColorSwatch__search');
+  const search = el.querySelector('.SgColorSwatch__search');
 
   let i = double.length;
   let j = largeBold.length;
@@ -122,8 +122,8 @@ const initControls = () => {
   }
 
   const churn = () => {
-    const weightSelector = document.querySelectorAll(weight.options[weight.options.selectedIndex].value);
-    const levelSelector = document.querySelectorAll(level.options[level.options.selectedIndex].value);
+    const weightSelector = el.querySelectorAll(weight.options[weight.options.selectedIndex].value);
+    const levelSelector = el.querySelectorAll(level.options[level.options.selectedIndex].value);
 
     let m = weightSelector.length;
     while (m--) {
@@ -170,10 +170,9 @@ const initControls = () => {
   });
 };
 
-
 module.exports = {
   createObject,
   getContrast,
   runWCAGTest,
-  initControls
+  SgColorInit
 };
