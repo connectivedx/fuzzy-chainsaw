@@ -21,6 +21,7 @@ const stylelint = require('stylelint');
 const reporter = require('postcss-reporter');
 
 // production
+const selectorMerge = require('postcss-merge-selectors');
 const cssnano = require('cssnano');
 
 // dev
@@ -93,5 +94,6 @@ module.exports.build = [
 
 
 module.exports.production = [
+  selectorMerge(),
   cssnano()
 ];
