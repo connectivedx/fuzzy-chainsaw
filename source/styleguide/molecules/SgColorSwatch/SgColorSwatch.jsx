@@ -1,5 +1,5 @@
 import SgHeading from '@sg-atoms/SgHeading/SgHeading';
-import { createObject, getContrast, runWCAGTest } from './SgColorSwatch.Container';
+import { createObject, getContrast, runWCAGTest, initControls } from './SgColorSwatch.Container';
 import colorVars from './SgColorSwatch__Colors.json';
 
 export const SgColorSwatch = (props) => {
@@ -27,15 +27,20 @@ export const SgColorSwatch = (props) => {
           const contrastPrimary = getContrast(obj.hex, colorVars.colorTextPrimary);
           const contrastSecondary = getContrast(obj.hex, colorVars.colorTextSecondary);
 
+          setTimeout(() => {
+            initControls();
+          });
+
           return (
             <Tag
               key={i}
               className={classStack}
               {...attrs}
+              data-color-name={title}
               style={{ backgroundColor: obj.hex }}
             >
               <SgColorSwatch__accessibility contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AA" />
-              <SgColorSwatch__accessibility variant="no-badge" contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AAA" />
+              <SgColorSwatch__accessibility contrastPrimary={contrastPrimary} contrastSecondary={contrastSecondary} level="AAA" />
 
               <SgColorSwatch__panel>
                 <div className="SgColorSwatch__panel__title">
@@ -152,6 +157,13 @@ const SgColorSwatch__panel = FcUtils.createBasicComponent({
   name: 'SgColorSwatch__panel',
   defaultProps: {
     tagName: 'div'
+  }
+});
+
+export const SgColorSwatch__search = FcUtils.createBasicComponent({
+  name: 'SgColorSwatch__controls SgColorSwatch__search',
+  defaultProps: {
+    tagName: 'input'
   }
 });
 

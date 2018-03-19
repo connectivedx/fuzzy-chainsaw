@@ -1,7 +1,7 @@
 import Heading from '@atoms/Heading/Heading';
 import Rhythm from '@atoms/Rhythm/Rhythm';
 import SgPageWrapper from '@sg-atoms/SgPageWrapper/SgPageWrapper';
-import SgColorSwatch from '@sg-molecules/SgColorSwatch/SgColorSwatch';
+import { SgColorSwatch, SgColorSwatch__search } from '@sg-molecules/SgColorSwatch/SgColorSwatch';
 import {
   SgPageShell,
   SgPageShell__header,
@@ -31,6 +31,18 @@ const page = () => (
             <p>For AA compliance, text should have a ratio of at least 4.5:1 (larger text, at least 3:1). For AAA compliance, text should have a ratio of at least 7:1 (larger text, at least 4.5:1).
               For each font color in the project, we test to the AA Standard for &#34;normal&#34; and &#34;large&#34; font size categories.
             </p>
+          </Rhythm>
+          <Rhythm>
+            <select className="SgColorSwatch__controls SgColorSwatch__controls--level">
+              <option value=".SgColorSwatch__accessibility--double" defaultValue>AA</option>
+              <option value=".SgColorSwatch__accessibility--triple">AAA</option>
+            </select>
+            <select className="SgColorSwatch__controls SgColorSwatch__controls--weight">
+              <option value=".SgColorSwatch__accessibility__badge--normal" defaultValue>normal (14pt)</option>
+              <option value=".SgColorSwatch__accessibility__badge--large--bold">large-bold (18pt)</option>
+              <option value=".SgColorSwatch__accessibility__badge--large">large (18pt)</option>
+            </select>
+            <SgColorSwatch__search type="search" name="ColorSearch" placeholder="Search for colors(s)" />
           </Rhythm>
           <br />
           <SgColorSwatch />

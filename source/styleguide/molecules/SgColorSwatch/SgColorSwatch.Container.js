@@ -96,5 +96,84 @@ const runWCAGTest = (ratio, size, level) => {
   }
 };
 
+/* Binds the events to UI controls for color accessibility testing. */
+const initControls = () => {
+  const level = document.querySelector('.SgColorSwatch__controls--level');
+  const weight = document.querySelector('.SgColorSwatch__controls--weight');
 
-module.exports = { createObject, getContrast, runWCAGTest };
+  const double = document.querySelectorAll('.SgColorSwatch__accessibility--double');
+  const triple = document.querySelectorAll('.SgColorSwatch__accessibility--triple');
+  const normal = document.querySelectorAll('.SgColorSwatch__accessibility__badge--normal');
+  const largeBold = document.querySelectorAll('.SgColorSwatch__accessibility__badge--large--bold');
+  const large = document.querySelectorAll('.SgColorSwatch__accessibility__badge--large');
+
+  const search = document.querySelector('.SgColorSwatch__search');
+
+  let i = double.length;
+  let j = largeBold.length;
+
+  while (i--) {
+    triple[i].style.display = 'none';
+  }
+
+  while (j--) {
+    largeBold[j].style.display = 'none';
+    large[j].style.display = 'none';
+  }
+
+  const churn = () => {
+    const weightSelector = document.querySelectorAll(weight.options[weight.options.selectedIndex].value);
+    const levelSelector = document.querySelectorAll(level.options[level.options.selectedIndex].value);
+
+    let m = weightSelector.length;
+    while (m--) {
+      normal[m].style.display = 'none';
+      largeBold[m].style.display = 'none';
+      large[m].style.display = 'none';
+      weightSelector[m].removeAttribute('style');
+    }
+
+    let l = levelSelector.length;
+    while (l--) {
+      double[l].style.display = 'none';
+      triple[l].style.display = 'none';
+      levelSelector[l].removeAttribute('style');
+    }
+  };
+
+  level.addEventListener('change', () => {
+    churn();
+  });
+
+  weight.addEventListener('change', () => {
+    churn();
+  });
+
+  search.addEventListener('keyup', (e) => {
+    const query = e.target.value;
+    const colors = document.querySelectorAll('.SgColorSwatch');
+    let o = colors.length;
+    // unable to consolidate to single loop
+    if (query.length === 0) {
+      while (o--) {
+        colors[o].style.display = '';
+      }
+    } else {
+      while (o--) {
+        if (!colors[o].dataset.colorName.toLowerCase().match(query.toLowerCase())) {
+          colors[o].style.display = 'none';
+        } else {
+          colors[o].style.display = '';
+        }
+      }
+    }
+  });
+};
+
+
+module.exports = {
+  createObject,
+  getContrast,
+  runWCAGTest,
+  initControls
+};
