@@ -53,6 +53,6 @@ const page = () => (
 );
 
 page.pageTitle = 'Style Guide | Colors';
-page.pageType = 'index';
+page.pageType = 'styleguide';
 
 export default page;
