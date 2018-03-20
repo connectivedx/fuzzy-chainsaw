@@ -5,13 +5,13 @@
 */
 
 const webpackMerge = require('webpack-merge');
-const dllWorkflow = require('./workflow/dll');
+const ciDllWorkflow = require('./workflow/dll.ci');
 const { source } = require('../lib/path-helpers');
 
 const { dlls } = require(source('fc-config')); // eslint-disable-line
 
 
-module.exports = webpackMerge(dllWorkflow, {
+module.exports = webpackMerge(ciDllWorkflow, {
   entry: {
     vendor: dlls.vendor
   }

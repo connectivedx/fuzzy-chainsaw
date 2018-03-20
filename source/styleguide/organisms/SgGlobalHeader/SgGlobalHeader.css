@@ -1,0 +1,48 @@
+.SgGlobalHeader {
+  background-color: var(--sg-color-gray-lighter);
+  border-bottom: solid 1px var(--sg-color-gray-light);
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    height: 65px;
+    margin: auto;
+    max-width: 1280px;
+    padding: 0.75em 1em;
+
+    & > * {
+      margin-right: 0.5em;
+    }
+
+    @media (--sg-small) {
+      padding: 0.75em 1.25em;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 1.6em;
+    color: var(--sg-color-primary);
+  }
+
+  /* Media object that wraps the Brand and Label */
+  &__logo {
+    height: 2.5em;
+
+    /* this is the 'label' */
+    &__body {
+      display: none;
+      line-height: 2.5em;
+
+      @media (--sg-small) {
+        display: inherit;
+      }
+    }
+  }
+
+  /* custom Brand size for GlobalHeader */
+  &__brand {
+    height: 2.5em !important;
+    width: 11em !important;
+  }
+}

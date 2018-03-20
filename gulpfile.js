@@ -12,11 +12,6 @@ const buildCiConfig = require('./build/webpack/webpack.config.build.ci');
 const productionConfig = require('./build/webpack/webpack.config.production');
 const productionCiConfig = require('./build/webpack/webpack.config.production.ci');
 
-// for color swatches
-const postcss = require('gulp-postcss');
-const exportVars = require('postcss-export-vars');
-const watch = require('gulp-watch');
-
 // duplicates gulp 4 type series api
 const series = (...task) => (done) => sequence(...task, done);
 
@@ -31,7 +26,7 @@ gulp.task('webpack:build', webpackBuild(buildConfig, true));
 gulp.task('webpack:build:ci', webpackBuild(buildCiConfig, true));
 gulp.task('webpack:production', webpackBuild(productionConfig, true));
 gulp.task('webpack:production:ci', webpackBuild(productionCiConfig, true));
-gulp.task('webpack:watch:build', webpackBuild(productionCiConfig, false));
+gulp.task('webpack:watch:build', webpackBuild(productionConfig, false));
 
 // watch is a minimal watcher for intergration
 // not requiring page rendering (only /assets)
@@ -48,24 +43,6 @@ gulp.task('static:render:production', staticRender({ production: true }));
 // test code using karma
 gulp.task('test', require('./build/karma-test'));
 
-gulp.task('colorSwatch', series('export-colors', 'color-watch'));
-
-// extract vars for ColorSwatches
-gulp.task('export-colors', () => { // eslint-disable-line
-  return gulp.src('source/elements/variables/colors.css')
-  .pipe(postcss([exportVars({
-    file: './source/styleguide/molecules/SgColorSwatch/SgColorSwatch__variables.json',
-    type: 'json',
-    match: ['--color']
-  })]));
-});
-
-gulp.task('color-watch', () => { // eslint-disable-line
-  return watch('source/elements/variables/colors.css', () => {
-    gulp.start('export-colors');
-  });
-});
-
 // builds for quick publishing
 // to a static server
 gulp.task('build', series(
@@ -76,21 +53,21 @@ gulp.task('build', series(
   'test'
 ));
 
-// builds a production ready set
-// of static assets and html
-gulp.task('production', series(
-  'clean:pre',
-  'webpack:production',
-  'static:render:production',
-  'clean:post'
-));
-
 // builds a minimal set of static
 // assets (only /assets folder, no html)
 // hint: this will be faster for integrators
 gulp.task('build:ci', series(
   'clean:pre',
   'webpack:build:ci',
+  'clean:post'
+));
+
+// builds a production ready set
+// of static assets and html
+gulp.task('production', series(
+  'clean:pre',
+  'webpack:production',
+  'static:render:production',
   'clean:post'
 ));
 
@@ -134,3 +111,8 @@ gulp.task('scaffold:molecule:stateful', scaffoldFactory({
   dest: 'molecules'
 }));
 
+// gulp scaffold:modifier --name [name]
+gulp.task('scaffold:modifier', scaffoldFactory({
+  src: 'modifier-scaffolding',
+  dest: 'modifiers'
+}));

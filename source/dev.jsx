@@ -16,7 +16,7 @@ const {
   htmlClass,
   bodyClass,
   Component
-} = getModule(location.pathname.replace(/\.html/, ''));
+} = getModule(window.location.pathname.replace(/\.html/, ''));
 
 // mock a server render
 Dom.render(Component, document.querySelector('.root'));

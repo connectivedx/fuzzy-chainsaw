@@ -1,4 +1,4 @@
-.Media {
+.media {
   display: flex;
 
   /* media variants */
@@ -6,17 +6,17 @@
   &--middle { align-items: center; }
   &--bottom { align-items: flex-end; }
 
+  &__figure {
+    margin-right: 1em;
+  }
+
   &__body {
     flex: 1;
 
-    & ~ .Media__figure {
+    & ~ .media__figure {
       margin-right: inherit;
       margin-left: 1em;
     }
-  }
-
-  &__figure {
-    margin-right: 1em;
   }
 
   /* figure variants */
@@ -24,4 +24,3 @@
   &__figure--middle { align-self: center; }
   &__figure--bottom { align-self: flex-end; }
 }
-

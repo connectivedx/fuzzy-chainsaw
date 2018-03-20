@@ -33,8 +33,8 @@ export class {{name}} extends React.Component {
     } = this.props;
 
     const classStack = FcUtils.createClassStack([
-      '{{name}}',
-      `{{name}}--${variant}`,
+      '{{cssName}}',
+      `{{cssName}}--${variant}`,
       this.state.isActive && 'is-active',
       className
     ]);

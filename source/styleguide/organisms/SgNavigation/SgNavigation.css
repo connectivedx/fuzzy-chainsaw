@@ -1,0 +1,17 @@
+.SgNavigation {
+  &__search {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--sg-color-gray);
+    border-radius: 0;
+    color: var(--sg-color-black);
+    display: block;
+    font-family: inherit;
+    font-size: 1em;
+    margin-bottom: 2rem;
+    padding: 0.5em 0.5ch;
+    transition: border-color 0.3s ease;
+    width: 100%;
+  }
+}
