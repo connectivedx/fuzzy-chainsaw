@@ -84,3 +84,8 @@ module.exports.themes = [{
   id: 'generic',
   name: 'Generic'
 }];
+
+// define code style options
+module.exports.codeStyle = {
+  pascalClassNames: false // set to true if scaffolding should use PascalCase class names
+};
