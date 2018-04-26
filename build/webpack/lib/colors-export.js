@@ -64,12 +64,5 @@ module.exports = postcss.plugin('colors-export', (files, filters, options) =>
 
     /* Save JSON collection */
     fs.writeFileSync(options.dest, JSON.stringify(jsonObject), 'utf8');
-
-    /* Set saved file's timestamp back 60 second to combat webpack-dev-server build loops */
-    const now = Date.now() / 1000;
-    const then = now - 60;
-    fs.utimesSync(options.dest, then, then, (err) => { 
-      if (err) throw err;
-    });
   }
 );

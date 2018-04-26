@@ -87,6 +87,7 @@
     "loader-utils": "^1.1.0",
     "lodash.startcase": "^4.4.0",
     "markdown-loader": "^2.0.2",
+    "markup-js": "^1.5.21",
     "npm-run-all": "^4.1.2",
     "null-loader": "^0.1.1",
     "offline-plugin": "^4.9.0",
@@ -106,6 +107,7 @@
     "prismjs": "^1.10.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "querystring": "^0.2.0",
+    "raw-loader": "^0.5.1",
     "reset-css": "^2.2.1",
     "run-sequence": "^2.2.1",
     "stats-webpack-plugin": "^0.6.2",
@@ -128,14 +130,15 @@
     "gulp-watch": "^5.0.0",
     "html-loader": "^0.5.5",
     "http-server": "^0.11.1",
+    "isomorphic-fetch": "^2.2.1",
     "minimatch": "^3.0.4",
     "object.assign": "^4.1.0",
     "pretty": "^2.0.0",
     "prop-types": "^15.6.0",
     "rand-token": "^0.4.0",
     "react": "^16.2.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.2.0",
-    "react-element-to-string": "1.0.2",
-    "react-custom-scrollbars": "^4.2.1"
+    "react-element-to-string": "1.0.2"
   }
 }

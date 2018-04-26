@@ -1,0 +1,34 @@
+{{colors}}
+<div class="SgColorSwatch" data-color-name="{{title}}" style="background-color: {{hex}};">
+  <div class="SgColorSwatch__accessibility SgColorSwatch__accessibility--undefined SgColorSwatch__accessibility--double">
+    {{double.primary}}
+      <div class="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--{{name}}" {{if #|more>1}}style="display: none;"{{/if}}>{{value}}</div>
+    {{/double.primary}}
+    {{double.secondary}}
+      <div class="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--{{name}}" {{if #|more>1}}style="display: none;"{{/if}}>{{value}}</div>
+    {{/double.secondary}}    
+  </div>
+  <div class="SgColorSwatch__accessibility SgColorSwatch__accessibility--undefined SgColorSwatch__accessibility--triple" style="display: none;">
+    {{tripple.primary}}
+      <div class="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--primary SgColorSwatch__accessibility__badge--{{name}}" {{if #|more>1}}style="display: none;"{{/if}}>{{value}}</div>
+    {{/tripple.primary}}
+    {{tripple.secondary}}
+      <div class="SgColorSwatch__accessibility__badge SgColorSwatch__accessibility__badge--secondary SgColorSwatch__accessibility__badge--{{name}}" {{if #|more>1}}style="display: none;"{{/if}}>{{value}}</div>
+    {{/tripple.secondary}}    
+  </div>
+  <div class="SgColorSwatch__panel">
+    <div class="SgColorSwatch__panel__title">
+      <h6 class="SgHeading SgHeading--bold SgHeading--h6">Name</h6>
+      <p>{{title}}</p>
+    </div>
+    <div class="SgColorSwatch__panel__hex">
+      <h6 class="SgHeading SgHeading--bold SgHeading--h6">Hex</h6>
+      <p>{{hex}}</p>
+    </div>
+    <div class="SgColorSwatch__panel__rgb">
+      <h6 class="SgHeading SgHeading--bold SgHeading--h6">RGB</h6>
+      <p>{{rgb.r}}, {{rgb.g}}, {{rgb.b}}</p>
+    </div>
+  </div>
+</div>
+{{/colors}}
