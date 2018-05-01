@@ -11,6 +11,12 @@ const dopl = require('dopl');
 
 const { source } = require('./lib/path-helpers');
 
+const { codeStyle } = require(source('fc-config')); // eslint-disable-line
+
+
+const getCssName = (name) => (
+  codeStyle.pascalClassNames ? name : name.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
+);
 
 const scaffoldComponent = ({
   name,
@@ -39,7 +45,7 @@ module.exports = ({ src, dest }) => () => {
 
   return scaffoldComponent({
     name: argv.name,
-    cssName: argv.name.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase(),
+    cssName: getCssName(argv.name),
     src: path.resolve(__dirname, 'scaffolding', src),
     output: source('elements', dest, argv.name)
   });
