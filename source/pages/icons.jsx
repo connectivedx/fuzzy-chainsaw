@@ -7,8 +7,8 @@ import {
   SgPageShell__header,
   SgPageShell__navigation,
   SgPageShell__main,
-  SgPageShell__body }
-  from '@sg-molecules/SgPageShell/SgPageShell';
+  SgPageShell__body
+} from '@sg-molecules/SgPageShell/SgPageShell';
 import SgGlobalHeader from '@sg-organisms/SgGlobalHeader/SgGlobalHeader';
 import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation';
 
