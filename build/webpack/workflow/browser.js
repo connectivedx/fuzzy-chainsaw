@@ -35,6 +35,11 @@ module.exports = (
             use: 'json-loader'
           },
           {
+            test: /\.colors$/,
+            exclude: /static/,
+            use: 'raw-loader'
+          }, 
+          {
             test: /\.md$/,
             exclude: /static/,
             use: [

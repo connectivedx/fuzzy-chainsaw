@@ -32,7 +32,7 @@ const ResolverFactory = require('enhanced-resolve/lib/ResolverFactory');
 const NodeJsInputFileSystem = require('enhanced-resolve/lib/NodeJsInputFileSystem');
 const CachedInputFileSystem = require('enhanced-resolve/lib/CachedInputFileSystem');
 
-const { source, styleguide } = require('../../lib/path-helpers');
+const { source, dest, styleguide } = require('../../lib/path-helpers');
 const { resolve } = require('../workflow/shared');
 
 
@@ -56,7 +56,7 @@ const standard = [
   mixins(),
   nested(),
   colorsExport(['colors.css'], ['--color-'], {
-    dest: styleguide('molecules/SgColorSwatch/SgColorSwatch__Colors.json')
+    dest: dest('assets/dlls/styleguide-colors.json')
   }),  
   cssnext({
     features: {

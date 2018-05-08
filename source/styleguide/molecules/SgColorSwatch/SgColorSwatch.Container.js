@@ -1,6 +1,55 @@
 import chroma from 'chroma-js';
+import Mark from 'markup-js';
+import fetch from 'isomorphic-fetch';
+import ColorSwatches from './template/ColorSwatches.colors';
 
-const createObject = (value) => {
+require('es6-promise').polyfill();
+
+/* Gets the contrast ratio between two colors */
+const getContrast = (color1, color2) => chroma.contrast(color1, color2);
+
+/*
+  ratio: contrast ratio returned by 'getContrast' above
+  size: text size for the test. WCAG traditionally tests 14pt and 18pt font for 'normal' and 'large' respectively
+  level: the level of the test (e.g 'A', 'AA', or 'AAA')
+*/
+const runWCAGTest = (ratio, size, level) => {
+  switch (level) {
+    /* fun fact, 'A' WCAG standard does not have a contrast ratio criteria. */
+    case 'A':
+      return 'PASS';
+
+    case 'AA':
+      if (size === 'large' && ratio > 3) {
+        return 'PASS';
+      } else if (size === 'large--bold' && ratio > 3) {
+        return 'PASS';
+      } else if (size === 'normal' && ratio > 4.5) {
+        return 'PASS';
+      }
+      return 'FAIL';
+
+    case 'AAA':
+      if (size === 'large' && ratio > 4.5) {
+        return 'PASS';
+      } else if (size === 'large--bold' && ratio > 4.5) {
+        return 'PASS';
+      } else if (size === 'normal' && ratio > 7) {
+        return 'PASS';
+      }
+      return 'FAIL';
+
+    default:
+      if (size === 'large' && ratio > 3) {
+        return 'PASS';
+      } else if (size === 'normal' && ratio > 4.5) {
+        return 'PASS';
+      }
+      return 'FAIL';
+  }
+};
+
+const createObject = (value, contrastOne, contrastTwo, title) => {
   /*
     NOTE that HSL support scaffolding is exists in this function.
     However this component does not yet support recieving an HSL format.
@@ -49,125 +98,172 @@ const createObject = (value) => {
     /* todo hsl */
   }
 
-  return colorObject;
-};
-
-/* Gets the contrast ratio between two colors */
-const getContrast = (color1, color2) => chroma.contrast(color1, color2);
-
-/*
-  ratio: contrast ratio returned by 'getContrast' above
-  size: text size for the test. WCAG traditionally tests 14pt and 18pt font for 'normal' and 'large' respectively
-  level: the level of the test (e.g 'A', 'AA', or 'AAA')
-*/
-const runWCAGTest = (ratio, size, level) => {
-  switch (level) {
-    /* fun fact, 'A' WCAG standard does not have a contrast ratio criteria. */
-    case 'A':
-      return 'PASS';
-
-    case 'AA':
-      if (size === 'large' && ratio > 3) {
-        return 'PASS';
-      } else if (size === 'large--bold' && ratio > 3) {
-        return 'PASS';
-      } else if (size === 'normal' && ratio > 4.5) {
-        return 'PASS';
-      }
-      return 'FAIL';
-
-    case 'AAA':
-      if (size === 'large' && ratio > 4.5) {
-        return 'PASS';
-      } else if (size === 'large--bold' && ratio > 4.5) {
-        return 'PASS';
-      } else if (size === 'normal' && ratio > 7) {
-        return 'PASS';
-      }
-      return 'FAIL';
-
-    default:
-      if (size === 'large' && ratio > 3) {
-        return 'PASS';
-      } else if (size === 'normal' && ratio > 4.5) {
-        return 'PASS';
-      }
-      return 'FAIL';
+  if (title) {
+    colorObject.title = title;
   }
+
+  if (contrastOne && contrastTwo) {
+    colorObject.contrastPrimary = getContrast(colorObject.hex, contrastOne);
+    colorObject.contrastSecondary = getContrast(colorObject.hex, contrastTwo);
+
+    colorObject.double = [];
+    colorObject.tripple = [];
+
+    colorObject.double.primary = [
+      {
+        name: 'normal',
+        value: runWCAGTest(colorObject.contrastPrimary, 'normal', 'AA')
+      },
+      {
+        name: 'large--bold',
+        value: runWCAGTest(colorObject.contrastPrimary, 'large--bold', 'AA')
+      },
+      {
+        name: 'large',
+        value: runWCAGTest(colorObject.contrastPrimary, 'large', 'AA')
+      }
+    ];
+
+    colorObject.double.secondary = [
+      {
+        name: 'normal',
+        value: runWCAGTest(colorObject.contrastSecondary, 'normal', 'AA')
+      },
+      {
+        name: 'large--bold',
+        value: runWCAGTest(colorObject.contrastSecondary, 'large--bold', 'AA')
+      },
+      {
+        name: 'large',
+        value: runWCAGTest(colorObject.contrastSecondary, 'large', 'AA')
+      }
+    ];
+
+
+    colorObject.tripple.primary = [
+      {
+        name: 'normal',
+        value: runWCAGTest(colorObject.contrastPrimary, 'normal', 'AAA')
+      },
+      {
+        name: 'large--bold',
+        value: runWCAGTest(colorObject.contrastPrimary, 'large--bold', 'AAA')
+      },
+      {
+        name: 'large',
+        value: runWCAGTest(colorObject.contrastPrimary, 'large', 'AAA')
+      }
+    ];
+
+    colorObject.tripple.secondary = [
+      {
+        name: 'normal',
+        value: runWCAGTest(colorObject.contrastSecondary, 'normal', 'AAA')
+      },
+      {
+        name: 'large--bold',
+        value: runWCAGTest(colorObject.contrastSecondary, 'large--bold', 'AAA')
+      },
+      {
+        name: 'large',
+        value: runWCAGTest(colorObject.contrastSecondary, 'large', 'AAA')
+      }
+    ];
+  }
+
+  return colorObject;
 };
 
 /* Binds the events to UI controls for color accessibility testing. */
 const SgColorInit = (el) => {
-  const level = el.querySelector('.SgColorSwatch__controls--level');
-  const weight = el.querySelector('.SgColorSwatch__controls--weight');
+  fetch('assets/dlls/styleguide-colors.json', { method: 'GET' })
+    .then((response) => response.json())
+    .then((response) => {
+      const data = [];
+      data.colors = [];
 
-  const double = el.querySelectorAll('.SgColorSwatch__accessibility--double');
-  const triple = el.querySelectorAll('.SgColorSwatch__accessibility--triple');
-  const normal = el.querySelectorAll('.SgColorSwatch__accessibility__badge--normal');
-  const largeBold = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large--bold');
-  const large = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large');
+      Object.keys(response).forEach((i) => {
+        data.colors.push(createObject(
+          response[i],
+          response.colorTextPrimary,
+          response.colorTextSecondary,
+          i
+        ));
+      });
 
-  const search = el.querySelector('.SgColorSwatch__search');
+      el.querySelector('.SgColorSwatch__wrapper').innerHTML = Mark.up(ColorSwatches, data);
 
-  let i = double.length;
-  let j = largeBold.length;
+      const level = el.querySelector('.SgColorSwatch__controls--level');
+      const weight = el.querySelector('.SgColorSwatch__controls--weight');
 
-  while (i--) {
-    triple[i].style.display = 'none';
-  }
+      const double = el.querySelectorAll('.SgColorSwatch__accessibility--double');
+      const triple = el.querySelectorAll('.SgColorSwatch__accessibility--triple');
+      const normal = el.querySelectorAll('.SgColorSwatch__accessibility__badge--normal');
+      const largeBold = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large--bold');
+      const large = el.querySelectorAll('.SgColorSwatch__accessibility__badge--large');
 
-  while (j--) {
-    largeBold[j].style.display = 'none';
-    large[j].style.display = 'none';
-  }
+      const search = el.querySelector('.SgColorSwatch__search');
 
-  const churn = () => {
-    const weightSelector = el.querySelectorAll(weight.options[weight.options.selectedIndex].value);
-    const levelSelector = el.querySelectorAll(level.options[level.options.selectedIndex].value);
+      let i = double.length;
+      let j = largeBold.length;
 
-    let m = weightSelector.length;
-    while (m--) {
-      normal[m].style.display = 'none';
-      largeBold[m].style.display = 'none';
-      large[m].style.display = 'none';
-      weightSelector[m].removeAttribute('style');
-    }
-
-    let l = levelSelector.length;
-    while (l--) {
-      double[l].style.display = 'none';
-      triple[l].style.display = 'none';
-      levelSelector[l].removeAttribute('style');
-    }
-  };
-
-  level.addEventListener('change', () => {
-    churn();
-  });
-
-  weight.addEventListener('change', () => {
-    churn();
-  });
-
-  search.addEventListener('keyup', (e) => {
-    const query = e.target.value;
-    const colors = document.querySelectorAll('.SgColorSwatch');
-    let o = colors.length;
-    // unable to consolidate to single loop
-    if (query.length === 0) {
-      while (o--) {
-        colors[o].style.display = '';
+      while (i--) {
+        triple[i].style.display = 'none';
       }
-    } else {
-      while (o--) {
-        if (!colors[o].dataset.colorName.toLowerCase().match(query.toLowerCase())) {
-          colors[o].style.display = 'none';
-        } else {
-          colors[o].style.display = '';
+
+      while (j--) {
+        largeBold[j].style.display = 'none';
+        large[j].style.display = 'none';
+      }
+
+      const churn = () => {
+        const weightSelector = el.querySelectorAll(weight.options[weight.options.selectedIndex].value);
+        const levelSelector = el.querySelectorAll(level.options[level.options.selectedIndex].value);
+
+        let m = weightSelector.length;
+        while (m--) {
+          normal[m].style.display = 'none';
+          largeBold[m].style.display = 'none';
+          large[m].style.display = 'none';
+          weightSelector[m].removeAttribute('style');
         }
-      }
-    }
-  });
+
+        let l = levelSelector.length;
+        while (l--) {
+          double[l].style.display = 'none';
+          triple[l].style.display = 'none';
+          levelSelector[l].removeAttribute('style');
+        }
+      };
+
+      level.addEventListener('change', () => {
+        churn();
+      });
+
+      weight.addEventListener('change', () => {
+        churn();
+      });
+
+      search.addEventListener('keyup', (e) => {
+        const query = e.target.value;
+        const colors = document.querySelectorAll('.SgColorSwatch');
+        let o = colors.length;
+        // unable to consolidate to single loop
+        if (query.length === 0) {
+          while (o--) {
+            colors[o].style.display = '';
+          }
+        } else {
+          while (o--) {
+            if (!colors[o].dataset.colorName.toLowerCase().match(query.toLowerCase())) {
+              colors[o].style.display = 'none';
+            } else {
+              colors[o].style.display = '';
+            }
+          }
+        }
+      });
+    });
 };
 
 module.exports = {
