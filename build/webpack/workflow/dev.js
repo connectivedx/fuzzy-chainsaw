@@ -58,7 +58,7 @@ module.exports = (
             test: /\.css$/,
             loader: 'prefix-variables-loader',
             include: [
-              source('styleguide')
+              source('../styleguide')
             ],
             options: {
               path: '@sg-vars/index.css'

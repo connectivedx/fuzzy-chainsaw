@@ -7,7 +7,6 @@ import '@sg-atoms/SgIcon/SgIconSet';
 // component modules
 import SgExpander from '@sg-atoms/SgExpander/SgExpander.Container';
 import SgNavigation from '@sg-organisms/SgNavigation/SgNavigation.Container';
-import SgPageShell from '@sg-molecules/SgPageShell/SgPageShell.Container';
 import SgTableOfContents from '@sg-molecules/SgTableOfContents/SgTableOfContents.Container';
 import SgIconSearch from '@sg-molecules/SgIconSwatch/SgIconSwatch.Container';
 import { SgColorInit } from '@sg-molecules/SgColorSwatch/SgColorSwatch.Container';
@@ -33,11 +32,6 @@ const init = () => {
   ui.examples.forEach(SgExample);
 };
 
-const shellInit = () => {
-  // shell
-  SgPageShell(ui.shell);
-};
-
 if (ui.menu) {
   SgNavigation(ui.menu);
   SgTableOfContents(ui.menu);
@@ -53,10 +47,6 @@ if (ui.iconSearch) {
 
 if (ui.colorSearch) {
   SgColorInit(ui.shell);
-}
-
-if (ui.shell) {
-  shellInit();
 }
 
 if (ui.root) {

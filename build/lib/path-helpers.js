@@ -24,7 +24,7 @@ const getBaseUrl = (devTasks) => {
 const source = (...paths) => path.resolve(pkgpath.self(), directories.source, ...paths);
 const dest = (...paths) => path.resolve(pkgpath.self(), directories.dest, ...paths);
 const baseUrl = getBaseUrl(['dev', 'build:dev', 'test:dev']);
-const styleguide = (...paths) => source(['styleguide/', ...paths].join(''));
+const styleguide = (...paths) => source(['../styleguide/', ...paths].join(''));
 
 // this takes a simple object of entry:filepath pairs
 // and runs each filepath through the source() helper

@@ -63,11 +63,11 @@ module.exports = ({ production }) => () => {
     merge(
       ...renderFiles([
         ...getContextList(pagesContext),
-        ...getContextList(templatesContext, 'styleguide/templates'),
-        ...getContextList(organismsContext, 'styleguide/organisms'),
-        ...getContextList(moleculesContext, 'styleguide/molecules'),
-        ...getContextList(atomsContext, 'styleguide/atoms'),
-        ...getContextList(modifiersContext, 'styleguide/modifiers')
+        ...getContextList(templatesContext, '../styleguide/templates'),
+        ...getContextList(organismsContext, '../styleguide/organisms'),
+        ...getContextList(moleculesContext, '../styleguide/molecules'),
+        ...getContextList(atomsContext, '../styleguide/atoms'),
+        ...getContextList(modifiersContext, '../styleguide/modifiers')
       ])
     )
     .pipe(gulpif(production, htmlmin({ collapseWhitespace: true })))

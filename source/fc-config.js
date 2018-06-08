@@ -37,7 +37,7 @@ module.exports.dlls = {
 const entries = {
   static: 'static.jsx',
   devScript: 'dev.jsx',
-  styleguide: 'styleguide/styleguide.jsx',
+  styleguide: '../styleguide/styleguide.jsx',
   bundle: 'bundle.jsx',
   'bundle-generic': 'bundle-generic.jsx' // generic theme bundle
 };
