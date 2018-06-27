@@ -35,8 +35,8 @@ const page = () => (
             <p>
               Analytics Tracking is vendor agnostic, meaning you can turn different analytics vendors such as GTM, AEM on or off at both global or individual tracking levels.
             </p>
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Basic click examples</Heading>
             <List variant="blank">
               <li>
                 <Link
@@ -81,8 +81,8 @@ const page = () => (
                 <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
               </li>
             </List>
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Keyboard examples</Heading>
             <div className="Tracking">
               <textarea
                 data-tracking="[{
@@ -90,29 +90,31 @@ const page = () => (
                   'label': 'Keyboard Events',
                   'data': 'Element Keydown'
                 }]"
-                value="Keydown tracking"
+                placeholder="Keydown tracking"
               />
-
+            </div>
+            <div className="Tracking">
               <textarea
                 data-tracking="[{
                   'event': 'keyup',
                   'label': 'Keyboard Events',
                   'data': 'Elemenet Keyup'
                 }]"
-                value="Keyup tracking"
+                placeholder="Keyup tracking"
               />
-
+            </div>
+            <div className="Tracking">
               <textarea
                 data-tracking="[{
                   'event': 'keypress',
                   'label': 'Keyboard Events',
                   'data': 'Element Keypress'
                 }]"
-                value="Keypress tracking"
+                placeholder="Keypress tracking"
               />
             </div>
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Mouse examples</Heading>
             <List variant="blank">
               <li>
                 <Link
@@ -235,22 +237,22 @@ const page = () => (
                 </Link>
               </li>
             </List>
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Scroll examples</Heading>
             <textarea data-tracking="[{'event': 'scroll', 'label': 'Scroll Event', 'data': 'Element Scrolled'}]" value="Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll TextareaScroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll TextareaScroll Textarea Scroll Textarea" />
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Cut, Copy, Pasete examples</Heading>
             <textarea data-tracking="[{'event': 'cut', 'label': 'Clipboard Events', 'data': 'Cut to clipboard'}]" value="Highlight and cut text from this textarea" />
             <textarea data-tracking="[{'event': 'copy', 'label': 'Clipboard Events', 'data': 'Copy to clipboard'}]" value="Highlight and copy text from this textarea" />
             <textarea data-tracking="[{'event': 'paste', 'label': 'Clipboard Events', 'data': 'Paste to clipboard'}]" value="Paste text here" />
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Drag / Drop examples</Heading>
             <div data-tracking="[{'event': 'drag', 'label': 'Drag Drop Events', 'data': 'Drag Element'}]" style={{ padding: '2rem', backgroundColor: 'red' }} draggable="true" title="drag element">Drag</div>
             <div data-tracking="[{'event': 'dragend', 'label': 'Drag Drop Events', 'data': 'Drag End Element'}]" style={{ padding: '2rem', backgroundColor: 'blue', color: 'white' }} draggable="true" title="Drag element, then press esc">Drag End</div>
             <div data-tracking="[{'event': 'dragover' 'label': 'Drag Drop Events', 'data': 'Drag Over Element'}]" style={{ padding: '2rem', backgroundColor: 'green' }} draggable="true" title="Drag element over another draggable element">Drag Over</div>
             <div data-tracking="[{'event': 'dragleave', 'label': 'Drag Drop Events', 'data': 'Drag Leave Element'}]" style={{ padding: '2rem', backgroundColor: 'yellow' }} draggable="true" title="Drag element out of valid drop zone">Drag Leave</div>
-          </Rhythm>
-          <Rhythm>
+
+            <Heading level="h4">Video examples</Heading>
             <video
               width="640"
               height="360"

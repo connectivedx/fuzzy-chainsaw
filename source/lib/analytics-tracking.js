@@ -88,20 +88,8 @@ class Tracking {
     }
   }
 
-  init = (options) => {
-    this.vendorsInit(options.vendors);
-    let i = this.settings.eventTypes.length;
-    while (i--) {
-      this.settings.tracker.addEventListener(this.settings.eventTypes[i], (e) => {
-        this.execute(e.target, e.type, this.debounceList.indexOf(e.type));
-      }, true, true);
-    }
-  }
-
   execute = (target, requestedEventType, needsDebounce) => {
-    if (!target.dataset) return;
-    if (!target.dataset.tracking) return;
-    const events = JSON.parse(target.dataset.tracking.replace(/"/g, '').replace(/'/g, '"'));
+    const events = JSON.parse(target.dataset.tracking.replace(/'/g, '"'));
     if (needsDebounce > -1) {
       clearTimeout(this.debounceWait);
       this.debounceWait = setTimeout(() => {
@@ -115,10 +103,9 @@ class Tracking {
   eventScrub = (events, matchingEvents) => {
     let i = events.length;
     while (i--) {
-      const trackingEvent = events[i];
-      const eventType = trackingEvent.event;
-      const eventLabel = trackingEvent.label;
-      let eventData = trackingEvent.data;
+      const eventType = events[i].event;
+      const eventLabel = events[i].label;
+      let eventData = events[i].data;
 
       if (document.querySelector(eventData)) {
         eventData = document.querySelector(eventData).innerHTML;
@@ -132,6 +119,18 @@ class Tracking {
           });
         }
       }
+    }
+  }
+
+  init = (options) => {
+    this.vendorsInit(options.vendors);
+    let i = this.settings.eventTypes.length;
+    while (i--) {
+      this.settings.tracker.addEventListener(this.settings.eventTypes[i], (e) => {
+        if (e.target.hasAttribute('data-tracking')) {
+          this.execute(e.target, e.type, this.debounceList.indexOf(e.type));
+        }
+      }, true, true);
     }
   }
 }
