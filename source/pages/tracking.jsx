@@ -59,9 +59,22 @@ const page = () => (
                     'data': '.hidden-text-area'
                   }]"
                 >
-                  Value from another element
+                  Inner from another element
                 </Link>
                 <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
+              </li>
+              <li>
+                <Link
+                  href="#/"
+                  data-tracking="[{
+                    'event':'click',
+                    'label': 'Hidden Value Example',
+                    'data': '.hidden-text-area-with-attribute:attr(title)'
+                  }]"
+                >
+                  Attribute from another element
+                </Link>
+                <Link href="#/" className="hidden-text-area-with-attribute" title="I'm a link title attribute value!" style={{ display: 'none' }}>A simple string of content for example purposes only.</Link>
               </li>
               <li>
                 <Link
@@ -249,7 +262,7 @@ const page = () => (
             <Heading level="h4">Drag / Drop examples</Heading>
             <div data-tracking="[{'event': 'drag', 'label': 'Drag Drop Events', 'data': 'Drag Element'}]" style={{ padding: '2rem', backgroundColor: 'red' }} draggable="true" title="drag element">Drag</div>
             <div data-tracking="[{'event': 'dragend', 'label': 'Drag Drop Events', 'data': 'Drag End Element'}]" style={{ padding: '2rem', backgroundColor: 'blue', color: 'white' }} draggable="true" title="Drag element, then press esc">Drag End</div>
-            <div data-tracking="[{'event': 'dragover' 'label': 'Drag Drop Events', 'data': 'Drag Over Element'}]" style={{ padding: '2rem', backgroundColor: 'green' }} draggable="true" title="Drag element over another draggable element">Drag Over</div>
+            <div data-tracking="[{'event': 'dragover', 'label': 'Drag Drop Events', 'data': 'Drag Over Element'}]" style={{ padding: '2rem', backgroundColor: 'green' }} draggable="true" title="Drag element over another draggable element">Drag Over</div>
             <div data-tracking="[{'event': 'dragleave', 'label': 'Drag Drop Events', 'data': 'Drag Leave Element'}]" style={{ padding: '2rem', backgroundColor: 'yellow' }} draggable="true" title="Drag element out of valid drop zone">Drag Leave</div>
 
             <Heading level="h4">Video examples</Heading>

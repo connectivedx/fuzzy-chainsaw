@@ -1,7 +1,6 @@
 class Tracking {
   constructor(options) {
     this.settings = {
-      tracker: document.body,
       eventTypes: [
         'load',
         'beforeunload',
@@ -61,14 +60,18 @@ class Tracking {
     ];
 
     this.init(options);
-
     this.debounceWait = undefined;
   }
 
-  vendorsInit = (vendors) => {
+  setupVendors = (vendors) => {
     let v = vendors.length;
     while (v--) {
       if (vendors[v].type.match('Google')) {
+        if (!vendors[v].id) {
+          console.log('Google Tag Manager requires an account id to complete tracking setup.'); // eslint-disable-line
+          return;
+        }
+
         // Google Tag Manager
         ((w, d, s, l, i) => {
           const f = d.getElementsByTagName(s)[0];
@@ -88,34 +91,57 @@ class Tracking {
     }
   }
 
-  execute = (target, requestedEventType, needsDebounce) => {
-    const events = JSON.parse(target.dataset.tracking.replace(/'/g, '"'));
-    if (needsDebounce > -1) {
+  execute = (elm, eventType, debounceBool) => {
+    try {
+      JSON.parse(elm.dataset.tracking.replace(/'/g, '"'));
+    } catch (err) {
+      console.log(elm, 'Appears this element has a malformatted data-tracking value. Please review and correct any syntax issues.'); // eslint-disable-line
+      return;
+    }
+
+    const elmDataset = JSON.parse(elm.dataset.tracking.replace(/'/g, '"'));
+
+    if (debounceBool > -1) {
       clearTimeout(this.debounceWait);
+
       this.debounceWait = setTimeout(() => {
-        this.eventScrub(events, requestedEventType);
+        this.eventScrub(elmDataset, eventType);
       }, 250);
     } else {
-      this.eventScrub(events, requestedEventType);
+      this.eventScrub(elmDataset, eventType);
     }
   }
 
-  eventScrub = (events, matchingEvents) => {
-    let i = events.length;
+  eventScrub = (dataset, type) => {
+    let i = dataset.length;
     while (i--) {
-      const eventType = events[i].event;
-      const eventLabel = events[i].label;
-      let eventData = events[i].data;
+      const { event } = dataset[i];
+      const { label } = dataset[i];
+      let { data } = dataset[i];
 
-      if (document.querySelector(eventData)) {
-        eventData = document.querySelector(eventData).innerHTML;
+      // if data is not string, but element selector
+      let selector;
+      const attribute = data.split(':attr');
+
+      if (attribute) {
+        selector = document.querySelector(attribute[0]);
+      } else {
+        selector = document.querySelector(data);
       }
 
-      if (eventType === matchingEvents) {
+      if (selector) {
+        if (attribute[1]) {
+          data = selector.getAttribute(attribute[1].replace('(', '').replace(')', ''));
+        } else {
+          data = selector.innerHTML;
+        }
+      }
+
+      if (event === type) {
         // Google Tag Manager
         if (global.dataLayer) {
           global.dataLayer.push({
-            [['"', eventLabel.replace(/ /g, ''), '"'].join('')]: eventData
+            [['"', label.replace(/ /g, ''), '"'].join('')]: data
           });
         }
       }
@@ -123,10 +149,11 @@ class Tracking {
   }
 
   init = (options) => {
-    this.vendorsInit(options.vendors);
+    this.setupVendors(options.vendors);
+
     let i = this.settings.eventTypes.length;
     while (i--) {
-      this.settings.tracker.addEventListener(this.settings.eventTypes[i], (e) => {
+      document.body.addEventListener(this.settings.eventTypes[i], (e) => {
         if (e.target.hasAttribute('data-tracking')) {
           this.execute(e.target, e.type, this.debounceList.indexOf(e.type));
         }
