@@ -141,7 +141,8 @@ class Tracking {
         // Google Tag Manager
         if (global.dataLayer) {
           global.dataLayer.push({
-            [['"', label.replace(/ /g, ''), '"'].join('')]: data
+            event: label.replace(/ /g, ''),
+            data
           });
         }
       }
