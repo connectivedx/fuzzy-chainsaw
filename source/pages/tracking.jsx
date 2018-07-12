@@ -69,12 +69,12 @@ const page = () => (
                   data-tracking="[{
                     'event':'click',
                     'label': 'Hidden Value Example',
-                    'data': '.hidden-text-area-with-attribute:attr(title)'
+                    'data': '.input-attribute:attr(title)'
                   }]"
                 >
                   Attribute from another element
                 </Link>
-                <Link href="#/" className="hidden-text-area-with-attribute" title="I'm a link title attribute value!" style={{ display: 'none' }}>A simple string of content for example purposes only.</Link>
+                <Link href="#/" className="input-attribute" title="I'm a link title attribute value!" style={{ display: 'none' }}>A simple string of content for example purposes only.</Link>
               </li>
               <li>
                 <Link
@@ -90,6 +90,19 @@ const page = () => (
                   }]"
                 >
                   Multi-tracking
+                </Link>
+                <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
+              </li>
+              <li>
+                <Link
+                  href="#/"
+                  data-tracking="[{
+                    'event':'click',
+                    'label': 'Data Points Example',
+                    'data': {'hello': 'world', 'howdy': 'user'}
+                  }]"
+                >
+                  Data points
                 </Link>
                 <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
               </li>

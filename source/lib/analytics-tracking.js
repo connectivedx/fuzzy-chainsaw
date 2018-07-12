@@ -63,30 +63,34 @@ class Tracking {
     this.debounceWait = undefined;
   }
 
+  setupGoogleTagManager = (id) => {
+    if (!id) {
+      console.log('Google Tag Manager requires an account id to complete tracking setup.'); // eslint-disable-line
+      return;
+    }
+
+    // Google Tag Manager Setup Code
+    ((w, d, s, l, i) => {
+      const f = d.getElementsByTagName(s)[0];
+      const j = d.createElement(s);
+      const dl = l !== 'dataLayer' ? ['&l=', l].join('') : '';
+
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      j.async = true;
+      j.src = ['https://www.googletagmanager.com/gtm.js?id=', i, dl].join('');
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', id);
+  }
+
   setupVendors = (vendors) => {
     let v = vendors.length;
     while (v--) {
       if (vendors[v].type.match('Google')) {
-        if (!vendors[v].id) {
-          console.log('Google Tag Manager requires an account id to complete tracking setup.'); // eslint-disable-line
-          return;
-        }
-
-        // Google Tag Manager
-        ((w, d, s, l, i) => {
-          const f = d.getElementsByTagName(s)[0];
-          const j = d.createElement(s);
-          const dl = l !== 'dataLayer' ? ['&l=', l].join('') : '';
-
-          w[l] = w[l] || [];
-          w[l].push({
-            'gtm.start': new Date().getTime(),
-            event: 'gtm.js'
-          });
-          j.async = true;
-          j.src = ['https://www.googletagmanager.com/gtm.js?id=', i, dl].join('');
-          f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', vendors[v].id);
+        this.setupGoogleTagManager(vendors[v].id);
       }
     }
   }
@@ -95,7 +99,7 @@ class Tracking {
     try {
       JSON.parse(elm.dataset.tracking.replace(/'/g, '"'));
     } catch (err) {
-      console.log(elm, 'Appears this element has a malformatted data-tracking value. Please review and correct any syntax issues.'); // eslint-disable-line
+      console.log(elm, 'It appears this element has a malformatted data-tracking value. Please review and correct any syntax issues as needed.'); // eslint-disable-line
       return;
     }
 
@@ -116,34 +120,53 @@ class Tracking {
     let i = dataset.length;
     while (i--) {
       const { event } = dataset[i];
-      const { label } = dataset[i];
+      let { label } = dataset[i];
       let { data } = dataset[i];
-
-      // if data is not string, but element selector
-      let selector;
-      const attribute = data.split(':attr');
-
-      if (attribute) {
-        selector = document.querySelector(attribute[0]);
-      } else {
-        selector = document.querySelector(data);
-      }
-
-      if (selector) {
-        if (attribute[1]) {
-          data = selector.getAttribute(attribute[1].replace('(', '').replace(')', ''));
-        } else {
-          data = selector.innerHTML;
-        }
-      }
+      label = label.replace(/ /g, '');
 
       if (event === type) {
-        // Google Tag Manager
-        if (global.dataLayer) {
-          global.dataLayer.push({
-            event: label.replace(/ /g, ''),
-            data
-          });
+        if (global.dataLayer) { // Google Tag Manager
+          if (typeof data === 'object') {
+            // when data is a JSON object
+            const collection = {};
+            collection.event = label;
+
+            const dataPoints = Object.keys(data).reverse();
+            let j = dataPoints.length;
+
+            while (j--) {
+              collection[dataPoints[j]] = data[dataPoints[j]];
+            }
+
+            global.dataLayer.push(collection);
+          } else if (data === '') {
+            // when no data is supplied we only push out event
+            global.dataLayer.push({
+              event: label
+            });
+          } else {
+            try {
+              // if data is an element selector
+              const attribute = data.split(':attr');
+              const selector = document.querySelector(attribute[0]);
+
+              if (attribute[1]) {
+                data = selector.getAttribute(attribute[1].replace('(', '').replace(')', ''));
+              } else {
+                data = selector.innerHTML;
+              }
+
+              global.dataLayer.push({
+                event: label,
+                data
+              });
+            } catch (err) {
+              global.dataLayer.push({
+                event: label,
+                data
+              });
+            }
+          }
         }
       }
     }
