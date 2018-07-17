@@ -65,7 +65,7 @@ class Tracking {
 
   setupGoogleTagManager = (id) => {
     if (!id) {
-      console.log('Google Tag Manager requires an account id to complete tracking setup.'); // eslint-disable-line
+      console.log('Error: Google Tag Manager requires an account id to complete tracking setup.'); // eslint-disable-line
       return;
     }
 
@@ -95,91 +95,145 @@ class Tracking {
     }
   }
 
-  execute = (elm, eventType, debounceBool) => {
+  validateFormatting = (formatting) => {
     try {
-      JSON.parse(elm.dataset.tracking.replace(/'/g, '"'));
+      return JSON.parse(formatting.replace(/'/g, '"'));
     } catch (err) {
-      console.log(elm, 'It appears this element has a malformatted data-tracking value. Please review and correct any syntax issues as needed.'); // eslint-disable-line
-      return;
-    }
-
-    const elmDataset = JSON.parse(elm.dataset.tracking.replace(/'/g, '"'));
-
-    if (debounceBool > -1) {
-      clearTimeout(this.debounceWait);
-
-      this.debounceWait = setTimeout(() => {
-        this.eventScrub(elmDataset, eventType);
-      }, 250);
-    } else {
-      this.eventScrub(elmDataset, eventType);
+      console.log('Error: It appears this element has a malformatted data-tracking value. Please correct syntax issues.'); // eslint-disable-line
+      return false;
     }
   }
 
-  eventScrub = (dataset, type) => {
+  validateDate = (data) => {
+    // for the sakes of re-usability, we boil down data to a collection variable
+    let collection = null; // prep collection to be null for null based data
+
+    if (data) {
+      collection = data; // catch for null or string based data
+
+      // if data is a potential JSON object
+      if (typeof data === 'object') {
+        // when data is a JSON object
+        collection = [];
+        const keys = Object.keys(data).reverse();
+        let j = keys.length;
+
+        while (j--) {
+          collection[keys[j]] = data[keys[j]];
+        }
+      // if data is a potential element selector
+      } else if (document.querySelector(data.split(':attr')[0])) {
+        const attr = data.split(':attr');
+        const selector = document.querySelector(attr[0]);
+
+        // if element selector contained a attribute selection
+        if (attr[1]) {
+          collection = selector.getAttribute(attr[1].replace('(', '').replace(')', ''));
+        } else {
+          collection = selector.innerHTML;
+        }
+      }
+    }
+
+    // returns collection as null, string, element innerHTML (string), element attribute (string) or object
+    return collection;
+  }
+
+  execute = (elm, eventType, debounceBool) => {
+    // first we validate dataset.tracking
+    if (!this.validateFormatting(elm.dataset.tracking)) {
+      return;
+    }
+    // we always do a debouce clear incase we are using debounce default events
+    clearTimeout(this.debounceWait);
+    // hook into the debounceWait variable to set a debounce or non-debounce timeout
+    this.debounceWait = setTimeout(() => {
+      // scrub the incoming data against data tracking requirements
+      this.eventScrub(this.validateFormatting(elm.dataset.tracking), eventType, elm);
+      // conditional debounce or non-debounce period
+    }, (debounceBool > -1) ? 250 : 0);
+  }
+
+  eventScrub = (dataset, type, elm) => {
+    // mutli-event track looping
     let i = dataset.length;
     while (i--) {
+      const { elements } = dataset[i];
       const { event } = dataset[i];
       let { label } = dataset[i];
       let { data } = dataset[i];
+
       label = label.replace(/ /g, '');
 
+      // multi-element track check
+      if (elements) {
+        // because the element that got us here was orignally a child of our then re-focused target
+        // looping over dataset.tracking.elements and checking if lack of parent with dataset.tracking attribute is sufficent
+        const elms = elm.querySelectorAll(elements);
+        let j = elms.length;
+        while (j--) {
+          // again, if a single element doesn't have a parent with tracking, we break out of eventScrub.
+          if (!this.getParent(elms[j])) {
+            console.log('Error: There appears to be mult-element tracking setup on non-existent children.'); // eslint-disable-line
+            return;
+          }
+        }
+      }
+
+      // if we don't have do tracking
       if (event === type) {
         if (global.dataLayer) { // Google Tag Manager
-          if (typeof data === 'object') {
-            // when data is a JSON object
-            const collection = {};
-            collection.event = label;
-
-            const dataPoints = Object.keys(data).reverse();
-            let j = dataPoints.length;
-
-            while (j--) {
-              collection[dataPoints[j]] = data[dataPoints[j]];
-            }
-
-            global.dataLayer.push(collection);
-          } else if (data === '') {
-            // when no data is supplied we only push out event
+          // when no data is supplied we only push out event
+          data = this.validateDate(data);
+          if (typeof data === 'string') {
             global.dataLayer.push({
-              event: label
+              event: label,
+              data
             });
           } else {
-            try {
-              // if data is an element selector
-              const attribute = data.split(':attr');
-              const selector = document.querySelector(attribute[0]);
-
-              if (attribute[1]) {
-                data = selector.getAttribute(attribute[1].replace('(', '').replace(')', ''));
-              } else {
-                data = selector.innerHTML;
-              }
-
-              global.dataLayer.push({
-                event: label,
-                data
-              });
-            } catch (err) {
-              global.dataLayer.push({
-                event: label,
-                data
-              });
-            }
+            global.dataLayer.push({
+              event: label,
+              ...data
+            });
           }
         }
       }
     }
   }
 
+  // search parents with tracking data attribute
+  getParent = (el) => {
+    while (el.parentNode) {
+      el = el.parentNode;
+      if (el === document) { return false; }
+
+      if (el.hasAttribute('data-tracking')) {
+        return el;
+      }
+    }
+    return false;
+  }
+
+  // init the watcher
   init = (options) => {
     this.setupVendors(options.vendors);
 
     let i = this.settings.eventTypes.length;
     while (i--) {
       document.body.addEventListener(this.settings.eventTypes[i], (e) => {
-        if (e.target.hasAttribute('data-tracking')) {
-          this.execute(e.target, e.type, this.debounceList.indexOf(e.type));
+        let { target } = e;
+        const { type } = e;
+        const { tracking } = target.dataset;
+
+        // if clicked target or parent element has tracking
+        if (tracking || this.getParent(target)) {
+          // if clicked target ineed has a parent with tracking re-focus target to parent
+          if (this.getParent(target)) {
+            target = this.getParent(target);
+          }
+
+          // finally execute tracking method
+          this.execute(target, type, this.debounceList.indexOf(type));
         }
       }, true, true);
     }

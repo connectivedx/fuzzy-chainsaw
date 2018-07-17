@@ -37,7 +37,7 @@ const page = () => (
             </p>
 
             <Heading level="h4">Basic click examples</Heading>
-            <List variant="blank">
+            <Rhythm tagName="ul">
               <li>
                 <Link
                   href="#/"
@@ -49,6 +49,7 @@ const page = () => (
                 >
                   Simple click
                 </Link>
+                <p>Event specifiys what clientside event will perform a tracking. Label allows you to cutomize our tracking entry identity. Data allows you to pass custom data along with our tracking entry.</p>
               </li>
               <li>
                 <Link
@@ -62,6 +63,7 @@ const page = () => (
                   Inner from another element
                 </Link>
                 <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
+                <p>Instead of setting data as a explicit string, you can set data as a element selector. This will pass an elements innerHTML as a string to our tracking entry.</p>
               </li>
               <li>
                 <Link
@@ -75,7 +77,25 @@ const page = () => (
                   Attribute from another element
                 </Link>
                 <Link href="#/" className="input-attribute" title="I'm a link title attribute value!" style={{ display: 'none' }}>A simple string of content for example purposes only.</Link>
+                <p>Further more, you can use the :attr() flag to grab the value of a specific element attribute instead of innHTML.</p>
               </li>
+              <li>
+                <Link
+                  href="#/"
+                  data-tracking="[{
+                    'event':'click',
+                    'label': 'Data Spread Example',
+                    'data': {'hello': 'world', 'howdy': 'user'}
+                  }]"
+                >
+                  Data spreading
+                </Link>
+                <p>Lastly, instead of passing a string or a selector, you can pass an object that spreads out within your tracking inplace of data.</p>
+              </li>
+            </Rhythm>
+
+            <Heading level="h4">Advanced examples</Heading>
+            <Rhythm tagName="ul">
               <li>
                 <Link
                   href="#/"
@@ -84,29 +104,33 @@ const page = () => (
                     'label': 'Multi Example',
                     'data': 'First Data Value'
                   },{
-                    'event':'click',
+                    'event':'mousemove',
                     'label': 'Multi Example',
                     'data': 'Second Data Value'
                   }]"
                 >
-                  Multi-tracking
+                  Multi event tracking
                 </Link>
-                <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
+                <p>Sometimes you might have the need to sent out two differnt tracking entries based on different user events.</p>
               </li>
               <li>
-                <Link
-                  href="#/"
+                <List
                   data-tracking="[{
                     'event':'click',
                     'label': 'Data Points Example',
-                    'data': {'hello': 'world', 'howdy': 'user'}
+                    'data': 'A multi-element was clicked',
+                    'elements': '.link'
                   }]"
+                  className="mult-element-list"
                 >
-                  Data points
-                </Link>
-                <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
+                  <li><Link href="#/">Multi element tracking link</Link></li>
+                  <li><Link href="#/">Multi element tracking link</Link></li>
+                  <li><Link href="#/">Multi element tracking link</Link></li>
+                </List>
               </li>
-            </List>
+            </Rhythm>
+
+            <p>Instead of placing the tracking data attribute across many elements, set it on a parent and pass a elements selector instead.</p>
 
             <Heading level="h4">Keyboard examples</Heading>
             <div className="Tracking">
