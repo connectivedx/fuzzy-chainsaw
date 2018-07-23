@@ -90,7 +90,38 @@ const page = () => (
                 >
                   Data spreading
                 </Link>
-                <p>Lastly, instead of passing a string or a selector, you can pass an object that spreads out within your tracking inplace of data.</p>
+                <p>Instead of passing a string or a selector, you can pass an object that spreads out within your tracking inplace of data.</p>
+              </li>
+              <li>
+                <Heading level="h4">
+                  Data spreading (with selectors)
+                </Heading>
+                <div
+                  style={{ display: 'flex', padding: '1rem', justifyContent: 'space-around' }}
+                  data-tracking="[{
+                    'event':'click',
+                    'label': 'Data Spread Examplev2',
+                    'elements': 'option',
+                    'data': {'selectOne': '#selectOne:attr(value)', 'selectTwo': '#selectTwo:attr(value)'}
+                  }]"
+                >
+                  <div className="FormSelect__one">
+                    <select id="selectOne">
+                      <option value="one">Option one</option>
+                      <option value="two">Option two</option>
+                      <option value="three">Option three</option>
+                    </select>
+                  </div>
+
+                  <div className="FormSelect__two">
+                    <select id="selectTwo">
+                      <option value="one">Option one</option>
+                      <option value="two">Option two</option>
+                      <option value="three">Option three</option>
+                    </select>
+                  </div>
+                </div>
+                <p>Lastly, you can use selectors in pass data spread objects to grab innerHTML or :attr(values).</p>
               </li>
             </Rhythm>
 

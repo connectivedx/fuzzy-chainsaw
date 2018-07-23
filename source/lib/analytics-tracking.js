@@ -104,6 +104,19 @@ class Tracking {
     }
   }
 
+  validateSelector = (query) => {
+    const attr = query.split(':attr');
+    const selector = document.querySelector(attr[0]);
+    if (!selector) { return false; }
+
+    // if element selector contained a attribute selection
+    if (attr[1]) {
+      return selector[attr[1].replace('(', '').replace(')', '')];
+    }
+
+    return selector.innerHTML;
+  }
+
   validateDate = (data) => {
     // for the sakes of re-usability, we boil down data to a collection variable
     let collection = null; // prep collection to be null for null based data
@@ -119,19 +132,17 @@ class Tracking {
         let j = keys.length;
 
         while (j--) {
-          collection[keys[j]] = data[keys[j]];
+          if (this.validateSelector(data[keys[j]])) {
+            // selector for value of data spread
+            collection[keys[j]] = this.validateSelector(data[keys[j]]);
+          } else {
+            // string for value of data spread
+            collection[keys[j]] = data[keys[j]];
+          }
         }
       // if data is a potential element selector
-      } else if (document.querySelector(data.split(':attr')[0])) {
-        const attr = data.split(':attr');
-        const selector = document.querySelector(attr[0]);
-
-        // if element selector contained a attribute selection
-        if (attr[1]) {
-          collection = selector.getAttribute(attr[1].replace('(', '').replace(')', ''));
-        } else {
-          collection = selector.innerHTML;
-        }
+      } else if (this.validateSelector(data)) {
+        collection = this.validateSelector(data);
       }
     }
 
