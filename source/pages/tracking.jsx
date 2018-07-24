@@ -36,9 +36,10 @@ const page = () => (
               Analytics Tracking is vendor agnostic, meaning you can turn different analytics vendors such as GTM, AEM on or off at both global or individual tracking levels.
             </p>
 
-            <Heading level="h4">Basic click examples</Heading>
+            <Heading level="h2">Basic click examples</Heading>
             <Rhythm tagName="ul">
               <li>
+                <Heading level="h6">Simple click</Heading>
                 <Link
                   href="#/"
                   data-tracking="[{
@@ -47,11 +48,12 @@ const page = () => (
                     'data': 'Clicked Simple Example Element'
                   }]"
                 >
-                  Simple click
+                  click me
                 </Link>
                 <p>Event specifiys what clientside event will perform a tracking. Label allows you to cutomize our tracking entry identity. Data allows you to pass custom data along with our tracking entry.</p>
               </li>
               <li>
+                <Heading level="h6">Inner from another element</Heading>
                 <Link
                   href="#/"
                   data-tracking="[{
@@ -60,12 +62,13 @@ const page = () => (
                     'data': '.hidden-text-area'
                   }]"
                 >
-                  Inner from another element
+                  Click me
                 </Link>
                 <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
                 <p>Instead of setting data as a explicit string, you can set data as a element selector. This will pass an elements innerHTML as a string to our tracking entry.</p>
               </li>
               <li>
+                <Heading level="h6">Attribute value from another element</Heading>
                 <Link
                   href="#/"
                   data-tracking="[{
@@ -74,12 +77,13 @@ const page = () => (
                     'data': '.input-attribute:attr(title)'
                   }]"
                 >
-                  Attribute from another element
+                  Click me
                 </Link>
                 <Link href="#/" className="input-attribute" title="I'm a link title attribute value!" style={{ display: 'none' }}>A simple string of content for example purposes only.</Link>
                 <p>Further more, you can use the :attr() flag to grab the value of a specific element attribute instead of innHTML.</p>
               </li>
               <li>
+                <Heading level="h6">Data spreading</Heading>
                 <Link
                   href="#/"
                   data-tracking="[{
@@ -88,14 +92,12 @@ const page = () => (
                     'data': {'hello': 'world', 'howdy': 'user'}
                   }]"
                 >
-                  Data spreading
+                  Click me
                 </Link>
                 <p>Instead of passing a string or a selector, you can pass an object that spreads out within your tracking inplace of data.</p>
               </li>
               <li>
-                <Heading level="h4">
-                  Data spreading (with selectors)
-                </Heading>
+                <Heading level="h6">Data spreading (with selectors)</Heading>
                 <div
                   style={{ display: 'flex', padding: '1rem', justifyContent: 'space-around' }}
                   data-tracking="[{
@@ -107,6 +109,7 @@ const page = () => (
                 >
                   <div className="FormSelect__one">
                     <select id="selectOne">
+                      <option value="none">Change me</option>
                       <option value="one">Option one</option>
                       <option value="two">Option two</option>
                       <option value="three">Option three</option>
@@ -115,6 +118,7 @@ const page = () => (
 
                   <div className="FormSelect__two">
                     <select id="selectTwo">
+                      <option value="none">Change me</option>
                       <option value="one">Option one</option>
                       <option value="two">Option two</option>
                       <option value="three">Option three</option>
@@ -125,9 +129,10 @@ const page = () => (
               </li>
             </Rhythm>
 
-            <Heading level="h4">Advanced examples</Heading>
+            <Heading level="h2">Advanced examples</Heading>
             <Rhythm tagName="ul">
               <li>
+                <Heading level="h6">Multi event tracking</Heading>
                 <Link
                   href="#/"
                   data-tracking="[{
@@ -140,11 +145,12 @@ const page = () => (
                     'data': 'Second Data Value'
                   }]"
                 >
-                  Multi event tracking
+                  Click me
                 </Link>
                 <p>Sometimes you might have the need to sent out two differnt tracking entries based on different user events.</p>
               </li>
               <li>
+                <Heading level="h6">Multi element tracking</Heading>
                 <List
                   data-tracking="[{
                     'event':'click',
@@ -154,16 +160,16 @@ const page = () => (
                   }]"
                   className="mult-element-list"
                 >
-                  <li><Link href="#/">Multi element tracking link</Link></li>
-                  <li><Link href="#/">Multi element tracking link</Link></li>
-                  <li><Link href="#/">Multi element tracking link</Link></li>
+                  <li><Link href="#/">Click me</Link></li>
+                  <li><Link href="#/">Click me</Link></li>
+                  <li><Link href="#/">Click me</Link></li>
                 </List>
               </li>
             </Rhythm>
 
             <p>Instead of placing the tracking data attribute across many elements, set it on a parent and pass a elements selector instead.</p>
 
-            <Heading level="h4">Keyboard examples</Heading>
+            <Heading level="h2">Keyboard examples</Heading>
             <div className="Tracking">
               <textarea
                 data-tracking="[{
@@ -195,7 +201,7 @@ const page = () => (
               />
             </div>
 
-            <Heading level="h4">Mouse examples</Heading>
+            <Heading level="h2">Mouse examples</Heading>
             <List variant="blank">
               <li>
                 <Link
@@ -319,21 +325,21 @@ const page = () => (
               </li>
             </List>
 
-            <Heading level="h4">Scroll examples</Heading>
+            <Heading level="h2">Scroll examples</Heading>
             <textarea data-tracking="[{'event': 'scroll', 'label': 'Scroll Event', 'data': 'Element Scrolled'}]" value="Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll TextareaScroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll TextareaScroll Textarea Scroll Textarea" />
 
-            <Heading level="h4">Cut, Copy, Pasete examples</Heading>
+            <Heading level="h2">Cut, Copy, Pasete examples</Heading>
             <textarea data-tracking="[{'event': 'cut', 'label': 'Clipboard Events', 'data': 'Cut to clipboard'}]" value="Highlight and cut text from this textarea" />
             <textarea data-tracking="[{'event': 'copy', 'label': 'Clipboard Events', 'data': 'Copy to clipboard'}]" value="Highlight and copy text from this textarea" />
             <textarea data-tracking="[{'event': 'paste', 'label': 'Clipboard Events', 'data': 'Paste to clipboard'}]" value="Paste text here" />
 
-            <Heading level="h4">Drag / Drop examples</Heading>
+            <Heading level="h2">Drag / Drop examples</Heading>
             <div data-tracking="[{'event': 'drag', 'label': 'Drag Drop Events', 'data': 'Drag Element'}]" style={{ padding: '2rem', backgroundColor: 'red' }} draggable="true" title="drag element">Drag</div>
             <div data-tracking="[{'event': 'dragend', 'label': 'Drag Drop Events', 'data': 'Drag End Element'}]" style={{ padding: '2rem', backgroundColor: 'blue', color: 'white' }} draggable="true" title="Drag element, then press esc">Drag End</div>
             <div data-tracking="[{'event': 'dragover', 'label': 'Drag Drop Events', 'data': 'Drag Over Element'}]" style={{ padding: '2rem', backgroundColor: 'green' }} draggable="true" title="Drag element over another draggable element">Drag Over</div>
             <div data-tracking="[{'event': 'dragleave', 'label': 'Drag Drop Events', 'data': 'Drag Leave Element'}]" style={{ padding: '2rem', backgroundColor: 'yellow' }} draggable="true" title="Drag element out of valid drop zone">Drag Leave</div>
 
-            <Heading level="h4">Video examples</Heading>
+            <Heading level="h2">Video examples</Heading>
             <video
               width="640"
               height="360"
