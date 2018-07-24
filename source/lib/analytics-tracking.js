@@ -47,7 +47,8 @@ class Tracking {
         'ended',
         'waiting',
         'complete',
-        'change'
+        'change',
+        'input'
       ]
     };
 
@@ -158,11 +159,15 @@ class Tracking {
     // we always do a debouce clear incase we are using debounce default events
     clearTimeout(this.debounceWait);
     // hook into the debounceWait variable to set a debounce or non-debounce timeout
-    this.debounceWait = setTimeout(() => {
-      // scrub the incoming data against data tracking requirements
+    if (debounceBool > -1) {
+      this.debounceWait = setTimeout(() => {
+        // scrub the incoming data against data tracking requirements
+        this.eventScrub(this.validateFormatting(elm.dataset.tracking), eventType, elm);
+        // conditional debounce or non-debounce period
+      }, 250);
+    } else {
       this.eventScrub(this.validateFormatting(elm.dataset.tracking), eventType, elm);
-      // conditional debounce or non-debounce period
-    }, (debounceBool > -1) ? 250 : 0);
+    }
   }
 
   eventScrub = (dataset, type, elm) => {

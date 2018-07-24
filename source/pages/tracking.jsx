@@ -99,9 +99,9 @@ const page = () => (
                 <div
                   style={{ display: 'flex', padding: '1rem', justifyContent: 'space-around' }}
                   data-tracking="[{
-                    'event':'click',
+                    'event':'change',
                     'label': 'Data Spread Examplev2',
-                    'elements': 'option',
+                    'elements': 'select',
                     'data': {'selectOne': '#selectOne:attr(value)', 'selectTwo': '#selectTwo:attr(value)'}
                   }]"
                 >
