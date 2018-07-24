@@ -107,15 +107,18 @@ class Tracking {
 
   validateSelector = (query) => {
     const attr = query.split(':attr');
-    const selector = document.querySelector(attr[0]);
-    if (!selector) { return false; }
+    let selector;
+    try {
+      selector = document.querySelector(attr[0]);
+      // if element selector contained a attribute selection
+      if (attr[1]) {
+        return selector[attr[1].replace('(', '').replace(')', '')];
+      }
 
-    // if element selector contained a attribute selection
-    if (attr[1]) {
-      return selector[attr[1].replace('(', '').replace(')', '')];
+      return selector.innerHTML;
+    } catch (e) {
+      return false;
     }
-
-    return selector.innerHTML;
   }
 
   validateDate = (data) => {
