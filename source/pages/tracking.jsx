@@ -36,16 +36,20 @@ const page = () => (
               Analytics Tracking is vendor agnostic, meaning you can turn different analytics vendors such as GTM, AEM on or off at both global or individual tracking levels.
             </p>
 
-            <Heading level="h2">Basic click examples</Heading>
+            <Heading level="h2">Basic examples</Heading>
             <Rhythm tagName="ul">
+              <li>
+                <Heading level="h6" data-tracking="[{'event': 'pageload', 'label': 'Simple Example', 'data': '@helloWorld'}]">Simple page load tracking on this heading</Heading>
+                <p>The simplist form of tracking is pageload tracking. The heading above this very peragraph has a pageload event tracking attribute setup on it. Pageload tracking gets performed right aftre the page is finished loading without any user interaction because it is not event based.</p>
+              </li>
               <li>
                 <Heading level="h6">Simple click</Heading>
                 <Link
                   href="#/"
                   data-tracking="[{
-                    'event':'click',
+                    'event': 'click',
                     'label': 'Simple Example',
-                    'data': 'Clicked Simple Example Element'
+                    'data': '@helloWorld'
                   }]"
                 >
                   click me
@@ -57,7 +61,7 @@ const page = () => (
                 <Link
                   href="#/"
                   data-tracking="[{
-                    'event':'click',
+                    'event': 'click',
                     'label': 'Hidden Value Example',
                     'data': '.hidden-text-area'
                   }]"
@@ -72,7 +76,7 @@ const page = () => (
                 <Link
                   href="#/"
                   data-tracking="[{
-                    'event':'click',
+                    'event': 'click',
                     'label': 'Hidden Value Example',
                     'data': '.input-attribute:attr(title)'
                   }]"
@@ -87,7 +91,7 @@ const page = () => (
                 <Link
                   href="#/"
                   data-tracking="[{
-                    'event':'click',
+                    'event': 'click',
                     'label': 'Data Spread Example',
                     'data': {'hello': 'world', 'howdy': 'user'}
                   }]"
@@ -101,7 +105,7 @@ const page = () => (
                 <div
                   style={{ display: 'flex', padding: '1rem', justifyContent: 'space-around' }}
                   data-tracking="[{
-                    'event':'change',
+                    'event': 'change',
                     'label': 'Data Spread Examplev2',
                     'elements': 'select',
                     'data': {'selectOne': '#selectOne:attr(value)', 'selectTwo': '#selectTwo:attr(value)'}

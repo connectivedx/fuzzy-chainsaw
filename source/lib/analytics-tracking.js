@@ -3,6 +3,7 @@ class Tracking {
     this.settings = {
       eventTypes: [
         'load',
+        'pageload',
         'beforeunload',
         'unload',
         'reset',
@@ -59,6 +60,10 @@ class Tracking {
       'keypress',
       'scroll'
     ];
+
+    this.ui = {
+      trackingAttrs: document.querySelectorAll('[data-tracking]')
+    };
 
     this.init(options);
     this.debounceWait = undefined;
@@ -237,6 +242,7 @@ class Tracking {
   init = (options) => {
     this.setupVendors(options.vendors);
 
+    // Installs event based tracking
     let i = this.settings.eventTypes.length;
     while (i--) {
       document.body.addEventListener(this.settings.eventTypes[i], (e) => {
@@ -256,6 +262,25 @@ class Tracking {
         }
       }, true, true);
     }
+
+    // Performs pageload tracking by locating them and executing them without user interaction
+    Object.keys(this.ui.trackingAttrs).map((elmIndex) => {
+      // Parse tracking attribute into object
+      const trackingAttr = JSON.parse(this.ui.trackingAttrs[elmIndex].dataset.tracking.replace(/'/g, '"'));
+      // Because we can have more multiple tracking events in a single tracking attribute, we must loop over each event entry
+      Object.keys(trackingAttr).map((attrIndex) => {
+        // Now that we are down to a single tracking entry, lets condition for only pageload events
+        const trackingEntry = trackingAttr[attrIndex];
+        const trackingEvent = trackingEntry.event;
+
+        if (trackingEvent === 'pageload') {
+          // finally we return the execute method with our found pageload tracking record to perform tracking.
+          return this.execute(this.ui.trackingAttrs[elmIndex], trackingEvent, this.debounceList.indexOf(trackingEvent));
+        }
+        return null;
+      });
+      return null;
+    });
   }
 }
 
