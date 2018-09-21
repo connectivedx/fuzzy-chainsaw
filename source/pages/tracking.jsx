@@ -151,7 +151,7 @@ const page = () => (
                 >
                   Click me
                 </Link>
-                <p>Sometimes you might have the need to sent out two different tracking entries based on different user events.</p>
+                <p>Sometimes you might have the need to send out two different tracking entries based on different user events.</p>
               </li>
               <li>
                 <Heading level="h6">Multi element tracking</Heading>
