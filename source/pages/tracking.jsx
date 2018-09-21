@@ -27,20 +27,20 @@ const page = () => (
           <Rhythm>
             <Heading>Fuzzy Chainsaw Analytics Tracking</Heading>
             <p>
-              Analytics tracking within Fuzzy Chainsaw is setup using data-tracking attribute on elements. Each data-tracking attribute describes what event will trigger the tracking, a label for tracked action and data for tracked action.
+              Analytics tracking within Fuzzy Chainsaw is set up using data-tracking attribute on elements. Each data-tracking attribute describes what event will trigger the tracking, a label for the tracked action, and the data for the tracked action.
             </p>
             <p>
-              A listener at the body level of the document is constantly listenening for a match between an element in question, and its set event type within the data-tracking attribute. Once a the body watcher has found a match, the tracking for that element performed.
+              A listener at the body level of the document is constantly listening for a match between the element in question, and its set event type within the data-tracking attribute. Once a the body watcher has found a match, the tracking for that element is performed.
             </p>
             <p>
-              Analytics Tracking is vendor agnostic, meaning you can turn different analytics vendors such as GTM, AEM on or off at both global or individual tracking levels.
+              Analytics Tracking is vendor agnostic, meaning you can turn different analytics vendors (such as GTM or AEM) on or off at both global or individual tracking levels.
             </p>
 
             <Heading level="h2">Basic examples</Heading>
             <Rhythm tagName="ul">
               <li>
                 <Heading level="h6" data-tracking="[{'event': 'pageload', 'label': 'Simple Example', 'data': '@helloWorld'}]">Simple page load tracking on this heading</Heading>
-                <p>The simplist form of tracking is pageload tracking. The heading above this very peragraph has a pageload event tracking attribute setup on it. Pageload tracking gets performed right aftre the page is finished loading without any user interaction because it is not event based.</p>
+                <p>The simplest form of tracking is pageload tracking. The heading above this very paragraph has a pageload event tracking attribute setup on it. Pageload tracking gets performed right after the page is finished loading, without any user interaction, because it is not event-based.</p>
               </li>
               <li>
                 <Heading level="h6">Simple click</Heading>
@@ -54,7 +54,7 @@ const page = () => (
                 >
                   click me
                 </Link>
-                <p>Event specifiys what clientside event will perform a tracking. Label allows you to cutomize our tracking entry identity. Data allows you to pass custom data along with our tracking entry.</p>
+                <p>Event specifies what client-side event will perform a tracking. Label allows you to customize our tracking entry identity. Data allows you to pass custom data along with our tracking entry.</p>
               </li>
               <li>
                 <Heading level="h6">Inner from another element</Heading>
@@ -68,8 +68,8 @@ const page = () => (
                 >
                   Click me
                 </Link>
-                <p className="hidden-text-area" style={{ display: 'none' }}>Im hidden text, but still used in tracking</p>
-                <p>Instead of setting data as a explicit string, you can set data as a element selector. This will pass an elements innerHTML as a string to our tracking entry.</p>
+                <p className="hidden-text-area" style={{ display: 'none' }}>I&apos;m hidden text, but still used in tracking</p>
+                <p>Instead of setting data as a explicit string, you can set data as a element selector. This will pass an element&apos;s innerHTML as a string to our tracking entry.</p>
               </li>
               <li>
                 <Heading level="h6">Attribute value from another element</Heading>
@@ -84,7 +84,7 @@ const page = () => (
                   Click me
                 </Link>
                 <Link href="#/" className="input-attribute" title="I'm a link title attribute value!" style={{ display: 'none' }}>A simple string of content for example purposes only.</Link>
-                <p>Further more, you can use the :attr() flag to grab the value of a specific element attribute instead of innHTML.</p>
+                <p>Furthermore, you can use the :attr() flag to grab the value of a specific element attribute instead of innerHTML.</p>
               </li>
               <li>
                 <Heading level="h6">Data spreading</Heading>
@@ -98,7 +98,7 @@ const page = () => (
                 >
                   Click me
                 </Link>
-                <p>Instead of passing a string or a selector, you can pass an object that spreads out within your tracking inplace of data.</p>
+                <p>Instead of passing a string or a selector, you can pass an object that spreads out within your tracking, in place of data.</p>
               </li>
               <li>
                 <Heading level="h6">Data spreading (with selectors)</Heading>
@@ -106,7 +106,7 @@ const page = () => (
                   style={{ display: 'flex', padding: '1rem', justifyContent: 'space-around' }}
                   data-tracking="[{
                     'event': 'change',
-                    'label': 'Data Spread Examplev2',
+                    'label': 'Data Spread Example v2',
                     'elements': 'select',
                     'data': {'selectOne': '#selectOne:attr(value)', 'selectTwo': '#selectTwo:attr(value)'}
                   }]"
@@ -129,7 +129,7 @@ const page = () => (
                     </select>
                   </div>
                 </div>
-                <p>Lastly, you can use selectors in pass data spread objects to grab innerHTML or :attr(values).</p>
+                <p>Lastly, you can use selectors when passing data spread objects to grab innerHTML or :attr(values).</p>
               </li>
             </Rhythm>
 
@@ -151,7 +151,7 @@ const page = () => (
                 >
                   Click me
                 </Link>
-                <p>Sometimes you might have the need to sent out two differnt tracking entries based on different user events.</p>
+                <p>Sometimes you might have the need to sent out two different tracking entries based on different user events.</p>
               </li>
               <li>
                 <Heading level="h6">Multi element tracking</Heading>
@@ -171,7 +171,7 @@ const page = () => (
               </li>
             </Rhythm>
 
-            <p>Instead of placing the tracking data attribute across many elements, set it on a parent and pass a elements selector instead.</p>
+            <p>Instead of placing the tracking data attribute across many elements, set it on a parent and pass an element&apos;s selector instead.</p>
 
             <Heading level="h2">Keyboard examples</Heading>
             <div className="Tracking">
@@ -189,7 +189,7 @@ const page = () => (
                 data-tracking="[{
                   'event': 'keyup',
                   'label': 'Keyboard Events',
-                  'data': 'Elemenet Keyup'
+                  'data': 'Element Keyup'
                 }]"
                 placeholder="Keyup tracking"
               />
@@ -332,7 +332,7 @@ const page = () => (
             <Heading level="h2">Scroll examples</Heading>
             <textarea data-tracking="[{'event': 'scroll', 'label': 'Scroll Event', 'data': 'Element Scrolled'}]" value="Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll TextareaScroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll Textarea Scroll TextareaScroll Textarea Scroll Textarea" />
 
-            <Heading level="h2">Cut, Copy, Pasete examples</Heading>
+            <Heading level="h2">Cut, Copy, Paste examples</Heading>
             <textarea data-tracking="[{'event': 'cut', 'label': 'Clipboard Events', 'data': 'Cut to clipboard'}]" value="Highlight and cut text from this textarea" />
             <textarea data-tracking="[{'event': 'copy', 'label': 'Clipboard Events', 'data': 'Copy to clipboard'}]" value="Highlight and copy text from this textarea" />
             <textarea data-tracking="[{'event': 'paste', 'label': 'Clipboard Events', 'data': 'Paste to clipboard'}]" value="Paste text here" />
