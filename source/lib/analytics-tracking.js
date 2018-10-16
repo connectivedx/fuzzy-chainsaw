@@ -246,19 +246,18 @@ class Tracking {
     let i = this.settings.eventTypes.length;
     while (i--) {
       document.body.addEventListener(this.settings.eventTypes[i], (e) => {
-        let { target } = e;
+        const { target } = e;
         const { type } = e;
         const { tracking } = target.dataset;
 
         // if clicked target or parent element has tracking
         if (tracking || this.getParent(target)) {
-          // if clicked target ineed has a parent with tracking re-focus target to parent
-          if (this.getParent(target)) {
-            target = this.getParent(target);
-          }
-
           // finally execute tracking method
-          this.execute(target, type, this.debounceList.indexOf(type));
+          this.execute(
+            (this.getParent(target) ? this.getParent(target) : target),
+            type,
+            this.debounceList.indexOf(type)
+          );
         }
       }, true, true);
     }
@@ -281,6 +280,13 @@ class Tracking {
       });
       return null;
     });
+
+    // Allows for direct data layer pushing from API.
+    this.send = (data) => {
+      global.dataLayer.push(data);
+    };
+
+    this.sent = global.dataLayer;
   }
 }
 

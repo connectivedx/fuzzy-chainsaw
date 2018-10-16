@@ -35,7 +35,18 @@ const page = () => (
             <p>
               Analytics Tracking is vendor agnostic, meaning you can turn different analytics vendors such as GTM, AEM on or off at both global or individual tracking levels.
             </p>
-
+            <Heading level="h2">API Methods</Heading>
+            <p>All pages should have access to the global `Tracker` object and the methods below. </p>
+            <Rhythm tagName="ul">
+              <li>
+                <p>Allows you to send out data to tracker from API.</p>
+                <pre><code>Tracker.send(Object)</code></pre>
+              </li>
+              <li>
+                <p>Allows you to see what data has already sent to the tracker.<br /> Useful if you need to condition future tracking based on previous tracking. Please note the returned object will be cleared out once a new page has loaded.</p>
+                <pre><code>Tracker.sent</code></pre>
+              </li>
+            </Rhythm>
             <Heading level="h2">Basic examples</Heading>
             <Rhythm tagName="ul">
               <li>
