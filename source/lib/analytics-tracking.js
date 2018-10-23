@@ -264,6 +264,10 @@ class Tracking {
 
     // Performs pageload tracking by locating them and executing them without user interaction
     Object.keys(this.ui.trackingAttrs).map((elmIndex) => {
+      // Validate prior to parsing
+      if (!this.validateFormatting(this.ui.trackingAttrs[elmIndex].dataset.tracking)) {
+        return null;
+      }
       // Parse tracking attribute into object
       const trackingAttr = JSON.parse(this.ui.trackingAttrs[elmIndex].dataset.tracking.replace(/'/g, '"'));
       // Because we can have more multiple tracking events in a single tracking attribute, we must loop over each event entry
